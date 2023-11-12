@@ -1,6 +1,6 @@
 ---
 title: Developing Web
-categories: [Backend, 김영한JavaSpring]
+categories: [Backend, 김영한JavaSpring입문]
 tags: [backend, spring, 김영한] # TAG names should always be lowercase
 ---
 
