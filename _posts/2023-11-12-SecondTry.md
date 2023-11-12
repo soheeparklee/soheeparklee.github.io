@@ -1,6 +1,5 @@
 ---
 title: Second Try
-date: 2023-11-12 17:02:12 +0800
-categories: [Blogging, Demo]
+categories: [Supercoding, Intern]
 tags: [java] # TAG names should always be lowercase
 ---
