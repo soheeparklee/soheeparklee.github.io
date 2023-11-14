@@ -93,7 +93,7 @@ button:nth-child(2) {
 
 ### ✅ Pseudo-classes
 
-> specify a special state of the selected element such as `:hover`, `:active`(눌렸을 떄)
+> specify a special state of the selected element such as `:hover`, `:active`(눌렸을 때)
 
 ```css
 #btn_1:hover {
