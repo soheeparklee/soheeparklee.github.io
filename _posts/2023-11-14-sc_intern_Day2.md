@@ -35,11 +35,11 @@ tags:
 
 ### 💡 **TIL\_배운 내용 요약 정리**
 
-#### <span style= "color: #2D3748; background-color:#fff5b1;">Input Tags</span>
+> Input Tags
 
 - various types, use whatever is needed
 
-#### <span style= "color: #2D3748; background-color:#fff5b1;">CSS basics</span>
+> CSS basics
 
 - justify-content
 - align-items
@@ -72,7 +72,7 @@ tags:
 #### 📕 CS books
 
 후니의 쉽게 쓴 시스코 네트워킹
-<https://product.kyobobook.co.kr/detail/S000000562247>
+<https://product.kyobobook.co.kr/detail/S000000562247>  
 Operating System Concepts
 <https://product.kyobobook.co.kr/detail/S000003114660>
 
@@ -99,7 +99,7 @@ css positions
 
 **🟣 What I want to learn more\_더 배우고 싶은 것**
 
-**☑️ Summary of the Day\_회고 : 하루 일과**
+**☑️ Summary of the Day\_회고 : 하루 일과** <br>
 오늘은 live mentoring이 많아서 시간이 부족했다ㅠㅠ <br>
 8시부터 10시까지 라이브를 해버리면 나는 2시간밖에 안남는데...
 밤 늦게까지 공부하다 잤다!
