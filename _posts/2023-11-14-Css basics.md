@@ -1,8 +1,8 @@
 ---
-title: Css basics
+title: CSS basics
 date: 2023-11-14
 categories: [Frontend, CSS]
-tags: [html, css, head, tag, input]
+tags: [html, css, justify, align, position, flex, direction, selector, pseudo]
 # TAG names should always be lowercase
 ---
 
@@ -99,5 +99,16 @@ button:nth-child(2) {
 #btn_1:hover {
   background-color: pink;
   border: 3px tomato solid;
+}
+```
+
+### ✅ Pseudo-classes
+
+> set a variable in CSS
+
+```css
+:root {
+  --main-color: rgb(71, 159, 119);
+  --sub-color: rgb(100, 100, 100);
 }
 ```
