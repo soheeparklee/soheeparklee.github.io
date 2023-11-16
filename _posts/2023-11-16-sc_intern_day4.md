@@ -85,7 +85,7 @@ framework is already **fixed** how to use
 
 당근마켓에서 채팅 페이지를 `HTML`, `CSS` 사용하여 만듦.
 
-![Alt text](image-8.png)
+<img width="388" alt="스크린샷 2023-11-17 오전 1 53 20" src="https://github.com/soheeparklee/sc_FrontBackTryout/assets/97790983/978130f1-baae-499b-afff-b8f9e1bc4110">
 
 <https://github.com/soheeparklee/sc_project_carrotMkt_improved.git>
 
@@ -184,7 +184,7 @@ bottom: 0;
 
 > CarrotMkt의 `footer` 끝이 잘려보이는 문제
 > `footer`을 밑에 붙였는데 끝이 잘린다! 왜 그러지?
-> ![Alt text](image-3.png)
+> <img width="213" alt="스크린샷 2023-11-17 오전 1 56 42" src="https://github.com/soheeparklee/sc_FrontBackTryout/assets/97790983/5b4c0a27-db41-49a1-9886-4545d6d81e50">
 
 ##### **🟡 What I tried\_스스로 시도해 본 것들**
 
@@ -203,7 +203,6 @@ justify-content: space-between;
 ```
 
 - `width: 95%;`로 해결을 해 두었음.
-  ![Alt text](image-4.png)
 
 ##### **🟢 What I learned\_알게된 점**
 
@@ -214,7 +213,7 @@ justify-content: space-between;
 
 #### **🔴 Trouble Shooting**
 
-![Alt text](image-6.png)
+<img width="288" alt="스크린샷 2023-11-17 오전 1 56 11" src="https://github.com/soheeparklee/sc_FrontBackTryout/assets/97790983/6aef8488-e987-42b9-b3b9-c81a5afe5378">
 
 `@media screen`을 사용해 크기 조절을 했는데,
 보이지 않았으면 하는 부분들이 보임
@@ -224,7 +223,7 @@ justify-content: space-between;
 `<div class="size-adjust">사이즈를 조정해 주세요</div>`
 `@media screen` 을 적용할 `div`를 HTML가장 아래에 두기
 
-![Alt text](image-7.png)
+<img width="667" alt="스크린샷 2023-11-17 오전 1 55 21" src="https://github.com/soheeparklee/sc_FrontBackTryout/assets/97790983/ecc788da-682c-4f85-a227-d8ea3bc3dbf3">
 
 그럼에도 불구하고 `scroll`을 하면 아래 `footer`이 보임 ㅠㅠ  
 `<div class="size-adjust">사이즈를 조정해 주세요</div>`  
@@ -285,7 +284,7 @@ However, my time-management was not so efficient...
 I am going to bed at 2am!!
 
  <br>
-  <br>
+ <br>
 
 **💟 참조**  
 Framework VS Library

@@ -16,7 +16,7 @@ tags: [html, css, transition, transform, animation]
 - 몇 초 동안 바뀔건지, 어떻게 자연스럽게? (둔탁하지 않게) 어떤 요소들을 바꿀까?
 
 - cubic-beizer
-  ![Alt text](image-2.png)
+  <img width="556" alt="스크린샷 2023-11-17 오전 1 59 26" src="https://github.com/soheeparklee/sc_FrontBackTryout/assets/97790983/1d3269b7-645d-4980-9884-e1cb244bd2a0">
 
 ```css
 div {

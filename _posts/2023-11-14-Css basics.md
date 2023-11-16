@@ -88,8 +88,7 @@ button:nth-child(2) {
 ```
 
 **result**
-
-![Alt text](image-1.png)
+<img width="673" alt="스크린샷 2023-11-17 오전 1 59 58" src="https://github.com/soheeparklee/sc_FrontBackTryout/assets/97790983/1c48f2e4-1973-4e09-880b-56d031998925">
 
 ### ✅ Pseudo-classes
 
