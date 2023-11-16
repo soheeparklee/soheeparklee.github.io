@@ -1,25 +1,7 @@
 ---
 title: 2023.SEPT.15(WED) 슈퍼코딩 부트캠프 신입연수원 Day 3
 categories: [TIL(Today I Learned), SuperCoding_신입연수원(주특기 선택 이전)]
-tags:
-  [
-    html,
-    frontend,
-    css,
-    programming,
-    슈퍼코딩,
-    1:1관리형부트캠프,
-    프론트엔드,
-    백엔드,
-    프론트엔드공부,
-    백엔드공부,
-    개발공부,
-    프론트엔드개발자,
-    백엔드개발자,
-    backend,
-    todayilearned,
-    til
-  ]
+tags: [css, todayilearned, til, book, 책추천]
 ---
 
 ## ✅ INTERM REPORT\_중간 보고
