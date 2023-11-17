@@ -1,10 +1,10 @@
 ---
 title: Object, Boolean, Function
 categories: [Javascript, Basics]
-tags: [javascript, supercoding, object] # TAG names should always be lowercase
+tags: [javascript, supercoding, object, boolean, function] # TAG names should always be lowercase
 ---
 
-# Object
+## Object
 
 ```javascript
 const Sohee= {
@@ -30,7 +30,7 @@ console.log(Sohee.hobby);
 
 swimming
 
-# Boolean
+## Boolean
 
 - true
 - false
@@ -55,9 +55,23 @@ console.log(Sohee.nationality);
 
 undefined
 
-# Function
+## Function
 
-## Function & Object
+### How to define a Function
+
+```javascript
+
+```
+
+```javascript
+
+```
+
+```javascript
+
+```
+
+### Function & Object
 
 > console.log으로 보여주는 함수 만들기
 

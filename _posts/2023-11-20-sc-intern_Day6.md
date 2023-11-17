@@ -1,25 +1,7 @@
 ---
-title: format
+title: 2023.SEPT.20(SAT) 슈퍼코딩 부트캠프 신입연수원 Day 6
 categories: [TIL(Today I Learned), SuperCoding_신입연수원(주특기 선택 이전)]
-tags:
-  [
-    html,
-    frontend,
-    css,
-    programming,
-    슈퍼코딩,
-    1:1관리형부트캠프,
-    프론트엔드,
-    백엔드,
-    프론트엔드공부,
-    백엔드공부,
-    개발공부,
-    프론트엔드개발자,
-    백엔드개발자,
-    backend,
-    todayilearned,
-    til
-  ]
+tags: [todayilearned, til, resume]
 ---
 
 ## ✅ INTERM REPORT\_중간 보고
@@ -27,19 +9,25 @@ tags:
 ### 📌 **TO-DO LIST**
 
 - [ ] submit blog post 중간보고, 일일보고
-- [ ] 슈퍼코딩 1강~10강
+- [ ] 슈퍼코딩 23, 24, 25, 26, 27강
+- [ ] Team Meeting 9PM
       <br>
       <br>
 
 ### 💡 **TIL\_배운 내용 요약 정리**
 
-#### **IDE**
+#### **Javascript Array**
+
+#### **Advantages of using Function**
+
+> Function: set of instructions together to execure as a single unit
+> **Reuse your code** repeat the same code less
+> **Debug** easier to maintain
+> **Code readabilty** > **코드 결합도 낮추기** 함수 간의 의존성이 줄어 코드의 유연성을 높인다.
 
 ##### ☑️ Framework
 
-> 클래스 + 인터페이스의 집합
-
----
+- what is IDE
 
 ## ✅ DAILY REPORT\_일일 보고
 
@@ -56,6 +44,8 @@ tags:
 ---
 
 ## ✅ MENTORING\_멘토링
+
+#### **How to write a good Resume**
 
 ---
 
