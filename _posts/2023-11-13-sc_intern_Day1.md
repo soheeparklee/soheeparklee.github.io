@@ -1,22 +1,7 @@
 ---
 title: 2023.SEPT.13(MON) 슈퍼코딩 부트캠프 신입연수원 Day 1
 categories: [TIL(Today I Learned), SuperCoding_신입연수원(주특기 선택 이전)]
-tags: [
-    html,
-    frontend,
-    css,
-    programming,
-    슈퍼코딩,
-    1:1관리형부트캠프,
-    프론트엔드,
-    백엔드,
-    프론트엔드공부,
-    백엔드공부,
-    개발공부,
-    프론트엔드개발자,
-    백엔드개발자,
-    backend
-  ] # TAG names should always be lowercase
+tags: [til, todayilearned] # TAG names should always be lowercase
 ---
 
 ## ✅ 중간 보고
@@ -34,7 +19,7 @@ tags: [
       <br>
       <br>
 
-### 💡 **배운 내용 요약 정리**
+## ✅ Today I Learned
 
 #### <span style= "color: #2D3748; background-color:#fff5b1;">IDE</span>
 
@@ -74,6 +59,6 @@ tags: [
 
 **🔵 Mistakes I Made\_헷갈리거나 실수한 점**
 
-**☑️ Summary of the Day\_회고 : 하루 일과**
+## ☑️ Summary of the Day <br>
 
 First day was long, due to updating my github blog which is also new. But from Day 2, I will be more adjusted! Excited! Yay! 😋

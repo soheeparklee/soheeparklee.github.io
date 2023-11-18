@@ -10,11 +10,12 @@ tags:
     테크블로그,
     carrotmkt,
     clonecoding,
-    opacity
+    opacity,
+    troubleshooting
   ]
 ---
 
-## ✅ INTERM REPORT\_중간 보고
+## ✅ DAILY REPORT
 
 ### 📌 **TO-DO LIST**
 
@@ -24,11 +25,11 @@ tags:
 - [x] 19강: footer
       <br>
 
-### 💡 **TIL\_배운 내용 요약 정리**
+## ✅ Today I Learned
 
-#### **Framework VS Library**
+### **Framework VS Library**
 
-##### ☑️ Framework
+#### ☑️ Framework
 
 > 클래스 + 인터페이스의 집합
 
@@ -47,7 +48,7 @@ framework is already **fixed** how to use
 - **Django** for Python
 - **Android** for android app
 
-##### ☑️ Library
+#### ☑️ Library
 
 > 라이브러리는 개발에 필요한 것들을 미리 구현해 놓은 도구이다.  
 > 재사용이 가능하도록 기능을 미리 구현해놓고 필요한 곳에서 호출해 사용한다.
@@ -66,7 +67,7 @@ framework is already **fixed** how to use
 - HTML의 클라이언트 사이드 조작을 단순화하는 JQuery
 - 웹에서 사용자 인터페이스 개발에 사용되는 React.js
 
-##### ☑️ IOC 제어의 역전
+#### ☑️ IOC 제어의 역전
 
 > Inversion of Control  
 > 프레임워크와 라이브러리의 차이는 **제어흐름**이 어디에 있는가이다.  
@@ -81,7 +82,7 @@ framework is already **fixed** how to use
 `framework`는 `library`를 포함한다!
 `프레임워크` 위에 사용자가 코드를 입력하다가 필요할 떄 `라이브러리`를 호출!
 
-#### **CarrotMkt Chat page**
+### **CarrotMkt Chat page**
 
 당근마켓에서 채팅 페이지를 `HTML`, `CSS` 사용하여 만듦.
 
@@ -89,7 +90,9 @@ framework is already **fixed** how to use
 
 <https://github.com/soheeparklee/sc_project_carrotMkt_improved.git>
 
-#### **🐝 취업 관련 꿀팁**
+## ✅ MENTORING\_멘토링
+
+### **🐝 취업 관련 꿀팁**
 
 1. 지원 사이트
 
@@ -108,9 +111,7 @@ framework is already **fixed** how to use
 - 핀테크: Pay/PG, Banking, Stock, P2P Lending(허가받은업체만투자하고싶은개인들이빌려주는대출플랫폼), Cryptocurrency(블록체인,암호화폐)
 - 모빌리티: Mobility, Car Sharing, Navigation, Self-driving(자율주행)
 
-## ✅ MENTORING\_멘토링
-
-> 코딩 공부 사이트
+### 코딩 공부 사이트
 
 - 유데미
 - 앙마코딩
@@ -137,33 +138,33 @@ framework is already **fixed** how to use
 <https://www.aladin.co.kr/shop/wproduct.aspx?ItemId=300406950>
 <https://www.aladin.co.kr/shop/wproduct.aspx?ItemId=277386060>
 
-## ✅ DAILY REPORT\_일일 보고
+## ✅ Trouble Shooting
 
-#### **🔴 Trouble Shooting**
+### **🔴 opacity:0 VS display:none**
 
 `opacity: 0`을 주었더니 `opacity:1`로 만들었을 때도 화면이 클릭되지 않았다.
 `button`들을 클릭할 수 없어 난감했다.
 
-##### **🟡 What I tried\_스스로 시도해 본 것들**
+#### **🟡 What I tried\_스스로 시도해 본 것들**
 
 `button`에 문제가 있는 줄 알고 `div`로 바꿨다가, `a`tag으로 바꿨다가...난리부르스
 
-##### **🟢 What I learned\_알게된 점**
+#### **🟢 What I learned\_알게된 점**
 
 `opccity: 0`은 화면을 클릭할 수 없게 만든다.  
 화면을 띄우지 않게 만드는 다른 방법은 `display: none;`
 
 ---
 
-#### **🔴 Trouble Shooting**
+### **🔴 css사용해 item을 어딘가에 붙여버리기**
 
 > CarrotMkt의 `footer`을 만드는데 `footer`을 페이지 밑에 붙여야했다! 근데 방법을 모름.
 
-##### **🟡 What I tried\_스스로 시도해 본 것들**
+#### **🟡 What I tried\_스스로 시도해 본 것들**
 
 `align-itmes: end`로 해결해보려고 했으나 안 됨!
 
-##### **🟢 What I learned\_알게된 점**
+#### **🟢 What I learned\_알게된 점**
 
 item의 위치를 어딘가로 딱! 정해버릴 떄는 `position`을 사용한다.
 
@@ -172,7 +173,7 @@ position: fixed;
 bottom: 0;
 ```
 
-##### **🔵 I should work on\_ 부족한 점**
+#### **🔵 I should work on\_ 부족한 점**
 
 - css positions를 더 자주 project에 적용하며 써봐야겠다.
 - 아니면 `margin-top`을 줘서 아래로 내리거나.
@@ -180,13 +181,13 @@ bottom: 0;
 
 ---
 
-#### **🔴 Trouble Shooting**
+### **🔴 css item이 잘려보임!!!**
 
 > CarrotMkt의 `footer` 끝이 잘려보이는 문제
 > `footer`을 밑에 붙였는데 끝이 잘린다! 왜 그러지?
 > <img width="213" alt="스크린샷 2023-11-17 오전 1 56 42" src="https://github.com/soheeparklee/sc_FrontBackTryout/assets/97790983/5b4c0a27-db41-49a1-9886-4545d6d81e50">
 
-##### **🟡 What I tried\_스스로 시도해 본 것들**
+#### **🟡 What I tried\_스스로 시도해 본 것들**
 
 `margin-right: 20px;`  
 `padding-right: 20px;`  
@@ -204,21 +205,21 @@ justify-content: space-between;
 
 - `width: 95%;`로 해결을 해 두었음.
 
-##### **🟢 What I learned\_알게된 점**
+#### **🟢 What I learned\_알게된 점**
 
 - how to reset CSS
   <br>
 
 ---
 
-#### **🔴 Trouble Shooting**
+### **🔴 가려졌으면 하는 부분들이 안 가려지고 스크롤을 내리면 보임**
 
 <img width="288" alt="스크린샷 2023-11-17 오전 1 56 11" src="https://github.com/soheeparklee/sc_FrontBackTryout/assets/97790983/6aef8488-e987-42b9-b3b9-c81a5afe5378">
 
 `@media screen`을 사용해 크기 조절을 했는데,
 보이지 않았으면 하는 부분들이 보임
 
-**🟢 What I learned\_알게된 점**
+#### **🟢 What I learned\_알게된 점**
 
 `<div class="size-adjust">사이즈를 조정해 주세요</div>`
 `@media screen` 을 적용할 `div`를 HTML가장 아래에 두기
@@ -230,7 +231,7 @@ justify-content: space-between;
 이 `div`를 `position: fixed`로 준다.  
 그러면 cursor을 내려도 div가 cursor을 따라옴.
 
-##### **🔵 I should work on\_ 부족한 점**
+#### **🔵 I should work on\_ 부족한 점**
 
 - CSS `position` 으로 할 수 있는 기능들이 많다.
   <br>
@@ -238,11 +239,11 @@ justify-content: space-between;
 
 ---
 
-#### **🔴 Trouble Shooting**
+### **🔴 특정 class안에 또 특정 class에만 효과를 주고 싶음**
 
 > `icon`에 마우스 `hover`했을 때는 아이콘에 `transform`적용되는데, `text`에 `hover`하면 아이콘 반응 없음.
 
-##### **🟠 Mistakes I Made\_헷갈리거나 실수한 점**
+#### **🟠 Mistakes I Made\_헷갈리거나 실수한 점**
 
 > 기존 코드
 
@@ -253,7 +254,7 @@ footer-box-icons:hover {
 }
 ```
 
-##### **🟢 What I learned\_알게된 점**
+#### **🟢 What I learned\_알게된 점**
 
 ```css
 .footer-box:hover .footer-box-icons {
@@ -277,7 +278,8 @@ footer-box-icons:hover {
 }
 ```
 
-**☑️ Summary of the Day\_회고 : 하루 일과** <br>
+## ☑️ Summary of the Day <br>
+
 I managed to Debug and Post a lot today.  
 My first clone-coding project in Super Coding as CarrotMkT was successful.  
 However, my time-management was not so efficient...  

@@ -4,7 +4,7 @@ categories: [TIL(Today I Learned), SuperCoding_신입연수원(주특기 선택 
 tags: [todayilearned, til, resume, javascript, function]
 ---
 
-## ✅ INTERM REPORT\_중간 보고
+## ✅ DAILY REPORT
 
 ### 📌 **TO-DO LIST**
 
@@ -13,7 +13,7 @@ tags: [todayilearned, til, resume, javascript, function]
       <br>
       <br>
 
-### 💡 **TIL\_배운 내용 요약 정리**
+## ✅ Today I Learned
 
 #### **Javascript Array**
 
@@ -31,7 +31,7 @@ tags: [todayilearned, til, resume, javascript, function]
 
 ---
 
-## ✅ MENTORING\_멘토링
+## ✅ MENTORING
 
 #### **How to write a good Resume**
 
@@ -45,7 +45,8 @@ tags: [todayilearned, til, resume, javascript, function]
 
 ---
 
-**☑️ Summary of the Day\_회고 : 하루 일과** <br>
+## ☑️ Summary of the Day <br>
+
 Today was a comparatively easy going day.  
 I added my "strengths" and "what programming gave me" in my blog
 Also finished pilates!

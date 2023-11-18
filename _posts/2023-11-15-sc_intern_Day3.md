@@ -4,7 +4,7 @@ categories: [TIL(Today I Learned), SuperCoding_신입연수원(주특기 선택 
 tags: [css, todayilearned, til, book, 책추천]
 ---
 
-## ✅ INTERM REPORT\_중간 보고
+## ✅ Interm Report
 
 ### 📌 **TO-DO LIST**
 
@@ -14,9 +14,9 @@ tags: [css, todayilearned, til, book, 책추천]
       <br>
       <br>
 
-### 💡 **TIL\_배운 내용 요약 정리**
+## ✅ Today I Learned
 
-> **REST** <br>
+### **REST** <br>
 
 `Representational State Transfer`
 
@@ -24,27 +24,27 @@ tags: [css, todayilearned, til, book, 책추천]
 - 웹 서비스 간의 통신을 위한 구조적 졔약 조건
 - RESTful 한 API
 
-> **MVC** <br>
+> ### **MVC** <br>
 
 `Model / View / Controller`
 
 - 소프트웨어 설계 패턴 중 하나
 - 앱을 `모델`, `사용자 인터페이스`, `비즈니스 로직`으로 구분하여 개발
 
-> **CSS transition**
+### **CSS transition**
 
 - css 값이 변화할 때 프로퍼티 값이 **duration**에 걸쳐 일어나도록 하는 것이다. => 더 자연스러움
 - `animation`에 비해 제한적이고, `pseudo class` 필요함.
 
-> **CSS transform**
+### **CSS transform**
 
 - rotate, skew, translate, scale
 
-> **CSS animation**
+### **CSS animation**
 
 - transition보다 시간 요소를 넣어 반복되는 애니메이션 만들기 가능
 
-## ✅ DAILY REPORT\_일일 보고
+## ✅ Daily Report
 
 **🔴 I should work on\_ 부족한 점**
 
@@ -65,7 +65,8 @@ tags: [css, todayilearned, til, book, 책추천]
 
 **🔵 Mistakes I Made\_헷갈리거나 실수한 점**
 
-**☑️ Summary of the Day\_회고 : 하루 일과**<br>
+## ☑️ Summary of the Day <br>
+
 Four hours per day programming is not easy...especially after work!
 
 There are **five promises** I made with myself regards programming:
