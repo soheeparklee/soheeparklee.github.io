@@ -59,16 +59,18 @@ undefined
 
 ### How to define a Function
 
-```javascript
+Arrow function
 
+```javascript
+const add = (a, b) => a + b;
 ```
 
-```javascript
-
-```
+Function expression
 
 ```javascript
-
+const add = function (a, b) {
+  return a + b;
+};
 ```
 
 ### Function & Object
