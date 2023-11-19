@@ -72,6 +72,10 @@ form.addEventListener("submit", handleSubmit);
 
 ## ✅ **BE(PYTHON)** SQL lite 연결하기
 
+#### SQLITE settings
+
+- 전체 문서에서 한 번만 하면 됨.
+
 ```python
 con= sqlite3.connect("db.db", check_smae_thread= False)
 cur= con.cursor()
@@ -110,6 +114,33 @@ cur= con.cursor()
     return "200"
 ```
 
+## ☑️ BE python code
+
+```python
+  @app.post("/items")
+async def create_item(image:UploadFile,
+                title: Annotated[str, Form()], #form형식으로 str으로 정보가 올 것이다.
+                price: Annotated[int, Form()],
+                description: Annotated[str, Form()],
+                place: Annotated[str, Form()],
+                insertat: Annotated[int, Form()]
+                ):
+
+    #image is very big, so time necessary to read
+    image_bytes= await image.read()
+    #insert in database
+    #""""""is like backtick in js
+    #hex는 16진법으로 바꿔주는 기능
+    cur.execute(f"""
+                INSERT INTO items(title, image, price, description, place, insertat)
+                VALUES ("{title}", "{image_bytes.hex()}", {price}, "{description}", "{place}", {insertat})
+                """)
+    con.commit()
+
+    print(image, title, price, description, place, insertat)
+    return "200"
+```
+
 ## ✅ **FE(JS)** backend의 응답 가져오기
 
 방금 BE에서 `return "200"`했잖아
@@ -122,4 +153,35 @@ if(data === "200")
     window.location.pathname= "/";
     } catch (e){
         console.error(e);
+```
+
+## ☑️ FE JS code
+
+```javascript
+async function handleSubmitForm(event) {
+  event.preventDefault();
+
+  const body = new FormData(form);
+  body.append("insertat", new Date().getTime());
+
+  //try catch 구문 사용, try and if it doesnt work, e in catch
+  try {
+    //post item on server
+    const res = await fetch("/items", {
+      method: "POST",
+      body: body
+    });
+
+    //to go back to root page after uploading item
+    const data = await res.json();
+    if (data === "200") window.location.pathname = "/login.html";
+  } catch (e) {
+    console.error(e);
+  }
+
+  console.log("submitted");
+}
+
+const form = document.getElementById("write-form");
+form.addEventListener("submit", handleSubmitForm);
 ```
