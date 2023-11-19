@@ -1,6 +1,6 @@
 ---
 title: CarrotMkt Clone Coding_GET
-categories: [Project, Clone Coding]
+categories: [Project, Carrot MKT Clone Coding]
 tags: [clonecoding, project, html, css, javascript, frontend]
 ---
 
@@ -38,7 +38,7 @@ descPrice.innerText = obj.price;
 
 ### 받아온 정보 HTML에 `append` 하면서 HTML div 순서 정해주기
 
-### ☑️ 여기까지 한 code
+### ☑️ code
 
 ```javascript
     const renderData= (data) =>{
@@ -69,7 +69,7 @@ const time = new Date(curTime - timestamp);
 
 `const curTime= new Date().getTime() -9*60*60*1000;`
 
-### ☑️ 여기까지 한 code
+### ☑️ code
 
 ```javascript
 const calcTime = (timestamp) => {
@@ -107,7 +107,7 @@ const calcTime = (timestamp) => {
 
 `return JSONResponse(jsonable_encoder(dict(row) for row in rows))`
 
-#### ☑️ 여기까지 한 code
+#### ☑️ code
 
 ```python
 @app.get("/items")
@@ -141,7 +141,7 @@ async def get_items(user= Depends(manager)):
 
 `return Response(content= bytes.fromhex(image_bytes))`
 
-#### ☑️ 여기까지 한 code
+#### ☑️ code
 
 ```python
 @app.get("/images/{item_id}")
@@ -153,13 +153,5 @@ async def get_img(item_id):
                             """).fetchone()[0]
     #change 16진법 to 우리가 보는 이미지
     return Response(content= bytes.fromhex(image_bytes))
-
-```
-
-```javascript
-
-```
-
-```python
 
 ```

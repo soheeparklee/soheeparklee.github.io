@@ -1,12 +1,17 @@
 ---
 title: CarrotMkt Clone Coding_SignUp(POST, password sha256)
-categories: [Project, Clone Coding]
+categories: [Project, Carrot MKT Clone Coding]
 tags: [clonecoding, project, html, css, javascript, password]
 ---
 
-## ✅**HTML**: form형식으로 ID, password1, password2, name, email 입력해서 회원가입
+## ✅ **HTML**:
 
+form형식으로 ID, password1, password2, name, email 입력받는 형식 만들기
 `submit` BTN이 있어야 함.
+
+```html
+<form id="signup-form" action="/signup" method="POST"></form>
+```
 
 ## ✅ **FE(JS)**: submit BTN이 눌렸을 떄 작동하는 함수
 
@@ -81,7 +86,7 @@ if (checkPassword()) {
     window.location.pathname = "/login.html";
   }
 } else {
-  div.innerText = "비밀번호가 일치하지 않습니다. ";
+  div.innerText = "두 비밀번호가 일치하지 않습니다. ";
 }
 ```
 
@@ -131,7 +136,7 @@ const handleSubmit = async (event) => {
       window.location.pathname = "/login.html";
     }
   } else {
-    div.innerText = "비밀번호가 일치하지 않습니다. ";
+    div.innerText = "두 비밀번호가 일치하지 않습니다. ";
   }
 };
 
