@@ -1,54 +1,81 @@
 ---
-title: 2023.SEPT.20(SAT) 슈퍼코딩 부트캠프 신입연수원 Day 6
+title: 2023.SEPT.20(MON) 슈퍼코딩 부트캠프 신입연수원 Day 6
 categories: [TIL(Today I Learned), SuperCoding_신입연수원(주특기 선택 이전)]
-tags: [todayilearned, til, resume]
+tags: [todayilearned, til, resume, setinterval, settimeout, getday]
 ---
 
-## ✅ INTERM REPORT\_중간 보고
+## ✅ Daily Report
 
 ### 📌 **TO-DO LIST**
 
-- [ ] submit blog post 중간보고, 일일보고
-- [ ] 슈퍼코딩 23, 24, 25, 26, 27강
-- [ ] Team Meeting 9PM
+- [x] submit blog post 중간보고, 일일보고
+- [x] 슈퍼코딩28, 29, 30, 31강
+- [x] Team Meeting 9PM
       <br>
       <br>
 
-### 💡 **TIL\_배운 내용 요약 정리**
+## ✅ Today I Learned
 
-#### **Javascript Array**
+### **How to check the client reply and the answer**
 
-#### **Advantages of using Function**
+일단 for문을 만들어 i가 index의 수만큼 반복되도록 한다.  
+answer[i]로 해서 i번째 알파벳을 받아온다.  
+사용자가 입력한 답변을 `data-index`로 받아온다.  
+그러면 client reply와 answer의 i번째 알파벳끼리 비교할 수 있게 된다.
 
-> Function: set of instructions together to execure as a single unit
-> **Reuse your code** repeat the same code less
-> **Debug** easier to maintain
-> **Code readabilty** > **코드 결합도 낮추기** 함수 간의 의존성이 줄어 코드의 유연성을 높인다.
+```javascript
+const clientReply = document.queryselector(
+  `.box[data-index="${attempts}${i}"]`
+);
+clientReply === answer[i];
+```
 
-##### ☑️ Framework
+그리고 client reply에 맞는 알파벳이지만, 위치가 잘못되었을 수도 있다.
+이 때는 `includes`함수를 사용한다.
+`answer.includes(clientReply)`
 
-- what is IDE
+### **getDay() in JS**
 
-## ✅ DAILY REPORT\_일일 보고
+JS에서 요일을 가져오면 1,2,3...등 숫자로 나타난다.  
+그래서 요일을 배열로 미리 만들어주고, 이 배열의 순서대로 가져오는 코드를 짠다.
 
-#### **🔴 Trouble Shooting**
+```javascript
+const weekday = ["일", "월", "화", "수", "목", "금", "토"];
+const time = new Date();
+const day = weekday[time.getDay()];
+```
 
-##### **🟠 Mistakes I Made\_헷갈리거나 실수한 점**
+### **setInterval VS setTimeout**
 
-##### **🟡 What I tried\_스스로 시도해 본 것들**
+두 함수는 각각 1회성, 주기성이라는 차이가 있다.  
+근데 `setTimeout`을 사용해서도 `setInterval`과 같은 효과를 낼 수 있다.  
+다음은 각각을 이용하여 console에 1초마다 내용이 뜨도록 만든 것이다.
 
-##### **🟢 What I learned\_알게된 점**
+> setInterval
 
-##### **🔵 I should work on\_ 부족한 점**
+```javascript
+function setIntervalFunction() {
+  console.log("I repeat using setInterval");
+}
+setInterval(setIntervalFunction, 1000);
+```
 
----
+> setTimeout
 
-## ✅ MENTORING\_멘토링
+함수 안에서 자기 자신을 부르는 것을 **재귀함수**라고 한다.
 
-#### **How to write a good Resume**
+```javascript
+function setTimeoutFunction() {
+  console.log("I repeat using setTimeout");
+  setTimeout(setTimeoutFunction, 1000);
+}
+setTimeoutFunction();
+```
 
----
+## ☑️ Summary of the Day <br>
 
-**☑️ Summary of the Day\_회고 : 하루 일과** <br>
-
-**💟 참조**
+I finally finished my Wordle Clone coding project!!!  
+Today took longer than expected because I was organizing how to clone Wordle.  
+Organizing takes a lot of time.  
+I also became CTO of team3!  
+Such exciting and beneficial days.

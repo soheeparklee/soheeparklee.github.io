@@ -170,7 +170,7 @@ const handleEnter = () => {
 - 맞은 개수 +1
 
 ```javascript
-answer[i] === clientAnswer){
+(answer[i] === clientAnswer){
 thisBox.style.backgroundcolor= rgb(106,169,100);
 ```
 
