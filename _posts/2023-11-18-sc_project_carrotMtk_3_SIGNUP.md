@@ -156,7 +156,9 @@ def signup(id: Annotated[str, Form()],
             ):
 ```
 
-### SQLITE 문법
+### DB에 signUp한 사용자 정보 저장
+
+#### SQLITE 문법
 
 ```sql
     cur.execute(f"""
