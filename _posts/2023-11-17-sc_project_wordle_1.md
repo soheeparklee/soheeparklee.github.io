@@ -212,6 +212,31 @@ const handleEnter = () => {
 };
 ```
 
+## ✅ keyboard 색깔 바뀌는 기능 구현
+
+```javascript
+//keyboard의 색깔 바꾸기
+const dataKey = thisBox.innerHTML;
+console.log(dataKey);
+const alphabetBox = document.querySelector(`.alphabet[data-key="${dataKey}"]`);
+
+if (answer[i] === clientAnswer) {
+  thisBox.style.background = "rgb(106,169,100)";
+  alphabetBox.style.background = "rgb(106,169,100)";
+  rightAnswer += 1;
+  console.log(rightAnswer);
+} else if (answer.includes(clientAnswer)) {
+  thisBox.style.background = "rgb(201,180,88)";
+  alphabetBox.style.background = "rgb(201,180,88)";
+} else {
+  thisBox.style.background = "rgb(120,124,126)";
+  alphabetBox.style.background = "rgb(120,124,126)";
+}
+
+thisBox.style.color = "white";
+alphabetBox.style.color = "white";
+```
+
 ## 4️⃣ 다음줄로 넘어가는 함수
 
 - enter눌렀을 때 다음줄로 넘어가도록
@@ -356,6 +381,82 @@ const gameOver= () =>{
         return;
     }
 ````
+
+## 8️⃣ keyboard클릭되면 화면에 보이는 함수
+
+```javascript
+//keyboard 클릭되는함수
+const handleKeyboard = (event) => {
+  const key = event.target.dataset.key;
+  const keyCode = key.charCodeAt();
+
+  const thisBox = document.querySelector(
+    `.box_block[data-index= "${attempts}${index}"]`
+  );
+  if (index === 5) {
+    if (key === "Enter") {
+      handleEnter();
+    } else if (key === "Delete") {
+      handleDelete();
+    } else return;
+  } else if (key === "Delete") {
+    handleDelete();
+  } else if (69 === keyCode) {
+    return;
+  } else if (65 <= keyCode && keyCode <= 90) {
+    thisBox.innerHTML = key;
+    index = index + 1;
+    return key;
+  }
+};
+
+window.addEventListener("click", handleKeyboard);
+```
+
+`console.log`로 event받아와서 뭐를 반환하나 막 찾아보니 `event.target.dataset.key`에 알파벳을 받아옴.
+`const keyCode= key.charCodeAt();`로 키의 code값을 받아왔더니 `Enter`과 `Delete`의 keyCode가 각각 E와 D로 받아지는 거임 ㅠㅠ  
+그래서 `Enter`과 `Delete`는 key로 받아오고, if문의 순서를 바꿔서 실행함.
+
+## 9️⃣ animation effect
+
+정답 틀렸을 때, nextLine함수와 함께 애니메이션 함수 호출
+클래스를 추가해주기로 하였음.
+
+또 confetti js를 찾아서 HTML에 script로 추가해주고, 정답 맞췄을 때 함수 호출하도록 만듦.
+
+```javascript
+const showAnimation = () => {
+  const rowBox = document.querySelector(
+    `.box_row[data-row= "${attempts - 1}"]`
+  );
+  rowBox.classList.add("animationEffect");
+  console.log(rowBox);
+};
+```
+
+```css
+.animationEffect {
+  animation: horizontal-shaking 0.25s 1;
+}
+
+@keyframes horizontal-shaking {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(5px);
+  }
+  50% {
+    transform: translateX(-5px);
+  }
+  75% {
+    transform: translateX(5px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+```
 
 ## 💟 GITHUB
 
