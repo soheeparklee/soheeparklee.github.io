@@ -11,10 +11,9 @@ tags: [todayilearned, til, worlde, asynchronousprocessing, api]
 - [x] submit blog post 일일보고
 - [x] 슈퍼코딩 32, 34, 35, 36, 37, 38, 39강
 - [x] 33강
-- [x] 과제 1
-- [x] 과제 2
-- [x] 과제 3(JS 키보드 클릭했을 때 입력, 키보드 색상 바꾸기)
-- [x] 과제 4(CSS)
+- [x] 과제: JS로 정답을 확인했을 때, 키보드에 색상 나타내기
+- [x] 과제 2: JS로 키보드 div를 클릭했을 때 box에 알파벳 입력되기
+- [x] 과제 3: CSS로 정답이 틀렸을 때 박스가 흔들리는 애니메이션 효과
 - [x] 라이브코딩 참여 (8시~10시)
 - [x] 내일 들을 CRUD미리 듣기
       <br>
