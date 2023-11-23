@@ -216,7 +216,7 @@ async function readMemo() {
 
 ### **☑️ FE: JS**
 
-#### 클릭되면 수정하는 버튼, `displayMemo`함수 안에 만들 것
+#### 클릭되면 수정하는 버튼, displayMemo함수 안에 만들 것
 
 ```javascript
 const updateBtn = document.createElement("button");
@@ -236,8 +236,9 @@ updateBtn.dataset.id = memo.id;
 
 ### 📌 function updateMemo
 
-#### updateMemo 함수에서 memo.id받기
+#### 어떤 memo의 updateBtn이 눌렸는지 알아야 할 것 아니야
 
+updateMemo 함수에서 memo.id받기
 eventListener은 항상 event값을 return하니까 이를 받아와 memo id 받아오기
 ` const id= event.target.dataset.id;`
 
@@ -248,27 +249,29 @@ eventListener은 항상 event값을 return하니까 이를 받아와 memo id 받
 
 #### 수정할 값 받아오기 => request body => PUT
 
+수정 후에는 서버에서 다시 한 번 수정된 array받아와야 하니까 readMemo 호출
+
 ### **CODE**
 
 ```javascript
-    async function updateMemo(event){
-    //get ID of memo to know which memo update btn was clicked
-    //eventlistener은 항상 event를 return하니까.
-    const id= event.target.dataset.id;
-    //뭐라고 수정할지 값 입력받기
-    const updateContent= prompt("How would you like to change your memo?")
-    const res= await fetch(`./memo/${id}`, {
-        method: "PUT",
-        headers: {
-            "Content-Type: "application/json",
-        },
-        body: JSON.stringify({
-            id: id,
-            body: updateContent,
-        }),
+async function updateMemo(event) {
+  //get ID of memo to know which memo update btn was clicked
+  //eventlistener은 항상 event를 return하니까.
+  const id = event.target.dataset.id;
+  //뭐라고 수정할지 값 입력받기
+  const updateContent = prompt("How would you like to change your memo?");
+  const res = await fetch(`./memos/${id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      id: id,
+      content: updateContent
     })
+  });
+  readMemo();
 }
-
 ```
 
 ### **☑️ BE: PYTHON**
@@ -277,19 +280,19 @@ eventListener은 항상 event값을 return하니까 이를 받아와 memo id 받
 
 FE에서 put, request body로 보냈으니까 받아야 함.  
 `@app.put("/memos/{memo_id}")`  
-여기서 `memos`는 FE에서 설정해 준 경로이다.
+여기서 `/memos/`는 FE에서 설정해 준 경로이다.
 `{memo_id}`는 `PATH`해서 받아올 그 값! 을 의미
 
 **for문**을 사용해  
 memos라는 array를 빙글빙글 돌면서 item인 memo를 하나씩 꺼내본다.
-`for memo in memos:`
+`for memo in memos:`  
 **if문**을 사용해  
 `memo.id`(array에 있는 memo id가) FE에서 받아온 메모의 id `req_memo.id`와 같다면,
 `memo.content`(array에 있는 memo content)를 FE에서 받아온 수정 값 `req_memo.content`으로 바꾸세요.
 
-```javascript
+```python
 for memo in memos:
-        if memo.id ==req_memo.id:
+        if memo.id == req_memo.id:
             memo.content= req_memo.content
             return "Update Succeeded"
     return "No such Memo"
@@ -325,8 +328,68 @@ def update_memo(req_memo:Memo):
 
 ### **☑️ FE: JS**:
 
+#### 클릭되면 삭제하는 버튼, displayMemo함수 안에 만들 것
+
+```javascript
+//delete button
+const deleteBtn = document.createElement("button");
+deleteBtn.innerText = "delete";
+li.appendChild(deleteBtn);
+
+deleteBtn.addEventListener("click", deleteMemo);
+
+deleteBtn.dataset.id = memo.id;
+```
+
+### 📌 function deleteMemo
+
+#### 삭제할 memo의 id 받아와서 DELETE
+
+`method: "DELETE"`는 request body가 아니니까 headers, body모두 필요 없다!
+
 ### **CODE**
+
+```javascript
+async function deleteMemo(event) {
+  const id = event.target.dataset.id;
+  const res = await fetch(`/memos/{id}`, {
+    method: "DELETE"
+  });
+  readMemo();
+}
+```
 
 ### **☑️ BE: PYTHON**
 
+### 📌 def delete_memo
+
+#### array.pop
+
+FE에서 보낸 memo_id를 받는다.  
+그 아이디 숫자와 일치하는 아이디를 가진 [메모 배열]의 메모를 찾아 배열에서 pop한다.
+
+#### enumerate
+
+for문에서 두 가지를 돌릴 떄는 enumerate함수를 사용한다.  
+delete_memo의 경우 메모의 index, memo모두 받기 떄문에 enumerate가 필요하다.
+
 ### **CODE**
+
+## ✅ 쿼리를 사용해 정렬된 데이터를 서버에서 내려주기
+
+> 정렬 기준은 가나다ABC순 또는 등록순 2가지 모두 구현
+> (ex) /memos?sorted=ASC
+> memo에는 다양한 프로퍼티가 있음. (title, createAt 등등)
+> 어떤 프로퍼티를 기준으로 정렬을 시킬건지도 쿼리에 함께 포함
+
+**등록일자순 내림차순으로 정렬:**
+
+```
+GET /memos?sort_by=created&sort_order=desc
+```
+
+**제목순 오름차순으로 정렬:**
+
+```
+GET /memos?sort_by=title&sort_order=asc
+```
