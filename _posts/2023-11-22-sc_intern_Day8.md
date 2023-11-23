@@ -134,6 +134,7 @@ class Memo(BaseModel):
 
 #### **🟢 What I learned\_알게된 점**
 
+백엔드에서 작성한 데이터타입이랑 프런트에서 호출하는 데이터타입이 다를 때 발생
 id 타입을 바꿔주면 해결!
 
 ```python
