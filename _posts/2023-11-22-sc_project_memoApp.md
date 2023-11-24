@@ -375,6 +375,64 @@ delete_memo의 경우 메모의 index, memo모두 받기 떄문에 enumerate가 
 
 ### **CODE**
 
+```python
+class Memo(BaseModel):
+    id: str
+    content: str
+
+@app.delete("/memos/{memo_id}")
+def delete_memo(memo_id):
+    for index, memo in enumerate(memos):
+        if memo.id == memo_id:
+            memos.pop(index)
+            return "memo successfully deleted"
+    return "no such memo"
+```
+
+## ✅ Trouble Shooting
+
+### **🔴 Trouble** deleteBtn doenst work!!!
+
+#### **🟠 Mistakes I Made\_헷갈리거나 실수한 점**
+
+백엔드에서 메모 아이디 int로 받으라고 했고, 프론트에서도 잘 보냈으며
+create, read, update까지, 그리고 post, put, read메소드는 문제가 없었는데 delete에서 삭제 버튼을 눌러 메모가 지워지지 않는 문제가 생김.
+
+#### **🟡 What I tried\_스스로 시도해 본 것들**
+
+- memos.pop을 pop말고 clear, remove 써봤지만 안됨
+- memos.pop(index)에서 index말고 memo 등 다른 값 넣었지만 안 됨
+
+#### **🟢 What I learned\_알게된 점**
+
+메모 아이디 값을 int가 아닌 str으로 바꿔주기,  
+BE에서도 아이디 값을 스트링으로 받아야 함.  
+이렇게 했더니 해결이 되었고, 이제는 삭제 버튼을 누르면 메모가 잘 삭제된다.
+
+```javascript
+async function createMemo(value) {
+  //post on server
+  const res = await fetch("/memos", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      id: toString(new Date().getTime()),
+      content: value
+    })
+  });
+
+  readMemo();
+}
+```
+
+```python
+class Memo(BaseModel):
+    id: str
+    content: str
+```
+
 ## ✅ 쿼리를 사용해 정렬된 데이터를 서버에서 내려주기
 
 > 정렬 기준은 가나다ABC순 또는 등록순 2가지 모두 구현
