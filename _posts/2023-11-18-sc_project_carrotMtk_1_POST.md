@@ -9,28 +9,41 @@ tags:
 
 > When you need to send data from a client (let's say, a browser) to your API, you send it as a request body.
 
-## ✅ **BE(PYTHON)** POST in backend
-
-정보를 backend server에 올려두기
+## ✅ HTML
 
 #### 1️⃣ HTML로 `form tag`그리고 안에 `input`을 만들어 user로부터 정보를 입력받는다.
 
 - 이 때 database에 주었던 column명과 HTML의 title, id 일치하게
 
+```html
+<form action="write-form">
+  <h1>Upload your item here</h1>
+  <div>
+    <label for="image">image</label>
+    <input type="file" id="image" name="image" />
+  </div>
+</form>
+```
+
+## ✅ **BE(PYTHON)** POST in backend
+
+정보를 backend server에 올려두기
+
 #### 2️⃣ 서버에 정보를 POST(업로드)
 
 ```python
-@app.post('./경로')
+@app.post('/경로')
     def 함수이름 (내가 받아오고 싶은 것):
 ```
 
 ```python
-@app.post('./items')
+@app.post('/items')
     def create_item(image: UploadFile,
                     title: Annotated[str, Form()],
                     price: Annotated[int, Form()],
                     description: Annotated[str, Form()],
-                    place: Annotated[str, Form()]
+                    place: Annotated[str, Form()],
+                    insertat: Annotated[int, Form()]
                     ):
 ```
 
@@ -64,7 +77,7 @@ const handleSubmit = async (evnet) => {
 form.addEventListener("submit", handleSubmit);
 ```
 
-` const body= new FormData(form)`
+`const body= new FormData(form)`
 
 - 여기서 `new FormData`는 JS 내장 객체
 - POST의 body를 `FormData`로 묶어서 보낸다는 뜻
@@ -99,7 +112,8 @@ cur= con.cursor()
 
 #### SQL문법을 사용해 BE에서 받아온 data를 SQLITE database에 `insert`
 
-특히 이미지는 16진법으로 바꿔줌 주의!
+##### 특히 이미지는 16진법으로 바꿔줌 주의!
+
 `image_bytes.hex()`
 
 ```sql
@@ -143,14 +157,32 @@ async def create_item(image:UploadFile,
 
 ## ✅ **FE(JS)** backend의 응답 가져오기
 
+### 우리는 insertat(입력한 시간)도 넣고 싶음.
+
+얘는 db에서 받는 거 아니고 지금 시간 append
+
+```javascript
+body.append("insertat", new Date().getTime());
+```
+
+### 💡 try, catch
+
 방금 BE에서 `return "200"`했잖아
+if, else도 좋지만  
+try, catch구문을 사용해서  
+try ⭕️ => item 서버에 POST => return 200 성공적으로 받았음 => `window.location.pathname= "/login.html";`
+try ❌ => catch => console.log에 error보여주는 console.error
+
+🍯 try, catch는 어디서 불러와야 할까?
+item POST하는 것을 try,
+POST에 실패하면 catch
 
 ```javascript
     const data= await res.json();
 
 if(data === "200")
     //응답이 200이면 다시 root로 돌리기
-    window.location.pathname= "/";
+    window.location.pathname= "/login.html";
     } catch (e){
         console.error(e);
 ```
