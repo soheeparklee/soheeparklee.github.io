@@ -6,7 +6,7 @@ tags: [clonecoding, project, html, css, javascript, frontend]
 
 ## ✅ **FE(JS)** 백엔드에서 `GET`해서 가지고 온 정보 data가져오기
 
-## ✨ function fetchList()
+### ✨ function fetchList()
 
 data를 받아오도록 간단히 로직 구현해보면...
 
@@ -31,7 +31,7 @@ fetchList();
 
 ## ✅ **FE(JS)**:frontend에 div 보이게 하기
 
-## ✨ function renderData()
+### ✨ function renderData()
 
 ### 각 아이템들 `array`로 받아올 것
 
@@ -96,7 +96,7 @@ async를 forEach() 함수 앞에 써야 한다.
 
 ## ✅ **FE(JS)** '몇 초/분/시간 전' 시간 보이기
 
-## ✨ function calcTime()
+### ✨ function calcTime()
 
 #### 지금 시간 가져오기 `new Date().getTime()`
 
@@ -154,7 +154,7 @@ const calcTime = (timestamp) => {
 
 `@app.get("/items")`
 
-#### 🚀 code
+### 🚀 code
 
 ```python
 @app.get("/items")
@@ -217,7 +217,7 @@ json으로 형식 바꿔주기
 
 `.fetchone()[0]`
 
-#### 🚀 code
+### 🚀 code
 
 ```python
 @app.get("/images/{item_id}")
@@ -235,6 +235,8 @@ async def get_img(item_id):
 #### sql문 삽입하기
 
 배포했을 떄도 dbeaver에 의존하는 것이 아니라 바로 이 파일에서 테이블 만들 수 있도록 sql문 삽입 #배포할 떄마다 테이블이 생성된다면 테이블이 중복되므로, 테이블이 없을 떄만 만들어지도록 조건문 삽입 IF NOT EXIST
+
+```sql
 cur.execute(f"""
 CREATE TABLE IF NOT EXIST items (
 id INTEGER PRIMARY KEY,
@@ -246,12 +248,13 @@ place TEXT NOT NULL,
 insertAt INTEGER NOT NULL
 );
 """)
+```
 
 #### 배포 후 이미지 불러와지지 않는다면 다음과 같은 코드 추가
 
 `return Response(content= bytes.fromhex(image_bytes), media_type="image/*")`
 
-## ✅ **CSS**
+## 💄 **CSS**
 
 가져온 이미지가 그 위 div꽉 채워서 보이게 하고 싶음.
 
@@ -270,11 +273,3 @@ insertAt INTEGER NOT NULL
   overflow: hidden;
 }
 ```
-
-## ☑️ **FE(JS) 🚀**:
-
-<https://github.com/soheeparklee/sc_project_carrotmkt/blob/main/frontend/index.js>
-
-## ☑️ **BE(PYTHON) 🚀**:
-
-<https://github.com/soheeparklee/sc_project_carrotmkt/blob/main/main.py>
