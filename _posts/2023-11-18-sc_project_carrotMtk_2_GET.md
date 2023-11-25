@@ -5,16 +5,26 @@ tags: [clonecoding, project, html, css, javascript, frontend]
 ---
 
 ## ✅ **FE(JS)**:`GET`해서 가지고 온 정보를 frontend에 보이게 하기
-
+## 📌 function renderData()
 ### 각 아이템들 `array`로 받아올 것
 
-#### array를 빙글빙글 돌면서 각각에 대해 실행
+```javascript
+//with the data, send it to frontend HTML to show
+const renderData= (data) =>{ 
+```
 
-`for each()`
+```javascript
+    //html에서 main안에 div만들어 가져온 정보 추가할거임
+    const main = document.querySelector("main");
+```
 
-#### 가장 최근에 쓴 게시물이 위에 보이게 하기
 
-`reverse()`  
+#### 💡 array를 빙글빙글 돌면서 각각에 대해 실행 `for each()`
+##### HTML에 div만들고, 그 div안에 BE에서 받아온 정보 넣기
+
+#### 💡 array순서 바꾸기 `reverse()` 
+가장 최근에 쓴 게시물이 위에 보이게 하기
+
 `data.reverse().forEach(async(obj) => { 어쩌고 어쩌고`
 
 ### 함수의 `parameter`을 `obj`로 해서 `obj`의 title, price 등 받아오기
@@ -28,7 +38,9 @@ descPrice.innerText = obj.price;
 ### 사진 불러오는 척
 
 사진은 특별하다 왜냐하면 사진은 커서 불러오는데 시간이 걸리니까  
-그리고 blob도 다시 그림으로 바꿔줘야 한다.
+그리고 blob도 다시 그림으로 바꿔줘야 한다.  
+이 때 async, await을 해야 하는데, 어디서 하는지 유의하기!   
+async를 forEach() 함수 앞에 써야 한다. 
 
     ```javascript
     const res= await fetch(`/images/${obj.id}`)
@@ -55,10 +67,12 @@ descPrice.innerText = obj.price;
 ```
 
 ## ✅ **FE(JS)** '몇 초/분/시간 전' 시간 보이기
-
+## 📌 function calcTime
+()
 #### 지금 시간 가져오기 `new Date().getTime()`
 
-지금 시간 **빼기** 백엔드에서 받아온 게시물 입력한 시간
+지금 시간    **빼기**    백엔드에서 받아온 게시물 입력한 시간  
+백엔드에서 받아온 게시물 입력한 시간은 timestamp라는 이름의 parameter로 받아온다. 
 
 ```javascript
 const curTime = new Date().getTime();
@@ -88,7 +102,7 @@ const calcTime = (timestamp) => {
 
 ## ✅ **BE(PYTHON)** GET 서버에서 정보 가져오자
 
-### GET item정보
+### 📌 get_items(): GET item정보
 
 #### access token 추가, 인증되어야지만 아래 명령 보내줄거야
 
@@ -126,7 +140,7 @@ async def get_items(user= Depends(manager)):
     return JSONResponse(jsonable_encoder(dict(row) for row in rows))
 ```
 
-### GET item image
+### 📌 get_img(): GET item image
 
 #### SQLITE 문법으로 DB에 있는 image 가져오기
 
@@ -155,3 +169,5 @@ async def get_img(item_id):
     return Response(content= bytes.fromhex(image_bytes))
 
 ```
+## ☑️ **FE(JS) CODE**:
+<https://github.com/soheeparklee/sc_project_carrotmkt/blob/main/frontend/index.js>
