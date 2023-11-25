@@ -9,14 +9,14 @@ tags: [todayilearned, til]
 ### 📌 **TO-DO LIST**
 
 - [x] submit github blog post
-- [ ] 54
-- [ ] 55
-- [ ] 56
-- [ ] 57
-- [ ] assigment: SQL while VS having
-- [ ] assigment: practice SQL1
-- [ ] assigment: practice SQL 2
-- [ ] assigment: left INNER JOIN
+- [x] 54
+- [x] 55
+- [x] 56
+- [x] 57
+- [x] assigment: SQL while VS having
+- [x] assigment: practice SQL1
+- [x] assigment: practice SQL 2
+- [x] assigment: left INNER JOIN
 
       <br>
       <br>
@@ -64,11 +64,64 @@ HAVING AVG(price) > 10;
 
 ### SQL practice 1
 
-```javascript
+```sql
 SELECT OrderDetails.ProductID, Orders.OrderDate, OrderDetails.Quantity FROM OrderDetails
 INNER JOIN Orders ON OrderDetails.OrderID = Orders.OrderID;
 ```
 
+```sql
+-- 같은 아이디를 가지는 product끼리 모은 후
+-- product의 개수 총 몇 개인지 합쳐서 세기
+-- 그리고 product개수 많은 순서대로 정렬하기
+
+SELECT product_id, sale_amount FROM sales
+GROUP BY product_id
+ORDER BY SUM(sale_amount) DESC;
+```
+
 ### SQL practice 2
 
+```sql
+-- 고객의 나이를 알기 위해 (올해 년도 - 태어난 연도)
+-- 이 값을 FLOOR으로 감싸 1/2/3...등으로 구별
+-- 그런 값을 age로 저장
+-- 연령대별 고객 수를 알기 위해 COUNT함수
+-- age로 GROUP BY하고
+-- age순서대로 나열
+SELECT FLOOR((birth_year-2023)/10) as age, COUNT(*) as customer_count FROM customers
+GROUP BY age
+ORDER BY age ASC;
+```
+
 ### SQL JOIN
+
+#### (INNER) JOIN
+
+Returns records that have matching values in both tables  
+두 테이블에 모두 있는 값
+
+#### LEFT (OUTER) JOIN
+
+Returns all records from the left table, and the matched records from theright table  
+왼쪽 테이블에 있는 값, 그리고 오른쪽 테이블에서 일치하는 값  
+만약 오른쪽 테이블에 일치하는 값이 없다면 오른쪽 테이블에서는 0개 불러올 것임.  
+만약 오른쪽 테이블에 일치하는 값이 없어도 왼쪽 테이블에 있는 값들은 모두 return
+
+```sql
+SELECT column_name(s) FROM 왼쪽 테이블
+LEFT JOIN 오른쪽 테이블 ON 왼쪽 테이블.column_name = 오른쪽 테이블.column_name;
+```
+
+#### RIGHT (OUTER) JOIN
+
+Returns all records from the right table, and the matched records from the left table  
+오른쪽 테이블에 있는 값 그리고 왼쪽 테이블에서 일치하는 값
+
+#### FULL (OUTER) JOIN
+
+Returns all records when there is a match in either left or right table  
+오른쪽이나 왼쪽에서 하나라도 조건 만족하면 가져오기  
+그러다보니 오른쪽에는 있는데 왼쪽에는 없는 값들도 가져오다 보니 셀 값이 NULL일 때도 많다.
+
+💟 참조
+<https://www.w3schools.com/sql/sql_join.asp>
