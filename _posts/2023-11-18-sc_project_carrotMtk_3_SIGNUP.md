@@ -6,16 +6,20 @@ tags: [clonecoding, project, html, css, javascript, password]
 
 ## ✅ **HTML**:
 
-form형식으로 ID, password1, password2, name, email 입력받는 형식 만들기
+form형식으로 ID, password1, password2, name, email 입력받는 form 형식 만들기  
 `submit` BTN이 있어야 함.
 
 ```html
 <form id="signup-form" action="/signup" method="POST"></form>
 ```
 
-## ✅ **FE(JS)**: submit BTN이 눌렸을 떄 작동하는 함수
+## ✅ **FE(JS)**: client data POST
 
-### `preventDefault` 통해서 event 받아온 후 page reload ❌
+### ✨ function handleSubmit()
+
+- submit BTN이 눌렸을 떄 작동하는 함수
+
+#### `preventDefault` 통해서 event 받아온 후 page reload ❌
 
 ```javascript
 const handleSubmit = async (event) => {
@@ -25,15 +29,16 @@ const handleSubmit = async (event) => {
 form.addEventListener("submit", handleSubmit);
 ```
 
-## ✅ **FE(JS)**: client data POST
+#### `formdata`형식으로 받을거임
 
-### `formdata`형식으로 받을거임
+`new FormData(from)` 안에 들어있는 form은 위에서 정의한 HTML에서 불러온 form  
+`const form= document.querySelector("#signup-form")`
 
 ```javascript
 const formData = new FormData(form);
 ```
 
-### POST
+#### POST 하는 형식
 
 ```javascript
 const res = await fetch("/signup", {
@@ -42,7 +47,7 @@ const res = await fetch("/signup", {
 });
 ```
 
-## ✅ **FE(JS)**: sha256 function
+### 🔑 sha256 function
 
 이 함수를 사용하면 비밀번호를 암호화해준다.  
 client의 비밀번호를 알 수 없는 숫자, 문자들로 만들어 줌.  
@@ -60,9 +65,12 @@ const sha256Password = sha256(formData.get("password"));
 formData.set("password", sha256Password);
 ```
 
-## ✅ **FE(JS)**: password 1 === pasword2 check function
+### ✨ function checkPassword()
 
-#### 두 개의 비빌번호끼리 일치하는지 확인하는 함수 `checkPassword`
+password 1 === pasword2 check function  
+함수 `checkPassword`를 함수 `handleSubmit`안에 넣어 `submit`BTN이 눌렸을 때 함수 `checkPassword`가 실행되도록 할 것임.
+
+#### 두 개의 비빌번호끼리 일치하는지 확인하는 함수
 
 ```javascript
 //double check password
@@ -76,7 +84,24 @@ const checkPassword = () => {
 };
 ```
 
-#### 함수 `checkPassword`를 함수 `handleSubmit`안에 넣어 `submit`BTN이 눌렸을 때 함수 `checkPassword`가 실행되도록 할 것임.
+#### 두 비밀번호가 일치하지 않았을 떄 보여지는 div
+
+어디에 만들어야 할까? handleSubmit함수 안에
+
+```javascript
+//password 일치하지 않았을 때 보여지는 div
+const div = document.querySelector("#passwordCheck");
+```
+
+### 💡 마지막으로, if문
+
+- if문을 만들어 `checkpassword`함수가 true이면
+  > 이 정보를 db에 업로드  
+  > res를 json형식으로 만들기 `const data= await res.json();`
+  - if db에 정보가 업로드 잘 되면, (return 200)
+    > > 로그인 페이지로 가도록 pathname 설정 `window.location.pathname= "/login.html"`
+- else, `checkpassword`함수가 false이면
+  > password 일치하지 않았을 때 보여지는 div보이도록 하기
 
 ```javascript
 if (checkPassword()) {
@@ -88,13 +113,6 @@ if (checkPassword()) {
 } else {
   div.innerText = "두 비밀번호가 일치하지 않습니다. ";
 }
-```
-
-#### 마지막으로, 두 비밀번호가 일치하지 않았을 떄 보여지는 div
-
-```javascript
-//password 일치하지 않았을 때 보여지는 div
-const div = document.querySelector("#passwordCheck");
 ```
 
 ## ☑️ FE JS code

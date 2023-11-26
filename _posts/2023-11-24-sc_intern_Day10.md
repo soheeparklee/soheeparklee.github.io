@@ -16,10 +16,7 @@ tags: [todayilearned, til]
 - [x] assigment: SQL while VS having
 - [x] assigment: practice SQL1
 - [x] assigment: practice SQL 2
-- [x] assigment: left INNER JOIN
-
-      <br>
-      <br>
+- [x] assigment: SQL JOIN
 
 ## ✅ Today I Learned
 
