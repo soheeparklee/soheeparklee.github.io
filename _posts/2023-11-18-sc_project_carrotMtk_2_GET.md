@@ -139,6 +139,11 @@ const calcTime = (timestamp) => {
 
 #### SQLITE 문법으로 DB에 있는 정보 가져오기
 
+`cur= con.cursor()`는 GET 할 때 쓰는 문법으로,  
+나 여기 있어!!! 하는 것이다.  
+그리고 `cur.execute`한 것을 어떤 변수에 저장해서 변수를 response 또는 jsonResponse값으로 바꾼 다음 FE로 넘김  
+(POST할 때는 바로 `cur.execute`했음)
+
 ```sql
     cur= con.cursor()
     rows= cur.execute(f"""
