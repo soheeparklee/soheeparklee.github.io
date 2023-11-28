@@ -8,16 +8,16 @@ tags: [todayilearned, til]
 
 ### 📌 **TO-DO LIST**
 
-- [ㅌ] submit github blog post
+- [x] submit github blog post
 - [x] 58
 - [x] 59
 - [x] 60
 - [x] 61
 - [x] 62
 - [x] 62
-- [ ] assigment: ERD 구현
-- [ ] assigment: mongoBD
-- [ ] assigment: chatApp 구현
+- [x] assigment: ERD 구현
+- [x] assigment: mongoBD
+- [x] assigment: chatApp 구현
 
 ## ✅ Today I Learned
 
