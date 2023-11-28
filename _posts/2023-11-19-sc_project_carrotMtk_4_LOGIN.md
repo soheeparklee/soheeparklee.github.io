@@ -463,3 +463,33 @@ import hashlib
 def hash_password(password):
     return hashlib.sha256(password.encode()).hexdigest()
 ```
+
+### 💟 Refresh token
+
+#### 1️⃣ Refresh Token 발급
+
+사용자가 처음 인증에 성공하면,  
+access token과 함께 Refresh Token도 발급  
+Refresh Token은 만료 시간을 가지며, access token을 재발급받는데 사용
+
+#### 2️⃣ Refresh Token 저장
+
+DB에 Refresh Token과 사용자 ID를 저장하는 테이블 생성해 DB에 저장
+
+#### 3️⃣ Access Token 재발급 엔드포인트 생성
+
+Access Token이 만료되었을 때, 이를 새로 발급받을 수 있는 엔드포인트를 생성  
+클라이언트는 이 엔드포인트에 Refresh Token을 전달  
+서버는 Refresh Token이 유효한지 확인한 후 새로운 Access Token을 발급
+
+#### 4️⃣ Refresh Token 검증
+
+Access Token 재발급 요청이 들어오면, Refresh Token이 유효한지 검증해야 함.  
+이를 위해 아까 Refresh Token 저장해 둔 DB에서 Refresh Token 찾고  
+Refresh Token이 만료되지는 않았는지 확인함.  
+유효하다면, Access Token 재발급
+
+#### 5️⃣ 로그아웃 로직 변경
+
+사용자가 로그아웃하면, 발급된 Refresh Token도 폐기  
+이를 위해 로그아웃 요청이 들어오면 DB에서 Refresh Token을 삭제하거나 만료시킨다.
