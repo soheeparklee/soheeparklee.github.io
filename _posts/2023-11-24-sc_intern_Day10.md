@@ -9,14 +9,14 @@ tags: [todayilearned, til]
 ### 📌 **TO-DO LIST**
 
 - [x] submit github blog post
-- [ ] 54
-- [ ] 55
-- [ ] 56
-- [ ] 57
-- [ ] assigment: SQL while VS having
-- [ ] assigment: practice SQL1
-- [ ] assigment: practice SQL 2
-- [ ] assigment: left INNER JOIN
+- [x] 54
+- [x] 55
+- [x] 56
+- [x] 57
+- [x] assigment: SQL while VS having
+- [x] assigment: practice SQL1
+- [x] assigment: practice SQL 2
+- [x] assigment: left INNER JOIN
 
       <br>
       <br>
