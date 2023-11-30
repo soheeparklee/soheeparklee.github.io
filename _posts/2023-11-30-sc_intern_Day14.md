@@ -31,4 +31,6 @@ tags: [todayilearned, til]
 
 ## ☑️ Summary of the Day <br>
 
+firebase installing was difficult.
+
 💟 참조
