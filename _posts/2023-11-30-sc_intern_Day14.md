@@ -12,10 +12,10 @@ tags: [todayilearned, til]
 - [x] 72
 - [x] 73
 - [x] 74
-- [x] assigment:
-- [x] assigment:
-- [x] assigment:
-- [x] assigment:
+- [x] assigment: bundler
+- [x] assigment: web framework
+- [x] assigment: SPA(Single Page Application)구현
+- [x] assigment: SSR vs CSR
 
 ## ✅ Today I Learned
 
