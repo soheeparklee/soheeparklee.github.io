@@ -139,11 +139,11 @@ function writeUserData() {
 
 <Footer />이 공통으로 보이게 하고 싶다면, 별도의 svelte파일로 만들어 저장 후 불러온다.
 
-`export let where;` 해서 위치 저장
+`export let where;` 해서 위치 저장 <br>
 
-`  import Footer from '../components/Footer.svelte';`
+`  import Footer from '../components/Footer.svelte';` <br>
 
-`<Footer where="main" />`
+`<Footer where="main" />` <br>
 
 ### svelte에서는 if문도 HTML사이에 넣을 수 있음
 
@@ -192,8 +192,8 @@ function writeUserData() {
 
 ### on.Mount() 화면 새로고침할 떄마다 함수 계속 실행
 
-원래 JS는 화면이 처음 뜰 떄 한 번만 보여지지만,  
-`on.Mount()`사용하면 화면이 렌더링 될 때마다 함수가 실행되어 새로운 값을 DB에서 받아오게 된다.
+원래 JS는 화면이 처음 뜰 떄 한 번만 보여지지만, <br>
+`on.Mount()`사용하면 화면이 렌더링 될 때마다 함수가 실행되어 새로운 값을 DB에서 받아오게 된다. <br>
 
 ```svelte
  onMount(()=>{
@@ -212,9 +212,9 @@ function writeUserData() {
 
 ### HTML에 보이도록
 
-먼저 item 들의 값을 `{item.title} 각각 받아온 후,   
-예전에 지정해주었던 class를 추가해주어 css의 적용을 받게 한다.   
-💡 `{#each items as item}`을 사용해 배열을 돌면서 값 받기
+먼저 item 들의 값을 `{item.title} 각각 받아온 후,   <br>
+예전에 지정해주었던 class를 추가해주어 css의 적용을 받게 한다.   <br>
+💡 `{#each items as item}`을 사용해 배열을 돌면서 값 받기<br>
 
 ```svelte
 {#each items as item}
@@ -234,8 +234,8 @@ function writeUserData() {
 
 ## firebase storage 이미지 가져오기
 
-firebase DB에 url만 올려놓고 그때그때 이미지 가져오기
-`firebase.js`에다가 또 공식문서가 시키는 대로 하기
+firebase DB에 url만 올려놓고 그때그때 이미지 가져오기<br>
+`firebase.js`에다가 또 공식문서가 시키는 대로 하기<br>
 
 ### blob 또는 file에서 업로드
 
@@ -276,8 +276,8 @@ firebase DB에 url만 올려놓고 그때그때 이미지 가져오기
   }
 ```
 
-file이름 정해주기,  
-storageRef수정
+file이름 정해주기, <br>
+storageRef수정<br>
 
 ```svelte
  //get image
@@ -380,7 +380,7 @@ url을 `uploadFile`에서 받아올 건데,
 
 ## url로 전송된 image가져오기
 
-image정보 그리고 insertAt 시간 정보도 calcTime함수 가져와서 화면에 띄우기
+image정보 그리고 insertAt 시간 정보도 calcTime함수 가져와서 화면에 띄우기 <br>
 
 ```svelte
   {#each items as item}
@@ -404,3 +404,141 @@ image정보 그리고 insertAt 시간 정보도 calcTime함수 가져와서 화�
 `Main.svelte`파일에서 `onValue`에 item 있었음. <br>
 배열로 받아온 값을 보여주기 전 `reverse` <br>
 `items = obj.reverse();`
+
+## 🔐 Authentication: social login
+
+### firebase homepage, 앱 추가
+
+`firebaseConfig`을 `firebase.js`에 추가  
+그런데 이 `firebaseConfig`은 github에 업로드되면 안 됨! ❌
+따라서 `git.ignore`에 추가해야
+
+### 공식문서 확인하고, app.js에 추가
+
+app.js에 추가해야지 앱 전역에서 사용 가능하므로
+
+### 로그인이 되어 있지 않다면 로그인 페이지로 redirect, 그리고 새로운 창을 띄워 구글 로그인하도록 알고리즘
+
+어려우니까 try, catch 구문 사용해서 `loginWithGoogle`을 만들었다.
+그리고 HTML부분에 button을 만들어서 `on:click={loginWithGoogle}`을 실행하도록 했다.
+
+### user정보 저장하기
+
+이렇게 `loginWithGoogle`함수를 실행하면 구글 로그인을 통해 user정보를 받아오게 되는데, 이를 새로운 파일 `store.js`에 저장한다. 특히 user값을 export해서 다른 파일에서도 쓸 수 있게 한다.
+`export const user$ = writable(null);`
+
+### 다시 `login.svelte`파일에서 user정보 받고, 화면에 띄우기
+
+```svelte
+  //store user data in store.js
+  import { user$ } from '../store';
+```
+
+그리고 if조건문을 사용해 로그인 전에는 구글 로그인 버튼이,  
+로그인 후에는 어서오세요 메세지가 뜨도록 한다.
+
+```svelte
+  {#if $user$}
+    <div>{$user$.displayName}님 어서오세요</div>
+  {:else}
+    <h1>Login with GOOGLE</h1>
+    <button class="google-login-btn" on:click={loginWithGoogle}>
+      <img
+        class="google-login-btn-img"
+        src="https://seeklogo.com/images/G/google-logo-28FA7991AF-seeklogo.com.png"
+        alt=""
+      />
+      <div>구글로 시작하기</div>
+    </button>
+  {/if}
+```
+
+### `App.svelte`에서 user정보가 없으면 로그인 페이지, 있으면 router
+
+```svelte
+//authetication
+  import { user$ } from './store.js';
+</script>
+
+<!-- 로그인이 되어 있지 않으면 로그인 페이지로, 로그인이 되면 routes -->
+{#if !$user$}
+  <Login />
+{:else}
+  <Router {routes} />
+{/if}
+
+<main>
+  <div></div>
+</main>
+```
+
+### user정보 accessToken을 local storage에 저장하자
+
+지금은 local storage에 저장이 안 되어 있으니 페이지 refresh할 때마다 로그인 해야 됨.
+`localStorage.setItem("token", token)` <br>
+
+### 그 다음, `App.svelte`에서 accessToken있는지 확인하는 로직
+
+고급: 수동으로 로그인 과정 처리
+token가지고 있으면 로그인 유지해준다.
+
+```svelte
+const auth = getAuth();
+
+  const checkToken = async () => {
+    const token = localStorage.getItem('token');
+    //만약 token없으면 그냥 함수 return
+    if (!token) return (isLoading = false);
+
+    // Sign in with credential from the Google user.
+    const credential = GoogleAuthProvider.credential(null, token);
+    const result = await signInWithCredential(auth, credential);
+    const user = result.user;
+    user$.set(user);
+    isLoading = false;
+  };
+```
+
+화면이 보여질 떄마다 checkToken() 때마다 함수 실행
+`  onMount(() => checkToken());`
+
+### 화면 로딩 되는 사이에 로그인 페이지 잠깐 보이는게 싫음
+
+`let isLoading = true;`
+
+언제 `isLoading`이 false가 되어야 할까?
+
+1. token이 없을 때
+   `if (!token) return (isLoading = false);`
+2. token을 가져왔을 때
+   `    user$.set(user);
+isLoading = false;`
+
+3. HTML에서 user정보 가져오기 전
+
+```svelte
+{#if isLoading}
+  <div>Loading...</div>
+{:else if !$user$}
+  <Login />
+{:else}
+  <Router {routes} />
+{/if}
+```
+
+## logout
+
+myPage에 로그아웃 하는 button, 함수 하나 만들고
+
+logout의 기준은 무엇일까?
+
+1. user$의 값이 없다. 
+`user$.set(null);`
+2. accessToken이 없다.
+   `localStorage.removeItem("token");`
+
+## gitignore
+
+`.env`파일에 우리의 개인정보 저장해놓고
+`firebase.js`에서 값만 가져오도록 설정
+그리고 `.env`는 gitignore
