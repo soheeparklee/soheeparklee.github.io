@@ -4,6 +4,8 @@ categories: [Computer Science, CISCO networking]
 tags: [cs]
 ---
 
+![이름 없는 노트북-2](https://github.com/soheeparklee/sc_project_carrotMkt_improved/assets/97790983/3fb925ac-b935-4709-bf0d-774568af589f)
+
 ## 1️⃣ LAN(Local Area Network)이란?
 
 ### ✅ LAN
@@ -238,5 +240,6 @@ TCP, UDP <br>
 ### ☑️ IPX: Internetwork Packet eXchange
 
 같은 게임방에서 친구들끼리 편을 나누어 게임 하는 경우 <br>
+p0-
 
 ### ☑️ AppleTalk
