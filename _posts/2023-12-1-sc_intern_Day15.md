@@ -30,5 +30,3 @@ local host `http://localhost:5173/#/`에서 확인해야 하는 것이었음 ㅠ
 `npm install`<br>
 `npm run dev`등등을 해야 함. <br>
 `
-
-#

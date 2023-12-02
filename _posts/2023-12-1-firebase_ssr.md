@@ -16,7 +16,7 @@ mobile and web application development platform
 
 - Realtime Database
 - Authentication: secure signup and login
-- Cloud Firestore: NoSQL cloud databse
+- Cloud Firestore: NoSQl cloud databse
 - Hosting: deploy fast
   -Cloud Storage: 사용자가 파일(이미지, 비디오, 오디오 등)을 업로드하고 다운로드
   -Cloud Functions: 서버리스 환경에서 백엔드 로직을 실행할 수 있게 해주는 FaaS(Function as a Service)

@@ -27,7 +27,7 @@ tags: [cs]
 
 ### ✅ 이더넷
 
-- CSMA/CD 프로토콜
+- CSMA/CD 프로토콜 <br>
   Carrier Sense Multiple Access/Collision Detection <br>
   **Carrier Sense** 캐리어(네트워크 상 신호)를 감지 <br>
   통신하고자 하는 컴퓨터가 네트워크를 쓰고 있는 PC나 서버가 있는지 확인함 <br>
@@ -51,7 +51,7 @@ tags: [cs]
 - TP 케이블: Twisted Pair, 두 가닥이 꼬인 케이블 <br>
   - UTP: Unshielded 감싸지 않았다.
   - STP: Shielded 절연체로 감싸 EMI를 줄인 케이블, 토큰링
-- UTP 케이블:
+- UTP 케이블: <br>
   - 카테고리 1: 전화망
   - 카테고리 3: 10 Base T
   - 카테고리 4: 토큰링
@@ -108,8 +108,8 @@ Cross 케이블: 한 쪽은 1,2,3,4,5,6,7,8순서로, 다른 한 쪽은 1,2번�
 네트워크를 분리한다. <br>
 이유: 보안 <br>
 
-- 물리적 망 분리: 진짜 망을 인터넷 망과 업부망으로 나눈다.
-- 논리적 망 분리
+- 물리적 망 분리: 진짜 망을 인터넷 망과 업부망으로 나눈다. <br>
+- 논리적 망 분리 <br>
 
 ## 6️⃣ 맥 어드레스(Mac Address) 또는 하드웨어 주소
 
@@ -121,9 +121,9 @@ MAC: Mac Address Control <br>
 전 세계에서 유일한! 주소 <br>
 LAN에 붙는 디바이스들은 반드시 유일한 맥 어드레스가 있다. <br>
 
-- 두 PC가 단독 네트워크로 연결(라우터 ❌)
+- 두 PC가 단독 네트워크로 연결(라우터 ❌) <br>
   Broadcast: PC x가 자신이 속한 네트워크에 있는 모든 컴퓨터에게 PC y의 MAC address알려달라고 메세지를 보냄(같은 네트워크 안에 있는 PC만이 브로드캐스트 받을 수 있음)
-- 두 PC가 라우터를 넘어 로 다른 네트워크애 있는 경우
+- 두 PC가 라우터를 넘어 로 다른 네트워크애 있는 경우 <br>
   라우터는 Broadcast를 통과시키지 않음. Broadcast을 막음! <br>
   그래서 PC x가 Broadcast를 보내게 되면, 라우터는 "PC y는 우리 네트워크에 안 살아" 그러니까 내 Mac Address보내줄게" 하고 보냄. <br>
   그러면 PC x는 PC y에게 정보를 보낼 때 받는 Mac Address를 라우터의 Mac Address로 해서 보냄. <br>
@@ -240,6 +240,5 @@ TCP, UDP <br>
 ### ☑️ IPX: Internetwork Packet eXchange
 
 같은 게임방에서 친구들끼리 편을 나누어 게임 하는 경우 <br>
-p0-
 
 ### ☑️ AppleTalk
