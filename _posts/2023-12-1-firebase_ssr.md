@@ -1,31 +1,22 @@
 ---
-title: 2023.DEC.1(FRI) 슈퍼코딩 부트캠프 신입연수원 Day 15
-categories: [TIL(Today I Learned), SuperCoding_신입연수원(주특기 선택 이전)]
+title: firebase란?
+categories: [idk]
 tags: [todayilearned, til]
 ---
 
-## ✅ Daily Report
+##**파이어베이스?**
+mobile and web application development platform
+클라우드 기반의 BaaS(Backend as a Service) 플랫폼
+서버나 API를 직접 관리하지 않고도 애플리케이션의 백엔드 부분을 구현할 수 있다.
 
-### 📌 **TO-DO LIST**
+백엔드 지식이 없어도 사용 가능
+백엔드 인프라 간리 필요가 없음!
 
-- [x] submit github blog post
-- [x] 64
-- [x] 65
-- [x] 66
-- [x] 67
-- [x] assigment: firebase?
-- [x] assigment: 캐릭터의 위치를 실시간으로 업데이트
-- [x] assigment:
-- [x] assigment:
+####**왜 파이어베이스를 사용?**
 
-왜 npm run dev이후 변경사항이 실시간으로 반영이 안 되나 엄청 고민했는데
-deploy 할게 아니라
-local host `http://localhost:5173/#/`에서 확인해야 하는 것이었음 ㅠㅠㅠ
-
-## ✅ Today I Learned
-
-###
-
-## ☑️ Summary of the Day <br>
-
-💟 참조
+- Realtime Database
+- Authentication: secure signup and login
+- Cloud Firestore: NoSQL cloud databse
+- Hosting: deploy fast
+  -Cloud Storage: 사용자가 파일(이미지, 비디오, 오디오 등)을 업로드하고 다운로드
+  -Cloud Functions: 서버리스 환경에서 백엔드 로직을 실행할 수 있게 해주는 FaaS(Function as a Service)
