@@ -1,7 +1,7 @@
 ---
 title: 슈퍼코딩 웹개발 부트캠프 3주차 신입연수원 후기
-categories: [TIL(Today I Learned), SuperCoding_신입연수원(주특기 선택 이전)]
-tags: [todayilearned, til, weekreview]
+[TIL(Today I Learned), SuperCoding_신입연수원(주특기 선택 이전)]
+tags: [todayilearned, til]
 ---
 
 ## ✅ This weeks achievements\_이번 주 목표 달성 여부
