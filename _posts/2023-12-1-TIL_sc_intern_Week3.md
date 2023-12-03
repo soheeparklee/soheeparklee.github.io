@@ -1,5 +1,5 @@
 ---
-title: 슈퍼코딩 웹개발 부트캠프 2주차 신입연수원 후기
+title: 슈퍼코딩 웹개발 부트캠프 3주차 신입연수원 후기
 categories: [TIL(Today I Learned), SuperCoding_신입연수원(주특기 선택 이전)]
 tags: [todayilearned, til, weekreview]
 ---
