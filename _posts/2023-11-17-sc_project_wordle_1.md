@@ -1,5 +1,5 @@
 ---
-title: Wordle Clone Coding
+title: Wordle Clone Coding HTML, JS
 categories: [Project, Wordle Clone Coding]
 tags: [clonecoding, project, html, css, javascript, frontend]
 ---
