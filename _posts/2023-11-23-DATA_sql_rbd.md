@@ -1,44 +1,46 @@
 ---
-title: 2023.SEPT.23(THU) 슈퍼코딩 부트캠프 신입연수원 Day 9
-categories: [TIL(Today I Learned), SuperCoding_신입연수원(주특기 선택 이전)]
-tags: [todayilearned, til]
+title: RDB VS NoSQL
+categories: [Data, Database]
+tags: [sql, rdb]
 ---
 
-## ✅ Daily Report
+### RDB VS NoSQL
 
-### 📌 **TO-DO LIST**
+RDB는 표 형태, id를 찾거나 삭제 등 가장 많이 쓰이는 데이터베이스  
+Oracle, SQLite, Derby 등  
+NoSQL은 관계형 데이터베이스와 달리 안에도 종류 다양  
+NoSQL이란 표준화된 구조적 질의 언어가 없는 데이터베이스 또는 관계를 갖지 않는 데이터베이스  
+(Nonrelational Operational Database SQL)
 
-- [x] submit github blog post
-- [ ] 45
-- [x] 46
-- [x] 47
-- [x] 48
-- [x] 49
-- [x] 51
-- [x] 52
-- [x] 53
-- [x] 과제 다시 문의
-- [x] assigment: 데이터베이스 없이 앱을 개발했는데 이로 인해 생길 수 있는 문제들
-- [x] assigment: RDB와 NoSQ
-- [x] assigment: QUERY
-- 그러면 restAPI method중에 path, query는 get, requestbody는 post, 그러면 delete, put은?
+### SQLite VS MongoDB
 
-      <br>
-      <br>
+#### SQLite
 
-## ✅ Today I Learned
+**장점**  
+사용하는 메모리 공간이 적다.  
+사용자 친화적 RDBMS  
+이식성이 뛰어나 전송이 쉽다.
+임베디드 어플리케이션에 적합합니다. 이식성 ⬆️ 이후 확장할 필요 없음  
+애플리케이션이 파일을 디스크에 직접 읽고 쓰는 경우  
+테스트환경  
+**단점**
+동시성 제한(하나의 프로세스만이 데이터베이스 변경 가능)  
+따라서 높은 볼륨 쓰기가 요구되는 경우 부적합합니다.  
+사용자 관리가 없어 특별한 액세스 권한 줄 수 없음  
+따라서 보안에 취액  
+많은 데이터가 요구되는 경우 부적합  
+네트워크 액세스가 요구되는 경우 부적합
 
-### **SQL**
+#### MongoDB(NoSQL)
 
-**SQL Structured Query Language**  
-관계형 데이터베이스 관리  
-시스템에서 데이터를 관리하기 위해 사용되는 표준 프로그래밍 언어
-
-### **ERD**
-
-**Entity Relation Diagram**  
-코드로 된 것을 그림(표)으로 보여주는 프로그램  
-예를 들어 dBeaver
+**장점**  
+NoSQL의 장점 Schema-less 그대로(유연성, 확장성, 고성능, 가용성)  
+비 트랜잭션(commit, rollback없고 모두 autocommit)  
+데이터 입출력시 JSON(JavaScript Object Notation)형태, 데이터 저장시 BSON(JSON데이터를 이진 형식으로 인코딩한 포멧)형식
+**단점**
+데이터 업데이트 중 장애가 발생하면!!! 데이터 손실 가능  
+많은 메모리 데이터 필요  
+트랜잭션이 필요한 애플리케이션의 경우 부적합
 
 ### **RDB 관계형 데이터베이스**
 
@@ -77,56 +79,3 @@ NoSQL은 수평 확장(Scale-out)을 지원하여 대용량 데이터 처리와 
 NoSQL에는 표준화된 질의 언어가 없어 각 데이터베이스마다 사용하는 질의 언어가 다릅니다. 이로 인해 새로운 데이터베이스를 사용할 때마다 새로운 질의 언어를 학습해야 할 수 있습니다.
 **3. 트랜잭션 지원 부족:**
 NoSQL 데이터베이스 중 일부는 트랜잭션 처리를 지원하지 않거나 제한적으로 지원합니다. 따라서 복잡한 트랜잭션 처리가 필요한 경우 RDB보다 불리할 수 있습니다.
-
-## ✅ Trouble Shooting
-
-### **🔴 Trouble** deleteBtn doenst work!!!
-
-#### **🟠 Mistakes I Made\_헷갈리거나 실수한 점**
-
-백엔드에서 메모 아이디 int로 받으라고 했고, 프론트에서도 잘 보냈으며
-create, read, update까지, 그리고 post, put, read메소드는 문제가 없었는데 delete에서 삭제 버튼을 눌러 메모가 지워지지 않는 문제가 생김.
-
-#### **🟡 What I tried\_스스로 시도해 본 것들**
-
-- memos.pop을 pop말고 clear, remove 써봤지만 안됨
-- memos.pop(index)에서 index말고 memo 등 다른 값 넣었지만 안 됨
-
-#### **🟢 What I learned\_알게된 점**
-
-메모 아이디 값을 int가 아닌 str으로 바꿔주기,  
-BE에서도 아이디 값을 스트링으로 받아야 함.  
-이렇게 했더니 해결이 되었고, 이제는 삭제 버튼을 누르면 메모가 잘 삭제된다.
-
-```javascript
-async function createMemo(value) {
-  //post on server
-  const res = await fetch("/memos", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-      id: toString(new Date().getTime()),
-      content: value
-    })
-  });
-
-  readMemo();
-}
-```
-
-```python
-class Memo(BaseModel):
-    id: str
-    content: str
-```
-
-## ☑️ Summary of the Day <br>
-
-Such a difficult day!  
-Very difficult with mentoring...I have so little time to study!
-
----
-
-**💟 참조**

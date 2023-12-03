@@ -1,7 +1,7 @@
 ---
 title: Object, Boolean, Function
-categories: [Javascript, Basics]
-tags: [javascript, supercoding, object, boolean, function] # TAG names should always be lowercase
+categories: [Javascript, JS_Basics]
+tags: [object, boolean, function] # TAG names should always be lowercase
 ---
 
 ## Object

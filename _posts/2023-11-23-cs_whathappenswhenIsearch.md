@@ -1,7 +1,7 @@
 ---
-title: What happens when I search name in google? 네트워크 관점에서 내 이름을 구글에 검색한다면?
-categories: [Computer Science, basics]
-tags: [cs]
+title: What happens when I search name in google?
+categories: [Computer Science, Network]
+tags: [network]
 ---
 
 ## ✅ 검색창에 내 이름을 친다

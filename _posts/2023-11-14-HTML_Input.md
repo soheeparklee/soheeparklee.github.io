@@ -1,8 +1,8 @@
 ---
 title: Input Tags in HTML
 date: 2023-11-14
-categories: [Frontend, HTML]
-tags: [html, css, head, tag, input]
+categories: [HTML, HTML_Basics]
+tags: [head, tag, input]
 # TAG names should always be lowercase
 ---
 

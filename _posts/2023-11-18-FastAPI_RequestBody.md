@@ -1,6 +1,6 @@
 ---
 title: Request Body
-categories: [Backend, FastAPI]
+categories: [API, FastAPI]
 tags: [backend, requestbody, fastapi] # TAG names should always be lowercase
 ---
 

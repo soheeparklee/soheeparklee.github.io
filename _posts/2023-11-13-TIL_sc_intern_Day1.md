@@ -1,7 +1,7 @@
 ---
 title: 2023.SEPT.13(MON) 슈퍼코딩 부트캠프 신입연수원 Day 1
 categories: [TIL(Today I Learned), SuperCoding_신입연수원(주특기 선택 이전)]
-tags: [til, todayilearned] # TAG names should always be lowercase
+tags: [ide, semantictag, head] # TAG names should always be lowercase
 ---
 
 ## ✅ 중간 보고

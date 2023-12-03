@@ -1,8 +1,8 @@
 ---
 title: DOM, IDE
 date: 2023-11-13
-categories: [Frontend, HTML]
-tags: [html, javascript, dom]
+categories: [HTML, HTML_Basics]
+tags: [ide, html, dom]
 # TAG names should always be lowercase
 ---
 

@@ -1,8 +1,7 @@
 ---
 title: CarrotMkt Clone Coding_POST
 categories: [Project, Carrot MKT Clone Coding]
-tags:
-  [clonecoding, project, html, css, javascript, frontend, fastapi, requestbody]
+tags: [clonecoding, carrotmkt, fastapi, requestbody]
 ---
 
 ## ✅ Request Body

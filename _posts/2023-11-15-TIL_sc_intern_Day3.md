@@ -1,7 +1,7 @@
 ---
 title: 2023.SEPT.15(WED) 슈퍼코딩 부트캠프 신입연수원 Day 3
 categories: [TIL(Today I Learned), SuperCoding_신입연수원(주특기 선택 이전)]
-tags: [css, todayilearned, til, book, 책추천]
+tags: [todayilearned, til, book, 책추천]
 ---
 
 ## ✅ Interm Report

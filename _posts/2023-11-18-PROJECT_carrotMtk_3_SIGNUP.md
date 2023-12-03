@@ -1,7 +1,7 @@
 ---
 title: CarrotMkt Clone Coding_SignUp(POST, password sha256)
 categories: [Project, Carrot MKT Clone Coding]
-tags: [clonecoding, project, html, css, javascript, password]
+tags: [clonecoding, carrotmkt, password]
 ---
 
 ## ✅ **HTML**:

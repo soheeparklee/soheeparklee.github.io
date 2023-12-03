@@ -1,7 +1,7 @@
 ---
 title: firebase란?
-categories: [idk]
-tags: [todayilearned, til]
+categories: [Web, Tools]
+tags: [firebase]
 ---
 
 ##**파이어베이스?**

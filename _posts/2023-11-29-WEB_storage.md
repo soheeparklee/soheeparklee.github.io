@@ -1,6 +1,6 @@
 ---
 title: Local storage, Session Storage, Cookie
-categories: [Javascript, Authentication]
+categories: [Web, Authentication]
 tags: [jwt, session, localstorage, cookie, accesstoken, refreshtoken] # TAG names should always be lowercase
 ---
 

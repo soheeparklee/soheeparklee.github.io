@@ -1,7 +1,7 @@
 ---
 title: CarrotMkt Clone Coding_GET
 categories: [Project, Carrot MKT Clone Coding]
-tags: [clonecoding, project, html, css, javascript, frontend]
+tags: [clonecoding, carrotmkt]
 ---
 
 ## ✅ **FE(JS)** 백엔드에서 `GET`해서 가지고 온 정보 data가져오기
