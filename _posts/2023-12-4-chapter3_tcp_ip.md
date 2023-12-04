@@ -1,7 +1,7 @@
 ---
 title: PART3_TCP/IP
 categories: [Computer Science, CISCO networking]
-tags: [tcp, ip, binary, dhcp, cbc, ,sbc]
+tags: [tcp, ip, binary, dhcp, cbc, sbc]
 ---
 
 ## 1️⃣ TCP/IP를 모르면 인터넷을 아는게 아니다?
