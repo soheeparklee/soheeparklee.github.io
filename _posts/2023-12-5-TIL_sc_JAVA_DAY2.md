@@ -1,5 +1,5 @@
 ---
-title: 2023.DEC.04(MON) JAVA DAY1
+title: 2023.DEC.05(TUE) JAVA DAY2
 categories: [TIL(Today I Learned), SuperCoding_JAVA]
 tags: [todayilearned, til]
 ---
@@ -9,24 +9,15 @@ tags: [todayilearned, til]
 ### 📌 **TO-DO LIST**
 
 - [x] submit github blog post
-- [x] study lesson 1~11
-- [x] assigment: what is JVM? What happens when I click on word program?
+- [x] study lesson 12, 13, 14
+- [x] yalco JAVA
+- [x] assigment: what is difference between parrellism and concurrency?
       <br>
       <br>
 
 ## ✅ Today I Learned
 
-### **Hardware**
-
-- CPU
-- RAM
-- DISK
-
-### **Operating System**
-
-- thread
-- concurrency
-- parrallelism
+###
 
 ## ☑️ Summary of the Day <br>
 
