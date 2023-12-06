@@ -119,10 +119,11 @@ String stringStick = "Hello" + 123 + 3.14f + true + 'A';
 
 ## ✅ 형 변환
 
-### 💡 other data type ➡️ string `valueOf()`
+### 💡 other data type ➡️ `String.valueOf()`
 
 ```java
-String str1 = String.valueOf(true);
+String str1 = String.valueOf(true); //true를 String으로
+String str2 = String.valueOf(123); //123을 String으로
 
 //또는 더 간단하게
 //아까 이어붙이기 operator +=할 때 string붙이면 string으로 자동변환해주니, 아무것도 없는 string "" 붙이면 string으로 변환됨.
@@ -146,17 +147,63 @@ boolean bool1 = Boolean.parseBoolean("true");
 boolean bool2 = Boolean.parseBoolean("하나둘셋"); //불가능, 하나둘셋은 참도 거짓도 아니니까
 ```
 
-## 💡 format
+## 💡 formatting
+
+#### ⭐️ formatted
+
+```java
+String str1 = "%s의 둘레는 반지름 X %d X %f입니다.";
+
+ String circle = "원";
+int two = 2;
+double PI = 3.14;
+
+String str2 = String.format(str1, circle, two, PI)
+
+//formatted
+//바로 그 배열에다가 변수 집어넣기
+String str3 = str1.formatted(circle, two, PI);
+```
+
+#### printf
+
+```java
+System.out.printf("%s의 둘레는 반지름 X %d X %f입니다.%n", circle, two, PI);
+System.out.println(str1.formatted(circle, two, PI))
+//두 print 결과 똑같다
+```
 
 #### string %s, %S
 
 ```java
-String str1= "Happy";💡
+String str1= "Happy";
 
 String result;
 
 result= String.format("문자 %s, %S", str1, str1);
 System.out.println(result); //result: 문자 Happy, HAPPY
+```
+
+##### ⭐️ 다양한 formatting
+
+```java
+String[] strFormats = {
+                "%s",
+                // 1. 기본
+                //Hello 하이염
+                "%9s",
+                // 2. 자리 확보
+                //     Hello       하이염
+                "%.2s",
+                // 3. ~글자만
+                //He 하이
+                "%9.2s",
+                // 4. 9개 자리 만드는데 2개만 보여줘
+                //        He        하이
+                "%-9s",
+                // 5. 왼쪽 정렬
+                //Hello     하이염
+        };
 ```
 
 #### Int %d, %05d
@@ -170,7 +217,7 @@ result= String.format("숫자 %d", int1);
 System.out.println(result); //result: 숫자 123
 ```
 
-##### %05d: 5자리 숫자로, 부족하면 0넣어서 채워
+##### ⭐️ %05d: 5자리 숫자로, 부족하면 0넣어서 채워
 
 ```java
 int int1= 123;
@@ -179,6 +226,31 @@ String result;
 
 result= String.format("숫자 %05d", int1);
 System.out.println(result); //result: 숫자 00123
+```
+
+```java
+        String[] intFormats = {
+                "%d",
+                // 1. 기본
+                //12 2345 67890 -1234567
+                "%13d",
+                // 2. n 자리수 확보, 오른쪽 정렬
+                //            12          2345         67890      -1234567
+                "%013d",
+                // 3. 빈 자리수 0으로 채움
+                //0000000000012 0000000002345 0000000067890 -000001234567
+                "%+13d",
+                // 4. 양수는 앞에 + 붙임
+                //           +12         +2345        +67890      -1234567
+                "%,13d",
+                // 5. 쉼표 사용(3자리수마다)
+                //            12         2,345        67,890    -1,234,567
+                "%-13d",
+                // 6. 자리수 확보, 왼쪽 정렬
+                //12            2345          67890         -1234567
+                "%+,013d"
+                // 7.+000000000012 +00000002,345 +00000067,890 -0001,234,567
+        };
 ```
 
 #### float %f
@@ -191,3 +263,30 @@ float myfloat= 123.456789f;
         result= String.format("실수 %f, %.1f, %.2f, %.3f", myfloat, myfloat, myfloat, myfloat);
         System.out.println(result); //result: 실수 123.456787, 123.5, 123.46, 123.457
 ```
+
+##### ⭐️ 다양한 formatting
+
+```java
+String[] fltFormats = {
+                "%f",
+                // 1. 기본 (소수점 6자리, 0으로 메움)
+                //1.200000 123.456000 1234.123457 -123.456700
+                "%.2f",
+                // 2. 소수점 n자리까지
+                //1.20 123.46 1234.12 -123.46
+                "%13.2f",
+                // 3. 13자리 정수자리 확보, 소수자리 제한
+                //          1.20        123.46       1234.12       -123.46
+                "%,f",
+                // 4. 쉽표 붙이기
+                //1.200000 123.456000 1,234.123457 -123.456700
+                "%+013.2f",
+                // 5. 양수 표시하고 13자리 나타내고 모자르면 0붙여
+                //+000000001.20 +000000123.46 +000001234.12 -000000123.46
+                "%-13.2f",
+                // 6. 왼쪽 정렬하고 소수 2자리까지만 나타내
+                //1.20          123.46        1234.12       -123.46
+        };
+```
+
+#### char %c, 줄바꿈 %n

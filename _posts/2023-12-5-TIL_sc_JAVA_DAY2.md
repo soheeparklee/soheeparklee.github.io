@@ -17,7 +17,19 @@ tags: [todayilearned, til]
 
 ## ✅ Today I Learned
 
-###
+### JAVA string vs char
+
+literal vs instance
+
+### data types and casting
+
+- implicit casting
+- explicit casting
+
+### array
+
+같은 자료형, cannot change size of an array<br>
+reference type
 
 ## ☑️ Summary of the Day <br>
 
