@@ -60,11 +60,11 @@ tags: [todayilearned, til, stringmethod, quiz]
 
 #### String이 특정 형식을 유지하는가?
 
-`matches`
+`matches()`
 
 #### String의 시작을 다른 String과 비교하여 길이 비교, 만약 시작이 다르다면 첫 글자의 UNICODE 정수값 차이 반환, 대소문자 무시하려면?
 
-`compare()`
+`compareTo()`/ `compareToIgnoreCase()`
 
 #### 대문자/소문자로 바꿔
 
