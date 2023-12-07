@@ -1,5 +1,5 @@
 ---
-title: Literal, Symbolic final(상수), NULL
+title: Literal/ Symbolic final(상수)/ NULL
 categories: [JAVA, JAVA_Basics]
 tags: [char, string, ofvalue, parse, literal, instance, format] # TAG names should always be lowercase
 ---

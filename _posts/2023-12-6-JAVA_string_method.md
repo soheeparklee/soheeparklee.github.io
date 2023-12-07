@@ -211,6 +211,27 @@ String str_b2 = str_b1 + true + 1 + 2.34 + '가';
 String str_b3 = str_b1.concat(true); //❌
 ```
 
+```java
+//concat은 다중연산시 생성되는 instance의 수가 다르다.
+//concat은 매 번 문자열을 반환
+String str_d1 = "a" + "b" + "c" + "d";  // "abcd"
+
+        // + 연산은 내부적으로 아래와 같이 최적화됨
+        String str_d2 = new StringBuilder("a")
+                .append("b")
+                .append("c")
+                .append("d")
+                .toString(); // "abcd"가 생성됨
+        // "a", "b", "c", "d", "abcd"가 생성되어 메모리 차지
+
+        //  concat은 매 번 문자열을 반환하므로
+        String str_d3 = "a"
+                .concat("b") // "ab"가 생성됨
+                .concat("c") // "abc"가 생성됨
+                .concat("d"); // "abcd"가 생성됨
+        // "a", "b", "c", "d", "ab", "abc", "abcd"가 생성되어 메모리 차지
+```
+
 ### ⭐️ 메서드 체이닝
 
 여러 메서드를 이어서 사용하는 것 <br> <br>

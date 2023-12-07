@@ -1,5 +1,5 @@
 ---
-title: Char, String
+title: Char/ String
 categories: [JAVA, JAVA_Basics]
 tags: [char, string, ofvalue, parse, literal, instance, format] # TAG names should always be lowercase
 ---
@@ -158,10 +158,12 @@ String str1 = "%s의 둘레는 반지름 X %d X %f입니다.";
 int two = 2;
 double PI = 3.14;
 
+String str2 = String.format( "%s의 둘레는 반지름 X %d X %f입니다.", circle, two, PI)
 String str2 = String.format(str1, circle, two, PI)
 
 //formatted
 //바로 그 배열에다가 변수 집어넣기
+String.str3= "%s의 둘레는 반지름 X %d X %f입니다.".formatted(circle, two, PI);
 String str3 = str1.formatted(circle, two, PI);
 ```
 

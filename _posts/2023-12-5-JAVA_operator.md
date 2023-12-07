@@ -52,3 +52,8 @@ a와 b 중 하나만 true면 true 반환 <br>
   - a : 불리언 값 <br>
   - b : a가 `true` 일 때 반환될 값 <br>
   - c : a가 `false` 일 때 반환할 값 <br>
+
+```java
+milk= (thereIsAvocado) ? 6:0
+//우유의 개수는, 아보카도가 있으면 6개, 없으면 0개
+```
