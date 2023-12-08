@@ -1,7 +1,7 @@
 ---
-title: 2023.DEC.06(WED) JAVA DAY3
+title: 2023.DEC.07(THU) JAVA DAY4
 categories: [TIL(Today I Learned), SuperCoding_JAVA]
-tags: [todayilearned, til]
+tags: [todayilearned, til, for, if]
 ---
 
 ## ✅ Daily Report
@@ -17,29 +17,29 @@ tags: [todayilearned, til]
 
 ## ✅ Today I Learned
 
-#### if in java
+#### ✔️ if in java
 
-#### switch
+#### ✔️ switch
 
 switch(condition to look for) & case(same datatype) & break & default
 
-#### for
+#### ✔️ for
 
-#### for each in array
+#### ✔️ for each in array
 
 `for(num: arrayName)`
 
-#### continue
+#### ✔️ continue
 
 그 조건 루프만 뛰어넘기
 
-#### break
+#### ✔️ break
 
 그 루프 전체 종료
 
-#### while
+#### ✔️ while
 
-#### do while
+#### ✔️ do while
 
 일단 실행하고, 조건 나중에 확인
 
