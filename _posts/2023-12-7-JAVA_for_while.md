@@ -155,6 +155,25 @@ while(i < 10){ //while 실행될 조건
 }
 ```
 
+💡 for로 쓰면 이렇게 된다.
+
+```java
+for (i=0; i<10; i++){
+    System.out.println(i);
+}
+```
+
+💡 근데 for도 이렇게 생각 가능함
+
+```java
+int i= 0; //변수 초기화
+
+for( ; i < 10 ; ){ //while 실행될 조건
+    System.out.println(i);
+    i++; //루프 한 바퀴 돌 때마다 변화시킬 변수
+}
+```
+
 ## ✅ do while
 
 일단 실행하고 while 조건을 본다. <br>
@@ -177,18 +196,50 @@ do {
 
 ## ✅ while in while 중첩 while
 
+### ⭐️ 별 1~5까지 순서대로 내려가기
+
+#### 💡 while 문으로 작성하면? <br>
+
 ```java
-final int LINE_WIDTH = 5;
+        int line =0;
 
-        int lineWidth = LINE_WIDTH;
-
-        while (lineWidth > 0) {
-            int starsToPrint = lineWidth--;
-            while (starsToPrint-- > 0) {
+        while (line < 5){
+            int star= 0;
+            while(star <= line){
                 System.out.print("*");
+                star++;
             }
             System.out.println();
+            line++;
         }
+```
+
+#### 💡 for문으로 작성하면? <br>
+
+```java
+       int max= 5;
+        for(int line=0; line < max; line++){
+           for (int star=0; star <= line; star++){
+               System.out.print("*");
+           }
+           System.out.println();
+       }
+```
+
+### ⭐️ 별 5~1로 거꾸로 내려가기
+
+#### 💡 while 문으로 작성하면? <br>
+
+```java
+    int line =0;
+
+       while (line > 0) {
+           int star = line--;
+           while (star-- > 0) {
+               System.out.print("*");
+           }
+           System.out.println();
+   }
 
 // *****
 // ****
@@ -198,13 +249,75 @@ final int LINE_WIDTH = 5;
 
 ```
 
-💡for문으로 다시 작성하면? <br>
+#### 💡 for문으로 작성하면? <br>
 
 ```java
-for (int i = LINE_WIDTH; i > 0; i--) {
+for (int i = line; i > 0; i--) {
             for (int j = i; j > 0; j--) {
                 System.out.print("@");
             }
             System.out.println();
         }
+```
+
+### ⭐️ 별 커졌다가 작아지기
+
+```java
+int size= 10;
+    for (int line= 0; line <  size; line++){
+        for (int star=0; star <= line; star++){
+            if(star%2 ==0) continue;
+            System.out.print("*");
+        }
+        if(line%2 ==0) continue;
+        System.out.println();
+    }
+    for (int line= size; 0 <  line; line--){
+        for (int star=0; star <= line-3; star++){
+            if(star%2 ==0) continue;
+            System.out.print("*");
+        }
+        if(line%2 ==0) continue;
+        System.out.println();
+    }
+
+// *
+// ***
+// *****
+// *******
+// *********
+// *******
+// *****
+// ***
+// *
+
+```
+
+### ⭐️ 별 다이아 모양으로 출력
+
+```java
+        int size=3;
+        for(int line=1; line <= size; line++){
+            for(int space= size-line; space >=1; space-- ){
+                System.out.print(" ");
+            }
+            for(int star= 1; star <= 2*line -1; star++){
+                System.out.print("*");
+            }
+            System.out.println();
+        }
+        for(int line= size-1; line>=1; line-- ){
+            for(int space= 1; space<= size-line; space++){
+                System.out.print(" ");
+            }
+            for(int star=1; star<=2*line-1; star++){
+                System.out.print("*");
+            }System.out.println();
+        }
+
+//   *
+//  ***
+// *****
+//  ***
+//   *
 ```

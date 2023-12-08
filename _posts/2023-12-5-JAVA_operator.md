@@ -10,7 +10,9 @@ tags: [unary] # TAG names should always be lowercase
 
 둘 다 X의 값을 1씩 증가시키는데, 그 시기가 다르다. <br>
 `X++`은 증가시킨 후 그 값을 이후부터 적용, <br>
+`X++ 다음부터` <br>
 `++X`는 미리 증가시켜서 바로 적용. <br>
+`지금 당장 ++X`<br>
 
 ```java
         int x1 = 3;
@@ -40,6 +42,41 @@ a와 b가 모두 true일때만 true 반환 <br>
 
 a `||` b `OR`
 a와 b 중 하나만 true면 true 반환 <br>
+
+```java
+boolean eventTime= true;
+        boolean instagram= true;
+        boolean regram= true;
+        boolean comment= true;
+
+        if(eventTime){
+            if(instagram){
+                if(regram){
+                    if(comment){
+                        System.out.println("참여 가능");
+                    }else{
+                        System.out.println("참여 불가능");
+                    }
+
+                }else{
+                    System.out.println("참여 불가능");
+                }
+
+            } else{
+                System.out.println("참여 불가능");
+            }
+
+        } else{
+            System.out.println("참여 불가능");
+        }
+
+//이렇게 긴 코드를 논리연산자로 쓰면 다음과 같다.
+//boolean있을 때는 논리연산자 사용을 강추!
+if(eventTime && instagram && regram && comment){
+            System.out.println("참여 가능");
+        }else{ System.out.println("참여 불가능");
+        }
+```
 
 ## ✅ short circuit 단축평가
 

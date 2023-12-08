@@ -1,7 +1,7 @@
 ---
 title: if/ else/ switch
 categories: [JAVA, JAVA_Basics]
-tags: [] # TAG names should always be lowercase
+tags: [if, else, switch, break] # TAG names should always be lowercase
 ---
 
 ## ✅ if: boolean값으로 판단
@@ -29,6 +29,7 @@ tags: [] # TAG names should always be lowercase
 
 **else if :** 첫 if문이 false일 때 다른 조건을 연속 사용 <br>
 이거 아니면 그 다음 줄 else if, 모든 조건 다 아니면 else <br>
+조건을 만족하면 나간다. <br>
 
 ```java
 		int score = 85;
@@ -76,6 +77,9 @@ int score = 85;
 ```
 
 ## ✅ switch: switch안에 다양한 datatype 올 수 있음
+
+🆚 if : if문은 Boolean
+switch: boolean말고 다양한 데이터타입
 
 ### switch & case & break& default
 
