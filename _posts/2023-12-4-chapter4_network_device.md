@@ -4,6 +4,8 @@ categories: [Computer Science, CISCO networking]
 tags: []
 ---
 
+![IMG_13073D626D18-1](https://github.com/soheeparklee/portfolioWebsite_dreamcoding/assets/97790983/77ac6927-691d-4f65-8f04-5a0e6ea5a964)
+
 ## 1️⃣ 랜카드 세팅
 
 Network Interface Card(NIC): 랜카드 <br>
@@ -43,7 +45,7 @@ Network Interface Card(NIC): 랜카드 <br>
 - 같은 허브로 연결된 PC끼리 통신 가능하다. <br>
 - 같은 허브로 연결된 PC들은 같은 콜리전 도메인에 있다. <br>
 
-### 콜리젼 도메인
+### 💥 콜리젼 도메인
 
   <br>
 한 PC가 데이터 보내고 있는데 또 다른 PC가 데이터 보내려고 하면 콜리젼 발생  <br>
@@ -163,7 +165,7 @@ filtering이 바로 **콜리젼 도메인을 나눠주는 기능** <br>
 일정 시간(5분)이 지나면 맥 어드레스 정보를 브리지 테이블에서 지움. <br>
 그래야지 또 새로운 맥 어드레스를 기억하니까. <br>
 
-#### aging reflash
+#### ✔️ aging reflash
 
 만약 브리지 테이블에서 맥 어드레스 지우기 전에 또 통신을 했다면? <br>
 aging타이머가 끝나기 전에 같은 출발지를 가진 녀석이 또 브리지로 들어오면 브리지는 타이머 리셋, 처름부터 다시 카운트 <br>
@@ -195,7 +197,7 @@ ASIC: Application Specific Integrated Circuit 미리 칩에 구워서 하드웨�
 
 ### ☑️ 프레임을 처리하는 방식
 
-#### store and foward: 에러 복구 능력
+#### ✔️ store and foward: 에러 복구 능력
 
 스위치나 브리지는 일단 들어온 프레임 다 받음 <br>
 전체 프레임이 다 들어올 떄까지 기다렸다가... <br>
@@ -203,12 +205,12 @@ ASIC: Application Specific Integrated Circuit 미리 칩에 구워서 하드웨�
 에러 발견하면 프레임 버리고 재전송 요구 <br>
 **에러 복구 능력** 👍🏻 <br>
 
-#### cut-through: 빠름
+#### ✔️ cut-through: 빠름
 
 처음 48비트만 확인하고 목적지 확인해 프레임을 목적지로 전송해 버림. <br>
 에러 찾아내기 어려움 <br>
 
-#### fragment free
+#### ✔️ fragment free
 
 처음 512비트까지 확인함. <br>
 에러 감지 능력이 컷스루에 비해서는 우수 <br>
@@ -226,12 +228,12 @@ ASIC: Application Specific Integrated Circuit 미리 칩에 구워서 하드웨�
 
 ## Fault Tolerant, Load Balancing
 
-### Fault Tolerant
+### ✔️ Fault Tolerant
 
 네트워크 상에 어떤 문제가 발생했을 때를 대비해 장애 대비를 해 두는 것 <br>
 라우터를 두 대 연결해 두어 한 대가 죽었을 때 대비하기 <br>
 
-### Load Balancing
+### ✔️ Load Balancing
 
 로드를 분산한다.
 두 개의 인터넷 회선을 사용해 속도 2배, 동시에 폴트 톨러런트 <br>
