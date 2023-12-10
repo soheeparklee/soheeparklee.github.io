@@ -74,8 +74,8 @@ array에서 하나하나 돌며 각각의 index를 건드리는 방법 ➡️ `f
 
 ```java
 for (int n= 0; n<multiOf4.length; n++){
-            System.out.println(multiOf4[n]);
-        }
+    System.out.println(multiOf4[n]);
+}
 //이 방법을 foreach로 쓰면 다음과 같다.
 for (int num: multiOf4){
     System.out.println(num);

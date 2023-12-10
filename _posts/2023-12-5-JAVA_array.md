@@ -1,13 +1,13 @@
 ---
 title: Array
 categories: [JAVA, JAVA_Basics]
-tags: [array, primitivetype, referencetype] # TAG names should always be lowercase
+tags: [array] # TAG names should always be lowercase
 ---
 
 ## ✅ Array
 
-배열이 담는 자료형의 크기만큼 메모리를 차지한다.  
-따라서 넣은 자료들에 비해 너무 큰 배열을 선언하는 것을 주의할 것.
+배열이 담는 자료형의 크기만큼 메모리를 차지한다. <br>
+따라서 넣은 자료들에 비해 너무 큰 배열을 선언하는 것을 주의할 것. <br>
 
 ### how to declare an array
 
@@ -19,10 +19,12 @@ String [] students= {"charlie", "jack", "sophie"};
 
 #### without value, empty array with just size
 
+new가 필요한 이유: array는 literal이 아니기 때문! <br>
+
 ```java
 String [] family= new String [6];
-        family[0]= "mother";
-        family[1]= "dad";
+family[0]= "mother";
+family[1]= "dad";
 ```
 
 #### array length
@@ -33,21 +35,61 @@ int arrayLength= students.length;
 
 #### get value
 
+use index
+
 ```java
  String who= students[1];
 ```
 
-#### change value
+#### set value
+
+use index
 
 ```java
 students[0]= "peter"; //students: ["peter", "jack", "sophie"]
 ```
 
+#### printArray `Arrays.toString()`/ `Arrays.deepToString()`
+
+array는 reference type이기 때문에 그냥 출력하면 array의 메모리값이 출력된다. <br>
+
+```java
+int[] nums= {1,2,3,4,5};
+System.out.println(nums);
+System.out.println(Arrays.toString(nums));
+//result:
+// [I@6bdf28bb
+// [1, 2, 3, 4, 5]
+```
+
+```java
+int [] [] IntAry= new int [] [] {
+                {1,2,3},
+                {4,5},
+                {6,7,8}
+        };
+System.out.println(Arrays.deepToString(IntAry));
+```
+
+## ✅ for in array/ foreach
+
+```java
+int[] score= {90, 85, 90, 35, 75};
+
+for(int i=0; i<=score.length; i++){
+        System.out.println(score[i]);
+}
+for(int num:score){
+        System.out.println(num);
+}
+```
+
 ## ✅ 다중 배열: 배열 안에 또 배열
 
-배열 안에 배열이 있으므로 `IntAry[num]`하면 num번쨰 배열을 받을 것이고, 숫자를 받고 싶다면 `IntAry[num][num]`
+배열 안에 배열이 있으므로 `IntAry[num]`하면 num번쨰 배열을 받을 것이고, <br>
+숫자를 받고 싶다면 `IntAry[num][num]`<br>
 
-####
+#### 2D array
 
 ```java
         int [] [] IntAry= new int [] [] {
@@ -59,54 +101,112 @@ students[0]= "peter"; //students: ["peter", "jack", "sophie"]
         int result2= IntAry [0][1]; // 2
 ```
 
-## 💡 Primitive Type VS Reference Type
-
-### ✔️ Primitive type
-
-primitive type은 값 자체를 바꾼다. 그래서 바꾼 값num2는 num1값인 1이 된다.
-
-####
+#### for in for 사용해서 2D array 프린트
 
 ```java
-int num1 = 1;
-int num2 = 2;
-num2 = num1;
-num2 = 3;
+int twoDimensionArray[][] = new int[] []{
+                {5, 10, 15, 20},
+                {25, 30, 35, 40},
+                {45, 50, 55, 60},
+                {65, 70, 75, 80},
+        };
+
+        for(int row= 0; row< 4; row++){
+            for(int col= 0; col<4; col++){
+                System.out.printf("%d ", twoDimensionArray[row][col]);
+            }
+            System.out.println();
+        }
+
+// 5 10 15 20
+// 25 30 35 40
+// 45 50 55 60
+// 65 70 75 80
 ```
 
-<img width="230" alt="스크린샷 2023-12-05 오후 8 39 43" src="https://github.com/soheeparklee/portfolioWebsite_dreamcoding/assets/97790983/038461a5-2b41-4764-9ff7-49da0b807e26">
-
-num1의 값은 1이고 num2의 값은 2이다. <br>
-num2에 num1의 값을 저장하므로 num1도 1, num2도 1이 된다. <br>
-그리고 num1만 3으로 바꾸면, num1의 값은 3, num2의 값은 여전히 1이다. <br>
-하나의 변수에 다른 변수의 값을 넣은 다음, 한 변수의 값을 바꿔도 다른 변수의 값은 바뀌지 않는다. <br>
-primitive type은 값을 복사해서 넣어준다. 그래서 두 변수의 값은 전혀 다른 값이고, 서로 영향을 주고 받지 않는다. <br>
-예를 들어 하나의 종이를 복사해 두 개를 만들었는데, 한 종이에 쓴다고 해서 다른 종이에도 막 쓰여지지는 않는 것처럼. <br>
-
-### ✔️ Reference type
-
-Reference Type은 다르다. <br>
-Reference Type은 값 자체를 넣어주는 것이 아니라, 값이 저장되어 있는 장소를 알려준다. <br>
-
-#### 배열이 있는 장소/주소를 알려주는 Reference type
+#### for in for 사용헤서 두 array 합한 새로운 array
 
 ```java
-char[] chAry1= {'A', 'B', 'C'}; //[A, B, C]
-char [] chAry2= {'L', 'M', 'N'};
-chAry2 = chAry1;
-chAry1[0]= 'Z';
+int [][]arr1= new int[] []{
+                {5, 10, 15, 20},
+                {25, 30, 35, 40},
+                {45, 50, 55, 60},
+                {65, 70, 75, 80},
+        };
+
+int [][]arr2 = new int[] []{
+        {1,2,3,4},
+        {5,6,7,8},
+        {9,10,11,12},
+        {13,14,15,16},
+};
+
+int[][] arrSum = new int[4][4];
+
+for(int row= 0; row< 4; row++){
+        for(int col= 0; col<4; col++){
+        int num1= arr1[row][col];
+        int num2= arr2[row][col];
+        int sum= num1+ num2;
+
+        arrSum[row][col]= sum;
+        }
+}
+System.out.println(Arrays.deepToString(arrSum));
 ```
 
-chAry1의 값을 바꾸면 chAry2의 값도 바뀌어버림! <br>
-배열에서는 **배열이 있는 어떤 장소/주소**를 가리키고 있는 것이다. <br>
-그래서 `chAry2 = chAry1;`한다는 것은, 두 배열이 같은 메모리 장소/주소를 가리키게 되는 것. <br>
-두 배열이 같은 집 주소를 가지게 된다. <br>
-그래서 그 집을 바꾸게 되면, 같은 집 주소를 가진 두 배열 모두 바뀌게 된다. <br>
+## ✅ 배열의 복사
 
-##### before
+reference type인 array를 원본 따로 복사하고 싶어요
 
-<img width="438" alt="스크린샷 2023-12-05 오후 8 37 53" src="https://github.com/soheeparklee/portfolioWebsite_dreamcoding/assets/97790983/23b2a0ed-c223-4284-b630-6f0b594d7e14">
+#### for 사용해서 copy
 
-##### after `chAry1[0]= 'Z'`
+b는 a를 복사한 배열 <br>
 
-<img width="443" alt="스크린샷 2023-12-05 오후 8 38 43" src="https://github.com/soheeparklee/portfolioWebsite_dreamcoding/assets/97790983/0ef1d893-df30-4999-af9a-6a9fd4930d2d">
+```java
+int[] a = {1,2,3,4,5};
+int[] b= new int[a.length];
+
+    for(int i=0; i<= a.length; i++){
+        b[i]= a[i];
+    }
+
+//복사한 다음
+//a 배열의 값을 바꾸고 출력해보면?
+a[0]= 6;
+a: [6,2,3,4,5];
+b: [1,2,3,4,5];
+//b배열은 바뀌지 않았다는 것을 알 수 있다.
+```
+
+#### copyOf
+
+```java
+int[] a = {1,2,3,4,5};
+int[] b= Arrays.copyOf(a, a.length);
+```
+
+#### clone
+
+clone은 1차원 array일 떄만 가능하다.
+
+```java
+int[] a = {1,2,3,4,5};
+        int[] b= a.clone();
+```
+
+## ✅ 2D 배열의 복사
+
+```java
+int[][] arr = new int[][]{
+                {5, 10, 15, 20},
+                {25, 30, 35, 40},
+                {45, 50, 55, 60},
+                {65, 70, 75, 80},
+        };
+
+        int[][] arrCopy = new int[4][];
+        for(int row=0; row<4; row++ ){
+            arrCopy[row]= arr[row].clone();
+        }
+```
