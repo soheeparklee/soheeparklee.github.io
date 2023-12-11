@@ -6,33 +6,46 @@ tags: [] # TAG names should always be lowercase
 
 ## ✅ class(클래스) & instance & object
 
-### class
+### ☑️ class
 
-클래스는 인스턴스가 가질 필드, 메소드를 가지고 있음
-인스턴스를 정의한 틀
-인스턴스를 생성하는데 사용
+클래스는 인스턴스가 가질 필드, 메소드를 가지고 있음 <br>
+인스턴스를 정의한 틀 <br>
+인스턴스를 생성하는데 사용 <br>
+<br>
 
-- class= 올리브영 본사
-  - 필드 + 기능을 지정
-  - 매장들이 어떤 기능을 가지고 있을지, 어떤 일을 시킬지 정함
+- class= 올리브영 본사<br>
+  - 필드 + 기능을 지정<br>
+  - 매장들이 어떤 기능을 가지고 있을지, 어떤 일을 시킬지 정함<br>
 
-### instance
+### ☑️ instance
 
-클래스에 의해 정의됨.
+클래스에 의해 정의됨.<br>
+<br>
 
-- instance= 올리브영 강남점
+- instance= 올리브영 강남점<br>
 
-### object
+### ☑️ object
 
-클래스를 통해 생성된 객체를 클래스의 인스턴스라고 부름
-객체는 멤버(field와 method)를 가진다.
-객체를 생성하면 객체의 멤버(field와 method)가 JVM안에 있는 **HEAP**이라는 공간 위에 올라간다.
-HEAP에는 반드시 new라는 키워드를 통해 생성된 객체만 올라간다.
+클래스를 통해 생성된 객체를 클래스의 인스턴스라고 부름 <br>
+객체는 멤버(field와 method)를 가진다. <br>
+객체를 생성하면 객체의 멤버(field와 method)가 JVM안에 있는 **HEAP**이라는 공간 위에 올라간다. <br>
+HEAP에는 반드시 new라는 키워드를 통해 생성된 객체만 올라간다. <br>
 
 ### instance 🆚 object
 
-엄밀히 말하면 객체는 모든 인스턴스 포함
-인스턴스는 해당 객체가 어떤 클래스로부터 생성된 것인지를 강조
+엄밀히 말하면 객체는 모든 인스턴스 포함 <br>
+인스턴스는 해당 객체가 어떤 클래스로부터 생성된 것인지를 강조 <br>
+
+## ✅ Object oriented Programming
+
+객체끼리 상호작용하듯이 코드를 작성하는 방식
+
+#### 객체지향 프로그래밍을 떠받히는 네 가지 기둥
+
+- 추상화
+- 캡슐화
+- 상속
+- 다형성
 
 ## ✅ field, method
 
@@ -40,13 +53,12 @@ HEAP에는 반드시 new라는 키워드를 통해 생성된 객체만 올라간
 
 #### 📍field:
 
-객체의 상태, 데이터, 정보 등
-method와 constructor에서 사용 가능
+method와 constructor에서 사용 가능<br>
 
 #### 📍method:
 
-객체의 행위/ 기능
-객체 간의 데이터 전달 수단
+객체의 행위/ 기능<br>
+객체 간의 데이터 전달 수단<br>
 
 ##### 본사 코드 `OliveYoung.java`
 
@@ -69,8 +81,8 @@ public class OliveYoung {
 
 ##### 지점 내는 코드 `Main.java`
 
-- class에서 field, method받아와 정의해주기
-- 또 다른 변수에 class에서 field넣어주기도 가능
+- class에서 field, method받아와 정의해주기<br>
+- 또 다른 변수에 class에서 field넣어주기도 가능<br>
 
 ```java
 public static void main(String[] args) {
