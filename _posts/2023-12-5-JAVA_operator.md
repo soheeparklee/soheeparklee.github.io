@@ -37,10 +37,29 @@ tags: [unary] # TAG names should always be lowercase
 
 ## ✅ 논리연산자
 
-a `&&` b `AND` <br>
+### a `&` b <br>
+
+1&1= 1 <br>
+1&0= 0 <br>
+0&1= 0 <br>
+0&0= 1 <br>
+
+주어진 숫자들의 이진값을 계산
+
+```java
+System.out.println(10 & 12);
+// 8을 반환합니다.
+//10= 1010
+//12= 1100
+//따라서 1000 = 8
+```
+
+### a `&&` b `AND` <br>
+
 a와 b가 모두 true일때만 true 반환 <br>
 
-a `||` b `OR`
+### a `||` b `OR`
+
 a와 b 중 하나만 true면 true 반환 <br>
 
 ```java

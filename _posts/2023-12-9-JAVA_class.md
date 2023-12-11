@@ -1,10 +1,10 @@
 ---
-title: Class/ Instance/ Object
+title: Class/ Instance/ Object/ static/ access modifier
 categories: [JAVA, JAVA_Basics]
 tags: [] # TAG names should always be lowercase
 ---
 
-## ✅ class(클래스) & instance & object
+## ✅ class & instance & object
 
 ### ☑️ class
 
@@ -31,7 +31,7 @@ tags: [] # TAG names should always be lowercase
 객체를 생성하면 객체의 멤버(field와 method)가 JVM안에 있는 **HEAP**이라는 공간 위에 올라간다. <br>
 HEAP에는 반드시 new라는 키워드를 통해 생성된 객체만 올라간다. <br>
 
-### instance 🆚 object
+### ✔️ instance 🆚 object
 
 엄밀히 말하면 객체는 모든 인스턴스 포함 <br>
 인스턴스는 해당 객체가 어떤 클래스로부터 생성된 것인지를 강조 <br>
@@ -60,7 +60,7 @@ method와 constructor에서 사용 가능<br>
 객체의 행위/ 기능<br>
 객체 간의 데이터 전달 수단<br>
 
-##### 본사 코드 `OliveYoung.java`
+#### ⌨️ 본사 코드 `OliveYoung.java`
 
 ```java
 public class OliveYoung {
@@ -79,7 +79,7 @@ public class OliveYoung {
 }
 ```
 
-##### 지점 내는 코드 `Main.java`
+##### ⌨️ 지점 내는 코드 `Main.java`
 
 - class에서 field, method받아와 정의해주기<br>
 - 또 다른 변수에 class에서 field넣어주기도 가능<br>
@@ -115,21 +115,20 @@ public static void main(String[] args) {
 
 #### 📍 **constructor 생성자:** 인스턴스를 만드는 메소드
 
-    - 이름: 해당 클래스랑 똑같 🟰
-    - return값 없음❌(해당 클래스 타입의 인스턴스 반환)
-    - parameter이 있다면 parameter으로 멤버 변수의 값을 초기화한다.
-    - new 연산자와 함께 사용되어 인스턴스를 반환
-    `OliveYoung store1 = new OliveYoung(1, "강남");`
-    - 내가 자동으로 생성하기 위해서는 `command` + `N`
-    - 코드에 작성하지 않아도 컴파일러가 자동으로 생성(내가 작성하지 않았다고 생성자가 없는게 아님.)
+- 이름: 해당 클래스랑 똑같 🟰
+- return값 없음❌(해당 클래스 타입의 인스턴스 반환)
+- parameter이 있다면 parameter으로 멤버 변수의 값을 초기화한다.
+- new 연산자와 함께 사용되어 인스턴스를 반환
+- `OliveYoung store1 = new OliveYoung(1, "강남");`I()
+- 내가 자동으로 생성하기 위해서는 `command` + `N`
+- 코드에 작성하지 않아도 컴파일러가 자동으로 생성(내가 작성하지 않았다고 생성자가 없는게 아님.)
 
 #### 📍 **this :** 생성될 인스턴스를 가리킴
 
-    - `no`, `name`에 `this`붙인 것과 같음
+- `no`, `name`에 `this`붙인 것과 같음
 
-##### constructor 생성자
+#### ⌨️ constructor 생성자 본사 코드 `OliveYoung.java`
 
-본사 코드 `OliveYoung.java`
 instance가 가질 field, method를 class 코드에서 바로 정의
 생성자도 하나의 method이다.
 
@@ -157,7 +156,7 @@ public class OliveYoung {
 
 ```
 
-##### 바로바로 instance 생성해서 no, name 넣기
+#### ⌨️ 바로바로 instance 생성해서 no, name 넣기
 
 그리고 선언한 instance에다가 method도 불러오기 가능
 
@@ -175,12 +174,12 @@ public static void main(String[] args) {
 
 ## ☑️ instance를 parameter로 받는 method
 
-⭐️ **instance**는 **reference type**
+#### ⭐️ **instance**는 **reference type**
 
 - 그래서 값이 변경될 경우 instance 원본의 값이 변경됨 주의!
 - 같은 클래스의 인스턴스라도 필드의 값은 별개임!
 
-##### ✔️ taegwondo class 정의 `Taegwondo.java`
+#### ⌨️ taegwondo class 정의 `Taegwondo.java`
 
 ```java
 public class Taegwondo {
@@ -195,7 +194,7 @@ public class Taegwondo {
 }
 ```
 
-##### ✔️ 선수1이 선수2를 공격
+#### ⌨️ 선수1이 선수2를 공격
 
 ```java
 		Taegwondo player1 = new Taegwondo();
@@ -210,7 +209,7 @@ public class Taegwondo {
 
 ## ☑️ array를 parameter로 받는 method
 
-##### ✔️ 배열 받는 constructor
+#### ⌨️ 배열 받는 constructor
 
 ```java
 public class IntArrayInfo {
@@ -230,7 +229,7 @@ public class IntArrayInfo {
 }
 ```
 
-##### ✔️ 배열을 입력하고, 배열을 instance로 선언하고 instance의 field 받아오기
+#### ⌨️ 배열을 입력하고, 배열을 instance로 선언하고 instance의 field 받아오기
 
 ```java
 public static void main(String[] args) {
@@ -252,7 +251,7 @@ public static void main(String[] args) {
 static(정적)은 마치 본사의 정보와 기능을 정의해 두는 것과 같다.
 모든 인스턴스마다 동일하게 가지고 있을 것들에 대해서 사용
 
-##### ✔️ `static String brand = "올리브영";`
+#### ⌨️ `static String brand = "올리브영";`
 
 `Oliveyoung.java`
 
@@ -284,7 +283,7 @@ public class Oliveyoung {
 }
 ```
 
-##### ✔️ 따로 `new`와 `constructor`로 인스턴스를 생성하지 않아도 바로바로 불러와서 사용 가능하다.
+#### ⌨️ 따로 `new`와 `constructor`로 인스턴스를 생성하지 않아도 바로바로 불러와서 사용 가능하다.
 
 `Main.java`
 
@@ -299,34 +298,35 @@ public static void main(String[] args) {
 
 - static은 instance의 field, method를 사용할 수 없다. ❌
 
-## ✅ access modifier 접근 제어자
+## ✅ access modifier 접근 제어자, 정보 은닉화
 
 필드 앞에 붙여 이 데이터에 대한 접근성을 제한한다.
+이로써 정보를 감추기도 한다. ➡️ 정보 은닉화
 메소드 앞에는 붙이지 않는다.
 
-#### ⭐️ 캡슐화 encapsulation
+### ⭐️ 캡슐화 encapsulation
 
 - 사용자가 굳이? 볼 필요 없는 부분들을 감싸서 더 편리하게 사용할 수 있게 하기 위함
 
-#### `public`
+#### ✔️ `public`
 
 **다른 패키지에서도 접근 가능**
 동일 패키지 또는 자손 클래스 안에서 접근 가능
 동일 패키지 안에서 접근 가능
 해당 클래스 안에서 접근 가능
 
-#### `protected`
+#### ✔️ `protected`
 
 **동일 패키지 또는 자손 클래스 안에서 접근 가능**
 동일 패키지 안에서 접근 가능
 해당 클래스 안에서 접근 가능
 
-#### `default`
+#### ✔️ `default`
 
 **동일 패키지 안에서 접근 가능**
 해당 클래스 안에서 접근 가능
 
-#### `private`
+#### ✔️ `private`
 
 해당 클래스 안에서 접근 가능
 
@@ -344,9 +344,9 @@ field안에 값을 주입하는 두 가지 방법이다.
 ✔️ **constructor:** 필드 초기화, public
 ✔️ **setter:** private, 보통 클래스의 멤버변수를 private access modifier로 설정한 후 getter/setter통해서 멤버변수의 값을 변경한다.
 
-##### discount받는 코드
+#### ⌨️ discount받는 코드
 
-field 정의되어 있음
+field 의 속성들이 access modifier로 정의되어 있음
 
 ```java
 public class Product {
@@ -358,7 +358,7 @@ public class Product {
 }
 ```
 
-##### getter, setter 만듦
+#### ⌨️ getter, setter 만듦
 
 ```java
 public String getName() {
@@ -366,7 +366,7 @@ public String getName() {
     }
 ```
 
-##### getter, setter안에 코드를 변경해 원래 field와는 다른 값 get, set하게 만들 수도 있음.
+#### ⌨️ getter, setter안에 코드를 변경해 원래 field와는 다른 값 get, set하게 만들 수도 있음.
 
 ```java
 //get변경
@@ -381,6 +381,92 @@ public String getName() {
         this.name = name;
     }
     //set할 때 이름 비어있으면 return해
+```
+
+## ✅ this
+
+인스턴스의 멤버 값 ⭕️
+클래스 자체 멤버 값 ❌
+기본값을 주는 방식으로 사용할 수 있다.
+
+### 1️⃣ 생성자를 호출하기 위한 this() 2️⃣ 인스턴스의 field 또는 method 받아오기 위한 this.field/method
+
+같은 이름으로 생성자 만드는데, 만들 때 넣고 싶은 필드, 속성을 다르게 한다.  
+이 때 다른 생성자를 `this`로 부를 수 있다.
+
+```java
+    //이런 필드를 가지고 있음
+    private String name;
+    private String gender;
+    private int age;
+
+    //1️⃣ 생성자를 호출하기 위한 this()
+    //이 생성자는 필드 하나 받음. 이렇게 하면 이름만 가지고 인스턴스 만듦.
+    //그러면 아래에 있는 생성자 호출함. (자기보다 필드 많은 생성자)
+    public Person(String name){
+        this(name, gender: "unknown");
+    }
+    //이 생성자는 필드 2개만 받음. 이름, 성만 가지고 인스턴스 만들어.
+    // 그러면 또 자기보다 필드 많은 생성자 (아래에) 호출함.
+    public Person(String name, String gender){
+        this(name, gender, age:-1);
+    }
+    //얘가 필드 제일 많이 받고 (3개)
+    //2️⃣ 인스턴스의 field 또는 method 받아오기 위한 this.field/method
+    public Person(String name, String gender, int age) {
+        this.name = name;
+        this.gender = gender;
+        this.age = age;
+    }
+```
+
+### 3️⃣ 인스턴스 주소 확인
+
+인스턴스 자신의 생성 주소를 알려준다.
+(인스턴스가 만들어지면 JVM의 heap 메모리에 올라가고 주소를 가지게 됨, 인스턴스를 부르면 이 주소를 알 수 있다. )
+
+```java
+public class Person {
+    private String name;
+    private String gender;
+    private int age;
+
+    public void introduce(){
+        System.out.printf("저는 %s이고, %s이고, %d살 입니다.\n", this.name, this.gender, this.age);
+    }
+
+    public Person(String name, String gender, int age) {
+        //인스턴스의 field 또는 method 받아오기 위한 this
+        this.name = name;
+        this.gender = gender;
+        this.age = age;
+    }
+    //3️⃣ 인스턴스 주소 확인
+    public Person returnInstanceAddress(){
+        return this;
+    }
+}
+//실행 class
+public class Introduction {
+
+    public static void main(String[] args){
+        //make instance
+        Person cesar= new Person("Cesar", "Male", 33);
+        Person sohee= new Person("So Hee", "Female", 27);
+
+        //person class의 method
+        cesar.introduce();
+        sohee.introduce();
+
+        //instance의 address
+        Person cesarAddress= cesar.returnInstanceAddress();
+        System.out.println(cesarAddress);
+    }
+}
+//result
+// 저는 Cesar이고, Male이고, 33살 입니다.
+// 저는 So Hee이고, Female이고, 27살 입니다.
+// test3.Person@234bef66
 ```
 
 ## ✅ 상속
@@ -398,7 +484,7 @@ public String getName() {
 메소드 오버라이딩은 부모와 자식간에 메소드가 다른 것
 🆚 오버로딩은 같은 클래스 내에서 parameter을 다르게 해 같은 이름 메소드 사용하는 것
 
-##### 부모 클래스 `Button.java`
+#### ⌨️ 부모 클래스 `Button.java`
 
 ```java
 public class Button {
@@ -414,7 +500,7 @@ public class Button {
 }
 ```
 
-##### 자식 클래스 `ShutDownButton.java`
+#### ⌨️ 자식 클래스 `ShutDownButton.java`
 
 super은 부모 클래스 것 받아오는 것
 super이 위로 올라와야 한다.
@@ -438,8 +524,4 @@ public class ShutDownButton extends Button {
         );
     }
 }
-```
-
-```java
-
 ```
