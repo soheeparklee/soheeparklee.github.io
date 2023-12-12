@@ -248,8 +248,31 @@ public static void main(String[] args) {
 
 ## ✅ static
 
-static(정적)은 마치 본사의 정보와 기능을 정의해 두는 것과 같다.
-모든 인스턴스마다 동일하게 가지고 있을 것들에 대해서 사용
+static(정적)은 마치 본사의 정보와 기능을 정의해 두는 것과 같다. <br>
+모든 인스턴스마다 동일하게 가지고 있을 것들에 대해서 사용 <br>
+인스턴스들이 값을 바꿀 수 있음. <br>
+
+### static 변수 의 의미
+
+🟰 정적 변수<br>
+🟰 클래스 변수(클래스에 속해 있음. 인스턴스 아니고❌)<br>
+🟰 프로그램 실행 시, 정적 생성<br>
+🟰 프로그램 실행 시, 이미 생성되어 있음<br>
+🟰 인스턴스 생성 전 정의되어 있음.<br>
+🟰 그래서 모든 인스턴스들이 접근 가능하다.<br>
+따로 `new`와 `constructor`로 인스턴스를 생성하지 않아도 바로바로 불러와서 사용 가능하다 <br>
+<br>
+
+### instance 변수 🆚 static 변수
+
+\*\*인스턴스의 멤버 변수 앞에는 `this`붙일 수 있지만, ⭕️ <br>
+static 변수 앞에서는 붙이지 않는다. ❌ <br>
+instance는 static의 field, method를 사용할 수 있지만 ⭕️
+static은 instance의 field, method를 사용할 수 없다. ❌ <br>
+
+### JAVA static 변수/메소드
+
+### JAVA static 변수 유효범위
 
 #### ⌨️ `static String brand = "올리브영";`
 
@@ -262,6 +285,19 @@ public class Oliveyoung {
     static String brand = "올리브영";
     static String contact () {
         return "%s입니다. 무엇을 도와드릴까요?".formatted(brand);
+    }
+
+    static int lastestNum = 0;
+
+    int no;
+    //int no = ++lastestNum; // 이렇게 해도 됨
+
+    String name;
+
+    Oliveyoung(String name) {
+        // 클래스 변수를 활용하여 생성마다 새 번호 부여 (또는 위처럼)
+        no = ++lastNo;
+        this.name = name;
     }
 
     //여기서부터는 instance 내용임
@@ -295,8 +331,6 @@ public static void main(String[] args) {
 
     }
 ```
-
-- static은 instance의 field, method를 사용할 수 없다. ❌
 
 ## ✅ access modifier 접근 제어자, 정보 은닉화
 
