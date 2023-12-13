@@ -1,7 +1,16 @@
 ---
-title: Class/ Instance/ Object/ static/ access modifier
+title: Class/ Instance/ Object/ Static/ Access modifier/ This/ 상속
 categories: [JAVA, JAVA_Basics]
-tags: [] # TAG names should always be lowercase
+tags: [
+    this,
+    object,
+    static,
+    accessmodifier,
+    instance,
+    getter,
+    setter,
+    constructor
+  ] # TAG names should always be lowercase
 ---
 
 ## ✅ class & instance & object
@@ -252,7 +261,7 @@ static(정적)은 마치 본사의 정보와 기능을 정의해 두는 것과 �
 모든 인스턴스마다 동일하게 가지고 있을 것들에 대해서 사용 <br>
 인스턴스들이 값을 바꿀 수 있음. <br>
 
-### static 변수 의 의미
+### ☑️ static 변수의 의미
 
 🟰 정적 변수<br>
 🟰 클래스 변수(클래스에 속해 있음. 인스턴스 아니고❌)<br>
@@ -263,16 +272,37 @@ static(정적)은 마치 본사의 정보와 기능을 정의해 두는 것과 �
 따로 `new`와 `constructor`로 인스턴스를 생성하지 않아도 바로바로 불러와서 사용 가능하다 <br>
 <br>
 
-### instance 변수 🆚 static 변수
+### ☑️ instance 변수 🆚 static 변수
 
-\*\*인스턴스의 멤버 변수 앞에는 `this`붙일 수 있지만, ⭕️ <br>
+인스턴스의 멤버 변수 앞에는 `this`붙일 수 있지만, ⭕️ <br>
 static 변수 앞에서는 붙이지 않는다. ❌ <br>
-instance는 static의 field, method를 사용할 수 있지만 ⭕️
+instance는 static의 field, method를 사용할 수 있지만 ⭕️ <br>
 static은 instance의 field, method를 사용할 수 없다. ❌ <br>
 
-### JAVA static 변수/메소드
+### ☑️ JAVA static 변수/메소드
 
-### JAVA static 변수 유효범위
+만약 static앞에 private를 붙이고 싶다면? ➡️ 불러오기 위해서 getter, setter 만들어야 함. <br>
+그런데, **setter**만들 때 static 변수 앞에는 `this`를 붙일수 없다! <br>
+대신, class의 이름을 붙여야 한다.
+
+```java
+    //static
+    private static int serialNum =1;
+
+    //getter
+    public static int getSerialNum(){
+        return serialNum;
+    }
+    //원래 setter만들 때 앞에 this붙였지만
+    //static 앞에는 this를 붙이지 않는다.
+    //instance가 아니니까!
+    //대신 class를 붙여야 한다.
+    public static void setSerialNum(int serialNum) {
+        Student.serialNum = serialNum;
+    }
+```
+
+### ☑️ static을 본사와 지점에 비유하자면?
 
 #### ⌨️ `static String brand = "올리브영";`
 
@@ -507,18 +537,77 @@ public class Introduction {
 
 - 기존의 클래스에서 더 수정된 클래스 만들고 싶을 때 사용
 - 같은 클래스 내에서 한 클래스를 extend하는 클래스 만들기
-  `public class coffeeDT extends coffee`
-  coffeeDT는 coffee를 상속받는다
-  coffeeDT는 coffee의 필드, 메소드를 모두 그대로 따름.
-  부모 클래스에 constructor이 있다면, 자식 클래스도 있어야 한다.
+- 자식 클래스가 실행되면 부모 클래스도 무조건 실행된다.
+  `public class coffeeDT extends coffee` <br>
+  coffeeDT는 coffee를 상속받는다 <br>
+  coffeeDT는 coffee의 필드, 메소드를 모두 그대로 따름. <br>
+  부모 클래스에 constructor이 있다면, 자식 클래스도 있어야 한다. <br>
 
 ### 💡 메소드 오버라이딩
 
-부모로부터 메소드를 상속 받았지만, 같은 이름 메소드를 **자식인 저는 제 방식대로 하겠습니다.**
-메소드 오버라이딩은 부모와 자식간에 메소드가 다른 것
-🆚 오버로딩은 같은 클래스 내에서 parameter을 다르게 해 같은 이름 메소드 사용하는 것
+부모로부터 메소드를 상속 받았지만, 같은 이름 메소드를 **자식인 저는 제 방식대로 하겠습니다.** <br>
+메소드 오버라이딩은 부모와 자식간에 메소드가 다른 것 <br>
+그러나 부모 메소드로부터 parameter은 달라질 수 없음. <br>
+🆚 오버로딩은 같은 클래스 내에서 parameter을 다르게 해 같은 이름 메소드 사용하는 것 <br>
 
-#### ⌨️ 부모 클래스 `Button.java`
+### 👥 shadowing
+
+💥 field는 오버라이딩 같은게 없다.
+만약 부모와 자식 같은 이름으로 field있으면? 반영이 되지 않는다.
+예를 들어, 부모와 자식 물고기 모두 `protected String color;`이라는 field가 있다고 해보자.
+내가 자식 물고기의 색을 바꿔주고 싶어서 아무리 설정을 해 봐도, `this.color= color;`
+부모 물고기 클래스의 필드가 자식 물고기 필드를 가려 버리기 때문에 자식 물고기 색 설정 변경이 적용되지 않는다.
+**따라서, 부모와 자식 같은 이름으로 field가 있는데, 🐥자식🐥의 field를 바꿀 수 없다. ❌**
+이를 **shadowing**이라고 한다.
+(부모 클라스가 자식 클라스 필드를 덮어버리는 것)
+
+#### 💡 부모와 자식 같은 이름으로 field가 있는데, 🐓부모🐓의 field를 바꾸고 싶다면? ➡️ super
+
+자식(나)의 field는 바꿀 수 없지만, 부모의 field는 바꿀 수 있음.
+
+```java
+    public BabyFish(String color, String sea){
+        this.sea= sea;
+        super.color= color; //나의 color을 바꾸지 말고, 부모의 color을 바꿔
+    }
+```
+
+### 💡 super
+
+`this`은 자기 자신 받아왔다면, `super`은 부모 클래스 변수 받아오기
+super은 부모 클래스 것 받아오는 것<br>
+super이 위로 올라와야 한다.<br>
+
+```java
+//Fish 클래스가 field로 name, food, poison가지고 있음.
+//Babyfish 클래스가 field로 sea 가지고 있음.
+public class BabyFish extends Fish {
+public BabyFish(String name, int food, boolean poison, String sea) {
+        super(name, food, false); //부모 객체에서 private인 field들, super써서 가져온다.
+        this.sea = sea; //이건 babyFish의 field
+    }
+}
+```
+
+### 💡 upcasting
+
+자식 클래스는 부모 클래스로 묵시적 변환이 가능하다. <br>
+우리가 int 타입을 float으로 변환했듯, 자식 클래스는 부모 클래스로 변환 가능 <br>
+근데 그러면 자식 클래스에서 확장했던 field는 더이상 사용할 수 없다. <br>
+그런데 만약 override된 method를 실행한다면 자식의 override된 method가 실행됨!!!! <br>
+
+```java
+        //타입 선언: 부모 인스턴스화: 부모 ⭕️
+        Fish fish1= new Fish();
+        //타입 선언: 부모  인스턴스화: 자식 ⭕️ ⭐️묵시적 형 변환
+        Fish fish2= new BabyFish();
+        //타입 선언: 자식 인스턴스화: 자식 ⭕️
+        BabyFish Fish3= new BabyFish();
+        //타입 선언: 자식 인스턴스화: 부모 ❌ 큰 타입에서 작은 타입은 ❌
+        BabyFish Fish4= new Fish();
+```
+
+#### ⌨️ `Button.java`
 
 ```java
 public class Button {
@@ -532,18 +621,11 @@ public class Button {
         System.out.println(print + " 입력 적용");
     }
 }
-```
 
-#### ⌨️ 자식 클래스 `ShutDownButton.java`
-
-super은 부모 클래스 것 받아오는 것
-super이 위로 올라와야 한다.
-
-```java
 //ShutDownButton은 Button을 상속합니다.
 public class ShutDownButton extends Button {
     public ShutDownButton () {
-        super("ShutDown"); // 💡 부모의 생성자 호출,
+        super("ShutDown"); // 💡 부모의 생성자 호출 super
     }
 
 	//  💡 부모의 메소드를 override
@@ -558,4 +640,121 @@ public class ShutDownButton extends Button {
         );
     }
 }
+```
+
+#### 물고기 상속 예시 코드
+
+```java
+public class Fish {
+    //field
+    private String name;
+    private int food;
+    private boolean poison;
+
+    //method
+
+    public String fishInfo(){
+        return String.format("물고기 이름: %s, 먹이 개수: %d, 독: %b%n", this.name, this.food, this.poison);
+    }
+    public void printFishInfo(){
+        System.out.println(fishInfo());
+    }
+
+    //setter
+    public void setName(String name) {
+        this.name = name;
+    }
+    public void setFood(int food) {
+        this.food = food;
+    }
+    public void setPoison(boolean poison) {
+        this.poison = poison;
+    }
+}
+
+public class BabyFish extends Fish{
+    //BabyFish에만 있는 필드
+    private String sea;
+    //BabyFish에만 있는 메소드
+    public void swimming(){
+        System.out.println(fishInfo() + "Look! I am swimming.");
+    }
+
+    public String getSea() {
+        return sea;
+    }
+
+    public void setSea(String sea) {
+        this.sea = sea;
+    }
+}
+
+public class SeaSwim {
+
+    public static void main(String[] args){
+        //instance만들고 setter로 속성
+        Fish fish = new Fish();
+        fish.setName("Nemo");
+        fish.setFood(10);
+        fish.setPoison(true);
+
+        fish.printFishInfo();
+
+        BabyFish baby= new BabyFish();
+        baby.setName("Baby Nemo");
+        baby.setFood(5);
+        baby.setPoison(false);
+        baby.setSea("East sea");
+
+        //printFishInfo()는 BabyFish에게 없지만 상속했기 때문에 잘 출력되는 것을 알 수 있다.
+        baby.printFishInfo();
+        baby.swimming();
+    }
+}
+//물고기 이름: Nemo, 먹이 개수: 10, 독: true
+//물고기 이름: Baby Nemo, 먹이 개수: 5, 독: false
+```
+
+#### 물고기 @Override 예시 코드
+
+```java
+public class Fish {
+
+    public String fishInfo(){
+        return String.format("물고기 이름: %s, 먹이 개수: %d, 독: %b%n", this.name, this.food, this.poison);
+    }
+    //같은 이름 메소드
+    void eat(String food, int foodNum){
+        System.out.println(fishInfo() + food + "를" + foodNum + "개 먹고 있습니다.");
+    }
+}
+
+public class BabyFish extends Fish{
+    //override
+    //같은 이름 메소드
+    @Override
+    void eat(String food, int foodNum){
+        System.out.println(fishInfo() + food + "안 먹을래!");
+    }
+
+    @Override
+    void fishInfo(String sea){
+        return super.fishInfo()+ "is parent fish," + String.format("baby fish lives in %s sea.", this.sea;
+    }
+}
+
+public class SeaSwim {
+
+    public static void main(String[] args){
+        //instance만들고 setter로 속성
+        Fish fish = new Fish();
+        fish.eat("새우", 10);
+
+
+        BabyFish baby= new BabyFish();
+        baby.eat("새우", 0);
+    }
+}
+//새우를10개 먹고 있습니다.
+//새우안 먹을래!
 ```
