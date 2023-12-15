@@ -1,5 +1,5 @@
 ---
-title: 2023.DEC.12(TUE) JAVA DAY7
+title: 2023.DEC.12(TUE) JAVA DAY7_배열에 학생 추가, 삭제, 검색
 categories: [TIL(Today I Learned), SuperCoding_JAVA]
 tags: [todayilearned, til, algorithm]
 ---

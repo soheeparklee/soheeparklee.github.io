@@ -1,5 +1,5 @@
 ---
-title: 2023.DEC.11(MON) JAVA DAY6
+title: 2023.DEC.11(MON) JAVA DAY6_배열 길이가 2진수인지 확인해 늘리기
 categories: [TIL(Today I Learned), SuperCoding_JAVA]
 tags: [todayilearned, til, poweroftwo, algorithm]
 ---
@@ -21,6 +21,7 @@ tags: [todayilearned, til, poweroftwo, algorithm]
 #### arr length가 2진법인지 확인
 
 확인해서 참이면 array를 return <br>
+<https://soheeparklee.github.io/posts/JAVA_operator/>
 <https://soheeparklee.github.io/posts/JAVA_operator/>
 
 ```java
