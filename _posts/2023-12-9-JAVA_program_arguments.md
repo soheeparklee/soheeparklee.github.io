@@ -1,5 +1,5 @@
 ---
-title: JAVA Program Arguments/Command Line Arguments
+title: JAVA Program Arguments(Command Line Arguments)
 categories: [JAVA, JAVA_Basics]
 tags: [argument] # TAG names should always be lowercase
 ---

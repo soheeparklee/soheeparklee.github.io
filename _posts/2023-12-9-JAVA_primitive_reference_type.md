@@ -1,5 +1,5 @@
 ---
-title: Primitive Type / Reference Type
+title: Primitive Type 🆚 Reference Type
 categories: [JAVA, JAVA_Basics]
 tags: [primitivetype, referencetype] # TAG names should always be lowercase
 ---
