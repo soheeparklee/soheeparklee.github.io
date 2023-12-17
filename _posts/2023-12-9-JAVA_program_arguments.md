@@ -55,10 +55,14 @@ public class Variable {
 ```
 
 `String[] args`
-🟰 JAVA Program Arguments
-🟰 Command Line Arguments
-🟰 자바 명령 매개변수
+🟰 JAVA Program Arguments <br>
+🟰 Command Line Arguments <br>
+🟰 자바 명령 매개변수 <br>
+<br>
+자바 실행 시, 외부에서 전달받는 변수 <br>
+Command Line(terminal)에서 주는 명령이 args에 저장되어서 이름이 명령 매개변수임. <br>
 
+<<<<<<< Updated upstream
 자바 실행 시, 외부에서 전달받는 변수
 Command Line(terminal)에서 주는 명령이 args에 저장되어서 이름이 명령 매개변수임.
 
@@ -92,3 +96,22 @@ import sec06.chap02.pkg1.Parent;
 ```java
 import sec06.chap02.pkg3.* //pkg3안에 있는 모든 클래스 가져오기
 ```
+=======
+args라는 배열은 string배열이다. <br>
+
+```java
+    public static void main(String[] args) {
+        //외부에서 args배열 값 받아오기
+        String menuName = args[0];
+        String spicyLevel = args[1];
+
+        System.out.printf("%s 맵기 강도 %s로 주문%n", menuName, spicyLevel);
+    }
+```
+
+인텔리제이 ▶️ 누르고 edit configuration <br>
+하고 외부에서 args 넣을 수 있다. <br>
+<img width="291" alt="스크린샷 2023-12-16 오후 4 59 46" src="https://github.com/soheeparklee/sc_project_carrotMkt_improved/assets/97790983/76918986-b83c-4f63-9ed1-f2b381d9b23e">
+
+<img width="1041" alt="스크린샷 2023-12-16 오후 5 00 53" src="https://github.com/soheeparklee/sc_project_carrotMkt_improved/assets/97790983/d79d1d14-73eb-4465-b3df-b440639adf59">
+>>>>>>> Stashed changes
