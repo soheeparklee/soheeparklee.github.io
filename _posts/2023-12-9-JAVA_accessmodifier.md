@@ -1,5 +1,5 @@
 ---
-title: Class_Access Modifier_encapsulation
+title: Class_Access Modifier_⭐️encapsulation
 categories: [JAVA, JAVA_Basics]
 tags: [accessmodifier, private, protected, default, public] # TAG names should always be lowercase
 ---

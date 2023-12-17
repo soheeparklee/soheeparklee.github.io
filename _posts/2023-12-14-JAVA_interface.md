@@ -1,5 +1,5 @@
 ---
-title: JAVA Interface
+title: Interface
 categories: [JAVA, JAVA_Basics]
 tags: [super, override, extends, default] # TAG names should always be lowercase
 ---

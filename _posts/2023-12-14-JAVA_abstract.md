@@ -1,5 +1,5 @@
 ---
-title: JAVA abstract 추상화
+title: ⭐️Abstract 추상화
 categories: [JAVA, JAVA_Basics]
 tags: [abstract, override] # TAG names should always be lowercase
 ---

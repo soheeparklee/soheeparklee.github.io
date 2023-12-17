@@ -1,5 +1,5 @@
 ---
-title: Class_extends
+title: Class_⭐️extends
 categories: [JAVA, JAVA_Basics]
 tags: [extends] # TAG names should always be lowercase
 ---

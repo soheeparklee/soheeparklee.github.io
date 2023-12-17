@@ -1,5 +1,5 @@
 ---
-title: JAVA polymorphism 다형성_downcasting/ instanceof/ final
+title: ⭐️Polymorphism 다형성_downcasting/ instanceof/ final
 categories: [JAVA, JAVA_Basics]
 tags: [polymorphism, downcasting, upcasting, final] # TAG names should always be lowercase
 ---

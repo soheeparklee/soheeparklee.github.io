@@ -1,5 +1,5 @@
 ---
-title: PART4_switch
+title: PART6_Switch & VLAN
 categories: [Computer Science, CISCO networking]
 tags: [cs]
 ---
@@ -14,7 +14,6 @@ tags: [cs]
 
 ### 💡 STP 구성 단계 <br>
 
- <br>
 🟥 루트 브리지 뽑기 <br>
 🟨 루트 포트 뽑기 <br>
 🟩 데지그네이티드 포트 뽑기 <br>
@@ -49,12 +48,12 @@ STP는 **루트 포트**와 **데지그네이티드 포트**만 살려두고 나
 루트 브리지: 기준이 되는 브리지 <br>
 네트워크: 라우터로 구분되는 브로드캐스트 도메인 <br>
 
-### **둘쨰,** 루트 브리지가 아닌 나머지 모든 브리지는 무조건 하나씩의 루트 포트를 갖는다.
+### **둘째,** 루트 브리지가 아닌 나머지 모든 브리지는 무조건 하나씩의 루트 포트를 갖는다.
 
 Non Root Bridge: 루트 브리지가 아닌 나머지 모든 브리지 <br>
 루트 포트: 루트 브리지랑 연결할 수 있는 가장 가까운(빠른) 포트 <br>
 
-### **셋쨰,** 세그먼트 당 하나씩의 데지그네이티드 포트를 갖는다.
+### **셋째,** 세그먼트 당 하나씩의 데지그네이티드 포트를 갖는다.
 
 세그먼트: 브리지 또는 스위치 간에 서로 연결된 링크 <br>
 Designated Port: 지정 포트 <br>
@@ -234,6 +233,8 @@ Listening 상태에 있던 스위치 포트가 **포워딩 딜레이(Forwarding 
 그러나 주소가 바뀌면 자동으로 수정 불가, 메모리 낭비 <br>
 
 ## 🔟 가상의 랜 Virtual Lan
+
+![이름 없는 노트북-12](https://github.com/soheeparklee/sc_project_carrotMkt_improved/assets/97790983/f635550e-d9fb-4e2d-b9bd-3fcd7856a52c)
 
 ### Virtual Lan은 스위치의 기능
 
