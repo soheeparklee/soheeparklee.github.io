@@ -122,8 +122,8 @@ import sec06.chap02.pkg1.Parent; // pkg1안에 있는 Parent 클래스 가져오
 import sec06.chap02.pkg2.* //⭐️ 와일드카드 *: pkg2안에 있는 모든 클래스 가져오기
 ```
 
-**protected** access modifier만 사용할 수 있을 것이다.
-패키지는 다르지만, 상속 관계는 맞으니까
+**protected** access modifier만 사용할 수 있을 것이다. <br>
+패키지는 다르지만, 상속 관계는 맞으니까 <br>
 
 ### 패키지 안에 있는 모든 클래스 가져와 \*
 
@@ -133,7 +133,7 @@ import sec06.chap02.pkg3.* //pkg3안에 있는 모든 클래스 가져오기
 
 ### 서로 다른 패키지 안에 있는 동명 클래스 불러올 경우
 
-인스턴스 선언할 때 주의해야 함! 어디 패키지의 클래스인지 명시하기
+인스턴스 선언할 때 주의해야 함! 어디 패키지의 클래스인지 명시하기 <br>
 
 ```java
 //현재 pkg1안에도 Child클래스 있고, pkg2안에도 Child클래스 있는 상황
