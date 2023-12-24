@@ -13,8 +13,8 @@ string의 각 문자도 unicode을 적용받는다. <br>
 ## 💡 `.equals` method
 
 instance가 같은지 비교하려면 `.equals`method를 사용해야 한다. <br>
-`==` 같은 종이인가? 같은 종이에 적힌 같은 글인가? <br>
-`equals` 같은 글이 적혀 있는가? <br>
+`==` 같은 종이인가? 같은 종이에 적힌 같은 글인가? (메모리값 비교) <br>
+`equals` 같은 글이 적혀 있는가? (데이터 값 자체를 비교) <br>
 
 ## 🆚 Char and String
 
@@ -59,12 +59,20 @@ char은 숫자이기도 하니 서로 비교도 가능.
 
 ## 🆚 literal and instance
 
+**literal**: Constant Pool에 저장
+**instance**: Heap에 저장
+
 literal로 생성 시, String Constant Pool이라는 곳에 저장된다. <br>
 그리고 같은 문자열이 적혀있으면 같은 곳을 가리키고 있다. <br>
 
 ```java
+String str1= "Cat" //literal, Constant Pool에 저장
+String str2= new String("Cat") //instsance, Heap에 저장
+```
+
+```java
 //literal로 생성
-		String hl1 = "Hello";
+	String hl1 = "Hello";
         String hl2 = "Hello";
         String wld = "World";
 

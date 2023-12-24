@@ -1,7 +1,7 @@
 ---
 title: PART4_네트워크 장비에 관한 이야기
 categories: [Computer Science, CISCO networking]
-tags: []
+tags: [lan, hub, switch, bridge, looping, router]
 ---
 
 ![IMG_13073D626D18-1](https://github.com/soheeparklee/portfolioWebsite_dreamcoding/assets/97790983/77ac6927-691d-4f65-8f04-5a0e6ea5a964)

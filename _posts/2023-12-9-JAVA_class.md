@@ -383,3 +383,45 @@ public class Introduction {
 // 저는 So Hee이고, Female이고, 27살 입니다.
 // test3.Person@234bef66
 ```
+
+## ✅ 인스턴스에서 class 가져오기
+
+여태까지는 클래스를 만들고, 클래스의 필드, 메소드, 생성자 바탕으로 인스턴스를 만들었다면
+반대로 인스턴스에서 **클래스의 필드, 메소드, 생성자**가져오기
+
+### reflection 기술
+
+클래스의 메타 정보 빼내서 사용하는 기술
+어떤 클래스의 필드, 메소드, 생성자 뽑아내서 사용하기
+spring AOP의 근간이 되는 기술
+
+```java
+public class GetClass {
+    Class clazz= customer.getClass();
+    //GET constructor
+    Constructor[] constructors= clazz.getConstructors();
+    for( Constructor constructor: constructors ){
+        System.out.println(constructor);
+    }
+    //GET method
+    Method[] methods= clazz.getMethods();
+    for(Method method: methods){
+        System.out.println(method);
+    }
+    //GET field
+    //public field만 출력된다.
+    //public 아닌 field도 보고싶으면 getDeclaredFields()
+    Field[] fields= clazz.getFields();
+    for(Field field: fields){
+        System.out.println(field);
+    }
+    //가져온 constructor을 사용해서 새로운 instance생성
+    //그러니까 new Customer하는 것이랑 같으나,
+    //이 때 customer은 가장 상위 클래스인 object class 로 생성된다.
+    //downcasting필요
+    //constructor 여러개라면 어떤 constructor 가져올지 getConstructor(여기에 쓰기)
+    Customer customer= (Customer) clazz.getConstructor(String.class).newInstance("Kim");
+
+}
+
+```

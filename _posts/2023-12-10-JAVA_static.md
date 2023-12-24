@@ -1,9 +1,5 @@
 ---
-<<<<<<< Updated upstream
 title: Class_Static
-=======
-title: Class_Static(Instance 🆚 Local), block, scope
->>>>>>> Stashed changes
 categories: [JAVA, JAVA_Basics]
 tags: [static, instance, local] # TAG names should always be lowercase
 ---
