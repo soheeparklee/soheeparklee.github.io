@@ -1,7 +1,7 @@
 ---
-title: Try-catch, throw
+title: Try-catch, Exception
 categories: [JAVA, JAVA_Basics]
-tags: [] # TAG names should always be lowercase
+tags: [trycatch, throw, error, exception, finally, resource, autocloseable] # TAG names should always be lowercase
 ---
 
 ## Error(오류) 🆚 Exception(예외)
@@ -311,11 +311,16 @@ public class FinallyCloseTest {
 
 ```
 
-## ✅ 예외 미루기 throw
+## ✅ 예외 처리 미루기: throw
 
 각 함수에서 try, catch로 예외 처리하지 않고 main함수로 throw해서 미뤄버린다.
-단, main함수는 가장 최종으로 실행되는 함수니까 throw할 수 없다.
+❗️단, main함수는 가장 최종으로 실행되는 함수니까 throw할 수 없다.
 만약 main함수도 throw해버리면 예외 처리 안 하는 셈이 된다.
+
+발생한 곳에서 처리하지 않고, 나를 호출한 다른 함수에게 throw해서 위임하기
+**발생 이유:**여러 개의 함수에서 비슷한 exception이 발생할 때 각자 함수에서 처리하는게 아니라,
+main method에서 이를 한 번에 처리하기
+각 함수에서 exception 처리하면 비슷한 코드가 반복되니까.
 
 ```java
 public class PushExceptionTest {
@@ -352,12 +357,66 @@ public class PushExceptionTest {
 
 ```
 
-### main함수로 throw하는 이유
+### handle exceptions all at once
 
-여러 개의 함수에서 비슷한 exception을 처리할 때 각 함수에서 하면 반복되니까
-main함수로 throw해서 한 번에 처리한다.
+매우 비슷한 exception이 발생하는 두 함수에서 각각 exception 처리하는게 아니라,
+main에서 한 번에 처리 ➡️ 더 효율적인 코드
 
 ```java
+////거의 똑같은 exception처리하는 비효율적 코드
+public class handleExceptionsAtOnce {
+    public static void main(String[] args) {
+
+        //txt file, csv file읽어오는 함수
+        //두 함수 모두 비슷하게 exception처리해 주어야 한다.
+        printTextFile("src/chap51_trycatch/test.txt");
+        printCSVFile("src/chap51_trycatch/test.csv");
+
+
+    }
+    //거의 똑같은 exception처리
+    public static void printTextFile(String fileName){
+    if(!fileName.contains(".txt")){
+        System.out.println("No Text File");
+        return;
+    }
+    try{
+        FileInputStream fs= new FileInputStream(fileName);
+        int i;
+        while((i= fs.read()) != -1){
+            System.out.write(i);
+        }
+    } catch(IOException e){
+        System.out.println("IOException");
+
+        }
+    }
+    //거의 똑같은 exception처리
+    public static void printCSVFile(String fileName){
+        if(!fileName.contains(".csv")){
+            System.out.println("No CSV File");
+            return;
+        }
+        try{
+            FileInputStream fs= new FileInputStream(fileName);
+            int i;
+            while((i= fs.read()) != -1){
+                System.out.write(i);
+            }
+        } catch(IOException e){
+            System.out.println("IOException");
+
+        }
+    }
+}
+
+```
+
+💡 더 효율적인 코드로 변경!
+
+```java
+//main으로 throw
+//main에서 처리
 public class handleExceptionsAtOnce {
     public static void main(String[] args) {
 

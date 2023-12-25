@@ -10,7 +10,7 @@ tags: [todayilearned, til]
 
 - [x] submit github blog post
 - [x] lesson 42, 43, 44
-- [x] assigment:
+- [x] assigment: What happens on JVM memory
       <br>
       <br>
 

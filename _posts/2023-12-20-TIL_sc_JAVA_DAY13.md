@@ -14,4 +14,6 @@ tags: [todayilearned, til]
       <br>
       <br>
 
-## ✅
+equals()와 == 모두 객체를 비교하기 위해 사용
+equals()는 객체의 데이터 값을 비교
+==는 메모리 값을 비교
