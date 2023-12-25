@@ -313,6 +313,268 @@ public class FinallyCloseTest {
 
 ## ✅ 예외 미루기 throw
 
-## ✅ 사용자 정의 예외 처리
+각 함수에서 try, catch로 예외 처리하지 않고 main함수로 throw해서 미뤄버린다.
+단, main함수는 가장 최종으로 실행되는 함수니까 throw할 수 없다.
+만약 main함수도 throw해버리면 예외 처리 안 하는 셈이 된다.
 
-## ✅ 커스텀 예외
+```java
+public class PushExceptionTest {
+    public static void main(String[] args) {
+
+        try {
+            printFile("src/chap51_trycatch/test.txt");
+            //아까 미뤄둔 예외처리 모두 여기서 실행
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch(IOException e){
+            e.printStackTrace();
+        }
+
+    }
+    //또 해결을 main함수에게 미루기
+    //throws IOException
+    static void printFile(String fileName) throws IOException {
+        FileInputStream fs= getFileStream(fileName);
+        int i;
+        while((i=fs.read()) != -1){
+            System.out.write(i);
+        }
+
+    }
+    //파일 미루기 하는 함수
+    //원해는 try, catch로 file불러오기 exception해야 함
+    //throws FileNotFoundException로 해결을 printFile함수에게 미루기
+    static FileInputStream getFileStream(String fileName) throws FileNotFoundException {
+        FileInputStream fs = new FileInputStream(fileName);
+        return fs;
+    }
+}
+
+```
+
+### main함수로 throw하는 이유
+
+여러 개의 함수에서 비슷한 exception을 처리할 때 각 함수에서 하면 반복되니까
+main함수로 throw해서 한 번에 처리한다.
+
+```java
+public class handleExceptionsAtOnce {
+    public static void main(String[] args) {
+
+        try {
+            printTextFile("src/chap51_trycatch/test.txt");
+            printCSVFile("src/chap51_trycatch/test.csv");
+        } catch(IOException e){
+            System.out.println("IOException");
+        }
+    }
+
+    //txt file, csv file읽어오는 함수
+    //두 함수 모두 비슷하게 exception처리해 주어야 한다.
+    public static void printTextFile(String fileName) throws IOException{
+    if(!fileName.contains(".txt")){
+        System.out.println("No Text File");
+        return;
+    }
+
+        FileInputStream fs= new FileInputStream(fileName);
+        int i;
+        while((i= fs.read()) != -1){
+            System.out.write(i);
+        }
+
+    }
+
+    public static void printCSVFile(String fileName) throws IOException{
+        if(!fileName.contains(".csv")){
+            System.out.println("No CSV File");
+            return;
+        }
+            FileInputStream fs= new FileInputStream(fileName);
+            int i;
+            while((i= fs.read()) != -1){
+                System.out.write(i);
+            }
+    }
+}
+
+```
+
+## ✅ 직접 던지기 Check Exception
+
+문제 발생할 수 있는 함수에서 if문을 사용해 문제 상황을 정의해두고
+main함수로 exception을 throw한다.
+그러면 이 문제 발생할 수 있는 함수를 main함수에서 호출했을 때 문제가 셍기는 상황이면,
+빨간줄이 빡!
+그래서 run하기 전에 문제가 생겼다는 것을 알 수가 있다.
+
+exception도 class의 한 종류이고, throwable을 상속한다.
+if문과 함께 예외 잡기
+조건문으로 잡아서, 상위 함수로 throw하기도 한다.
+
+문제가 생길 exception을 미리 예상하여 **if문**으로 처리해 **exception을 throw**하도록 한다.
+그러면 main method가 이 문제 생길 여지 있는 method 문제 있게 부르잖아?
+그러면 **빨간줄이 딱!!!** 생긴다!
+그러면 main method가 이 exception을 잡아서 try, catch로 처리한다.
+그러면 run하기 전에 문제 생긴다는 것을 알 수 있는거지~ ➡️ check Exception
+그러면 에러 없이 실행할 수 있지!
+
+```java
+public class ThrowUncheckException {
+    public static void main(String[] args) {
+        System.out.println("main method start");
+
+        //✅ getIntElement
+        int result=0;
+        try {
+            result = getIntElement(100);
+            System.out.println("array result= " + result);
+        } catch(Exception e){
+            System.out.println("Exception throw of getIntElement is taken care of.");
+            e.printStackTrace();
+        }
+
+        //✅ getDivide
+        try {
+            result= getDivide(0);
+            System.out.println("divide result= " + result);
+        } catch(Exception e){
+            System.out.println("Exception throw of getDivide is taken care of.");
+            e.printStackTrace();
+        }
+
+        System.out.println("main method end");
+    }
+
+    //✅ getIntElement
+    static int getIntElement(int index) throws Exception{
+        int[] intArr= {1,2,3,4,5,6,7,8,9,10};
+
+        //여기에 직접 exception 예상해서 if문으로 처리
+        //만약 배열 길이보다 더 큰 값을 달라고 하면 어떡하지?
+        //미리 exception처리해두자!
+        //함수 이름 옆에 throws Exception추가
+        //이렇게 하면 main함수에서 getIntElement 잘못 호출하면 빨간줄 뜬다!
+        if(index>= intArr.length){
+            throw new Exception("this index does not exist on this array");
+        }
+
+        return intArr[index];
+    }
+    //✅ getDivide
+    static int getDivide(int num) throws Exception{
+        if(num == 0){
+            throw new Exception("cannot be divided with this number");
+        }
+        int data= 100/num;;
+        return data;
+    }
+}
+
+```
+
+## ✅ 사용자 정의 예외 던지기
+
+예를 들어, 사람의 나이인데 음수가 들어온다면?
+비즈니스의 요구에 맞는 조건들을 던지도록 예외 처리하기
+내 마음대로 조건 만들어두고, 이 조건을 충족하지 않으면 Exception발생하도록 하기
+
+### 조건
+
+- PTmemeber class
+- ID는 null이 아님
+- ID는 8자 이상 20자 이하
+- height는 양수
+- weight 양수
+
+```java
+//1️⃣ PostiveNumException.java
+public class PostitiveNumException extends RuntimeException{
+    public PostitiveNumException(String message) {
+        super(message);
+    }
+}
+
+//2️⃣ IDFormatException.java
+public class IDFormatException extends RuntimeException{
+    public IDFormatException(String message) {
+        super(message);
+    }
+}
+
+//3️⃣ PTmember.java
+//member에 대한 class
+//⭐️ exception 클래스들 import
+import chap51_trycatch.Exception.IDFormatException;
+import chap51_trycatch.Exception.PostitiveNumException;
+
+public class PTmember {
+    private String ID;
+    private String name;
+    private Integer height;
+    private Integer weight;
+    private String gender;
+//⭐️ 몸무게, 키 양수여야 된다는 조건 정의
+    public PTmember(String name, Integer height, Integer weight, String gender) {
+        if(height<0 || weight<0){
+            throw new PostitiveNumException("Height or Weight cannot be less than 0");
+        }
+
+        this.name = name;
+        this.height = height;
+        this.weight = weight;
+        this.gender = gender;
+    }
+//⭐️ ID조건 정의
+    public void setID(String ID) {
+        if(ID == null){
+            throw new IDFormatException("ID cannot be null");
+        }
+        if(ID.length() <4 || ID.length()>20){
+            throw new IDFormatException("ID cannot be shorter than 8 or longer than 20");
+        }
+        this.ID = ID;
+    }
+
+    @Override
+    public String toString() {
+        return "PTmember{" +
+                "ID='" + ID + '\'' +
+                ", name='" + name + '\'' +
+                ", height=" + height +
+                ", weight=" + weight +
+                ", gender='" + gender + '\'' +
+                '}';
+    }
+}
+
+//4️⃣ Main.java
+public class MemeberTest {
+    public static void main(String[] args) {
+        PTmember member1= new PTmember("Lee", 100, 100, "Female");
+        member1.setID("ABCDE");
+        System.out.println(member1);
+        //PTmember{ID='ABCDEFG', name='Lee', height=100, weight=100, gender='Female'}
+
+        PTmember member2= new PTmember("Jang", -100, -100, "Male");
+        member2.setID("ABCDEF");
+        System.out.println(member2);
+        //Height or Weight cannot be less than 0
+
+        PTmember member3= new PTmember("Kim", 100, 100, "Male");
+        member3.setID(null);
+        System.out.println(member3);
+        //ID cannot be null
+
+        PTmember member4= new PTmember("Park", 100, 100, "Male");
+        member4.setID("A");
+        System.out.println(member4);
+        //ID cannot be shorter than 8 or longer than 20
+    }
+
+
+}
+
+
+
+```

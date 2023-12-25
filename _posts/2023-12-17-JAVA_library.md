@@ -1,7 +1,7 @@
 ---
 title: Class library
 categories: [JAVA, JAVA_Basics]
-tags: [enumeration] # TAG names should always be lowercase
+tags: [math, random, string, date, now] # TAG names should always be lowercase
 ---
 
 ## ✅ System Class(Utility class)
@@ -315,22 +315,25 @@ StringBuilder strBldr3 = new StringBuilder("ABCDEFG");
 컴퓨터를 설정할 때 위치 정보 바탕으로 시간, 날짜 반환 <br>
 <br>
 
-#### 🕚 현재 날짜 <br>
+#### 🕚 현재 날짜/시간 출력 <br>
 
 ```java
-LocalDate today = LocalDate.now();
-System.out.println(today);
+//🕚현재 날짜
+LocalDate date = LocalDate.now();
+//🕚현재 시간
+LocalTime thisTime = LocalTime.now();
+//🕚 현재 시간과 날짜 모두
+LocalDateTime now = LocalDateTime.now();
 
 ```
 
-🕚 현재 시간 `LocalTime thisTime = LocalTime.now();` <br>
-🕚 현재 시간과 날짜 모두 `LocalDateTime now = LocalDateTime.now();` <br>
-
 ### ⏰ of메소드 사용해 그 때의 날짜, 시간
 
-`LocalDate christmas23 = LocalDate.of(2023, 12, 25);` <br>
-`LocalTime lunchTime = LocalTime.of(12, 30);` <br>
-`LocalDateTime familyDinner = LocalDateTime.of(2023, 12, 25, 18, 00);` <br>
+```java
+LocalDate christmas23 = LocalDate.of(2023, 12, 25);
+LocalTime lunchTime = LocalTime.of(12, 30);
+LocalDateTime familyDinner = LocalDateTime.of(2023, 12, 25, 18, 00);
+```
 
 ### ⏰ 시간 더하고 빼기
 
