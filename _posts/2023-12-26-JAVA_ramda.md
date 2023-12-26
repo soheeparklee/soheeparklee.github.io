@@ -1,0 +1,250 @@
+---
+title: Lambda
+categories: [JAVA, JAVA_Basics]
+tags: [lambda] # TAG names should always be lowercase
+---
+
+## ✅ 함수형 프로그래밍
+
+JAVA는 객체 지향형 언어, 클래스에 진심
+
+**함수형 프로그래밍(function programming):** 모든 프로그램을 함수의 연속으로 본다
+클로저, 스칼라, 하스켈 같은 언어
+
+JAVA도 JAVA8부터 약간의 함수형 프로그래밍을 받아들임
+
+## ✅ lambda
+
+lambda 람다 인터페이스 정의해야 함
+annotation @FunctionalInterface
+
+메소드를 **하나만** 정의할 수 있다.
+
+### ☑️ lambda 정의 방법
+
+1. 메서드의 이름, 반환타입 제거하고 ->를 블록{}앞에 추가
+2. 반환값이 있는 경우, 식이나 값만 적고 return문 생략 가능, 끝에 ; 안 붙임
+3. 매개변수의 타입이 추론 가능하면 생략 가능
+4. 인자 하나면 ()도 생략 가능
+5. 메소드를 호출해서 사용
+
+### ☑️ 인자 1개
+
+```java
+//parameter 1
+//여기선 한게 없음. 그냥 lambda고 이런 함수 있다! 끝.
+//MultipleNum.java
+@FunctionalInterface
+public interface MultipleNum {
+    //⭐️ only one method possible
+    int caculate(int num);
+
+//lambdaTest1.java
+//실제로 함수 정의는 여기에서
+public class lambdaTest1 {
+    public static void main(String[] args) {
+        //람다식 선언
+        //x*2 구하는 함수
+        MultipleNum multipleNum1= (x) -> x * 2;
+        MultipleNum multipleNum2= (i)-> i * 2;
+        MultipleNum multipleNum3= (y) -> { return y*2; };
+        MultipleNum multipleNum4= (int myInt) -> myInt*2;
+
+        multipleNum1.caculate(5); //10
+        multipleNum2.caculate(5);
+        multipleNum3.caculate(5);
+        multipleNum4.caculate(5);
+
+
+
+    }
+
+}
+
+```
+
+### ☑️ 인자 2개
+
+```java
+//StringNum.java
+@FunctionalInterface
+public interface StringNum {
+    void printString(String str, int i);
+}
+
+//lambdaTest1.java
+//실행클래스
+//여기서 lambda함수 정의
+public class lambdaTest1 {
+    public static void main(String[] args) {
+
+        StringNum stringNum1 = (str, i) -> System.out.println(str);
+        StringNum stringNum2 = (str, i) -> System.out.println(i);
+        StringNum stringNum3 = (str, i) -> {
+
+            for (int k = 0; k < i; k++) {
+                System.out.println(str);
+            }
+        };
+        StringNum stringNum4= (str, i) ->{
+            StringBuilder sb= new StringBuilder();
+            for(int k=0; k<i; k++){
+                sb.append(str);
+            }
+            System.out.println(sb.toString());
+        };
+        stringNum1.printString("kim", 10);
+        stringNum2.printString("lee", 10);
+        stringNum3.printString("park", 10);
+        stringNum4.printString("jang", 10);
+    }
+}
+
+// kim
+// 10
+// park
+// park
+// park
+// park
+// park
+// park
+// park
+// park
+// park
+// park
+// jangjangjangjangjangjangjangjangjangjang
+
+```
+
+## ✅ lambda = 내부 anonymous class
+
+사실 lambda 모두 **내부 anonymous class**
+따라서 외부에서 선언된 변수는 읽어올 수는 있지만, 값을 바꿀수는 없다.
+
+아래 코드에서 같은 함수를 lambda, anonymous로 짠 것
+
+```java
+public class LambdaAnonymousTest {
+    public static void main(String[] args) {
+
+        //🟰 lambda
+        MultipleNum multipleNum1 = (x) -> x * 2;
+
+        //🟰 anonymous
+        MultipleNum multipleNum= new MultipleNum() {
+            @Override
+            public int caculate(int num) {
+                return num *2;
+            }
+        };
+
+        //🟰 lambda
+        StringNum stringNum= (str, i) -> System.out.println(str);
+        //🟰 anonymous
+        StringNum stringNum= new StringNum() {
+            @Override
+            public void printString(String str, int i) {
+                System.out.println(str);
+            }
+        };
+    }
+}
+```
+
+## ✅ lambda as parameter
+
+```java
+public class LambdaUseTest {
+    public static void main(String[] args) {
+        //선언
+        MultipleNum multipleNum= (num) -> num *10;
+        printNum(multipleNum);
+        //더 짧게, 아예 함수 안에서 lambda선언
+        printNum((x) -> x * 100);
+    }
+    //method
+    //lambda as parameter
+    static void printNum(MultipleNum multipleNum){
+        int result= multipleNum.caculate(5);
+        System.out.println(result);
+    }
+}
+
+```
+
+## ✅ lambda with generic
+
+```java
+//GenericLambda.java
+//Generic
+@FunctionalInterface
+public interface   GenericLambda <T>{
+    T caculate(T t);
+}
+
+//LambdaUseTest.java
+public class LambdaUseTest {
+    public static void main(String[] args) {
+
+        GenericLambda<String> genericLambda1 = (str) -> str.toUpperCase();
+        GenericLambda<Integer> genericLambda2 = (num) -> num * 2;
+        GenericLambda<Boolean> genericLambda3 = (myBool) -> myBool & true;
+        //이제 caculate는 어떤 datatype도 다 받을 수 있는 만능이 되었음
+        //여기다가 함수 정의도 Lambda로 하니 마음대로 선언 가능
+        genericLambda1.caculate("sohee");
+        genericLambda2.caculate(10);
+        genericLambda3.caculate(true);
+    }
+}
+
+```
+
+## ✅ lambda with optional
+
+Null일 때 발생하는 문제 방지
+
+### ElseGet
+
+```java
+public class OptionalLambda {
+    public static void main(String[] args) {
+        String str= null;
+        Optional<String> stringOptional= Optional.ofNullable(str);
+
+        Supplier<String> stringSupplier= () -> "default"; //DEFAULT
+
+        //stringSupplier을 받으면 NPE방지
+        String str2= stringOptional.orElseGet(stringSupplier).toUpperCase();
+        System.out.println(str2);
+
+    }
+}
+
+
+//더 간단하게
+    public static void main(String[] args) {
+        String str= null;
+        Optional<String> stringOptional= Optional.ofNullable(str);
+
+        //stringSupplier을 받으면 NPE방지
+        String str2= stringOptional.orElseGet(() -> "default").toUpperCase();
+        System.out.println(str2);
+
+    }
+```
+
+### ElseThrow
+
+```java
+public class OptionalLambda {
+    public static void main(String[] args) {
+        String str= null;
+        Optional<String> stringOptional= Optional.ofNullable(str);
+
+        //stringSupplier을 받으면 NPE방지
+        String str2= stringOptional.orElseThrow(()->{throw new CustomException("CustomException 발생");})
+                .toUpperCase();
+
+    }
+}
+```
