@@ -15,39 +15,40 @@ UML(Unified Modeling Language)로 객체 간 구조도 작성<br>
 
 ### ✔️ 생성패턴
 
-기존 코드의 재사용성 증가
+기존 코드의 재사용성 증가<br>
 
-- 빌더 패턴
-- 싱글턴 패턴
+- 빌더 패턴<br>
+- 싱글턴 패턴<br>
 
 ### ✔️ 구조 패턴
 
-구조를 유지하면서 더 큰 구조로 조립
+구조를 유지하면서 더 큰 구조로 조립<br>
 
-- 데코레이터 패턴
+- 데코레이터 패턴<br>
 
 ### ✔️ 행동패턴
 
-알고리즘 및 객체 책임 할당
+알고리즘 및 객체 책임 할당<br>
 
-- 전략 패턴
+- 전략 패턴<br>
 
 ## 🧩 JAVA 싱글톤 패턴
 
-**단 하나 인스턴스만** 생성 및 공유하여 **자원 절약** 및 **일관성 유지**를 목적으로 하는 디자인 패턴
+**단 하나 인스턴스만** 생성 및 공유하여 **자원 절약** 및 **일관성 유지**를 목적으로 하는 디자인 패턴<br>
+<br>
 
-- static
-- synchronized
+- static<br>
+- synchronized<br>
 
 ### filewriter 개선
 
-파일을 여러번 읽고 쓸 때,
-인스턴스를 여러번 만드는 것이 아니라
-싱글톤 패턴 적용하여 한 번만 스레드 생성하게 만들어서 모든 스레드가 이 filewriter사용하도록 하기
+파일을 여러번 읽고 쓸 때,<br>
+인스턴스를 여러번 만드는 것이 아니라<br>
+싱글톤 패턴 적용하여 한 번만 스레드 생성하게 만들어서 모든 스레드가 이 filewriter사용하도록 하기<br>
 
 #### 👎🏻 기존 코드
 
-비슷한 작업을 하는 객체 여러번 생성해야 함
+비슷한 작업을 하는 객체 여러번 생성해야 함 <br>
 
 ```java
 //Filewriter.java
@@ -183,17 +184,17 @@ public class FilewriterSingletonTest {
 
 ## 🧩 JAVA 빌더 패턴
 
-복잡한 **객체의 생성 과정을 단순화**해서 **가독성**과 **유연성** 높여 객체 생성하기
-객체 생성 과정을 1단계, 2단계, 3단계...이렇게 단순화해서
+복잡한 **객체의 생성 과정을 단순화**해서 **가독성**과 **유연성** 높여 객체 생성하기<br>
+객체 생성 과정을 1단계, 2단계, 3단계...이렇게 단순화해서<br>
 
-- static inner class
-- 내부 this 변환
+- static inner class<br>
+- 내부 this 변환<br>
 
 ### userBuilder 개선
 
-유저 객체 생성할 때 이름, 이메일 등 순서를 헷갈릴 수 있음
-실수할 수 있는 여지를 줄이기
-Builder 이용하면 순서 바꿔서 입력해도 괜찮음.
+유저 객체 생성할 때 이름, 이메일 등 순서를 헷갈릴 수 있음<br>
+실수할 수 있는 여지를 줄이기<br>
+Builder 이용하면 순서 바꿔서 입력해도 괜찮음.<br>
 
 #### 👎🏻 기존 코드
 
@@ -363,23 +364,30 @@ public class BuilderTest {
 
 ## 🧩 JAVA 데코레이터 패턴
 
-기존 **객체 변경 없이** 동적으로 기능을 **추가**하거나 **수정**하는 디자인 패턴
-기존 객체에 옵션이나 기능을 추가해야 하는 상황에 주로 사용
+기존 **객체 변경 없이** 동적으로 기능을 **추가**하거나 **수정**하는 디자인 패턴<br>
+기존 객체에 옵션이나 기능을 추가해야 하는 상황에 주로 사용<br>
 
-- 추상클래스
-- 인터페이스
-- upcasting
+- 추상클래스<br>
+- 인터페이스<br>
+- upcasting<br>
 
 ### 커피 만드는 코드
 
+그냥 커피에 우유, 설탕, 크림 추가하는 코드<br>
+<br>
+
+- implements inferface<br>
+- extends class<br>
+- upcasting<br>
+
 ```java
-//Beverage interface
+//✅ Beverage interface
 public interface Beverage {
     String getDescription();
     double cost();
 }
 
-//BeverageDecorator.java
+//✅ BeverageDecorator.java
 public class BeverageDecorator implements Beverage{
     protected Beverage beverage;
 
@@ -398,7 +406,7 @@ public class BeverageDecorator implements Beverage{
     }
 }
 
-//Coffee.java
+//✅ Coffee.java
 public class Coffee implements Beverage{
     @Override
     public String getDescription() {
@@ -411,7 +419,7 @@ public class Coffee implements Beverage{
     }
 }
 
-//milk.java
+//✅ milk.java
 public class Milk extends BeverageDecorator{
     public Milk(Beverage beverage) {
         super(beverage);
@@ -429,7 +437,7 @@ public class Milk extends BeverageDecorator{
     }
 }
 
-//sugar.java
+//✅ sugar.java
 public class Sugar extends BeverageDecorator{
 
     public Sugar(Beverage beverage) {
@@ -447,7 +455,7 @@ public class Sugar extends BeverageDecorator{
     }
 }
 
-//Cream.java
+//✅ Cream.java
 public class Cream extends BeverageDecorator{
 
 
@@ -466,7 +474,7 @@ public class Cream extends BeverageDecorator{
     }
 }
 
-//실행클래스
+//✅ 실행클래스
 public class OrderCoffee {
     public static void main(String[] args){
 
@@ -489,25 +497,111 @@ public class OrderCoffee {
 
     }
 }
-
-
+// 실행결과
+// Coffee: $5.0
+// Coffee, Milk: $5.5
+// Coffee, Milk, Sugar: $5.8
+// Coffee, Milk, Cream: $7.5
 
 ```
 
-## 🧩 JAVA 데코레이터 패턴과 I/O Stream
+### ✔️ JAVA 데코레이터 패턴과 I/O Stream
 
-### userBuilder 개선
+I/O Stream이 대표적인 데코레이터 패턴이다.<br>
+bufferReader같은 경우, reader의 기능을 유지하면서 속도 빠르게 기능만 추가하는 것이고<br>
+Printwriter도 writer의 기능을 유지하면서 println, printf기능을 추가하는 것이다.<br>
 
-#### 👎🏻 기존 코드
+## 🧩 JAVA 전략 strategy 패턴
 
-#### 👌🏻 싱글턴 사용한 코드
+동적으로 **교체 가능한 전략**을 제공하고 객체 관계를 우연하게 만드는 디자인<br>
+골프칠 때 거리, 상황에 맞는 골프채를 고르는 것<br>
+변경이나 수정이 잦은 내부 정책 클래스에 주로 사용<br>
+상황마다 비즈니스 전략 바뀌는 경우<br>
+(백화점에서 시즌에 따라서 세일을 진행하거나, 가격 인상을 하는 경우)<br>
 
-## 🧩 JAVA 전략 패턴
+- 인터페이스<br>
+- setter<br>
+- 다형성<br>
 
-### userBuilder 개선
+### discount 코드에 전략 패턴 적용
 
-유저 객체 생성할 때 이름, 이메일 등 순서를 헷갈릴 수 있음
+신규 가입자/ 시즌 할인/ 친구 추천 할인 적용된 전략 패턴 코드 사용 <br>
 
-#### 👎🏻 기존 코드
+```java
+//Interface
+//✅ DiscountStrategy.java
+public interface DiscountStrategy {
+        double calculateDiscount(double amount);
+}
 
-#### 👌🏻 싱글턴 사용한 코드
+//✅ DiscountCaculator.java
+//계산기는 여기서
+public class DiscountCaculator {
+    private DiscountStrategy discountStrategy;
+
+    public void setDiscountStrategy(DiscountStrategy discountStrategy) {
+        this.discountStrategy = discountStrategy;
+    }
+
+    public double calculateDiscount(double amount) {
+        if (discountStrategy != null) {
+            return discountStrategy.calculateDiscount(amount);
+        } else {
+            return 0; // 할인 없음
+        }
+    }
+}
+
+//✅ NewCustomerDiscount.java
+//신규고객 할인
+public class NewCustomerDiscount implements DiscountStrategy{
+    @Override
+    public double calculateDiscount(double amount) {
+        return amount * 0.2; // 20% 할인
+    }
+}
+//✅ SeasonDiscount.java
+//시즌 할인
+public class SeasonDiscount implements DiscountStrategy{
+    @Override
+    public double calculateDiscount(double amount) {
+        return amount * 0.1;
+    }
+}
+//✅ FriendDiscount.java
+//친구추천 할인
+public class FriendDiscount implements DiscountStrategy{
+    @Override
+    public double calculateDiscount(double amount) {
+        return amount * 0.15;
+    }
+}
+//✅ StrategyTest.java
+//실행메소드
+public class StrategyTest {
+    public static void main(String[] args) {
+
+        DiscountCaculator calculator = new DiscountCaculator();
+
+        // 신규 가입자 할인
+        // 상황마다 각각 다른 전략
+        calculator.setDiscountStrategy(new NewCustomerDiscount());
+        double discount1 = calculator.calculateDiscount(10000);
+
+        System.out.println("신규 가입자에게 " + discount1+ "원 만큼 할인해 줍니다.");
+
+        //시즌 할인
+        calculator.setDiscountStrategy(new SeasonDiscount());
+        double discount2= calculator.calculateDiscount(10000);
+
+        System.out.println("시즌 할인으로 " + discount2+ "원 만큼 할인해 줍니다.");
+
+        //친구 할인
+        calculator.setDiscountStrategy(new FriendDiscount());
+        double discount3= calculator.calculateDiscount(10000);
+
+        System.out.println("친구 추천으로 " + discount3+ "원 만큼 할인해 줍니다.");
+    }
+}
+
+```

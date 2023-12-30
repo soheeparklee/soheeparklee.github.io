@@ -472,17 +472,6 @@ public class Client {
 ## ✅ UserDTO: Data Transfer Object
 
 ```java
-//✅ AdminUser.java
-class AdminUser extends User{
-    public AdminUser(String username){
-        super(username);
-    }
-
-    @Override
-    public String toString(){
-        return "AdminUser:" + getUsername();
-    }
-}
 
 //✅ User.java
 public class User {
@@ -504,6 +493,20 @@ public class User {
                 '}';
     }
 }
+
+//✅ AdminUser.java
+class AdminUser extends User{
+    public AdminUser(String username){
+        super(username);
+    }
+
+    @Override
+    public String toString(){
+        return "AdminUser:" + getUsername();
+    }
+}
+
+
 //✅ UserDTO.java
 public class UserDTO implements Serializable {
     private static final long serialVersionUID= 1L;
@@ -524,6 +527,7 @@ public class UserDTO implements Serializable {
         return role;
     }
 }
+
 //✅ client.java
 public class Client {
     public static void main(String[] args) {
