@@ -1,5 +1,5 @@
 ---
-title: 2023.DEC.25(MON) JAVA DAY 16
+title: 2023.DEC.22(FRI) JAVA DAY 15
 categories: [TIL(Today I Learned), SuperCoding_JAVA]
 tags: [todayilearned, til]
 ---

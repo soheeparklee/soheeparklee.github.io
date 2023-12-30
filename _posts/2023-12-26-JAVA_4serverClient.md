@@ -468,3 +468,156 @@ public class Client {
 
 
 ```
+
+## ✅ UserDTO: Data Transfer Object
+
+```java
+//✅ AdminUser.java
+class AdminUser extends User{
+    public AdminUser(String username){
+        super(username);
+    }
+
+    @Override
+    public String toString(){
+        return "AdminUser:" + getUsername();
+    }
+}
+
+//✅ User.java
+public class User {
+    //사용자로부터 유저명과 권한을 입력받고, 이를 서버로 전송합니다.
+    private String username;
+
+    public User(String username) {
+        this.username = username;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "username='" + username + '\'' +
+                '}';
+    }
+}
+//✅ UserDTO.java
+public class UserDTO implements Serializable {
+    private static final long serialVersionUID= 1L;
+
+    private String username;
+    private String role;
+
+    public UserDTO(String username, String role) {
+        this.username = username;
+        this.role = role;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public String getRole() {
+        return role;
+    }
+}
+//✅ client.java
+public class Client {
+    public static void main(String[] args) {
+        // 1. 유저 정보 입력 받습니다.
+        Scanner reader = new Scanner(System.in);
+        System.out.print("유저명을 입력하세요: ");
+        String username = reader.next();
+        System.out.print("권한을 입력하세요 (admin 또는 user): ");
+        String role = reader.next();
+        // 2. 서버에 연결
+        try(Socket socket = new Socket("localhost", 1234)){ // 서버연결
+            System.out.println("서버에 연결되었습니다.");
+
+            // TODO: 서버로 데이터를 보내기 위한 ObjectOutputStream 생성
+            OutputStream clientOutputStream= socket.getOutputStream();
+            ObjectOutputStream clientOOS= new ObjectOutputStream(clientOutputStream);
+
+            // TODO: 서버로부터 데이터를 받기 위한 InputStream 생성
+            InputStream clientInputStream= socket.getInputStream();
+            BufferedReader bufferedReader= new BufferedReader(new InputStreamReader(clientInputStream));
+
+            // TODO: UserDTO 생성 및 전송
+            UserDTO userDTO= new UserDTO(username, role);
+
+            // TODO 서버에 메시지 전송
+            clientOOS.writeObject(userDTO);
+            clientOOS.flush();
+            System.out.println("UserDTO sent to Server");
+
+            // TODO: 서버로부터 받은 응답 출력
+            String response = bufferedReader.readLine();
+            System.out.println("Server response:"+ response);
+
+            System.out.println("Client가 종료되었습니다.");
+
+            clientOOS.close();
+            bufferedReader.close();
+
+        } catch (UnknownHostException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+//✅ Server.java
+public class Server {
+    public static void main(String[] args) {
+
+        // 유저 대기리스트
+        List<User> userList = new ArrayList<>();
+
+        // 1. 서버 소켓 생성
+        try(ServerSocket serverSocket = new ServerSocket(1234)){
+            System.out.println("서버가 시작되었습니다.");
+
+            while(true) {
+                // TODO: 유저 Server 연결 필요합니다.
+                try (Socket clientSocket = serverSocket.accept()) {
+                    System.out.println("클라이언트가 연결되었습니다.");
+
+                    // TODO: 클라이언트로부터 전송된 UserDTO 수신
+                    InputStream clientInputStream= clientSocket.getInputStream();
+                    ObjectInputStream serverOIS= new ObjectInputStream(clientInputStream);
+                    UserDTO userDTO = (UserDTO) serverOIS.readObject();
+                    System.out.println("userDTO from client"+ userDTO);
+
+                    // TODO: UserDTO를 User 객체로 변환
+                    User user;
+                    if(userDTO.getRole().equals("admin")){
+                        user= new AdminUser(userDTO.getUsername());
+                    }else{
+                        user= new User(userDTO.getUsername());
+                    }
+
+                    // TODO: 유저등록
+                    userList.add(user);
+                    System.out.println("새로운 유저가 등록되었습니다. " + userList);
+
+                    // TODO: Client로 출력한 PrintWriter를 이용한 ServerOutputStream 출력
+                    OutputStream serverOutputStream= clientSocket.getOutputStream();
+                    PrintWriter printWriter= new PrintWriter(serverOutputStream, true);
+
+                    // TODO: Client 에 응답 출력
+                    printWriter.println("현재 유저 명단"+ userList);
+
+                } catch (ClassNotFoundException|IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+```
