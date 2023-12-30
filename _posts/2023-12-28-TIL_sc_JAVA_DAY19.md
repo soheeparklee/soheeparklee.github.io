@@ -1,17 +1,9 @@
 ---
-title: 2023.DEC.22(FRI) JAVA DAY 15
+title: 2023.DEC.28(THU) JAVA DAY 19
 categories: [TIL(Today I Learned), SuperCoding_JAVA]
 tags: [todayilearned, til]
 ---
 
-## ✅ Daily Report
+## ✅ serverClient DTO
 
-### 📌 **TO-DO LIST**
-
-- [x] submit github blog post
-- [x] lesson
-- [x] assigment:
-      <br>
-      <br>
-
-## ✅
+data transfer object
