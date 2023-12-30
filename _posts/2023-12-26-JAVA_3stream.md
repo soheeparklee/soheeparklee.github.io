@@ -287,6 +287,8 @@ skip(n): 처음 n개 요소 제외하고 stream 재생성 <br>
 요소를 특정 정렬 순서에 따라 생성 <br>
 특정 기준 안 주면 알파벳 순, 오름차순 <br>
 특정 순서를 지정하기 위해서는 **JAVA comparator** 람다 인터페이스 가지고 지정 <br>
+오름차순 `(s1, s2)->s1.getScore() - s2.getScore()` <br>
+내림차순 `.sorted((s1, s2)-> s2.getScore() - s1.getScore())`<br>
 
 ```java
         //💡 sorted()
@@ -425,17 +427,17 @@ public class ScoreTest {
         // List 제공
         List<Student> students = new ArrayList<>();
 
-        students.add(new Student("아이유", "여자", 95));
-        students.add(new Student("카리나", "여자", 100));
-        students.add(new Student("박보검", "남자", 92));
-        students.add(new Student("송중기", "남자", 90));
-        students.add(new Student("김태리", "여자", 85));
-        students.add(new Student("전정국", "남자", 88));
-        students.add(new Student("방탄소년단", "남자", 70));
-        students.add(new Student("이지은", "여자", 63));
-        students.add(new Student("윤아", "여자", 68));
-        students.add(new Student("하정우", "남자", 75));
-        students.add(new Student("공유", "남자", 80));
+        students.add(new Student("Kim", "여자", 95));
+        students.add(new Student("Park", "여자", 100));
+        students.add(new Student("Lee", "남자", 92));
+        students.add(new Student("Jun", "남자", 90));
+        students.add(new Student("Han", "여자", 85));
+        students.add(new Student("Kang", "남자", 88));
+        students.add(new Student("Song", "남자", 70));
+        students.add(new Student("Sin", "여자", 63));
+        students.add(new Student("Bang", "여자", 68));
+        students.add(new Student("Ha", "남자", 75));
+        students.add(new Student("Choi", "남자", 80));
 
         // 1. 90점 넘는 학생들 이름 구하기
         students.stream()
@@ -452,6 +454,29 @@ public class ScoreTest {
                 .skip(size/2)
                 .findFirst().orElseGet(() -> 0);
         System.out.println(medium);
+
+        //3. 남학생들 중 가장 낮은 성적을 가진 학생의 이름 출력하기
+        String boy= students.stream()
+        .filter((student)->student.getGender().equals("남자") )
+        .min((s1, s2)->s1.getScore() - s2.getScore())
+        .map((student)->student.getName())
+        .orElse("N/A");
+
+        //4. 여학생들 중 성적 상위 3명의 평균 성적 구하기
+            double girlCount= students.stream()
+            .filter((student)->student.getGender().equals("여자"))
+            .count();
+
+    double averageGirlStudents = girlCount<3 ? 0:
+                    students.stream()
+                    .filter((student)->student.getGender().equals("여자"))
+                    .sorted((s1, s2)-> s2.getScore() - s1.getScore())
+                    .limit(3)
+                    .mapToInt((student)-> student.getScore())
+                    .average()
+                    .orElse(0);
+
+    System.out.println(averageGirlStudents);
     }
 }
 
