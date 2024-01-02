@@ -6,20 +6,20 @@ tags: [optional] # TAG names should always be lowercase
 
 ## ✅ NPE(= Null Point Exception)
 
-Java reference type은 모두 Null 로 초기화되어 있다.
-따라서 NPE는 언제 어디서나 발생 가능
+Java reference type은 모두 Null 로 초기화되어 있다. <br>
+따라서 NPE는 언제 어디서나 발생 가능 <br>
 
 ### NPE 발생하는 경우
 
-1. null로 된 값의 메소드나 필드 참조 시 NPE 발생
-2. String array의 기본값이 null이라서 NPE 발생
+1. null로 된 값의 메소드나 필드 참조 시 NPE 발생 <br>
+2. String array의 기본값이 null이라서 NPE 발생 <br>
 
 ### NPE 해결 방안
 
-1. NPE 발생 시, catch문 사용자 정의 예외 던지기
-2. NPE 발생 시, catch 문 기본값 사용하기
-3. JAVA optinal: null방지 메소드를 지원하는 wrapper 클래스
-   wrapper 클래스: 기본 클래스 호환 + 특정한 기능을 지원하는 클래스
+1. NPE 발생 시, catch문 사용자 정의 예외 던지기 <br>
+2. NPE 발생 시, catch 문 기본값 사용하기 <br>
+3. JAVA optinal: null방지 메소드를 지원하는 wrapper 클래스 <br>
+   wrapper 클래스: 기본 클래스 호환 + 특정한 기능을 지원하는 클래스 <br>
 
 ## ✅ JAVA optinal의 메소드
 
