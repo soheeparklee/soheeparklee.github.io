@@ -1,5 +1,5 @@
 ---
-title: 2024.JAN.3(WED) JAVA DAY 23
+title: 2024.JAN.03(WED) JAVA DAY 23
 categories: [TIL(Today I Learned), SuperCoding_JAVA]
 tags: [todayilearned, til, sql, databse]
 ---
