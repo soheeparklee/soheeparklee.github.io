@@ -1,0 +1,150 @@
+---
+title: RDB Table 관계
+categories: [Data, SQL]
+tags: [] # TAG names should always be lowercase
+---
+
+## ✅ 관계형 데이터 베이스 특징
+
+### ☑️ Optionality 관계의 선택성
+
+#### Mandatory(|) 🆚 Optional (O)
+
+두 테이블 간 관계 설정 시, 페어링 필수 여부 <br>
+**관계의 중요성**과 비슷한 의미 <br>
+예를 들어 부모는 자식을 가질 수도, 안 가질 수도 있지만 <br>
+자식은 꼭 부모를 가져야 한다. <br>
+
+- 부모는 자식을 가질 수 있다. O <br>
+- 자식은 부모를 가져야 한다. | <br>
+
+### ☑️ Cardinality 관계의 기수성
+
+#### One(0 또는 1) 🆚 Many (0이상 또는 1이상)
+
+두 테이블 간 관계 설정 시, 참여 멤버 수 표현z <br>
+**관계의 다중성**과 비슷한 의미 <br>
+부모는 자식을 여러명 가질 수 있지만, <br>
+자식은 부모를 여러명 가질 수 없음 <br>
+
+- 부모는 여러 자식들을 가질 수 있다. <br>
+- 자식은 한 부모를 가져야 한다. <br>
+
+## ✅ PRIMARY KEY
+
+기본 키<br>
+
+- NOT NULL<br>
+- UNIQUE 다른 row와 중복될 수 없다, 단일 키<br>
+
+## ✅ FOREIGN KEY
+
+다른 테이블의 PRIMARY KEY, UNIQUE 필드와 대응하여 테이블 간의 **참조 관계**를 표현하는 속성 <br>
+`FOREIGN KEY(customer_id) PREFERENCES customer(customer_id)` <br>
+`FOREIGN KEY(현재 테이블의 필드) PREFERENCES 그 테이블명(그 테이블의 필드)` <br>
+
+## ✅ RDB Table 관계
+
+### 💡 RDB Table TIP
+
+1. FOREIGN KEY는 을에 적는다. <br>
+   을이란 ❓ optional인 관계, many가 을 <br>
+2. NOT NULL <br>
+   optional을 나타낼 수 있다. <br>
+3. UNIQUE <br>
+   UNIQUE 사용유무로 1:1과 1:N 을 구별할 수 있다. <br>
+
+### ☑️ 1:1
+
+<img width="509" alt="스크린샷 2024-01-03 오후 4 51 42" src="https://github.com/soheeparklee/portfolioWebsite_dreamcoding/assets/97790983/739cd2b8-98dd-42a9-89dd-9dc183a01d55">
+
+- 한 user는 하나의 address만 **가질 수 있다.** <br>
+- 한 address는 하나의 user를 **가져야 한다.** <br>
+  그러니까 user이 갑이고, address가 을이다. <br>
+  FOREIGN KEY는 을에 적는다. <br>
+  따라서 address에 FOREIGN KEY 적는다. <br>
+
+```SQL
+CREATE TABLE users(
+id INT AUTO_INCREMENT PRIMARY KEY,
+user_name VARCHAR(50),
+enabled Boolean
+);
+
+CREATE TABLE address(
+addr_id INT AUTO_INCREMENT PRIMARY KEY,
+user_id INT UNIQUE NOT NULL, -- 1:1
+street VARCHAR(100),
+city VARCHAR(50),
+state VARCHAR(50),
+FOREIGN KEY(user_id) REFERENCES users(id)
+);
+
+--DDL
+--CREATE TABLE `address` (
+--  `addr_id` int NOT NULL AUTO_INCREMENT,
+--  `user_id` int NOT NULL,
+--  `street` varchar(100) DEFAULT NULL,
+--  `city` varchar(50) DEFAULT NULL,
+--  `state` varchar(50) DEFAULT NULL,
+--  PRIMARY KEY (`addr_id`),
+--  UNIQUE KEY `user_id` (`user_id`),
+--  CONSTRAINT `address_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
+--) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+```
+
+### ☑️ 1:N
+
+<img width="408" alt="스크린샷 2024-01-03 오후 4 53 37" src="https://github.com/soheeparklee/portfolioWebsite_dreamcoding/assets/97790983/5bcd2f10-e867-40f9-923a-3eae3c1222af">
+
+- 하나의 책은 여러 리뷰를 **가질 수 있다.** <br>
+- 리뷰는 하나의 책을 **가져야 한다.** <br>
+
+```SQL
+CREATE TABLE book(
+	id INT AUTO_INCREMENT PRIMARY KEY,
+	book_name VARCHAR(50) NOT NULL,
+    author VARCHAR(50) NOT NULL,
+    content LONGTEXT
+);
+
+CREATE TABLE review(
+	reviews_id INT AUTO_INCREMENT PRIMARY KEY,
+    book_id INT NOT NULL, -- 1:N thus, does not need to be unique
+    user_name VARCHAR(30),
+    content MEDIUMTEXT,
+    FOREIGN KEY(book_id) REFERENCES book(id)
+);
+```
+
+### ☑️ N:M
+
+<img width="335" alt="스크린샷 2024-01-03 오후 4 55 38" src="https://github.com/soheeparklee/portfolioWebsite_dreamcoding/assets/97790983/56296909-4b90-49f5-8a3f-9546557ac1b7">
+
+- 한 user는 여러 책을 **살 수 있다.** <br>
+- 한 책은 여러 user에게 **판매될 수 있다.** <br>
+  <br>
+  그런데 N:M을 두면 중복 문제가 많이 생겨서 연결 테이블(mapping table)을 두는 것이 일반적이다. <br>
+
+```SQL
+-- mapping table
+CREATE TABLE users_book_purchase( -- mappingTable
+	id INT AUTO_INCREMENT PRIMARY KEY,
+    book_id INT NOT NULL, -- 1:N, thus not unique
+    user_id INT NOT NULL, -- 1:N
+    purchase_date DATETIME NOT NULL,
+    price INT,
+    FOREIGN KEY(user_id) REFERENCES users(id),
+    FOREIGN KEY(book_id) REFERENCES book(id)
+);
+```
+
+## ✅ 참조 무결성
+
+데이터 간 항상 일관된 값/관계가 유지되어야 한다. <br>
+<br>
+
+1. FK가 참조하는 table의 순서가 맞지 않으면 생성, 삭제 실패 <br>
+2. FK가 참조하는 값이 없으면 insert 실패 <br>
+   <br>
+   💥 table A를 참조하는 table B가 있는데 table A를 삭제해버리면 실행 안 된다. ❌ <br>
