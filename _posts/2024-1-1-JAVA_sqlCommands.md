@@ -96,13 +96,13 @@ DB데이터(=레코드) 수준의 작업 <br>
 
 ## ☑️ SQL commands exmaple
 
-```SQL
+```sql
 AUTO_INCREMENT //자동 증강
 PRIMARY KEY //기본키
 NOT NULL //비울 수 없음
 ```
 
-```SQL
+```sql
 CREATE TABLE member(
 	member_id INT AUTO_INCREMENT PRIMARY KEY,
 	  mem_name VARCHAR(10) NOT NULL,
@@ -122,21 +122,21 @@ DESC member; -- add comment like this
 
 ✔️ add column <br>
 
-```java
+```sql
 ALTER TABLE netflix
 ADD COLUMN release_date DATE AFTER movie_title; -- add column
 ```
 
 ✔️ update column <br>
 
-```java
+```sql
 ALTER TABLE netflix
 MODIFY COLUMN movie_director VARCHAR(100) NOT NULL; -- update column
 ```
 
 ✔️ delete column <br>
 
-```java
+```sql
 ALTER TABLE netflix
 DROP COLUMN movie_script; -- delete column
 ```
@@ -150,7 +150,7 @@ TRUNCATE: table의 내용물 삭제 <br>
 
 #### 💡 INSERT
 
-```SQL
+```sql
 INSERT INTO member (mem_name, mem_number, addr, phone, height, enroll_date)
 VALUES ('Kim', 1, 'Seoul', 010, 160, '2024-01-01 10:00:00'),
 		('Park', 3, 'Gimpo', 010, 180, '2024-01-01 11:00:00'),
@@ -163,7 +163,7 @@ VALUES ('Kim', 1, 'Seoul', 010, 160, '2024-01-01 10:00:00'),
 
 WHERE 없으면 다 수정됨... <br>
 
-```SQL
+```sql
 UPDATE member
 SET addr= 'NewYork'
 WHERE mem_name= 'Kim';
@@ -176,7 +176,7 @@ SET SQL_SAFE_UPDATES = 0;
 WHERE 없으면 다 지워짐... <br>
 만약 WHERE 안 쓰면 TRUNCATE랑 같음 <br>
 
-```SQL
+```sql
 DELETE FROM member WHERE mem_name= 'Lee';
 ```
 
@@ -215,7 +215,7 @@ DROP: 모든 행과 테이블 삭제 <br>
 - LIKE\_\_
   글자수 제한 있음
 
-```SQL
+```sql
 SELECT *
 FROM group_singer
 WHERE height >= 180;
@@ -234,7 +234,7 @@ WHERE addr IN ('경기', '경남');
 
 ```
 
-```SQL
+```sql
 SELECT *
 FROM group_singer
 WHERE mem_name LIKE '아'; --아이유, 아일랜드 등등
@@ -250,7 +250,7 @@ WHERE mem_name LIKE '아__';  -- 아이유(아 뒤에 2글자만 올 수 있음)
 
 ##### ORDER BY
 
-```SQL
+```sql
 SELECT *
 FROM group_singer
 WHERE mem_number < 6
@@ -265,14 +265,14 @@ ORDER BY debut_date DESC;
 
 ##### LIMIT
 
-```SQL
+```sql
 SELECT mem_name, debut_date
 FROM group_singer
 ORDER BY debut_date ASC
 LIMIT 3;
 ```
 
-```SQL
+```sql
 SELECT mem_name, debut_date
 FROM group_singer
 WHERE mem_number > 4
@@ -285,7 +285,7 @@ LIMIT 5,3; --5번쨰부터 3개 가져오기
 DISTINCT는 SELECT뒤에서 쓰인다. <br>
 몇 개의 선택지가 있는지 확인할 떄 유용하다. <br>
 
-```SQL
+```sql
 SELECT DISTINCT  addr
 FROM group_singer
 ORDER BY addr; --경기, 서울, 경남, 전남, 충북 출력
@@ -298,7 +298,7 @@ ORDER BY addr; --경기, 서울, 경남, 전남, 충북 출력
 데이터를 모아서 보여준다. <br>
 구매이력에서 이 사람이 여러 차례 물건을 샀는데(GROUP BY), 몇 번 샀는지 다 더하기(SUM) <br>
 
-```SQL
+```sql
 SELECT mem_id, SUM(amount)
 FROM buy_history
 GROUP BY mem_id;
@@ -314,7 +314,7 @@ GROUP BY mem_id;
 
 ##### AVG
 
-```SQL
+```sql
 SELECT mem_id, AVG(price * amount) AS average
 FROM buy_history
 GROUP BY mem_id;
@@ -324,7 +324,7 @@ GROUP BY mem_id;
 
 개수 세어 준다. <br>
 
-```SQL
+```sql
 SELECT COUNT(*) -- mem001이 총 몇 개 샀는지 개수 세어 준다.
 FROM buy_history
 WHERE mem_id = 'mem001';
@@ -340,7 +340,7 @@ GROUP BY mem_id;
 **WHERE절이 GROUP BY보다 먼저 실행되기 때문에 생기는 문제 해결** <br>
 HAVING문으로 조건식을 특정할 수 있다. <br>
 
-```SQL
+```sql
 -- SELECT mem_id, SUM(amount * price) AS total_price
 -- FROM buy_history
 -- WHERE SUM(amount * price) > 10000; --WHERE이 GROUPBY보다 먼저 실행되서 이 코드는 불가능

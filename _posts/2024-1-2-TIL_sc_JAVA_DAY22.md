@@ -6,7 +6,7 @@ tags: [todayilearned, til, sql, databse]
 
 ## ✅ CREATE, INSERT INTO, UPDATE
 
-```SQL
+```sql
 CREATE TABLE product(
 	product_name CHAR(4),
     price INT,
