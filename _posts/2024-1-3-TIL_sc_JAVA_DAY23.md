@@ -24,7 +24,7 @@ SQL의 데이터 타입에는 VARCHAR, TEXT, BOOLEAN 등의 가변형이 있다.
 
 #### ✅ 인사팀에 속한 직원들 중 경력(experience)이 3년 이상인 직원들의 이름(name)과 경력(experience)을 조회하세요. 결과는 경력(experience)이 높은 순서대로 정렬되어야 합니다.
 
-```SQL
+```sql
 SELECT name, experience
 FROM employees
 WHERE department = '인사팀'
@@ -35,7 +35,7 @@ ORDER BY experience DESC;
 
 #### ✅ 각 부서별로 평균 연봉(salary)과 최고 연봉(salary)을 조회하세요. 결과는 부서 이름을 가나다 순으로 정렬되어야 합니다. ( 단, 평균은 1의 자리 숫자로 반올림 )
 
-```SQL
+```sql
 SELECT department, AVG(salary)
 FROM employees
 GROUP BY department

@@ -4,7 +4,7 @@ categories: [Data, SQL]
 tags: [sql, insert, select, where, order, having, ddl, dml] # TAG names should always be lowercase
 ---
 
-SQL은 데이터 지향적 모델링, 행위가 없음 <br>
+🆚 SQL은 데이터 지향적 모델링, 행위가 없음 <br>
 반면 JAVA는 객체 지향적(또는 행위 지향) 모델링<br>
 <br>
 ✔️ SQL에서는 DB를 schema라고 부른다.<br>
@@ -21,13 +21,13 @@ SQL은 데이터 지향적 모델링, 행위가 없음 <br>
 MYSQL 데이터형식이 다르면 그만큼 RAM/DISK 낭비 <br>
 효율차이가 심해지므로 데이터 형식을 맞춰주는 것이 중요하다. <br>
 
-가변형 타입: 좀 넉넉하게 데이터 타입 주었다가 실제로는 더 작은 데이터가 들어오면 알아서 용량을 줄인다. <br>
+⭐️ **가변형 타입:** 좀 넉넉하게 데이터 타입 주었다가 실제로는 더 작은 데이터가 들어오면 알아서 용량을 줄인다. <br>
 
 - Varchar
 - Text
 - binary
 
-#### Char/String
+#### ✔️ Char/String
 
 - Varchar <br>
   길이가 고정되지 않은 데이터 <br>
@@ -43,11 +43,11 @@ MYSQL 데이터형식이 다르면 그만큼 RAM/DISK 낭비 <br>
   Varchar, Char로 커버할 수 없는 글자 수 <br>
   영화 리뷰, 자기소개서 등 <br>
 
-#### Numeric
+#### ✔️ Numeric
 
 자바랑 비슷 int
 
-#### Date/Time
+#### ✔️ Date/Time
 
 - DATE `YYYY-MM-DD` <br>
 - TIME `HH-MM-SS` <br>
@@ -58,11 +58,11 @@ MYSQL 데이터형식이 다르면 그만큼 RAM/DISK 낭비 <br>
   현재 시간대로 변경되어 저장 <br>
   1970년부터 2038년까지만 가능 <br>
 
-#### Blob
+#### ✔️ Blob
 
 사진, 동영상 저장 위함 <br>
 
-#### Binary
+#### ✔️ Binary
 
 - binary <br>
 
@@ -76,11 +76,11 @@ DB, schema 수준의 작업<br>
 table 생성, 삭제, 컬럼 변경...<br>
 컬럼을 수정하거나...<br>
 
-- CREATE: DB 생성
-- ALTER
-- DROP
-- RENAME
-- TRUNCATE
+`CREATE`: DB 생성 <br>
+`ALTER` <br>
+`DROP` <br>
+`RENAME` <br>
+`TRUNCATE` <br>
 
 ### ✔️ DML
 
@@ -89,10 +89,10 @@ DB데이터(=레코드) 수준의 작업 <br>
 데이터를 다루는 명령어 <br>
 데이터 조회, 삽입, 업데이트, 삭제 등... <br>
 
-- SELECT <br>
-- INSERT <br>
-- UPDATE <br>
-- DELETE <br>
+`SELECT` <br>
+`INSERT` <br>
+`UPDATE` <br>
+`DELETE` <br>
 
 ## ☑️ SQL commands exmaple
 
@@ -116,7 +116,7 @@ CREATE TABLE member(
 DESC member; -- add comment like this
 ```
 
-### ✔️ DDL
+### ☑️ DDL
 
 #### 💡 ALTER
 
@@ -146,7 +146,7 @@ DROP COLUMN movie_script; -- delete column
 DROP: table 자체를 완전 삭제 <br>
 TRUNCATE: table의 내용물 삭제 <br>
 
-### ✔️ DML
+### ☑️ DML
 
 #### 💡 INSERT
 
@@ -206,7 +206,7 @@ DROP: 모든 행과 테이블 삭제 <br>
 - ORDER BY
 - LIMIT
 
-#### WHERE, BETWEEN, IN, LIKE
+#### ✔️ WHERE, BETWEEN, IN, LIKE
 
 - BETWEEN
 - IN
@@ -244,11 +244,11 @@ FROM group_singer
 WHERE mem_name LIKE '아__';  -- 아이유(아 뒤에 2글자만 올 수 있음)
 ```
 
-#### ORDER BY, ASC, DESC, LIMIT, DISTINCT
+#### ✔️ ORDER BY, ASC, DESC, LIMIT, DISTINCT
 
 ❗️ 적는 순서에 유의하자! <br>
 
-##### ORDER BY
+##### ➖ ORDER BY
 
 ```sql
 SELECT *
@@ -263,7 +263,7 @@ ORDER BY debut_date DESC;
 --WHERE mem_number < 6;
 ```
 
-##### LIMIT
+##### ➖ LIMIT
 
 ```sql
 SELECT mem_name, debut_date
@@ -280,7 +280,7 @@ ORDER BY debut_date ASC
 LIMIT 5,3; --5번쨰부터 3개 가져오기
 ```
 
-##### DISTINCT
+##### ➖ DISTINCT
 
 DISTINCT는 SELECT뒤에서 쓰인다. <br>
 몇 개의 선택지가 있는지 확인할 떄 유용하다. <br>
@@ -291,9 +291,9 @@ FROM group_singer
 ORDER BY addr; --경기, 서울, 경남, 전남, 충북 출력
 ```
 
-#### GROUP BY, SUM, AVERAGE, HAVING, COUNT
+#### ✔️ GROUP BY, SUM, AVERAGE, HAVING, COUNT
 
-##### GROUP BY
+##### ➖ GROUP BY
 
 데이터를 모아서 보여준다. <br>
 구매이력에서 이 사람이 여러 차례 물건을 샀는데(GROUP BY), 몇 번 샀는지 다 더하기(SUM) <br>
@@ -312,7 +312,7 @@ FROM buy_history
 GROUP BY mem_id;
 ```
 
-##### AVG
+##### ➖ AVG
 
 ```sql
 SELECT mem_id, AVG(price * amount) AS average
@@ -320,7 +320,7 @@ FROM buy_history
 GROUP BY mem_id;
 ```
 
-##### COUNT
+##### ➖ COUNT
 
 개수 세어 준다. <br>
 
@@ -334,7 +334,7 @@ FROM buy_history
 GROUP BY mem_id;
 ```
 
-##### HAVING
+##### ➖ HAVING
 
 특정 그룹 핑 데이터 특정하기 <br>
 **WHERE절이 GROUP BY보다 먼저 실행되기 때문에 생기는 문제 해결** <br>
