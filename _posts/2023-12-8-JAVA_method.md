@@ -78,6 +78,38 @@ public static void main(String[] args) {
         }
 ```
 
+## ✅ instance를 parameter로 받을 수도 있음
+
+⭐️ **instance**는 **reference type**
+
+- 그래서 값이 변경될 경우 instance 원본의 값이 변경됨 주의!<br>
+- 같은 클래스의 인스턴스라도 필드의 값은 별개임!<br>
+
+```java
+//Taegwondo.java
+public class Taegwondo {
+    //constructor없음. 왜냐하면 이미 instance의 기본값이 정해져 있으니까.
+    double hp = 50;
+    int attack = 8;
+    double defense = 0.2;
+    //공격하는 메소드
+    void attack (Taegwondo enemy) { // 💡 다른 슬라임의 인스턴스를 인자로 받음
+        enemy.hp -= attack * (1 - enemy.defense);
+    }
+}
+
+// 선수1이 선수2를 공격
+
+		Taegwondo player1 = new Taegwondo();
+        Taegwondo player2 = new Taegwondo();
+
+        player1.attack(player2);
+//result:
+//player1 hp:50 attack: 8 defense:0.2
+//player2 hp:50-8*0.8= 43.6 attack: 8 defense:0.2
+//instance is reference type
+```
+
 ## ✅ 두 개 이상의 값을 return하고 싶다면? ➡️ 배열 사용
 
 배열을 반환하는 메소드도 가능
@@ -136,7 +168,14 @@ public static void main(String[] args) {
 ## ✅ 메소드 오버로딩
 
 같은 메소드 이름으로 다른 parameter받기
+이름이 같더라도 **매개변수**의 **개수** 또는 **타입**이 다르면 메소드 오버로딩이 가능하다.
 같은 성질의 작업을 정의하는데(더하기) 서로 다른 자료형의 값들로 할 때(different datatype, different parameter)
+
+### ⭐️ 메소드 오버로딩 조건
+
+1. 메소드 이름이 같아야 한다.
+2. 매개변수의 개수 또는 타입이 달라야 한다.
+3. return 자료형은 같아야 한다.
 
 ```java
 public static void main(String[] args) {
@@ -216,9 +255,5 @@ modifyIntArg(oneOfintNums); // 그래도 intNums배열 출력해보면 intNums: 
 modifyAryElem(intNums); //intNums: [1, 3, 3]
 
 //reference type의 경우 원본이 아예 바뀌어 버린 것을 볼 수 있음.
-
-```
-
-```java
 
 ```

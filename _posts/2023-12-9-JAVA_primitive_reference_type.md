@@ -9,6 +9,7 @@ tags: [primitivetype, referencetype] # TAG names should always be lowercase
 primitive type은 값 자체를 바꾼다. <br>
 그래서 바꾼 값num2는 num1값인 1이 된다.<br>
 literal은 유일한 상수이기 때문에 항상 값 자체가 복사됨<br>
+**read only:** 따라서 원본이 아닌 복사본을 변경한 것이기 때문에 원본에는 아무런 영향을 미치지 못한다. <br>
 
 ####
 
@@ -30,10 +31,12 @@ primitive type은 값을 복사해서 넣어준다. 그래서 두 변수의 값�
 
 ## 💡 Reference Type
 
-Reference Type은 다르다. <br>
-Reference Type은 값 자체를 넣어주는 것이 아니라, 값이 저장되어 있는 장소를 알려준다. <br>
+Reference Type은 **인스턴스의 주소**를 저장 <br>
+Reference Type은 값 자체를 넣어주는 것이 아니라, **값이 저장되어 있는 장소**를 알려준다. <br>
 new로 만들어진 친구들은 모두 객체 <br>
 객체는 다 새로 만들어 낸 물건, 서로 주소를 공유한다. <br>
+
+**read & write:** 변수의 원본 값을 읽고 원본의 값을 변경도 할 수 있다.
 
 #### reference types
 

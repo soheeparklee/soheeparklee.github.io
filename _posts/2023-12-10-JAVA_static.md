@@ -1,13 +1,18 @@
 ---
-title: Class_Static
+title: Static
 categories: [JAVA, JAVA_Basics]
 tags: [static, instance, local] # TAG names should always be lowercase
 ---
 
 ## ✅ static
 
+`클래스 이름.static 변수 이름` <br>
+<br>
+
 static(정적)은 마치 본사의 정보와 기능을 정의해 두는 것과 같다. <br>
-모든 인스턴스마다 동일하게 가지고 있을 것들에 대해서 사용 <br>
+모든 인스턴스마다 **동일하게** 가지고 있을 것들에 대해서 사용 <br>
+모든 인스턴스들이 **공통적인 값**을 유지해야 하는 속성<br>
+모든 인스턴스가 **공통된 저장공간(변수)**를 공유하게 된다. <br>
 인스턴스들이 값을 바꿀 수 있음. <br>
 
 ### ☑️ static 변수의 의미
@@ -18,15 +23,31 @@ static(정적)은 마치 본사의 정보와 기능을 정의해 두는 것과 �
 🟰 프로그램 실행 시, 이미 생성되어 있음<br>
 🟰 인스턴스 생성 전 정의되어 있음.<br>
 🟰 그래서 모든 인스턴스들이 접근 가능하다.<br>
-따로 `new`와 `constructor`로 인스턴스를 생성하지 않아도 바로바로 불러와서 사용 가능하다 <br>
+따로 `new`와 `constructor`로 **인스턴스를 생성하지 않아도** 바로바로 불러와서 사용 가능하다 <br>
 <br>
 
 ## ☑️ instance 변수 🆚 static 변수
 
-인스턴스의 멤버 변수 앞에는 `this`붙일 수 있지만, ⭕️ <br>
+1️⃣ instance 변수는 인스턴스를 생성한 다음에 불러올 수 있다. <br>
+static 변수는 인스턴스 생성하지 않아도 바로바로 불러올 수 있다. <br>
+2️⃣ 인스턴스는 독립적인 공간을 가지므로, 서로 다른 값을 가지지만
+static 변수는 모든 인스턴스가 공통적인 값을 유지해야 할 때 사용한다. <br>
+3️⃣ 인스턴스의 멤버 변수 앞에는 `this`붙일 수 있지만, ⭕️ <br>
 static 변수 앞에서는 붙이지 않는다. ❌ <br>
-instance는 static의 field, method를 사용할 수 있지만 ⭕️ <br>
+4️⃣ instance는 static의 field, method를 사용할 수 있지만 ⭕️ <br>
 static은 instance의 field, method를 사용할 수 없다. ❌ <br>
+<br>
+
+⭐️ static 변수가 instance 변수를 참조 또는 호출하고자 할 때에는 인스턴스를 생성해야 한다. <br>
+인스턴스 멤버가 존재하는 시점에 클래스 멤버는 항상 존재하지만, <br>
+클래스 멤버가 존재하는 시점에 인스턴스 멤버가 존재하지 **않을 수도** 있기 때문이다. <br>
+<br>
+
+따라서 instance 변수는 인스턴스 생성 없이도 static 변수 호출 가능 <br>
+그러나, static 변수가 instance 변수를 참조 또는 호출하고 싶으면 인스턴스 생성 해야만 함! <br>
+<br>
+인스턴스 멤버가 인스턴스 멤버 호출하는데는 제약 없음 <br>
+인스턴스 멤버가 있다는 것이 곧 인스턴스가 생성되어 있다는 것을 의미하므로 <br>
 
 ## ☑️ JAVA static 변수/메소드
 
@@ -110,3 +131,13 @@ public static void main(String[] args) {
 
     }
 ```
+
+## ✅ static method
+
+class method(🟰 static method)도 static이므로 객체를 생성하지 않고 호출 가능하다. <br>
+static method는 인스턴스 변수를 사용할 수 없다. <br>
+
+### 🆚 static method, instance method
+
+static method: 인스턴스와 관계 없는(인스턴스 변수나 인스턴스 메서드를 사용하지 않는) 메서드<br>
+instance method: 인스턴스 변수와 관련된 작업을 하는, 메서드의 작업을 수행하는데 인스턴스 변수를 필요로 하는 메서드<br>

@@ -1,5 +1,5 @@
 ---
-title: Class_Instance/ Object/ this, constructor, getter, setter
+title: Instance/ Object/ this, constructor, getter, setter
 categories: [JAVA, JAVA_Basics]
 tags: [this, object, instance, getter, setter, constructor] # TAG names should always be lowercase
 ---
@@ -107,24 +107,55 @@ public static void main(String[] args) {
 
 ## ✅ constructor
 
-### ✔️ 본사에서 지점을 내는 동시에 지점의 field, method를 정의할 수도 있음.
+### 📍 **constructor 생성자:** 인스턴스 초기화 메소드
 
-#### 📍 **constructor 생성자:** 인스턴스를 만드는 메소드
+인스턴스 생성시 실행될 작업을 하기 위해서
 
 - 이름: 해당 클래스랑 똑같 🟰 <br>
 - return값 없음❌(해당 클래스 타입의 인스턴스 반환) <br>
 - parameter이 있다면 parameter으로 멤버 변수의 값을 초기화한다. <br>
 - new 연산자와 함께 사용되어 인스턴스를 반환 <br>
+  ⭐️ 이 때 new가 인스턴스를 생성하는 것이지, 생성자가 인스턴스를 생성하는 것은 아니다.
 - `OliveYoung store1 = new OliveYoung(1, "강남");`I() <br>
 - 내가 자동으로 생성하기 위해서는 `command` + `N` <br>
 - 코드에 작성하지 않아도 컴파일러가 자동으로 생성(내가 작성하지 않았다고 생성자가 없는게 아님.) <br>
   <br>
 
-#### 📍 **this :** 생성될 인스턴스를 가리킴
+### 📍 **this :** 생성될 인스턴스를 가리킴
 
+생성자에서 다른 생성자 호출하기
+this는 참조변수로, 인스턴스 자신을 가리틴다.
+
+- 생성자의 이름으로 클래스 이름 대신 this를 사용한다.
+- 한 생성자에서 다른 생성자를 호출할 떄는 반드시 첫 번째 줄에서만 호출이 가능하다.
 - `no`, `name`에 `this`붙인 것과 같음
 
-#### ⌨️ constructor 생성자 본사 코드 `OliveYoung.java` ⌨️ 바로바로 instance 생성해서 no, name 넣기
+```java
+class Car{
+    String color;
+    String gearType;
+    int door;
+
+    Car(){
+        this("white", "auto", 4);
+    }
+
+    Car(String color){
+        this(color, "auto", 4);
+    }
+
+    Car(String color, String gearType, int door){
+        this.color= color;
+        this.gearType= gearType;
+        this.door= door;
+    }
+
+}
+```
+
+#### ✔️ 매개변수 받는 constructor
+
+`OliveYoung.java` ⌨️ 바로바로 instance 생성해서 no, name 넣기
 
 instance가 가질 field, method를 class 코드에서 바로 정의<br>
 생성자도 하나의 method이다.<br>
@@ -163,44 +194,7 @@ public static void main(String[] args) {
     }
 ```
 
-## ☑️ instance를 parameter로 받는 method
-
-#### ⭐️ **instance**는 **reference type**
-
-- 그래서 값이 변경될 경우 instance 원본의 값이 변경됨 주의!<br>
-- 같은 클래스의 인스턴스라도 필드의 값은 별개임!<br>
-
-#### ⌨️ taegwondo class 정의 `Taegwondo.java`
-
-```java
-public class Taegwondo {
-    //constructor없음. 왜냐하면 이미 instance의 기본값이 정해져 있으니까.
-    double hp = 50;
-    int attack = 8;
-    double defense = 0.2;
-    //공격하는 메소드
-    void attack (Taegwondo enemy) { // 💡 다른 슬라임의 인스턴스를 인자로 받음
-        enemy.hp -= attack * (1 - enemy.defense);
-    }
-}
-```
-
-#### ⌨️ 선수1이 선수2를 공격
-
-```java
-		Taegwondo player1 = new Taegwondo();
-        Taegwondo player2 = new Taegwondo();
-
-        player1.attack(player2);
-//result:
-//player1 hp:50 attack: 8 defense:0.2
-//player2 hp:50-8*0.8= 43.6 attack: 8 defense:0.2
-//instance is reference type
-```
-
-## ☑️ array를 parameter로 받는 method
-
-#### ⌨️ 배열 받는 constructor
+#### ✔️ constructor가 배열을 받을 수도 있음
 
 ```java
 public class IntArrayInfo {
@@ -218,11 +212,7 @@ public class IntArrayInfo {
             }
             // 소수부를 잃지 않도록 먼저 1.0을 곱하여 double로 만듦
 }
-```
-
-#### ⌨️ 배열을 입력하고, 배열을 instance로 선언하고 instance의 field 받아오기
-
-```java
+//배열을 입력하고, 배열을 instance로 선언하고 instance의 field 받아오기
 public static void main(String[] args) {
         //배열 받기
         int[] ary1= {1,2,3,4,5};
@@ -235,6 +225,20 @@ public static void main(String[] args) {
       System.out.print(ary1Avg);
 
     }
+```
+
+### 📍 생성자 이용해서 인스턴스 복사하기
+
+현재 사용하고 있는 인스턴스와 같은 상태를 가지는 인스턴스 만들기
+복사하면 서로 족립적으로 메모리 공간에 존재하는 별도의 인스턴스이므로 c1이 변경되어도 c2는 영향을 받지 않는다.
+
+```java
+class CarTest{
+    public static void main(String[] args){
+        Car c1= new Car();
+        Car c2= new Car(c1); //c1복사,
+    }
+}
 ```
 
 ## ✅ Getter and Setter

@@ -1,7 +1,7 @@
 ---
 title: Data Type
 categories: [JAVA, JAVA_Basics]
-tags: [] # TAG names should always be lowercase
+tags: [bit, byte, float, double, casting, implicit, explicit] # TAG names should always be lowercase
 ---
 
 ## ✅ 정수의 크기
