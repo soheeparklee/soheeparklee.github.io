@@ -1,5 +1,5 @@
 ---
-title: ⭐️Abstract 추상화
+title: <Abstract>
 categories: [JAVA, JAVA_Basics]
 tags: [abstract, override] # TAG names should always be lowercase
 ---
@@ -10,10 +10,12 @@ tags: [abstract, override] # TAG names should always be lowercase
 코드도 마찬가지, 물고기에게는 많은 특징이 있지만 필드, 메소드에서 모든 특징을 정의하지 않음. <br>
 지금 함수에 필요한 특징만 정의하고 인스턴스로 선언함. ➡️ 추상화 <br>
 
+> 메서드의 선언부만 작성하고, 실제 수행 내용은 나중에 구현
+
 ## ✅ abstract class
 
 - 실재하지는 않지만, 하위의 공통적인 필드, 메소드를 기준으로 묶어놓은 개념<br>
-- 실재하지 않기때문에 **인스턴스화 할 수는 없음.**<br>
+- 실재하지 않기때문에 **인스턴스화 할 수는 없음.❌**<br>
 - **자식 클래스로 파생되기 위한 클래스**
 - 자식들이 **공통된 특성**을 가지기 위함
 - 실행 클래스에서 instance생성하지 않고도 바로바로 불러와 사용 가능<br>
@@ -33,7 +35,7 @@ tags: [abstract, override] # TAG names should always be lowercase
 - 그냥 메소드 이름만 쓰면 끝
 - 자식 클래스가 구현할 것임(Override)
 
-#### 메소드 override 의무
+#### ⭐️⭐️⭐️ 메소드 override 의무
 
 - 다른 클래스에서 추상 메소드를 **무조건** Override해야 한다.<br>
 - 부모가 선언만 했지, 정의는 안했으니까 자식이 꼭 해야 한다.

@@ -1,5 +1,5 @@
 ---
-title: Framework VS Library
+title: Framework 🆚 Library
 categories: [WEB, WebBasics]
 tags: [library, framework]
 ---
@@ -46,7 +46,7 @@ framework is already **fixed** how to use
 
 #### ☑️ IOC 제어의 역전
 
-> Inversion of Control  
+> Inversion of Control
 > 프레임워크와 라이브러리의 차이는 **제어흐름**이 어디에 있는가이다.  
 > Who has the **flow** of the application?
 

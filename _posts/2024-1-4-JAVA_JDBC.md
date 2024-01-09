@@ -6,20 +6,20 @@ tags: [] # TAG names should always be lowercase
 
 ## ✅ JDBC PROGRAMMING
 
-**Java Database Connectivity**
-JAVA에서 SQL 구문 자체를 넘겨서 RDB에서 원하는 동작을 실행하는 프로그래밍
-JAVA String변수로 SQL문 작성
+**Java Database Connectivity** <br>
+JAVA에서 SQL 구문 자체를 넘겨서 RDB에서 원하는 동작을 실행하는 프로그래밍 <br>
+JAVA String변수로 SQL문 작성 <br>
 
 #### JDBC 프로그래밍 작업 순서
 
-- Driver Manager을 통해 Connection 인스턴스를 얻는다.
-- Connection을 통해 Statement을 얻는다.
-- Statement을 통해 ResultSet를 얻는다.
+- Driver Manager을 통해 Connection 인스턴스를 얻는다.<br>
+- Connection을 통해 Statement을 얻는다.<br>
+- Statement을 통해 ResultSet를 얻는다.<br>
 
-Connection, Statement
+Connection, Statement<br>
 
-- JAVA I/O Stream 내부 구현
-- 소켓 프로그래밍 내부 구현
+- JAVA I/O Stream 내부 구현<br>
+- 소켓 프로그래밍 내부 구현<br>
 
 ## ☑️ 정적으로 SQL에서 JAVA로, JAVA에서 SQL로
 

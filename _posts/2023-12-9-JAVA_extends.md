@@ -1,5 +1,5 @@
 ---
-title: Class_⭐️extends
+title: <Extends>
 categories: [JAVA, JAVA_Basics]
 tags: [extends] # TAG names should always be lowercase
 ---
@@ -91,9 +91,13 @@ public class SeaSwim {
 
 부모로부터 메소드를 상속 받았지만, 같은 이름 메소드를 **자식인 저는 제 방식대로 하겠습니다.** <br>
 메소드 오버라이딩은 부모와 자식간에 메소드가 다른 것 <br>
-그러나 부모 메소드로부터 parameter은 달라질 수 없음. <br>
-parameter, access modifier모두 부모랑 똑같아야 한다. <br>
 🆚 오버로딩은 같은 클래스 내에서 parameter을 다르게 해 같은 이름 메소드 사용하는 것 <br>
+
+- 부모와 매개변수가 같아야 한다. (그러나 부모 메소드로부터 parameter은 달라질 수 없음.)
+- 반환 타입이 같아야 한다.
+- access modifier는 부모 클래스보다 좁을 수 없다.
+- 부모보다 더 많은 예외를 선언할 수 없다.
+- static은 오버라이딩 할 수 없음
 
 #### 물고기 @Override 예시 코드
 
@@ -200,12 +204,66 @@ public class ShutDownButton extends Button {
 
 `this`은 자기 자신 받아왔다면, `super`은 부모 클래스 변수 받아오기 <br>
 super은 부모 클래스 것 받아오는 것<br>
+
+```java
+class Parent{
+    int x=10;
+}
+class child extends Parent{
+    int x=20;
+    void method(){
+        System.out.println(this.x); //20 mine
+        System.out.println(super.x); //10 parent
+    }
+}
+```
+
+```java
+class Point{
+    String getLocation(){
+        return x, y
+    }
+}
+
+class 3DPoint extends Point{
+    String getLocation(){
+        return super.getLocation() + z;
+    }
+}
+```
+
+## 💡 super()
+
+this()와 마찬가지로 super() 역시 생성자이다.<br>
+this()는 같은 클래스의 다른 생성자 호출<br>
+super()는 조상 클래스의 생성자 호출<br>
+<br>
 super이 위로 올라와야 한다.<br>
+
+```java
+class Point{
+    int x, y;
+    Point(int x, int y){
+        this.x = x;
+        this.y = y;
+    }
+}
+class 3DPoint extends Point{
+    Point#D(int x, int y, int z){
+        super(); //super이 있어야지 부모를 생성하고 자식을 생성
+        this.x = x;
+        this.y = y;
+        this.z= z;
+    }
+}
+```
 
 ```java
 //Fish 클래스가 field로 name, food, poison가지고 있음.
 //Babyfish 클래스가 field로 sea 가지고 있음.
 public class BabyFish extends Fish {
+        String sea = "East";
+
 public BabyFish(String name, int food, boolean poison, String sea) {
         super(name, food, false); //부모 객체에서 private인 field들, super써서 가져온다.
         super("Nemo", "shrimp", true)//이런 식으로 field값 정해서 가져오는 것

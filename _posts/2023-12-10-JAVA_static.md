@@ -49,29 +49,6 @@ static은 instance의 field, method를 사용할 수 없다. ❌ <br>
 인스턴스 멤버가 인스턴스 멤버 호출하는데는 제약 없음 <br>
 인스턴스 멤버가 있다는 것이 곧 인스턴스가 생성되어 있다는 것을 의미하므로 <br>
 
-## ☑️ JAVA static 변수/메소드
-
-만약 static앞에 private를 붙이고 싶다면? ➡️ 불러오기 위해서 getter, setter 만들어야 함. <br>
-그런데, **setter**만들 때 static 변수 앞에는 `this`를 붙일수 없다! <br>
-대신, class의 이름을 붙여야 한다.<br>
-
-```java
-    //static
-    private static int serialNum =1;
-
-    //getter
-    public static int getSerialNum(){
-        return serialNum;
-    }
-    //원래 setter만들 때 앞에 this붙였지만
-    //static 앞에는 this를 붙이지 않는다.
-    //instance가 아니니까!
-    //대신 class를 붙여야 한다.
-    public static void setSerialNum(int serialNum) {
-        Student.serialNum = serialNum;
-    }
-```
-
 ## ☑️ static을 본사와 지점에 비유하자면?
 
 #### ⌨️ `static String brand = "올리브영";`
@@ -141,3 +118,26 @@ static method는 인스턴스 변수를 사용할 수 없다. <br>
 
 static method: 인스턴스와 관계 없는(인스턴스 변수나 인스턴스 메서드를 사용하지 않는) 메서드<br>
 instance method: 인스턴스 변수와 관련된 작업을 하는, 메서드의 작업을 수행하는데 인스턴스 변수를 필요로 하는 메서드<br>
+
+## ☑️ JAVA static 변수/메소드
+
+만약 static앞에 private를 붙이고 싶다면? ➡️ 불러오기 위해서 getter, setter 만들어야 함. <br>
+그런데, **setter**만들 때 static 변수 앞에는 `this`를 붙일수 없다! <br>
+대신, class의 이름을 붙여야 한다.<br>
+
+```java
+    //static
+    private static int serialNum =1;
+
+    //getter
+    public static int getSerialNum(){
+        return serialNum;
+    }
+    //원래 setter만들 때 앞에 this붙였지만
+    //static 앞에는 this를 붙이지 않는다.
+    //instance가 아니니까!
+    //대신 class를 붙여야 한다.
+    public static void setSerialNum(int serialNum) {
+        Student.serialNum = serialNum;
+    }
+```
