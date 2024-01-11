@@ -1,7 +1,7 @@
 ---
 title: SSR, CSR 구현하기
 categories: [JAVA, Spring]
-tags: [] # TAG names should always be lowercase
+tags: [csr, ssr] # TAG names should always be lowercase
 ---
 
 ## ✅ CSR, SSR

@@ -5,13 +5,14 @@ tags: [was, thread, servelt, controller, socket, stream] # TAG names should alwa
 ---
 
 WAS 🟰 WEB ➕ 서블릿 컨테이너<br>
+<br>
 WAS 내부에 디스패치 서블릿 내부동작이 일어나고 이 안에 스프링이 또 있음 <br>
 따라서 스프링을 개발할 떄 우리는 서블릿 컨테이너의 일부를 구현하는 것이다. <br>
 
 ## ✅ WAS
 
-> WAS: Web Application Server
-> client 요청을 받아 의미 있는 웹 애플리케이션을 실행하는 서버
+> WAS: Web Application Server <br>
+> client 요청을 받아 의미 있는 웹 애플리케이션을 실행하는 서버 <br>
 
 ### ✔️ WAS의 web서버가 하는 역할
 
@@ -30,7 +31,7 @@ WAS 내부에 디스패치 서블릿 내부동작이 일어나고 이 안에 스
 
 ### ☑️ Servlet
 
-> Servlet: 클라이언트 **요청을 처리** & 서버에서 **동적인 웹 페이지**를 생성하는데 사용되는 주체
+> **Servlet:** 클라이언트 **요청을 처리** & 서버에서 **동적인 웹 페이지**를 생성하는데 사용되는 주체
 
 <img width="793" alt="스크린샷 2024-01-08 오후 2 27 46" src="https://github.com/soheeparklee/portfolioWebsite_dreamcoding/assets/97790983/18de6c9f-c7ab-4135-bfca-87a1e3e3d63e">
 
@@ -91,7 +92,7 @@ stream을 통해서 데이터 주고받기 <br>
 
 <img width="722" alt="스크린샷 2024-01-08 오후 2 59 44" src="https://github.com/soheeparklee/portfolioWebsite_dreamcoding/assets/97790983/3cc2e4e7-c75a-4b56-a23d-bb315e749907">
 
-#### ✔️ SSR controller
+#### ✔️ SSR controller ➡️ @Controller
 
 ![코딩공책-17](https://github.com/soheeparklee/portfolioWebsite_dreamcoding/assets/97790983/9a087749-d195-4afc-b2e9-dc24ffe74905)
 
@@ -99,7 +100,7 @@ stream을 통해서 데이터 주고받기 <br>
 
 ![코딩공책-18](https://github.com/soheeparklee/portfolioWebsite_dreamcoding/assets/97790983/b408b23a-0837-4c63-8450-3cc5a38155df)
 
-## ✅ Spring MVC Pattern
+## ✅ Spring MVC Pattern ➡️ @RestController
 
 > Model View Controller
 

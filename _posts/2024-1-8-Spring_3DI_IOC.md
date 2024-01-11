@@ -1,10 +1,12 @@
 ---
-title: Spring 3대 요소, Bean, DI, IoC
+title: AOP, PSA, Bean, DI, IoC
 categories: [JAVA, Spring]
 tags: [di, ioc, bean] # TAG names should always be lowercase
 ---
 
 ## ✅ Spring 3대 요소
+
+![코딩공책-19](https://github.com/soheeparklee/portfolioWebsite_dreamcoding/assets/97790983/bf7184c4-1d01-4e79-997f-c05fe556795e)
 
 - JAVA OOP
 - JAVA meta programming
