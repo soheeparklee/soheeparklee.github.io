@@ -1,7 +1,7 @@
 ---
-title: Spring boot architecture, layers
+title: Spring boot architecture, layers, DTO
 categories: [JAVA, Spring]
-tags: [] # TAG names should always be lowercase
+tags: [web, service, repository, dto] # TAG names should always be lowercase
 ---
 
 ## ✅ Spring files
@@ -81,8 +81,10 @@ config는 web, service, respository 어디에도 속하지 않는 파일 넣으�
 **클라이언트**와 소통 위해서<br>
 여러 데이터를 말아서 던지는, 메세지 전달하는 편지같은 클래스<br>
 서버가 클라이언트한테 줄 수도 있고, 클라이언트가 서버한테도 던질 수 있다.<br>
-DTO는 직렬화/역직렬화가 가능하다.<br>
-빈 Constructor가 있어야하고, Getter이 있어야 한다.<br>
+DTO는 **직렬화/역직렬화**가 가능하다.<br>
+JSON ➡️ JAVA
+JAVA ➡️ JSON
+1️⃣ 빈 Constructor가 있어야하고, 2️⃣ Getter이 있어야 한다.<br>
 <br>
 
 ✔️ **DTO 역할**<br>

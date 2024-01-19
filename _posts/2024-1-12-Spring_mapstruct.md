@@ -1,5 +1,5 @@
 ---
-title: Mapstruct Utility Library
+title: Mapstruct Utility Library, Swagger
 categories: [JAVA, Spring]
 tags: [mapstuct, mapper, mapping, meta, named] # TAG names should always be lowercase
 ---

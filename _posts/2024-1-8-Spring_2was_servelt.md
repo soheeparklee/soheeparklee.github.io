@@ -107,3 +107,149 @@ stream을 통해서 데이터 주고받기 <br>
 디스패치 서블렛: **프론트 컨트롤러 패턴**을 구현했다. <br>
 각각의 역할을 객체에게 매핑하여(주어서) 수행 <br>
 프론트 컨트롤러 패턴인 이유는 어떤 요청이 와도 앞에서 servlet이 매핑을 통해 관리한다. <br>
+
+## ✅ WAS는 HTTP요청 시, Servelt Request/Response를 만든다.
+
+### ☑️ HTTP Servelt Request
+
+- 요청 정보를 서블릿에게 전달하기 위한 객체
+- 헤더/URL/메소드 등을 확인하는 메서드가 있다.
+- Body Stream(input)을 읽는 메소드가 있다.
+- 기존에 @RequestParam으로 받던 Input값을 HTTP Servelt Request으로 대신 받을 수 있다.
+
+💡 원래는 HttpServletRequest해서 받아오는 것인데 @RequestParam가 일을 해 준 것이다.
+
+```java
+public class Chap109Controller {
+    private final ItemService itemService;
+
+//@RequestParam
+//    @GetMapping("/items-prices")
+//    public List<Item> findItemByPrices(@RequestParam("max") Integer maxValue){ //⭐️@RequestParam
+//        List<Item> items=  itemService.findItemEntitiesByPriceLessThanEqualOrderByPriceAsc(maxValue);
+//        return items;
+//    }
+
+    //HttpServletRequest
+    @GetMapping("/items-prices")
+    public List<Item> findItemByPrices(HttpServletRequest httpServletRequest){
+        Integer maxValue= Integer.valueOf(httpServletRequest.getParameter("max"));
+        List<Item> items=  itemService.findItemEntitiesByPriceLessThanEqualOrderByPriceAsc(maxValue);
+        return items;
+    }
+}
+```
+
+### ☑️ HTTP Servelt Response
+
+- 요청을 보낸 클라이언트에게 응답을 보내는 객체
+- 해당 서블릿을 통해 응답 output을 전송한다.
+- 기존에 @RestController로 output내보내던 작업을 HTTP Servelt Response로 할 수 있다.
+
+💡 기존 @PathVariable은 사실 HTTP Servelt Response의 getOutputStream()로 동작하고 있던 것이다.
+
+```java
+//    @DeleteMapping("/items/{id}")
+//    public String deleteItemById(@PathVariable String id) {
+//        itemService.deleteItem(id);
+//        return "Object with id =" + id + "has been deleted";
+//    }
+
+    @DeleteMapping("/items/{id}")
+    public void deleteItemById(@PathVariable String id, HttpServletResponse httpServletResponse) throws IOException {
+        itemService.deleteItem(id);
+        httpServletResponse.getOutputStream().println("Object with id =" + id + "has been deleted");
+    }
+```
+
+## ➕ Servelt Container안의 Web Filter
+
+허용되지 않은 요청, 응답이 오면 filter가 걸러주거나
+기록을 남기는 filter도 있고
+언어가 달라 깨진채로 오면 filter가 encoding 처리해주거나 등등의 역할을 한다.
+
+**Spring Container** **밖에** 있음
+따라서 Spring의 자원은 아니다. ❌
+✔️ **doFilter()메소드**로 응답/요청 동작을 한다.
+Request/Response 객체에 관여한다. ⭕️
+그래서 Request/Response 받은 값을 바꿀 수 있는 것임.
+
+#### 💡 Filter 기능
+
+- 이미지/데이터 압출 및 문자열 인코딩
+- 모든 요청에 대한 로깅
+- 공통 보안 및 인증/인가
+
+```java
+//모든 요청에 대한 로깅 남기는 filter
+@Component
+@Slf4j
+public class LoggingFilter extends OncePerRequestFilter { //나만의 filter을 만들래
+    @Override
+    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
+        String method= request.getMethod();
+        String uri= request.getRequestURI();
+        log.info("요청이 들어왔습니다. "+ method + uri); //⭐️controller에 이 코드를 쓰지 않고 filter에 한 번에 쓴다.
+        filterChain.doFilter(request, response);
+        //기존 있던 filter chain에 내 filter도 끼워주라
+        //⭐️doFilter앞에 쓰면 들어올 때 Filter, 뒤에 쓰면 나갈 때 Filter
+        log.info(method + uri + response.getStatus()+ "response");
+    }
+}
+```
+
+## ➕ Spring Container안의 Interceptor
+
+기본적으로 filter이랑 비슷하게 걸러주거나 추가 기능을 수행해주는데
+filter랑 다른 점은 **Spring Container안**에 있다는 것이다.
+Interceptor은 Spring Container의 자원이다. ⭕️
+✔️ 요청 : **preHandler()**
+✔️ 응답: **postHandler()** 메소드로
+Request/Response 객체에 관여하지 않는다. ❌
+Request/Response 객체에 관여하고 싶으면 filter로 하세요...
+
+#### ⭐️ 순서
+
+filter ➡️ controller ➡️ (들어오기 끝) ➡️ 결과 ➡️ (나가기) ➡️ controller ➡️ interceptor ➡️ filter
+
+#### 💡 Interceptor 기능
+
+- API 호출 시간 로깅
+- 섹션 및 쿠키 체크
+- 세부적인 보안 및 인증
+
+```java
+//API 호출 시간 로깅하는 Interceptor
+@Component
+@Slf4j
+public class RequestTimeLoggingInterceptor implements HandlerInterceptor {
+    //controller 요청 전
+    @Override
+    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+        long startTime= System.currentTimeMillis(); //현재 시간
+        request.setAttribute("request start time" , startTime);
+        return true;
+    }
+    //controller 요청 끝난 후
+
+    @Override
+    public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
+        long startTime= (Long) request.getAttribute("request start time");
+        long endTime= System.currentTimeMillis();
+        long executeTime= endTime - startTime;
+
+        log.info("{} {} executed in {} ms", request.getMethod(), request.getRequestURI(), executeTime);
+    }
+}
+//Interceptor을 가져오기 위해 config필요하다.
+@Configuration
+@RequiredArgsConstructor
+public class WebConfig implements WebMvcConfigurer {
+    private final RequestTimeLoggingInterceptor requestTimeLoggingInterceptor;
+
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(requestTimeLoggingInterceptor);
+    }
+}
+```

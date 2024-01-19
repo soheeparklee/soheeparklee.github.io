@@ -17,14 +17,44 @@ tags: [di, ioc, bean] # TAG names should always be lowercase
 > Aspect Oriented Programming
 > 관점 지향형 프로그래밍
 
+<br>
+
+> **횡단 관심사(흩어진 관심사)**: 어떤 API를 구현하든 간에 비슷비슷한 코드
+
+<br>
+
+> **모듈화**: 횡단 관심사를 따로따로 반복되게 코드를 작성하는게 아니라, 한 곳에 **모아서** 처리
+> **침투 적용**: 어떤 코드가 필요할 때 모듈화 된 코드를 가져오기> 침투 적용: 어떤 코드가 필요할 때 모듈화 된 코드를 가져오기
+> **advice**: 모아서 구현해 둔 코드, 이 코드를 필요할 떄 침투시킨다.
+
+- logging
+- 공통 에외처리: 예외들이 비슷비슷하니까 예외들만 ExceptionControllerAdvice에 모아서(모듈화) 적용(침투적용)
+- 트랜잭션: 공통 데이터 원자화(몽땅 실패하거나 몽땅 성공하거나)
+
+<img width="716" alt="스크린샷 2024-01-16 오후 3 52 23" src="https://github.com/soheeparklee/portfolioWebsite_dreamcoding/assets/97790983/aee560a9-c741-4130-8d1a-e4cd464ad6cf">
+
 #### ⭐️ PSA
 
 > Portable Service Abstraction
 > 일관성 있는 추상화
 
+특정 기술에 접근하는 것이 아니라 ❌
+**스펙을 추상화**해서 사용
+👍🏻 코드 이식성, 유용성 향상
+
+JPA JPQL을 사용하면 여러 DB의 기술을 추상화한다.
+따라서 DB에 따라 언어가 조금씩 달라도 JAVA에서는 문제없이 사용 가능하다.
+
+#### ⭐️ POJO
+
+> Plain Old Java Object
+> 깔끔하고 정통적인 JAVA OOP
+> 객체지향형 프로그래밍을 최대한 활용하는 코드가 좋은 코드이다.
+
 #### ⭐️ IOC/DI
 
 > 의존성 주입, 제어의 역전
+> Bean이 넣어준다.
 
 - DI(Dependency Injection)
 - IOC(Inversion of Control)

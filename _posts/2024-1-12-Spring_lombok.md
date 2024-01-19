@@ -1,5 +1,5 @@
 ---
-title: Lombok Utility Library
+title: Lombok Utility Library, Logback
 categories: [JAVA, Spring]
 tags: [
     lombok,

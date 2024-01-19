@@ -374,8 +374,7 @@ public class ElectronicStoreController {
 ### ☑️ Entity(🟰model)
 
 > 데이터 베이스 테이블과 1대 1 매핑되는 자바 객체<br>
-> DB와 JAVA 애플리케이션 간에 소통을 담당<br>
-> <br>
+> DB와 JAVA 애플리케이션 간에 소통을 담당<br> > <br>
 
 ⭐️ Entity와 DTO는 무조건 다른 클래스로 구현되어야, **꼭 분리되어야 한다**<br>
 <br>
@@ -865,8 +864,6 @@ Service Layer로 작업 옮기기 <br>
 특히 controller에 있는 DAO를 없애서 service에 넣어야 한다. <br>
 `DAO: ElectronicStoreItemJdbcDao.java file` <br>
 
-### ☑️ Service 객체
-
 ### ☑️ 트랜잭션 개념
 
 > 작업 처리 원자성: 작업들이 아예 몽땅 성공하거나, 하나라도 실패하면 다시 롤백(원상태)되도록 작업들을 하나의 단위로 묶는 것<br>
@@ -880,6 +877,13 @@ A계좌만 성공하면 안 됨! <br>
 
 bean을 통해서 "나 이제 이 작업들 하나의 단위로 묶을건데, 묶어서 관리해줬으면 좋겠어" <br>
 `Transaction Manager`이라는 것을 하나 만들어서 관리 <br>
+
+#### 트랜잭션 ACID 원칙
+
+**A**tomicity 원자성: 모든 작업은 다같이 성공하거나 다같이 실패한다.
+**C**onsistency 일관성: 모든 결과값에는 일관성이 있어야 한다.
+**I**solation 격리성: 두 가지 이상의 트랜잭션이 실행된다면, 각각 하나씩 실행되어야 한다.
+**D**uration 지속성: DB에 반영되면 데이터가 지속적으로 남아있어야 한다.
 
 ### ✔️ service class 구현 예시
 
