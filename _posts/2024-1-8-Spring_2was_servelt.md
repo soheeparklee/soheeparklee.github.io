@@ -1,7 +1,7 @@
 ---
-title: WAS, Servlet
+title: WAS, Servlet, Filter, Interceptor
 categories: [JAVA, Spring]
-tags: [was, thread, servelt, controller, socket, stream] # TAG names should always be lowercase
+tags: [was, thread, servelt, controller, socket, stream, filter, interceptor] # TAG names should always be lowercase
 ---
 
 WAS 🟰 WEB ➕ 서블릿 컨테이너<br>
@@ -87,8 +87,8 @@ stream을 통해서 데이터 주고받기 <br>
 
 ## ✅ 디스패치 서블렛의 내부 동작 흐름
 
-> HTTP method, URI보고 컨트롤러 정하게 되는데,
-> 컨트롤러마다 처리 방법이 다르다.
+> HTTP method, URI보고 컨트롤러 정하게 되는데, <br>
+> 컨트롤러마다 처리 방법이 다르다. <br>
 
 <img width="722" alt="스크린샷 2024-01-08 오후 2 59 44" src="https://github.com/soheeparklee/portfolioWebsite_dreamcoding/assets/97790983/3cc2e4e7-c75a-4b56-a23d-bb315e749907">
 
@@ -102,7 +102,7 @@ stream을 통해서 데이터 주고받기 <br>
 
 ## ✅ Spring MVC Pattern ➡️ @RestController
 
-> Model View Controller
+> Model View Controller <br>
 
 디스패치 서블렛: **프론트 컨트롤러 패턴**을 구현했다. <br>
 각각의 역할을 객체에게 매핑하여(주어서) 수행 <br>
@@ -110,14 +110,16 @@ stream을 통해서 데이터 주고받기 <br>
 
 ## ✅ WAS는 HTTP요청 시, Servelt Request/Response를 만든다.
 
+<img width="443" alt="스크린샷 2024-01-19 오후 12 42 51" src="https://github.com/soheeparklee/portfolioWebsite_dreamcoding/assets/97790983/d2ec0558-529c-4da1-a63e-400fe7d7aa11">
+
 ### ☑️ HTTP Servelt Request
 
-- 요청 정보를 서블릿에게 전달하기 위한 객체
-- 헤더/URL/메소드 등을 확인하는 메서드가 있다.
-- Body Stream(input)을 읽는 메소드가 있다.
-- 기존에 @RequestParam으로 받던 Input값을 HTTP Servelt Request으로 대신 받을 수 있다.
-
-💡 원래는 HttpServletRequest해서 받아오는 것인데 @RequestParam가 일을 해 준 것이다.
+- 요청 정보를 서블릿에게 전달하기 위한 객체<br>
+- 헤더/URL/메소드 등을 확인하는 메서드가 있다.<br>
+- Body Stream(input)을 읽는 메소드가 있다.<br>
+- 기존에 @RequestParam으로 받던 Input값을 HTTP Servelt Request으로 대신 받을 수 있다.<br>
+  <br>
+  💡 원래는 HttpServletRequest해서 받아오는 것인데 @RequestParam가 일을 해 준 것이다.<br>
 
 ```java
 public class Chap109Controller {
@@ -142,11 +144,11 @@ public class Chap109Controller {
 
 ### ☑️ HTTP Servelt Response
 
-- 요청을 보낸 클라이언트에게 응답을 보내는 객체
-- 해당 서블릿을 통해 응답 output을 전송한다.
-- 기존에 @RestController로 output내보내던 작업을 HTTP Servelt Response로 할 수 있다.
-
-💡 기존 @PathVariable은 사실 HTTP Servelt Response의 getOutputStream()로 동작하고 있던 것이다.
+- 요청을 보낸 클라이언트에게 응답을 보내는 객체<br>
+- 해당 서블릿을 통해 응답 output을 전송한다.<br>
+- 기존에 @RestController로 output내보내던 작업을 HTTP Servelt Response로 할 수 있다.<br>
+  <br>
+  💡 기존 @PathVariable은 사실 HTTP Servelt Response의 getOutputStream()로 동작하고 있던 것이다.<br>
 
 ```java
 //    @DeleteMapping("/items/{id}")
@@ -164,21 +166,24 @@ public class Chap109Controller {
 
 ## ➕ Servelt Container안의 Web Filter
 
-허용되지 않은 요청, 응답이 오면 filter가 걸러주거나
-기록을 남기는 filter도 있고
-언어가 달라 깨진채로 오면 filter가 encoding 처리해주거나 등등의 역할을 한다.
+![IMG_3155](https://github.com/soheeparklee/portfolioWebsite_dreamcoding/assets/97790983/083a7bac-9b3b-49ec-ad4d-bd2daba0c58b)
 
-**Spring Container** **밖에** 있음
-따라서 Spring의 자원은 아니다. ❌
-✔️ **doFilter()메소드**로 응답/요청 동작을 한다.
-Request/Response 객체에 관여한다. ⭕️
-그래서 Request/Response 받은 값을 바꿀 수 있는 것임.
+허용되지 않은 요청, 응답이 오면 filter가 걸러주거나 <br>
+기록을 남기는 filter도 있고 <br>
+언어가 달라 깨진채로 오면 filter가 encoding 처리해주거나 등등의 역할을 한다. <br>
+<br>
+
+**Spring Container** **밖에** 있음 <br>
+따라서 Spring의 자원은 아니다. ❌ <br>
+✔️ **doFilter()메소드**로 응답/요청 동작을 한다. <br>
+Request/Response 객체에 관여한다. ⭕️ <br>
+그래서 Request/Response 받은 값을 바꿀 수 있는 것임. <br>
 
 #### 💡 Filter 기능
 
-- 이미지/데이터 압출 및 문자열 인코딩
-- 모든 요청에 대한 로깅
-- 공통 보안 및 인증/인가
+- 이미지/데이터 압출 및 문자열 인코딩 <br>
+- 모든 요청에 대한 로깅 <br>
+- 공통 보안 및 인증/인가 <br>
 
 ```java
 //모든 요청에 대한 로깅 남기는 filter
@@ -200,23 +205,25 @@ public class LoggingFilter extends OncePerRequestFilter { //나만의 filter을 
 
 ## ➕ Spring Container안의 Interceptor
 
-기본적으로 filter이랑 비슷하게 걸러주거나 추가 기능을 수행해주는데
-filter랑 다른 점은 **Spring Container안**에 있다는 것이다.
-Interceptor은 Spring Container의 자원이다. ⭕️
-✔️ 요청 : **preHandler()**
-✔️ 응답: **postHandler()** 메소드로
-Request/Response 객체에 관여하지 않는다. ❌
-Request/Response 객체에 관여하고 싶으면 filter로 하세요...
+기본적으로 filter이랑 비슷하게 걸러주거나 추가 기능을 수행해주는데 <br>
+filter랑 다른 점은 **Spring Container안**에 있다는 것이다. <br>
+Interceptor은 Spring Container의 자원이다. ⭕️ <br>
+✔️ 요청 : **preHandler()** <br>
+✔️ 응답: **postHandler()** 메소드로 <br>
+Request/Response 객체에 관여하지 않는다. ❌ <br>
+Request/Response 객체에 관여하고 싶으면 filter로 하세요... <br>
 
 #### ⭐️ 순서
 
-filter ➡️ controller ➡️ (들어오기 끝) ➡️ 결과 ➡️ (나가기) ➡️ controller ➡️ interceptor ➡️ filter
+![IMG_3156](https://github.com/soheeparklee/portfolioWebsite_dreamcoding/assets/97790983/456e3ae4-778b-4ed6-b78e-39228e6054bb)
+
+filter ➡️ controller ➡️ (들어오기 끝) ➡️ 결과 ➡️ (나가기) ➡️ controller ➡️ interceptor ➡️ filter<br>
 
 #### 💡 Interceptor 기능
 
-- API 호출 시간 로깅
-- 섹션 및 쿠키 체크
-- 세부적인 보안 및 인증
+- API 호출 시간 로깅 <br>
+- 섹션 및 쿠키 체크 <br>
+- 세부적인 보안 및 인증 <br>
 
 ```java
 //API 호출 시간 로깅하는 Interceptor

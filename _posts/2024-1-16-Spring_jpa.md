@@ -1,5 +1,5 @@
 ---
-title: ORM, JPA
+title: ORM, JPA, pagination
 categories: [JAVA, Spring]
 tags: [orm, jpa] # TAG names should always be lowercase
 ---
@@ -9,8 +9,7 @@ tags: [orm, jpa] # TAG names should always be lowercase
 👎🏻 기존 코드의 한계: SQL을 JAVA안에 삽입해야 하고, rowMapper넣어야 했음 <br>
 
 > ORM: Object Relation Mapping <br>
-> 객체지향과 RDB 변환 자동처리 기술 <br>
-> <br>
+> 객체지향과 RDB 변환 자동처리 기술 <br> > <br>
 
 > 영속화: ORM을 적용한 Entity를 구성하는 것을 객체의 table 영속화라고 한다. <br>
 

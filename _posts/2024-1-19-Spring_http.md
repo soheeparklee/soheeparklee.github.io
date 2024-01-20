@@ -6,48 +6,50 @@ tags: [cache, cashing, etag] # TAG names should always be lowercase
 
 ## ✅ Cache
 
-> 원래 데이터 소스보다 더 효율적으로 액세스 할 수 있는 **임시 저장소**
+> 원래 데이터 소스보다 더 효율적으로 액세스 할 수 있는 **임시 저장소**<br>
 
-특정 API/아이템 20%가 전체 로직의 80%의 쿼리를 차지
-이 API/아이템를 자주 쓰니까 어디 가까운 곳에 저장해 두면 좋을 것 같아
+특정 API/아이템 20%가 전체 로직의 80%의 쿼리를 차지 <br>
+이 API/아이템를 자주 쓰니까 어디 가까운 곳에 저장해 두면 좋을 것 같아<br>
+<br>
+Key-value구조로 저장한다. <br>
+Cache 저장소가 너무 커지면 임시 저장소 사용하는 의미가 없으니, 크기가 과하게 커지는 것을 지양 <br>
+웹 브라우저 안에 HTTP Cache가 있다. <br>
+Spring Container안에 Spring Cache가 있다. 굳이 DB에 가서 매번 가져오는 것이 아니라! <br>
 
-Key-value구조로 저장한다.
-Cache 저장소가 너무 커지면 임시 저장소 사용하는 의미가 없으니, 크기가 과하게 커지는 것을 지양
-웹 브라우저 안에 HTTP Cache가 있다.
-Spring Container안에 Spring Cache가 있다. 굳이 DB에 가서 매번 가져오는 것이 아니라!
+![IMG_3157](https://github.com/soheeparklee/portfolioWebsite_dreamcoding/assets/97790983/4ded1541-1e26-4c48-bca9-f4858e3cd651)
 
 ## ✅ HTTP Cache
 
-> HTTP Client 요청에 대한 응답값의 임시 저장소
+> HTTP Client 요청에 대한 응답값의 임시 저장소 <br>
 
-HTTP header을 보면 cache 사용했는지 알 수 있음
+HTTP header을 보면 cache 사용했는지 알 수 있음 <br>
+<br>
 
-- cache control: 어떤 방식으로, 얼마동안 캐싱할 것인가
-- expire: 캐싱 응답 만료 시점
-- X-cache: cache Hit(내부적으로 가지고 있는 값이 있으면 그걸로 처리) 해당 요청 값이 캐시로 응답
-- cache location: 해당 cache가 어디에 저장되어 있는가?
-
-👎🏻 HTTP Cache 아쉬운 점
-
-- HTTP Cache 쓴다고 SQL문을 안 쓰는 건 아니다.
-- 그래서 서버 속도에 큰 변화는 없음... ➡️ Spring Cache도 사용!
+- cache control: 어떤 방식으로, 얼마동안 캐싱할 것인가 <br>
+- expire: 캐싱 응답 만료 시점 <br>
+- X-cache: cache Hit(내부적으로 가지고 있는 값이 있으면 그걸로 처리) 해당 요청 값이 캐시로 응답 <br>
+- cache location: 해당 cache가 어디에 저장되어 있는가? <br>
+  <br>
+  👎🏻 HTTP Cache 아쉬운 점<br>
+  <br>
+- HTTP Cache 쓴다고 SQL문을 안 쓰는 건 아니다.<br>
+- 그래서 서버 속도에 큰 변화는 없음... ➡️ Spring Cache도 사용!<br>
 
 ## ⭐️ Cache Validation(HTTP cache)
 
-> cache가 Valid 한 상태인지 파악해야 한다.
+> cache가 Valid 한 상태인지 파악해야 한다.<br> > <br>
+> ❓ HTTP Cache사용하는데 DB내용이 바뀌면?<br>
+> HTTP 쇼핑몰 홈페이지에서는 item이 2만원인 줄 알았는데, DB에서 아이템 가격을 3만원으로 바꿔버림!<br>
 
-❓ HTTP Cache사용하는데 DB내용이 바뀌면?
-HTTP 쇼핑몰 홈페이지에서는 item이 2만원인 줄 알았는데, DB에서 아이템 가격을 3만원으로 바꿔버림!
-
-⭐️ If-Mofied-Since (시간)
-일정 시간마다 cache가 바뀌었는지 확인한다.
-일정 시간을 정해두고 나 N시간만큼 지났는데 바뀐 cache있어?
-
-⭐️ E-tag 이용(ID비교)
-나 이런 ID를 가지고 있는데, 바뀐 cache있어?
-
-이렇게 E-tag를 추가하면 HTTP header에 아이디가 생긴다.
-이 아이디를 보냈을 때 **@304 Not Modified** 오면 바뀐게 없다는 뜻이다.
+⭐️ If-Mofied-Since (시간)<br>
+일정 시간마다 cache가 바뀌었는지 확인한다.<br>
+일정 시간을 정해두고 나 N시간만큼 지났는데 바뀐 cache있어?<br>
+<br>
+⭐️ E-tag 이용(ID비교)<br>
+나 이런 ID를 가지고 있는데, 바뀐 cache있어?<br>
+<br>
+이렇게 E-tag를 추가하면 HTTP header에 아이디가 생긴다.<br>
+이 아이디를 보냈을 때 **@304 Not Modified** 오면 바뀐게 없다는 뜻이다.<br>
 
 ```java
 //e-tag 추가하는 방법
@@ -66,9 +68,9 @@ public class EtagWebConfig {
 
 ## ✅ Spring Cache
 
-일반적으로 service layer에다가 넣는다.
-데이터 그냥 받아오기만 하는 메소드 **@Cacheable**
-데이터를 변경하거나 삭제하는 메소드 **@CacheEvict**
+일반적으로 service layer에다가 넣는다.<br>
+데이터 그냥 받아오기만 하는 메소드 **@Cacheable**<br>
+데이터를 변경하거나 삭제하는 메소드 **@CacheEvict**<br>
 
 ```java
 //Spring Cache 값 넣기

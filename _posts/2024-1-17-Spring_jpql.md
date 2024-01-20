@@ -224,7 +224,7 @@ public interface ReservationJpaRepository extends JpaRepository {
 
 > 연관 관계가 설정된 entity를 조회하면, 조회된 횟수 만큼 조회 쿼리가 추가로 실행되는 문제 현상
 
-👍🏻 해결 방법: JPQL 만들기, fetch Join<br>
+💡 해결 방법: JPQL 만들기, fetch Join<br>
 SQL의 불필요한 동작을 막아준다.<br>
 <br>
 👎🏻 쿼리가 여러번 반복 실행되는 코드, 개선 필요<br>
@@ -294,4 +294,6 @@ public interface StoreSalesJpaRepository extends JpaRepository<StoreSalesEntity,
         List<StoreInfo> storeInfos= storeSalesEntity.stream().map(StoreInfo::new).collect(Collectors.toList());
         return storeInfos;
     }
+
+//storeSalesEntity는 똑같음
 ```
