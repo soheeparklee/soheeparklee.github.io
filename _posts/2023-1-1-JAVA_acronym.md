@@ -4,7 +4,17 @@ categories: [JAVA, JAVA_Basics]
 tags: [acronyms] # TAG names should always be lowercase
 ---
 
----
+## ✅ Security
+
+| Acyronyms | Stands For                   |
+| --------- | ---------------------------- |
+| XXS       | Cross Site Scripting         |
+| CSRF      | Cross Site Request Forgery   |
+| SOP       | Same Orgin Policy            |
+| CORS      | Cross Orgin Resource Sharing |
+|           |                              |
+|           |                              |
+|           |                              |
 
 ## ✅ Spring
 
@@ -20,17 +30,11 @@ tags: [acronyms] # TAG names should always be lowercase
 | Cell 1,1  | Cell 1,2                        |
 | Cell 2,1  | Cell 2,2                        |
 
----
-
 ## ✅ NetWork
 
 | Acyronyms | Stands For                  |
 | --------- | --------------------------- |
 | HTTP      | Hypertext Transfer Protocol |
-
----
-
----
 
 ## ✅ SQL
 

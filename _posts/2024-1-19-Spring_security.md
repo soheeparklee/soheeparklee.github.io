@@ -1,25 +1,25 @@
 ---
 title: Spring Security
 categories: [JAVA, Spring]
-tags: [] # TAG names should always be lowercase
+tags: [security] # TAG names should always be lowercase
 ---
 
 ## ✅ Spring Security
 
 > JAVA 기반 보안 프레임워크
 
-- Authentication
-- Authorization
-- Session Control
-- CSRF 크로스 사이트 요청 위조 방지
+- Authentication <br>
+- Authorization <br>
+- Session Control <br>
+- CSRF 크로스 사이트 요청 위조 방지 <br>
 
 #### ☑️ Spring Security 필수 개념
 
-- 접근 주체: 누가 접근하는가?
-- **인증** Authentication: **증명**
-  유저가 누구인지 아는 것
-- **인가** Authorization: **허락**
-  유저의 권한을 확인해 허락해 주는 것
+- 접근 주체: 누가 접근하는가? <br>
+- **인증** Authentication: **증명** <br>
+  유저가 누구인지 아는 것 <br>
+- **인가** Authorization: **허락** <br>
+  유저의 권한을 확인해 허락해 주는 것 <br>
 
 #### ☑️ Spring Security 과정
 
@@ -79,8 +79,8 @@ public class CustomUserDetailService implements UserDetailsService {
 
 ## ✅ JWT 구현
 
-1️⃣ filter을 구현한다.
-그리고 filter에 필요한 메소드들을 2️⃣ jwtTokenProvider에 구현한다.
+1️⃣ filter을 구현한다.<br>
+그리고 filter에 필요한 메소드들을 2️⃣ jwtTokenProvider에 구현한다.<br>
 
 ```java
 //JWT을 가능하게 하기 위해 filter을 구현해야 한다.
@@ -284,6 +284,7 @@ public class SecurityConfiguration {
 ## ✅ 로그인 구현
 
 // 로그인/로그아웃 구현
+
 ```java
 // 1️⃣ controller
 //로그인
@@ -324,8 +325,8 @@ public String login(Login loginRequest) {
     }
 
 ```
-## ✅ 예외처리, 코드 개선
 
+## ✅ 예외처리, 코드 개선
 
 ```java
 // 유저만 항공 예약 시스템에 접근할 수 있도록 인가/허락/Authorization

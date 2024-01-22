@@ -41,11 +41,13 @@ HTTP header을 보면 cache 사용했는지 알 수 있음 <br>
 > ❓ HTTP Cache사용하는데 DB내용이 바뀌면?<br>
 > HTTP 쇼핑몰 홈페이지에서는 item이 2만원인 줄 알았는데, DB에서 아이템 가격을 3만원으로 바꿔버림!<br>
 
-⭐️ If-Mofied-Since (시간)<br>
+#### ⭐️ If-Mofied-Since (시간)<br>
+
 일정 시간마다 cache가 바뀌었는지 확인한다.<br>
 일정 시간을 정해두고 나 N시간만큼 지났는데 바뀐 cache있어?<br>
-<br>
-⭐️ E-tag 이용(ID비교)<br>
+
+#### ⭐️ E-tag 이용(ID비교)<br>
+
 나 이런 ID를 가지고 있는데, 바뀐 cache있어?<br>
 <br>
 이렇게 E-tag를 추가하면 HTTP header에 아이디가 생긴다.<br>
