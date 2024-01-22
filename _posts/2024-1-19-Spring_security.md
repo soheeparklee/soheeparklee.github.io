@@ -260,7 +260,7 @@ public class PasswordEncoderConfig {
     }
 }
 
-// 5️⃣ 로그인 설정 web에서 바꾸기 ⭐️⭐️⭐️
+// 5️⃣ 로그인 설정 web에서 바꾸기 SecurityConfiguration⭐️⭐️⭐️
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
@@ -284,7 +284,83 @@ public class SecurityConfiguration {
 ## ✅ 로그인 구현
 
 // 로그인/로그아웃 구현
+```java
+// 1️⃣ controller
+//로그인
+    @PostMapping(value= "/login")
+    public String login(@RequestBody Login loginRequest, HttpServletResponse httpServletResponse){
+        //response안에 token을 넣어서
+        String token= authService.login(loginRequest);
+        httpServletResponse.setHeader("X-AUTH-TOKEN", token);
+        return "Login Success";
+    }
 
+// 2️⃣ service
+
+public String login(Login loginRequest) {
+        String email= loginRequest.getEmail();
+        String password= loginRequest.getPassword();
+        try {
+            Authentication authentication = authenticationManager.authenticate(
+                    new UsernamePasswordAuthenticationToken(email, password) //token만들 때 email, password 필요
+            );
+            SecurityContextHolder.getContext().setAuthentication(authentication);
+
+            //token발행
+            UserPrincipal userPrincipal = userPrincipalRepository.findByEmailFetchJoin(email)
+                    .orElseThrow(() -> new NotFoundException("No user Found"));
+
+            List<String> roles = userPrincipal.getUserPrincipalRoles()
+                    .stream()
+                    .map(UserPrincipalRoles::getRoles)
+                    .map(Roles::getName).collect(Collectors.toList());
+
+            return jwtTokenProvider.createToken(email, roles);
+        } catch(Exception e){
+            e.printStackTrace();
+            throw new NotAccpetExcpetion("Login Not Possible");
+        }
+
+    }
+
+```
 ## ✅ 예외처리, 코드 개선
 
+
+```java
 // 유저만 항공 예약 시스템에 접근할 수 있도록 인가/허락/Authorization
+// SecurityConfiguration에서 권한 주기
+
+@Configuration
+@EnableWebSecurity
+@RequiredArgsConstructor
+public class SecurityConfiguration {
+
+    private final JwtTokenProvider jwtTokenProvider;
+    @Bean
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
+        //로그인 설정 구현
+        http.headers().frameOptions().sameOrigin()
+                .and()
+                .formLogin().disable()
+                .csrf().disable()
+                .httpBasic().disable()
+                .rememberMe().disable() //아이디비번 기억하시겠습니까? disable
+                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS) //session 사용 disable
+                .and() //⭐️ 여기서부터 role에 따라 항공 예약 시스템 접근 허용해주는 로직
+                .authorizeRequests()
+                    .antMatchers("/resources/static/**", "/v1/api/sign/*").permitAll() //로그인 안 했어도 허용
+                    .antMatchers("/v1/api/air-reservation/*").hasRole("USER") //항공예약시스템은 USER만 접근 가능하다.
+                .and() //⭐️ 여기서부터 jwt 설정
+                //JwtAuthenticationFilter가 먼저 필터 실행된다.
+                .addFilterBefore(new JwtAuthenticationFilter(jwtTokenProvider), UsernamePasswordAuthenticationFilter.class);
+
+
+    return http.build();
+    }
+    @Bean
+    public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
+        return authenticationConfiguration.getAuthenticationManager();
+    }
+}
+```
