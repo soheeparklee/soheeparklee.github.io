@@ -78,7 +78,15 @@ public class ItemBody {
 <br>
 
 - Controller에서 Repository가져올 때<br>
-- Dao에서 Jdbc Template 가져올 때<br>
+- Service 가져올 때
+- Dao에서 Jdbc Template 가져올 때 등등<br>
+  따라서 Lombok을 Bean에도 적용 가능하다.<br>
+
+💡 보통 Bean을 주입할 때는 final을 붙인다.<br>
+
+> final: 상수로, 바꿀 수 없게 <br>
+
+한 번 Service, Repository, JdbcTemplate 가져오면 안 바뀌니까<br>
 
 ```java
 //🌶️ Controller에서 Repository가져올 때 Lombok사용해 Bean 생성자 생략하기
@@ -116,7 +124,7 @@ public class AirlineTicketJdbcDao implements AirlineTicketRepository{
 @Getter
 @Setter
 @AllArgsConstructor
-@EqualsAndHashCode(of= "id") //어떤 것을 기준으로 equals 할 것인가?
+@EqualsAndHashCode(of= "id") //어떤 것을 기준으로 equals 할 것인가? 꼭 조건을 알려 줘야 한다.
 public class ItemEntity {
     private Integer id;
     private String name;
@@ -222,6 +230,7 @@ public class ItemEntity {
 
 RowMapper는 DAO에 있음, <br>
 ❗️ 그러나 @Build는 Entity에 추가 <br>
+Lombok @Builder을 사용하면 순서를 바꿔도 상관 업음!
 
 ```java
 //🌶️ Lombok사용해 DAO의 RowMapper 개선하기
@@ -263,7 +272,7 @@ public class ElectronicStoreItemJdbcDao implements ElectronicStoreItemRepository
 @Setter
 @AllArgsConstructor
 @EqualsAndHashCode(of= "id")
-@Builder /⭐️
+@Builder //⭐️
 public class ItemEntity {
     private Integer id;
     private String name;

@@ -6,8 +6,8 @@ tags: [stream] # TAG names should always be lowercase
 
 ## ✅ Stream API
 
-함수형 프로그래밍을 도입하여 컬렉션, 배열 등의 처리/조작을 간단/효율적으로 하는 API <br>
-Stream은 generic <br>
+> 함수형 프로그래밍을 도입하여 컬렉션, 배열 등의 처리/조작을 간단/효율적으로 하는 API <br>
+> Stream은 generic <br>
 
 ### ☑️ 사용 이유
 
@@ -18,7 +18,10 @@ Stream은 generic <br>
 
 1. 생성 <br>
 2. 중간연산 filter <br>
+   중간 연산은 여러개 실행 가능<br>
 3. 최종연산 forEach <br>
+   한 번만 실행할 수 있음<br>
+   진행 연산을 닫고 최종 값 산출<br>
 
 <img width="625" alt="스크린샷 2023-12-27 오후 10 30 32" src="https://github.com/soheeparklee/portfolioWebsite_dreamcoding/assets/97790983/96f1c0ec-93ec-436e-8f90-db76abc36332">
 
@@ -35,7 +38,7 @@ Stream은 generic <br>
 ### 정의 방법
 
 ⭐️ `Stream.of` <br>
-⭐️ `Arrays.Stream` <br>
+⭐️ `Arrays.stream` <br>
 ⭐️ `Collection(=List) -> Stream` <br>
 
 ### Stream 정의하기
@@ -75,11 +78,11 @@ public class StreamTest1 {
 
 ## ☑️ stream으로 for-loop개선하기
 
-⭐️ stream은 1회용이다. <br>
+⭐️ stream은 1회용이다. ⭐️ <br>
 stream을 for each나 filter사용해서 변형하면, 또 사용할 수는 없음 <br>
-따라서 integerListStream는 다시 사용 ❌ (stream특징 2️⃣) <br>
-그러나 원본 데이터 integerList는 또 사용 가능⭕️ <br>
-원본 데이터 integerList는 변하지 않았을 것이다. (stream특징 1️⃣) <br>
+따라서 integerListStream는 다시 사용 ❌ (stream 특징2) <br>
+그러나 원본 데이터 integerList는 또 사용 가능 ⭕️ <br>
+원본 데이터 integerList는 변하지 않았을 것이다. (stream 특징1)<br>
 
 ```java
         //for-loop으로 정의
@@ -97,7 +100,7 @@ stream을 for each나 filter사용해서 변형하면, 또 사용할 수는 없�
 //stream fruitPEAR
 //stream fruitMANGO
 
-        //⭐️ Stream in for-loop
+        //⭐️ for-loop 대신 Stream
         //💡for each
         stringListStream.forEach((fruit)-> System.out.println("stream fruit"+ fruit.toUpperCase() ));
         //💡filter: 이 조건을 만족하는 것만
@@ -109,7 +112,7 @@ stream을 for each나 filter사용해서 변형하면, 또 사용할 수는 없�
         //💡filter2개 이상 섞어서도 가능
         integerListStream.filter((num)-> num%2 ==0)
                 .filter((num)-> num>4)
-                .forEach(num-> System.out.println("filter, forEach even number"+ num));
+                .forEach((num)-> System.out.println("filter, forEach even number"+ num));
 
         //stream은 1회용이다.
         //stream을 for each나 filter사용해서 변형하면, 또 사용할 수는 없음
@@ -118,7 +121,7 @@ stream을 for each나 filter사용해서 변형하면, 또 사용할 수는 없�
 
 ```
 
-## ✅ Stream API 최종 연산
+## ✅ Stream API **최종** 연산
 
 ### 💡 forEach() 출력
 
@@ -153,6 +156,7 @@ public class StreamTerminalOopsTest {
 
 대부분 컬렉션 변환용으로 사용 <br>
 빼오기 <br>
+모아서(collect) set으로 반환한다. <br>
 
 ```java
 //💡 collect() 수집(=컬렉션 반환)
@@ -175,20 +179,21 @@ Stream 첫 번째 값 가져오는데, <br>
 ### 💡 sum(), average()
 
 Stream 요소들의 총합 연산 진행 <br>
-숫자 Stream만 사용 가능 <br>
+**숫자** Stream만 사용 가능 <br>
 ⭐️ mapToInt() <br>
 
 ```java
 //💡 sum(), average()
 // ⭐️ mapToInt()를 해 주어야 한다.
+//numList에는 1,2,3,4,5숫자가 들어있는 상황
         System.out.println("Sum: "+ numList.stream().mapToInt((i)->i).sum()); //Sum: 15
         System.out.println("Average: "+numList.stream().mapToInt((i)-> i).average()); //Average: OptionalDouble[3.0]
 ```
 
 ### 💡 count(), max(), min()
 
-Stream길이 <br>
-Stream에서 가장 큰 값/작은 값 <br>
+`count()` Stream길이 <br>
+`max()`, `min()` Stream에서 가장 큰 값/작은 값 <br>
 마찬가지로 숫자 Stream만 사용 가능 <br>
 ⭐️ mapToInt() <br>
 
@@ -205,12 +210,13 @@ identity(초기값)와 연산 <br>
 
 ```java
 //💡 reduce() 내가 규칙 정하기
-        //0 은 초기값
+        //0 은 초기값, 2개의 Parameter를 넣어야 한다.
+        //0에서 시작해서 0에서 1빼고, -1에서 2빼고, -3에서 3빼고...
         int result= numList.stream().reduce(0, (int1, int2)-> int1 - int2);
         System.out.println("Reduce: "+ result); //Reduce: -15
 ```
 
-## ✅ Stream API 중간 연산
+## ✅ Stream API **중간** 연산
 
 ### 💡 filter(조건), distinct()
 
