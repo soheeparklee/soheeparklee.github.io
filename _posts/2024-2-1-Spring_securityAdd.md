@@ -218,11 +218,85 @@ public class DataSourceProperties {
 
 ```
 
-### 3. Entity
+### 3. DTO
+
+#### ✅ SignUpRequest
+
+```java
+package com.example.supercoding2stsohee.web.dto;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+public class SignUpRequest {
+    private String name;
+    private String phoneNumber;
+    private String nickName;
+    private String email;
+    private String password;
+    private String profileImg;
+    private String address;
+    private String gender;
+
+}
+
+```
+
+#### ✅ LoginRequest(DTO)
+
+```java
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+public class LoginRequest {
+    private String email;
+    private String password;
+}
+```
+
+```java
+package com.example.supercoding2stsohee.web.dto;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+public class SignUpRequest {
+    private String name;
+    private String phoneNumber;
+    private String nickName;
+    private String email;
+    private String password;
+    private String profileImg;
+    private String address;
+    private String gender;
+
+}
+
+```
+
+### 4. Entity
 
 #### ✅ User(Entity)
 
-- memberRoles와 역방향 연결
+- userRoles와 역방향 연결
 
 ```java
 package com.example.supercoding2stsohee.repository.user;
@@ -237,6 +311,9 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @EqualsAndHashCode(of = "userId")
 @Table(name = "user")
 public class User {
@@ -262,7 +339,7 @@ public class User {
     private String password;
 
     @Column(name = "profile_img", nullable = false)
-    private String profile_img;
+    private String profileImg;
 
     @Column(name = "address", nullable = false)
     private String address;
@@ -288,6 +365,7 @@ public class User {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true) //cascade, orphanRemoval 추가해보았음
     private List<UserRoles> userRoles;
 }
+
 
 ```
 
@@ -331,6 +409,9 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "user_roles")
 public class UserRoles {
 
@@ -351,7 +432,7 @@ public class UserRoles {
 
 ```
 
-### 4. JPA
+### 5. JPA
 
 #### ✅ UserJpa
 
@@ -410,13 +491,14 @@ public interface UserRolesJpa extends JpaRepository<UserRoles, Integer> {
 
 ## ☑️ Security setting
 
-### 5. CustomuserDetails
+### 6. CustomuserDetails
 
-    -CustomUserDetails는 implements UserDetails
-    - 그래서 @Override 하면 된다.
-    - JWT token에 대한 정보 설정
-    - JWT token을 받을 형식
-        - 권한 조회
+-CustomUserDetails는 implements UserDetails
+
+- 그래서 @Override 하면 된다.
+- JWT token에 대한 정보 설정
+- JWT token을 받을 형식
+  - 권한 조회
 
 ```java
 package com.example.supercoding2stsohee.repository.userDetails;
@@ -483,11 +565,11 @@ public class CustomUserDetails implements UserDetails {
 
 ```
 
-### 6. CustomUserDetailService setting
+### 7. CustomUserDetailService setting
 
-    - loadUserByUsername(): UserJpa에서 이메일로 User 정보를 찾아오고 이를 CustomUserDetails에 builder로 넣어준다.
-        - UserJpa에서 이메일로 User 정보를 찾기 위해 findByEmailFetchJoin()
-        - findByEmailFetchJoin()은 JPA에 내장된 함수가 아니니까 @Query로 함수를 정의해 준다.
+- loadUserByUsername(): UserJpa에서 이메일로 User 정보를 찾아오고 이를 CustomUserDetails에 builder로 넣어준다.
+  - UserJpa에서 이메일로 User 정보를 찾기 위해 findByEmailFetchJoin()
+  - findByEmailFetchJoin()은 JPA에 내장된 함수가 아니니까 @Query로 함수를 정의해 준다.
 
 ```java
 package com.example.supercoding2stsohee.service.security;
@@ -514,6 +596,7 @@ public class CustomUserDetailService implements UserDetailsService {
 
     private final UserJpa userJpa;
 
+    //email로 User 찾기
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         User user = userJpa.findByEmailFetchJoin(email)
@@ -532,14 +615,17 @@ public class CustomUserDetailService implements UserDetailsService {
 
 ```
 
-### 7. JWTAuthenticationFilter
+### 8. JWTAuthenticationFilter
 
-    doFilterInternal(): request, response, filterChain을 받아
-    JWT를 쪼개서
-    - resolveToken : token에서 원하는 정보 가져오기
-    - JWT가 Null이 아니고 validateToken 토큰이 유효한지 검사
-    - getAuthentication : JwtTokenProvider에서 권한 가져오기
-    SecurityContextHolder의 context에 권한 auth를 set 한다.
+jwt가 있는지 확인하고 권한 주기<br>
+<br>
+doFilterInternal(): request, response, filterChain을 받아
+JWT를 쪼개서 <br>
+
+- resolveToken : token에서 원하는 정보 가져오기
+- JWT가 Null이 아니고 validateToken 토큰이 유효한지 검사
+- getAuthentication : JwtTokenProvider에서 권한 가져오기
+  SecurityContextHolder의 context에 권한 auth를 set 한다.
 
 ```java
 package com.example.supercoding2stsohee.web.filters;
@@ -571,14 +657,15 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
 ```
 
-### 8. JwtTokenProvider
+### 9. JwtTokenProvider
 
-    - JWTAuthenticationFilter에서 사용한 메소드를 구현
+- JWTAuthenticationFilter에서 사용한 메소드를 구현
 
-        - resolveToken
-        - validateToken
-        - getAuthentication
-    - 그리고 createToken
+  - resolveToken
+  - validateToken
+  - getAuthentication
+
+- 그리고 createToken
 
 ```java
 package com.example.supercoding2stsohee.config.security;
@@ -616,12 +703,13 @@ public class JwtTokenProvider {
         key= Base64.getEncoder().encodeToString(secretKey.getBytes());
     }
     private long tokenValidMillisecond= 1000L * 60 * 60; //Token이 유효한 시간 1시간
+
     public String resolveToken(HttpServletRequest request) {
         return request.getHeader("Token");
     }
 
     public String createToken(String email, List<String> roles){ // 토큰 생성
-        Claims claims= Jwts.claims().setSubject(email);
+        Claims claims= Jwts.claims().setSubject(email); //claim: piece of info about a subject(user/entity)
         claims.put("roles", roles);
         Date now= new Date();
         return Jwts.builder()
@@ -634,9 +722,9 @@ public class JwtTokenProvider {
 
     public boolean validateToken(String jwtToken) {
         try{
-            Claims claims= Jwts.parser().setSigningKey(key).parseClaimsJws(jwtToken).getBody();
+            Claims claims= Jwts.parser().setSigningKey(key).parseClaimsJws(jwtToken).getBody(); //parse: jwt의 authenticity를 inspect하기 위해 정보를 extract하는 것
             Date now= new Date();
-            return !claims.getExpiration().before(now);
+            return !claims.getExpiration().before(now); //9시까지 유효한데 지금이 8시 반이면 before이 아니니까 거짓! 따라서 참을 반환
         } catch(Exception e){
             return false;
         }
@@ -655,47 +743,334 @@ public class JwtTokenProvider {
 
 ## ☑️ SignController, AuthService, SecurityConfig, PasswordEncoderConfig
 
-### 9. SignController
+### 10. SignController
 
 ```java
+package com.example.supercoding2stsohee.web.controller;
+
+import com.example.supercoding2stsohee.service.AuthService;
+import com.example.supercoding2stsohee.web.dto.SignUpRequest;
+import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequiredArgsConstructor
+public class SignController{
+    private final AuthService authService;
+    @PostMapping("/sign-up")
+    public String register(@RequestBody SignUpRequest signUpRequest){
+        boolean isSuccess= authService.signUp(signUpRequest);
+        return isSuccess ? "회원가입 성공" : "회원가입 실패";
+    }
+}
 
 ```
 
-### 10. AuthService
+### 11. AuthService
 
 ```java
+package com.example.supercoding2stsohee.service;
+
+import com.example.supercoding2stsohee.repository.roles.Roles;
+import com.example.supercoding2stsohee.repository.roles.RolesJpa;
+import com.example.supercoding2stsohee.repository.user.User;
+import com.example.supercoding2stsohee.repository.userRoles.UserRoles;
+import com.example.supercoding2stsohee.repository.userRoles.UserRolesJpa;
+import com.example.supercoding2stsohee.repository.user.UserJpa;
+import com.example.supercoding2stsohee.web.dto.SignUpRequest;
+import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.time.LocalDateTime;
+
+@Service
+@RequiredArgsConstructor
+public class AuthService {
+    private final RolesJpa rolesJpa;
+    private final UserRolesJpa userRolesJpa;
+    private final UserJpa userJpa;
+
+
+    private final PasswordEncoder passwordEncoder;
+
+    @Transactional(transactionManager = "tm")
+    public boolean signUp(SignUpRequest signUpRequest) {
+        if(userJpa.existsByEmail(signUpRequest.getEmail())){
+            return false;
+        }
+
+        Roles roles= rolesJpa.findByName("ROLE_USER");
+
+        User user= User.builder()
+                .name(signUpRequest.getName())
+                .phoneNumber(signUpRequest.getPhoneNumber())
+                .email(signUpRequest.getEmail())
+                .nickName(signUpRequest.getNickName())
+                .password(passwordEncoder.encode(signUpRequest.getPassword())) //passwordEncoder
+                .profileImg(signUpRequest.getProfileImg())
+                .address(signUpRequest.getAddress())
+                .gender(signUpRequest.getGender())
+                .status("normal")
+                .failureCount(0)
+                .createdAt(LocalDateTime.now())
+                .build();
+        userJpa.save(user);
+        userRolesJpa.save(
+                UserRoles.builder()
+                        .user(user)
+                        .roles(roles)
+                        .build()
+        );
+        return true;
+    }
+}
 
 ```
 
-### 11. PasswordEncoderConfig
+#### (추가) UserJpa
 
 ```java
+@Repository
+public interface UserJpa extends JpaRepository<User, Integer> {
+
+    @Query(
+            "SELECT u " +
+                    "FROM User u " +
+                    "JOIN FETCH u.userRoles ur " +
+                    "JOIN FETCH ur.roles r " +
+                    "WHERE u.email = ?1 "
+    )
+
+    Optional<User> findByEmailFetchJoin(String email);
+
+    boolean existsByEmail(String email);
+}
 
 ```
 
-## ☑️ Login 로직 추가
-
-### (추가) SignController
+#### (추가) RolesJpa
 
 ```java
-
+@Repository
+public interface RolesJpa extends JpaRepository<Roles, Integer> {
+    Roles findByName(String roleUser);
+}
 ```
 
-### 12. LoginRequest(DTO)
+### 12. PasswordEncoder
 
 ```java
+package com.example.supercoding2stsohee.config.security;
 
-```
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
-### (추가) AuthService(loginService 추가)
-
-```java
+@Configuration
+public class PasswordEncoderConfig {
+    @Bean
+    public PasswordEncoder passwordEncoder(){
+        return new BCryptPasswordEncoder();
+    }
+}
 
 ```
 
 ### 13. SecurityConfig
 
 ```java
+package com.example.supercoding2stsohee.config.security;
+
+import lombok.RequiredArgsConstructor;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.web.SecurityFilterChain;
+
+@Configuration
+@EnableWebSecurity
+@RequiredArgsConstructor
+public class SecurityConfig {
+
+    @Bean
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
+        http
+                .headers(h -> h.frameOptions(f -> f.sameOrigin()))
+                .csrf(c->c.disable())
+                .httpBasic(h->h.disable())
+                .formLogin(f->f.disable())
+                .rememberMe(r->r.disable())
+                .sessionManagement(s->s.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
+
+        return http.build();
+
+    }
+}
+
+```
+
+## 🔑 Login 로직 추가
+
+### (추가) SignController
+
+```java
+    @PostMapping("/login")
+    public String login(@RequestBody LoginRequest loginRequest, HttpServletResponse httpServletResponse){
+        String token= authService.login(loginRequest);
+        httpServletResponse.setHeader("Token", token);
+        return "로그인 성공";
+    }
+```
+
+### (추가) AuthService(loginService 추가)
+
+private final AuthenticationManager authenticationManager;
+private final JwtTokenProvider jwtTokenProvider;
+두 bean도 추가해주어야 한다.
+
+```java
+package com.example.supercoding2stsohee.service;
+
+import com.example.supercoding2stsohee.config.security.JwtTokenProvider;
+import com.example.supercoding2stsohee.repository.roles.Roles;
+import com.example.supercoding2stsohee.repository.roles.RolesJpa;
+import com.example.supercoding2stsohee.repository.user.User;
+import com.example.supercoding2stsohee.repository.userRoles.UserRoles;
+import com.example.supercoding2stsohee.repository.userRoles.UserRolesJpa;
+import com.example.supercoding2stsohee.repository.user.UserJpa;
+import com.example.supercoding2stsohee.service.exceptions.NullPointerException;
+import com.example.supercoding2stsohee.web.dto.LoginRequest;
+import com.example.supercoding2stsohee.web.dto.SignUpRequest;
+import lombok.RequiredArgsConstructor;
+import org.springframework.security.authentication.AuthenticationManager; //securityConfig에 bean추가
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.server.NotAcceptableStatusException;
+
+import java.time.LocalDateTime;
+import java.util.List;
+import java.util.stream.Collectors;
+
+@Service
+@RequiredArgsConstructor
+public class AuthService {
+    private final RolesJpa rolesJpa;
+    private final UserRolesJpa userRolesJpa;
+    private final UserJpa userJpa;
+
+    private final PasswordEncoder passwordEncoder;
+
+    private final AuthenticationManager authenticationManager;
+    private final JwtTokenProvider jwtTokenProvider;
+
+    @Transactional(transactionManager = "tm")
+    public boolean signUp(SignUpRequest signUpRequest) {
+        if(userJpa.existsByEmail(signUpRequest.getEmail())){
+            return false;
+        }
+
+        Roles roles= rolesJpa.findByName("ROLE_USER");
+
+        User user= User.builder()
+                .name(signUpRequest.getName())
+                .phoneNumber(signUpRequest.getPhoneNumber())
+                .email(signUpRequest.getEmail())
+                .nickName(signUpRequest.getNickName())
+                .password(passwordEncoder.encode(signUpRequest.getPassword())) //passwordEncoder
+                .profileImg(signUpRequest.getProfileImg())
+                .address(signUpRequest.getAddress())
+                .gender(signUpRequest.getGender())
+                .status("normal")
+                .failureCount(0)
+                .createdAt(LocalDateTime.now())
+                .build();
+        userJpa.save(user);
+        userRolesJpa.save(
+                UserRoles.builder()
+                        .user(user)
+                        .roles(roles)
+                        .build()
+        );
+        return true;
+    }
+
+    public String login(LoginRequest loginRequest) {
+        try{
+            Authentication authentication= authenticationManager.authenticate(
+                    new UsernamePasswordAuthenticationToken(loginRequest.getEmail(), loginRequest.getPassword())
+            );
+            SecurityContextHolder.getContext().setAuthentication(authentication);
+            User user= userJpa.findByEmailFetchJoin(loginRequest.getEmail())
+                    .orElseThrow(()-> new NullPointerException("해당 이메일로 계정을 찾을 수 없습니다."));
+            List<String> roles= user.getUserRoles().stream().map(UserRoles::getRoles).map(Roles::getName).collect(Collectors.toList());
+            return jwtTokenProvider.createToken(loginRequest.getEmail(), roles);
+        }catch(Exception e){
+            e.printStackTrace();
+            throw new NotAcceptableStatusException("로그인 할 수 없습니다.");
+        }
+    }
+}
+
+```
+
+### 13. SecurityConfig 추가
+
+authenticationManager 추가
+
+```java
+package com.example.supercoding2stsohee.config.security;
+
+import com.example.supercoding2stsohee.web.filters.JwtAuthenticationFilter;
+import lombok.RequiredArgsConstructor;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+
+@Configuration
+@EnableWebSecurity
+@RequiredArgsConstructor
+public class SecurityConfig {
+
+    private final JwtTokenProvider jwtTokenProvider;
+
+    @Bean
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
+        http
+                .headers(h -> h.frameOptions(f -> f.sameOrigin()))
+                .csrf(c->c.disable())
+                .httpBasic(h->h.disable())
+                .formLogin(f->f.disable())
+                .rememberMe(r->r.disable())
+                .sessionManagement(s->s.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+
+        return http.build();
+    }
+
+    @Bean
+    public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception{
+        return authenticationConfiguration.getAuthenticationManager();
+    }
+
+
+}
 
 ```
 
@@ -704,6 +1079,54 @@ public class JwtTokenProvider {
 ### (추가) SecurityConfig(authorizeRequests 추가)
 
 ```java
+package com.example.supercoding2stsohee.config.security;
+
+import com.example.supercoding2stsohee.web.filters.JwtAuthenticationFilter;
+import lombok.RequiredArgsConstructor;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+
+@Configuration
+@EnableWebSecurity
+@RequiredArgsConstructor
+public class SecurityConfig {
+
+    private final JwtTokenProvider jwtTokenProvider;
+
+    @Bean
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
+        http
+                .headers(h -> h.frameOptions(f -> f.sameOrigin()))
+                .csrf(c->c.disable())
+                .httpBasic(h->h.disable())
+                .formLogin(f->f.disable())
+                .rememberMe(r->r.disable())
+                .sessionManagement(s->s.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                .authorizeRequests(a ->
+                                a
+                                        .requestMatchers("/resources/static/**", "/sign-up", "/login").permitAll() // 로그인 안해도 가능
+                                        .requestMatchers("/test").hasRole("USER") // user 권한이 있어야 가능
+                        // DB ROLE 테이블에는 ROLE_USER이라고 되어있지만 여기서 USER만 넣어도 앞에 `ROLE_`이 자동으로 붙음
+                )
+                .addFilterBefore(new JwtAuthenticationFilter(jwtTokenProvider), UsernamePasswordAuthenticationFilter.class);
+
+        return http.build();
+    }
+
+    @Bean
+    public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception{
+        return authenticationConfiguration.getAuthenticationManager();
+    }
+
+
+}
 
 ```
 
@@ -714,8 +1137,114 @@ public class JwtTokenProvider {
 - ExcpetionController
 - (추가) SecurityConfig의 SecurityFilterChain에 exceptionHandling 추가
 
-```java
+#### ✅ CustomAccessDeniedHandler
 
+```java
+package com.example.supercoding2stsohee.service.exceptions;
+
+import jakarta.persistence.Access;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.access.AccessDeniedException;
+import org.springframework.security.web.access.AccessDeniedHandler;
+import org.springframework.stereotype.Component;
+
+import java.io.IOException;
+
+@Slf4j
+@Component
+public class CustomAccessDeniedHandler implements AccessDeniedHandler {
+
+    @Override
+    public void handle(HttpServletRequest request, HttpServletResponse response, AccessDeniedException accessDeniedException) throws IOException, ServletException {
+        response.sendRedirect("/exceptions/access-denied");
+    }
+}
+
+```
+
+#### ✅ CustomAuthenticationEntryPoint
+
+```java
+package com.example.supercoding2stsohee.service.exceptions;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.web.AuthenticationEntryPoint;
+import org.springframework.stereotype.Component;
+
+import java.io.IOException;
+
+@Component
+public class CustomAuthenticationEntryPoint implements AuthenticationEntryPoint {
+
+    @Override
+    public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException authException) throws IOException, ServletException {
+        response.sendRedirect("/exceptions/entrypoint");
+    }
+}
+
+```
+
+#### ✅ ExcpetionController
+
+```java
+package com.example.supercoding2stsohee.web.controller;
+
+import com.example.supercoding2stsohee.service.exceptions.NullPointerException;
+import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequiredArgsConstructor
+@RequestMapping(value="/exceptions")
+public class ExceptionController {
+
+    @GetMapping(value= "/entrypoint")
+    public void entryPointException(){
+        throw new NullPointerException("로그인이 필요합니다");
+    }
+
+    @GetMapping(value="/access-denied")
+    public void accessDeniedException(){
+        throw new NullPointerException("권한이 없습니다.");
+    }
+}
+
+```
+
+#### ✅ (추가) SecurityConfig의 SecurityFilterChain에 exceptionHandling 추가
+
+```java
+    @Bean
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
+        http
+                .headers(h -> h.frameOptions(f -> f.sameOrigin()))
+                .csrf(c->c.disable())
+                .httpBasic(h->h.disable())
+                .formLogin(f->f.disable())
+                .rememberMe(r->r.disable())
+                .sessionManagement(s->s.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                .authorizeRequests(a ->
+                                a
+                                        .requestMatchers("/resources/static/**", "/sign-up", "/login").permitAll() // 로그인 안해도 가능
+                                        .requestMatchers("/test").hasRole("USER") // user 권한이 있어야 가능
+                        // DB ROLE 테이블에는 ROLE_USER이라고 되어있지만 여기서 USER만 넣어도 앞에 `ROLE_`이 자동으로 붙음
+                )
+                .exceptionHandling(e->{
+                    e.authenticationEntryPoint(new CustomAuthenticationEntryPoint());
+                    e.accessDeniedHandler(new CustomAccessDeniedHandler());
+                })
+                .addFilterBefore(new JwtAuthenticationFilter(jwtTokenProvider), UsernamePasswordAuthenticationFilter.class);
+
+        return http.build();
+    }
 ```
 
 ## ☑️ TEST 코드에서 CustomerMemberDetails 사용
@@ -724,5 +1253,55 @@ public class JwtTokenProvider {
 - POSTMAN 으로 로그인 후 Token을 TEST 코드에 넣어주면
 
 ```java
+package com.example.supercoding2stsohee.web.controller;
+
+
+import com.example.supercoding2stsohee.repository.cart.CartJpa;
+import com.example.supercoding2stsohee.repository.orderItem.OrderItemJpa;
+import com.example.supercoding2stsohee.repository.orderTable.OrderTableJpa;
+import com.example.supercoding2stsohee.repository.product.ProductJpa;
+import com.example.supercoding2stsohee.repository.productOption.ProductOptionJpa;
+import com.example.supercoding2stsohee.repository.productPhoto.ProductPhotoJpa;
+import com.example.supercoding2stsohee.repository.review.ReviewJpa;
+import com.example.supercoding2stsohee.repository.roles.RolesJpa;
+import com.example.supercoding2stsohee.repository.userDetails.CustomUserDetails;
+import com.example.supercoding2stsohee.repository.userRoles.UserRolesJpa;
+import com.example.supercoding2stsohee.repository.user.User;
+import com.example.supercoding2stsohee.repository.user.UserJpa;
+import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+import org.webjars.NotFoundException;
+
+@RestController
+@RequiredArgsConstructor
+public class test {
+
+    private final UserJpa userJpa;
+    private final RolesJpa rolesJpa;
+    private final UserRolesJpa userRolesJpa;
+    private final ProductJpa productJpa;
+    private final ProductOptionJpa productOptionJpa;
+    private final ProductPhotoJpa productPhotoJpa;
+    private final ReviewJpa reviewJpa;
+    private final CartJpa cartJpa;
+    private final OrderTableJpa orderTableJpa;
+    private final OrderItemJpa orderItemJpa;
+
+    @GetMapping("/test")
+    public String test() {
+        User user = userJpa.findById(1).orElseThrow(() -> new NotFoundException("ss"));
+
+        Integer userId = user.getUserId();
+
+        return "test success: " + userId;
+    }
+
+    @GetMapping("/test2")
+    public String test2(@AuthenticationPrincipal CustomUserDetails customUserDetails) {
+        return "test success, userId: " + customUserDetails.getUserId();
+    }
+}
 
 ```

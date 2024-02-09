@@ -17,10 +17,10 @@ tags: [acronyms] # TAG names should always be lowercase
 
 ## ✅ Spring
 
-| Acyronyms | Stands For                      |
-| --------- | ------------------------------- |
-| AOP       | Aspect-Oriented Programming     |
-| ORM       | Object Relation Mapping         |
+| Acyronyms | Stands For                      | Meaning                  |
+| --------- | ------------------------------- | ------------------------ |
+| AOP       | Aspect-Oriented Programming     |                          |
+| ORM       | Object Relation Mapping         | JAVA와 SQL을 mapping한다 |
 | PSA       | Portable Service Abstraction    |
 | JPA       | Java Persistence API            |
 | JPQL      | Java Persistence Query Language |
