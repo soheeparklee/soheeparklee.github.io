@@ -1,5 +1,5 @@
 ---
-title: <Abstract>
+title: Abstract
 categories: [JAVA, JAVA_Basics]
 tags: [abstract, override] # TAG names should always be lowercase
 ---
@@ -45,8 +45,8 @@ tags: [abstract, override] # TAG names should always be lowercase
 public abstract class Animal {
     protected int legNum;
     //abstract method 선언만 하고 끝
-    abstract void eat();
-    abstract void sleep();
+    public abstract void eat(String food);
+    public abstract void sleep();
 }
 //Dog class는 Animal을 extend하고 싶음.
 //이 떄, 이렇게만 하면 상속 불가 ❌

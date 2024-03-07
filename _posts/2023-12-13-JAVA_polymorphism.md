@@ -1,5 +1,5 @@
 ---
-title: <Polymorphism> 다형성_downcasting/ instanceof
+title: 다형성_Polymorphism/downcasting/ instanceof
 categories: [JAVA, JAVA_Basics]
 tags: [polymorphism, downcasting, upcasting, final] # TAG names should always be lowercase
 ---
@@ -14,6 +14,7 @@ Animal이라는 타입이 animal/bird/fish/person 여러 타입이나 메소드�
 ```java
 public static void main(String[] args) {
         //다형성의 핵심은 왼쪽이 아니라 오른쪽에 있다.
+        //bird, fish, person extends Animal
         //왼쪽에 타입을 Animal로 했어도 오른쪽의 인스턴스가 animal/bird/fish/person인지에 따라 행위가 달라진다.
         Animal animal= new Animal();
         Animal bird= new Bird(); //upcast
