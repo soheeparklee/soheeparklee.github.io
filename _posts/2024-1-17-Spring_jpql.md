@@ -176,7 +176,8 @@ public class Passenger {
     @ApiOperation("userId의 예약한 항공편과 수수료 총합")
     @GetMapping("/users-sum-price")
     public Double findUserFlightSumPrice(
-            @ApiParam(name = "user-Id", value = "유저 ID", example = "1") @RequestParam("user-id") Integer userId
+            @ApiParam(name = "user-Id", value = "유저 ID", example = "1")
+            @RequestParam("user-id") Integer userId
     )
     {
         Double sum = airReservationService.findUserFlightSumPrice(userId);

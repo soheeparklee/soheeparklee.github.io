@@ -9,6 +9,12 @@ tags: [static, instance, local] # TAG names should always be lowercase
 `클래스 이름.static 변수 이름` <br>
 <br>
 
+### 한 줄 요약
+
+- static변수는 공동으로 사용되는 변수
+- static은 인스턴스 생성 전에 프로그램 시작과 동시에 데이터 영역에 생성, 클래스 변수
+  <br>
+
 static(정적)은 마치 본사의 정보와 기능을 정의해 두는 것과 같다. <br>
 모든 인스턴스마다 **동일하게** 가지고 있을 것들에 대해서 사용 <br>
 모든 인스턴스들이 **공통적인 값**을 유지해야 하는 속성<br>
