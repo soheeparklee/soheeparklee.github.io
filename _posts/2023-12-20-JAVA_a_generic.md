@@ -7,7 +7,6 @@ tags: [generic] # TAG names should always be lowercase
 ## ✅ Generic 프로그래밍
 
 ❓ 로직은 다 똑같은데 **datatype**만 바꾸는 코드를 짜야 한다면? <br>
-<br>
 ❌ object가 최상위클라스니까, object class로 구현해볼까?<br>
 그러나 항상 downcasting해야하는 한계가 있다. 😨<br>
 

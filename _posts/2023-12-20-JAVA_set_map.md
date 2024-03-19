@@ -6,12 +6,12 @@ tags: [] # TAG names should always be lowercase
 
 ## ✅ Map
 
-어떤 **key**를 기준으로 **value**를 알아내는 것
-순서 **고려 안 함**
-
-구조: key-value
-용도: key를 기준으로 value검색
-구현체:
+어떤 **key**를 기준으로 **value**를 알아내는 것<br>
+순서 **고려 안 함**<br>
+<br>
+구조: key-value<br>
+용도: key를 기준으로 value검색<br>
+구현체:<br>
 
 - HashMap: Array 구조 기반
 - TreeMap: Node 구조 기반
@@ -54,10 +54,10 @@ public class MapInterfaceTest {
 
 ## ✅ Set(Collection)
 
-**순서는 고려 안하고** 목록을 **중복 없이** 나열해두고 있는지 없는지 확인하기
-용도: 고유한 요소 **검색**
+**순서는 고려 안하고** 목록을 **중복 없이** 나열해두고 있는지 없는지 확인하기 <br>
+용도: 고유한 요소 **검색**<br>
 
-구현체
+구현체:<br>
 
 - HashSet: Array구조 기반
 - TreeSet: Node 구조 기반
@@ -107,7 +107,7 @@ public class SetInterfaceTest {
 
 ### Hash함수:
 
-임의의 크기를 가진 데이터를 **고정된 크기(길이는 같게)**의 **고유한 값**으로 변환하는 함수
+임의의 크기를 가진 데이터를 **고정된 크기(길이는 같게)**의 **고유한 값**으로 변환하는 함수<br>
 
 ### 사용처
 
@@ -154,8 +154,8 @@ public class SetInterfaceTest {
 
 ### 객체에 HASH씌우기
 
-객체에 hash씌우고자 할 때는 그냥 cutomer에 hash씌우면 모든 cutomer이 hash 똑같을 것임
-따라서 cutomer마다 고유의 값을 하나 주고(CustomerID) 거기에 대해 hash
+객체에 hash씌우고자 할 때는 그냥 cutomer에 hash씌우면 모든 cutomer이 hash 똑같을 것임<br>
+따라서 cutomer마다 고유의 값을 하나 주고(CustomerID) 거기에 대해 hash<br>
 
 ```java
 @Override
@@ -169,9 +169,9 @@ Customer customer2= new Customer("ID456", "Lee");
 
 ## ✅ HashMap, HashSet
 
-1️⃣ Array구조
-2️⃣ 객체의 `hashCode()`호출
-3️⃣ Array구조 사이즈로 나머지 "%" 적용
+1️⃣ Array구조<br>
+2️⃣ 객체의 `hashCode()`호출<br>
+3️⃣ Array구조 사이즈로 나머지 "%" 적용<br>
 
 <img width="444" alt="스크린샷 2023-12-21 오후 9 28 07" src="https://github.com/soheeparklee/sc_project_carrotMkt_improved/assets/97790983/81a3bb48-3d0d-4232-9e3b-c810ffab697e">
 

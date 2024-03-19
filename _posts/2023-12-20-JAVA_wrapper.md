@@ -15,14 +15,14 @@ Wrapper Class는 클래스이기 때문에 객체의 reference type ⭕️<br>
 
 1. 객체지향적 프로그래밍 실현 & 자료구조 일관성 유지<br>
    객체지향을 좋아하는 사람들이 "JAVA의 정체성은 OOP니까 primitive type도 객체로 만들어보자" 라는 취지에서 나옴.<br>
-2. null을 선언할 수 있음<br>
+2. **null**을 선언할 수 있음<br>
 3. library사용할 때 wrapper을 사용하면 지원받을 수 있다.<br>
 4. **GENERIC 프로그래밍은 wrapper만 지원하기 때문이다.**<br>
 
 ## 💡 어떤 때 primitive쓰고 어떤 때 wrapper쓰나요?
 
-#### Wrapper은 integer 객체이기 때문에 null을 넣을 수가 있다.
-
+integer에 null을 넣고 싶을 때<br>
+Wrapper은 integer 객체이기 때문에 null을 넣을 수가 있다.<br>
 객체이다보니까 일관성이 있다.<br>
 
 ```java

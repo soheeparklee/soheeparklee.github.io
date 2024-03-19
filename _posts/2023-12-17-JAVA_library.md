@@ -88,6 +88,7 @@ System.out.println(customer) //Customer name: So Hee
 두 대상의 **데이터 값 자체**를 비교한다 <br>
 두 인스턴스의 Heap 주소 값을 비교하여 Boolean 값을 리턴<br>
 같은 메모리값을 가리키고 있는가?<br>
+(하지만 override해서 같은 값을 비교하도록 만들 수 있음⭕️) <br>
 <br>
 
 **instance**: Heap에 저장<br>
@@ -142,11 +143,24 @@ customer1.equals(customer3); //true
 **메모리 주소**를 기준으로 boolean값 반환 <br>
 `equals()` override해서 ID가 같으면 같은 사람 취급하라고 해도 말 안 들음 <br>
 ==과 `equals()`는 상관 없이 실행됨. <br>
-==은 항상 **메모리값**이 기준 <br>
+==은 항상 **메모리값**이 기준(이게 바로 `equals()`와 차이점) <br>
 
 ```java
 customer1 == customer2; //true
 customer1 == customer3; // false
+```
+
+<img width="729" alt="스크린샷 2024-03-11 오후 3 49 25" src="https://github.com/soheeparklee/sc_project_carrotMkt_improved/assets/97790983/bbea44bd-a249-4aae-b5e3-626e96c5445b">
+
+#### ⭐️ 여기서 잠깐!
+
+```java
+String str1= "Cat"; // Constant Pool에 저장
+String str2= "Cat"; //따라서 메모리 주소 같음
+
+String str3= new String("Cat"); //Heap에 저장
+String str4= new String("Cat"); //메모리 주소 다름
+
 ```
 
 ### 💡 StringJoiner

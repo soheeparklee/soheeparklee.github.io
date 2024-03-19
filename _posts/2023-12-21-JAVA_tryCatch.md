@@ -6,7 +6,7 @@ tags: [trycatch, throw, error, exception, finally, resource, autocloseable] # TA
 
 ## Error(오류) 🆚 Exception(예외)
 
-둘 다 Throwable의 class
+둘 다 Throwable의 class <br>
 
 ### 💥 Error(오류)
 
@@ -65,8 +65,8 @@ public class ExceptionTest {
 
 ## 💥 Error(오류)이나 Exception(예외) throw
 
-객체이기 때문에 new필요
-함수 나갈 때 return ❌ throw ⭕️
+객체이기 때문에 new필요 <br>
+함수 나갈 때 return ❌ throw ⭕️ <br>
 
 ## ✅ Try-catch
 
@@ -97,7 +97,7 @@ public class TryCatch1 {
 
 ## ✅ Try-catch 다중처리
 
-catch문이 여러개
+catch문이 여러개 <br>
 
 ### try-catch 는 여러개 선언도 가능
 
@@ -148,7 +148,7 @@ public class TrCatch2 {
 
 ### ☑️ try catch 다중 OR로 선언 |
 
-두 오류 중 하나 때문에 오류나서 catch
+두 오류 중 하나 때문에 오류나서 catch <br>
 
 ```java
 public class TryMultiCatch {
@@ -178,7 +178,7 @@ public class TryMultiCatch {
 
 ## ☑️ 파일을 읽어올 때는 꼭 exception 예외처리를 해 주어야 한다.
 
-throw또는 try-catch 사용
+throw또는 try-catch 사용 <br>
 
 ```java
 public class TryCatch3 {
@@ -203,7 +203,7 @@ public class TryCatch3 {
 
 ## ✅ Exception e
 
-모든 Exception들은 이 Exception 아래에 있다.
+모든 Exception들은 이 Exception 아래에 있다. <br>
 
 ```java
 public class TryMultiCatch {
@@ -229,10 +229,10 @@ public class TryMultiCatch {
 
 ## ✅ Try-catch finally
 
-return이든,
-catch로 잡든 못 잡든,
-(catch했든, catch 못했든)
-try-catch 영역 이후 **무조건** 실행
+return이든, <br>
+catch로 잡든 못 잡든, <br>
+(catch했든, catch 못했든) <br>
+try-catch 영역 이후 **무조건** 실행 <br>
 
 ### 💡 finally 이유: 리소스를 다시 컴퓨터에게 돌려주어야 하기 때문이다.
 
@@ -275,10 +275,11 @@ public class FinallyCloseTest {
 
 ### 💡 Try-with-resource
 
-finally쓰지 않고 **try안에 FileInputStream** 가져오면 **close**가 자동으로 실행됨
-Try-with-resource는 **AutoCloseable을 상속한** class만 사용 가능하다
-
-위의 finally코드를 Try-with-resource를 사용해서 수정
+finally쓰지 않고 **try안에 FileInputStream** 가져오면 **close**가 자동으로 실행됨<br>
+Try-with-resource는 **AutoCloseable을 상속한** class만 사용 가능하다<br>
+<br>
+위의 finally코드를 Try-with-resource를 사용해서 수정<br>
+<br>
 
 - Try-with-resource있어서 close필요 없음
 
@@ -313,14 +314,14 @@ public class FinallyCloseTest {
 
 ## ✅ 예외 처리 미루기: throw
 
-각 함수에서 try, catch로 예외 처리하지 않고 main함수로 throw해서 미뤄버린다.
-❗️단, main함수는 가장 최종으로 실행되는 함수니까 throw할 수 없다.
-만약 main함수도 throw해버리면 예외 처리 안 하는 셈이 된다.
-
-발생한 곳에서 처리하지 않고, 나를 호출한 다른 함수에게 throw해서 위임하기
-**발생 이유:**여러 개의 함수에서 비슷한 exception이 발생할 때 각자 함수에서 처리하는게 아니라,
-main method에서 이를 한 번에 처리하기
-각 함수에서 exception 처리하면 비슷한 코드가 반복되니까.
+각 함수에서 try, catch로 예외 처리하지 않고 main함수로 throw해서 미뤄버린다. <br>
+❗️단, main함수는 가장 최종으로 실행되는 함수니까 throw할 수 없다.<br>
+만약 main함수도 throw해버리면 예외 처리 안 하는 셈이 된다.<br>
+<br>
+발생한 곳에서 처리하지 않고, 나를 호출한 다른 함수에게 throw해서 위임하기<br>
+**발생 이유:**여러 개의 함수에서 비슷한 exception이 발생할 때 각자 함수에서 처리하는게 아니라,<br>
+main method에서 이를 한 번에 처리하기<br>
+각 함수에서 exception 처리하면 비슷한 코드가 반복되니까.<br>
 
 ```java
 public class PushExceptionTest {
@@ -328,7 +329,7 @@ public class PushExceptionTest {
 
         try {
             printFile("src/chap51_trycatch/test.txt");
-            //아까 미뤄둔 예외처리 모두 여기서 실행
+            //아까 printFile, getFileStream에서 미뤄둔(throw) 예외처리 모두 여기서 실행
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch(IOException e){
@@ -357,13 +358,13 @@ public class PushExceptionTest {
 
 ```
 
-### handle exceptions all at once
+### ✔️ handle exceptions all at once
 
 매우 비슷한 exception이 발생하는 두 함수에서 각각 exception 처리하는게 아니라,
 main에서 한 번에 처리 ➡️ 더 효율적인 코드
 
 ```java
-////거의 똑같은 exception처리하는 비효율적 코드
+////👎🏻 거의 똑같은 exception처리하는 비효율적 코드
 public class handleExceptionsAtOnce {
     public static void main(String[] args) {
 
@@ -412,7 +413,7 @@ public class handleExceptionsAtOnce {
 
 ```
 
-💡 더 효율적인 코드로 변경!
+### 💡 더 효율적인 코드로 변경!
 
 ```java
 //main으로 throw
@@ -461,22 +462,24 @@ public class handleExceptionsAtOnce {
 
 ## ✅ 직접 던지기 Check Exception
 
-문제 발생할 수 있는 함수에서 if문을 사용해 문제 상황을 정의해두고
-main함수로 exception을 throw한다.
-그러면 이 문제 발생할 수 있는 함수를 main함수에서 호출했을 때 문제가 셍기는 상황이면,
-빨간줄이 빡!
-그래서 run하기 전에 문제가 생겼다는 것을 알 수가 있다.
+문제 발생할 수 있는 함수에서 if문을 사용해 문제 상황을 정의해두고 <br>
+main함수로 exception을 throw한다. <br>
+그러면 이 문제 발생할 수 있는 함수를 main함수에서 호출했을 때 문제가 셍기는 상황이면, <br>
+빨간줄이 빡! <br>
+그래서 run하기 전에 문제가 생겼다는 것을 알 수가 있다. <br>
+<br>
 
-exception도 class의 한 종류이고, throwable을 상속한다.
-if문과 함께 예외 잡기
-조건문으로 잡아서, 상위 함수로 throw하기도 한다.
+exception도 class의 한 종류이고, throwable을 상속한다. <br>
+if문과 함께 예외 잡기 <br>
+조건문으로 잡아서, 상위 함수로 throw하기도 한다. <br>
+<br>
 
-문제가 생길 exception을 미리 예상하여 **if문**으로 처리해 **exception을 throw**하도록 한다.
-그러면 main method가 이 문제 생길 여지 있는 method 문제 있게 부르잖아?
-그러면 **빨간줄이 딱!!!** 생긴다!
-그러면 main method가 이 exception을 잡아서 try, catch로 처리한다.
-그러면 run하기 전에 문제 생긴다는 것을 알 수 있는거지~ ➡️ check Exception
-그러면 에러 없이 실행할 수 있지!
+문제가 생길 exception을 미리 예상하여 **if문**으로 처리해 **exception을 throw**하도록 한다. <br>
+그러면 main method가 이 문제 생길 여지 있는 method 문제 있게 부르잖아? <br>
+그러면 **빨간줄이 딱!!!** 생긴다! <br>
+그러면 main method가 이 exception을 잡아서 **try, catch**로 처리한다. <br>
+그러면 run하기 전에 문제 생긴다는 것을 알 수 있는거지~ ➡️ check Exception <br>
+그러면 에러 없이 실행할 수 있지! <br>
 
 ```java
 public class ThrowUncheckException {

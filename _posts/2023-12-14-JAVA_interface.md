@@ -53,7 +53,7 @@ JPA repository would be an interface, defining methods. <br>
 
 - interface는 사실 다 abstract임. <br>
 - 생성자 필요없음. (`new...`필요 없음 <br>❌)
-- 즉, instance를 생성하지 않고도 실행 클래스에서 바로 불러오기 가능
+- 즉, instance를 생성하지 않고도 실행 클래스에서 바로 불러오기 가능 <br>
 
 #### interface 의 field는 `public static final` <br>
 
@@ -61,13 +61,14 @@ JPA repository would be an interface, defining methods. <br>
 - 그래서 field를 정할 때 초기값을 무조건 정해줘야 한다. <br>
 - 그래서 implement한 class에서는 값을 바꿀 수 없다. Final이니까. <br>
 
-interface 의 메소드는 `public abstract`<br>
+- interface 의 메소드는 `public abstract`<br>
 
 - interface 에서는 그냥 메소드 이름만 쓰면 끝 <br>
 
 #### method 구현 override 의무
 
 - 메소드 구현 의무: implement하는 class는 무조건 override해 줘야 함. <br>
+- interface는 무조건 abstract이기 때문이다. <br>
 
 ### interface정의 방법
 
@@ -85,7 +86,28 @@ public interface Flyable {
 ### interface로도 instance type을 정의할 수 있다.
 
 ```java
-        //실행 클래스
+public class Bird extends Animal implements Flyable {
+    private long weight;
+    private String color;
+
+    // 행위
+    @Override //abstract class extends Animal
+    public void eat(String food) {
+        System.out.printf("새가 %s 을 부리로 쪼아 먹고 있습니다.\n", food);
+    }
+
+    @Override //abstract class extends Animal
+    public void sleep() {
+        System.out.println("새가 잠을 자고 있습니다.");
+    }
+
+    @Override //interface implements Flyable
+    public void fly(){
+        System.out.println("새가 날고 있습니다.");
+    }
+}
+
+        //실행 클래스에서는
         //interface로도 인스턴스 타입을 정의할 수 있다.
         //이제 인스턴스 타입  bird의 경우 세 가지나 할 수 있음!!
         Flyable bird1= new Bird();
@@ -105,6 +127,7 @@ Flyable airplane= new Airplane("AB007");
 bird.fly();
 airplane.fly();
 // 기존 instance에서 정의한 Method는 더 이상 사용 불가
+//eat는 Bird class가 가지고 있는 method
 //⭐️ 왜냐하면 bird를 flyable(instance type을 interface로 설정했기 떄문이다. )
 bird.eat(); //❌
 ```
