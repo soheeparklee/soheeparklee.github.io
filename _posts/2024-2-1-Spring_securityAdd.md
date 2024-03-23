@@ -1095,7 +1095,7 @@ public class SecurityConfig {
 
 ## ☑️ 권한 설정
 
-### (추가) SecurityConfig(authorizeRequests 추가)
+### (추가) SecurityConfig(`authorizeRequests` 추가)
 
 ```java
 package com.example.supercoding2stsohee.config.security;
