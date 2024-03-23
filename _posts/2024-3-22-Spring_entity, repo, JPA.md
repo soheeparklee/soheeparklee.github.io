@@ -1,5 +1,5 @@
 ---
-title: Entity 🆚 Repository 🆚 JPA
+title: Entity 🆚 Repository 🆚 JPA 🆚 DTO
 categories: [JAVA, Spring]
 tags: [entity, repository, jpa] # TAG names should always be lowercase
 ---
