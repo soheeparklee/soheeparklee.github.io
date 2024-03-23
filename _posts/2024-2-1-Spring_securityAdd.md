@@ -105,6 +105,38 @@ jwtpassword:
       org.hibernate.SQL: debug
 ```
 
+💡 autoconfig를 추가하면 jpaConfig, DataSourceProperties를 추가하지 않아도 된다.
+
+```java
+server:
+  port:8080
+
+spring:
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+
+  autoconfigure:
+    exclude: org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
+
+  datasource:
+    username: ${DATABASE_USERNAME}
+    password: ${DATABASE_PASSWORD}
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/BackEndProject_2_verSoh?useUnicode=true&characterEncoding=UTF-8
+
+  jpa:
+    show-sql: true
+
+jwtpassword:
+  source: ${JWT_SECRET_KEY}
+
+  logging:
+    level:
+      org.hibernate.SQL: debug
+
+```
+
 #### ✅ JPAConfig
 
 ```java
@@ -264,32 +296,6 @@ public class LoginRequest {
     private String email;
     private String password;
 }
-```
-
-```java
-package com.example.supercoding2stsohee.web.dto;
-
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
-public class SignUpRequest {
-    private String name;
-    private String phoneNumber;
-    private String nickName;
-    private String email;
-    private String password;
-    private String profileImg;
-    private String address;
-    private String gender;
-
-}
-
 ```
 
 ### 4. Entity
@@ -491,14 +497,18 @@ public interface UserRolesJpa extends JpaRepository<UserRoles, Integer> {
 
 ## ☑️ Security setting
 
-### 6. CustomuserDetails
+### 6. CustomUserDetails
 
--CustomUserDetails는 implements UserDetails
+- CustomUserDetails implements UserDetails <br>
+
+> 💡 UserDetails <br>
+> interface by JAVA security, encapsulated user info retrieved by Spring Security during the authentication process. <br>
+> includes methods such as `getUsername()`, `getPassword()`, `getAuthorities()`(권한조회), `isEnabled()`, `isAccountNonexpired()`, `isAccountNonLocked()`, `isCredentialNonExpired()` <br>
 
 - 그래서 @Override 하면 된다.
 - JWT token에 대한 정보 설정
 - JWT token을 받을 형식
-  - 권한 조회
+- 권한 조회
 
 ```java
 package com.example.supercoding2stsohee.repository.userDetails;
@@ -527,10 +537,12 @@ public class CustomUserDetails implements UserDetails {
 
     private List<String> authorities;
 
+    //권한
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return authorities.stream().map(SimpleGrantedAuthority::new).collect(Collectors.toList());
     }
+
     // email 과 password로 유저 인식
     @Override
     public String getPassword() {
@@ -567,9 +579,11 @@ public class CustomUserDetails implements UserDetails {
 
 ### 7. CustomUserDetailService setting
 
-- loadUserByUsername(): UserJpa에서 이메일로 User 정보를 찾아오고 이를 CustomUserDetails에 builder로 넣어준다.
-  - UserJpa에서 이메일로 User 정보를 찾기 위해 findByEmailFetchJoin()
-  - findByEmailFetchJoin()은 JPA에 내장된 함수가 아니니까 @Query로 함수를 정의해 준다.
+- CustomUserDetailService implements UserDetailsService <br>
+
+- `loadUserByUsername()`: UserJpa에서 이메일로 User 정보를 찾아오고 이를 CustomUserDetails에 builder로 넣어준다.
+  - UserJpa에서 이메일로 User 정보를 찾기 위해 `findByEmailFetchJoin()`
+  - `findByEmailFetchJoin()`은 JPA에 내장된 함수가 아니니까 `@Query`로 함수를 정의해 준다.
 
 ```java
 package com.example.supercoding2stsohee.service.security;
@@ -615,49 +629,7 @@ public class CustomUserDetailService implements UserDetailsService {
 
 ```
 
-### 8. JWTAuthenticationFilter
-
-jwt가 있는지 확인하고 권한 주기<br>
-<br>
-doFilterInternal(): request, response, filterChain을 받아
-JWT를 쪼개서 <br>
-
-- resolveToken : token에서 원하는 정보 가져오기
-- JWT가 Null이 아니고 validateToken 토큰이 유효한지 검사
-- getAuthentication : JwtTokenProvider에서 권한 가져오기
-  SecurityContextHolder의 context에 권한 auth를 set 한다.
-
-```java
-package com.example.supercoding2stsohee.web.filters;
-
-import com.example.supercoding2stsohee.config.security.JwtTokenProvider;
-import jakarta.servlet.FilterChain;
-import jakarta.servlet.ServletException;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-import lombok.RequiredArgsConstructor;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.web.filter.OncePerRequestFilter;
-
-import java.io.IOException;
-@RequiredArgsConstructor
-public class JwtAuthenticationFilter extends OncePerRequestFilter {
-    private final JwtTokenProvider jwtTokenProvider;
-    @Override
-    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
-        String jwtToken= jwtTokenProvider.resolveToken(request); // Token 에서 원하는 정보를 가져오기
-        if(jwtToken != null && jwtTokenProvider.validateToken(jwtToken)){ // jwtToken 이 존재하고 유효하다면
-            Authentication auth= jwtTokenProvider.getAuthentication(jwtToken); // jwtTokenProvider 에서 권한을 가져오고
-            SecurityContextHolder.getContext().setAuthentication(auth); // SecurityContextHolder.getContext() 에 auth 를 넣어준다.
-        }
-        filterChain.doFilter(request, response);
-    }
-}
-
-```
-
-### 9. JwtTokenProvider
+### 8. JwtTokenProvider
 
 - JWTAuthenticationFilter에서 사용한 메소드를 구현
 
@@ -725,6 +697,7 @@ public class JwtTokenProvider {
             Claims claims= Jwts.parser().setSigningKey(key).parseClaimsJws(jwtToken).getBody(); //parse: jwt의 authenticity를 inspect하기 위해 정보를 extract하는 것
             Date now= new Date();
             return !claims.getExpiration().before(now); //9시까지 유효한데 지금이 8시 반이면 before이 아니니까 거짓! 따라서 참을 반환
+            //유효기간이 지금보다 전이면 안되지.
         } catch(Exception e){
             return false;
         }
@@ -736,6 +709,50 @@ public class JwtTokenProvider {
     }
     public String getUserEmail(String jwtToken){
         return Jwts.parser().setSigningKey(key).parseClaimsJws(jwtToken).getBody().getSubject();
+    }
+}
+
+```
+
+### 9. JwtAuthenticationFilter
+
+JwtAuthenticationFilter extends OncePerRequestFilter
+<br>
+jwt가 있는지 확인하고 권한 주기<br>
+<br>
+`doFilterInternal()`: request, response, filterChain을 받아
+JWT를 쪼개서 <br>
+
+- `resolveToken()` : token에서 원하는 정보 가져오기
+- JWT가 Null이 아니고 `validateToken()` 토큰이 유효한지 검사
+- `getAuthentication()` : JwtTokenProvider에서 권한 가져오기 <br>
+  SecurityContextHolder의 context에 권한 auth를 set 한다.
+
+```java
+package com.example.supercoding2stsohee.web.filters;
+
+import com.example.supercoding2stsohee.config.security.JwtTokenProvider;
+import jakarta.servlet.FilterChain;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.web.filter.OncePerRequestFilter;
+
+import java.io.IOException;
+@RequiredArgsConstructor
+public class JwtAuthenticationFilter extends OncePerRequestFilter {
+    private final JwtTokenProvider jwtTokenProvider;
+    @Override
+    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
+        String jwtToken= jwtTokenProvider.resolveToken(request); // Token 에서 원하는 정보를 가져오기
+        if(jwtToken != null && jwtTokenProvider.validateToken(jwtToken)){ // jwtToken 이 존재하고 유효하다면
+            Authentication auth= jwtTokenProvider.getAuthentication(jwtToken); // jwtTokenProvider 에서 권한을 가져오고
+            SecurityContextHolder.getContext().setAuthentication(auth); // SecurityContextHolder.getContext() 에 auth 를 넣어준다.
+        }
+        filterChain.doFilter(request, response);
     }
 }
 
@@ -770,6 +787,8 @@ public class SignController{
 ```
 
 ### 11. AuthService
+
+SignController 를 구현한 service가 AuthService
 
 ```java
 package com.example.supercoding2stsohee.service;
@@ -932,9 +951,9 @@ public class SecurityConfig {
 
 ### (추가) AuthService(loginService 추가)
 
-private final AuthenticationManager authenticationManager;
-private final JwtTokenProvider jwtTokenProvider;
-두 bean도 추가해주어야 한다.
+`private final AuthenticationManager authenticationManager;` <br>
+`private final JwtTokenProvider jwtTokenProvider;` <br>
+두 bean도 추가해주어야 한다. <br>
 
 ```java
 package com.example.supercoding2stsohee.service;

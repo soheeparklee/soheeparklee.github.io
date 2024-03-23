@@ -28,8 +28,10 @@ tags: [acronyms] # TAG names should always be lowercase
 | JDBC      | Java Database Connectivity      |
 | IOC       | Inversion of Control            |
 | DI        | Dependency Injection            |
-|           |                                 |
-|           |                                 |
+| JSON      |                                 |
+| MVC       | Model - View - Controller       |
+
+IOC: application controll flow of execution❌ framework manages the lifecycle of objects and their dependencies
 
 ## ✅ NetWork
 
