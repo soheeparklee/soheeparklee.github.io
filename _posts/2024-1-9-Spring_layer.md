@@ -10,18 +10,36 @@ tags: [] # TAG names should always be lowercase
 
 ## ✅ Web Layer
 
-### ✔️ Web Layer Class
+### ☑️ Web Layer Class
 
-#### ☑️ Controller
+- Controller
+- DTO
+- Exceptions
+- Filter
 
-#### ☑️ DTO: Data Transfer Object
+#### ✔️ Controller
+
+#### ✔️ DTO: Data Transfer Object
 
 > 계층 간 데이터 교환을 위한 Java Beans <br>
 > 데이터를 **전달**하기 위한 객체 <br>
 > 데이터베이스 레코드의 데이터를 매핑하기 위한 데이터 객체 <br>
-> 보통 로직을 가지고 있지 않고 data와 그 data에 접근하기 위한 getter, setter를 가지고 있다. <br> > <br>
+> 보통 로직을 가지고 있지 않고 data와 그 data에 접근하기 위한 getter, setter를 가지고 있다. <br>
 
-이번 실습에서는 **빈 생성자**와 **getter**을 추가했음 <br>
+**클라이언트**와 소통 위해서<br>
+여러 데이터를 말아서 던지는, 메세지 전달하는 편지같은 클래스<br>
+서버가 클라이언트한테 줄 수도 있고, 클라이언트가 서버한테도 던질 수 있다.<br>
+DTO는 **직렬화/역직렬화**가 가능하다.<br>
+JSON ➡️ JAVA(직렬화) <br>
+JAVA ➡️ JSON(역직렬화) <br>
+1️⃣ 빈 Constructor가 있어야하고, 2️⃣ Getter이 있어야 한다.<br>
+<br>
+
+💡 **DTO 역할**<br>
+➖ 외부 통신 DTO: JSON을 JAVA에게 주고, 또 전달하기<br>
+➖ 내부 통신 DTO: 내부 레이어들끼리 데이터 전달<br>
+
+<img width="484" alt="스크린샷 2024-01-10 오전 2 02 12" src="https://github.com/soheeparklee/portfolioWebsite_dreamcoding/assets/97790983/e4b966b2-8b1d-403e-b04c-927e6031a45b">
 
 #### 🆚 DAO: Data Access Object
 
@@ -42,32 +60,77 @@ VO는 getter를 포함한 다른 비즈니스 로직도 가질 수 있다.<br>
 
 DTO와 반드시 분리되어야 한다.<br>
 
-#### ☑️ exception handlers
-
-#### ☑️ Filters
-
-### ✔️ Rest Controller and Dispatcher Servlet
+### ☑️ Rest Controller and Dispatcher Servlet
 
 > HTTP method ➕ URI로 Controller 매핑 후 해당 method 실행<br>
 
 ### 💡 Web Layer CRUD 구현 예시
 
-1️⃣ 모든 아이템 조회 GET <br>
-2️⃣ 새로운 아이템 등록 POST <br>
-3️⃣ Path ID로 아이템 조회 GET <br>
-4️⃣ 쿼리 파라미터로 ID 조회 <br>
-5️⃣ 여러 ID 쿼리 파라미터로 조회 GET <br>
-6️⃣ Path ID로 아이템 삭제 DELETE <br>
-7️⃣ Path ID와 Body로 업데이트 UPDATE <br>
+1️⃣ 아이템 불러올 때(GET) Item DTO <br>
+➕ spec DTO
+2️⃣ 새로운 아이템 등록(POST) ItemBody DTO <br>
+3️⃣ Controller
+[Controller] Path ID로 아이템 조회 GET <br>
+[Controller] 쿼리 파라미터로 ID 조회 <br>
+[Controller] 여러 ID 쿼리 파라미터로 조회 GET <br>
+[Controller] Path ID로 아이템 삭제 DELETE <br>
+[Controller] Path ID와 Body로 업데이트 UPDATE <br>
 
-#### 1️⃣ 모든 아이템 조회 GET & 2️⃣ 새로운 아이템 등록 POST
+#### 1️⃣ 아이템 불러올 때(GET) Item DTO
 
-1️⃣ 모든 아이템 조회 GET
+<img width="886" alt="스크린샷 2024-01-09 오후 9 25 48" src="https://github.com/soheeparklee/portfolioWebsite_dreamcoding/assets/97790983/343271b2-75f7-47f2-a60c-25a91b7f0d8c">
+
+```java
+//아이템 불러올 때 Item DTO
+//get 할 때 보내는 item
+public class Item {
+    private String id;
+    private String name;
+    private String type;
+    private int price;
+    private Spec spec;
+
+    public Item() {
+    }
+    //post할 때 가져올 item을 constructor로 선언
+    //⭐️ ItemBody는 post하기 위해 선언했었음
+    public Item(Integer id, ItemBody itemBody) {
+        this.id = String.valueOf(id);
+        this.name= itemBody.getName();
+        this.type= itemBody.getType();
+        this.price= itemBody.getPrice();
+        this.spec= itemBody.getSpec();
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public String getName() {
+        return  name;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public Spec getSpec() {
+        return spec;
+    }
+}
+
+```
+
+#### 2️⃣ 새로운 아이템 등록(POST) ItemBody DTO
+
 <img width="890" alt="스크린샷 2024-01-09 오후 9 22 23" src="https://github.com/soheeparklee/portfolioWebsite_dreamcoding/assets/97790983/f3a2484e-6bde-4333-82ea-842b3d23efd9">
 
 ```java
-//1️⃣ 모든 아이템 조회 GET
-//get할 때 가져오는 itemBody
+//post할 때 보내는 itemBody
 
 public class ItemBody {
     private String name;
@@ -93,7 +156,7 @@ public class ItemBody {
         return spec;
     }
 }
-
+//➕ spec DTO
 //spec은 또 따른 클래스로 정의해줘야 함
 public class Spec {
     private String cpu;
@@ -117,54 +180,11 @@ public class Spec {
 }
 ```
 
-2️⃣ 새로운 아이템 등록 POST
-<img width="886" alt="스크린샷 2024-01-09 오후 9 25 48" src="https://github.com/soheeparklee/portfolioWebsite_dreamcoding/assets/97790983/343271b2-75f7-47f2-a60c-25a91b7f0d8c">
+#### 3️⃣ Controller
 
-```java
-//2️⃣ 새로운 아이템 등록 POST
-//post 할 때 보내는 item
-public class Item {
-    private String id;
-    private String name;
-    private String type;
-    private int price;
-    private Spec spec;
+#### [Controller] 1. `findAllItem()`
 
-    public Item() {
-    }
-    //2️⃣새로운 아이템 등록 POST
-    //post할 때 가져올 item을 constructor로 선언
-    //⭐️ ItemBody는 get하기 위해 선언했었음
-    public Item(Integer id, ItemBody itemBody) {
-        this.id = String.valueOf(id);
-        this.name= itemBody.getName();
-        this.type= itemBody.getType();
-        this.price= itemBody.getPrice();
-        this.spec= itemBody.getSpec();
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public int getPrice() {
-        return price;
-    }
-
-    public Spec getSpec() {
-        return spec;
-    }
-}
-
-```
+#### [Controller] 2. `refisterItem()`
 
 ```java
 //💡 실행클래스 💡
@@ -176,8 +196,9 @@ public class ElectronicStoreController {
     //1️⃣ 모든 아이템 조회 GET 위해 list
     private List<Item> items= new ArrayList<>();
     //2️⃣새로운 아이템 등록 POST 위해 필요한 serialID
-    //get할 때마다 아이디 새롭게 지정하도록
+    //post할 때마다 아이디 새롭게 지정하도록
     private static int serialItemId= 1;
+
     @GetMapping("/items")
     public List<Item> findAllItem(){
         return items;
@@ -271,7 +292,7 @@ public class ElectronicStoreController {
 
 ```
 
-#### 3️⃣ Path ID로 아이템 조회 GET
+#### [Controller] 3. Path ID로 아이템 조회 GET
 
 ```java
     //실행클래스
@@ -289,13 +310,13 @@ public class ElectronicStoreController {
     }
 ```
 
-#### 4️⃣ 쿼리 파라미터로 ID 조회
+#### [Controller] 4. 쿼리 파라미터로 ID 조회
 
 ```java
     //4️⃣ 쿼리 파라미터로 ID 조회
     @GetMapping("/items-query") //GET api/items-query?id=1
     public Item findItemByQueryID(@RequestParam("id") String id){ //여기에 받을 id를 parameter로 받는다.
-        //찻는거니까 3️⃣ Path ID로 아이템 조회랑 비슷
+        //찻는거니까 3️⃣ Path ID로 아이템 조회랑 똑같
         Item itemFound= items.stream()
                 .filter(item-> item.getId().equals(id))
                 .findFirst()
@@ -305,12 +326,12 @@ public class ElectronicStoreController {
     }
 ```
 
-#### 5️⃣ 여러 ID 쿼리 파라미터로 조회 GET
+#### [Controller] 5. 여러 ID 쿼리 파라미터로 조회 GET
 
 여러개의 ID가 들어오면 어떻게?
 
 ```java
-    @GetMapping("/items-queries")
+    @GetMapping("/items-queries") //GET api/items-queries?id=1&id=2&id=3
     public List<Item> findItemByManyQueryIDs(@RequestParam("id") List<String> ids){ //id몇 개가 parameter로 들어올지 모르니 list로
         //id를 비교하기 위해서 set으로 바꿨다가
         Set<String> idSet= ids.stream().collect(Collectors.toSet());
@@ -321,7 +342,7 @@ public class ElectronicStoreController {
     }
 ```
 
-#### 6️⃣ Path ID로 아이템 삭제 DELETE
+#### [Controller] 6. Path ID로 아이템 삭제 DELETE
 
 ```java
     // 6️⃣ Path ID로 아이템 삭제 DELETE
@@ -351,7 +372,7 @@ public class ElectronicStoreController {
     }
 ```
 
-#### 7️⃣ Path ID와 Body로 업데이트 UPDATE
+#### [Controller] 7. Path ID와 Body로 업데이트 UPDATE
 
 ```java
     @PutMapping("/items/{id}")
@@ -387,13 +408,9 @@ public class ElectronicStoreController {
 
 ### ☑️ Repository 구현체: JDBC template
 
-> JDBC template: Spring에서 제공하는 JDBC 사용해 DB와 상호작용<br>
-
-<br>
+> JDBC template: Spring에서 제공하는 JDBC 사용해 DB와 상호작용, Java와 DB를 연결해준다 <br>
 
 > RowMapper: DB와 JAVA를 각각 매핑해 주는 역할<br>
-
-<br>
 
 > DataSource: Spring에서 데이터베이스와의 커넥션을 관리하고 제공하는 **빈**
 
@@ -501,7 +518,7 @@ DTO, Entity를 나눠주지 않았기 때문 <br>
 #### 6️⃣ Repository Interface를 구현한 구현체가 필요하다 ➡️ ElectronicStoreItemJdbcDao
 
 controller는 interface 사용하고 <br>
-interface를 구현하는 클래스가 필요하다. <br>
+repository interface를 구현하는 클래스가 필요하다. <br>
 이렇게 interface를 구현하는 클래스를 사용하는 이유는 ➡️ **느슨한 결합**을 위해서이다. <br>
 느슨한 결합을 사용해 DB의 버전이 바꾸더라도 내부에는 문제 없이 실행되도록 <br>
 
@@ -520,7 +537,7 @@ public class ElectronicStoreItemJdbcDao implements ElectronicStoreItemRepository
 }
 ```
 
-#### 7️⃣ ⭐️ItemEntity⭐️ 만들어야지
+#### 7️⃣ ItemEntity 만들어야지
 
 ItemEntity는 sql에서 create한 테이블과 **1대1 매핑**되어야 한다. <br>
 복잡해보이지만 사실 각 필드에 대한 constructor, getter, setter 정의한 것이다. <br>
@@ -612,7 +629,7 @@ public class ItemEntity {
 
 ```
 
-#### 8️⃣ RowMapper, findAllItems() override
+#### 8️⃣ repository에 RowMapper 추가, findAllItems() override
 
 ```java
 @Repository
@@ -677,7 +694,7 @@ public class Item {
 #### 1️⃣ GET 바꾸기
 
 itemEntity받도록 다시 구현한다. <br>
-위에서처럼 구현하면 안 된다. <br>
+아까 위에서처럼 구현하면 안 된다. <br>
 DTO와 Entity를 각각 구현해야 하기 떄문 <br>
 
 ```java

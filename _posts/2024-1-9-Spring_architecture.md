@@ -56,42 +56,23 @@ profile 별로 application.yaml 따로 구성해서 관리한다
 
 <img width="790" alt="스크린샷 2024-01-09 오후 7 26 14" src="https://github.com/soheeparklee/portfolioWebsite_dreamcoding/assets/97790983/aa5f1517-4118-475a-972f-b07f61d18921">
 
-#### ✔️ Web layer(🟰Presentation Layer)
+### ✔️ Web layer(🟰Presentation Layer)
 
 > 외부(client/dispatcher servlet)과 맞닿아 있는 레이어<br>
 
 외부 요청/응답의 접점에 위치한다.<br>
 
-#### ✔️ Service layer
+### ✔️ Service layer
 
 > 비즈니스 로직을 실제로 처리함<br>
 
-#### ✔️ Repository layer(🟰Data Access Layer)
+### ✔️ Repository layer(🟰Data Access Layer)
 
 > 데이터 베이스와 상호작용하는 레이어<br>
 
 <img width="447" alt="스크린샷 2024-01-09 오후 7 34 35" src="https://github.com/soheeparklee/portfolioWebsite_dreamcoding/assets/97790983/c8d3ce15-bd41-42e8-853f-0ea848e96e71">
 
 config는 web, service, respository 어디에도 속하지 않는 파일 넣으려고 만들었음<br>
-
-## ✅ DTO
-
-> DTO: Data Transfer Object<br>
-
-**클라이언트**와 소통 위해서<br>
-여러 데이터를 말아서 던지는, 메세지 전달하는 편지같은 클래스<br>
-서버가 클라이언트한테 줄 수도 있고, 클라이언트가 서버한테도 던질 수 있다.<br>
-DTO는 **직렬화/역직렬화**가 가능하다.<br>
-JSON ➡️ JAVA
-JAVA ➡️ JSON
-1️⃣ 빈 Constructor가 있어야하고, 2️⃣ Getter이 있어야 한다.<br>
-<br>
-
-✔️ **DTO 역할**<br>
-➖ 외부 통신 DTO: JSON을 JAVA에게 주고, 또 전달하기<br>
-➖ 내부 통신 DTO: 내부 레이어들끼리 데이터 전달<br>
-
-<img width="484" alt="스크린샷 2024-01-10 오전 2 02 12" src="https://github.com/soheeparklee/portfolioWebsite_dreamcoding/assets/97790983/e4b966b2-8b1d-403e-b04c-927e6031a45b">
 
 ## ⭐️ SpringBoot 직렬화: Jackson 라이브러리
 

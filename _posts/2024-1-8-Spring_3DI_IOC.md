@@ -12,6 +12,15 @@ tags: [di, ioc, bean, aop, oop, psa] # TAG names should always be lowercase
 - JAVA meta programming
 - JAVA design pattern
 
+## ⭐️ POJO
+
+> Plain Old Java Object <br>
+> 깔끔하고 정통적인 JAVA OOP를 가능하게 함<br>
+
+simple java classes that does NOT depend on any Spring specific interfaces or classes.<br>
+for exmaple, **DTOs**<br>
+thanks to the use of pojos, we can have loose coupling and easy integration with other components in the framework. <br>
+
 ## ⭐️ AOP
 
 > Aspect Oriented Programming
@@ -48,11 +57,27 @@ tags: [di, ioc, bean, aop, oop, psa] # TAG names should always be lowercase
 JPA JPQL을 사용하면 여러 DB의 기술을 추상화한다. <br>
 따라서 DB에 따라 언어가 조금씩 달라도 JAVA에서는 문제없이 사용 가능하다. <br>
 
-#### 💡 POJO
+## ✅ Bean
 
-> Plain Old Java Object <br>
-> 깔끔하고 정통적인 JAVA OOP <br>
-> 객체지향형 프로그래밍을 최대한 활용하는 코드가 좋은 코드이다. <br>
+> a set of conventions for designing and creating **reusable** software components in Java.<br>
+> JavaBeans are often designed to be serializable, which means they can be easily saved to a persistent storage or transmitted over a network.<br>
+> Default constructor is required for JavaBean<br>
+
+### 💡 스프링 컨테이너에 빈 등록하면 싱글톤 패턴 구현
+
+기본적으로 싱글톤 패턴으로 구현이 된다.<br>
+(여러 스레드가 하나의 객체 사용)<br>
+따라서 **멀티쓰레딩**으로 자원을 공유한다.<br>
+
+### 💡 Bean등록하는 방법
+
+1. @Bean annotaion 추가
+
+<img width="1028" alt="스크린샷 2024-01-08 오후 3 34 45" src="https://github.com/soheeparklee/portfolioWebsite_dreamcoding/assets/97790983/f4e08064-6f5c-4ab1-a0ec-2b9c0d0a03bc">
+
+2. @Component 추가
+
+<img width="1035" alt="스크린샷 2024-01-08 오후 3 37 02" src="https://github.com/soheeparklee/portfolioWebsite_dreamcoding/assets/97790983/7ad1da49-b465-42e2-8b67-f816c83edfc0">
 
 ## ⭐️ IOC/DI
 
@@ -62,31 +87,11 @@ JPA JPQL을 사용하면 여러 DB의 기술을 추상화한다. <br>
 - DI(Dependency Injection) <br>
 - IOC(Inversion of Control) <br>
 
-## ✅ Bean
-
-> a set of conventions for designing and creating **reusable** software components in Java.<br>
-> JavaBeans are often designed to be serializable, which means they can be easily saved to a persistent storage or transmitted over a network.<br>
-> Default constructor is required for JavaBean<br>
-
-## ✅ 스프링 컨테이너에 빈 등록하기
-
-기본적으로 싱글톤 패턴으로 구현이 된다.<br>
-(여러 스레드가 하나의 객체 사용)<br>
-따라서 멀티쓰레딩으로 자원을 공유한다.<br>
-
-#### 빈 등록하기 방법 1
-
-<img width="1028" alt="스크린샷 2024-01-08 오후 3 34 45" src="https://github.com/soheeparklee/portfolioWebsite_dreamcoding/assets/97790983/f4e08064-6f5c-4ab1-a0ec-2b9c0d0a03bc">
-
-#### 빈 등록하기 방법 2
-
-<img width="1035" alt="스크린샷 2024-01-08 오후 3 37 02" src="https://github.com/soheeparklee/portfolioWebsite_dreamcoding/assets/97790983/7ad1da49-b465-42e2-8b67-f816c83edfc0">
-
 ## ✅ IOC
 
 > 제어의 역전 <br>
-> 우리가 빈을 만들고 해당 클래스의 객체를 만들면, 이제는 우리가 아니라 **스프링 컨테이너가 직접 생성하고 관리한다.** <br>
-> 서블릿 컨테이너의 흐름으로 제어되는 것 ➡️ 제어의 역전 <br>
+> 우리가 Bean을 만들고 해당 클래스의 객체를 만들면, 이제는 우리가 아니라 **스프링 컨테이너가 직접 생성하고 관리한다.** <br>
+> 스프링 컨테이너는 서블릿 컨테이너 위에서 동작 ➡️ 서블릿 컨테이너의 흐름으로 제어되는 것 ➡️ 제어의 역전 <br>
 
 ## ❓ JAVA 클래스 의존이란?
 
