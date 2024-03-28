@@ -1128,7 +1128,7 @@ public class SecurityConfig {
                 .formLogin(f->f.disable())
                 .rememberMe(r->r.disable())
                 .sessionManagement(s->s.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                .authorizeRequests(a ->
+                .authorizeRequests(a -> //authorizeHTTPRequests 하면 안 됨!! 그러면 requestMatchers를 못 받음
                                 a
                                         .requestMatchers("/resources/static/**", "/sign-up", "/login").permitAll() // 로그인 안해도 가능
                                         .requestMatchers("/test").hasRole("USER") // user 권한이 있어야 가능
