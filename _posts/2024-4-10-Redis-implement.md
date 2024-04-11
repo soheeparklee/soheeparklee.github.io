@@ -6,19 +6,19 @@ tags: [redis. jasypt] # TAG names should always be lowercase
 
 ## ✅ 작동 순서
 
-유저가 회원가입 하면서 이메일 입력
-➡️ 서버에서 이메일로 인증번호 이메일 발송
-➡️ 인증번호는 Redis에 저장(만료시간 5분)
-➡️ 유저가 이메일에서 인증번호 확인
-➡️ 이메일과 인증번호로 서버에 인증 요청
-➡️ 서버에서 Redis있는 인증번호와 비교
-➡️ 인증 완료 혹은 exceptions처리
+유저가 회원가입 하면서 이메일 입력 <br>
+➡️ 서버에서 이메일로 인증번호 이메일 발송 <br>
+➡️ 인증번호는 Redis에 저장(만료시간 5분) <br>
+➡️ 유저가 이메일에서 인증번호 확인 <br>
+➡️ 이메일과 인증번호로 서버에 인증 요청 <br>
+➡️ 서버에서 Redis있는 인증번호와 비교 <br>
+➡️ 인증 완료 혹은 exceptions처리 <br>
 
 ### 💡 Jasypt
 
 > Java library that provides simple APIs for encryption and decryption of data, including hashing.
 
-#### 해싱이란?
+#### ✔️ 해싱이란?
 
 > transforming text into charecters using a one-way cryptographic hash function
 
@@ -33,7 +33,7 @@ tags: [redis. jasypt] # TAG names should always be lowercase
 - encrypts with an algorithm and a key
 - AES, DES, RSA
 
-#### Salt?
+#### ✔️ Salt?
 
 > "salt" is random data that is used as an additional input to a hash function along with the plain text being hashed
 
@@ -41,7 +41,7 @@ tags: [redis. jasypt] # TAG names should always be lowercase
 - When hashing a password or any other sensitive data, you can provide a salt along with the data.
 - The salt is then combined with the data before hashing, resulting in a unique hash for each input even if the original data is the same.
 
-#### 인코딩?
+#### ✔️ 인코딩?
 
 > process of transforming data into a format that is suitable for a particular type of transmission or storage system
 
@@ -54,7 +54,7 @@ tags: [redis. jasypt] # TAG names should always be lowercase
 
 ### 💡 Redis
 
-> open-source, in-memory data structure store that can be used as a database, cache, and message broker
+> in-memory data structure store that can be used as a database, cache, and message broker
 
 - caching, session management
 - save frequently used data in memory, to reduce the laod off the primary data storage.
