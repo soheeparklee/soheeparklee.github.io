@@ -6,19 +6,68 @@ tags: [redis. jasypt] # TAG names should always be lowercase
 
 ## ✅ 작동 순서
 
-유저가 회원가입 하면서 이메일 입력 -> 서버에서 이메일로 인증번호 이메일 발송 -> 인증번호는 Redis에 저장(만료시간 5분) -> 유저가 이메일에서 인증번호 확인 -> 이메일과 인증번호로 서버에 인증 요청 -> 서버에서 Redis있는 인증번호와 비교 -> 인증 완료 혹은 exceptions처리
+유저가 회원가입 하면서 이메일 입력
+➡️ 서버에서 이메일로 인증번호 이메일 발송
+➡️ 인증번호는 Redis에 저장(만료시간 5분)
+➡️ 유저가 이메일에서 인증번호 확인
+➡️ 이메일과 인증번호로 서버에 인증 요청
+➡️ 서버에서 Redis있는 인증번호와 비교
+➡️ 인증 완료 혹은 exceptions처리
 
-## 💡 Jasypt
+### 💡 Jasypt
 
-- 해싱이란?
-- Salt?
-- 인코딩?
+> Java library that provides simple APIs for encryption and decryption of data, including hashing.
 
-## 💡 Redis
+#### 해싱이란?
 
-## 💡@Validation 사용하여 유효성 검사
+> transforming text into charecters using a one-way cryptographic hash function
 
-### gmail 2단계 인증 설정
+- one way cryptographic function
+- results in hash value/hash code
+- **irreversable**
+- MD5, SHA-1, SHA-256
+
+🆚 Encryption <br>
+
+- eversible cryptographic process
+- encrypts with an algorithm and a key
+- AES, DES, RSA
+
+#### Salt?
+
+> "salt" is random data that is used as an additional input to a hash function along with the plain text being hashed
+
+- thanks to salt, we can defend against attacks and add complexity to the hashing process.
+- When hashing a password or any other sensitive data, you can provide a salt along with the data.
+- The salt is then combined with the data before hashing, resulting in a unique hash for each input even if the original data is the same.
+
+#### 인코딩?
+
+> process of transforming data into a format that is suitable for a particular type of transmission or storage system
+
+- GOAL: make sure data can be represented and transmitted properly
+- Base64, hexadecimal, URL encoding
+
+🆚 Encryption <br>
+
+- GOAL: protect data, data confidentiality
+
+### 💡 Redis
+
+> open-source, in-memory data structure store that can be used as a database, cache, and message broker
+
+- caching, session management
+- save frequently used data in memory, to reduce the laod off the primary data storage.
+- 단 5분동안만 사용할 인증번호를 데이터베이스에 저장하고 삭제하는 것은 번거로운 일이며 비용도 많이 든다. 따라서 인메모리인 Redis에 저장하여 속도를 높이고 비용을 절약한다.
+
+### 💡 @Valid 사용하여 유효성 검사
+
+@Valid를 붙여 놓으면 check validation on input data. <br>
+예를 들어, <br>
+`public ResponseEntity<String> createUser(@Valid @RequestBody User user)` <br>
+이렇게 `User`앞에 `@Valid`를 붙여 놓으면 `User`를 `@RequestBody`로 가져오기 전에 유효성을 검사하고 가져온다. <br>
+
+## ✅ gmail 2단계 인증 설정
 
 - 앱 비밀번호 받기
 - 구글 계정 관리
@@ -30,7 +79,7 @@ tags: [redis. jasypt] # TAG names should always be lowercase
 
 ### build.gradle에 의존성 추가
 
-```java
+```groovy
    	// email 인증
     implementation group: 'org.springframework.boot', name: 'spring-boot-starter-mail', version: '2.6.3'
     implementation 'javax.mail:mail:1.4.7'
@@ -101,8 +150,8 @@ public class EmailCertificationConfig {
 
 ### EmailRequest DTO
 
-유저의 이메일 받아오기
-Validation을 사용해 유효성 검사
+유저의 이메일 받아오기 <br>
+Validation을 사용해 유효성 검사 <br>
 
 ```java
 @Getter
@@ -212,7 +261,7 @@ public class EmailCertificationService {
 
 ### Jasypt build.gradle 추가
 
-```java
+```groovy
 // redis -> java로 redis control
     implementation 'redis.clients:jedis:5.1.0'
 
@@ -278,11 +327,12 @@ public class JasyptConfig {
 
 ### application.yaml
 
-PBEWithMD5AndDES encryption 제공하는 사이트에서 암호화
+PBEWithMD5AndDES encryption 제공하는 사이트에서 암호화 <br>
 <https://devglan.com/onaline-tools/jasypt-online-encryption-decryption>
 
-또는 `JasyptConfigTest ` 에서 System.out.println해서 암호화해도 된다.
-암호화한 email Address, 생성한 앱 비밀번호를 ENC()로 감싸서 넣어둠
+<br>
+또는 `JasyptConfigTest ` 에서 System.out.println해서 암호화해도 된다. <br>
+암호화한 email Address, 생성한 앱 비밀번호를 ENC()로 감싸서 넣어둠 <br>
 
 ```yaml
 
@@ -293,26 +343,27 @@ PBEWithMD5AndDES encryption 제공하는 사이트에서 암호화
 
 jasypt:
   encryptor:
-    password: ${JASYPT_SECRET_KEY}
+    password: ${JASYPT_SECRET_KEY} //환경변수
     bean: jasyptStringEncryptor
 
 email:
-  address: ENC(9FFPzV1CpODhRFqWQPJg6RDj9yuVaV4jnT0FQvc4oE0=)
-  app-password: ENC(3ViVckG3lnbAeZWKhkWT06ChwI8rfEazJBqXJL5fBak=)
+  address: ENC(암호화해서 쓰기)
+  app-password: ENC(암호화해서 쓰기)
 
 
 
 jwtpassword:
-  source: ENC(/CzryCVnQTpLw20DGA4M7ENiN+eg+PDQ)
+  source: ENC(jwtpassword암호화해서 쓰기)
 ```
 
-⭐️ 여기까지 하고 테스트하면 메일이 발송되어야 한다.
+⭐️⭐️⭐️ 여기까지 하고 테스트하면 메일이 발송되어야 한다.
 
 ## ✅ Redis
 
 ### Redis 설치
 
 <https://soheeparklee.github.io/posts/Redis-gitCommands/>
+<br>
 
 ### EmailCheckRequest DTO 생성
 
@@ -364,8 +415,8 @@ public class EmailCertificationController {
 
 ### RedisUtil
 
-지정된 key에 해당하는 데이터를 Redis에서 가져오고, 저장하고
-지정된 시간 후에는 데이터 만료, 그리고 삭제까지
+지정된 key에 해당하는 데이터를 Redis에서 가져오고, 저장하고 <br>
+지정된 시간 후에는 데이터 만료, 그리고 삭제까지 <br>
 
 ```java
 import lombok.RequiredArgsConstructor;
@@ -406,7 +457,7 @@ public class RedisUtil {
 
 ## ✅ Exceptions
 
-인증번호 틀리면 BadReqeustException 발생
+인증번호 틀리면 BadReqeustException 발생<br>
 
 ### ExceptionControllerAdvice
 
