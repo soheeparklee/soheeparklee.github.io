@@ -1,6 +1,6 @@
 ---
 title: Redis_GitCommands
-categories: [JAVA, Redis]
+categories: [Redis]
 tags: [redis] # TAG names should always be lowercase
 ---
 
