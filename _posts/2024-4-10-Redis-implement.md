@@ -14,8 +14,9 @@ tags: [redis. jasypt] # TAG names should always be lowercase
 ➡️ 서버에서 Redis있는 인증번호와 비교 <br>
 ➡️ 인증 완료 혹은 exceptions처리 <br>
 
-### 💡 Jasypt
+### 💡 Jasypt:
 
+> Java Simplified Encryption
 > Java library that provides simple APIs for encryption and decryption of data, including hashing.
 
 #### ✔️ 해싱이란?
@@ -290,6 +291,10 @@ public class EmailCertificationService {
   - 반복할 해싱 회수
   - salt 생성 클래스
   - 인코딩 방식
+    <br>
+- salt 생성 클래스를 지정하지 않으면 default로: `RandomSaltGenerator`
+- 고정된 salt 값을 사용하려면 `StringFixedSaltGenerator`를 사용하면 된다
+- 단 이 경우 복호화시에도 기존에 설정한 salt 값 사용해야지만 복호화 가능
 
 ```java
 import com.ulisesbocchio.jasyptspringboot.annotation.EnableEncryptableProperties;
@@ -331,7 +336,6 @@ PBEWithMD5AndDES encryption 제공하는 사이트에서 암호화 <br>
 <https://devglan.com/onaline-tools/jasypt-online-encryption-decryption>
 
 <br>
-또는 `JasyptConfigTest ` 에서 System.out.println해서 암호화해도 된다. <br>
 암호화한 email Address, 생성한 앱 비밀번호를 ENC()로 감싸서 넣어둠 <br>
 
 ```yaml
@@ -354,6 +358,56 @@ email:
 
 jwtpassword:
   source: ENC(jwtpassword암호화해서 쓰기)
+```
+
+### ➕ `JasyptConfigTest` 에서 암호화
+
+또는 `JasyptConfigTest ` 에서 System.out.println해서 암호화해도 된다. <br>
+위 사이트에서 암호화했으면 이 파일 없어도 됨. <br>
+
+```java
+import org.assertj.core.api.Assertions;
+import org.jasypt.encryption.pbe.StandardPBEStringEncryptor;
+import org.junit.jupiter.api.Test;
+
+public class JasyptConfigTest {
+
+    @Test
+    void jasypt(){
+        String url= "db주소";
+        String username= "네임";
+        String password= "비밀번호";
+
+        String encryptUrl= jasyptEncrypt(url);
+        String encryptUsername= jasyptEncrypt(username);
+        String encryptPassword= jasyptEncrypt(password);
+
+        System.out.println("encryptUrl : " + encryptUrl);
+        System.out.println("encryptUrl : " + encryptUsername);
+        System.out.println("encryptPassword : " + encryptPassword);
+
+        Assertions.assertThat(url).isEqualTo(jasyptDecrypt(encryptUrl));
+    }
+
+    private String jasyptEncrypt(String input){
+        String key= "cesarpoo";
+        StandardPBEStringEncryptor encryptor= new StandardPBEStringEncryptor();
+        encryptor.setAlgorithm("PBEWithMD5AndDES");
+        encryptor.setPassword(key);
+        return encryptor.encrypt(input);
+    }
+
+    private String jasyptDecrypt(String input){
+        String key= "cesarpoo";
+        StandardPBEStringEncryptor encryptor= new StandardPBEStringEncryptor();
+        encryptor.setAlgorithm("PBEWithMD5AndDES");
+        encryptor.setPassword(key);
+        return encryptor.decrypt(input);
+    }
+
+
+}
+
 ```
 
 ⭐️⭐️⭐️ 여기까지 하고 테스트하면 메일이 발송되어야 한다.
@@ -582,3 +636,7 @@ public class EmailCertificationService {
 ```
 
 ### Redis Config??? 필요가 없었다......
+
+## 참고
+
+<https://velog.io/@jinny-l/spring-jasypt-encrypt-yml-and-store-encryption-key-as-environment-variable>

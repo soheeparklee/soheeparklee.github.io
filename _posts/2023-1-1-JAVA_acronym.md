@@ -61,7 +61,8 @@ tags: [acronyms] # TAG names should always be lowercase
 - Query Language
 - Data Access Layer
 
-17. POJO: simepl Java object that does not extend nor implement any specialized classes or interfaces. 💡 for example, domain objects, DTOs, entities
+14. JSON: lightweight data interchage format for transmitting data between web server and client. human readable and machine readable. Based on javaScript, but it is language independent.
+15. POJO: simepl Java object that does not extend nor implement any specialized classes or interfaces. 💡 for example, domain objects, DTOs, entities
 
 ## ✅ NetWork
 
