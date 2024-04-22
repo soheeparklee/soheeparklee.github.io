@@ -1,5 +1,5 @@
 ---
-title: Spring Security
+title: Spring Security ➕
 categories: [JAVA, Spring]
 tags: [security] # TAG names should always be lowercase
 ---
@@ -19,7 +19,7 @@ https://boulder-hippodraco-244.notion.site/Spring-Security-5c96bcae888547ce98d52
 
 #### ✅ build.gradle
 
-```java
+```groovy
 
 plugins {
     id 'java'
@@ -82,7 +82,7 @@ tasks.named('test') {
 
 #### ✅ application.yaml
 
-```java
+```groovy
 spring:
   mvc:
     pathmatch:
@@ -107,7 +107,7 @@ jwtpassword:
 
 💡 autoconfig를 추가하면 jpaConfig, DataSourceProperties를 추가하지 않아도 된다.
 
-```java
+```groovy
 server:
   port:8080
 
@@ -503,7 +503,8 @@ public interface UserRolesJpa extends JpaRepository<UserRoles, Integer> {
 
 > 💡 UserDetails <br>
 > interface by JAVA security, encapsulated user info retrieved by Spring Security during the authentication process. <br>
-> includes methods such as `getUsername()`, `getPassword()`, `getAuthorities()`(권한조회), `isEnabled()`, `isAccountNonexpired()`, `isAccountNonLocked()`, `isCredentialNonExpired()` <br>
+> includes methods such as
+> `getUsername()`,<br> > `getPassword()`, <br> > `getAuthorities()`(권한조회), <br> > `isEnabled()`, <br> > `isAccountNonexpired()`, <br> > `isAccountNonLocked()`, <br> > `isCredentialNonExpired()` <br>
 
 - 그래서 @Override 하면 된다.
 - JWT token에 대한 정보 설정
@@ -786,6 +787,17 @@ public class SignController{
 
 ```
 
+#### ResponseDTO 받도록 정의
+
+```java
+    @PostMapping("/sign-up")
+    public ResponseDto register(@RequestBody SignUpRequestDto signUpRequestDto){
+        boolean isSuccess= authService.signUp(signUpRequestDto);
+        if(isSuccess) return new ResponseDto(HttpStatus.OK.value(), "SignUp successful");
+        else return new ResponseDto(HttpStatus.BAD_REQUEST.value(), "SignUp fail");
+    }
+```
+
 ### 11. AuthService
 
 SignController 를 구현한 service가 AuthService
@@ -848,6 +860,14 @@ public class AuthService {
         return true;
     }
 }
+
+```
+
+#### 같은 아이디로 회원가입 시도하면 bad request exception
+
+```java
+  if(userJpa.existsByMyId(signUpRequestDto.getMyId()))
+            throw new BadRequestException("There is already user with ID: "+ signUpRequestDto.getMyId());
 
 ```
 
@@ -949,6 +969,17 @@ public class SecurityConfig {
     }
 ```
 
+#### ResponseDTO 받도록 정의
+
+```java
+   @PostMapping("/login")
+    public ResponseDto login(@RequestBody LoginRequestDto loginRequestDto, HttpServletResponse httpServletResponse){
+        String token= authService.login(loginRequestDto);
+        httpServletResponse.setHeader("Token", token);
+        return new ResponseDto(HttpStatus.OK.value(), "Login Success");
+    }
+```
+
 ### (추가) AuthService(loginService 추가)
 
 `private final AuthenticationManager authenticationManager;` <br>
@@ -1032,7 +1063,7 @@ public class AuthService {
             );
             SecurityContextHolder.getContext().setAuthentication(authentication);
             User user= userJpa.findByEmailFetchJoin(loginRequest.getEmail())
-                    .orElseThrow(()-> new NullPointerException("해당 이메일로 계정을 찾을 수 없습니다."));
+                    .orElseThrow(()-> new NullPointerException("해당 이메일로 계정을 찾을 수 없습니다.")); //NotFoundException도 가능
             List<String> roles= user.getUserRoles().stream().map(UserRoles::getRoles).map(Roles::getName).collect(Collectors.toList());
             return jwtTokenProvider.createToken(loginRequest.getEmail(), roles);
         }catch(Exception e){
@@ -1323,4 +1354,170 @@ public class test {
     }
 }
 
+```
+
+## ☑️ Logout
+
+#### ✅ JWT Token provider
+
+```java
+@Component
+@RequiredArgsConstructor
+public class JwtTokenProvider {
+    private final UserDetailsService userDetailsService;
+    @Value("${JWT_SECRET_KEY}")
+    private String secretKey;
+    private String key;
+
+    @PostConstruct
+    public void setUp(){
+        key= Base64.getEncoder().encodeToString(secretKey.getBytes());
+    }
+    private long tokenValidMillisecond= 1000L * 60 * 60;
+
+    public String resolveToken(HttpServletRequest request){
+        return request.getHeader("Token");
+    }
+
+    public String createToken(String myId, List<String> role){
+        Claims claims= Jwts.claims().setSubject(myId);
+        claims.put("role", role);
+        Date now= new Date();
+        return Jwts.builder()
+                .setClaims(claims)
+                .setIssuedAt(now)
+                .setExpiration(new Date(now.getTime()+ tokenValidMillisecond))
+                .signWith(SignatureAlgorithm.HS256, key)
+                .compact();
+    }
+    public boolean validateToken(String jwtToken){
+        try{
+            Claims claims= Jwts.parser().setSigningKey(key).parseClaimsJws(jwtToken).getBody();
+            Date now= new Date();
+            return !claims.getExpiration().before(now);
+        } catch(Exception e){
+            return false;
+        }
+    }
+
+    public Authentication getAuthentication(String jwtToken){
+        UserDetails userDetails = userDetailsService.loadUserByUsername(getUserMyId(jwtToken));
+        return new UsernamePasswordAuthenticationToken(userDetails, "", userDetails.getAuthorities());
+    }
+
+    public String getUserMyId(String jwtToken) {
+        return Jwts.parser().setSigningKey(key).parseClaimsJws(jwtToken).getBody().getSubject();
+    }
+
+    //logout
+    private Set<String> tokenBlackList = new HashSet<>();
+    public void addToBlackList(String currentToken) {
+        System.out.println("Token added to blacklist: " + currentToken);
+        tokenBlackList.add(currentToken);
+    }
+    public boolean isTokenBlackListed(String jwtToken){
+        return tokenBlackList.contains(jwtToken);
+    }
+
+}
+
+```
+
+#### ✅ SignController
+
+```java
+@RestController
+@RequiredArgsConstructor
+@RequestMapping(value="/auth")
+public class SignController {
+    private final AuthService authService;
+
+    @PostMapping("/sign-up")
+    public ResponseDto register(@RequestBody SignUpRequestDto signUpRequestDto){
+        boolean isSuccess= authService.signUp(signUpRequestDto);
+        if(isSuccess) return new ResponseDto(HttpStatus.OK.value(), "SignUp successful");
+        else return new ResponseDto(HttpStatus.BAD_REQUEST.value(), "SignUp fail");
+    }
+
+    @PostMapping("/login")
+    public ResponseDto login(@RequestBody LoginRequestDto loginRequestDto, HttpServletResponse httpServletResponse){
+        String token= authService.login(loginRequestDto);
+        httpServletResponse.setHeader("Token", token);
+        return new ResponseDto(HttpStatus.OK.value(), "Login Success");
+    }
+
+    @PostMapping("/logout")
+    public ResponseDto logout(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse){
+        boolean isSuccess= authService.logout(httpServletRequest, httpServletResponse);
+        if(isSuccess) return new ResponseDto(HttpStatus.OK.value(), "Logout successful" );
+        else return new ResponseDto(HttpStatus.BAD_REQUEST.value(), "Logout fail");
+    }
+}
+
+```
+
+#### ✅ AuthService
+
+```java
+@Service
+@RequiredArgsConstructor
+public class AuthService {
+    private final RoleJpa roleJpa;
+    private final UserRoleJpa userRoleJpa;
+    private final UserJpa userJpa;
+
+    private final PasswordEncoder passwordEncoder;
+    private final AuthenticationManager authenticationManager;
+    private final JwtTokenProvider jwtTokenProvider;
+
+
+    public boolean signUp(SignUpRequestDto signUpRequestDto) {
+        if(userJpa.existsByMyId(signUpRequestDto.getMyId()))
+            throw new BadRequestException("There is already user with ID: "+ signUpRequestDto.getMyId());
+
+        Role role= roleJpa.findByName("ROLE_USER");
+
+        User user= User.builder()
+                .name(signUpRequestDto.getName())
+                .myId(signUpRequestDto.getMyId())
+                .password(passwordEncoder.encode(signUpRequestDto.getPassword()))
+                .birthday(signUpRequestDto.getBirthday())
+                .phoneNumber(signUpRequestDto.getPhoneNumber())
+                .build();
+        userJpa.save(user);
+        userRoleJpa.save(
+                UserRole.builder()
+                        .user(user)
+                        .role(role)
+                        .build()
+        );
+        return true;
+    }
+
+    public String login(LoginRequestDto loginRequestDto) {
+        try{
+            Authentication authentication= authenticationManager.authenticate(
+                    new UsernamePasswordAuthenticationToken(loginRequestDto.getMyId(), loginRequestDto.getPassword())
+            );
+            SecurityContextHolder.getContext().setAuthentication(authentication);
+            User user= userJpa.findByMyIdFetchJoin(loginRequestDto.getMyId())
+                    .orElseThrow(()-> new NotFoundException("Cannot find user with ID"));
+            List<String> role= user.getUserRoleList().stream().map(UserRole::getRole).map(Role::getName).collect(Collectors.toList());
+            return jwtTokenProvider.createToken(loginRequestDto.getMyId(), role);
+        }catch(Exception e){
+            e.printStackTrace();
+            throw new NotAcceptableStatusException("Login not possible");
+        }
+    }
+
+    public boolean logout(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) {
+        Authentication auth= SecurityContextHolder.getContext().getAuthentication();
+        if(auth != null){
+            String currentToken= jwtTokenProvider.resolveToken(httpServletRequest);
+            jwtTokenProvider.addToBlackList(currentToken);
+            new SecurityContextLogoutHandler().logout(httpServletRequest, httpServletResponse, auth);
+        }
+        return true;
+    }
+}
 ```
