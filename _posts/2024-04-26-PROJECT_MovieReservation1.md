@@ -1,6 +1,6 @@
 ---
 title: (fix) only user who registered the reservation/review can update/delete
-categories: [Project, Movie Reservation WEB BE Project]
+categories: [Project, Movie Reservation Project]
 tags: [update, delete]
 ---
 
@@ -105,6 +105,20 @@ Should I use userID?<br>
         }
 
     }
+```
+
+```java
+    public ResponseDto deleteMyReview(CustomUserDetails customUserDetails, Integer reviewId) {
+        User user= userJpa.findByMyIdFetchJoin(customUserDetails.getMyId())
+                .orElseThrow(()-> new NotFoundException("Cannot find user with myId: "+ customUserDetails.getMyId()));
+        Review review= reviewJpa.findById(reviewId)
+                .orElseThrow(()-> new NotFoundException("Cannot find review with Id and User: "+ reviewId));
+        if(review.getUser().equals(user)) {
+            reviewJpa.delete(review);
+            return new ResponseDto(HttpStatus.OK.value(), "Review delete success");
+        } else{
+            throw new NotAuthorizedException("You do not have the authorization. You did not register this review");
+        }
 ```
 
 ## 🟢 TRYOUT 4: find reservation/review with JPA that matches user. Then stream to find reservation/review that matches ID.
