@@ -258,17 +258,17 @@ cd movie-key
  ssh -i "movie-reservation.pem" ubuntu@ec2-54-180-126-207.ap-northeast-2.compute.amazonaws.com
 ```
 
-환경변수 설정 위해 들어감
+환경변수 설정 위해 들어감 <br>
 
 ```bash
 vim ~/.bashrc
 ```
 
-안에서 편집 시작
-s누르면 편집 가능
-💡 =사이에 띄어쓰기 하지 않기 주의!
-💡 다 편집 후 ESC 누르면 편집 모드에서 read only 모드로 바뀜
-그제서야 `:wq` 눌러서 저장하고 quit
+안에서 편집 시작 <br>
+s누르면 편집 가능 <br>
+💡 =사이에 띄어쓰기 하지 않기 주의! <br>
+💡 다 편집 후 ESC 누르면 편집 모드에서 read only 모드로 바뀜 <br>
+그제서야 `:wq` 눌러서 저장하고 quit <br>
 
 ```bash
 #add environment variables
@@ -339,7 +339,7 @@ java -jar ./MovieReservation-BE/build/libs/MovieReservation-BE-0.0.1-SNAPSHOT.ja
 
 http://`EC2퍼블릭 IPv4 DNS 여기에 쓰기`:8080/swagger-ui/index.html <br>
 예를 들어, <br>
-<http://ec2-3-249-108-216.eu-west-1.compute.amazonaws.com:8080/swagger-ui/index.html>
+<http://ec2-3-249-108-216.eu-west-1.compute.amazonaws.com:8080/swagger-ui/index.html> <br>
 이렇게 하면 우리가 만든 백엔드 단이 swagger에 보이게 된다.
 
 #### ✔️ 결과
@@ -367,8 +367,8 @@ localhost를 `EC2퍼블릭 IPv4 DNS`로 바꾸기<br>
 `ubuntu@ip-172-31-10-19:~/movie/MovieReservation-BE$` 까지 들어온 상태에서 진행<br>
 💡 띄어쓰기 주의하기!<br>
 
-- Jar띄고./<br>
-- > > /dev 띄어쓰기 없음<br>
+- Jar띄고 `-jar ./ `<br>
+- /dev 띄어쓰기 없음 `>>/dev/null` <br>
 
 ```bash
 nohup java -jar ./MovieReservation-BE/build/libs/MovieReservation-BE-0.0.1-SNAPSHOT.jar --spring.profiles.active=prod >>/dev/null 2>&1 &
@@ -438,3 +438,119 @@ nohup java -jar ./MovieReservation-BE/build/libs/MovieReservation-BE-0.0.1-SNAPS
   여러번 반복되는 bash 명령어는 bash script 만들어 활용하기<br>
 - github action CI/CD<br>
   여러 툴 사용하여 빌드/배포 자동화 가능<br>
+
+## ✅ CORS
+
+### ☑️ kill server
+
+Identify the Process ID (PID) of the Server Process <br>
+
+```bash
+sudo netstat -tulpn | grep :8080
+```
+
+<img width="556" alt="Screenshot 2024-05-01 at 14 33 28" src="https://github.com/sc-project2-MovieReservation/MovieReservation-BE/assets/97790983/bf521e93-9933-4c8c-be0d-a86295e5bf69">
+
+Stop the Server Process
+
+```bash
+sudo kill PID
+```
+
+이제 다시 `sudo netstat -tulpn | grep :8080`하면 아무것도 안 뜬다.
+
+### ☑️ erase git cloned file
+
+현재 ubuntu@, movie 안에 깃허브 클론 폴더 만들어져 있는 상태
+
+```bash
+ubuntu@ip-172-31-10-19:~/movie$ ls
+MovieReservation-BE  logs  mariadb_repo_setup  mariadb_repo_setup.1  mariadb_repo_setup.2  nohup.out
+-- MovieReservation-BE가 깃허브 클론한 것
+```
+
+깃 클론 지우기
+
+```bash
+ sudo rm -r MovieReservation-BE
+```
+
+### ☑️ security config에 cors관련 세팅 추가
+
+```java
+import github.com.jbabe.service.exception.CustomAuthenticationEntryPoint;
+import github.com.jbabe.service.exception.CustomExceptionDeniedHandler;
+import github.com.jbabe.web.filters.JwtFilter;
+import lombok.RequiredArgsConstructor;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+
+import java.util.List;
+
+@Configuration
+@EnableWebSecurity
+@RequiredArgsConstructor
+public class SecurityConfig {
+    private final JwtTokenConfig jwtTokenConfig;
+//    private final JwtExceptionFilter jwtExceptionFilter;
+    @Bean
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        http
+                .headers(h -> h.frameOptions(f -> f.sameOrigin()))
+                .csrf((c) -> c.disable())
+                .httpBasic((h) -> h.disable())
+                .formLogin(f -> f.disable())
+                .rememberMe(r -> r.disable())
+                .sessionManagement(s -> s.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                .cors(c-> c.configurationSource(corsConfig())) //add
+                .authorizeRequests(a ->
+                        a
+                                .requestMatchers("/test","v1/api/competition/add-competition-info").hasRole("MASTER")
+                                .requestMatchers("/v1/api/sign/logout").authenticated()
+                                .requestMatchers("/resource/static/**", "/v1/api/sign/sign-up", "/v1/api/sign/login",
+                                        "/mail/*", "v1/api/competition/competition").permitAll()
+                )
+                .exceptionHandling(e -> {
+                    e.authenticationEntryPoint(new CustomAuthenticationEntryPoint());
+                    e.accessDeniedHandler(new CustomExceptionDeniedHandler());
+                })
+                .addFilterBefore(new JwtFilter(jwtTokenConfig), UsernamePasswordAuthenticationFilter.class);
+//                .addFilterBefore(jwtExceptionFilter, JwtFilter.class);
+        return http.build();
+
+    }
+
+    private CorsConfigurationSource corsConfig() {
+        CorsConfiguration corsConfiguration = new CorsConfiguration();
+        corsConfiguration.setAllowedOrigins(List.of("*")); // TODO: 쿠키사용 시 변경
+//        corsConfiguration.setAllowCredentials(true); // TODO: 쿠키사용 시 변경
+        corsConfiguration.addExposedHeader("access-token");
+        corsConfiguration.addExposedHeader("refresh-token");
+        corsConfiguration.addAllowedHeader("*");
+        corsConfiguration.setAllowedMethods(List.of("GET","PUT","POST","PATCH","DELETE","OPTIONS"));
+        corsConfiguration.setMaxAge(1000L*60*60);
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/**",corsConfiguration);
+        return source;
+    }
+
+
+    @Bean
+    public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
+        return authenticationConfiguration.getAuthenticationManager();
+    }
+}
+
+```
+
+### ☑️그리고 git commit, push 한다음 또 deploy
