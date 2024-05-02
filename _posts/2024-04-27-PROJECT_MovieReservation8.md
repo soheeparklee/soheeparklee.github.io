@@ -1,7 +1,7 @@
 ---
 title: (feat) Get ticket sales
 categories: [Project, Movie Reservation Project]
-tags: []
+tags: [double]
 ---
 
 ## ✅ How to get ticket sales
@@ -61,7 +61,7 @@ double formattedTicketSales= Math.round(ticketSales*10.0)/10.0;
 return formattedTicketSales;
 ```
 
-### ☑️ 전체 코드
+## 🟢 Final Code
 
 ```java
 private double caculateTicketSales(List<Schedule> scheduleList){
@@ -87,4 +87,24 @@ private int caculateTotalSeats(List<Schedule> scheduleList){
         return totalSeats;
 }
 
+```
+
+## 🟢 JPA에서 구하는 방법
+
+movie table에 ticket_sales라는 field가 있음 <br>
+따라서 ticket_sales를 구해서 movie table에 넣어주는(update해주는) JPQL <br>
+
+```java
+@Repository
+public interface MovieJpa extends JpaRepository<Movie, Integer> {
+    @Transactional
+    @Modifying
+    @Query(
+            value = "UPDATE movie AS A " +
+                    "INNER JOIN schedule AS B ON A.movie_id = B.movie_id " +
+                    "INNER JOIN cinema_type AS C ON B.cinema_type_id = C.cinema_type_id " +
+                    "SET A.ticket_sales = (1 - (B.remaining_seats / C.total_seats)) * 100 "
+    , nativeQuery = true)
+    void updateTicketSales();
+}
 ```

@@ -329,10 +329,15 @@ ls ./build/libs
 
 ## ✅ deploy, swagger
 
+게속 `ubuntu@ip-172-31-10-19:~/movie/MovieReservation-BE$`에서 이어서 진행
 이제 SNAPSHOT.jar 파일을 배포하면, 어떤 컴퓨터에서도 웹페이지 접속 가능<br>
+💡 띄어쓰기 주의하기!<br>
+
+- Jar띄고 `-jar ./ `<br>
+  💡 `./build/libs/MovieReservation-BE-0.0.1-SNAPSHOT.jar` 주의 <br>
 
 ```bash
-java -jar ./MovieReservation-BE/build/libs/MovieReservation-BE-0.0.1-SNAPSHOT.jar --spring.profiles.active=prod
+java -jar ./build/libs/MovieReservation-BE-0.0.1-SNAPSHOT.jar --spring.profiles.active=prod
 ```
 
 #### ✔️ 결과
@@ -350,8 +355,12 @@ localhost를 `EC2퍼블릭 IPv4 DNS`로 바꾸기<br>
 
 #### 🔴 Trouble Shooting
 
-`java -jar ./MovieReservation-BE/build/libs/MovieReservation-BE-0.0.1-SNAPSHOT.jar --spring.profiles.active=prod`을 하고 application start가 뜨기를 기다렸다. 하지만 계속계속 기다리는데 WARN에 멈추더니 터미널이 꿈쩍도 안했다. 심지어 run을 멈추는 방법도 모르겠어서 터미널을 꺼버렸다. <br>
-그리고 다시 터미널을 열어 처음부터 시작했다. 그런데 이번에는 ` ssh -i "movie-reservation.pem" ubuntu@ec2-54-180-126-207.ap-northeast-2.compute.amazonaws.com` 도 들어가지지가 않았다. 내 ubuntuㅠㅠ 뭐가 문제일까?? <br>
+`java -jar ./MovieReservation-BE/build/libs/MovieReservation-BE-0.0.1-SNAPSHOT.jar --spring.profiles.active=prod`을 하고 application start가 뜨기를 기다렸다. <br>
+하지만 계속계속 기다리는데 WARN에 멈추더니 터미널이 꿈쩍도 안했다. <br>
+심지어 run을 멈추는 방법도 모르겠어서 터미널을 꺼버렸다. <br>
+그리고 다시 터미널을 열어 처음부터 시작했다. <br>
+그런데 이번에는 ` ssh -i "movie-reservation.pem" ubuntu@ec2-54-180-126-207.ap-northeast-2.compute.amazonaws.com` 도 들어가지지가 않았다. <br>
+내 ubuntuㅠㅠ 뭐가 문제일까?? <br>
 
 🟡 원인: 컴퓨터 CPU과부화일 수도 있다고 한다. 또는 EC2의 문제일 수도 있다. <br>
 🔵 우선 컴퓨터에서 실행되는 프로세스들을 멈추고, 컴퓨터 전원을 껐다가 켰다. 하지만 이걸로 해결이 되지 않았다. <br>
@@ -364,11 +373,13 @@ localhost를 `EC2퍼블릭 IPv4 DNS`로 바꾸기<br>
 지금은 terminal을 꺼버리면 서버도 꺼진다. <br>
 따라서 백그라운드에서 저쪽 서버에서 영원히 돌도록 만들기. <br>
 
-`ubuntu@ip-172-31-10-19:~/movie/MovieReservation-BE$` 까지 들어온 상태에서 진행<br>
+`ubuntu@ip-172-31-10-19:~/movie$` 까지 들어온 상태에서 진행<br>
+
 💡 띄어쓰기 주의하기!<br>
 
 - Jar띄고 `-jar ./ `<br>
 - /dev 띄어쓰기 없음 `>>/dev/null` <br>
+  💡 `./MovieReservation-BE/build/libs/MovieReservation-BE-0.0.1-SNAPSHOT.jar` 주의 <br>
 
 ```bash
 nohup java -jar ./MovieReservation-BE/build/libs/MovieReservation-BE-0.0.1-SNAPSHOT.jar --spring.profiles.active=prod >>/dev/null 2>&1 &
