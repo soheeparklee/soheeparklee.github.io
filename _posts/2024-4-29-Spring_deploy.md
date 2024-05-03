@@ -243,9 +243,171 @@ MariaDB [(none)]> show databases;
 6 rows in set (0.001 sec)
 ```
 
+## ✅ yaml files
+
+#### ✔️ application.yaml
+
+```yaml
+server: port:8080
+
+spring:
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+
+  #  autoconfigure:
+  #    exclude: org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
+
+  datasource:
+    username: ${DATABASE_USERNAME}
+    password: ${DATABASE_PASSWORD}
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mariadb://movie-database2.cn000owqib3s.ap-northeast-2.rds.amazonaws.com:3306/Project_movie_reservation?useUnicode=true&characterEncoding=UTF-8
+
+  jpa:
+    show-sql: true
+
+jwtpassword:
+  source: ${JWT_SECRET_KEY}
+
+  logging:
+    level: debug
+```
+
+#### ✔️ application-prod.yaml
+
+```yaml
+spring:
+  config:
+    activate:
+      on-profile: prod
+
+logging:
+  config: classpath:logback-spring-prod.xml
+
+datasource:
+  driver-class-name: org.mariadb.jdbc.Driver
+  url: jdbc:mariadb://movie-database2.cn000owqib3s.ap-northeast-2.rds.amazonaws.com:3306/Project_movie_reservation?useUnicode=true&characterEncoding=UTF-8
+```
+
+#### ✔️ application-dev.yaml
+
+```yaml
+spring:
+  config:
+    activate:
+      on-profile: dev
+
+server:
+  port: 8080
+
+logging:
+  config: classpath:logback-spring-local.xml
+  level:
+    org:
+      hibernate:
+        SQL: DEBUG
+```
+
+#### ✔️ application-local.yaml
+
+```yaml
+spring:
+  config:
+    activate:
+      on-profile: local
+
+server:
+  port: 8080
+
+logging:
+  config: classpath:logback-spring-local.xml
+  level:
+    org:
+      hibernate:
+        SQL: DEBUG
+```
+
 ## ✅ xml log files
 
-## ✅ yaml files
+#### ✔️ logback-spring-prod.xml
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <property name="LOG_PATH" value="logs" />
+
+    <!-- 콘솔 로그 출력 -->
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %highlight(%-5level) %cyan(%logger{36}) - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+        <file>${LOG_PATH}/server.log</file>
+        <append>true</append>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %highlight(%-5level) %cyan(%logger{36}) - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- 루트 로거 설정 -->
+    <root level="info">
+        <appender-ref ref="CONSOLE" />
+        <appender-ref ref="FILE" />
+    </root>
+</configuration>
+```
+
+#### ✔️ logback-spring-dev.xml
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <property name="LOG_PATH" value="logs" />
+
+    <!-- 콘솔 로그 출력 -->
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %highlight(%-5level) %cyan(%logger{36}) - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+        <file>${LOG_PATH}/server.log</file>
+        <append>true</append>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %highlight(%-5level) %cyan(%logger{36}) - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- 루트 로거 설정 -->
+    <root level="info">
+        <appender-ref ref="CONSOLE" />
+        <appender-ref ref="FILE" />
+    </root>
+</configuration>
+```
+
+#### ✔️ logback-spring-local.xml
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <!-- 콘솔 로그 출력 -->
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %highlight(%-5level) %cyan(%logger{36}) - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- 루트 로거 설정 -->
+    <root level="info">
+        <appender-ref ref="CONSOLE" />
+    </root>
+</configuration>
+```
 
 ## ✅ ubuntu에 환경변수 저장하기
 
@@ -344,7 +506,7 @@ java -jar ./build/libs/MovieReservation-BE-0.0.1-SNAPSHOT.jar --spring.profiles.
 
 http://`EC2퍼블릭 IPv4 DNS 여기에 쓰기`:8080/swagger-ui/index.html <br>
 예를 들어, 아래 주소를 넣으면<br>
-http://ec2-3-249-108-216.eu-west-1.compute.amazonaws.com:8080/swagger-ui/index.html <br>
+`http://ec2-3-249-108-216.eu-west-1.compute.amazonaws.com:8080/swagger-ui/index.html` <br>
 이렇게 하면 우리가 만든 백엔드 단이 swagger에 보이게 된다.
 
 #### ✔️ 결과
@@ -421,7 +583,7 @@ http://43.200.67.116:8080/auth/login
 #### ✔️ 결과
 
 swagger주소 이제 이렇게 생김<br>
-<http://43.200.67.116:8080/swagger-ui/index.html> <br>
+`http://43.200.67.116:8080/swagger-ui/index.html` <br>
 
 ## ✅ 진짜 마지막으로 IP주소 백그다운드에서 run
 
