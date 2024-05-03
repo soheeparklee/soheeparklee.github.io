@@ -343,8 +343,8 @@ java -jar ./build/libs/MovieReservation-BE-0.0.1-SNAPSHOT.jar --spring.profiles.
 #### ✔️ 결과
 
 http://`EC2퍼블릭 IPv4 DNS 여기에 쓰기`:8080/swagger-ui/index.html <br>
-예를 들어, <br>
-<http://ec2-3-249-108-216.eu-west-1.compute.amazonaws.com:8080/swagger-ui/index.html> <br>
+예를 들어, 아래 주소를 넣으면<br>
+http://ec2-3-249-108-216.eu-west-1.compute.amazonaws.com:8080/swagger-ui/index.html <br>
 이렇게 하면 우리가 만든 백엔드 단이 swagger에 보이게 된다.
 
 #### ✔️ 결과
