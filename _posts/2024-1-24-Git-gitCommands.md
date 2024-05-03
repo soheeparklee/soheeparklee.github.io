@@ -36,13 +36,13 @@ git push
 1. 먼저 post branch를 개발한 사람의 컴퓨터에서 develop으로 체크아웃한다.
 
 ```bash
-git checkout devleop
+git checkout develop
 ```
 
 2. develop에서 pull을 통해 바뀐 develop의 내용들을 가져온다.
 
 ```bash
-git pull orgin develop
+git pull origin develop
 ```
 
 3. 다시 post branch로 체크아웃한다.
