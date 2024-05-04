@@ -63,6 +63,8 @@ return formattedTicketSales;
 
 ## 🟢 Final Code
 
+여러번 사용해서 다른 메소드에서 구현
+
 ```java
 private double caculateTicketSales(List<Schedule> scheduleList){
         //remaining seats(schedule) / total seats(cinema type) * 100
@@ -87,6 +89,36 @@ private int caculateTotalSeats(List<Schedule> scheduleList){
         return totalSeats;
 }
 
+```
+
+## 🟢 Cleaner Code
+
+💡 `.mapToInt(Integer::intValue)`를 안하면 `sum()`안 됨!! <br>
+💡 나누는 수가 0이 되지 않도록 주의하자. <br>
+`if (totalSeats == 0) throw new NotFoundException` 해서 예외 처리하기 <br>
+🔴 `double ticketSales= `를 구하는 식에서 계속 에러가 났다. `ticketSales`가 계속 0이 뜨는 것이다. <br>
+그 이유는 나누어지는 수가 먼저 `(double)`처리가 되어야 하기 떄문이었다. <br>
+❌ `double ticketSales=  (double)((totalSeats- remainingSeats)/totalSeats)*100;` <br>
+⭕️ `double ticketSales=  ((double) (totalSeats- remainingSeats)/totalSeats)*100;` <br>
+
+```java
+        Page<Movie> moviePage= movieJpa.findAll(pageable);
+
+   for(Movie movie: moviePage){
+        //ticketSales
+        List<Schedule> scheduleList= movie.getScheduleList();
+        int remainingSeats= scheduleList.stream().mapToInt(Schedule::getRemainingSeats).sum();
+        int totalSeats= scheduleList.stream().map(Schedule::getCinemaType).map(CinemaType::getTotalSeats).mapToInt(Integer::intValue).sum();
+        if (totalSeats == 0) throw new NotFoundException("There are no total seats for this movie");
+
+        //same code
+        // int toalSeats= scheduleList.stream().map(schedule -> schedule.getCinemaType().getTotalSeat()).mapToInt(Integer::intValue).sum();
+        double ticketSales=  ((double) (totalSeats- remainingSeats)/totalSeats)*100;
+        double formattedTicketSales= (double) Math.round(ticketSales*10.0)/10.0;
+
+        movie.setTicketSales(formattedTicketSales);
+        movieJpa.save(movie);
+   }
 ```
 
 ## 🟢 JPA에서 구하는 방법

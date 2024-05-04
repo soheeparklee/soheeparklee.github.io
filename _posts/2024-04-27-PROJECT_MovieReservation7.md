@@ -21,6 +21,8 @@ int numberOfReviews= reviewList.size();
 
 ## 🟢 Final Code
 
+여러번 사용해서 다른 메소드에서 구현
+
 ```java
     private double caculateScore(List<Review> reviewList){
         //score(review) 다 더해서 / number of review
@@ -30,6 +32,21 @@ int numberOfReviews= reviewList.size();
         double formattedScoreAvg= Math.round(scoreAvg+10.0)/10.0;
         return scoreAvg;
     }
+```
+
+## 🟢 Cleaner Code
+
+같은 메소드 내에서 구현
+
+```java
+        Page<Movie> moviePage= movieJpa.findAll(pageable);
+        for(Movie movie: moviePage){
+            //scoreAvg
+            List<Review> reviewList= reviewJpa.findByMovieId(movie.getMovieId());
+            int scoreSum= reviewList.stream().map(Review::getScore).mapToInt(Integer::intValue).sum();
+            int countReview= reviewList.size();
+            double scoreAvg= (double) scoreSum / countReview * 100;
+        }
 ```
 
 ## 🟢 JPA에서 구하는 방법
