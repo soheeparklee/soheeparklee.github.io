@@ -1,7 +1,7 @@
 ---
 title: Collection Framework_Map/ Set
 categories: [JAVA, JAVA_Basics]
-tags: [] # TAG names should always be lowercase
+tags: [map, set, treemap, treeset, hashmap, hashset, hash] # TAG names should always be lowercase
 ---
 
 ## ✅ Map
@@ -59,8 +59,8 @@ public class MapInterfaceTest {
 
 구현체:<br>
 
-- HashSet: Array구조 기반
-- TreeSet: Node 구조 기반
+- HashSet: Array구조 기반, 빨리 더하고, 빼고 있는지 없는지 찾을 때
+- TreeSet: Node 구조 기반, 순서대로 정렬할 때
 
 ## 💡 Set method
 
@@ -100,7 +100,43 @@ public class SetInterfaceTest {
         fruitSet.clear(); // []
     }
 }
+```
 
+```java
+public class TreeSetInterfaceTest {
+    public static void main(String[] args) {
+        //set interfece
+        Set<Integer> treeSet= new TreeSet<>();
+
+        treeSet.add("1");
+        treeSet.add("3");
+        treeSet.add("4");
+        treeSet.add("5");
+        treeSet.add("5"); //두 번 추가해도 중복 추가 ❌ List는 중복 추가 가능 ⭕️
+        System.out.println(fruitSet);
+        //[1, 3, 4, 5]
+        //순서 상관 없이
+
+
+        //💡 remove
+        treeSet.remove("1"); //[3, 4, 5]
+
+        //💡int size()
+        int setSize= treeSet.size(); //3
+
+        //💡 reverse
+        // 오름차순 ➡️ 내림차순
+        Set<Integer> treeSetReverse= new TreeSet<>(Collections.reverseOrder()); //[5, 4, 3]
+
+        //💡 first
+        treeSet.first(); //3 //오름차순으로 정렬되어 있는 경우 가장 작은 수
+        treeSetReverse.first(); //5 //내림차순으로 정렬되어 있는 경우 가장 큰 수
+        //💡 last
+        treeSet.last(); //5 //오름차순으로 정렬되어 있는 경우 가장 큰 수
+        treeSetReverse.last(); //3 //내림차순으로 정렬되어 있는 경우 가장 작은 수
+
+    }
+}
 ```
 
 ## ✅ Hash
