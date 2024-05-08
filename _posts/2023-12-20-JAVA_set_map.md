@@ -135,6 +135,13 @@ public class TreeSetInterfaceTest {
         treeSet.last(); //5 //오름차순으로 정렬되어 있는 경우 가장 큰 수
         treeSetReverse.last(); //3 //내림차순으로 정렬되어 있는 경우 가장 작은 수
 
+        //💡 treeMap의 n번째 요소 x 찾기
+        int count=0;
+        for(int x: treeSet){
+            count++;
+            if(count==n) return x;
+        }
+
     }
 }
 ```

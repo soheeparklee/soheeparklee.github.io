@@ -37,6 +37,7 @@ int numberOfReviews= reviewList.size();
 ## 🟢 Cleaner Code
 
 같은 메소드 내에서 구현
+💡 나누기 할 때는 항상 나누는 수가 0이 되지 않도록 조심해야 한다.
 
 ```java
         Page<Movie> moviePage= movieJpa.findAll(pageable);
@@ -45,7 +46,11 @@ int numberOfReviews= reviewList.size();
             List<Review> reviewList= reviewJpa.findByMovieId(movie.getMovieId());
             int scoreSum= reviewList.stream().map(Review::getScore).mapToInt(Integer::intValue).sum();
             int countReview= reviewList.size();
+            if(countReview == 0 )throw new NotFoundException("There are no reviews for this movie"); //나누는 수 0 ❌
             double scoreAvg= (double) scoreSum / countReview * 100;
+
+            movie.setScoreAvg(scoreAvg);
+            movieJpa.save(movie);
         }
 ```
 
