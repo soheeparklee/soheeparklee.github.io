@@ -491,7 +491,7 @@ ls ./build/libs
 
 ## ✅ deploy, swagger
 
-게속 `ubuntu@ip-172-31-10-19:~/movie/MovieReservation-BE$`에서 이어서 진행
+⭐️ 게속 `ubuntu@ip-172-31-10-19:~/movie/MovieReservation-BE$`에서 이어서 진행
 이제 SNAPSHOT.jar 파일을 배포하면, 어떤 컴퓨터에서도 웹페이지 접속 가능<br>
 💡 띄어쓰기 주의하기!<br>
 
@@ -534,14 +534,21 @@ localhost를 `EC2퍼블릭 IPv4 DNS`로 바꾸기<br>
 
 지금은 terminal을 꺼버리면 서버도 꺼진다. <br>
 따라서 백그라운드에서 저쪽 서버에서 영원히 돌도록 만들기. <br>
-
-`ubuntu@ip-172-31-10-19:~/movie$` 까지 들어온 상태에서 진행<br>
+<br>
 
 💡 띄어쓰기 주의하기!<br>
 
 - Jar띄고 `-jar ./ `<br>
 - /dev 띄어쓰기 없음 `>>/dev/null` <br>
   💡 `./MovieReservation-BE/build/libs/MovieReservation-BE-0.0.1-SNAPSHOT.jar` 주의 <br>
+
+`ubuntu@ip-172-31-10-19:~/movie/MovieReservation-BE$`까지 들어온 상태에서 진행 <br>
+
+```bash
+nohup java -jar ./build/libs/MovieReservation-BE-0.0.1-SNAPSHOT.jar --spring.profiles.active=prod >>/dev/null 2>&1 &
+```
+
+또는 `ubuntu@ip-172-31-10-19:~/movie$` 까지 들어온 상태에서 진행<br>
 
 ```bash
 nohup java -jar ./MovieReservation-BE/build/libs/MovieReservation-BE-0.0.1-SNAPSHOT.jar --spring.profiles.active=prod >>/dev/null 2>&1 &
@@ -596,9 +603,10 @@ ssh -i "movie-reservation.pem" ubuntu@43.200.67.116
 
 그러면 `ubuntu@ip-172-31-10-19:~/$` <br>
 이후 `ubuntu@ip-172-31-10-19:~/movie/$` 까지 들어와서 <br>
+`ubuntu@ip-172-31-10-19:~/movie/MovieReservation-BE$`까지 들어온 상태에서 진행 <br>
 
 ```bash
-nohup java -jar ./MovieReservation-BE/build/libs/MovieReservation-BE-0.0.1-SNAPSHOT.jar --spring.profiles.active=prod >>/dev/null 2>&1 &
+nohup java -jar ./build/libs/MovieReservation-BE-0.0.1-SNAPSHOT.jar --spring.profiles.active=prod >>/dev/null 2>&1 &
 ```
 
 <img width="663" alt="image" src="https://github.com/sc-project2-MovieReservation/MovieReservation-BE/assets/97790983/6e9189de-a995-4ee0-aaf1-fb128bff91a1">
@@ -727,3 +735,5 @@ public class SecurityConfig {
 ```
 
 ### ☑️그리고 git commit, push 한다음 또 deploy
+
+➡️ 목차에서 `git clone, deploy` 로 가서 거기서부터 따라하기
