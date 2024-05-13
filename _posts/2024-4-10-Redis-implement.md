@@ -335,6 +335,8 @@ public class JasyptConfig {
 PBEWithMD5AndDES encryption 제공하는 사이트에서 암호화 <br>
 <https://devglan.com/onaline-tools/jasypt-online-encryption-decryption>
 
+<img width="355" alt="image" src="https://github.com/soheeparklee/Backend-shoppingMall-Mar2024/assets/97790983/c5740158-3185-4e00-a34f-94aba087ff20">
+
 <br>
 암호화한 email Address, 생성한 앱 비밀번호를 ENC()로 감싸서 넣어둠 <br>
 
@@ -358,6 +360,70 @@ email:
 
 jwtpassword:
   source: ENC(jwtpassword암호화해서 쓰기)
+```
+
+완성된 yaml파일은 다음과 같이 생겼을 것이다.
+
+```yaml
+server: port:8080
+
+spring:
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+
+  autoconfigure: exclude:org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
+
+  datasource:
+    username: ENC(dg0o6RGGnI5v2NTvYqiCeA==)
+    password: ENC(3S04ny0whtz9bZ4PvLkMuIFXmnRB0pjy)
+    driver-class-name: org.mariadb.jdbc.Driver
+    #  url: jdbc:mariadb://sohan2.c7suy242wrpp.eu-west-1.rds.amazonaws.com:3306/shopping_mall?useUnicode=true&characterEncoding=UTF-8
+    url: jdbc:mariadb://localhost:3306/BackEndProject_2_verSoh?useUnicode=true&characterEncoding=UTF-8
+
+  jpa:
+    show-sql: true
+
+  data:
+    redis:
+      host: localhost
+      port: 6379
+
+jasypt:
+  encryptor:
+    password: ${JASYPT_SECRET_KEY}
+    bean: jasyptStringEncryptor
+
+email:
+  address: ENC(9FFPzV1CpODhRFqWQPJg6RDj9yuVaV4jnT0FQvc4oE0=)
+  app-password: ENC(3ViVckG3lnbAeZWKhkWT06ChwI8rfEazJBqXJL5fBak=)
+
+jwtpassword:
+  source: ENC(/CzryCVnQTpLw20DGA4M7ENiN+eg+PDQ)
+
+  logging:
+    level: debug
+```
+
+#### 🔴 TroubleShooting
+
+`jwtpassword:`또한 `ENC()`로 감싸서 암호화했더니, `jwtTokenProvider`에 문제가 있다고 error가 발생했다. <br>
+위 `yaml`처럼 바꿔줄거면, 마찬가지로 `jwtTokenProvider`파일에서 `jwtpassword:`또한 수정해 주어야 한다. <br>
+`yaml`파일에 어디를 보면 되는지를 알려주어야 함. <br>
+jwtpassword 의 source를 보렴! <br>
+
+```java
+@Component
+@RequiredArgsConstructor
+public class JwtTokenProvider {
+    private final UserDetailsService userDetailsService;
+//    @Value("${JWT_SECRET_KEY}") //수정 전
+    @Value("${jwtpassword.source}") //수정 후
+    private String secretKey;
+    private String key;
+
+    //JwtTokenProvider methods...
+}
 ```
 
 ### ➕ `JasyptConfigTest` 에서 암호화
@@ -410,7 +476,11 @@ public class JasyptConfigTest {
 
 ```
 
-⭐️⭐️⭐️ 여기까지 하고 테스트하면 메일이 발송되어야 한다.
+### ⭐️⭐️⭐️ 여기까지 하고 테스트하면 메일이 발송되어야 한다.
+
+<img width="812" alt="image" src="https://github.com/soheeparklee/Backend-shoppingMall-Mar2024/assets/97790983/81fefd22-8078-4eaa-a7a4-7ee6a2cc6a9c">
+
+<img width="808" alt="image" src="https://github.com/soheeparklee/Backend-shoppingMall-Mar2024/assets/97790983/fc494b0e-d4db-435f-9c8d-3abcf7c5ec71">
 
 ## ✅ Redis
 
