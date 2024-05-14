@@ -4,6 +4,8 @@ categories: [JAVA, JAVA_Basics]
 tags: [list, framework, collection, stack, queue] # TAG names should always be lowercase
 ---
 
+![코딩공책-41](https://github.com/soheeparklee/portfolioWebsite_dreamcoding/assets/97790983/a02c6601-f733-4f36-ace9-c358b44c38ac)
+
 <img width="609" alt="Screenshot 2024-05-14 at 11 49 23" src="https://github.com/soheeparklee/portfolioWebsite_dreamcoding/assets/97790983/43c89fb7-ce91-4f16-b3fb-84c372b0169e">
 
 ## ✅ Stack: LIFO
@@ -91,3 +93,29 @@ public class QueueExample {
 > 저장한 순서에 상관 없이 우선순위(Priority)가 높은 순서대로 꺼낸다.
 > heap: Priority Queue에 저장된 각 요소
 > 힙은 가장 큰 값이나 가장 작은 값을 빠르게 찾을 수 있다.
+
+```java
+        Queue<Integer> queue= new LinkedList<>();
+
+        Queue<Integer> priorityQueue= new PriorityQueue<>();
+        priorityQueue.offer(3);
+        priorityQueue.offer(1);
+        priorityQueue.offer(5);
+        priorityQueue.offer(2);
+        priorityQueue.offer(4);
+
+        System.out.println(priorityQueue); // [1,2,5,3,4]
+
+        while(priorityQueue.poll() != null){
+            System.out.println(priorityQueue.poll());
+        }
+```
+
+![코딩공책-43](https://github.com/soheeparklee/portfolioWebsite_dreamcoding/assets/97790983/f9ccf519-4448-40cd-8955-f39b39748817)
+
+## ✅ Deque(Double End Queue)
+
+> 양쪽 끝에 추가, 삭제 가능
+> stack과 queue를 하나로 합쳐놓은 것과 같음
+> 조상: queue
+> 구현체: ArrayDeque, LinkedList
