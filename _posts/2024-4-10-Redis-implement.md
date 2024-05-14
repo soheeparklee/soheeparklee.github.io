@@ -688,7 +688,7 @@ public class EmailCertificationService {
             helper.setText(content, true);
             mailSender.send(message); //이메일의 내용 설정 두 번째 매개 변수에 true를 설정하여 html 설정으로한다.
             //redis에 인증번호 저장 로직 추가
-            redisUtil.setDataExpire(Integer.toString(authNumber), toMail, 60*5L); // redis에 데이터 저장 // 유효기간 5분
+            redisUtil.setDataExpire(Integer.toString(authNumber), toMail, 60*5L); // ⭐️ 여기 추가, redis에 데이터 저장 // 유효기간 5분
         }catch(MessagingException e){ //이메일 서버에 연결할 수 없거나, 잘못된 이메일 주소를 사용하거나, 인증 오류가 발생하는 등 오류
             // 이러한 경우 MessagingException이 발생
             e.printStackTrace(); //e.printStackTrace()는 예외를 기본 오류 스트림에 출력하는 메서드
@@ -709,4 +709,10 @@ public class EmailCertificationService {
 
 ## 참고
 
-<https://velog.io/@jinny-l/spring-jasypt-encrypt-yml-and-store-encryption-key-as-environment-variable>
+```plaintext
+https://velog.io/@jinny-l/spring-jasypt-encrypt-yml-and-store-encryption-key-as-environment-variable
+
+
+-- 한솔이 블로그
+https://boulder-hippodraco-244.notion.site/Email-Spring-Boot-3-2-52fa5aa2f1154691bd7c2a8fea3d89a6
+```
