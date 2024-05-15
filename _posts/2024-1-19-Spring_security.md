@@ -1,5 +1,5 @@
 ---
-title: Spring Security
+title: Auth_Spring Security 이론
 categories: [JAVA, Spring]
 tags: [security] # TAG names should always be lowercase
 ---
