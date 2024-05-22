@@ -55,6 +55,8 @@ ssh -i "movie-reservation.pem" ubuntu@ec2-54-180-126-207.ap-northeast-2.compute.
 ubuntu@ip-172-31-10-19:~$ 이제 여기에 명령어 쓸 것
 ```
 
+<img width="1004" alt="Screenshot 2024-05-20 at 18 52 38" src="https://github.com/soheeparklee/Backend-shoppingMall-Mar2024/assets/97790983/f34c7aa7-4dcc-44b4-8fc0-16cdb0655290">
+
 ### 🟢 Terminal 1: ubuntu에 폴더 만들어 java, git, netstat install
 
 먼저 임시 서버에 들어와 `ubuntu@ip-172-31-10-19:~$`된 상태에서 시작
@@ -85,6 +87,12 @@ sudo apt install net-tools
 netstat -h
 ```
 
+<img width="652" alt="Screenshot 2024-05-20 at 18 58 58" src="https://github.com/soheeparklee/Backend-shoppingMall-Mar2024/assets/97790983/e1c57ed7-1a0b-44c7-a565-bbe702da66ce">
+
+<img width="707" alt="Screenshot 2024-05-20 at 19 00 47" src="https://github.com/soheeparklee/Backend-shoppingMall-Mar2024/assets/97790983/298bbe18-0008-4afd-952d-f0dd2cf5d5d1">
+
+<img width="719" alt="Screenshot 2024-05-20 at 19 03 13" src="https://github.com/soheeparklee/Backend-shoppingMall-Mar2024/assets/97790983/18f84238-325f-4456-b2e7-b2d55b0d433e">
+
 ### 🟢 Terminal 1: 서버 열기
 
 ```bash
@@ -101,6 +109,8 @@ tcp        0      0 127.0.0.54:53           0.0.0.0:*               LISTEN      
 tcp        0      0 127.0.0.53:53           0.0.0.0:*               LISTEN      321/systemd-resolve
 tcp6       0      0 :::22                   :::*                    LISTEN      1/init
 ```
+
+<img width="651" alt="Screenshot 2024-05-21 at 00 11 00" src="https://github.com/soheeparklee/Backend-shoppingMall-Mar2024/assets/97790983/07c25d6c-0b3d-4db5-820d-9eb499721bb0">
 
 ### 🟢 Terminal 1: 8080 연결
 
@@ -147,13 +157,19 @@ ubuntu@ip-172-31-10-19:~$ nc -v localhost 8080
 -- Connection to localhost (127.0.0.1) 8080 port [tcp/http-alt] succeeded!
 ```
 
+<img width="1464" alt="Screenshot 2024-05-21 at 00 15 56" src="https://github.com/soheeparklee/Backend-shoppingMall-Mar2024/assets/97790983/e5ea983b-a93a-4070-a873-e11f692ef8c1">
+
 ### 🟣 Terminal 3: 로컬에서 서버와 연결
+
+로컬에서 서버와 연결을 위해서는 방화벽을 풀어야 한다.
 
 ```bash
 -- 로컬에서 서버 연결
 nc -v ec2-54-180-126-207.ap-northeast-2.compute.amazonaws.com 8080
 
 ```
+
+<img width="1470" alt="Screenshot 2024-05-21 at 00 31 56" src="https://github.com/soheeparklee/Backend-shoppingMall-Mar2024/assets/97790983/a99878de-ea30-4513-b98f-be128b1393eb">
 
 ## ✅ RDS
 
@@ -184,6 +200,8 @@ nc -v ec2-54-180-126-207.ap-northeast-2.compute.amazonaws.com 8080
 - Username: RDS에서 설정한 마스터 사용자 이름
 - Password: RDS에서 설정한 비밀번호 <br>
   ➡️ TestConnection, connect anyway
+
+<img width="1057" alt="Screenshot 2024-05-21 at 00 40 04" src="https://github.com/soheeparklee/Backend-shoppingMall-Mar2024/assets/97790983/0e801149-64c2-45fc-b64d-027acef86b05">
 
 ### 🟢 Terminal 1: mariaDB설정
 
@@ -218,6 +236,8 @@ mysql 잘 있나 확인
 mysql --version
 ```
 
+<img width="613" alt="Screenshot 2024-05-21 at 00 50 55" src="https://github.com/soheeparklee/Backend-shoppingMall-Mar2024/assets/97790983/f35b5696-e91f-4719-ab5f-17c11ed4da0e">
+
 mysql 들어가기
 
 ```bash
@@ -242,6 +262,8 @@ MariaDB [(none)]> show databases;
 +---------------------------+
 6 rows in set (0.001 sec)
 ```
+
+<img width="737" alt="Screenshot 2024-05-21 at 00 55 40" src="https://github.com/soheeparklee/Backend-shoppingMall-Mar2024/assets/97790983/069436b6-ffcd-4cfd-bef2-5ea2df8df53a">
 
 ## ✅ yaml files
 
@@ -578,10 +600,11 @@ EC2에 탄력적 IP <br>
   이후 인스턴스에 들어가면 `탄력적 IP 주소`라는게 생김<br>
   이제 `EC2퍼블릭 IPv4 DNS`대신에 `탄력적 IP 주소`를 넣는다. <br>
 
-```
+```bash
 -- 이전
 ssh -i "movie-reservation.pem" ubuntu@ec2-43-200-67-116.ap-northeast-2.compute.amazonaws.com
 http://ec2-43-203-126-199.ap-northeast-2.compute.amazonaws.com:8080/auth/sign-up
+
 -- IP고정 이후
 ssh -i "movie-reservation.pem" ubuntu@43.200.67.116
 http://43.200.67.116:8080/auth/login
@@ -590,7 +613,10 @@ http://43.200.67.116:8080/auth/login
 #### ✔️ 결과
 
 swagger주소 이제 이렇게 생김<br>
-`http://43.200.67.116:8080/swagger-ui/index.html` <br>
+
+```
+http://43.200.67.116:8080/swagger-ui/index.html
+```
 
 ## ✅ 진짜 마지막으로 IP주소 백그다운드에서 run
 
@@ -711,6 +737,7 @@ public class SecurityConfig {
 
     }
 
+  //한솔 버전
     private CorsConfigurationSource corsConfig() {
         CorsConfiguration corsConfiguration = new CorsConfiguration();
         corsConfiguration.setAllowedOrigins(List.of("*")); // TODO: 쿠키사용 시 변경
@@ -719,6 +746,21 @@ public class SecurityConfig {
         corsConfiguration.addExposedHeader("refresh-token");
         corsConfiguration.addAllowedHeader("*");
         corsConfiguration.setAllowedMethods(List.of("GET","PUT","POST","PATCH","DELETE","OPTIONS"));
+        corsConfiguration.setMaxAge(1000L*60*60);
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/**",corsConfiguration);
+        return source;
+    }
+
+    //troubleShooting 완료한 버전
+      private CorsConfigurationSource corsConfig() {
+        CorsConfiguration corsConfiguration = new CorsConfiguration();
+        corsConfiguration.setAllowCredentials(false);
+        corsConfiguration.setAllowedOrigins(List.of("*"));
+        corsConfiguration.addAllowedHeader("*");
+        corsConfiguration.addExposedHeader("Token"); //추가
+        corsConfiguration.setExposedHeaders(Arrays.asList("Authorization", "Authorization-refresh", "Token"));
+        corsConfiguration.setAllowedMethods(List.of("GET","PUT","POST","DELETE"));
         corsConfiguration.setMaxAge(1000L*60*60);
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**",corsConfiguration);
