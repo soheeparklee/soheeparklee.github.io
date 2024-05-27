@@ -1,6 +1,6 @@
 ---
 title: What does a backend programmer do?
-categories: [WEB, Backend]
+categories: [WEB, WebBasics]
 tags: [backend] # TAG names should always be lowercase
 ---
 
