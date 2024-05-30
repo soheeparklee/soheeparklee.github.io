@@ -9,23 +9,52 @@ tags: [stream] # TAG names should always be lowercase
 > 함수형 프로그래밍을 도입하여 컬렉션, 배열 등의 처리/조작을 간단/효율적으로 하는 API <br>
 > Stream은 generic <br>
 
+- JAVA 8 이전에는 배열 또는 컬렉션을 다룰 때 `for`, `foreach`문을 돌면서 요소 하나씩을 꺼내서 다루었음
+- JAVA 8 부터는 또 다른 방법으로 컬렉션 및 배열의 요소를 **반복 처리**하기 위해 **스트림**을 사용할 수 있게 되었다.
+
 ### ☑️ 사용 이유
 
 - 가독성 향상 <br>
-- 병렬 연산 가능 <br>
+- 병렬 연산 가능(하나의 작업을 여러개로 잘게 나눠서 동시에 처리) <br>
+- 배열 또는 컬렉션에 함수 여러개를 조합해서 원하는 결과를 필터링하고 가공된 결과를 얻는다. <br>
 
-### ☑️ Stream 단계
+### 외부 반복자 🆚 내부 반복자
 
-1. 생성 <br>
-2. 중간연산 filter <br>
-   중간 연산은 여러개 실행 가능<br>
-3. 최종연산 forEach <br>
-   한 번만 실행할 수 있음<br>
-   진행 연산을 닫고 최종 값 산출<br>
+- 외부 반복자: 컬렉션의 요소를 컬렉션 **외부**에서 반복해 가져와 처리
+  - `for`, `iterator`
+- 내부 반복자: 요소 처리 방법을 컬렉션 **내부**로 주입시켜서 요소를 반복 처리
+  - 스트림
+
+### ☑️ 스트림 단계
+
+> 생성 → 매핑 → 필터링 1 → 필터링 2 → 결과 만들기 → 결과물
+
+#### 1️⃣ **생성** <br>
+
+#### 2️⃣ **중간연산** <br>
+
+중간 연산은 여러개 실행 가능<br>
+
+- filtering
+- mapping
+- sorting
+- looping `peek`
+
+#### 3️⃣ **최종연산** <br>
+
+한 번만 실행할 수 있음<br>
+진행 연산을 닫고 최종 값 산출<br>
+
+- looping `forEach`
+- matching
+- aggregate 집계
+- collecting
+
+<img width="720" alt="Screenshot 2024-05-30 at 16 40 32" src="https://github.com/soheeparklee/sc_FrontBackTryout/assets/97790983/2cbb513a-05c5-48ee-9f6a-05cf7ddc9385">
 
 <img width="625" alt="스크린샷 2023-12-27 오후 10 30 32" src="https://github.com/soheeparklee/portfolioWebsite_dreamcoding/assets/97790983/96f1c0ec-93ec-436e-8f90-db76abc36332">
 
-### ☑️ 특징
+### ☑️ 스트림 특징
 
 #### 1️⃣ Stream은 기존 자료를 변형할 수 없다.
 
@@ -38,8 +67,8 @@ tags: [stream] # TAG names should always be lowercase
 ### 정의 방법
 
 ⭐️ `Stream.of` <br>
-⭐️ `Arrays.stream` <br>
-⭐️ `Collection(=List) -> Stream` <br>
+⭐️ `Arrays.stream()` <br>
+⭐️ `Collection(List, Set) -> Stream` 인터페이스에 디폴트 메소드로 스트림 사용 가능<br>
 
 ### Stream 정의하기
 
@@ -78,7 +107,7 @@ public class StreamTest1 {
 
 ## ☑️ stream으로 for-loop개선하기
 
-⭐️ stream은 1회용이다. ⭐️ <br>
+⭐️ **stream은 1회용이다.** ⭐️ <br>
 stream을 for each나 filter사용해서 변형하면, 또 사용할 수는 없음 <br>
 따라서 integerListStream는 다시 사용 ❌ (stream 특징2) <br>
 그러나 원본 데이터 integerList는 또 사용 가능 ⭕️ <br>
@@ -121,107 +150,14 @@ stream을 for each나 filter사용해서 변형하면, 또 사용할 수는 없�
 
 ```
 
-## ✅ Stream API **최종** 연산
-
-### 💡 forEach() 출력
-
-lambda식에서 parameter하나 받아서 void반환 <br>
-대부분 요소 출력에 사용 <br>
-
-```java
-public class StreamTerminalOopsTest {
-
-    public static void main(String[] args) {
-        List<String> fruitList = new ArrayList<>();
-        fruitList.add("Orange");
-        fruitList.add("Pear");
-        fruitList.add("Mango");
-        fruitList.add("Pineapple");
-
-        List<Integer> numList= new ArrayList<>();
-        numList.add(1);
-        numList.add(2);
-        numList.add(3);
-        numList.add(4);
-        numList.add(5);
-
-//💡 forEach() 출력
-        fruitList.stream().forEach((fruit)->System.out.println("forEach: " + fruit));
-    }
-}
-
-```
-
-### 💡 collect() 수집(=컬렉션 변환)
-
-대부분 컬렉션 변환용으로 사용 <br>
-빼오기 <br>
-모아서(collect) set으로 반환한다. <br>
-
-```java
-//💡 collect() 수집(=컬렉션 반환)
-//set을 사용해 string으로 바꾸기
-        Set<String> fruitSet= fruitList.stream().collect(Collectors.toSet()); //fruitSet: [Pear, Mango, Pineapple, Orange]
-        System.out.println("fruitSet: " + fruitSet);
-```
-
-### 💡 findFirst() 검색
-
-Stream 첫 번째 값 가져오는데, <br>
-단, Optional<T>로 반환한다. <br>
-
-```java
-//💡 findFirst() 첫 번째 값 검색
-        Optional<String> fruitOptional= fruitList.stream().findFirst();
-        System.out.println("Optional Fruit: "+ fruitOptional.orElseGet(()-> "Default fruit")); //Optional Fruit: Orange
-```
-
-### 💡 sum(), average()
-
-Stream 요소들의 총합 연산 진행 <br>
-**숫자** Stream만 사용 가능 <br>
-⭐️ mapToInt() <br>
-
-```java
-//💡 sum(), average()
-// ⭐️ mapToInt()를 해 주어야 한다.
-//numList에는 1,2,3,4,5숫자가 들어있는 상황
-        System.out.println("Sum: "+ numList.stream().mapToInt((i)->i).sum()); //Sum: 15
-        System.out.println("Average: "+numList.stream().mapToInt((i)-> i).average()); //Average: OptionalDouble[3.0]
-```
-
-### 💡 count(), max(), min()
-
-`count()` Stream길이 <br>
-`max()`, `min()` Stream에서 가장 큰 값/작은 값 <br>
-마찬가지로 숫자 Stream만 사용 가능 <br>
-⭐️ mapToInt() <br>
-
-```java
-//💡 count(), max(), min()
-        System.out.println("Count: "+numList.stream().count()); //Count: 5
-        System.out.println("Max: " + numList.stream().mapToInt((i)->i).max()); //Max: OptionalInt[5]
-```
-
-### 💡 reduce() 소모
-
-lambda식으로 특정한 규칙을 지정 가능 <br>
-identity(초기값)와 연산 <br>
-
-```java
-//💡 reduce() 내가 규칙 정하기
-        //0 은 초기값, 2개의 Parameter를 넣어야 한다.
-        //0에서 시작해서 0에서 1빼고, -1에서 2빼고, -3에서 3빼고...
-        int result= numList.stream().reduce(0, (int1, int2)-> int1 - int2);
-        System.out.println("Reduce: "+ result); //Reduce: -15
-```
-
 ## ✅ Stream API **중간** 연산
 
 ### 💡 filter(조건), distinct()
 
-filter(조건): 조건식 만족하는 요소만 남겨 <br>
-distinct(): 중복되는 요소는 제거해버림 <br>
+> 조건에 맞는 요소를 걸러내기
+
+- filter(조건): 조건식 만족하는 요소만 남기기 <br>
+- distinct(): 중복되는 요소는 제거해버림 <br>
 
 ```java
 public class StreamIntermediateOopsTest {
@@ -254,6 +190,9 @@ public class StreamIntermediateOopsTest {
 ```
 
 ### 💡 map(함수)
+
+> 스트림의 요소를 다른 요소로 변환하는 중간 처리 기능<br>
+> 이 때 값을 변환하기 위한 람다를 인자로 받는다. <br>
 
 특정 함수에 매핑, 새로운 요소 반환 <br>
 get함수 쓰면 원하는 요소만 추출도 가능 <br>
@@ -290,8 +229,16 @@ skip(n): 처음 n개 요소 제외하고 stream 재생성 <br>
 
 ### 💡 sorted() 정렬
 
+> 요소를 오름차순 또는 내림차순으로 정렬하는 중간 기능 <br>
+
 요소를 특정 정렬 순서에 따라 생성 <br>
 특정 기준 안 주면 알파벳 순, 오름차순 <br>
+
+**Comparable 구현 객체의 정렬**<br>
+객체가 Comparable을 구현하고 있어야만 `sorted()`메소드 사용 가능 <br>
+만약 내림차순으로 정렬하고 싶다면, `Comparator.reverseOrder()` <br>
+
+**Comparator를 이용한 정렬**<br>
 특정 순서를 지정하기 위해서는 **JAVA comparator** 람다 인터페이스 가지고 지정 <br>
 오름차순 `(s1, s2)->s1.getScore() - s2.getScore()` <br>
 내림차순 `.sorted((s1, s2)-> s2.getScore() - s1.getScore())`<br>
@@ -308,6 +255,119 @@ skip(n): 처음 n개 요소 제외하고 stream 재생성 <br>
         System.out.println("sortedComparator: "+ fruitSortedComparatorList);
         //긴 글자일수록 뒤로 가는 정렬 기준
         //[Pear, Apple, Mango, Apple, Grape, Apple, Orange, Pineapple, Strawberry, Watermelon]
+```
+
+## ✅ Stream API **최종** 연산
+
+### 💡 Looping
+
+> Looping은 스트림에서 요소를 하나씩 반복해서 가져와 처리하는 것 <br> > `forEach()`, `peek()` 두 가지 메소드가 있다. <br>
+
+- `peek()`: 중간 처리 메소드
+- `forEach()`: 최종 처리 메소드
+
+lambda식에서 parameter하나 받아서 void반환 <br>
+대부분 요소 출력에 사용 <br>
+
+```java
+public class StreamTerminalOopsTest {
+
+    public static void main(String[] args) {
+        List<String> fruitList = new ArrayList<>();
+        fruitList.add("Orange");
+        fruitList.add("Pear");
+        fruitList.add("Mango");
+        fruitList.add("Pineapple");
+
+        List<Integer> numList= new ArrayList<>();
+        numList.add(1);
+        numList.add(2);
+        numList.add(3);
+        numList.add(4);
+        numList.add(5);
+
+//💡 forEach() 출력
+        fruitList.stream().forEach((fruit)->System.out.println("forEach: " + fruit));
+    }
+}
+
+```
+
+### 💡 Match()
+
+> 요소가 특정 조건에 만족하는지 여부 조사하는 최종 처리 기능 <br>
+
+- `anyMatch()`: 하나라도 조건을 만족하는 요소가 있는지
+- `allMatch()`: 모두 조건을 만족하는지
+- `noneMatch()`: 모두 조건을 만족하지 않는지
+
+### 💡 Aggregate: findFirst() 검색
+
+Stream 첫 번째 값 가져오는데, <br>
+단, Optional<T>로 반환한다. <br>
+
+```java
+//💡 findFirst() 첫 번째 값 검색
+        Optional<String> fruitOptional= fruitList.stream().findFirst();
+        System.out.println("Optional Fruit: "+ fruitOptional.orElseGet(()-> "Default fruit")); //Optional Fruit: Orange
+```
+
+### 💡 Aggregate: sum(), average()
+
+Stream 요소들의 총합 연산 진행 <br>
+**숫자** Stream만 사용 가능 <br>
+⭐️ mapToInt() <br>
+
+```java
+//💡 sum(), average()
+// ⭐️ mapToInt()를 해 주어야 한다.
+//numList에는 1,2,3,4,5숫자가 들어있는 상황
+        System.out.println("Sum: "+ numList.stream().mapToInt((i)->i).sum()); //Sum: 15
+        System.out.println("Average: "+numList.stream().mapToInt((i)-> i).average()); //Average: OptionalDouble[3.0]
+```
+
+### 💡 Aggregate: count(), max(), min()
+
+`count()` Stream길이 <br>
+`max()`, `min()` Stream에서 가장 큰 값/작은 값 <br>
+마찬가지로 숫자 Stream만 사용 가능 <br>
+⭐️ mapToInt() <br>
+
+```java
+//💡 count(), max(), min()
+        System.out.println("Count: "+numList.stream().count()); //Count: 5
+        System.out.println("Max: " + numList.stream().mapToInt((i)->i).max()); //Max: OptionalInt[5]
+```
+
+### 💡 reduce() 소모
+
+lambda식으로 특정한 규칙을 지정 가능 <br>
+identity(초기값)와 연산 <br>
+
+```java
+//💡 reduce() 내가 규칙 정하기
+        //0 은 초기값, 2개의 Parameter를 넣어야 한다.
+        //0에서 시작해서 0에서 1빼고, -1에서 2빼고, -3에서 3빼고...
+        int result= numList.stream().reduce(0, (int1, int2)-> int1 - int2);
+        System.out.println("Reduce: "+ result); //Reduce: -15
+```
+
+### 💡 collect() 수집(=컬렉션 변환)
+
+> 요소들을 필터링 또는 매핑 후 수집해서 반환하는 최종 처리 메소드 <br>
+
+대부분 컬렉션 변환용으로 사용 <br>
+모아서(collect) set으로 반환한다. <br>
+
+- `.collect(Collectors.toSet())`
+- `.collect(Collectors.toList())`
+- `.collect(Collectors.joining())`
+
+```java
+//💡 collect() 수집(=컬렉션 반환)
+//set을 사용해 string으로 바꾸기
+        Set<String> fruitSet= fruitList.stream().collect(Collectors.toSet()); //fruitSet: [Pear, Mango, Pineapple, Orange]
+        System.out.println("fruitSet: " + fruitSet);
 ```
 
 ## ☑️ 고객 이름, 고객 비용 다 더하기
@@ -379,7 +439,7 @@ public class TravelTest {
 }
 ```
 
-### ☑️ 90점 넘는 학생, 중위값 구하기
+### ✔️ 90점 넘는 학생, 중위값 구하기
 
 ```java
 //Student.java
@@ -487,3 +547,28 @@ public class ScoreTest {
 }
 
 ```
+
+## ✅ 요소 병렬 처리
+
+> 병렬 처리란, 멀티코어 CPU환경에서 전체 요소를 분할해 각각의 코어가 병렬적으로 일을 처리하는 것<br>
+> 목적: 작업 처리 시간 줄이기<br>
+> 병렬 스트림 parallel stream이 요소 병렬 처리의 예이다<br>
+
+- 동시성: 멀티 스레드가 하나의 코어에서 번갈아가며 실행됨(1명이 5개의 작업 번갈아가며 하기)
+- 병렬성: 멀티 코어를 각각 이용해서 병렬로 실행(5명이 5개의 작업)
+  - 데이터 병렬성: 전체 데이터를 분할해 서브 데이터셋으로 만들고 이 서브 데이터셋들을 병렬 처리
+  - 작업 병렬성: 서로 다른 작업을 병렬 처리
+
+### 💡 병렬 스트림 사용
+
+- `parallelStream()`: 컬렉션으로부터 병렬 스트림을 바로 리턴
+- `parallel()`: 기존 스트림을 병렬 처리 스트림으로 변환
+
+### 💡 포크조인 프레임워크
+
+자바 병렬 스트림은 요소들을 병렬 처리하기 위해 `ForkJoin FrameWork` 사용 <br>
+
+- Fork: 전체 요소들을 서브 요소셋으로 분할, 각각의 서브 요소셋을 멀티 코어에서 병렬 처리
+- Join: 서브 결과를 결합해 최종 결과 도출
+
+<img width="709" alt="Screenshot 2024-05-30 at 17 08 16" src="https://github.com/soheeparklee/sc_FrontBackTryout/assets/97790983/55a6940d-4d00-4f8b-af2e-c277b2f9f94d">
