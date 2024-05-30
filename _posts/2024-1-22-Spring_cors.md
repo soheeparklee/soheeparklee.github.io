@@ -1,10 +1,39 @@
 ---
-title: XXS, CSRF, SQL injection, CORS
-categories: [JAVA, Spring]
+title: CORS_XXS, CSRF, SQL injection
+categories: [AWS, Backend]
 tags: [xxs, csrf, injection, cross, scripting, forgery] # TAG names should always be lowercase
 ---
 
-## ✅ XXS
+## ⭐️ Orgin이란?
+
+> Orgin = Protocol + Host + Port <br>
+
+이 세 가지가 같으면 동일 origin출처로 인식함<br>
+orgin구분은 **브라우저**가 한다. 서버가 하는 일이 아님 ❌<br>
+
+<img width="714" alt="Screenshot 2024-05-31 at 00 04 57" src="https://github.com/soheeparklee/sc_FrontBackTryout/assets/97790983/bf0040fa-dbbd-4e85-87ba-e7ada7203513">
+출처: https://inpa.tistory.com/entry/WEB-📚-CORS-💯-정리-해결-방법-👏 [Inpa Dev 👨‍💻:티스토리]
+
+## ⭐️ Proxy란?
+
+> 클라이언트와 서버 사이의 중계 대리점
+> CORS 에러가 뜰 때, 모든 출처를 허용한 **서버 대리점**을 통해 요청하면 에러가 안 날 것이다.
+> 프록시 서버를 구축하면 CORS 에러를 해결 할 수 있을 것이다.
+
+## ✅ SOP
+
+> SOP: Same Orgin Policy <br>
+> 웹 브라우저의 동일 출처 정책 <br>
+> "동일한 출처에서만 리소스를 공유할 수 있다."
+> prevent web pages from making **requests** to a different domain than the one that **served** the web page. <br>
+
+- 같은 출처 정책 <br>
+- 사이트 A를 가지고 있으면 사이트 A에서만 가지고 온다. <br>
+- 앞서 언급된 보안 위험 등으로 브라우저는 기본적으로 SOP를 따른다. <br>
+- 만약 이런 제약이 없다면, XXS, CSRF 등의 방법을 이용해 개인 정보를 가로챌 수 있다.
+- 외부에서 얻는 데이터는 항상 같은 Orgin이어야 인식한다. <br>
+
+## 🛑 XXS
 
 > Cross Site Scripting <br>
 > 사용자가 **웹 페이지에 악성 스크립트를 삽입**하여 의도치 않은 명령을 하거나 해킹에 사용하는 것 <br>
@@ -18,7 +47,7 @@ tags: [xxs, csrf, injection, cross, scripting, forgery] # TAG names should alway
 - 중요 cookie HTTP ONLY 및 Secure 설정 <br>
   그래서 중요 cookie는 스크립트로도 쿠키를 빼갈 수 없도록 설정 <br>
 
-## ✅ CSRF
+## 🛑 CSRF
 
 > Cross Site Request Forgery <br>
 > 사용자의 **섹션이나 토큰을 이용해 다른 명령**을 실행하도록 한다. <br>
@@ -35,7 +64,7 @@ tags: [xxs, csrf, injection, cross, scripting, forgery] # TAG names should alway
   ~신호등이 나와 있는 사진 클릭하세요 <br>
   사람인지 확인하기 <br>
 
-## ✅ SQL injection
+## 🛑 SQL injection
 
 > 서버로 보낼 때, 정상적인 요청값 대신 악의적인 DB SQL문을 주입하는 것<br>
 
@@ -49,25 +78,6 @@ tags: [xxs, csrf, injection, cross, scripting, forgery] # TAG names should alway
   아이디는 DB SQL문을 사용할 수 없도록 <br>
 - JPA를 사용하면 위협이 많이 낮아짐 <br>
 
-## ✅ SOP
-
-> 웹 브라우저의 동일 출처 정책 <br>
-> SOP: Same Orgin Policy <br>
-> prevent web pages from making **requests** to a different domain than the one that **served** the web page. <br>
-
-- 같은 출처 정책 <br>
-- 사이트 A를 가지고 있으면 사이트 A에서만 가지고 온다. <br>
-- 앞서 언급된 보안 위험 등으로 브라우저는 기본적으로 SOP를 따른다. <br>
-- 외부에서 얻는 데이터는 항상 같은 Orgin이어야 인식한다. <br>
-
-### ⭐️ Orgin
-
-> Protocol + Host + Port<br>
-
-    이 세 가지까지 같으면 동일 origin출처<br>
-
-> An "origin" is defined by the combination of the protocol (e.g., HTTP or HTTPS), domain, and port. Two pages are considered to have the same origin if all three components match. <br>
-
 ## ✅ CORS
 
 > Cross Orgin Resource Sharing <br>
@@ -78,13 +88,22 @@ tags: [xxs, csrf, injection, cross, scripting, forgery] # TAG names should alway
 프론트와 백엔드를 항상 서로 배포해야함... <br>
 따라서 경우에 따라 SOP를 풀어주는 것도 필요하다. <br>
 
-### 💡 CORS 방법
+## 💡 CORS 해결 방법
 
 #### 1. 브라우저 플러그인<br>
 
-    브라우저에 플러그인만 추가하면 쉽게 해결할 수 있지만, 문제는 새로운 기기가 추가될 떄마다 플러그인 일일이 추가해주어야 한다. <br>
+앞서 orgin이 같은지 다른지는 **브라우저**가 판단한다고 했다.<br>
+따라서 브라우저에 플러그인을 추가하면 쉽게 해결할 수 있지만, <br>
+문제는 새로운 기기가 추가될 떄마다 플러그인 일일이 추가해주어야 한다. <br>
+<https://chromewebstore.google.com/detail/allow-cors-access-control/lhobafahddgcelffkeicbaginigeejlf?pli=1>
 
-#### 2. 백엔드 전역 보안 설정
+#### 2. 프록시 서버 구축
+
+#### 3. 백엔드 전역 보안 설정
+
+서버에서 `Access-Control-Allow-Orgin` 헤더에 허용할 출처를 기재해서 클라이언트에 응답하면 된다.
+
+##### ✔️ 강의 code
 
 ```java
 //safety configuation에 새로운 Bean 추가
@@ -135,3 +154,84 @@ tags: [xxs, csrf, injection, cross, scripting, forgery] # TAG names should alway
     return http.build();
     }
 ```
+
+##### ✔️ moviereservationbe code
+
+```java
+package com.github.moviereservationbe.config.security;
+
+import com.github.moviereservationbe.service.exceptions.CustomAccessDeniedHandler;
+import com.github.moviereservationbe.service.exceptions.CustomAuthenticationEntryPoint;
+import com.github.moviereservationbe.web.filters.JwtAuthenticationFilter;
+import lombok.RequiredArgsConstructor;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+
+import java.util.Arrays;
+import java.util.List;
+
+@Configuration
+@EnableWebSecurity
+@RequiredArgsConstructor
+public class SecurityConfig {
+    private final JwtTokenProvider jwtTokenProvider;
+    @Bean
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
+        http
+                .headers(h -> h.frameOptions(f -> f.sameOrigin()))
+                .csrf(c->c.disable())
+                .httpBasic(h->h.disable())
+                .formLogin(f->f.disable())
+                .rememberMe(r->r.disable())
+                .sessionManagement(s->s.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                .cors(c-> c.configurationSource(corsConfig()))
+                .authorizeRequests(a->
+                        a
+                                .requestMatchers("/resources/static/**", "/auth/sign-up", "/auth/login", "/auth/logout").permitAll()
+                                .requestMatchers("/test").hasRole("USER")
+                )
+                .exceptionHandling(e->{
+                    e.authenticationEntryPoint(new CustomAuthenticationEntryPoint());
+                    e.accessDeniedHandler(new CustomAccessDeniedHandler());
+                })
+                .addFilterBefore(new JwtAuthenticationFilter(jwtTokenProvider), UsernamePasswordAuthenticationFilter.class);
+
+        return http.build();
+    }
+
+    private CorsConfigurationSource corsConfig() {
+        CorsConfiguration corsConfiguration = new CorsConfiguration();
+        corsConfiguration.setAllowCredentials(false);
+        corsConfiguration.setAllowedOrigins(List.of("*"));
+        corsConfiguration.addAllowedHeader("*");
+        corsConfiguration.addExposedHeader("Token"); //추가
+        corsConfiguration.setExposedHeaders(Arrays.asList("Authorization", "Authorization-refresh", "Token"));
+        corsConfiguration.setAllowedMethods(List.of("GET","PUT","POST","DELETE"));
+        corsConfiguration.setMaxAge(1000L*60*60);
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/**",corsConfiguration);
+        return source;
+    }
+
+    @Bean
+    public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception{
+        return authenticationConfiguration.getAuthenticationManager();
+    }
+}
+```
+
+## 💡 S3 CORS 해결 방법
+
+AWS S3 bucket에 CORS(Cross-origin 리소스 공유) 규칙을 추가한다.
+
+<img width="669" alt="Screenshot 2024-05-31 at 00 35 40" src="https://github.com/soheeparklee/sc_FrontBackTryout/assets/97790983/cae2f175-ab53-4a8d-a499-a8d8d388f52f">
