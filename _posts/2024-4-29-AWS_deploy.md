@@ -4,28 +4,59 @@ categories: [AWS, Backend]
 tags: [deploy] # TAG names should always be lowercase
 ---
 
-## ✅ EC2: 스프링을 올릴 수 있는 서버
+## ✅ EC2
 
-- OS는 ubuntu를 사용
+> 스프링을 올릴 수 있는 서버
+
+- 로컬 컴퓨터가 아니라 **원격 컴퓨터**를 배정 받아서 사용
+- 원격 컴퓨터 OS는 ubuntu를 사용
+- 배포 전 원격 컴퓨터에 `java JRE`, `git`, `netstat` 설치할 예정
+
+### ☑️ AWS EC2 설정하기
+
+- region: 한 지역으로 설정하고 **고정**
 - 인스턴스 유형: 프리 티어
-- 키 페어: make new key pair
-  💡 이름 지을 때 띄어쓰기 하지 말 것(나중에 terminal에서 띄어쓰기 인식 못함)
-- 네트워크: vpc-어쩌고저쩌고
-  💡 이후 RDS할 때 `vpc-0c6562bc157853529 `가 동일해야 하므로 꼭 기억해두기
-- 스토리지 구성: 30GB
+- OS는 ubuntu
+- 키 페어: make new key pair <br>
+  💡 이름 지을 때 띄어쓰기 하지 말 것(나중에 terminal에서 띄어쓰기 인식 못함) <br>
+- 네트워크: vpc-어쩌고저쩌고 <br>
+  💡 이후 RDS할 때 `vpc-0c6562bc157853529 `가 동일해야 하므로 꼭 기억해두기 <br>
+- 스토리지 구성: 30GB <br>
+
+<img width="398" alt="image" src="https://github.com/soheeparklee/sc_FrontBackTryout/assets/97790983/89714230-db1a-4ba5-a4ac-c4d3d31c38d9">
+
+- 키페어 만들기
+  <img width="296" alt="image" src="https://github.com/soheeparklee/sc_FrontBackTryout/assets/97790983/be1732d0-095e-4c32-b835-f39bfde48632">
+
+<img width="395" alt="image" src="https://github.com/soheeparklee/sc_FrontBackTryout/assets/97790983/18fde10d-278e-4718-8f89-1e2e234a47be">
 
 ### ☑️ 보안그룹 추가
 
+> EC2 ▶️ 네트워크 및 보안 ▶️ 보안 그룹
+> 보안그룹을 추가해서 방화벽을 해제하기
+
 - 인바운드 규칙에 모든 TCP - Anywhere IPv4, IPv6 총 2개 추가
-- 이렇게 방화벽을 해제해야 local에서도 서버 접속 가능
+- 이렇게 방화벽을 해제해야 local에서도 서버 접속 가능 <br>
   💡 이 때 VPC 주소 EC2와 일치하도록 주의 <br>
   ➡️ EC2에 보안그룹 추가<br>
 
-### 🟢 Terminal 1: keypair
+<img width="1393" alt="image" src="https://github.com/soheeparklee/sc_FrontBackTryout/assets/97790983/dc1a2a00-3b6c-43cf-96fc-f19674b11ec1">
+
+<img width="748" alt="image" src="https://github.com/soheeparklee/sc_FrontBackTryout/assets/97790983/9589119c-1950-44b3-9d7f-fda043549a30">
+
+#### ✔️ 결과: 인바운드 규칙 추가
+
+<img width="1184" alt="image" src="https://github.com/soheeparklee/sc_FrontBackTryout/assets/97790983/943b8d9d-67f2-424c-8abf-40a13fbd4a49">
+
+### 🟢 Terminal 1: keypair pem + SSH로 연결
+
+> 원격 컴퓨터와 로컬 컴퓨터를 연결한다.
 
 - keypair을 생성하면 Downloads에 저장된다.
 - Downloads에 폴더 하나 만들어서
 - 거기에다가 keypair을 복사한다.
+- keypair이 있는 장소로 들어가서 `sudo chmod`로 키에 권한을 설정하고
+- `ssh`로 연결한다.
 
 ```bash
 -- Desktop으로 들어가
@@ -35,40 +66,51 @@ tags: [deploy] # TAG names should always be lowercase
  ~/Downloads
 
 -- movie-key라는 폴더 만들어
- mkdir movie-key
+ mkdir drugstore-key
 
--- movie-key 폴더 안으로 들어가
- cd movie-key
+-- drugstore-key 폴더 안으로 들어가
+ cd drugstore-key
 
--- movie-key 폴더에 Downloads안에 있는 movie-reservation.pem . 라는 키페어 복사해
- cp ~/Downloads/movie-reservation.pem .
+-- drugstore-key 폴더에 Downloads안에 있는 DrugStoreKeyPair.pem . 라는 키페어 복사해
+ cp ~/Downloads/DrugStoreKeyPair.pem .
 
 -- keypair
--- sudo chmod 400 pem키 이름: 들어올 수 있는 권한을 주기
-sudo chmod 400 movie-reservation.pem
-ssh -i "movie-reservation.pem" ubuntu@ec2-54-180-126-207.ap-northeast-2.compute.amazonaws.com
+-- sudo chmod 400 pem 키 이름: 들어올 수 있는 권한을 주기
+sudo chmod 400 DrugStoreKeyPair.pem
+ssh -i "DrugStoreKeyPair.pem" ubuntu@ec2-54-180-126-207.ap-northeast-2.compute.amazonaws.com
 ```
+
+#### ✔️ 결과: `~/Downloads`에 폴더 있고, 폴더 안에 우리의 `pem`키 있어야 한다.
+
+<img width="253" alt="Screenshot 2024-05-31 at 12 47 01" src="https://github.com/soheeparklee/sc_FrontBackTryout/assets/97790983/7a34c409-3de7-4b86-8856-a8175ebe4d1a">
+
+<img width="734" alt="image" src="https://github.com/soheeparklee/sc_FrontBackTryout/assets/97790983/e5f9b8ad-040d-47bc-b17c-b59f55695be9">
 
 #### ✔️ 결과: `ubuntu@ ip주소`
 
 ```bash
+-- ip- 내 ip번호
 ubuntu@ip-172-31-10-19:~$ 이제 여기에 명령어 쓸 것
 ```
 
 <img width="1004" alt="Screenshot 2024-05-20 at 18 52 38" src="https://github.com/soheeparklee/Backend-shoppingMall-Mar2024/assets/97790983/f34c7aa7-4dcc-44b4-8fc0-16cdb0655290">
 
-### 🟢 Terminal 1: ubuntu에 폴더 만들어 java, git, netstat install
+### 🟢 Terminal 1: 원격 컴퓨터 ubuntu에 폴더 만들어 java, git, netstat install
 
-먼저 임시 서버에 들어와 `ubuntu@ip-172-31-10-19:~$`된 상태에서 시작
+> 이제 EC2에서 배정받은, 내가 선택한 지역(서울)에 있는 원격 컴퓨터를 배정받아 연결한 상태임
+> 이 컴퓨터에는 아무것도 설치되어 있지 않음
+> 따라서 java, git, netstat 설치 필요
+
+먼저 임시 서버에 들어와 `ubuntu@ip-172-31-10-19:~$`된 상태인지 확인하고 시작!
 
 ```bash
 pwd
 -- /home/ubuntu
-mkdir movie
-cd movie
+mkdir spring
+cd spring
 ```
 
-#### ✔️ 결과: `ubuntu@ip-172-31-10-19:~/movie$`
+#### ✔️ 결과: `ubuntu@ip-172-31-10-19:~/spring$`
 
 ```bash
 -- 먼저 업데이트 하고
@@ -93,7 +135,13 @@ netstat -h
 
 <img width="719" alt="Screenshot 2024-05-20 at 19 03 13" src="https://github.com/soheeparklee/Backend-shoppingMall-Mar2024/assets/97790983/18f84238-325f-4456-b2e7-b2d55b0d433e">
 
-### 🟢 Terminal 1: 서버 열기
+### 🟢 Terminal 1: 서버 열기, 네트워크 확인하기
+
+`sudo netstat`: 현재 서버의 네트워크 설정이 어떻게 되어있는지 확인하기 <br>
+`l`: listen <br>
+`t`: tcp/udp 중에 tcp <br>
+`p`: process <br>
+`n`: 실제 포트 번호 <br>
 
 ```bash
 sudo netstat -ltpn
@@ -114,6 +162,8 @@ tcp6       0      0 :::22                   :::*                    LISTEN      
 
 ### 🟢 Terminal 1: 8080 연결
 
+8080 port로 임시 서버를 연다. <br>
+
 ```bash
 nc -lkv 8080
 -- Listening on 0.0.0.0 8080
@@ -121,8 +171,8 @@ nc -lkv 8080
 
 ### 🔵 Terminal 2: keyPair있는 곳에서 임시서버와 연결
 
-keyPair있는 폴더로 들어가기
-ssh연결에서 보이는 링크로 들어가기
+keyPair있는 폴더로 들어가기 <br>
+ssh연결에서 보이는 링크로 들어가기 <br>
 
 ```bash
 ~/Desktop
@@ -146,7 +196,7 @@ Active Internet connections (only servers)
 Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name
 tcp        0      0 127.0.0.54:53           0.0.0.0:*               LISTEN      321/systemd-resolve
 tcp        0      0 127.0.0.53:53           0.0.0.0:*               LISTEN      321/systemd-resolve
-tcp        0      0 0.0.0.0:8080            0.0.0.0:*               LISTEN      2115/nc
+tcp        0      0 0.0.0.0:8080            0.0.0.0:*               LISTEN      2115/nc //⭐️ 새로 생긴걸 확인할 수 있다.
 tcp6       0      0 :::22                   :::*                    LISTEN      1/init
 ```
 
@@ -161,10 +211,11 @@ ubuntu@ip-172-31-10-19:~$ nc -v localhost 8080
 
 ### 🟣 Terminal 3: 로컬에서 서버와 연결
 
-로컬에서 서버와 연결을 위해서는 방화벽을 풀어야 한다.
+로컬에서 서버와 연결을 위해서는 방화벽을 풀어야 한다.<br>
 
 ```bash
 -- 로컬에서 서버 연결
+-- nc -v {{ENDPOINT}} 8080
 nc -v ec2-54-180-126-207.ap-northeast-2.compute.amazonaws.com 8080
 
 ```
@@ -178,7 +229,44 @@ nc -v ec2-54-180-126-207.ap-northeast-2.compute.amazonaws.com 8080
 - password
 - 연결: EC2컴퓨팅 리소스에 연결 안 함
   💡 VPC 주소가 EC2와 동일해야 함 (꼭 설정할 것, 데이터베이스 생성 이후에는 VPC변경 불가)
-- 퍼블릭 액세스: 예
+- **퍼블릭 액세스: 예**
+
+<br>
+
+<img width="554" alt="image" src="https://github.com/soheeparklee/sc_FrontBackTryout/assets/97790983/c14b0c11-75ea-4901-a261-abde68318abf">
+
+<img width="556" alt="image" src="https://github.com/soheeparklee/sc_FrontBackTryout/assets/97790983/ef0906e2-ae9b-42ba-8b8f-f64d62eecda0">
+
+<img width="516" alt="image" src="https://github.com/soheeparklee/sc_FrontBackTryout/assets/97790983/b83abeee-8e7d-446b-8a4a-dca865797354">
+
+### ☑️ 파라미터 그룹
+
+> RDS ▶️ 파라미터 그룹
+
+- time_zone 값: Asia/Seoul
+- character 들어간 필드 6개 값: utf8mb4
+- collation 들어간 필드 2개 값: utf8mb4_general_ci <br>
+  ➡️ RDS에 DB 파라미터 그룹 추가 <br>
+
+#### ✔️ 파라미터 그룹 생성
+
+<img width="551" alt="image" src="https://github.com/soheeparklee/sc_FrontBackTryout/assets/97790983/914e48b4-401e-4293-9cac-d894fb39a12b">
+
+#### ✔️ time_zone 값: 내 region
+
+<img width="1041" alt="Screenshot 2024-05-31 at 15 03 36" src="https://github.com/soheeparklee/sc_FrontBackTryout/assets/97790983/b3c23eed-8c5a-478d-b029-335e2a3a5256">
+
+#### ✔️ character 들어간 필드 6개 값: utf8mb4
+
+<img width="1048" alt="image" src="https://github.com/soheeparklee/sc_FrontBackTryout/assets/97790983/132fd599-ad85-42d3-9c96-cbe4a45d664d">
+
+#### ✔️ collation 들어간 필드 2개 값: utf8mb4_general_ci
+
+<img width="1043" alt="Screenshot 2024-05-31 at 15 05 18" src="https://github.com/soheeparklee/sc_FrontBackTryout/assets/97790983/6a74cbbe-a0b6-461d-a372-1762c3e2a944">
+
+#### ✔️ RDS에 파라미터 그룹 추가
+
+<img width="550" alt="image" src="https://github.com/soheeparklee/sc_FrontBackTryout/assets/97790983/21a43c0c-6c14-4c40-a1b0-52e98e4ccdf5">
 
 ### ☑️ 보안그룹 추가(EC2에 있음)
 
@@ -186,12 +274,11 @@ nc -v ec2-54-180-126-207.ap-northeast-2.compute.amazonaws.com 8080
   💡 이 때 VPC 주소 RDS와 일치하도록 주의 <br>
   ➡️ RDS에 보안 그룹 추가 <br>
 
-### ☑️ 파라미터 그룹
+<img width="1230" alt="image" src="https://github.com/soheeparklee/sc_FrontBackTryout/assets/97790983/1f421632-50af-4bdb-ac47-d91138b17535">
 
-- time_zone 값: Asia/Seoul
-- character 들어간 필드 6개 값: utf8mb4
-- collation 들어간 필드 2개 값: utf8mb4_general_ci <br>
-  ➡️ RDS에 DB 파라미터 그룹 추가 <br>
+#### ✔️ RDS에 보안 그룹 추가
+
+<img width="545" alt="image" src="https://github.com/soheeparklee/sc_FrontBackTryout/assets/97790983/62e92a29-a596-4d58-b6eb-42d97836b4fa">
 
 ## ✅ MySQl workbench
 
@@ -203,9 +290,15 @@ nc -v ec2-54-180-126-207.ap-northeast-2.compute.amazonaws.com 8080
 
 <img width="1057" alt="Screenshot 2024-05-21 at 00 40 04" src="https://github.com/soheeparklee/Backend-shoppingMall-Mar2024/assets/97790983/0e801149-64c2-45fc-b64d-027acef86b05">
 
+## ✅ RDS에 EC2 연결
+
+> RDS ▶️ 연결된 컴퓨팅 리소스 ▶️ EC2 연결 설정
+
+<img width="1049" alt="image" src="https://github.com/soheeparklee/sc_FrontBackTryout/assets/97790983/849d5728-647c-471d-97fb-68c5f3621335">
+
 ### 🟢 Terminal 1: mariaDB설정
 
-`ubuntu@ip-172-31-10-19:~/movie$` 이렇게 되어 명령어 입력 준비된 상태에서 시작 <br>
+`ubuntu@ip-172-31-10-19:~/spring$` 이렇게 되어 명령어 입력 준비된 상태에서 시작 <br>
 mariaDB 설치 <br>
 
 ```bash
@@ -242,7 +335,7 @@ mysql 들어가기
 
 ```bash
 --  mysql -h RDS엔드포인트 -u DBusername -p
- mysql -h movie-database2.cn000owqib3s.ap-northeast-2.rds.amazonaws.com -u root -p
+ mysql -h drugstoredb.cn000owqib3s.ap-northeast-2.rds.amazonaws.com -u root -p
  show databases;
 ```
 
@@ -253,7 +346,7 @@ MariaDB [(none)]> show databases;
 +---------------------------+
 | Database                  |
 +---------------------------+
-| Project_movie_reservation |
+| drug_store_db |
 | information_schema        |
 | innodb                    |
 | mysql                     |
