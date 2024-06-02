@@ -296,6 +296,12 @@ nc -v ec2-54-180-126-207.ap-northeast-2.compute.amazonaws.com 8080
 
 <img width="1049" alt="image" src="https://github.com/soheeparklee/sc_FrontBackTryout/assets/97790983/849d5728-647c-471d-97fb-68c5f3621335">
 
+#### ✔️ 결과: EC2에서도 RDS 연결된 것 확인
+
+EC2 아웃바운드 규칙을 보면 RDS 연결되어 있는 것을 확인할 수 있다.
+
+<img width="1239" alt="image" src="https://github.com/soheeparklee/sc_FrontBackTryout/assets/97790983/6d78a3f2-41c8-44d4-93c4-81eff0b2036e">
+
 ### 🟢 Terminal 1: mariaDB설정
 
 `ubuntu@ip-172-31-10-19:~/spring$` 이렇게 되어 명령어 입력 준비된 상태에서 시작 <br>
@@ -331,7 +337,7 @@ mysql --version
 
 <img width="613" alt="Screenshot 2024-05-21 at 00 50 55" src="https://github.com/soheeparklee/Backend-shoppingMall-Mar2024/assets/97790983/f35b5696-e91f-4719-ab5f-17c11ed4da0e">
 
-mysql 들어가기
+#### mysql 들어가기
 
 ```bash
 --  mysql -h RDS엔드포인트 -u DBusername -p
@@ -377,7 +383,7 @@ spring:
     username: ${DATABASE_USERNAME}
     password: ${DATABASE_PASSWORD}
     driver-class-name: org.mariadb.jdbc.Driver
-    url: jdbc:mariadb://movie-database2.cn000owqib3s.ap-northeast-2.rds.amazonaws.com:3306/Project_movie_reservation?useUnicode=true&characterEncoding=UTF-8
+    url: { { URL } }
 
   jpa:
     show-sql: true
@@ -402,7 +408,7 @@ logging:
 
 datasource:
   driver-class-name: org.mariadb.jdbc.Driver
-  url: jdbc:mariadb://movie-database2.cn000owqib3s.ap-northeast-2.rds.amazonaws.com:3306/Project_movie_reservation?useUnicode=true&characterEncoding=UTF-8
+  url: { { URL } }
 ```
 
 #### ✔️ application-dev.yaml
@@ -531,8 +537,8 @@ logging:
 ```bash
 ~/Desktop
 ~/Downloads
-cd movie-key
- ssh -i "movie-reservation.pem" ubuntu@ec2-54-180-126-207.ap-northeast-2.compute.amazonaws.com
+cd drugstore-key
+ ssh -i "DrugStoreKeyPair.pem" ubuntu@ec2-15-164-219-191.ap-northeast-2.compute.amazonaws.com
 ```
 
 환경변수 설정 위해 들어감 <br>
@@ -571,17 +577,17 @@ ubuntu > movie folder > github project clone<br>
 
 ```bash
 -- git clone -b 복사할브랜치이름  --single-branch 깃허브 링크
-git clone -b deploy --single-branch https://github.com/sc-project2-MovieReservation/MovieReservation-BE.git
+git clone -b deploy --single-branch https://github.com/DrugStoreWeb/DrugStore-BE.git
 ```
 
 #### ✔️ 결과
 
-ubuntu > movie안에 깃허브 프로젝트가 만들어진다. <br>
-`ubuntu@ip-172-31-10-19:~/movie/MovieReservation-BE$`<br>
+ubuntu > spring안에 깃허브 프로젝트가 만들어진다. <br>
+`ubuntu@ip-172-31-10-19:~/spring/DrugStore-BE$`<br>
 
 ## ✅ build file만들기
 
-`ubuntu@ip-172-31-10-19:~/movie/MovieReservation-BE$` 하고 `ls`해보면 build파일이 없음. <br>
+`ubuntu@ip-172-31-10-19:~/spring/DrugStore-BE$` 하고 `ls`해보면 build파일이 없음. <br>
 build파일 만들어야 한다. <br>
 
 ```bash
@@ -589,12 +595,12 @@ build파일 만들어야 한다. <br>
 ./gradlew bootJar
 ```
 
-그럼 이제 `ubuntu@ip-172-31-10-19:~/movie/MovieReservation-BE$` 하고 `ls`해보면 build파일이 만들어져 있는걸 확인할 수 있다. <br>
+그럼 이제 `ubuntu@ip-172-31-10-19:~/spring/DrugStore-BE$` 하고 `ls`해보면 build파일이 만들어져 있는걸 확인할 수 있다. <br>
 
 <img width="495" alt="image" src="https://github.com/sc-project2-MovieReservation/MovieReservation-BE/assets/97790983/1e08516f-3c23-4093-b2a3-714445ad0d02">
 
 이제 build파일 안에 있는 libs파일에 들어가면 SNAPSHOT.jar 파일이 생긴걸 확인할 수 있다. <br>
-이렇게 생겼음: `MovieReservation-BE-0.0.1-SNAPSHOT.jar`<br>
+이렇게 생겼음: `DrugStore-BE-0.0.1-SNAPSHOT.jar`<br>
 
 ```bash
 ls ./build/libs
@@ -606,15 +612,15 @@ ls ./build/libs
 
 ## ✅ deploy, swagger
 
-⭐️ 게속 `ubuntu@ip-172-31-10-19:~/movie/MovieReservation-BE$`에서 이어서 진행
+⭐️ 게속 `ubuntu@ip-172-31-10-19:~/spring/DrugStore-BE$`에서 이어서 진행
 이제 SNAPSHOT.jar 파일을 배포하면, 어떤 컴퓨터에서도 웹페이지 접속 가능<br>
 💡 띄어쓰기 주의하기!<br>
 
 - Jar띄고 `-jar ./ `<br>
-  💡 `./build/libs/MovieReservation-BE-0.0.1-SNAPSHOT.jar` 주의 <br>
+  💡 `./build/libs/DrugStore-BE-0.0.1-SNAPSHOT.jar` 주의 <br>
 
 ```bash
-java -jar ./build/libs/MovieReservation-BE-0.0.1-SNAPSHOT.jar --spring.profiles.active=prod
+java -jar ./build/libs/DrugStore-BE-0.0.1-SNAPSHOT.jar --spring.profiles.active=prod
 ```
 
 #### ✔️ 결과
@@ -632,17 +638,17 @@ localhost를 `EC2퍼블릭 IPv4 DNS`로 바꾸기<br>
 
 #### 🔴 Trouble Shooting
 
-`java -jar ./MovieReservation-BE/build/libs/MovieReservation-BE-0.0.1-SNAPSHOT.jar --spring.profiles.active=prod`을 하고 application start가 뜨기를 기다렸다. <br>
+`java -jar ./DrugStore-BE/build/libs/DrugStore-BE-0.0.1-SNAPSHOT.jar --spring.profiles.active=prod`을 하고 application start가 뜨기를 기다렸다. <br>
 하지만 계속계속 기다리는데 WARN에 멈추더니 터미널이 꿈쩍도 안했다. <br>
 심지어 run을 멈추는 방법도 모르겠어서 터미널을 꺼버렸다. <br>
 그리고 다시 터미널을 열어 처음부터 시작했다. <br>
-그런데 이번에는 ` ssh -i "movie-reservation.pem" ubuntu@ec2-54-180-126-207.ap-northeast-2.compute.amazonaws.com` 도 들어가지지가 않았다. <br>
+그런데 이번에는 ` ssh -i "DrugStoreKeyPair.pem" ubuntu@ec2-54-180-126-207.ap-northeast-2.compute.amazonaws.com` 도 들어가지지가 않았다. <br>
 내 ubuntuㅠㅠ 뭐가 문제일까?? <br>
 
 🟡 원인: 컴퓨터 CPU과부화일 수도 있다고 한다. 또는 EC2의 문제일 수도 있다. <br>
 🔵 우선 컴퓨터에서 실행되는 프로세스들을 멈추고, 컴퓨터 전원을 껐다가 켰다. 하지만 이걸로 해결이 되지 않았다. <br>
 🔵 그래서 이번에는 EC2를 중지했다가, 다시 시작했다. 물론 이렇게 하면 퍼블릭 도메인이 바뀐다. 바뀐 도메인 주소로 다시 우분투에 접속한다. <br>
-`ssh -i "movie-reservation.pem" ubuntu@ec2-43-200-67-116.ap-northeast-2.compute.amazonaws.com`<br>
+`ssh -i "DrugStoreKeyPair.pem" ubuntu@ec2-43-200-67-116.ap-northeast-2.compute.amazonaws.com`<br>
 이렇게 했더니 잘 접속이 되었고, 이어서 `java -jar` 까지도 잘 실행되었다. 끝!<br>
 
 ## ✅ terminal꺼져도 끝나지 않는 서버, nohub
@@ -655,18 +661,18 @@ localhost를 `EC2퍼블릭 IPv4 DNS`로 바꾸기<br>
 
 - Jar띄고 `-jar ./ `<br>
 - /dev 띄어쓰기 없음 `>>/dev/null` <br>
-  💡 `./MovieReservation-BE/build/libs/MovieReservation-BE-0.0.1-SNAPSHOT.jar` 주의 <br>
+  💡 `./DrugStore-BE/build/libs/DrugStore-BE-0.0.1-SNAPSHOT.jar` 주의 <br>
 
-`ubuntu@ip-172-31-10-19:~/movie/MovieReservation-BE$`까지 들어온 상태에서 진행 <br>
+`ubuntu@ip-172-31-10-19:~/spring/DrugStore-BE$`까지 들어온 상태에서 진행 <br>
 
 ```bash
-nohup java -jar ./build/libs/MovieReservation-BE-0.0.1-SNAPSHOT.jar --spring.profiles.active=prod >>/dev/null 2>&1 &
+nohup java -jar ./build/libs/DrugStore-BE-0.0.1-SNAPSHOT.jar --spring.profiles.active=prod >>/dev/null 2>&1 &
 ```
 
 또는 `ubuntu@ip-172-31-10-19:~/movie$` 까지 들어온 상태에서 진행<br>
 
 ```bash
-nohup java -jar ./MovieReservation-BE/build/libs/MovieReservation-BE-0.0.1-SNAPSHOT.jar --spring.profiles.active=prod >>/dev/null 2>&1 &
+nohup java -jar ./DrugStore-BE/build/libs/DrugStore-BE-0.0.1-SNAPSHOT.jar --spring.profiles.active=prod >>/dev/null 2>&1 &
 ```
 
 #### ✔️ 결과
@@ -717,15 +723,15 @@ http://43.200.67.116:8080/swagger-ui/index.html
 ~/Desktop
 ~/Downloads
 cd movie-key
-ssh -i "movie-reservation.pem" ubuntu@43.200.67.116
+ssh -i "DrugStoreKeyPair.pem" ubuntu@43.200.67.116
 ```
 
 그러면 `ubuntu@ip-172-31-10-19:~/$` <br>
 이후 `ubuntu@ip-172-31-10-19:~/movie/$` 까지 들어와서 <br>
-`ubuntu@ip-172-31-10-19:~/movie/MovieReservation-BE$`까지 들어온 상태에서 진행 <br>
+`ubuntu@ip-172-31-10-19:~/spring/DrugStore-BE$`까지 들어온 상태에서 진행 <br>
 
 ```bash
-nohup java -jar ./build/libs/MovieReservation-BE-0.0.1-SNAPSHOT.jar --spring.profiles.active=prod >>/dev/null 2>&1 &
+nohup java -jar ./build/libs/DrugStore-BE-0.0.1-SNAPSHOT.jar --spring.profiles.active=prod >>/dev/null 2>&1 &
 ```
 
 <img width="663" alt="image" src="https://github.com/sc-project2-MovieReservation/MovieReservation-BE/assets/97790983/6e9189de-a995-4ee0-aaf1-fb128bff91a1">
@@ -764,15 +770,15 @@ sudo kill PID
 현재 ubuntu@, movie 안에 깃허브 클론 폴더 만들어져 있는 상태
 
 ```bash
-ubuntu@ip-172-31-10-19:~/movie$ ls
-MovieReservation-BE  logs  mariadb_repo_setup  mariadb_repo_setup.1  mariadb_repo_setup.2  nohup.out
--- MovieReservation-BE가 깃허브 클론한 것
+ubuntu@ip-172-31-10-19:~/spring$ ls
+DrugStore-BE  logs  mariadb_repo_setup  mariadb_repo_setup.1  mariadb_repo_setup.2  nohup.out
+-- DrugStore-BE가 깃허브 클론한 것
 ```
 
 깃 클론 지우기
 
 ```bash
- sudo rm -r MovieReservation-BE
+ sudo rm -r DrugStore-BE
 ```
 
 ### ☑️ security config에 cors관련 세팅 추가
