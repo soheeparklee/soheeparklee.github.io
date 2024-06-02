@@ -16,7 +16,7 @@ git으로 가서 `share project on github` <br>
 
 <img width="1020" alt="Screenshot 2024-04-17 at 01 29 15" src="https://github.com/soheeparklee/Backend-shoppingMall-Mar2024/assets/97790983/793fdb7e-fdba-42fc-9a86-88771c8df33d">
 
-### 3. I have a github repository already
+## 3. I have a github repository already
 
 이럴 경우에는 `manage remotes` <br>
 <img width="953" alt="Screenshot 2024-04-17 at 01 29 42" src="https://github.com/soheeparklee/Backend-shoppingMall-Mar2024/assets/97790983/4507e94c-f77e-46e4-94c0-d54bf4b58903">
@@ -51,6 +51,6 @@ git push --set-upstream origin main
 
 <img width="710" alt="Screenshot 2024-04-17 at 01 31 34" src="https://github.com/soheeparklee/Backend-shoppingMall-Mar2024/assets/97790983/0de082d6-a13c-4edf-aaeb-2fdba24fd0b5">
 
-### 4. 참고자료
+## 4. 참고자료
 
 <https://velog.io/@ssoop/%EA%B9%83%ED%97%88%EB%B8%8CGitHub-%EC%97%B0%EB%8F%99%ED%95%98%EA%B8%B0-Spring-Boot-IntelliJ>
