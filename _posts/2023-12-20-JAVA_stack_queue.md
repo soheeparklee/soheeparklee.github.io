@@ -119,3 +119,37 @@ public class QueueExample {
 > stack과 queue를 하나로 합쳐놓은 것과 같음
 > 조상: queue
 > 구현체: ArrayDeque, LinkedList
+
+```java
+        Deque deque= new LinkedList();
+
+        // 💡 가장 앞에 원소 삽입
+        deque.addFirst(1);
+        deque.offerFirst(2);
+
+        // 💡 마지막에 원소 삽입
+        deque.add(4);
+        deque.addLast(5);
+        deque.offer(6);
+        deque.offerLast(7);
+
+        // 💡 가장 앞에 원소 제거
+        deque.remove();
+        deque.removeFirst();
+        deque.poll();
+        deque.pollFirst();
+
+        // 💡 가장 마지막 원소 제거
+        deque.removeLast();
+        deque.pollLast();
+
+        // 💡 가장 앞 원소 구하기
+        deque.getFirst();
+        deque.peek();
+        deque.peekFirst();
+
+
+        // 💡 마지막 원소 구하기
+        deque.getLast();
+        deque.peekLast();
+```
