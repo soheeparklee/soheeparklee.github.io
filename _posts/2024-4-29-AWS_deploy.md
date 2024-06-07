@@ -449,6 +449,37 @@ logging:
         SQL: DEBUG
 ```
 
+## ✅ build.gradle
+
+`build.gradle`에 `tasks.named('bootJar')` 추가해주기 <br>
+`bootJar`을 실행하면 이 클라스를 실행하라는 것을 알려주는 코드 <br>
+`Application`이 있는 장소, 즉 `Copy Reference` <br>
+
+```bash
+tasks.named('test') {
+    useJUnitPlatform()
+}
+tasks.named('bootJar'){
+    mainClass = 'com.github.moviereservationbe.MovieReservationBeApplication'
+}
+```
+
+## ✅ prod로 실행 확인
+
+#### ✔️ 먼저 실행파일을 prod로 바꾸고
+
+<img width="1041" alt="image" src="https://github.com/soheeparklee/sc_project_carrotmkt/assets/97790983/d475550c-31f0-49f0-85a5-770c85c491f8">
+
+#### ✔️ postMan 돌려보고 잘 작동하는지 확인
+
+#### ✔️ logs 잘 만들어지는지 확인
+
+<img width="1470" alt="Screenshot 2024-06-07 at 15 04 57" src="https://github.com/soheeparklee/sc_project_carrotmkt/assets/97790983/bd37da9c-b376-4d07-8de4-1c1bc60adf46">
+
+#### ✔️ libs 아래에 bootJar 파일 잘 만들어지는지 확인
+
+<img width="591" alt="image" src="https://github.com/soheeparklee/sc_project_carrotmkt/assets/97790983/7b01575c-6931-42ca-a914-454b52fac842">
+
 ## ✅ xml log files
 
 #### ✔️ logback-spring-prod.xml
@@ -549,7 +580,7 @@ vim ~/.bashrc
 
 안에서 편집 시작 <br>
 s누르면 편집 가능 <br>
-💡 =사이에 띄어쓰기 하지 않기 주의! <br>
+💡 `=`사이에 띄어쓰기 하지 않기 주의! <br>
 💡 다 편집 후 ESC 누르면 편집 모드에서 read only 모드로 바뀜 <br>
 그제서야 `:wq` 눌러서 저장하고 quit <br>
 
