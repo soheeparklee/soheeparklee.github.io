@@ -65,7 +65,7 @@ tags: [deploy] # TAG names should always be lowercase
 -- Downloads로 들어가
  ~/Downloads
 
--- movie-key라는 폴더 만들어
+-- drugstore-key라는 폴더 만들어
  mkdir drugstore-key
 
 -- drugstore-key 폴더 안으로 들어가
@@ -150,7 +150,7 @@ sudo netstat -ltpn
 #### ✔️ 결과
 
 ```bash
-ubuntu@ip-172-31-10-19:~/movie$ sudo netstat -ltpn
+ubuntu@ip-172-31-10-19:~/spring$ sudo netstat -ltpn
 Active Internet connections (only servers)
 Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name
 tcp        0      0 127.0.0.54:53           0.0.0.0:*               LISTEN      321/systemd-resolve
@@ -177,8 +177,8 @@ ssh연결에서 보이는 링크로 들어가기 <br>
 ```bash
 ~/Desktop
 ~/Downloads
-cd movie-key
-ssh -i "movie-reservation.pem" ubuntu@ec2-54-180-126-207.ap-northeast-2.compute.amazonaws.com
+cd drugstore-key
+ssh -i "DrugStoreKeyPair.pem" ubuntu@ec2-54-180-126-207.ap-northeast-2.compute.amazonaws.com
 ```
 
 임시 서버에 들어와 `ubuntu@ip-172-31-10-19:~$` 된 상태에서 시작
@@ -280,10 +280,10 @@ nc -v ec2-54-180-126-207.ap-northeast-2.compute.amazonaws.com 8080
 
 <img width="545" alt="image" src="https://github.com/soheeparklee/sc_FrontBackTryout/assets/97790983/62e92a29-a596-4d58-b6eb-42d97836b4fa">
 
-## ✅ MySQl workbench
+## ✅ MySQL workbench
 
 - Hostname: RDS의 엔드포인트 <br>
-  예를 들어, `movie-database2.cn000owqib3s.ap-northeast-2.rds.amazonaws.com`
+  예를 들어, `drugstoreDB.cn000owqib3s.ap-northeast-2.rds.amazonaws.com`
 - Username: RDS에서 설정한 마스터 사용자 이름
 - Password: RDS에서 설정한 비밀번호 <br>
   ➡️ TestConnection, connect anyway
@@ -460,25 +460,10 @@ tasks.named('test') {
     useJUnitPlatform()
 }
 tasks.named('bootJar'){
-    mainClass = 'com.github.moviereservationbe.MovieReservationBeApplication'
+    mainClass = {{main class reference}}
+    mainClass = 'com.github.drugstorebe.DrugStoreBeApplication'
 }
 ```
-
-## ✅ prod로 실행 확인
-
-#### ✔️ 먼저 실행파일을 prod로 바꾸고
-
-<img width="1041" alt="image" src="https://github.com/soheeparklee/sc_project_carrotmkt/assets/97790983/d475550c-31f0-49f0-85a5-770c85c491f8">
-
-#### ✔️ postMan 돌려보고 잘 작동하는지 확인
-
-#### ✔️ logs 잘 만들어지는지 확인
-
-<img width="1470" alt="Screenshot 2024-06-07 at 15 04 57" src="https://github.com/soheeparklee/sc_project_carrotmkt/assets/97790983/bd37da9c-b376-4d07-8de4-1c1bc60adf46">
-
-#### ✔️ libs 아래에 bootJar 파일 잘 만들어지는지 확인
-
-<img width="591" alt="image" src="https://github.com/soheeparklee/sc_project_carrotmkt/assets/97790983/7b01575c-6931-42ca-a914-454b52fac842">
 
 ## ✅ xml log files
 
@@ -561,6 +546,24 @@ tasks.named('bootJar'){
 </configuration>
 ```
 
+## ✅ prod로 실행 확인
+
+#### ✔️ 먼저 실행파일을 prod로 바꾸고
+
+<img width="1041" alt="image" src="https://github.com/soheeparklee/sc_project_carrotmkt/assets/97790983/d475550c-31f0-49f0-85a5-770c85c491f8">
+
+#### ✔️ postMan 돌려보고 잘 작동하는지 확인
+
+#### ✔️ logs 잘 만들어지는지 확인
+
+<img width="1470" alt="Screenshot 2024-06-07 at 15 04 57" src="https://github.com/soheeparklee/sc_project_carrotmkt/assets/97790983/bd37da9c-b376-4d07-8de4-1c1bc60adf46">
+
+#### ✔️ libs 아래에 bootJar 파일 잘 만들어지는지 확인
+
+<img width="591" alt="image" src="https://github.com/soheeparklee/sc_project_carrotmkt/assets/97790983/7b01575c-6931-42ca-a914-454b52fac842">
+
+모두 잘 되는거 확인 하고 마지막으로 배포 전 **PUSH**
+
 ## ✅ ubuntu에 환경변수 저장하기
 
 일단 서버로 들어가기 . 들어가서 시작
@@ -573,6 +576,7 @@ cd drugstore-key
 ```
 
 환경변수 설정 위해 들어감 <br>
+spring까지 들어감 <br>
 
 ```bash
 vim ~/.bashrc
@@ -591,7 +595,9 @@ export DATABASE_USERNAME=root
 export JWT_SECRET_KEY=시크릿키
 ```
 
-vim에서 나왔으면 확인
+<img width="479" alt="Screenshot 2024-06-08 at 13 23 32" src="https://github.com/soheeparklee/sc_project_carrotmkt/assets/97790983/0b4871d3-e65a-4a38-ad21-5379204f12c4">
+
+#### ✔️ vim에서 나왔으면 확인
 
 ```bash
 -- 저장
@@ -602,9 +608,11 @@ echo $DATABASE_USERNAME
 echo $DATABASE_PASSWORD
 ```
 
+<img width="358" alt="Screenshot 2024-06-08 at 13 23 49" src="https://github.com/soheeparklee/sc_project_carrotmkt/assets/97790983/b1aed4c4-21a3-4973-bef5-0f90bfac15ed">
+
 ## ✅ git clone, deploy
 
-ubuntu > movie folder > github project clone<br>
+ubuntu > spring folder > github project clone<br>
 
 ```bash
 -- git clone -b 복사할브랜치이름  --single-branch 깃허브 링크
@@ -625,6 +633,8 @@ build파일 만들어야 한다. <br>
 -- build file 만드는 명령어
 ./gradlew bootJar
 ```
+
+<img width="974" alt="Screenshot 2024-06-08 at 13 26 43" src="https://github.com/soheeparklee/sc_project_carrotmkt/assets/97790983/92c20214-f22c-4e7d-94aa-bdd0e4d1ccaf">
 
 그럼 이제 `ubuntu@ip-172-31-10-19:~/spring/DrugStore-BE$` 하고 `ls`해보면 build파일이 만들어져 있는걸 확인할 수 있다. <br>
 
@@ -651,7 +661,7 @@ ls ./build/libs
   💡 `./build/libs/DrugStore-BE-0.0.1-SNAPSHOT.jar` 주의 <br>
 
 ```bash
-java -jar ./build/libs/DrugStore-BE-0.0.1-SNAPSHOT.jar --spring.profiles.active=prod
+java -jar ./build/libs/drug_store_be-0.0.1-SNAPSHOT.jar --spring.profiles.active=prod
 ```
 
 #### ✔️ 결과
@@ -669,7 +679,7 @@ localhost를 `EC2퍼블릭 IPv4 DNS`로 바꾸기<br>
 
 #### 🔴 Trouble Shooting
 
-`java -jar ./DrugStore-BE/build/libs/DrugStore-BE-0.0.1-SNAPSHOT.jar --spring.profiles.active=prod`을 하고 application start가 뜨기를 기다렸다. <br>
+`java -jar ./build/libs/drug_store_be-0.0.1-SNAPSHOT.jar --spring.profiles.active=prod`을 하고 application start가 뜨기를 기다렸다. <br>
 하지만 계속계속 기다리는데 WARN에 멈추더니 터미널이 꿈쩍도 안했다. <br>
 심지어 run을 멈추는 방법도 모르겠어서 터미널을 꺼버렸다. <br>
 그리고 다시 터미널을 열어 처음부터 시작했다. <br>
@@ -697,13 +707,14 @@ localhost를 `EC2퍼블릭 IPv4 DNS`로 바꾸기<br>
 `ubuntu@ip-172-31-10-19:~/spring/DrugStore-BE$`까지 들어온 상태에서 진행 <br>
 
 ```bash
-nohup java -jar ./build/libs/DrugStore-BE-0.0.1-SNAPSHOT.jar --spring.profiles.active=prod >>/dev/null 2>&1 &
+nohup java -jar ./build/libs/drug_store_be-0.0.1-SNAPSHOT.jar --spring.profiles.active=prod >>/dev/null 2>&1 &
 ```
 
-또는 `ubuntu@ip-172-31-10-19:~/movie$` 까지 들어온 상태에서 진행<br>
+또는 `ubuntu@ip-172-31-10-19:~/spring$` 까지 들어온 상태에서 진행<br>
 
 ```bash
-nohup java -jar ./DrugStore-BE/build/libs/DrugStore-BE-0.0.1-SNAPSHOT.jar --spring.profiles.active=prod >>/dev/null 2>&1 &
+nohup java -jar ./build/libs/drug_store_be-0.0.1-SNAPSHOT.jar --spring.profiles.active=prod >>/dev/null 2>&1 &
+
 ```
 
 #### ✔️ 결과
@@ -732,11 +743,11 @@ EC2에 탄력적 IP <br>
 
 ```bash
 -- 이전
-ssh -i "movie-reservation.pem" ubuntu@ec2-43-200-67-116.ap-northeast-2.compute.amazonaws.com
+ssh -i "DrugStoreKeyPair.pem" ubuntu@ec2-43-200-67-116.ap-northeast-2.compute.amazonaws.com
 http://ec2-43-203-126-199.ap-northeast-2.compute.amazonaws.com:8080/auth/sign-up
 
 -- IP고정 이후
-ssh -i "movie-reservation.pem" ubuntu@43.200.67.116
+ssh -i "DrugStoreKeyPair.pem" ubuntu@43.200.67.116
 http://43.200.67.116:8080/auth/login
 ```
 
@@ -753,12 +764,12 @@ http://43.200.67.116:8080/swagger-ui/index.html
 ```bash
 ~/Desktop
 ~/Downloads
-cd movie-key
+cd drugstore-key
 ssh -i "DrugStoreKeyPair.pem" ubuntu@43.200.67.116
 ```
 
 그러면 `ubuntu@ip-172-31-10-19:~/$` <br>
-이후 `ubuntu@ip-172-31-10-19:~/movie/$` 까지 들어와서 <br>
+이후 `ubuntu@ip-172-31-10-19:~/spring/$` 까지 들어와서 <br>
 `ubuntu@ip-172-31-10-19:~/spring/DrugStore-BE$`까지 들어온 상태에서 진행 <br>
 
 ```bash
@@ -798,7 +809,7 @@ sudo kill PID
 
 ### ☑️ erase git cloned file
 
-현재 ubuntu@, movie 안에 깃허브 클론 폴더 만들어져 있는 상태
+현재 ubuntu@ spring 안에 깃허브 클론 폴더 만들어져 있는 상태
 
 ```bash
 ubuntu@ip-172-31-10-19:~/spring$ ls
