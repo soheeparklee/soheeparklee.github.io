@@ -705,9 +705,81 @@ public class EmailCertificationService {
 
 ```
 
-### Redis Config??? 필요가 없었다......
+## ✅ Run redis server on EC2
 
-## 참고
+### Redis server install
+
+<img width="791" alt="Screenshot 2024-06-16 at 15 29 10" src="https://github.com/soheeparklee/Backend-shoppingMall-Mar2024/assets/97790983/7b9f66d1-b25d-40cf-abca-5f22b59fae90">
+
+<img width="587" alt="Screenshot 2024-06-16 at 15 29 28" src="https://github.com/soheeparklee/Backend-shoppingMall-Mar2024/assets/97790983/c685857e-b946-4ab3-ba59-f7aa1561a77e">
+
+### 서버 시작하는 명령어
+
+```bash
+sudo systemctl start redis
+```
+
+### 서버 상태 확인하는 명령어
+
+```bash
+sudo systemctl status redis
+```
+
+### redis.conf
+
+1. Redis.conf에 들어가서
+
+```bash
+sudo nano /etc/redis/redis.conf
+```
+
+- 비밀번호 바꾸기(참고자료)
+- protected-mode 바꾸기
+
+```bash
+protected-mode no
+
+```
+
+- 서버 바꾸기
+
+```bash
+bind 0.0.0.0
+```
+
+2. 방화벽 풀어주기
+
+```bash
+sudo ufw allow 6379
+```
+
+### 서버 재시작 명령어
+
+```bash
+sudo systemctl restart redis
+```
+
+### 포트 6379 열기
+
+redis는 보통 포트 6379에서 실행된다.
+
+```bash
+sudo netstat -tuln | grep 6379
+```
+
+### EC2와 연결된 redis서버 연결
+
+```bash
+redis-cli -h {{public IP}} -p 6379 -a {{위에서 설정한 비밀번호}}
+```
+
+### 💡 참고
+
+<https://wookgu.tistory.com/26>
+
+## Redis Config??? 필요가 없었다......
+
+## 💡 참고
 
 ```plaintext
 https://velog.io/@jinny-l/spring-jasypt-encrypt-yml-and-store-encryption-key-as-environment-variable
