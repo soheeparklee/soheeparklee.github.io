@@ -1,6 +1,6 @@
 ---
 title: GIT 깃 전략
-categories: [Project, Movie Reservation Project]
+categories: [GIT, GIT_Basics]
 tags: [project]
 ---
 
