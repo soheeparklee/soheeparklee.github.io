@@ -1,6 +1,6 @@
 ---
 title: REST, API, MVC
-categories: [WEB, WebBasics]
+categories: [Computer Science, WEB]
 tags: [backend, requestbody, fastapi, path, query, api] # TAG names should always be lowercase
 ---
 
@@ -43,8 +43,7 @@ FE와 BE가 통신을 하는 방법을 정해놓은 규약 <br>
 
 > a common set of methods that can be implemented by multiple classes <br>
 > enables ⭐️ **polymorphism** and ⭐️ **abstraction** <br>
-> tools and concepts of interaction between hardware and software components. <br>
-> <br>
+> tools and concepts of interaction between hardware and software components. <br> > <br>
 
 💡 **User Interface** <br>
 user interface, which connects a computer to a person <br>

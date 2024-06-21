@@ -1,6 +1,6 @@
 ---
 title: Computer architecture, Operating System, thread, CPU process, linux명령어
-categories: [WEB, Operating System]
+categories: [Computer Science, Operating System]
 tags: [backend] # TAG names should always be lowercase
 ---
 

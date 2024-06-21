@@ -23,7 +23,7 @@ git reset --hard $커밋 & git push -f
 - mash-up-kr
 - 기능 이걸 개발해서 디벨롭 브랜치에 머지한다
 
-💡 참고: <https://techblog.woowahan.com/2553/>
+💡 참고: <https://techblog.woowahan.com/2553/> <br>
 ✌🏻 What I studied :
 
 #### ✔️ Login

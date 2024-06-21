@@ -1,6 +1,6 @@
 ---
 title: Framework 🆚 Library
-categories: [WEB, WebBasics]
+categories: [Computer Science, WEB]
 tags: [library, framework]
 ---
 

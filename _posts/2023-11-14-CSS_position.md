@@ -1,7 +1,7 @@
 ---
 title: CSS basics
 date: 2023-11-14
-categories: [CSS, CSS_Basics]
+categories: [FrontEnd, CSS]
 tags: [justify, align, position, flex, direction, selector, pseudo]
 # TAG names should always be lowercase
 ---

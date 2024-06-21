@@ -1,6 +1,6 @@
 ---
 title: Svelte, Vite
-categories: [WEB, Tools]
+categories: [Computer Science, Tools]
 tags: [svelte, vite] # TAG names should always be lowercase
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: firebase란?
-categories: [WEB, Tools]
+categories: [Computer Science, Tools]
 tags: [firebase]
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: AWS EC2 HTTPS
-categories: [AWS, Backend]
+categories: [AWS, Deploy]
 tags: [deploy] # TAG names should always be lowercase
 ---
 
@@ -618,21 +618,3 @@ nginx config에서 443으로 들어온 요청은 `http`로 우리 서비스와 �
 
 - Filezilla: 파일질라로 파일 업로드/다운로드 하기
   <https://velog.io/@ky0_hw/AWS-ec2-Filezilla%ED%8C%8C%EC%9D%BC%EC%A7%88%EB%9D%BC%EB%A1%9C-%ED%8C%8C%EC%9D%BC-%EC%97%85%EB%A1%9C%EB%93%9C%EB%8B%A4%EC%9A%B4%EB%A1%9C%EB%93%9C%ED%95%98%EA%B8%B0>
-
-재고처리를 장바구니, 주문할 때 모두 해야 한다.
-TTL을 사용하면 장바구니에 담은 후 10분 지나면 사라지도록
-https://offbyone.tistory.com/303
-
-https://mangkyu.tistory.com/174
-
-https://medium.com/naver-cloud-platform/기술-컨텐츠-문자-알림-발송-서비스-sens의-mapstruct-적용기-8fd2bc2bc33b
-
-https://hudi.blog/effective-java-static-factory-method/
-
-https://techblog.woowahan.com/2553/
-
-이미지 파일이 클 때 올라가지 않는 문제
-nginx conf 에 설정해주어야함
-ttl
-method static으로 리팩토링
-JPA repository로 이름 바꾸기

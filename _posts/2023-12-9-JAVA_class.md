@@ -1,5 +1,5 @@
 ---
-title: Instance/ Object/ this, constructor, getter, setter
+title: Class/ Instance/ Object/ this, constructor, getter, setter
 categories: [JAVA, JAVA_Basics]
 tags: [this, object, instance, getter, setter, constructor] # TAG names should always be lowercase
 ---
@@ -38,7 +38,7 @@ HEAP에는 반드시 new라는 키워드를 통해 생성된 객체만 올라간
 
 ## ✅ Object oriented Programming
 
-객체끼리 상호작용하듯이 코드를 작성하는 방식
+객체끼리 상호작용하듯이 코드를 작성하는 방식 <br>
 
 #### 객체지향 프로그래밍을 떠받히는 네 가지 기둥
 
@@ -115,7 +115,7 @@ public static void main(String[] args) {
 - return값 없음❌(해당 클래스 타입의 인스턴스 반환) <br>
 - parameter이 있다면 parameter으로 멤버 변수의 값을 초기화한다. <br>
 - new 연산자와 함께 사용되어 인스턴스를 반환 <br>
-  ⭐️ 이 때 new가 인스턴스를 생성하는 것이지, 생성자가 인스턴스를 생성하는 것은 아니다.
+  ⭐️ 이 때 new가 인스턴스를 생성하는 것이지, 생성자가 인스턴스를 생성하는 것은 아니다. <br>
 - `OliveYoung store1 = new OliveYoung(1, "강남");`I() <br>
 - 내가 자동으로 생성하기 위해서는 `command` + `N` <br>
 - 코드에 작성하지 않아도 컴파일러가 자동으로 생성(내가 작성하지 않았다고 생성자가 없는게 아님.) <br>
@@ -123,8 +123,8 @@ public static void main(String[] args) {
 
 ### 📍 **this :** 생성될 인스턴스를 가리킴
 
-생성자에서 다른 생성자 호출하기
-this는 참조변수로, 인스턴스 자신을 가리틴다.
+생성자에서 다른 생성자 호출하기 <br>
+this는 참조변수로, 인스턴스 자신을 가리킨다. <br>
 
 - 생성자의 이름으로 클래스 이름 대신 this를 사용한다.
 - 한 생성자에서 다른 생성자를 호출할 떄는 반드시 첫 번째 줄에서만 호출이 가능하다.
@@ -155,8 +155,8 @@ class Car{
 
 #### ✔️ 매개변수 받는 constructor
 
-`OliveYoung.java` ⌨️ 바로바로 instance 생성해서 no, name 넣기
-
+`OliveYoung.java` ⌨️ 바로바로 instance 생성해서 no, name 넣기 <br>
+<br>
 instance가 가질 field, method를 class 코드에서 바로 정의<br>
 생성자도 하나의 method이다.<br>
 그리고 선언한 instance에다가 method도 불러오기 가능 <br>
@@ -229,8 +229,8 @@ public static void main(String[] args) {
 
 ### 📍 생성자 이용해서 인스턴스 복사하기
 
-현재 사용하고 있는 인스턴스와 같은 상태를 가지는 인스턴스 만들기
-복사하면 서로 족립적으로 메모리 공간에 존재하는 별도의 인스턴스이므로 c1이 변경되어도 c2는 영향을 받지 않는다.
+현재 사용하고 있는 인스턴스와 같은 상태를 가지는 인스턴스 만들기 <br>
+복사하면 서로 독립적으로 메모리 공간에 존재하는 별도의 인스턴스이므로 c1이 변경되어도 c2는 영향을 받지 않는다. <br>
 
 ```java
 class CarTest{
@@ -390,14 +390,14 @@ public class Introduction {
 
 ## ✅ 인스턴스에서 class 가져오기
 
-여태까지는 클래스를 만들고, 클래스의 필드, 메소드, 생성자 바탕으로 인스턴스를 만들었다면
-반대로 인스턴스에서 **클래스의 필드, 메소드, 생성자**가져오기
+여태까지는 클래스를 만들고, 클래스의 필드, 메소드, 생성자 바탕으로 인스턴스를 만들었다면 <br>
+반대로 인스턴스에서 **클래스의 필드, 메소드, 생성자**가져오기 <br>
 
 ### reflection 기술
 
-클래스의 메타 정보 빼내서 사용하는 기술
-어떤 클래스의 필드, 메소드, 생성자 뽑아내서 사용하기
-spring AOP의 근간이 되는 기술
+클래스의 메타 정보 빼내서 사용하는 기술 <br>
+어떤 클래스의 필드, 메소드, 생성자 뽑아내서 사용하기<br>
+spring AOP의 근간이 되는 기술<br>
 
 ```java
 public class GetClass {

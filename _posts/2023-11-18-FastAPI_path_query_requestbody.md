@@ -1,6 +1,6 @@
 ---
 title: Path, Query, RequestBody
-categories: [API, FastAPI]
+categories: [WEB, API]
 tags: [backend, requestbody, fastapi, path, query] # TAG names should always be lowercase
 ---
 

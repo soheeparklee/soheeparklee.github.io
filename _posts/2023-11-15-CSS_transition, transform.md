@@ -1,7 +1,7 @@
 ---
 title: transition, transform, animation
 date: 2023-11-15
-categories: [CSS, CSS_Basics]
+categories: [FrontEnd, CSS]
 tags: [transition, transform, animation, query]
 # TAG names should always be lowercase
 ---

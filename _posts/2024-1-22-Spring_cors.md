@@ -1,6 +1,6 @@
 ---
 title: CORS_XXS, CSRF, SQL injection
-categories: [AWS, Backend]
+categories: [AWS, Deploy]
 tags: [xxs, csrf, injection, cross, scripting, forgery] # TAG names should always be lowercase
 ---
 

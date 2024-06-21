@@ -1,6 +1,6 @@
 ---
 title: Bash script
-categories: [WEB, WebBasics]
+categories: [AWS, Deploy]
 tags: [bash, script]
 ---
 

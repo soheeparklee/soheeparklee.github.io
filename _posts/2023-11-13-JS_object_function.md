@@ -1,6 +1,6 @@
 ---
 title: Object, Boolean, Function
-categories: [Javascript, JS_Basics]
+categories: [FrontEnd, Javascript]
 tags: [object, boolean, function] # TAG names should always be lowercase
 ---
 

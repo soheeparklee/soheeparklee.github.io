@@ -1,6 +1,6 @@
 ---
 title: bundler, web framework, SPA, SSR, CSR
-categories: [WEB, Tools]
+categories: [Computer Science, Tools]
 tags: [til, bundler, web framework, spa, ssr, csr]
 ---
 
