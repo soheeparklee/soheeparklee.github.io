@@ -24,7 +24,7 @@ git reset --hard $커밋 & git push -f
 - 기능 이걸 개발해서 디벨롭 브랜치에 머지한다
 
 💡 참고: <https://techblog.woowahan.com/2553/> <br>
-✌🏻 What I studied :
+✌🏻 What I studied: <https://soheeparklee.github.io/posts/PROJECT_MovieReservation_postFD1/>
 
 #### ✔️ Login
 
