@@ -451,7 +451,8 @@ sudo systemctl reload nginx
 
 ### 💡 결론
 
-> 우리는 `/ets/nginx/sites-available`아래 새로운 `drugstoreproject.shop`이라는 파일을 만들고, <br> > `sites-enabled`폴더에 심볼릭 링크를 만들어 `sites-enabled`가 `drugstoreproject.shop`을 가리키도록 할 것이다!<br>
+> 우리는 `/ets/nginx/sites-available`아래 새로운 `drugstoreproject.shop`이라는 파일을 만들고, <br>
+> 폴더 `sites-enabled`에 심볼릭 링크를 만들어 `sites-enabled`가 `drugstoreproject.shop`을 가리키도록 할 것이다!<br>
 
 ### ➕ symbolic link
 
