@@ -692,7 +692,7 @@ localhost를 `EC2퍼블릭 IPv4 DNS`로 바꾸기<br>
 `ssh -i "DrugStoreKeyPair.pem" ubuntu@ec2-43-200-67-116.ap-northeast-2.compute.amazonaws.com`<br>
 이렇게 했더니 잘 접속이 되었고, 이어서 `java -jar` 까지도 잘 실행되었다. 끝!<br>
 
-## ✅ terminal꺼져도 끝나지 않는 서버, nohub
+## ✅ terminal꺼져도 끝나지 않는 서버, nohup
 
 지금은 terminal을 꺼버리면 서버도 꺼진다. <br>
 따라서 백그라운드에서 저쪽 서버에서 영원히 돌도록 만들기. <br>
@@ -715,6 +715,14 @@ nohup java -jar ./build/libs/drug_store_be-0.0.1-SNAPSHOT.jar --spring.profiles.
 ```bash
 nohup java -jar ./build/libs/drug_store_be-0.0.1-SNAPSHOT.jar --spring.profiles.active=prod >>/dev/null 2>&1 &
 
+```
+
+### 💡 추가
+
+nohup.out파일을 생성하기 위해서는 다음과 같은 명령어를 실행해야 한다.
+
+```bash
+nohup java -jar ./build/libs/drug_store_be-0.0.1-SNAPSHOT.jar --spring.profiles.active=prod &
 ```
 
 #### ✔️ 결과
