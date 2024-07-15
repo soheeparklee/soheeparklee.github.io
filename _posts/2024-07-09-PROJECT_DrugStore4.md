@@ -1,5 +1,5 @@
 ---
-title: TroubleShooting_instance connection lost
+title: TroubleShooting_Instance connection lost
 categories: [Project, Drug Store Project]
 tags: [project, trouble]
 ---
@@ -180,9 +180,23 @@ But this time, nohup.out showed me something.
 
 <https://medium.com/@beganjimoni23/invalid-character-found-in-method-name-http-method-names-must-be-tokens-11678f35f67f>
 
-In the blog reference, it said to update the `build.gradle` implementation `spring-cloud-starter-netflix-eureka-client`
+In the blog reference, it said to update the `build.gradle` implementation `spring-cloud-starter-netflix-eureka-client` <br>
 
-Thus, I decided to update my `build.gradle`
+### 🟢 Compatible versions
+
+The cause of first error was that the degraded version of Spring Boot parent and Spring cloud version was not compatible.
+
+💡 Spring Boot Parent
+
+- Spring Boot provides a POM.
+- This parent POM includes configurations and dependency management, for simplifying project setup for SpringBoot.
+
+💡 Spring Cloud
+
+- Spring Cloud builds on Spring Boot
+- provides tools for building distributed systems.
+
+Thus, I decided to update my `build.gradle`<br>
 
 #### ✔️ build.gradle
 
@@ -226,7 +240,7 @@ dependencyManagement {
 
 ### 🔴 Error: HikariCP connection pool attempting to validate database connections that are already closed
 
-It seemed the connectoin pool is trying to set a network timeout on a connection that is already closed.
+It seemed the connection pool is trying to set a network timeout on a connection that is already closed.
 
 <img width="1470" alt="Screenshot 2024-07-10 at 15 55 45" src="https://github.com/DrugStoreWeb/DrugStore-BE/assets/97790983/7a2b2223-875e-41cc-bdac-4e02ddb710b8">
 
@@ -237,10 +251,16 @@ It seemed the connectoin pool is trying to set a network timeout on a connection
 - MaxLifeime Configuration:
   If Configuration of HikariCP is too long,
   connections might stay in the pool for longer than they should,
-  causing them be become invalud if database or network state changes.
+  causing them be become invalid if database or network state changes.
 
 #### ✔️ update application.yaml
 
-updated the hikari MaxLifeime to 30 minutes in `application.yaml` file.
+updated the hikari MaxLifetime to 30 minutes in `application.yaml` file.
 
 <img width="456" alt="Screenshot 2024-07-10 at 15 57 41" src="https://github.com/DrugStoreWeb/DrugStore-BE/assets/97790983/915d0494-5cf1-40e7-b95a-791f1bdd62b4">
+
+## 🟢 Solution
+
+Finally, instance is now running without stop. <br>
+However, whenever I push, the CICD is not complete and the deployment fails.<br>
+Next step is continuous deployment!<br>

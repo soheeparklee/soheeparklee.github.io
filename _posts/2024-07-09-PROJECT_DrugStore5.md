@@ -121,17 +121,17 @@ I looked closely at `postman`, `developer tools` and `swagger`, <br>
 I realized the name of `developer tools` and `swagger` is different! <br>
 <br>
 
-- Developer tools token
-  name of token is `Token`
+- Developer tools token <br>
+  name of token is `Token` <br>
   <img width="413" alt="1" src="https://github.com/DrugStoreWeb/DrugStore-BE/assets/97790983/c3018114-80ba-4262-8626-97f2a0f658fc">
 
-- Swagger token
-  name of token is `Authorization`
+- Swagger token <br>
+  name of token is `Authorization` <br>
   <img width="1443" alt="2" src="https://github.com/DrugStoreWeb/DrugStore-BE/assets/97790983/ac14f267-2993-4d79-a00f-69c16e9afdb9">
 
 ### 🟢 Change the token header name of swagger
 
-I decided to change the swagger token header name.
+I decided to change the swagger token header name. <br>
 
 ```java
 public class SwaggerConfig {
@@ -160,9 +160,9 @@ public class SwaggerConfig {
 
 <img width="1160" alt="Screenshot 2024-07-10 at 22 17 10" src="https://github.com/DrugStoreWeb/DrugStore-BE/assets/97790983/71e9fd20-46f4-4827-adc5-062e3fc0706d">
 
-Finally, all APIs recognize the token and works perfectly.
-My swagger has been finished!
+Finally, all APIs recognize the token and works perfectly. <br>
+My swagger has been finished! <br>
 
 ## 🟢 Swagger Link
 
-<https://drugstoreproject.shop/swagger-ui/index.html#/>
+<https://drugstoreproject.shop/swagger-ui/index.html#/> <br>

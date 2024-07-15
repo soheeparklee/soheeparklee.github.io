@@ -83,12 +83,13 @@ sudo systemctl start mariadb.service
 
 ```bash
 cd /etc/mysql/mariadb.conf.d/
+sudo nano 50-server.cnf
 ```
 
 ```ini
 [mysqld]
-max_connections = 1000
-wait_timeout = 600
+max_connections = 300
+wait_timeout = 180
 ```
 
 3. Restart mariaDB server
@@ -96,6 +97,8 @@ wait_timeout = 600
 ```bash
 sudo systemctl restart mariadb.service
 ```
+
+<img width="537" alt="Screenshot 2024-07-15 at 12 08 22" src="https://github.com/user-attachments/assets/da6bbcf9-4e7c-461f-abde-26a2f7636737">
 
 ### 💡 참고자료
 
@@ -106,5 +109,7 @@ sudo systemctl restart mariadb.service
 
 지긋지긋하던 too many connections가 사라졌다!
 그리고 여러명이 동시에 접속해도 잘 작동한다.
+
+<img width="415" alt="Screenshot 2024-07-15 at 11 57 48" src="https://github.com/user-attachments/assets/b9e30b79-02c9-4bcf-9ca1-b517c1b1073c">
 
 ![Screenshot 2024-06-20 at 21 56 52](https://github.com/soheeparklee/Backend-shoppingMall-Mar2024/assets/97790983/be396059-9b79-4577-8c89-455b52c6d606)
