@@ -67,15 +67,31 @@ Maybe there is too little memory? I am using t2.micro for EC2. <br>
 
 ### 🟠 SWAP
 
-> 주 메모리 RAM이 부족한 경우, 더 많은 데이터를 저장할 수 있도록 디스크 공간을 사용하는 방법<br>
-> 이렇게 얻게된 공간을 스왑공간이라고 부른다. <br>
+> space on HDD or SSD for temporarily holding data <br>
+> that is not actively being used on RAM <br>
+> acts as overflow area for your computer's memory <br>
 > SWAP은 EC2에 한정된 방법이 아니라 LinuxOS에서 가상 메모리 관리 시스템에서 사용되는 방법<br> > <br>
 
 > LinuxOS애서 프로세스는 주로 RAM에 적재되어 실행된다. <br>
 > 그런데 시스템의 물리적인 RAM 용량보다 더 많은 메모리가 필요한 상황 발생 가능<br>
+
+#### ✔️ Paging
+
+> When RAM is fully utilized, os can move inactive pages of memory to swap space
+> Thus, freeing RAM for other tasks.
 > 🔴 Like my situation, where I need more memory<br>
 > SWAP will be used as an alternative memory space<br>
 > SWAP uses hard disk to make more memory<br>
+
+#### ✔️ How does SWAP help?
+
+- extend virtual memory
+  - virtual memory: RAM + SWAP space(RAM looks bigger storage that it really has)
+- handle memory overcommitment: paging
+- prevent OOM errors
+  - OOM: Out of Memory
+  - safety net when system is out of physical RAM
+  - graceful degradation
 
 #### ✔️ check current SWAP
 
