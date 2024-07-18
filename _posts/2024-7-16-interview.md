@@ -4,7 +4,25 @@ categories: [Recruit, personal_log]
 tags: []
 ---
 
-```json
+<details>
+<summary>Click to toggle contents of `code`</summary>
+
+```
+CODE!
+```
+
+</details>
+
+```Markdown
+<details>
+<summary>Click to toggle contents of `code`</summary>
+    hello
+
+</details>
+
+```
+
+```T
 🟠 purpose
 🟡 roles of the technology
 🟢 implementation steps
@@ -12,33 +30,45 @@ tags: []
 🔵 outcomes, benefits
 ```
 
-### Technical Questions:
+## 💡 Technical Questions:
 
-#### Open Market Service Development
+### ✅ Open Market Service Development
 
 - Can you describe the architecture of the open market service you developed for buying and selling cosmetic products?
 - What challenges did you face during the development of this service, and how did you overcome them?
 
-#### Instance connection lost: JDBC, HikariCP
+### Instance connection lost: JDBC, HikariCP
 
-```json
+![IMG_2B08A36D62B9-1](https://github.com/user-attachments/assets/47e010aa-a7ec-44e5-9aef-d724dd2676f2)
+
+```T
 🟠 purpose
-- Database connections were staying in the pool for longer than they should
-- resource exhaution
+    - Database connections were staying in the pool for longer than they should
+    - resource exhaution
 🟡 roles of the technology
-- connect to database, execute SQL
-- JDBC: Java Database Connectivity
-- API
-- What is a pool?
-  - manages, limits connections
-- What is the diffrence between library vs frameworK? IOC? DI?
-- HikariCP: JDBC connection pool library
+1. SWAP
+    - extend virtual memory
+        - virtual memory: RAM + SWAP space(RAM looks bigger storage that it really has)
+    - handle memory overcommitment: paging - move inactive pages to swap
+    - prevent OOM errors
+        - safety net when system is out of physical RAM
+        - graceful degradation
+2. version control
+3. HikariCP
+    - JDBC: Java Database Connectivity
+         - connect to database, execute SQL
+    - API
+    - What is a pool?
+    - manages, limits connections
+    - What is the diffrence between library vs frameworK? IOC? DI?
+    - HikariCP: JDBC connection pool library
   - MaxLifeTime: how long connection can stay in the pool. After MLT, connection closed and removed from pool and recycled.
-- Conection pool?
-  - cache of database connections maintained
-  - pool manages the connections w the database
-  - initialization(create pool of connections) ➡️ connection request ➡️ conection reuse ➡️ connection release
+    - Conection pool?
+    - cache of database connections maintained
+    - pool manages the connections w the database
+    - initialization(create pool of connections) ➡️ connection request ➡️ conection reuse ➡️ connection release
 🟢 implementation steps
+    - apllication.yaml
 🔴 challenges, solutions
 🔵 outcomes, benefits
     👍🏻 concurrency control: manage, limit number of connections. resource exhaution ⬇️
@@ -48,7 +78,7 @@ tags: []
 
 #### Too many Connections
 
-```json
+```Markdown
 🟠 purpose
   - Connection Usage high
   - Connection Miss Rate high
@@ -61,11 +91,13 @@ tags: []
   - wait_timeout
 ```
 
-#### Jasypt for Data Encryption
+![IMG_3331](https://github.com/user-attachments/assets/28979b93-338b-4bab-a73a-c2f7d1f45366)
+
+### ✅ Jasypt for Data Encryption
 
 - How did you implement Jasypt for encrypting confidential data in your application?
 
-```json
+```Markdown
 🟠 purpose
     - security of confidential data
 🟡 roles of the technology
@@ -84,11 +116,11 @@ tags: []
 
 ```
 
-#### HTTPS
+### ✅ HTTPS
 
 - How did you configure Nginx, SSL, and Route 53 for an HTTPS domain?
 
-```json
+```Markdown
 🟠 purpose
     - more secure webpage
 🟡 roles of the technology
@@ -110,9 +142,9 @@ tags: []
     - data transfer more secure
 ```
 
-#### Redis and Gmail SMTP for Email Verification
+### ✅ Redis and Gmail SMTP for Email Verification
 
-```json
+```Markdown
 🟠 purpose
     - Verify valid email, prevent spam
 🟡 roles of the technology
@@ -130,11 +162,11 @@ tags: []
 
 ```
 
-### AWS S3 and IAM for Multipart File Uploads
+### ✅ AWS S3 and IAM for Multipart File Uploads
 
 - Can you walk me through the process of using AWS S3 and IAM for uploading multipart files such as images?
 
-```json
+```Markdown
 🟠 purpose
     - Save images of products, detail page on scalable storage
 🟡 roles of the technology
@@ -152,7 +184,7 @@ tags: []
 
 - why S3, not DB?
 
-```json
+```Markdown
 1. scalability(store unlimited, wo performance degradation). DB is not for handling binary services
 2. cost effective
 3. DBs are optimized for transacional data
@@ -161,20 +193,52 @@ tags: []
 
 - What specific IAM policies did you implement to ensure security during file uploads?
 
-```json
+```Markdown
   - least privilege principle
   - bucket-policy: allow get, put for just this bucket
 ```
 
-### Role-based Functionality
+### ✅ Role-based Functionality
 
-How did you implement role-based functionality in your application?
-Can you give examples of how the application behavior changes based on different user roles (e.g., seller vs. buyer, user vs. admin)?
-Exception Handling
+- How did you implement role-based functionality in your application?
+- Can you give examples of how the application behavior changes based on different user roles (e.g., seller vs. buyer, user vs. admin)?
 
-What strategies did you use for thorough exception handling concerning stocks, money, and product status?
-Can you provide an example of a complex issue you encountered and how you handled it?
-Behavioral Questions:
+```Markdown
+1. User has to ask for authorization
+2. Seller: register your product, at the price and details you desire
+3. Buyer:
+```
+
+- buyer posting desired price
+- interactive
+
+### ✅ Exception Handling
+
+- resolved real-world challenges in my project.
+
+- What strategies did you use for thorough exception handling concerning stocks, money, and product status?
+
+```Markdown
+1. what if there is 0 product left?: sold out exception
+2. what if there is less stock than the user wants to buy?: not enough stock exception
+3. what if the product is not sold anymore?(product status false): product status exception
+4. what if user wants to buy having no money?: no money exception
+
+exception handling was done in all cases
+1. Stock management
+- sold out exception
+- not enough stock exception
+- product status exception
+
+2. Financial Transactions
+- plus, no money exception
+- delete product from cart
+```
+
+- Can you provide an example of a complex issue you encountered and how you handled it?
+
+## 💡 Behavioral Questions:
+
 Problem-Solving
 
 Can you describe a time when you encountered a significant technical issue during your project and how you resolved it?
