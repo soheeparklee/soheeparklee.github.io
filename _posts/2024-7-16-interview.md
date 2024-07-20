@@ -13,15 +13,6 @@ CODE!
 
 </details>
 
-```Markdown
-<details>
-<summary>Click to toggle contents of `code`</summary>
-    hello
-
-</details>
-
-```
-
 ```T
 🟠 purpose
 🟡 roles of the technology
@@ -39,7 +30,7 @@ CODE!
 
 ### Instance connection lost: JDBC, HikariCP
 
-![IMG_2B08A36D62B9-1](https://github.com/user-attachments/assets/47e010aa-a7ec-44e5-9aef-d724dd2676f2)
+![IMG_3332](https://github.com/user-attachments/assets/c49ef48d-d027-4206-badd-c16d1963b431)
 
 ```T
 🟠 purpose
@@ -50,14 +41,15 @@ CODE!
     - extend virtual memory
         - virtual memory: RAM + SWAP space(RAM looks bigger storage that it really has)
     - handle memory overcommitment: paging - move inactive pages to swap
-    - prevent OOM errors
+    - allocated 4G of SWAP
+    - prevent OOM errors(Out of Memory)
         - safety net when system is out of physical RAM
         - graceful degradation
 2. version control
 3. HikariCP
     - JDBC: Java Database Connectivity
          - connect to database, execute SQL
-    - API
+    - API?
     - What is a pool?
     - manages, limits connections
     - What is the diffrence between library vs frameworK? IOC? DI?
@@ -125,7 +117,7 @@ CODE!
     - more secure webpage
 🟡 roles of the technology
     - Hyper Text Transfer over SSL
-    - SSL: certificate
+    - SSL: certificate(encryption, data integrety, authentication)
     - Nginx: reverse proxy server
 🟢 implementation steps
     - Domain: Gavia
@@ -192,6 +184,8 @@ CODE!
 ```
 
 - What specific IAM policies did you implement to ensure security during file uploads?
+  IAM <br>
+  > Identity and Access Management
 
 ```Markdown
   - least privilege principle
@@ -239,37 +233,70 @@ exception handling was done in all cases
 
 ## 💡 Behavioral Questions:
 
-Problem-Solving
+#### Problem-Solving
 
-Can you describe a time when you encountered a significant technical issue during your project and how you resolved it?
-Teamwork
+- Can you describe a time when you encountered a significant technical issue during your project and how you resolved it?
 
-How do you approach working within a team, especially when dealing with complex projects like the open market service you developed?
-Adaptability
+#### Teamwork
 
-How do you stay updated with new technologies and tools? Can you provide an example of how you applied a new technology to solve a problem in your project?
-Communication
+- How do you approach working within a team, especially when dealing with complex projects like the open market service you developed?
+  - although not my job, helped front end
 
-How do you communicate technical details and project progress to non-technical stakeholders?
-Project Management
+#### Adaptability
 
-Can you discuss how you manage your time and priorities when working on multiple aspects of a project, such as development, configuration, and handling exceptions?
-Scenario-based Questions:
-Scaling and Performance
+- How do you stay updated with new technologies and tools? Can you provide an example of how you applied a new technology to solve a problem in your project?
+  - Swagger V3
+    - official document
+    - 🔴 CORS error
+    - 🔴 Token error
+    - 🔴 HTTP error: when using https, need to use APIKEY
+    - 🔴 Header name error
 
-If your open market service experiences a sudden increase in traffic, what steps would you take to ensure it scales effectively and maintains performance?
-Security
+#### Communication
 
-How would you handle a situation where a security vulnerability is discovered in the data encryption or file upload process of your application?
-User Experience
+- How do you communicate technical details and project progress to non-technical stakeholders?
+  - stateless: movie "50 First Dates"
 
-Imagine a scenario where users are reporting slow load times for product images. How would you diagnose and resolve this issue?
-Follow-up Questions:
-Further Exploration of Technologies
+#### Project Management
+
+- Can you discuss how you manage your time and priorities when working on multiple aspects of a project, such as development, configuration, and handling exceptions?
+  - Project planning:
+    - communication with frontend
+    - APIs: request, response
+    - ERD
+    - configuration
+  - Configuration:
+    - project manager
+  - Development
+
+## 💡 Scenario-based Questions:
+
+#### Scaling and Performance
+
+- If your open market service experiences a sudden increase in traffic, what steps would you take to ensure it scales effectively and maintains performance?
+  - concurrency issue
+
+#### Security
+
+- How would you handle a situation where a security vulnerability is discovered in the data encryption or file upload process of your application?
+  - rollback git commit
+
+#### User Experience
+
+- Imagine a scenario where users are reporting slow load times for product images. How would you diagnose and resolve this issue?
+  - main page loading issue
+
+## 💡 Follow-up Questions:
+
+#### Further Exploration of Technologies
 
 Can you go into more detail about why you chose specific technologies (e.g., Redis, AWS S3) for your project?
 How do these technologies work together to support the overall functionality of your application?
-Learning and Improvement
+
+#### Learning and Improvement
 
 What did you learn from this project that you will apply to future projects?
 If you were to start this project again, is there anything you would do differently?
+
+- main page likes, product differnt DTOs
+  logged in? not logged in? check method

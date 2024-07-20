@@ -69,8 +69,11 @@ Maybe there is too little memory? I am using t2.micro for EC2. <br>
 
 > space on HDD or SSD for temporarily holding data <br>
 > that is not actively being used on RAM <br>
+
+> RAM: Random Access Memory <br>
+
 > acts as overflow area for your computer's memory <br>
-> SWAP은 EC2에 한정된 방법이 아니라 LinuxOS에서 가상 메모리 관리 시스템에서 사용되는 방법<br> > <br>
+> SWAP은 EC2에 한정된 방법이 아니라 LinuxOS에서 가상 메모리 관리 시스템에서 사용되는 방법<br>
 
 > LinuxOS애서 프로세스는 주로 RAM에 적재되어 실행된다. <br>
 > 그런데 시스템의 물리적인 RAM 용량보다 더 많은 메모리가 필요한 상황 발생 가능<br>
