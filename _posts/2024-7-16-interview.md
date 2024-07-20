@@ -26,6 +26,11 @@ CODE!
 ### ✅ Open Market Service Development
 
 - Can you describe the architecture of the open market service you developed for buying and selling cosmetic products?
+  - consisten various roles
+    - vendedor, comprador, usario, administrador
+  - en funcion de cada role
+  - permiso
+  - productos de cosmetica
 - What challenges did you face during the development of this service, and how did you overcome them?
 
 ### Instance connection lost: JDBC, HikariCP
@@ -68,6 +73,36 @@ CODE!
     👍🏻 scalability
 ```
 
+```T
+- encontrado
+- deplegar
+- que se llama
+- una instancia en ejecucíon
+- host local <-> EC2
+- la conexion
+- archivo mostraba un error
+- errores
+- causa
+- método HTTP incorrecto/equivocado
+- la version no correspondian
+- la version encajen
+
+- asignar SWAP
+- disco duro, disco solido
+- memmoria terminado
+- prevenir, evitar(prevent)
+
+
+
+- pool: administrar, create, reutilizar, terminar
+- permanecer en el pool por mucho tiempo/ muy largo
+- empienza a funcionar mal
+- de 8h a 30minutos
+
+- para solucionarlo
+- con esas tres cosas, he solucionado el problema de instancia perdida
+```
+
 #### Too many Connections
 
 ```Markdown
@@ -108,6 +143,23 @@ CODE!
 
 ```
 
+- implementar
+- encriptar
+- datos confidentiales
+- libreria
+- esta basada en gradle
+- encryptacion basada en contraseña
+- podia minimizar el riesgo de exposición
+- simplificar la gestión de la configuración
+
+- no encontré ningun problema
+
+- objectivo
+- desafío
+- resultado
+- integración
+- aleatorio
+
 ### ✅ HTTPS
 
 - How did you configure Nginx, SSL, and Route 53 for an HTTPS domain?
@@ -121,7 +173,7 @@ CODE!
     - Nginx: reverse proxy server
 🟢 implementation steps
     - Domain: Gavia
-    - Let's Encrypt: CA obtain free SSL cetificate TLS
+    - Let's Encrypt: CA obtain free SSL cetificate TLS, issue a certificate
     - update Nginx config to redirect HTTP to HTTPS.
     - Route 53: made host area to add DNS records to point the domain to our server's IP address.
 🔴 challenges, solutions
@@ -134,6 +186,23 @@ CODE!
     - data transfer more secure
 ```
 
+```T
+- dominio
+- transferencias datos
+- transferir datos atraves de la web
+- Nginx: redirigir HTTP a HTTPS
+- SSL: emitir un certificado
+- obtener, obtenido
+- añadir registros de DNS
+- una Automatización
+- instalar
+- update: actualizar
+- desafío fueron
+- válido
+- puerto
+- mejorado
+```
+
 ### ✅ Redis and Gmail SMTP for Email Verification
 
 ```Markdown
@@ -142,16 +211,30 @@ CODE!
 🟡 roles of the technology
     - Redis to save temporary data storage(email verificiation code, 5mins)
 🟢 implementation steps
-    - Redis: in-memory data storage capability-> fast read, write
+    - Redis: in-memory data storage capability -> fast read, write
         - install on EC2
         - redis config
-    - SMTP: reliability, integration with JavaMailAPI easy
+    - SMTP:
+        - Simple Mail Transfer Protocol
+        - reliability, integration with JavaMailAPI easy
 🔴 challenges, solutions
     - Trouble: didnt allow firewall, redis conf
 🔵 outcomes, benefits
     - fast, efficient handling of verificiation code
     - save memory
 
+```
+
+```T
+- LA PLATAFORMA DE DATOS EN TIEMPO REAL
+- era necessario
+- la capacidad de almacenamiento
+- datos temporales
+- confiable
+- integracion
+- la base de datos
+- no quieria que fueran a la carpeta de spam
+- efficienete en relacion a los costes
 ```
 
 ### ✅ AWS S3 and IAM for Multipart File Uploads
@@ -190,6 +273,17 @@ CODE!
 ```Markdown
   - least privilege principle
   - bucket-policy: allow get, put for just this bucket
+```
+
+```T
+- almacenamiento
+- Un objeto es un archivo y cualquier metadato que describa ese archivo. Un bucket es un contenedor de objetos
+- escalable, escalabilidad
+- optimizada datos binarios
+- subir objectos en paralelo, individualmente
+- administrar permisos
+- no podia ver las imagenes
+- eso era porque
 ```
 
 ### ✅ Role-based Functionality
