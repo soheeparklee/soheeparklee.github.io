@@ -8,18 +8,6 @@ tags: [backend] # TAG names should always be lowercase
 
 ## ✅ Computer architecture
 
-- HardWare
-  - CPU
-  - RAM, HDD
-  - InputOutput: mouse, printer
-- SoftWare
-  - System softeare: OS, compiler
-  - Application software: word, excel...
-
-## ✅ HardWare
-
----
-
 ### ☑️ CPU
 
 > central processing unit
@@ -30,29 +18,28 @@ tags: [backend] # TAG names should always be lowercase
 
 #### 📍 ALU, CU, MU
 
-CPU includes ALU, CU, MU가 유기적으로 동작하며 output(의사결정, 연산)이 나온다.  
+CPU는 ALU, CU, MU가 유기적으로 동작하며 output(의사결정, 연산)이 나온다.  
 <br>
 
 - **ALU (Arithmetic Logic Unit)**  
   연산, AND, OR, and NOT
 
-- **CU (Control Unit)**
-
-  - **manages** and coordinates the operations of the CPU
-  - directing the operation of the other components within the CPU to execute the instructions of a program
-  - CU & ALU 연산의 **순서 조정**
+- **CU (Control Unit)**  
+  manages and coordinates the operations of the CPU  
+  directing the operation of the other components within the CPU to execute the instructions of a program  
+  CU & ALU 연산의 순서 조정
 
 - **MU (Memory Unit)**
   연산하다가 작은 값들 저장해두기
 
-#### ➕ CPU clock frequency
+#### ✔️ CPU clock frequency
 
 - CPU의 동작 속도
 - ALU, CU, MU가 유기적으로 동작하는 것을 1사이클이라고 쳤을 때  
   1Hz(1초에 한 사이클) = 1cycle/s  
   헤르츠가 높으면 높을수록 1초안에 여러번 돈다는 것이니 성능이 더 좋은 것이다.
 
-#### ➕ CPU multi-core
+#### ✔️ CPU multi-core
 
 - CPU안에 여러 개의 코어가 있다.
 - CPU 코어: ALU, CU
@@ -68,20 +55,6 @@ CPU includes ALU, CU, MU가 유기적으로 동작하며 output(의사결정, �
 - Secondary Storage: HDD, SSD
 - Tertiary Storage: external storage(USB)
 
-- Primary Memory
-  - CPU can access directly
-  - RAM
-  - ROM
-
-<br>
-
-- Secondary Memory
-  - HDD
-  - CD(compact disc)
-  - SSD
-  - DVD(Digital Versatile Disk)
-  - Floppy disk
-
 #### 📍 RAM
 
 > random access memory
@@ -89,7 +62,7 @@ CPU includes ALU, CU, MU가 유기적으로 동작하며 output(의사결정, �
 - random access: any memory cell can be accessed directly
 - temporary storage
 - primary memory(주 기억장치)
-- **volatile** memory
+- volatile memory
 - 전기 제어(전기로 데이터가 저장, 전기 없으면 데이터 손실)
 
 <br>
@@ -98,12 +71,6 @@ CPU includes ALU, CU, MU가 유기적으로 동작하며 output(의사결정, �
   - why? bc RAM is faster
 - Execution: CPU caculates, results on RAM
 - Temporary Storage: temporarily holds data that CPU might need imminently, long storage data will go to HD.
-
-#### 📍 ROM
-
-> Read Only Memory
-
-- **permanent** memory, non-volatile
 
 ##### ✔️ shell
 
