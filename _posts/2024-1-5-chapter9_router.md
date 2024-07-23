@@ -1,6 +1,6 @@
 ---
-title: PART9_Router
-categories: [Computer Science, CISCO networking]
+title: CISCO_PART9_Router
+categories: [Computer Science, Network]
 tags: [cs, router]
 ---
 

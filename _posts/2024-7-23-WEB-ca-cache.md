@@ -1,13 +1,13 @@
 ---
 title: Cache Memory
-categories: [Computer Science, Computer Architecture]
+categories: [Computer Science, Computer Architecture/Operating System]
 tags: [] # TAG names should always be lowercase
 ---
 
 ## ✅ Cache
 
 > memory to decrease loading time <br>
-> serve as a buffer between the main memory (RAM) and the central processing unit (CPU) <br> > <br>
+> serve as a buffer between the main memory (RAM) and the central processing unit (CPU) <br> <br>
 
 - when CPU reads from RAM, saves frequently used data on cache memory
 - next time, bring the data from cache ➡️ save time
@@ -30,24 +30,27 @@ L3 <br>
 
 ### ✔️ Cache mapping
 
-1. Direct Mapping
-   > map each memory block to one possible cache line <br>
-   > if new block is needed, the old block is trashed <br>
+1️⃣ Direct Mapping
+
+> map each memory block to one possible cache line <br>
+> if new block is needed, the old block is trashed <br>
 
 - address space = index field ➕ tag field(cache)
 - DRAM의 여러 주소가 캐시 메모리의 한 주소에 대응되는 다대일 방식
 
-2. Associative Mapping
-   > any block can go into any line of cache <br>
+2️⃣ Associative Mapping
+
+> any block can go into any line of cache <br>
 
 - flexible, fastest
 - 비어있는 캐시 메모리 아무대나 저장
 - 저장은 간단하지만 찾는게 문제
 
-3. Set-Associative Mapping
-   > enhanced form of direct mapping ➕ Associative Mapping <br>
-   > group a few lines together to create set<br>
-   > block in memory can map to any line of a specific set<br>
+3️⃣ Set-Associative Mapping
+
+> enhanced form of direct mapping ➕ Associative Mapping <br>
+> group a few lines together to create set<br>
+> block in memory can map to any line of a specific set<br>
 
 - 특정 행을 지정하고 그 행 안의 비어있는 열에 저장
 

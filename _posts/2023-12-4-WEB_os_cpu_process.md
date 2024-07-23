@@ -1,6 +1,6 @@
 ---
 title: Operating System/ thread/ CPU process
-categories: [Computer Science, Operating System]
+categories: [Computer Science, Computer Architecture/Operating System]
 tags: [backend] # TAG names should always be lowercase
 ---
 

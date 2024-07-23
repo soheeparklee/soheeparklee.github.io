@@ -1,6 +1,6 @@
 ---
-title: PART6_Switch & VLAN
-categories: [Computer Science, CISCO networking]
+title: CISCO_PART6_Switch & VLAN
+categories: [Computer Science, Network]
 tags: [cs]
 ---
 

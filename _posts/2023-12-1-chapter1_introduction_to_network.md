@@ -1,6 +1,6 @@
 ---
-title: PART1_네트워크 세상에 들어서며
-categories: [Computer Science, CISCO networking]
+title: CISCO_PART1_네트워크 세상에 들어서며
+categories: [Computer Science, Network]
 tags: [cs]
 ---
 

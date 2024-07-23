@@ -1,6 +1,6 @@
 ---
-title: PART8_Routing Protocol
-categories: [Computer Science, CISCO networking]
+title: CISCO_PART8_Routing Protocol
+categories: [Computer Science, Network]
 tags: [cs]
 ---
 

@@ -1,6 +1,6 @@
 ---
-title: PART3_TCP/IP
-categories: [Computer Science, CISCO networking]
+title: CISCO_PART3_TCP/IP
+categories: [Computer Science, Network]
 tags: [tcp, ip, binary, dhcp, cbc, sbc]
 ---
 

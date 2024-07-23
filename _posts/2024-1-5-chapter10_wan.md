@@ -1,6 +1,6 @@
 ---
-title: PART10_WAN
-categories: [Computer Science, CISCO networking]
+title: CISCO_PART10_WAN
+categories: [Computer Science, Network]
 tags: [cs, wan, ppp, hdlc, isdn, frame, replay]
 ---
 

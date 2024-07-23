@@ -1,6 +1,6 @@
 ---
-title: PART2_네트워크와 케이블, 그리고 친구들
-categories: [Computer Science, CISCO networking]
+title: CISCO_PART2_네트워크와 케이블, 그리고 친구들
+categories: [Computer Science, Network]
 tags:
   [
     lan,

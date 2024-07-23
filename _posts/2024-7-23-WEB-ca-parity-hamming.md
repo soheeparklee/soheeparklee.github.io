@@ -1,6 +1,6 @@
 ---
 title: Parity Bits, Hamming Code
-categories: [Computer Science, Computer Architecture]
+categories: [Computer Science, Computer Architecture/Operating System]
 tags: [] # TAG names should always be lowercase
 ---
 

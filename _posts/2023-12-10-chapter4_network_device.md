@@ -1,6 +1,6 @@
 ---
-title: PART4_네트워크 장비에 관한 이야기
-categories: [Computer Science, CISCO networking]
+title: CISCO_PART4_네트워크 장비에 관한 이야기
+categories: [Computer Science, Network]
 tags: [lan, hub, switch, bridge, looping, router]
 ---
 
