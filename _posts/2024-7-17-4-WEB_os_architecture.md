@@ -1,7 +1,7 @@
 ---
 title: Computer architecture
 categories: [Computer Science, Computer Architecture]
-tags: [backend] # TAG names should always be lowercase
+tags: [] # TAG names should always be lowercase
 ---
 
 ![IMG_A3186294B3EA-1](https://github.com/soheeparklee/personal_project_musicApp/assets/97790983/ca894f5f-c365-4e37-923f-55627b99a4fc)
@@ -20,7 +20,7 @@ tags: [backend] # TAG names should always be lowercase
 
 ---
 
-### ☑️ CPU
+## ☑️ CPU
 
 > central processing unit
 
@@ -28,39 +28,18 @@ tags: [backend] # TAG names should always be lowercase
 - 중앙처리 장치, 프로세서
 - 논리회로들로 구성되어 있음
 
-#### 📍 ALU, CU, MU
+### 📍 ALU, CU, MU
 
 CPU includes ALU, CU, MU가 유기적으로 동작하며 output(의사결정, 연산)이 나온다.  
 <br>
 
-- **ALU (Arithmetic Logic Unit)**  
-  연산, AND, OR, and NOT
-
+- **ALU (Arithmetic Logic Unit)**
 - **CU (Control Unit)**
+- **MU (Memory Unit), Register**
 
-  - **manages** and coordinates the operations of the CPU
-  - directing the operation of the other components within the CPU to execute the instructions of a program
-  - CU & ALU 연산의 **순서 조정**
+## ☑️ Memory
 
-- **MU (Memory Unit)**
-  연산하다가 작은 값들 저장해두기
-
-#### ➕ CPU clock frequency
-
-- CPU의 동작 속도
-- ALU, CU, MU가 유기적으로 동작하는 것을 1사이클이라고 쳤을 때  
-  1Hz(1초에 한 사이클) = 1cycle/s  
-  헤르츠가 높으면 높을수록 1초안에 여러번 돈다는 것이니 성능이 더 좋은 것이다.
-
-#### ➕ CPU multi-core
-
-- CPU안에 여러 개의 코어가 있다.
-- CPU 코어: ALU, CU
-- CPU 코어가 많을수록, 멀티코어일 수록 성능이 좋다.
-
-### ☑️ Memory
-
-#### 📍 Hierarchy of memory
+### 📍 Hierarchy of memory
 
 - Registers: smallest, fastest memory within CPU
 - Cache: faster than RAM, multiple levels(L1, L2, L3)
@@ -82,7 +61,7 @@ CPU includes ALU, CU, MU가 유기적으로 동작하며 output(의사결정, �
   - DVD(Digital Versatile Disk)
   - Floppy disk
 
-#### 📍 RAM
+### 📍 RAM
 
 > random access memory
 
@@ -91,6 +70,7 @@ CPU includes ALU, CU, MU가 유기적으로 동작하며 output(의사결정, �
 - primary memory(주 기억장치)
 - **volatile** memory
 - 전기 제어(전기로 데이터가 저장, 전기 없으면 데이터 손실)
+- more flexible than ROM
 
 <br>
 
@@ -99,22 +79,24 @@ CPU includes ALU, CU, MU가 유기적으로 동작하며 output(의사결정, �
 - Execution: CPU caculates, results on RAM
 - Temporary Storage: temporarily holds data that CPU might need imminently, long storage data will go to HD.
 
-#### 📍 ROM
+### 📍 ROM
 
 > Read Only Memory
 
 - **permanent** memory, non-volatile
+- used to store lasting data like firmware
+- more stable and secure than RAM
 
-##### ✔️ shell
+#### ✔️ shell
 
 - shell영역에 데이터가 저장이 된다.
 
-##### ✔️ Ram Data Rate frequency
+#### ✔️ Ram Data Rate frequency
 
 - 램의 속도  
   마찬가지로 1Hz(1초에 한 사이클) = 1cycle/s
 
-##### 📍 SRAM (Static RAM)
+#### 📍 SRAM (Static RAM)
 
 > "static" because it doesn't need to be refreshed constantly to maintain its contents, unlike DRAM.
 
@@ -125,7 +107,7 @@ CPU includes ALU, CU, MU가 유기적으로 동작하며 output(의사결정, �
 - 용도: **CPU내부 Cache memory**
 - smaller, high-speed cache
 
-##### 📍 DRAM(Dynamic Ram)
+#### 📍 DRAM(Dynamic Ram)
 
 > "dynamic" because the capacitors need to be periodically refreshed to maintain the data, as the charge stored in them tends to leak away over time.
 
