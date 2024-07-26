@@ -6,7 +6,7 @@ tags: [] # TAG names should always be lowercase
 
 ## ✅ Binary Search Tree
 
-> binary search ➕ linked list
+> binary search ➕ linked list <br>
 > 👍🏻 searching data
 
 - binary search:
