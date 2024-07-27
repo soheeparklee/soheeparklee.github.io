@@ -22,3 +22,10 @@ t2: process 1 waits for resource 2 and process 2 waits for resource 1
 - hold and wait
 - no preemption
 - circular wait
+
+## ✅ Solution for Deadlock
+
+1. Prevention
+2. Avoidance
+3. Detection
+4. Recovery

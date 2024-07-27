@@ -1,5 +1,5 @@
 ---
-title: HTTP
+title: URL/ domain/ Json/ WEB API/ REST
 categories: [Computer Science, Network]
 tags: [cs, network, supercoding] # TAG names should always be lowercase
 ---
@@ -26,36 +26,6 @@ DNS에서 도메인 보고 IP서버 받아와 정확한 장소로 연결<br>
 - 데이터 유실률이 낮다(HTTP는 TCP전송의 한 종류이므로 정확성이 높다.)
 - connectionless 지향(비연결성, 매번 새롭게 요청해야한다)
 - 요청과 응답 메세지 가독성이 좋아 개발자가 알아보기가 쉽다.
-
-## ✅ HTTP 요청, 응답 구조
-
-### ☑️ HTTP 요청 message와 HTTP method
-
-#### ✔️ HTTP 요청 message
-
-method ➕ URI ➕ http version<br>
-<br>
-※ URL은 URI의 일종이다<br>
-
-#### ✔️ HTTP method
-
-- GET
-- PUT
-- POST
-- DELETE
-
-#### ✔️ 주요 Header
-
-- Host: 요청하는 서버 주소 & 포트 domain, port, IP address
-- Accept: 원하는 데이터 형식
-- Connetion: 커넥션 유지 여부(연결성을 유지할 것인가? 선택할 수 있음)
-- Content-type: 요청 데이터 포맷
-
-#### ✔️ 응답 Message
-
-- 응답 코드, 응답 메세지: 숫자에 따라 결과 보여줌
-- Body: 응답 데이터
-- Content-type: 응답 데이터 포맷
 
 ## ✅ XML, JSON
 
