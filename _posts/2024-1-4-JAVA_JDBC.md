@@ -1,6 +1,6 @@
 ---
 title: JDBC
-categories: [Data, SQL]
+categories: [Database, Database]
 tags: [] # TAG names should always be lowercase
 ---
 
