@@ -6,7 +6,7 @@ tags: [] # TAG names should always be lowercase
 
 ## ✅ Clean Code
 
-> code with better readability
+> code with better readability <br>
 
 - method naming
 - no error
@@ -17,7 +17,7 @@ tags: [] # TAG names should always be lowercase
 
 1. Naming
 
-   > use explicit names for variable, class, method
+   > use explicit names for variable, class, method <br>
 
 2. Comment
 
@@ -42,13 +42,13 @@ tags: [] # TAG names should always be lowercase
 
 ## ✅ Refactoring
 
-> `legacy code 👎🏻` ➡️➡️➡️➡️➡️ `clean code 👍🏻`
-> better code, maintaining the same functions
-> make software better understandable, easier to maintain
+> `legacy code 👎🏻` ➡️➡️➡️➡️➡️ `clean code 👍🏻` <br>
+> better code, maintaining the same functions <br>
+> make software better understandable, easier to maintain <br> > <br>
 
-> code inspection
+> code inspection <br>
 >
-> > check already developed code to update to cleaner code
+> > check already developed code to update to cleaner code <br>
 
 - remove repeated code
 - long methods
@@ -58,8 +58,7 @@ tags: [] # TAG names should always be lowercase
 
 ## ✅ Secure Coding
 
-> elminiate potential risk in code
+> elminiate potential risk in code <br>
 
 - SQL injections
 - URL parameter
--
