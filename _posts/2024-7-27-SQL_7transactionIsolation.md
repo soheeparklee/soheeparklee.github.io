@@ -1,6 +1,6 @@
 ---
 title: Transaction Isolation Level
-categories: [Database, Database]
+categories: [Database, DB]
 tags: [] # TAG names should always be lowercase
 ---
 

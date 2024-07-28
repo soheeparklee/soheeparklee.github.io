@@ -1,6 +1,6 @@
 ---
 title: SQL contraints
-categories: [Datanase, SQL]
+categories: [Database, SQL]
 tags: [unique, primary, check, default] # TAG names should always be lowercase
 ---
 
