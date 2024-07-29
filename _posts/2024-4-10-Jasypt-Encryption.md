@@ -26,6 +26,10 @@ tags: [redis. jasypt] # TAG names should always be lowercase
 - encrypts with an algorithm and a key
 - AES, DES, RSA
 
+#### Hash 🆚 Encryption 🆚 Encoding
+
+<https://www.geeksforgeeks.org/encryption-encoding-hashing/>
+
 #### ✔️ Salt?
 
 > "salt" is random data that is used as an additional input to a hash function along with the plain text being hashed
