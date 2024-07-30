@@ -285,9 +285,10 @@ public class Client {
 
 ### Serializable
 
-> process of converting an object into a byte stream
-> object를 바이트 스트림으로 바꾸는 과정
-> being serializable means that an object can be converted into a byte stream, allowing it to be easily saved to a file, transmitted over a network, or otherwise stored and reconstructed later
+> process of converting an object into a byte stream <br>
+> object를 바이트 스트림으로 바꾸는 과정 <br>
+> being serializable means that an object can be converted into a byte stream, <br>
+> allowing it to be easily saved to a file, transmitted over a network, or otherwise stored and reconstructed later <br>
 > deserialization: the reverse process of converting the byte stream back into a copy of the object
 
 🆚 stream

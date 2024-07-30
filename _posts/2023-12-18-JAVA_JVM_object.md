@@ -18,7 +18,8 @@ Java.lang안에 이런 클래스들이 내장되어 있다. <br>
 
 ## ✅ 최상위 클래스 Object
 
-모든 클래스의 상위 클래스<br>
+> JAVA의 최상위 클래스 <br>
+> 모든 클래스의 상위 클래스 <br>
 
 ```java
 public class Animal extends Object
@@ -31,5 +32,17 @@ Object animal2 = new Animal("dog");
 ```
 
 ## ✅ Object method
+
+- `toString()`
+- `hashCode()`
+- `wait()`
+  - when calling thread has intrinsic lock
+  - make current thread wait
+- `notify()`
+  - when calling thread has intrinsic lock
+  - wake up thread
+- `notifyAll()`
+  - when calling thread has intrinsic lock
+  - wake up all the threads()
 
 <img width="1130" alt="스크린샷 2023-12-18 오후 10 42 25" src="https://github.com/soheeparklee/sc_project_carrotMkt_improved/assets/97790983/a77d2636-5b96-4f0a-b0ea-754027bfb5f0">

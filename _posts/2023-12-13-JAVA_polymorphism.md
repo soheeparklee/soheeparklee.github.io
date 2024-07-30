@@ -1,5 +1,5 @@
 ---
-title: 다형성_Polymorphism/downcasting/ instanceof
+title: Polymorphism/ Downcasting/ Instanceof
 categories: [JAVA, JAVA_Basics]
 tags: [polymorphism, downcasting, upcasting, final] # TAG names should always be lowercase
 ---
@@ -39,12 +39,48 @@ public static void main(String[] args) {
 // A person is eating rice with a chopstick
 ```
 
+## ✅ upcasting
+
+> 자식🐥 ➡️ 부모🐓
+
+> Why do we use casting?
+>
+> > polymorphism <br>
+> > inheritence <br>
+
+자식 클래스는 부모 클래스로 **묵시적 변환**이 가능하다. <br>
+parent를 상속받은 child는 parent의 속성을 가지고 있기 때문 <br>
+우리가 int 타입을 float으로 변환했듯, 자식 클래스는 부모 클래스로 변환 가능 <br>
+근데 그러면 자식 클래스에서 확장했던 field는 더이상 사용할 수 없다. <br>
+그런데 만약 override된 method를 실행한다면 자식의 override된 method가 실행됨!!!! <br>
+
+```java
+        //타입 선언: 부모 인스턴스화: 부모 ⭕️
+        Fish fish1= new Fish();
+        //타입 선언: 부모  인스턴스화: 자식 ⭕️ ⭐️묵시적 형 변환
+        Fish fish2= new BabyFish();
+        //타입 선언: 자식 인스턴스화: 자식 ⭕️
+        BabyFish Fish3= new BabyFish();
+        //타입 선언: 자식 인스턴스화: 부모 ❌ 큰 타입에서 작은 타입은 ❌
+        BabyFish Fish4= new Fish();
+```
+
+```java
+//fireEngine, Ambulance 가 car extend
+
+Car car = new Car();
+FireEngine fe = new FireEngine();
+
+car= (Car) fe; //upcast 자식이 부모가 됨
+fe= (FireEngine) car; //downcast 부모가 자식이 됨
+```
+
 ## ✅ downcasting
 
 > 부모🐓 ➡️ 자식🐥
 
 하위 클래스로 형 변환<br>
-🟰 upcast의 반대 작용 <br>
+🟰 upcast의 반대 작용, upcast가 일어난 이후에 사용 가능 <br>
 🟰 부모 클래스에서 자식 클래스로 형 변환 <br>
 🟰 (단, 인스턴스의 그대로 돌아가야 한다.) <br>
 🟰 자식 클래스는 부모 클래스에 속한다는 것을 알 수 있다. <br>
@@ -80,36 +116,6 @@ public class AnimalDowncast {
         Animal animal= (Animal) person;
 
     }
-```
-
-## ✅ upcasting
-
-> 자식🐥 ➡️ 부모🐓
-
-자식 클래스는 부모 클래스로 묵시적 변환이 가능하다. <br>
-우리가 int 타입을 float으로 변환했듯, 자식 클래스는 부모 클래스로 변환 가능 <br>
-근데 그러면 자식 클래스에서 확장했던 field는 더이상 사용할 수 없다. <br>
-그런데 만약 override된 method를 실행한다면 자식의 override된 method가 실행됨!!!! <br>
-
-```java
-        //타입 선언: 부모 인스턴스화: 부모 ⭕️
-        Fish fish1= new Fish();
-        //타입 선언: 부모  인스턴스화: 자식 ⭕️ ⭐️묵시적 형 변환
-        Fish fish2= new BabyFish();
-        //타입 선언: 자식 인스턴스화: 자식 ⭕️
-        BabyFish Fish3= new BabyFish();
-        //타입 선언: 자식 인스턴스화: 부모 ❌ 큰 타입에서 작은 타입은 ❌
-        BabyFish Fish4= new Fish();
-```
-
-```java
-//fireEngine, Ambulance 가 car extend
-
-Car car = new Car();
-FireEngine fe = new FireEngine();
-
-car= (Car) fe; //upcast 자식이 부모가 됨
-fe= (FireEngine) car; //downcast 부모가 자식이 됨
 ```
 
 ## 💡 `instanceof` 사용해 if문

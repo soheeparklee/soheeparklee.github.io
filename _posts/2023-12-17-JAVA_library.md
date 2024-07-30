@@ -1,5 +1,5 @@
 ---
-title: Class library
+title: Math/ String Buffer/ Time
 categories: [JAVA, JAVA_Basics]
 tags: [math, random, string, date, now] # TAG names should always be lowercase
 ---
@@ -86,8 +86,6 @@ System.out.println(customer) //Customer name: So Hee
 
 두 인스턴스가 같은 객체인지 판단한다.<br>
 두 대상의 **데이터 값 자체**를 비교한다 <br>
-두 인스턴스의 Heap 주소 값을 비교하여 Boolean 값을 리턴<br>
-같은 메모리값을 가리키고 있는가?<br>
 (하지만 override해서 같은 값을 비교하도록 만들 수 있음⭕️) <br>
 <br>
 
@@ -141,9 +139,11 @@ customer1.equals(customer3); //true
 #### 🆚 ==
 
 **메모리 주소**를 기준으로 boolean값 반환 <br>
+두 인스턴스의 Heap 주소 값을 비교하여 Boolean 값을 리턴<br>
+같은 메모리값을 가리키고 있는가?<br>
 `equals()` override해서 ID가 같으면 같은 사람 취급하라고 해도 말 안 들음 <br>
-==과 `equals()`는 상관 없이 실행됨. <br>
-==은 항상 **메모리값**이 기준(이게 바로 `equals()`와 차이점) <br>
+`==`과 `equals()`는 상관 없이 실행됨. <br>
+`==`은 항상 **메모리값**이 기준(이게 바로 `equals()`와 차이점) <br>
 
 ```java
 customer1 == customer2; //true
@@ -199,10 +199,7 @@ String[] strAry = { "감자", "당근", "오이", "양파" };
 - `StringBuffer` : 컴퓨터로 수정작업을 진행하고 마지막에 프린트하는 직원<br>
   <br>
 
-- `StringBuffer Class`: 멀티 스레드와 관련된 기능을 가지고 있다. 멀티쓰레드에서는 `StringBuffer`<br>
-- `StringBuilder`: 멀티 스레드와 관련된 기능이 없어 단일 스레드에서는 StringBuilder사용<br>
-  <br>
-  기본적으로 16개의 문자를 저장할 수 있는 공간을 가진다.<br>
+기본적으로 16개의 문자를 저장할 수 있는 공간을 가진다.<br>
 
 ```java
         StringBuffer strBffr1 = new StringBuffer(); // 기본: 16
@@ -246,6 +243,21 @@ String[] strAry = { "감자", "당근", "오이", "양파" };
 	String strBldr1Out = strBldr1.toString(); //저장string으로 변환하여 종이에 적어내기
         //한놈두시기석삼너구리다섯놈
 ```
+
+### String Buffer 🆚 String Buffer
+
+- common charecteristics:
+  - make one class with `new`(mutable)
+  - when caculating String, do not create new object, instead change size
+  - can use same methods
+- difference
+  - StringBuffer: Thread safe
+    - **multi** thread
+    - `StringBuffer Class`: 멀티 스레드와 관련된 기능을 가지고 있다. 멀티쓰레드에서는 `StringBuffer`<br>
+  - StringBuilder: **NOT** thread safe
+    - **single** thread
+    - `StringBuilder`: 멀티 스레드와 관련된 기능이 없어 단일 스레드에서는 StringBuilder사용<br>
+      <br>
 
 ### 💡 delete/ deelteCharAt/ insert/ replace/ reverse
 

@@ -1,13 +1,15 @@
 ---
-title: Wrapper Class
+title: Wrapper Class/ Boxing
 categories: [JAVA, JAVA_Basics]
 tags: [wrapper] # TAG names should always be lowercase
 ---
 
 ## ✅ Wrapper Class
 
-primitive data type는 객체 ❌<br>
-Wrapper Class는 클래스이기 때문에 객체의 reference type ⭕️<br>
+- primitive data type는 객체 ❌<br>
+  primitive type: int, long, float, double, boolean...
+- Wrapper Class는 클래스이기 때문에 객체의 reference type ⭕️<br>
+  wrapper class: Integer, Long, Float, Double, Boolean
 
 <img width="441" alt="스크린샷 2023-12-20 오후 5 18 17" src="https://github.com/soheeparklee/sc_project_carrotMkt_improved/assets/97790983/0a6814b1-3c58-40c1-9994-42cff5ecaf3f">
 
@@ -34,10 +36,12 @@ int integerNull= null;
 
 ## ✅ Boxing, unboxing
 
-Boxing: 기본 타입을 래퍼 클래스에 매칭하는 것, 객체로 선언<br>
-unboxing: 객체 선언 전 value를 구해오는 것<br>
-요즘은 오토 박싱, 오토 언박싱을 한다.<br>
-그래서 그냥 class로만 선언해도 된다.<br>
+- Boxing: 기본 타입을 래퍼 클래스에 매칭하는 것, 객체로 선언<br>
+  - primitive type ➡️ wrapper class
+- unboxing: 객체 선언 전 value를 구해오는 것<br>
+  - wrapper class ➡️ primitive type
+- 요즘은 오토 박싱, 오토 언박싱을 한다.<br>
+- 그래서 그냥 class로만 선언해도 된다.<br>
 
 ## ✅ Wrapper Class 사용법
 
