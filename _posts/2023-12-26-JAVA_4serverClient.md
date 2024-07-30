@@ -282,18 +282,20 @@ public class Client {
 
 앞서 짠 코드는 오타치게 되었을 때, 또는 생성자가 바뀌었을 때 문제가 생김 <br>
 이를 해결하기 위해 ➡️ Serializable <br>
+<br>
+
+💡 Reference <br>
+<https://soheeparklee.github.io/posts/l-serialization/> <br>
 
 ### Serializable
 
 > process of converting an object into a byte stream <br>
-> object를 바이트 스트림으로 바꾸는 과정 <br>
-> being serializable means that an object can be converted into a byte stream, <br>
-> allowing it to be easily saved to a file, transmitted over a network, or otherwise stored and reconstructed later <br>
-> deserialization: the reverse process of converting the byte stream back into a copy of the object
+> object를 바이트 스트림으로 바꾸는 과정 <br> > **serializable**: an object can be converted into a byte stream <br>
+> allowing it to be easily saved to a file, transmitted over a network, or otherwise stored and reconstructed later <br> > **deserialization:** the reverse process of converting the byte stream back into a copy of the object
 
-🆚 stream
-stream에는 1️⃣ byte stream, 2️⃣문자열 stream 두 가지가 있는데 socket을 통한 stream은 무조건 byte stream이다.<br>
-따라서 JAVA객체 정보를 전달할 때 꼭 byte로 바꿔서 전달을 해야 함.<br>
+🆚 stream <br>
+stream에는 1️⃣ byte stream, 2️⃣문자열 stream 두 가지가 있는데 socket을 통한 stream은 무조건 `byte stream`이다.<br>
+따라서 JAVA객체 정보를 전달할 때 꼭 `byte`로 바꿔서 전달을 해야 함.<br>
 <br>
 
 그래서 Serializable을 상속하여 새로운 stream인 **object stream**으로 만든다.<br>
@@ -352,10 +354,11 @@ public class SerializeExmapleTest {
 
 ### ☑️ serialVersionUID 고유 번호 관리
 
-어떤 객체를 주고 받았을 때, serialVersionUID를 확인해서 주는 사람과 받는 사람이 compatible한 object을 받았는지 확인가능
+어떤 객체를 주고 받았을 때, <br>
+serialVersionUID를 확인해서 주는 사람과 받는 사람이 compatible한 object을 받았는지 확인가능 <br>
 
-> Unique identifier for serialization
-> to ensure that the sender and reciever of a serialized object have loaded classes that are compatible with respect to serialization.
+> Unique identifier for serialization <br>
+> to ensure that the sender and reciever of a serialized object have loaded classes that are compatible with respect to serialization. <br>
 
 ```java
 //person.java
@@ -371,8 +374,8 @@ public class Person implements Serializable {
 Transient을 붙이면 직렬화 되지 않음, 따라서 전달도 되지 않음<br>
 전달할 때 숨겨서 전달 되면 null로 전달된다. <br>
 
-> Fields that should NOT be serialized can be marked as transient
-> marked as transient will be skipped during serialization.
+> Fields that should **NOT** be serialized can be marked as transient <br>
+> marked as **transient** will be skipped during serialization. <br>
 
 ```java
 //person.java

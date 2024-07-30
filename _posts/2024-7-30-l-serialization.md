@@ -16,7 +16,7 @@ tags: [] # TAG names should always be lowercase
 👍🏻 Save/persist state of an object. <br>
 👍🏻 Travel an object across a network. <br>
 
-<img width="487" alt="Screenshot 2024-07-30 at 10 51 12" src="https://github.com/user-attachments/assets/ed8f576b-d570-4015-a✔️8a0-ef3eabc73e4f">
+<img width="524" alt="Screenshot 2024-07-30 at 11 20 00" src="https://github.com/user-attachments/assets/ab4bfc00-acdc-461a-a8b3-33554f34da4e">
 
 ## 🛠️ How to serialize
 
