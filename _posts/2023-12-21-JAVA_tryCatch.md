@@ -6,6 +6,8 @@ tags: [trycatch, throw, error, exception, finally, resource, autocloseable] # TA
 
 ## Error(오류) 🆚 Exception(예외)
 
+<img width="723" alt="Screenshot 2024-07-31 at 23 01 57" src="https://github.com/user-attachments/assets/1c832c4c-4890-4ee3-9f29-4a073494732b">
+
 둘 다 Throwable의 class <br>
 
 ### 💥 Error(오류)
@@ -15,19 +17,23 @@ tags: [trycatch, throw, error, exception, finally, resource, autocloseable] # TA
   ➡️ 코드의 문제가 아님
 - 통제 불가능 ❌
 - 클래스로 관리되고 있다.
+- example: OutOfMemoryError
 
 ### 💥 Exception(예외)
 
 - 통제 가능 ⭕️
   🟰 예외처리
 - 클래스로 관리되고 있다.
-  ✔️ Check Exception: 꼭 처리해야 하는 예외
-  ✔️ Uncheck Exception: 반드시 처리해야하는 예외는 아님
 
-#### 예시
+  - Check Exception: 꼭 처리해야 하는 예외, will not be coompiled
+    - IOException, SQL Exception
+    - ArrayBoundOutException 배열 10개인데 11번째 인덱스 추출
+  - Uncheck Exception: 반드시 처리해야하는 예외는 아님
+    - NullPointException
+    - RunTimeException
+    - NullPointerException
+    - IndexOutOfBoundException
 
-- NullPointException
-- ArrayBoundOutException 배열 10개인데 11번째 인덱스 추출
 - 현실세계에 맞지 않은 요청(사람 키 음수값 넣기, 3명의 티켓값 중 2명만 결제)
 - 외부 환경 변화(외부 인프라 사고 발생, 읽고 있는 파일이 삭제된다던가...)
 

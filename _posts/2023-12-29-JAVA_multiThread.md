@@ -22,25 +22,27 @@ main method <br>
 
 #### multi thread
 
+> running more than two threads at once <br>
+
 마찬가지로 Main Thread에서 시작 <br>
 병렬 실행 <br>
 실행되는 순서는 매번 달라진다. <br>
 
 ### ☑️ Java Thread 작업 순서
 
-#### 스레드 객체 생성 new
+#### 1. 스레드 객체 생성 new
 
 java에서는 Thread도 클래스 <br>
 
-#### 실행 대기 Runnable
+#### 2. 실행 대기 Runnable
 
 Runnable 함수형 interface 사용 <br>
 Runnable 상속받은 클래스 구현 및 사용 <br>
 lambda 또는 anonymous로 사용도 가능하다. <br>
 
-#### 실행
+#### 3. 실행
 
-#### 종료 Terminated
+#### 4. 종료 Terminated
 
 종료되면 GC가 치움 <br>
 
@@ -48,7 +50,13 @@ lambda 또는 anonymous로 사용도 가능하다. <br>
 
 ### ☑️ Java Thread 생성, start
 
+> how to create thread <br>
+>
+> > 1.  runnable interface: make class into isntance, argument<br>
+> > 2.  thread class inherence: `run()`, no need to override<br>
+
 ```java
+//use method 1: runnable interface
 public class JavaThreading {
     public static void main(String[] args) {
         //thread생성
@@ -108,7 +116,9 @@ public class JavaThreading {
 
 ### ☑️ thread는 순서 정해진 것 없음
 
-순서 보장되는 것 없음, 아주 무작위
+순서 보장되는 것 없음, 아주 무작위 <br>
+`run()`: one `call stack` in `main()` <br>
+`start()`: make `call stack` for thread, contect swithcing <br>
 
 ```java
 package chap59_MultiThread;
@@ -217,6 +227,12 @@ thread의 **영역 정해주기** <br>
 먼저 수정하고 있는 thread가 그 영역 수정 끝나면, 그 다음 thread가 또 수정하고... <br>
 **Syncrhonize**는 일정 영역의 문을 만들어서, 한 번에 한 개의 thread만 들어와서 수정 가능 <br>
 나머지 thread는 문 밖에서 기다려야 함, 그 영역에 접근할 수 없음 <br>
+
+- critical section: section that all threads share
+- lock: only one thread can have permission to lock `critical section`
+
+- `wait()`: one thread has lock. wait.
+- `notify()`: give permission to lock to waiting thread, let the thread run
 
 ```java
 // package chap59_MultiThread;

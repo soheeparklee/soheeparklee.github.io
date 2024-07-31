@@ -21,8 +21,10 @@ tags: [stream] # TAG names should always be lowercase
 ### 외부 반복자 🆚 내부 반복자
 
 - 외부 반복자: 컬렉션의 요소를 컬렉션 **외부**에서 반복해 가져와 처리
-  - `for`, `iterator`
+  - Collection: `for`, `iterator`. `for-each`
+  - save all value on memory
 - 내부 반복자: 요소 처리 방법을 컬렉션 **내부**로 주입시켜서 요소를 반복 처리
+  - 작업을 병렬처리 가능
   - 스트림
 
 ### ☑️ 스트림 단계
@@ -56,11 +58,10 @@ tags: [stream] # TAG names should always be lowercase
 
 ### ☑️ 스트림 특징
 
-#### 1️⃣ Stream은 기존 자료를 변형할 수 없다.
-
+1️⃣ Stream은 기존 자료를 변형할 수 없다. <br>
 예를 들어 `Collection(=List) -> Stream`로 정의했을 때, List는 변하지 않는다. <br>
 
-#### 2️⃣ Stream은 최종연산 후에는 **재사용 불가**
+2️⃣ Stream은 최종연산 후에는 **재사용 불가** <br>
 
 ## ✅ Stream API 사용하기
 
