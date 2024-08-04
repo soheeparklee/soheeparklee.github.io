@@ -1,5 +1,5 @@
 ---
-title: 2. Threat Actors
+title: 3. Threat Actors
 categories: [CyberSecurity, compTIA security+]
 tags: [] # TAG names should always be lowercase
 ---
