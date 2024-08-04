@@ -1,5 +1,5 @@
 ---
-title: Cookie, Section, JWT
+title: Cookie, Session, JWT
 categories: [JAVA, Spring]
 tags: [cookie, session, jwt] # TAG names should always be lowercase
 ---
@@ -10,26 +10,20 @@ tags: [cookie, session, jwt] # TAG names should always be lowercase
 > 따라서 HTTP의 모든 요청은 별개의 요청이다.
 
 내가 로그인해서 이 서비스에 가입된 것을 증명해도, HTTP는 나를 기억하지 못함!<br>
-<br>
 ➡️ 따라서 HTTP 요청 떄마다 누군가 보내거나 보관하고 있어야 한다.<br>
 <br>
 
-- Cookie & Section 방식: server가 정보 가지고 있음<br>
+- Cookie: client가 정보 가지고 있음<br>
+- Session: server가 정보 가지고 있음<br>
 - JWT 토큰: client가 정보 가지고 있음<br>
 
-## ✅ Cookie & Section
+## ✅ Cookie & Session
 
 > 브라우저에 저장되는 작은 테스트 조각(정보) <br>
 > (클라이언트가 어떤 상품을 보고 있는지, 어떤 상품을 장바구니에 넣었는지, 다크모드로 보고있는지 등등...) <br>
 > 보안이 중요한 비밀번호같은 정보는 Cookie에 저장하지 않는다. ❌ <br>
 > key, value로 저장된다. <br>
 > 정보가 Cookie에 저장되어 있으면 서버를 rerun하면 모든 정보가 사라진다. <br>
-
-1️⃣ 클라이언트가 로그인을 한다. <br>
-2️⃣ 서버는 **세션 ID**를 클라이언트에게 준다. <br>
-3️⃣ 클라이언트는 **세션 ID**를 **쿠키**에 저장한다. <br>
-4️⃣ **섹션 생성** <br>
-5️⃣ 서버는 섹션에 세션 ID와 클라이언트를 알고 있다. <br>
 
 ```java
 @RestController
@@ -85,21 +79,37 @@ public class SessionTokenSampleController {
 ### ☑️ JWT
 
 > Json Web Token
-> Json format을 사용한다.
-> 사용자 속성을 정의하는 claim 기반의 Web Token
-> 정보를 알아볼 수 없게 encoding되어 있다.
-> 알려지면 안되는 비밀번호같은 중요한 정보 가득❗️
 
-#### ✔️ JWT 구성
+- Json format을 사용한다.
+- 사용자 속성을 정의하는 claim 기반의 Web Token
+- 정보를 알아볼 수 없게 encoding되어 있다.
+- 알려지면 안되는 비밀번호같은 중요한 정보 가득❗️
+
+### ☑️ Access Token, Refresh Token
+
+- access token: to authenticate
+- refresh token: when access token expires, to issue access key
+
+### ✔️ JWT 구성
+
+> Header ➕ Payload ➕ Signature
 
 - Header:
-  - 알고리즘: 정보들을 암호화하기 위한 알고리즘
-  - 타입
+  - 알고리즘 alg: hash 알고리즘
+  - 타입 typ: token type `"JWT"`
+
+```
+{
+	"typ" : "JWT",
+	"alg" : "HS256"
+}
+```
+
 - Payload: 정보(sub, name, phoneNum, gender...)
-  - JSON 형태 Claim모음
+  - JSON 형태: Claim으로 구성
+    - registered claim: hold information about token
     - 공개 Claim
     - 비공개 Claim
-  - 등록 Claim: 이미 약속되어 있는 Claim
 - Signature: 암호화된 정보를 풀 수 있는 코드
   - 유효성 검증
   - 암호화 코드
@@ -134,6 +144,24 @@ public class SessionTokenSampleController {
     }
 }
 ```
+
+## Cookie 🆚 Session
+
+#### Cookie
+
+- stored at: client memory/harddisk
+- format: text
+- expire: set when saving cookie(default: when broswer ends)
+- resoruce: use client resource
+- size: 20 per domain, 4KB per cookie
+
+#### Session
+
+- stored at: server memory
+- format: object
+- expire: when client logs out, expires when there is no response
+- resoruce: use server resource
+- size: unlimited
 
 ## Cookie 🆚 JWT
 

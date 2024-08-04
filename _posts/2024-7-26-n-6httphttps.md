@@ -20,10 +20,25 @@ method ➕ URI ➕ http version<br>
 
 #### ✔️ HTTP method
 
+<img width="724" alt="Screenshot 2024-08-03 at 10 17 19" src="https://github.com/user-attachments/assets/51d678f1-9060-4b5f-a51b-d8ad6e586784">
+
 - GET
-- PUT
+- HEAD
+  - simmilar to get
+  - request for document ❌
+  - request for information of document ⭕️
+  - body: empty
+  - only header information
 - POST
+- PUT
+  - update resource
+- PATCH
+  - to update, but update part of resource
 - DELETE
+- CONNECT
+  - client and server connection
+- OPTIONS
+- TRACE
 
 #### ✔️ 주요 Header
 

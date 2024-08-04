@@ -6,11 +6,11 @@ tags: [] # TAG names should always be lowercase
 
 ## ✅ Interrupt
 
-> signal emmited from hardware or software when process or event needs immediate attention
-> if an error occurs during running a program
-> stop the program
-> and alert CPU for immediate attention
-> allow processor to act quickly
+> signal emmited from hardware or software when process or event needs immediate attention<br>
+> if an error occurs during running a program<br>
+> stop the program<br>
+> and alert CPU for immediate attention<br>
+> allow processor to act quickly<br>
 
 - **Interrupt Detection:**
   - device raises `interrupt` at `process i`
@@ -29,8 +29,8 @@ tags: [] # TAG names should always be lowercase
 ## ✅ Types of Interrupt
 
 1. Software Interrupts
-   > interrupt produced by software
-   > also called **Trap**
+   > interrupt produced by software <br>
+   > also called **Trap** <br>
 
 - command, data w error
 - divide by 0, overflow, exceptions
@@ -43,8 +43,8 @@ tags: [] # TAG names should always be lowercase
 
 ## ✅ Managing Multiple Devices
 
-> when more than one device raises interrupt
-> additional info is needed to decide which device to be considered first
+> when more than one device raises interrupt <br>
+> additional info is needed to decide which device to be considered first <br>
 
 ### ✔️ Polling
 

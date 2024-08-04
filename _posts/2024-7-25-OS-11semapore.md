@@ -16,14 +16,14 @@ tags: [] # TAG names should always be lowercase
 
 ## ✅ Mutex
 
-> Mutual Exclusion
-> thread execution time to be independent
-> lock, unlock
+> Mutual Exclusion <br>
+> thread execution time to be independent <br>
+> lock, unlock <br>
 
 ### ⭐️ Lock, unlock
 
-lock: authorized to go into Critical Section
-unlock: annouce this process is done with Critical Section
+lock: authorized to go into Critical Section <br>
+unlock: annouce this process is done with Critical Section <br>
 
 ### Mutex Algorithm
 

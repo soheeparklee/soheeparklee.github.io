@@ -1,5 +1,5 @@
 ---
-title: WEB API, HTTP.STATUS.VALUE
+title: URN/URI/URL
 categories: [Computer Science, WEB]
 tags: [web, api]
 ---

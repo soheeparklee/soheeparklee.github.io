@@ -6,9 +6,9 @@ tags: [] # TAG names should always be lowercase
 
 ## ✅ Process Address Space
 
-> when program is run on CPU
-> process is created
-> process address space is allocated on memory
+> when program is run on CPU <br>
+> process is created <br>
+> process address space is allocated on memory <br>
 
 ## ✅ Process Address Space Segment
 
@@ -18,8 +18,8 @@ tags: [] # TAG names should always be lowercase
 - Data Segment: save global vairables
 - Stack Segment: save method, local variables
 
-> why divide address space into segments?
+> why divide address space into segments? <br>
 >
-> > to share as much as space as possible
-> > and to save memory usage
-> > stack segment: LIFO, method and local variables
+> > to share as much as space as possible <br>
+> > and to save memory usage <br>
+> > stack segment: LIFO, method and local variables <br>
