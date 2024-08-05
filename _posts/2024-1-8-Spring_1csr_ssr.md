@@ -1,25 +1,40 @@
 ---
-title: SSR, CSR 구현하기
-categories: [JAVA, Spring]
+title: SPA, SSR, CSR
+categories: [Computer Science, WEB]
 tags: [csr, ssr] # TAG names should always be lowercase
 ---
+
+## ✅ SPA
+
+> Single Page Application <br>
+> Once page is loaded, only change content(no page loading) <br>
 
 ## ✅ CSR, SSR
 
 rendering: 정보를 보여주기 <br>
 정보를 누가 보기 쉽게 뿌려주는가?<br>
 
-## ☑️ CSR: Client Side Rendering
+## ☑️ CSR
+
+> Client Side Rendering
 
 클라이언트(웹)이 주도적으로 렌더링 <br>
 👍🏻 클라이언트가 자원 할당 가능 <br>
 👍🏻 프론트엔드, 백엔드 업무 분리 가능 <br>
+👍🏻 read only the needed data(instead of reading the whole page) <br>
+👍🏻 faster than SSR <br>
+👍🏻 reduce traffic <br>
+👍🏻 user experience: no need to refresh page <br>
+👎🏻 difficult for search croller to collect serach data <br>
 
-## ☑️ SSR: Server Side Rendering
+## ☑️ SSR
+
+> Server Side Rendering
 
 서버가 주도적으로 렌더링을 해서 페이지를 보여줌 <br>
 👍🏻 처음 로딩속도가 빠름 <br>
 👍🏻 일관된 렌더링이 가능하다 <br>
+👍🏻 search engine <br>
 
 ## ✅ thymeleaf로 SSR 구현
 

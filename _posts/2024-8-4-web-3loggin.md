@@ -1,19 +1,28 @@
 ---
-title: Static/ Dynamic Pages
+title: Logging Level
 categories: [Computer Science, WEB]
 tags: [] # TAG names should always be lowercase
 ---
 
-## ✅ Static Page
+## ✅ Logging
 
-> page written in HTML, CSS, JS <br>
-> when server revcieves request, send response to client <br>
+> use log4j
+> use different levels to express urgency of error
 
-## ✅ Dynamic Page
+## ✅ ERROR
 
-> pages writeen in CGI, AJAX, ASP, ASP.NET, etc <br>
-> content of pages is different for different visitors <br>
-> information on page is changes frequenlty <br>
+- Immediate solution required for program running
 
-- stock prices
-- weather
+## ✅ WARN
+
+- Need to be warned, but program is running
+- unable to use current data, cache
+- admin console password is not protected
+
+## ✅ INFO
+
+- notify when important process is being started, ended
+
+## ✅ DEBUG
+
+- developer adds log to make record
