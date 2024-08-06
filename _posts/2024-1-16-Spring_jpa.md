@@ -1,5 +1,5 @@
 ---
-title: ORM, JPA, pagination
+title: ORM, JPA, Pagination, Dirty Checking
 categories: [JAVA, Spring]
 tags: [orm, jpa] # TAG names should always be lowercase
 ---
@@ -8,16 +8,24 @@ tags: [orm, jpa] # TAG names should always be lowercase
 
 👎🏻 기존 코드의 한계: SQL을 JAVA안에 삽입해야 하고, rowMapper넣어야 했음 <br>
 
-> ORM: Object Relation Mapping <br>
-> 객체지향과 RDB 변환 자동처리 기술 <br> > <br>
+> ORM: Object Relational Mapping <br>
+> maps java object and RDB <br>
+> makes object into a DB table <br>
 
 > 영속화: ORM을 적용한 Entity를 구성하는 것을 객체의 table 영속화라고 한다. <br>
 
+- Hibernate
+- EclipseLink
+- DataNucleus
+
 ## ✅ JPA
 
+<img width="358" alt="Screenshot 2024-08-06 at 11 51 55" src="https://github.com/user-attachments/assets/1cfb89d6-04a1-4ea9-a593-565b6b4eedc6">
+
 > JPA: Java Persistence API <br>
+> developer does not write SQL himself, JPA API will manage and save DB <br>
 > 한마디로 자바의 ORM <br>
-> 결국 내부에서는 JDBC를 사용한다. <br>
+> JPA operates between Java application and JDBC <br>
 
 #### ☑️ JPA 내부 구성 요소
 
@@ -221,3 +229,29 @@ public interface ElectronicStoreItemJpaRepository extends JpaRepository<ItemEnti
     Page<ItemEntity> findAllByTypeIn(List<String> types, Pageable pageable);
 }
 ```
+
+## ✅ Dirty Checking
+
+> Within a `transaction` when entity is altered, <br>
+> automatically save DB with altered value <br>
+
+```java
+@Transactional
+public void cancelOrder(Long orderId) {
+    //주문 엔티티 조회
+    Order order = orderRepository.findOne(orderId);
+
+    //주문 취소
+    order.cancel();
+}
+```
+
+- start `Transaction`
+- find `order entity` with `orderId`
+- **update** `order entity` with canceled value
+- commit `transaction`
+
+There is **no explicit update code**, but **dirty checking** will manage update.
+
+- dirty checking = 변경 감지
+- Realizing change in entity ➡️ Apply to DB

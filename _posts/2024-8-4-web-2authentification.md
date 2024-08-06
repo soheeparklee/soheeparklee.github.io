@@ -1,19 +1,35 @@
 ---
-title: Static/ Dynamic Pages
+title: Authentification progression
 categories: [Computer Science, WEB]
 tags: [] # TAG names should always be lowercase
 ---
 
-## ✅ Static Page
+## ✅ API key
 
-> page written in HTML, CSS, JS <br>
-> when server revcieves request, send response to client <br>
+1. User issues API key <br>
+2. To use certain API, send key with request <br>
+3. When requested, Application authenticated user information with key <br>
+4. Respond to user with information from key <br>
 
-## ✅ Dynamic Page
+#### 👎🏻
 
-> pages writeen in CGI, AJAX, ASP, ASP.NET, etc <br>
-> content of pages is different for different visitors <br>
-> information on page is changes frequenlty <br>
+- If key is leaked? Difficult to fix <br>
+- To prevent key leak, frequent update neccessary <br>
 
-- stock prices
-- weather
+## ✅ OAUTH2
+
+1. Application sends user to Oauth service to login <br>
+2. Oauth authenticates user <br>
+
+#### 👎🏻
+
+- need to verify token
+- token expires
+
+## ✅ JWT
+
+JWT carries verification with itself, so no need for requesting for verification of the token
+
+#### 👎🏻
+
+- token carries lots of sensitive data <br>

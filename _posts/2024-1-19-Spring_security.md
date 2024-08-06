@@ -1,5 +1,5 @@
 ---
-title: Auth_Spring Security 이론
+title: Spring Security 이론
 categories: [JAVA, Spring]
 tags: [security] # TAG names should always be lowercase
 ---
@@ -8,10 +8,16 @@ tags: [security] # TAG names should always be lowercase
 
 > JAVA 기반 보안 프레임워크
 
+<img width="609" alt="Screenshot 2024-08-06 at 12 02 48" src="https://github.com/user-attachments/assets/b79dff8a-2896-4259-b23e-e20e8efac0bf">
+
 - Authentication <br>
 - Authorization <br>
 - Session Control <br>
 - CSRF 크로스 사이트 요청 위조 방지 <br>
+
+- placed in front of `DispatcherServelt` as `filter`
+- before request is handed over to `DispatcherServelt`, it has to go though `filter`
+- check if user is authorized
 
 #### ☑️ Spring Security 필수 개념
 
@@ -22,6 +28,12 @@ tags: [security] # TAG names should always be lowercase
   유저의 권한을 확인해 허락해 주는 것 <br>
 
 #### ☑️ Spring Security 과정
+
+1. SignUp, Login API <br>
+2. authorize user with role `ROLE_USER` <br>
+3. In spring security settings, allow user to access resource if he has role `ROLE_USER` <br>
+4. If authorized user succeeds in logging in, issue `JWT` token to access resource <br>
+5. User will use `JWT` if accessing APIs with authorization <br>
 
 ## ✅ User Detail 구현 JWT 구현
 
