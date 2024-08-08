@@ -1,5 +1,5 @@
 ---
-title: Interview_GC/StringBuilder/
+title: Interview_GC/StringBuilder/JVM/Overloading/Overriding/Abstract/Interface/Generic
 categories: [JAVA, JAVA_Basics]
 tags: [] # TAG names should always be lowercase
 ---
@@ -15,11 +15,11 @@ tags: [] # TAG names should always be lowercase
 
 ## String Builder 🆚 String Buffer
 
-> Difference between stringbuilder and stringbuffer? <br> > <br>
+> Difference between stringbuilder and stringbuffer? <br>
 >
 > > 같은점: mutation, APIs like append() <br>
 > > 참고로, string is immutable <br>
-> > 다른점: <br> > > <br>
+> > 다른점: <br> <br>
 > >
 > > - String Builder: synchronization ❌, fast in **single** thread <br>
 > > - String Buffer: synchronization ⭕️, **multithread** <br>
@@ -28,7 +28,7 @@ tags: [] # TAG names should always be lowercase
 
 ## ✅ Memory in JAVA
 
-> How is JVM memory? <br> > <br>
+> How is JVM memory? <br> >
 >
 > > method area: (class loaded) static, method, final <br>
 > > heap: (runtime) instance, array <br>
@@ -40,7 +40,7 @@ tags: [] # TAG names should always be lowercase
 
 ## Overloading 🆚 Overriding
 
-> Overloading and Overriding? <br> > <br>
+> Overloading and Overriding? <br>
 >
 > > ✔️ Overloading: <br>
 > > method name 🟰 <br>
@@ -50,7 +50,7 @@ tags: [] # TAG names should always be lowercase
 
 <br>
 
-> ✔️ Overriding: <br> > <br>
+> ✔️ Overriding: <br>
 >
 > > method name 🟰 <br>
 > > parameter 🟰 <br>
@@ -65,16 +65,16 @@ both used for **abstraction** <br>
 
 <img width="569" alt="Screenshot 2024-08-07 at 13 19 58" src="https://github.com/user-attachments/assets/0635c5eb-bfe3-4838-b002-8aab0e2c8a6a">
 
-> Abstract class <br> > <br>
+> Abstract class <br>
 >
 > > extends <br>
 > > cannot be instantiated directly, serves as blueprint for other classes <br>
 > > class can inherit from only one abstract class <br>
 > > method, properties can have any access modifier <br>
 > > can have variables <br>
-> > need to have minimum one abstract method <br> > > <br>
+> > need to have minimum one abstract method <br> <br>
 
-> Interface <br> > <br>
+> Interface <br>
 >
 > > implements <br>
 > > set of methods a class must implement <br>
@@ -105,7 +105,7 @@ both used for **abstraction** <br>
 > Vector <br>
 >
 > > Synchronized. <br>
-> > If one thread is working with vector, other thread cannot have vector <br> > > <br>
+> > If one thread is working with vector, other thread cannot have vector <br> <br>
 
 > ArrayList <br>
 >
