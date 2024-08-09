@@ -1,8 +1,10 @@
 ---
-title: Interview_Process/Thread/Deadlock/Paging/Segmentation/Virtual Memory/Semaphone/Mutex
+title: Interview_Process/Thread/Deadlock/Paging/Semaphone/Mutex/Segmentation/Virtual Memory
 categories: [Computer Science, Computer Architecture/Operating System]
 tags: [] # TAG names should always be lowercase
 ---
+
+<img width="1112" alt="Screenshot 2024-08-08 at 13 05 37" src="https://github.com/user-attachments/assets/ed32694f-f9be-436a-86bf-f6373978e11a">
 
 ## Process 🆚 Thread
 
@@ -23,6 +25,28 @@ tags: [] # TAG names should always be lowercase
 > **System call** to create process and allocate resource decrease <br>
 > communication between thread is costless than communication between process(IPC) <br>
 > However, need to take **synchronization** into account for multitasking <br>
+
+## ✅ Context Switching?
+
+> 하나의 프로세스가 CPU를 사용 중인 상태에서 다른 프로세스가 CPU를 사용하도록 하기 위해, 이전의 프로세스 상태를 보관하고 새로운 프로세스의 상태를 적재하는 작업 <br>
+> 한 프로세스의 문맥은 그 프로세스의 PCB에 기록됨 <br>
+
+💡 <https://soheeparklee.github.io/posts/OS-6pcb/> <br>
+
+## Semaphore 🆚 Mutex
+
+- Semaphore:
+
+  - 공유자원에 접근할 수 있는 최대 허용치만큼만 동시에 사용자 접근 가능
+  - 스레드들은 리소스 접근 요청
+  - 세마포어는 카운트가 하나씩 줄어들게 되며 리소스가 모두 사용중인 경우(카운트=0) 다음 작업은 대기
+
+- Mutex:
+  - 제어되는 섹션에 하나의 스레드만 허용
+  - 해당 섹션에 접근하려는 다른 스레드들을 강제적으로 막음
+  - 첫번재 스레드가 해당 섹션을 빠져나올 때까지 기다려야 함
+
+💡 <https://soheeparklee.github.io/posts/OS-11semapore/> <br>
 
 ## ✅ What is deadlock?
 
@@ -107,25 +131,3 @@ tags: [] # TAG names should always be lowercase
 - MRU: Most recently used
 
 💡 <br>
-
-## Semaphore 🆚 Mutex
-
-- Semaphore:
-
-  - 공유자원에 접근할 수 있는 최대 허용치만큼만 동시에 사용자 접근 가능
-  - 스레드들은 리소스 접근 요청
-  - 세마포어는 카운트가 하나씩 줄어들게 되며 리소스가 모두 사용중인 경우(카운트=0) 다음 작업은 대기
-
-- Mutex:
-  - 제어되는 섹션에 하나의 스레드만 허용
-  - 해당 섹션에 접근하려는 다른 스레드들을 강제적으로 막음
-  - 첫번재 스레드가 해당 섹션을 빠져나올 때까지 기다려야 함
-
-💡 <https://soheeparklee.github.io/posts/OS-11semapore/> <br>
-
-## ✅ Context Switching?
-
-> 하나의 프로세스가 CPU를 사용 중인 상태에서 다른 프로세스가 CPU를 사용하도록 하기 위해, 이전의 프로세스 상태를 보관하고 새로운 프로세스의 상태를 적재하는 작업 <br>
-> 한 프로세스의 문맥은 그 프로세스의 PCB에 기록됨 <br>
-
-💡 <https://soheeparklee.github.io/posts/OS-6pcb/> <br>

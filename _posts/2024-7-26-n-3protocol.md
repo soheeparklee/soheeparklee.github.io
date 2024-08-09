@@ -59,6 +59,10 @@ IP address + port + HTTP(프로토콜) 생성 <br>
 
 ## ✅ TCP/IP 프로토콜
 
+- define how data is transmitted over network
+- divide data into packets at the sender's end
+- and recombine at the reviever's end
+
 #### ☑️ 프로토콜
 
 프로토콜: 둘 이상의 장치가 정보전달 시 **의사소통하는 규칙과 규약 집합** <br>
@@ -73,7 +77,10 @@ IP address + port + HTTP(프로토콜) 생성 <br>
 
 ## ✅ TCP/IP Layers
 
-### ⭐️ Application Layer
+### 4️⃣ Application Layer
+
+- shield upper layer from the complexities of data
+- HTTP, HTTPS, NTP(Network Time Protocol, synchrnoize clock on computer)
 
 데이터를 어떻게 해석할 것인가 <br>
 많은 종류의 프로토콜이 있음 <br>
@@ -87,24 +94,34 @@ IP address + port + HTTP(프로토콜) 생성 <br>
 ✔️ RTSP<br>
 ✔️ RTP<br>
 
-### ⭐️ Transport Layer
+### 3️⃣ Transport Layer(TCP/UDP)
+
+- reliable data transmission
+- exchange data
+- retransmit data for missing packets
 
 데이터의 안정적인 전송을 담당,<br>
 포트 번호를 사용하여 통신을 제공한다.<br>
 데이터를 어떻게 전달할 것인지<br>
 
-**주요 프로토콜**
+**주요 프로토콜** <br>
 ✔️ TCP<br>
 ✔️ UDP<br>
 
-### ⭐️ Internet Layer
+### 2️⃣ Network/Internet Layer(IP)
+
+- Routing of data packets between devices
 
 네트워크 주소 기반 데이터 전송<br>
 IP version에 대한 정보 저장<br>
 ✔️ IP version<br>
 ✔️ NCP(IP이전에 사용하던 주소)<br>
 
-### ⭐️ Network Interface
+### 1️⃣ Network Access Layer
+
+- applications requiring network communications
+- generate data
+- request connections
 
 가장 기계에 가까움<br>
 물리적 프로토콜<br>
@@ -124,7 +141,7 @@ IP version에 대한 정보 저장<br>
 
 ## ✅ TCP/IP Traffic control
 
-> Transmission Control Protocol
+> Transmission Control Protocol <br>
 >
 > > reliable, connection-oriented protocol in network communication <br>
 > > network congestion avoidance algorithm <br>
