@@ -23,17 +23,32 @@ thanks to the use of pojos, we can have loose coupling and easy integration with
 
 ## ⭐️ AOP
 
-> Aspect Oriented Programming
-> 관점 지향형 프로그래밍
+> Aspect Oriented Programming <br>
+> 관점 지향형 프로그래밍 <br>
 
 <br>
 
-> **횡단 관심사(흩어진 관심사)**: 어떤 API를 구현하든 간에 비슷비슷한 코드
-> addressing cross-cutting **concerns** in a more modular and centralized way
+- 공통의 관심 사항을 적용
+- 공통 사항 구현한 모듈에 대한 의존 관계 ❌
+- aspect를 이용해 핵심 로직을 구현한 각 클래스에 공통 기능 적용
+
+> Cross Cutting concern <br>
+>
+> > aspects of program that affect multiple parts of the applcation <br>
+
+- in AOP, **modularize** the `cross cutting concerns` into seperate unit called **aspect**
+- addressing cross-cutting **concerns** in a more modular and centralized way
 
 <br>
 
-> **모듈화**: 횡단 관심사를 따로따로 반복되게 코드를 작성하는게 아니라, 한 곳에 **모아서** 처리<br> > **침투 적용**: 어떤 코드가 필요할 때 모듈화 된 코드를 가져오기> 침투 적용: 어떤 코드가 필요할 때 모듈화 된 코드를 가져오기<br> > **advice**: 모아서 구현해 둔 코드, 이 코드를 필요할 떄 침투시킨다.<br>
+- Aspect: 여러 객체에 공통으로 적용되는 공통 관심 사항
+  - concern that cuts across multiple classes
+- Advice: action taken by aspect at a certain **time**
+  - 모아서 구현해 둔 코드, 이 코드를 필요할 떄 침투시킨다
+- Join Point: specific point **where** aspect can be applied
+- Pointcut: specify **where** advice should be applied, `join point`의 부분집합
+- Weaving: process of linking apsect w target object
+- **모듈화**: 횡단 관심사를 따로따로 반복되게 코드를 작성하는게 아니라, 한 곳에 **모아서** 처리
 
 ### 🔎 Exmaple of AOP
 
@@ -71,11 +86,11 @@ JPA JPQL을 사용하면 여러 DB의 기술을 추상화한다. <br>
 
 ### 💡 Bean등록하는 방법
 
-1. @Bean annotaion 추가
+1. `@Bean annotaion` 추가
 
 <img width="1028" alt="스크린샷 2024-01-08 오후 3 34 45" src="https://github.com/soheeparklee/portfolioWebsite_dreamcoding/assets/97790983/f4e08064-6f5c-4ab1-a0ec-2b9c0d0a03bc">
 
-2. @Component 추가
+2. `@Component` 추가
 
 <img width="1035" alt="스크린샷 2024-01-08 오후 3 37 02" src="https://github.com/soheeparklee/portfolioWebsite_dreamcoding/assets/97790983/7ad1da49-b465-42e2-8b67-f816c83edfc0">
 
