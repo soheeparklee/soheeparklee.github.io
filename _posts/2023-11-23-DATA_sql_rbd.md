@@ -1,5 +1,5 @@
 ---
-title: SQL(RDB) VS NoSQL
+title: DBMS/ SQL(RDB)/ NoSQL
 categories: [Database, Database]
 tags: [sql, rdb]
 ---
@@ -12,10 +12,38 @@ tags: [sql, rdb]
 - 에러 발생 시, DB복구 기능
 - 빠른 DB검색 가능
 
+✔️ **DDL** <br>
+
+> data definition language <br>
+> what purpose the database has <br>
+> how it will be used <br>
+
+- CREATE
+- ALTER
+- DROP
+- RENAME
+
+✔️ **DML** <br>
+
+> data manipulation language <br>
+> add, update, delete, search a database <br>
+
+- SELECT
+- INSERT
+- UPDATE
+- DELETE
+
+✔️ **DCL** <br>
+
+> data control language <br>
+
+- GRANT
+- REVOKE
+
 ## ✅ SQL
 
-> Structured Query Language
-> RDB
+> Structured Query Language  <br>
+> RDB <br>
 
 ## ✅ **RDB 관계형 데이터베이스**
 

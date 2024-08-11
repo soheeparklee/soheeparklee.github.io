@@ -1,17 +1,35 @@
 ---
-title: SQL contraints
+title: SQL contraints 데이터 무결성
 categories: [Database, SQL]
 tags: [unique, primary, check, default] # TAG names should always be lowercase
 ---
+
+## ⭐️ What is the most important in database design?
+
+> Integrity of data <br>
+> Necessary to check data integrity when data creation, update, delete <br>
+
+<br>
+
+> **What is integrity in data?** <br>
+>
+> > All field in table should have a unique identifier. <br>
+
+<br>
+
+> **How can we maintain data integrity in database?**<br>
+>
+> > - check input data for creation, update, delete <br>
+> > - use constraint <br>
 
 ## ⭐️ Contraint
 
 **데이터 무결성**을 지키기 위해 제약조건이 필요하다. <br>
 입력되는 데이터 값을 제한한다. <br>
-<br>
-사람의 키는 음수가 될 수 없음.<br>
-아이디는 null이 될 수 없음. ➡️ NOT NULL<br>
-각각의 데이터는 중복되면 안 되는 경우도 있음. (아이디 같은 경우) ➡️ UNIQUE <br>
+
+- 사람의 키는 음수가 될 수 없음 <br>
+- 아이디는 null이 될 수 없음 ➡️ NOT NULL<br>
+- 각각의 데이터는 중복되면 안 되는 경우도 있음 (아이디 같은 경우) ➡️ UNIQUE <br>
 
 ### 📣 선언 방식
 
