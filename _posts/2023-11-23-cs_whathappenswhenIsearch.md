@@ -1,90 +1,59 @@
 ---
-title: What happens when I search name in google?
+title: What happens when I click on a URL?
 categories: [Computer Science, Network]
 tags: [network]
 ---
 
-## ✅ 검색창에 내 이름을 친다
+### 1. Input URL, press Enter
 
-### ☑️ FE 영역
+### 2. Check HSTS list
 
-### ☑️ 해당 검색한 부분에서 url parameter을 피싱하고, api를 피싱해서 요청을 날릴 수 있도록 url을 생성한다.
+> Http Strict Transport Security <br>
 
-## ✅ 특정 링크를 url로 접속하는 과정
+- check HSTS list to see if `HTTPS` is needed
+- if on HSTS list, need to request for `HTTPS`
+- if not on HSTS list, request for `HTTP`
 
-검색창 브라우저에서 링크가 연결되고 해당 링크로 연결된다
+### 3. Browser checks for DNS entry corresponding IP address of website in cache
 
-### ☑️ BE 영역
+- Browser cache
+- OS cache
+- Router cache
+- ISP cache
 
-#### 링크를 클릭한다.
+항상 DNS서버에 접속해서 찾으려면 시간이 오래걸리니 <br>
+로컬 캐시 또는 DNS캐시에 저장해 두었다가 <br>
+로컬 캐시 또는 DNS캐시에 1차적으로 접속해서 IP주소 확인 <br>
 
-### ☑️로컬 캐시 또는 DNS캐시, 또는 DNS를 사용하여 IP 주소를 확인한다.
+### 4. If not found in cache, ISP DNS server initiates DNS query to find IP address of server with the domain name
 
-1. 로컬 캐시 또는 DNS캐시에 1차적으로 접속
-   그런데 항상 DNS서버에 접속하면 시간이 오래걸리니 로컬 캐시 또는 DNS캐시에 저장해 두었다가 로컬 캐시 또는 DNS캐시에 1차적으로 접속해서 IP주소 확인,
-2. 없으면 DNS서버 접속
-   DNS서버 안에 도메인과 IP가 매핑이 되어있는데  
-   우리가 요청하면 도메인에 연결된 IP를 가져와 접속하게 된다.
-   PC에 등록되어 있는 서버의 DNS주소에 접속해서 DNS 사용하여 IP주소를 확인한다.
+없으면 DNS서버 접속 <br>
+DNS서버 안에 도메인과 IP가 매핑이 되어있는데 <br>
+우리가 요청하면 도메인에 연결된 IP를 가져와 접속하게 된다. <br>
+PC에 등록되어 있는 서버의 DNS주소에 접속해서 DNS 사용하여 IP주소를 확인한다. <br>
 
-### ☑️ 서버의 ip 주소로 요청을 보낸다 REQUEST
+### 5. Get MAC address associated with IP adress with ARP
 
-브라우저가 request라는 것을 보낼 건데, 어떻게?
+> ARP: Adress Resolution Protocol
 
-#### 이러한 문제점들을 해결하기 위해 OSI 7 layer 또는 TCP/IP 4계층
+### 6. Browser initiates TCP connection
 
-**OSI 7 layer**  
-7계층을 이용하여 네트워크 상에서 데이터를 전송할 때 필요한 정보들을 헤더로 넣어주는 개념  
-✓ 왜 layer인가? header가 층처럼 앞에 계속 쌓이기 때문입니다.  
-7계층에서 a를 감싸고 6계층에서 b로 감싸고 5계층에서 c로 감싸고...  
-c(b(a))  
-✓ 왜 계속 header에 계속 쌓나요?  
-가장 안쪽에 있는 메세지 a는 앞에 header을 깐 사람만 볼 수 있음  
-a는 7계층에서 생성한 데이터니까 a는 7계층에서만 확인 가능하다.  
-까는 과정을 줄여서 data latency 줄인다.  
-대표적으로 SSL같은 경우는 6계층에 있어서, 7계층은 6계층의 데이터를 까야 7계층을 확인할 수 있음.  
-그래서 6계층에서 데이터 암호화를 수행  
-대표적으로 7계층에 대한 보안  
-**꼭 필요한 부분에서, 꼭 필요한 만큼만 까서 확인하고자 하는 것이 네트워크의 특징**  
-✓ 동일한 레이어끼리만 영향을 주고받을 수 있습니다.  
-한 레이어의 프로토콜만 동일하다면, 다른 레이어는 상관 없다!  
-HTTP는 TCP로도 소통이 가능하고 UCP로도 소통이 가능한데, 따라서 HTTP라는 프로토콜만 사용한다면 TCP또는 UCP모두 사용이 가능하다는 것이다.
-각 레이어별 프로토콜에 대해 알아야 한다.
-6 이터넷, 802.x
-5 IP protocol, icmp(ping), arp, rarp
-4 tcp, udp
-3, 2 SSL
-1 http, smtp, pop3, imap, fip, ftp, telnet
+- 3-way-handshake
+- SYN
+- ACK
 
-##### - 요청을 GET으로 보낼지, POST로 보낼지 이런 데이터들도 넣고 싶어(7계층 응용계층)
+### 7. If HTTPS, add SSL(TLS) handshake
 
-##### - 중간에 누가 가로챈다면? (5/6계층 세션 계층, 표현 계층)
+### 8. Browser sends HTTP request to the web server
 
-##### - 요청의 사이즈가 크면? 잘라서 보낸다. (4계층 전송계층)
+### 9. Server sends response
 
-##### - 잘라서 보낸다면, 다시 합치는 방법은? (4계층 전송계층)
+- response in JSON, XML, HTML
 
-##### 근처에 해당 ip의 위치가 없다면? ROUTING 과정(3계층 네트워크 계층)
+### 10. Rendering by web browser
 
-hop을 어떤 부분으로 보낼건지  
-**hop** 특정 데이터가 이동할 때 중간에 잠깐 거쳐가는 곳  
-그래서 기계 자체를 3계층 또는 4계층 까지만 확인할 수 있도록 만듦, 그래서 가격 저렴, 빠르게 데이터 확인
-요청을 보내고 요청을 받는 사이에 있는 과정이 바로 routing
-
-##### - 이걸 네트워크 선 상에서 어떻게 보내야 하지? (1계층 물리 계층)
-
-계층들은 서로에게 간섭하지 않는다.
-
-### ☑️ 서버는 요청을 받는다.
-
-### ☑️ 연결된 서버에서 데이터베이스를 찾는다.
-
-### ☑️ 찾은 데이터를 사용자 IP에게 전달한다. RESPONSE
-
-#### OSI 7 layer 또는 TCP/IP 4계층을 활용하여 네트워크 신호 전달
-
-#### 이 때 사용자 ip주소를 찾는다.
-
-### ☑️ 브라우저 단에서 받은 response를 이용하여 가공해 화면을 띄워 준다.
-
-## ✅ 해당 링크에서 내 이름을 검색한 결과가 나온다
+- When server responds with resource(HTML, CSS, JS)
+- Redering by creating DOM Tree, CCSSOM Tree, Render Tree
+  - DOM: HTML
+  - CCSSOM(Cascading Style Sheets Object Model): CSS style
+  - Render Tree: DOM ➕ CSSSOM

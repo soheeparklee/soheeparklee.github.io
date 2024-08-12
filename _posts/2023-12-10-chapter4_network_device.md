@@ -250,18 +250,29 @@ ASIC: Application Specific Integrated Circuit 미리 칩에 구워서 하드웨�
 
 ## 🔟 라우터의 기능
 
-### 브로드캐스트 도메인 나누기
+> **Router** <br>
+>
+> > connect different network, manage traffic <br>
+> > route data between network based on IP address <br>
+> > 👮🏻 direct data packet to the right destination <br>
 
-스위칭이 콜리전 도메인을 나눴다면, 라우팅은 **브로드캐스트 도메인**을 나눈다. <br>
-라우터로 브로드캐스트 도메인을 나눠주지 않으면 한 번의 브로드캐스트가 모든 영역에 영향을 준다. <br>
+- Layer 3(Network Layer)
 
-### 패킷 피터링 기능(보안 기능)
+**라우터의 기능**
 
-불필요한 트래픽 전송 막기 <br>
+- 브로드캐스트 도메인 나누기
+  - 스위칭이 콜리전 도메인을 나눴다면, 라우팅은 **브로드캐스트 도메인**을 나눈다. <br>
+- 라우터로 브로드캐스트 도메인을 나눠주지 않으면 한 번의 브로드캐스트가 모든 영역에 영향을 준다. <br>
+- 패킷 피터링 기능(보안 기능)
+- 불필요한 트래픽 전송 막기
+- 로드 분배
+- Quality Of Service
+  - 프로토콜, 데이터 크기, 중요도 등 상황에 따라 트래픽의 전송 순서 조절
 
-### 로드 분배
+### Router 🆚 Switch
 
-### Quality Of Service
+**Switch** <br>
 
-  <br>
-프로토콜, 데이터 크기, 중요도 등 상황에 따라 트래픽의 전송 순서 조절  <br>
+- used within single network to connect devices(computer/printer/server)
+- enables these devices to communicate with each other
+- Layer 2(DataLink Layer)
