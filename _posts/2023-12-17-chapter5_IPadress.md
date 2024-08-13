@@ -9,10 +9,59 @@ tags: [cs]
 ### IP주소란?
 
 TCP/IP프로토콜을 쓰는 장비들을 구분해주기 위해 만들어낸 주소 ➡️ 장비마다 IP주소는 모두 **다르다.** <br>
-IP주소는 **이진수 32자리**로 되어 있다. <br>
+
+## ✅ IPv4, IPv6
+
+#### ✔️ IPv4
+
+IP주소는 **이진수 32자리**로 되어 있다.(IPv4) <br>
 그래서 IP주소의 개수는? 2의 32제곱 <br>
 이진수 8자리 **(옥텟, Octet)** 마다 점을 찍는다. <br>
 근데 이진수 32자리수로 하면 사람이 알아보기 너무 힘드니까 이진수를 십진수로 바꿔서 쓴다. <br>
+
+- 32비트 2진수
+- 2진수 32자리
+- 예시: `11000001 00100000 11011000 00001001`
+- 십진수로 나타내면 예시: `193.32.216.9`
+
+#### ✔️ IPv6
+
+- 128비트 2진수
+- 16비트 단위로 끊어서 쓴다.
+- 예시: `2004:2ba8:13aa:0011:0000:0000:0000:abaa`
+
+## 📌 MTU
+
+> Maximum Transmission Unit
+> maximum data link-level frame can transmit
+
+- different link types, different MTUs
+- large IP datagram ➡️ fragmented `datagrams`
+- reassembled at final destination
+- `IP header bits` used to identify, orfer related fragments
+
+```
+If 4000bite(IP header(20 bites) + Payload(3980 bites))
+and MTU 1500
+need to make three fragments
+  - fragments are called `datagram`
+for `fragmentation` and `reassembly`, in `IP header`...
+  - ID: same ID for fragmented datagrams
+  - Flag: to identify until where is fragmented datagram, last datagram flag is 0
+  - Offset: to reassemble in order
+
+Conclusion:
+- original datagram: IP header(20 bites) + Payload(3980 bites)
+- MTU: 1500
+- 3980= 1480 + 1480 + 1020
+
+- First datagram: 20(header) + 1480(payload)
+  ID: x, fragflag: 1, offset: 0(byte)
+- Second datagram: 20(header) + 1480(payload)
+  ID: x, fragflag: 1, offset: 185(1480/8)(byte)
+- Third datagram: 20(header) + 1020(payload)
+  ID: x, fragflag: 0, offset: 370(1480+1480/8)(byte)
+```
 
 ## ✅ IP주소의 구성 `네트워크 부분` + `호스트 부분`
 
@@ -50,7 +99,7 @@ IP주소에서 네트워크 부분은 모두 같아야 하고 호스트 부분�
 라우터 없이 내부 통신 가능 ⭕️ <br>
 <br>
 
-### 🗂️ IP주소의 클래스
+## ✅ IP주소의 클래스
 
    <br>
 네트워크 부분, 호스트 부분 구분하기   <br>
@@ -97,7 +146,7 @@ IP 주소 10으로 시작 <br>
               시작110          네트워크(21)           호스트 부분(8)
 ```
 
-IP 주소 0으로 시작 <br>
+IP 주소 110으로 시작 <br>
 ✔️ 네트워크 번호 시작: 192 - 223 <br>
 ➡️ 2의 7승 + 2의 6승 + 2의 5승 -1 <br>
 ✔️ 한 네트워크 안에 들어갈 수 있는 호스트 수: 2의 8승 -2 <br>
@@ -112,11 +161,6 @@ IP 주소 0으로 시작 <br>
 ## 2️⃣ 라우터에서 IP 주소 이해하기
 
 우리가 라우터에 배정해야 하는 IP주소는 총 2개이다. <br>
-<<<<<<< Updated upstream
-=======
-<br>
-
-> > > > > > > Stashed changes
 
 - 이더넷 인퍼에이스용(내부) <br>
   - 우리가 부여받은 번호 중에 하나를 쓴다. <br>
@@ -140,7 +184,7 @@ IP 주소 0으로 시작 <br>
 내부 네트워크에 내가 찾는 IP주소를 가진 곳이 없으면, 내가 속한 네트워크 밖으로 나가 외부 네트워크를 찾아야 한다. <br>
 이 때 나가는 문이 **게이트웨이** <br>
 <br>
-**게이트웨이**: 내부 네트워크에서 없는 녀석을 찾을 때 밖으로 통해 있는 문 <br>
+게이트웨이: 내부 네트워크에서 없는 녀석을 찾을 때 밖으로 통해 있는 문 <br>
 🟰 이 문은 바로 라우터의 이더넷 인터페이스 <br>
 
 ## 4️⃣ Subnet Mask의 시작
@@ -149,7 +193,9 @@ IP 주소 0으로 시작 <br>
 
 #### 1. 브로드케스트 영역 나누기
 
-만약 IP 주소를 받은 그대로 사용한다면, 너무 큰 네크워크가 구성됨 ➡️ 브로드캐스트 도메인이 너무 크다. ➡️ 통신이 불가능 <br>
+만약 IP 주소를 받은 그대로 사용한다면, 너무 큰 네크워크가 구성됨 <br>
+➡️ 브로드캐스트 도메인이 너무 크다. <br>
+➡️ 통신이 불가능 <br>
 네크워크를 나누어 쓰기 위해 서브넷 마스크를 씌운다. <br>
 
 #### 2. IP 주소 아끼기
@@ -166,12 +212,19 @@ IP 주소 0으로 시작 <br>
 
 ## 5️⃣ 서브넷 마스크의 구성
 
+### subnet masking
+
+<img width="436" alt="Screenshot 2024-08-12 at 20 41 11" src="https://github.com/user-attachments/assets/d2f1f0e4-e116-446d-9fdf-b2617b1dc5f8">
+
+- three subnets in the picture
+- each IP adress left 24bits are the same
+- thus, subnet mask is 24
+
 ### 항상 IP 주소를 따라다니는 서브넷 마스크
 
 #### 디볼트 서브넷 마스크
 
 클래스C를 나누어 쓰지 않고 몽땅 쓰는 상황에서도 서브넷 마스크는 무조건 IP 주소를 따라다닌다. <br>
-<br>
 
 - 클래스 C의 경우 디폴트 서브넷 마스크: 255.255.255.0 <br>
 - 클래스 B의 경우 디폴트 서브넷 마스크: 255.255.0.0 <br>
