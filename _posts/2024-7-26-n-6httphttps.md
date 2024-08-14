@@ -8,50 +8,94 @@ tags: [] # TAG names should always be lowercase
 
 > Hypertext Transport Protocol
 
-## ✅ HTTP 요청, 응답 구조
+- allow data transfer in `World Wide Web`
+- transmit `HTML`, `CSS`, `JS`
+- operates on TCP(HTTP3 operates on UDP)
+- use port 80
 
-### ☑️ HTTP 요청 message와 HTTP method
+## ✅ Cient-Server Model
 
-#### ✔️ HTTP 요청 message
+- HTTP is consisted of client and server
+- when client sends `HTTP request`, server responds with `HTTP response`
 
-method ➕ URI ➕ http version<br>
-<br>
-※ URL은 URI의 일종이다<br>
+> **What are examples of HTTP client?** <br>
+>
+> > - chrome <br>
+> > - Internet explorer <br>
+> > - Firefox <br>
 
-#### ✔️ HTTP method
+## ☑️ HTTP message
 
-<img width="724" alt="Screenshot 2024-08-03 at 10 17 19" src="https://github.com/user-attachments/assets/51d678f1-9060-4b5f-a51b-d8ad6e586784">
+> **Two types of HTTP messages**
+>
+> > - request <br>
+> > - response <br>
 
-- GET
-- HEAD
-  - simmilar to get
-  - request for document ❌
-  - request for information of document ⭕️
-  - body: empty
-  - only header information
-- POST
-- PUT
-  - update resource
-- PATCH
-  - to update, but update part of resource
-- DELETE
-- CONNECT
-  - client and server connection
-- OPTIONS
-- TRACE
-
-#### ✔️ 주요 Header
+✔️ **주요 Header** <br>
 
 - Host: 요청하는 서버 주소 & 포트 domain, port, IP address
 - Accept: 원하는 데이터 형식
 - Connetion: 커넥션 유지 여부(연결성을 유지할 것인가? 선택할 수 있음)
 - Content-type: 요청 데이터 포맷
 
-#### ✔️ 응답 Message
+✔️ **응답 Message** <br>
 
 - 응답 코드, 응답 메세지: 숫자에 따라 결과 보여줌
 - Body: 응답 데이터
 - Content-type: 응답 데이터 포맷
+
+## ☑️ ✔️ HTTP request method
+
+<img width="724" alt="Screenshot 2024-08-03 at 10 17 19" src="https://github.com/user-attachments/assets/51d678f1-9060-4b5f-a51b-d8ad6e586784">
+
+method ➕ URI ➕ http version<br>
+💡 URL은 URI의 일종이다<br>
+
+- **GET**
+- **HEAD**
+  - simmilar to get
+  - request for document ❌
+  - request for header(information of document) ⭕️
+  - body: empty
+  - only header information
+- **POST**
+- **PUT**
+  - update resource
+- **PATCH**
+  - to update, but update _part_ of resource
+- **DELETE**
+- **CONNECT**
+  - client and server connection
+- **OPTIONS**
+- **TRACE**
+
+## ☑️ HTTP response status code
+
+💡 <https://soheeparklee.github.io/posts/n-httpstatuscode/>
+
+## ✅ Connectionless
+
+> connectionles: once request and response is over, terminate connection <br>
+
+- 👍🏻 Server does not have to keep connection with several clients
+- 👎🏻 Server has to make new connections all the time, overhead ⬆️
+
+- Non-persistent connection
+  - Once TCP connection, one request and one response
+  - over head for client and server
+- persistent connection
+  - Once TCP connection, can send several requests and responses
+  - Keep connection even after response from server
+  - terminate connection after certain time
+  - default from HTTP/1.1
+
+## ✅ Stateless
+
+> HTTP is a stateless protocol <br>
+> HTTP server does not remember the client request <br>
+> thus, HTTP server cannot distinguish the client. <br>
+
+- If there is need to remember the client, need to use `cookie` or `session`
 
 ## ✅ HTTPS
 
