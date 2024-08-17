@@ -30,6 +30,8 @@ tags: [cs, network, supercoding] # TAG names should always be lowercase
 
 ### 4️⃣ Application Layer
 
+> 사용자에게 네트워크 애플리케이션 제공 <br> > <br>
+
 > shield upper layer from the complexities of data <br>
 > HTTP, HTTPS, NTP(Network Time Protocol, synchrnoize clock on computer) <br>
 
@@ -38,6 +40,8 @@ tags: [cs, network, supercoding] # TAG names should always be lowercase
 - Encapsulation
 
 ### 3️⃣ Transport Layer(TCP/UDP)
+
+> 프로세스 간 데이터 전송 <br>
 
 **주요 프로토콜** <br>
 ✔️ TCP<br>
@@ -53,15 +57,20 @@ tags: [cs, network, supercoding] # TAG names should always be lowercase
 
 ### 2️⃣ Internet Layer
 
+> 호스트 간 통신 경로 확보 <br>
+
 ✔️ IP version <br>
 ✔️ NCP(IP이전에 사용하던 주소) <br>
 
+- connect two hosts
 - Routing of data packets between devices
 
 - 네트워크 주소 기반 데이터 전송<br>
 - IP version에 대한 정보 저장<br>
 
 ### 1️⃣ Link Layer
+
+> 데이터를 물리적 전송 매체를 통해 전송 <br>
 
 ✔️ 와이파이<br>
 ✔️ 전선<br>
