@@ -4,12 +4,17 @@ categories: [Computer Science, DataStructure]
 tags: [] # TAG names should always be lowercase
 ---
 
+<img width="323" alt="Screenshot 2024-08-18 at 22 03 08" src="https://github.com/user-attachments/assets/f190fa28-d3dc-4190-b411-95cc8f464720">
+
 ## ✅ Linked List
 
-> linked list element is a seperate object <br>
-> it is **not** stored in continuous fashion <br>
-> connected with pointers <br>
-> pointer(data part) ➕ address(address part) <br>
+> linear data structure
+> data ➕ pointer/reference(address part) <br>
+> connected with pointers/references <br>
+
+-linked list element is a seperate object <br>
+
+- it is **not** stored in continuous fashion <br>
 
 ## ✅ Usage
 

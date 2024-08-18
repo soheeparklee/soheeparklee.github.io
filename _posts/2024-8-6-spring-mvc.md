@@ -71,7 +71,8 @@ tags: [] # TAG names should always be lowercase
 
 ## ✔️ Dispatcher Servlet
 
-- manage all request
+- manage all request from HTTP protocol
+- considered to be front controller
 - centralized management of all requests through servelt container with http
 
 ## ✔️ Handler Mapping
@@ -88,3 +89,23 @@ tags: [] # TAG names should always be lowercase
 ## ✔️ View Resolver
 
 - decides `view` of controller result
+
+## ✅ Filter
+
+> java class that is executed by Servlet container
+> check each incoming HTTP request and HTTP response
+
+- associated with Servlet API
+
+## ✅ HandlerIntercepter
+
+- unique to spring
+- operate after filter
+- appropriate for pre-processing duties
+  - authorization checks
+
+### Filter 🆚 HandlerIntercepter
+
+- filter 🆚 handler interceptor: difference in **when** it is operated
+- but both **before** request going into controller
+- both operate in **Dispatcher Servlet**
