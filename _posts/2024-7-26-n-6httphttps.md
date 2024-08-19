@@ -11,11 +11,16 @@ tags: [] # TAG names should always be lowercase
 - allow data transfer in `World Wide Web`
 - transmit `HTML`, `CSS`, `JS`
 - operates on TCP(HTTP3 operates on UDP)
-- use port 80
+- use port `80`
+
+> **What are the two types of HTTP messages?**
+>
+> > - request <br>
+> > - response <br>
 
 ## ✅ Cient-Server Model
 
-- HTTP is consisted of client and server
+- HTTP is consisted of `client` and `server`
 - when client sends `HTTP request`, server responds with `HTTP response`
 
 > **What are examples of HTTP client?** <br>
@@ -24,32 +29,13 @@ tags: [] # TAG names should always be lowercase
 > > - Internet explorer <br>
 > > - Firefox <br>
 
-## ☑️ HTTP message
-
-> **Two types of HTTP messages**
->
-> > - request <br>
-> > - response <br>
-
-✔️ **주요 Header** <br>
-
-- Host: 요청하는 서버 주소 & 포트 domain, port, IP address
-- Accept: 원하는 데이터 형식
-- Connetion: 커넥션 유지 여부(연결성을 유지할 것인가? 선택할 수 있음)
-- Content-type: 요청 데이터 포맷
-
-✔️ **응답 Message** <br>
-
-- 응답 코드, 응답 메세지: 숫자에 따라 결과 보여줌
-- Body: 응답 데이터
-- Content-type: 응답 데이터 포맷
-
-## ☑️ ✔️ HTTP request method
+## 📌 HTTP Request(Method)
 
 <img width="724" alt="Screenshot 2024-08-03 at 10 17 19" src="https://github.com/user-attachments/assets/51d678f1-9060-4b5f-a51b-d8ad6e586784">
 
-method ➕ URI ➕ http version<br>
-💡 URL은 URI의 일종이다<br>
+- HTTP supports requests that is called HTTP methods
+- method ➕ URI ➕ http version<br>
+-
 
 - **GET**
 - **HEAD**
@@ -69,9 +55,49 @@ method ➕ URI ➕ http version<br>
 - **OPTIONS**
 - **TRACE**
 
-## ☑️ HTTP response status code
+### ☑️ HTTP request message format
+
+<img width="723" alt="Screenshot 2024-08-19 at 23 54 09" src="https://github.com/user-attachments/assets/f96abe37-da66-4415-9be9-bf3f02e734e7">
+
+- ASCII(human readable)
+- first line is request line
+
+- `request line`: HTTP version, HTTP method
+- `Host`
+- `User-Agent`
+- `Accept-Language`
+- `Accept-Encoding`
+- `Accept-Charset`
+- `Conection`
+- `Keep-Alive`
+
+## 📌 HTTP response(Status code)
+
+- Status code
 
 💡 <https://soheeparklee.github.io/posts/n-httpstatuscode/>
+
+### ☑️ HTTP response message format
+
+- `Status Line`
+- `Date`
+- `Server`
+- `Last-Modified`
+- `Content-Length`
+- `Content-Type`
+
+✔️ **주요 Header** <br>
+
+- Host: 요청하는 서버 주소 & 포트 domain, port, IP address
+- Accept: 원하는 데이터 형식
+- Connetion: 커넥션 유지 여부(연결성을 유지할 것인가? 선택할 수 있음)
+- Content-type: 요청 데이터 포맷
+
+✔️ **응답 Message** <br>
+
+- 응답 코드, 응답 메세지: 숫자에 따라 결과 보여줌
+- Body: 응답 데이터
+- Content-type: 응답 데이터 포맷
 
 ## ✅ Connectionless
 
