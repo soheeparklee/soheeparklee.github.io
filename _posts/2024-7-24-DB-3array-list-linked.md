@@ -16,11 +16,13 @@ tags: [] # TAG names should always be lowercase
 
 #### Array List(Array)
 
+<img width="587" alt="Screenshot 2024-08-20 at 01 17 55" src="https://github.com/user-attachments/assets/70b98259-5222-498f-a670-142a88eef033">
+
 - use dynamic array to store data
 - 👍🏻 **dynamic**
 - 👍🏻 has list, can access directly
 - 👍🏻 fast in searching data
-- 👍🏻 insertion, deletion slow
+- insertion, deletion slow
 
 > **Why slow in insertion, deletion?** <br>
 >
@@ -28,6 +30,8 @@ tags: [] # TAG names should always be lowercase
 > > thus, insertion and deletion slower than array <br>
 
 #### Linked List(Node)
+
+<img width="560" alt="Screenshot 2024-08-20 at 01 19 07" src="https://github.com/user-attachments/assets/8d532bbe-ef59-494f-aeaf-913caec5f4d8">
 
 - use doubly linked list to store data
 - 👍🏻 dynamic: do not need to fix size
