@@ -37,7 +37,7 @@ HTTP header을 보면 cache 사용했는지 알 수 있음 <br>
 
 ## ⭐️ Cache Validation(HTTP cache)
 
-> cache가 Valid 한 상태인지 파악해야 한다.<br> > <br>
+> cache가 Valid 한 상태인지 파악해야 한다.<br> =
 > ❓ HTTP Cache사용하는데 DB내용이 바뀌면?<br>
 > HTTP 쇼핑몰 홈페이지에서는 item이 2만원인 줄 알았는데, DB에서 아이템 가격을 3만원으로 바꿔버림!<br>
 

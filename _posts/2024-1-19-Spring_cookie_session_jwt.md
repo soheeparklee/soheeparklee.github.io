@@ -65,10 +65,28 @@ public class SessionTokenSampleController {
     }
 ```
 
+## Cookie 🆚 Session
+
+#### Cookie
+
+- stored at: client memory/harddisk
+- format: text
+- expire: set when saving cookie(default: when broswer ends)
+- resoruce: use client resource
+- size: 20 per domain, 4KB per cookie
+
+#### Session
+
+- stored at: server memory
+- format: object
+- expire: when client logs out, expires when there is no response
+- resoruce: use server resource
+- size: unlimited
+
 ## ✅ JWT 토큰
 
 > cookie에 비해 client에 더 치중되어 있는 방식 <br>
-> 정보가 토큰에 저장되어 있기 떄문에 서버를 rerun해도 정보가 남아있다! <br> > <br>
+> 정보가 토큰에 저장되어 있기 떄문에 서버를 rerun해도 정보가 남아있다! <br>
 
 1️⃣ 클라이언트가 로그인을 한다. <br>
 2️⃣ JWT는 클라이언트에게 **토큰**을 준다. <br>
@@ -144,24 +162,6 @@ public class SessionTokenSampleController {
     }
 }
 ```
-
-## Cookie 🆚 Session
-
-#### Cookie
-
-- stored at: client memory/harddisk
-- format: text
-- expire: set when saving cookie(default: when broswer ends)
-- resoruce: use client resource
-- size: 20 per domain, 4KB per cookie
-
-#### Session
-
-- stored at: server memory
-- format: object
-- expire: when client logs out, expires when there is no response
-- resoruce: use server resource
-- size: unlimited
 
 ## Cookie 🆚 JWT
 
