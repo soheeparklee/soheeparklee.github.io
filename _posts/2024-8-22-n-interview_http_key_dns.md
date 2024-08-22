@@ -7,10 +7,24 @@ tags: [interview] # TAG names should always be lowercase
 <details>
 <summary> 📌 Cases where digital signature is used? </summary>
 
-- HTTPS authentication
-- DKIM(Domain Keys Identified Mail)
-- code signing
+- HTTPS authentication <br>
+- DKIM(Domain Keys Identified Mail): <br>
+  - Add digital signature to email header <br>
+  - can verify sender of the email <br>
+- code signing <br>
 </details>
+
+<br>
+<br>
+
+<details>
+<summary>What is HTTP?</summary>
+
+- Hypertext Transfer Protocol <br>
+
+</details>
+
+<br>
 
 <details>
 <summary>What is HTTP?</summary>
@@ -19,20 +33,13 @@ tags: [interview] # TAG names should always be lowercase
 
 </details>
 
+<br>
+
 <details>
-<summary>What is **HTTP**?</summary>
+<summary> What is HTTP?</summary>
 
 - Hypertext Transfer Protocol
 
 </details>
 
-<details>
-<summary> ## What is HTTP?</summary>
-
-- Hypertext Transfer Protocol
-
-## HTTP
-
-can I do **this**?
-
-</details>
+<br>
