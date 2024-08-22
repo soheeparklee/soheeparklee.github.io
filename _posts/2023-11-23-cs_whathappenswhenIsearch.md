@@ -32,6 +32,8 @@ DNS서버 안에 도메인과 IP가 매핑이 되어있는데 <br>
 우리가 요청하면 도메인에 연결된 IP를 가져와 접속하게 된다. <br>
 PC에 등록되어 있는 서버의 DNS주소에 접속해서 DNS 사용하여 IP주소를 확인한다. <br>
 
+<https://soheeparklee.github.io/posts/n-dns/>
+
 ### 5. Get MAC address associated with IP adress with ARP
 
 > ARP: Adress Resolution Protocol

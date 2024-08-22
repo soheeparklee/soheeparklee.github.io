@@ -4,7 +4,7 @@ categories: [Computer Science, Network]
 tags: [] # TAG names should always be lowercase
 ---
 
-[8. Cryptographic Solutions.pdf](https://github.com/user-attachments/files/16688547/8.Cryptographic.Solutions.pdf)
+<img width="1414" alt="Screenshot 2024-08-21 at 22 09 59" src="https://github.com/user-attachments/assets/5759f76f-9b60-443a-958d-b5c041b4e21c">
 
 ## ✅ Symmetric key algorithm
 

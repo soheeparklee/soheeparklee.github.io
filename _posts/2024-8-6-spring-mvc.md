@@ -4,6 +4,13 @@ categories: [JAVA, Spring]
 tags: [] # TAG names should always be lowercase
 ---
 
+## ✅ **MVC**
+
+`Model / View / Controller`
+
+- 소프트웨어 설계 패턴 중 하나
+- 앱을 `모델`, `사용자 인터페이스`, `비즈니스 로직`으로 구분하여 개발
+
 ## ✅ MVC Design Pattern
 
 <img width="639" alt="Screenshot 2024-08-10 at 12 57 00" src="https://github.com/user-attachments/assets/9b6fd781-10f8-42dd-9b74-6e7e012e403e">

@@ -26,12 +26,34 @@ tags: [] # TAG names should always be lowercase
 - share other areas with process
 - when one process is created, one thread is also created
 
+- 👎🏻 when thread is created, use memory, CPU
+- 👎🏻 if there is too much thread, `synchronization`, `resource sharing` problem might happen
+
 ![Screenshot 2024-07-25 at 11 30 17](https://github.com/user-attachments/assets/d8edfbe9-69a3-4be7-adc3-8452410f2561)
 
 ## Process 🆚 Thread
 
+- both are `units of work` on a computer
 - process: has own address space, resources, independent
 - thread: shares address space, resources with other threads
+  - operates within process
+
+## ☑️ Processing
+
+- when lots of memory, resources are needed
+- able the use to memory space and resource to be seperated
+
+## ☑️ Threading
+
+- when there is a lot of work
+- parallel threading
+- able work to be done in order
+
+## ☑️ Thrashing
+
+- when there is less SWAP space
+- occurs when there is frequent page pansion
+- CPU usage ⬆️
 
 ## ✅ Multi Process
 
@@ -55,16 +77,28 @@ tags: [] # TAG names should always be lowercase
 
 > multiple thread is made for increading computing speed of the system
 
-👍🏻 shares address space, resources(unlike process) thus can save time, resource <br>
-👎🏻 security <br>
-if one thread breaks data space, other threads will be affected(since they share memory) <br>
-➡️ could be prevented by **Critical Section** method <br>
+- 👍🏻 shares address space, resources(unlike process) thus can save time, resource <br>
+- 👎🏻 security <br>
+- if one thread breaks data space, other threads will be affected(since they share memory) <br>
+  ➡️ could be prevented by **Critical Section** method <br>
 
 ## ⭐️ Critical section
 
 > when one thread is chaning the value of shared data, <br>
 > prevents from other thread accessing the data <br>
 > only one thread at a time <br>
+
+## ⚠️ Synchronization
+
+Synchronization <https://soheeparklee.github.io/posts/JAVA_multiThread/#-server-multithread> <br>
+
+## 📌 Semaphore, Mutex, Spinlock
+
+Semaphore, Mutex, Spinlock <https://soheeparklee.github.io/posts/OS-11semapore/> <br>
+
+## 📌 Deadlock
+
+Deadlock <https://soheeparklee.github.io/posts/OS-9deadlock/> <br>
 
 ## 💡 Reference
 
