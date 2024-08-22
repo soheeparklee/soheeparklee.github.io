@@ -5,26 +5,20 @@ tags: [interview] # TAG names should always be lowercase
 ---
 
 <details>
-<summary> <h1>📌 Cases where digital signature is used?</h1> </summary>
+<summary> 📌 Cases where digital signature is used? </summary>
 
 - HTTPS authentication <br>
 - <strong>DKIM</strong>(Domain Keys Identified Mail): <br>
-  - Add digital signature to email header <br>
-  - can verify sender of the email <br>
+  &emsp; - Add digital signature to email header <br>
+  &emsp; - can verify sender of the email <br>
 - code signing <br>
+
 </details>
 
 <br>
-<br>
 
 <details>
-<summary><h2>What is HTTP?</h2></summary>
-
-<ul>
-  <li>Coffee</li>
-  <li>Tea</li>
-  <li>Milk</li>
-</ul>
+<summary>What is HTTP?</summary>
 
 <a href="https://www.google.com">This is a google</a>
 
@@ -33,13 +27,7 @@ tags: [interview] # TAG names should always be lowercase
 <br>
 
 <details>
-<summary><h3>What is HTTP?</h3></summary>
-
-<ol>
-  <li>Coffee</li>
-  <li>Tea</li>
-  <li>Milk</li>
-</ol>
+<summary>What is HTTP?</summary>
 
 </details>
 
@@ -48,18 +36,7 @@ tags: [interview] # TAG names should always be lowercase
 ---
 
 <details>
-<summary> <h4>What is HTTP?</h4></summary>
-
-<ul>
-  <li>Coffee</li>
-  <li>Tea
-    <ul>
-      <li>Black tea</li>
-      <li>Green tea</li>
-    </ul>
-  </li>
-  <li>Milk</li>
-</ul>
+<summary> What is HTTP?</summary>
 
 </details>
 
