@@ -34,8 +34,7 @@ tags: [] # TAG names should always be lowercase
 <img width="724" alt="Screenshot 2024-08-03 at 10 17 19" src="https://github.com/user-attachments/assets/51d678f1-9060-4b5f-a51b-d8ad6e586784">
 
 - HTTP supports requests that is called HTTP methods
-- method ➕ URI ➕ http version<br>
--
+- method ➕ URI ➕ http version
 
 - **GET**
 - **HEAD**
@@ -149,6 +148,43 @@ Server: Apache
 (body)
 ```
 
+## ✅ Connectionless
+
+> HTTP client and server makes TCP connection <br>
+> connectionless: once request and response is over, terminate connection <br>
+
+- 👍🏻 Server does not have to keep connection with several clients
+- 👎🏻 Server has to make new connections all the time, overhead ⬆️
+
+- HTTP 1.0 adds `KeepAlive header` to persist HTTP connection
+
+### ☑️ Non-persistent connection **(HTTP/1.0)**
+
+- Once TCP connection, one request and one response
+- for new request, need new connection
+- overhead for client and server
+
+### ☑️ persistent connection **(HTTP/1.1)**
+
+- Once TCP connection, can send **several** requests and responses
+- Keep connection even after response from server
+- terminate connection after certain time
+- default from HTTP/1.1
+- 👎🏻 need to keep connection even when there is no request, response
+- 👎🏻 DDoS attack
+
+## 💡 HTTP Pipelining
+
+> feature of HTTP/1.1 <br>
+> allow HTTP **requests** to be sent over a **single** TCP connection <br>
+> without **waiting** for corresponding response <br>
+
+<img width="296" alt="Screenshot 2024-08-20 at 14 49 19" src="https://github.com/user-attachments/assets/173b6365-1698-40d0-b3f5-a1127bbd05a6">
+
+- 👍🏻 network latency ⬇️, as do not need to wait for resposne
+- 👎🏻 Head of line blocking: last response will be delayed
+- HTTP pipelining was replaced by **Multiplexing** in HTTP/2
+
 ## ✅ Evolution of HTTP
 
 ### ☑️ HTTP/1.0
@@ -189,43 +225,6 @@ Server: Apache
 - built in TLS: data encryption
 - multiplexing
 - server push
-
-## 💡 HTTP Pipelining
-
-> feature of HTTP/1.1 <br>
-> allow HTTP **requests** to be sent over a **single** TCP connection <br>
-> without **waiting** for corresponding response <br>
-
-<img width="296" alt="Screenshot 2024-08-20 at 14 49 19" src="https://github.com/user-attachments/assets/173b6365-1698-40d0-b3f5-a1127bbd05a6">
-
-- 👍🏻 network latency ⬇️, as do not need to wait for resposne
-- 👎🏻 Head of line blocking: last response will be delayed
-- HTTP pipelining was replaced by **Multiplexing** in HTTP/2
-
-## ✅ Connectionless
-
-> HTTP client and server makes TCP connection <br>
-> connectionless: once request and response is over, terminate connection <br>
-
-- 👍🏻 Server does not have to keep connection with several clients
-- 👎🏻 Server has to make new connections all the time, overhead ⬆️
-
-- HTTP 1.0 adds `KeepAlive header` to persist HTTP connection
-
-### ☑️ Non-persistent connection **(HTTP/1.0)**
-
-- Once TCP connection, one request and one response
-- for new request, need new connection
-- overhead for client and server
-
-### ☑️ persistent connection **(HTTP/1.1)**
-
-- Once TCP connection, can send **several** requests and responses
-- Keep connection even after response from server
-- terminate connection after certain time
-- default from HTTP/1.1
-- 👎🏻 need to keep connection even when there is no request, response
-- 👎🏻 DDoS attack
 
 ## ✅ Stateless
 
