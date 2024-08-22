@@ -6,7 +6,10 @@ tags: [] # TAG names should always be lowercase
 
 ## ✅ Blocking/Non Blocking
 
-> ⭐️ control <br> > _calling_ method **hands control over** to _called_ method <br> > **제어권을** 넘겨주는가? <br>
+> ⭐️ control <br>
+
+- calling method **hands control over** to _called_ method
+- **제어권을** 넘겨주는가? <br>
 
 **Blocking** <br>
 

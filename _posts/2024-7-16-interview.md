@@ -4,15 +4,6 @@ categories: [Recruit, personal_log]
 tags: []
 ---
 
-<details>
-<summary>Click to toggle contents of `code`</summary>
-
-```
-CODE!
-```
-
-</details>
-
 ```T
 🟠 purpose
 🟡 roles of the technology

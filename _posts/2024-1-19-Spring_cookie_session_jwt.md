@@ -17,13 +17,19 @@ tags: [cookie, session, jwt] # TAG names should always be lowercase
 - Session: server가 정보 가지고 있음<br>
 - JWT 토큰: client가 정보 가지고 있음<br>
 
-## ✅ Cookie & Session
+## ✅ Cookie
 
-> 브라우저에 저장되는 작은 테스트 조각(정보) <br>
-> (클라이언트가 어떤 상품을 보고 있는지, 어떤 상품을 장바구니에 넣었는지, 다크모드로 보고있는지 등등...) <br>
-> 보안이 중요한 비밀번호같은 정보는 Cookie에 저장하지 않는다. ❌ <br>
-> key, value로 저장된다. <br>
-> 정보가 Cookie에 저장되어 있으면 서버를 rerun하면 모든 정보가 사라진다. <br>
+- 브라우저에 저장되는 작은 테스트 조각(정보)
+- (클라이언트가 어떤 상품을 보고 있는지, 어떤 상품을 장바구니에 넣었는지, 다크모드로 보고있는지 등등...)
+- 보안이 중요한 비밀번호같은 정보는 Cookie에 저장하지 않는다. ❌
+- key, value로 저장된다.
+- 정보가 Cookie에 저장되어 있으면 서버를 rerun하면 모든 정보가 사라진다.
+
+## ✅ Session
+
+- 👎🏻 session is saved on **server's DB or memory**, taking up lot of space
+- 👎🏻 might result in server DB, memory overhead
+- 👎🏻 session makes server scalability difficult
 
 ```java
 @RestController
@@ -83,55 +89,130 @@ public class SessionTokenSampleController {
 - resoruce: use server resource
 - size: unlimited
 
-## ✅ JWT 토큰
+## ✅ Token
 
-> cookie에 비해 client에 더 치중되어 있는 방식 <br>
+- stateless
+- server does not remember like session
+- server issue token to client
+- client shows this token when **requesting** to server
+
 > 정보가 토큰에 저장되어 있기 떄문에 서버를 rerun해도 정보가 남아있다! <br>
 
 1️⃣ 클라이언트가 로그인을 한다. <br>
-2️⃣ JWT는 클라이언트에게 **토큰**을 준다. <br>
+2️⃣ 서버는 클라이언트에게 **토큰**을 준다. <br>
 3️⃣ 토큰 안에는 **암호화된 정보**가 가득하다. <br>
-4️⃣ 클라이언트는 이 토큰을 들고 있다가 새로운 요청을 보낼 때 토큰도 보여준다. <br>
-5️⃣ JWT는 토큰을 생성하고 검증하여 클라이언트에게 응답을 준다. <br>
+4️⃣ 클라이언트는 이 토큰을 들고 있다가 **새로운 요청을 보낼 때** 토큰도 보여준다. <br>
+5️⃣ 서버는 토큰을 검증하여 클라이언트에게 응답을 준다. <br>
 
-### ☑️ JWT
+> **What is inside Token?** <br>
+>
+> > - digital signature made by server with server's private key <br>
+> > - server can verify token's digital signature with public key <br>
 
-> Json Web Token
+> **What is the benefits of using token?**
+>
+> > - 👍🏻 server overhead problem solved(problem of session) <br>
+> > - 👍🏻 can scale up server(problem of session) <br>
+> > - 👍🏻 can be used as OAUTH <br>
+> > - 👍🏻 encrypted, thus prevent forging(problem of cookie) <br>
 
-- Json format을 사용한다.
+## ✅ JWT
+
+> Json Web Token <br>
+> used for authorization <br>
+
+- `Json format`을 사용한다. `(문자열로 구성)`
+- location: can be placed in URL, HTTP header(`Json format`)
 - 사용자 속성을 정의하는 claim 기반의 Web Token
 - 정보를 알아볼 수 없게 encoding되어 있다.
 - 알려지면 안되는 비밀번호같은 중요한 정보 가득❗️
+
+1️⃣ 서버는 클라이언트를 authenticate <br>
+2️⃣ 인증이 되면, 서버는 `비밀키`, `공개키`를 생성하고 <br>
+− `헤더와 페이로드` `인코딩`한다음<br>
+− 둘을 합친 `문자열`을 `비밀키`로 서명하여<br>
+− `JWT`생성<br>
+− 그리고 클라이언트에게 보낸다<br>
+3️⃣ 클라이언트는 다음 요청시 이 `JWT`를 서버에게 보낸다 <br>
+4️⃣ 서버는 `JWT`의 서명을 `공개키`로 검증 <br>
 
 ### ☑️ Access Token, Refresh Token
 
 - access token: to authenticate
 - refresh token: when access token expires, to issue access key
 
-### ✔️ JWT 구성
+### ☑️ JWT 구성
 
-> Header ➕ Payload ➕ Signature
+> Header.Payload.Signature <br>
+> devided with `.` <br>
 
-- Header:
-  - 알고리즘 alg: hash 알고리즘
-  - 타입 typ: token type `"JWT"`
+✔️ **Header** <br>
+
+> how to `verify` JWT
+
+- `타입 typ`: token type `"JWT"`
+- `알고리즘 alg`: hash 알고리즘
+- `키 kid`: key used for digital signature `private/public key`
 
 ```
 {
 	"typ" : "JWT",
 	"alg" : "HS256"
+    "kid" : "Key ID"
 }
 ```
 
-- Payload: 정보(sub, name, phoneNum, gender...)
-  - JSON 형태: Claim으로 구성
-    - registered claim: hold information about token
-    - 공개 Claim
-    - 비공개 Claim
-- Signature: 암호화된 정보를 풀 수 있는 코드
-  - 유효성 검증
-  - 암호화 코드
-  - 알고리즘 해쉬값
+- 위와 같은 `JSON객체`를 `문자열`로 만들고 `UTF-8`과 `Base64 URL-Safe`로 `인코딩`하면 아래와 같이 `header` 생성
+
+```
+Base64URLSafe(UTF-8('{"alg": "ES256","kid": "Key ID"}')) -> eyJhbGciOiJFUzI1NiIsImtpZCI6IktleSBJRCJ9
+```
+
+✔️ **Payload** <br>
+
+> JWT 정보(sub, name, phoneNum, gender...) <br>
+
+- JSON 형태: `Claim`으로 구성
+- Payload 속성들을 `Claim set`이라고 부름
+- registered claim: hold information about token
+- 공개 Claim
+- 비공개 Claim
+
+> What is inside payload? <br>
+>
+> > - Client information <br>
+> > - token created date, time <br>
+
+```
+{
+    "iss": "sohee.park",
+    "iat": "1586364327"
+}
+```
+
+- 위와 같은 `JSON객체`를 `문자열`로 만들고 `UTF-8`과 `Base64 URL-Safe`로 `인코딩`하면 아래와 같이 `payload` 생성
+
+```
+Base64URLSafe('{"iss": "sohee.park","iat": "1586364327"}') -> eyJpYXQiOjE1ODYzNjQzMjcsImlzcyI6ImppbmhvLnNoaW4ifQ
+```
+
+✔️ **Signature** <br>
+
+> 암호화된 정보를 풀 수 있는 코드 <br>
+> signed `header+payload` <br>
+
+- use `header's alg(algorithm)` and `private key` to create signature and encode
+- 유효성 검증
+- 암호화 코드
+- 알고리즘 해쉬값
+
+```
+Base64URLSafe(Sign('ES256', '${PRIVATE_KEY}',
+'eyJhbGciOiJFUzI1NiIsImtpZCI6IktleSBJRCJ9.eyJpYXQiOjE1ODYzNjQzMjcsImlzcyI6ImppbmhvLnNoaW4ifQ'))) ->
+MEQCIBSOVBBsCeZ_8vHulOvspJVFU3GADhyCHyzMiBFVyS3qAiB7Tm_MEXi2kLusOBpanIrcs2NVq24uuVDgH71M_fIQGg
+```
+
+### ⭐️ JWT JAVA
 
 ```java
 @RestController
@@ -163,7 +244,7 @@ public class SessionTokenSampleController {
 }
 ```
 
-## Cookie 🆚 JWT
+## Session 🆚 JWT
 
 #### JWT
 
@@ -173,7 +254,7 @@ public class SessionTokenSampleController {
 👎🏻 JWT 크기 증가: 너무너무 길어지면 JWT 자체가 길어져 속도가 느려진다.<br>
 💡 언제 적합할까 ❓ 다양한 플랫폼을 운영하는 서비스(모바일, PC)<br>
 
-#### Cookie
+#### Session
 
 👍🏻 보안이 유리하다: 서버에 저장되어 있으니 서버만 잘 지키면 정보 안전<br>
 👍🏻 유저 관리 용이: 서버와 연결 끊어버리기만 하면 끝<br>

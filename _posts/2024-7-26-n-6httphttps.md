@@ -121,7 +121,7 @@ tags: [] # TAG names should always be lowercase
 
 - 본문
 
-## 💡 HTTP `keep-alive`
+## 💡 HTTP keep-alive
 
 > feature of HTTP/1.1 <br>
 > header to set a **timeout**, **maximum of requests** <br>
@@ -129,14 +129,14 @@ tags: [] # TAG names should always be lowercase
 - only used in HTTP1
 - header `connection`, `keep-alive` is prohibited on HTTP2, HTTP3
 
-- timeout: time in seconds that the host will **allow idle connection open** before it is closed
+- **timeout**: time in seconds that the host will **allow idle connection open** before it is closed
   - idle connection: no data sent/recieved by host
   - 주고받는 데이터 없어도 `timeout초` 동안은 connection 열어두기
   - connection이 최소한 얼마나 열려있을 것인가
-- max: number of requests that can be sent on this connection before closing
+- **max**: number of requests that can be sent on this connection before closing
   - used to limit pipelining
 
-```HTTP
+```
 HTTP/1.1 200 OK
 Connection: Keep-Alive
 Content-Encoding: gzip
@@ -235,7 +235,7 @@ Server: Apache
 
 - If there is need to remember the client, need to use `cookie` or `session`
 
-Cookie, Session, JWT <https://soheeparklee.github.io/posts/Spring_cookie_session_jwt/>
+💡 Cookie, Session, JWT <https://soheeparklee.github.io/posts/Spring_cookie_session_jwt/>
 
 ## ✅ HTTPS
 
@@ -253,3 +253,70 @@ Cookie, Session, JWT <https://soheeparklee.github.io/posts/Spring_cookie_session
 7. Client creates `pre-master-key(symmetric key)` and encrypts using A's public key. <br>
 8. A recieves the `pre-master-key(symmetric key)` and decrypts using his private key. <br>
 9. For connection, A and client uses the `pre-master-key(symmetric key)` <br>
+
+## ✅ Symmetric Key, Assymetric Key, Digital Signature
+
+💡 <https://soheeparklee.github.io/posts/n-symmetric_assymetric/>
+
+## ✅ SSL/TLS
+
+💡 <https://soheeparklee.github.io/posts/n-7tlshandshake/>
+
+## ✅ HTTPS scheme
+
+- HTTP scheme: `http://`
+- HTTPs scheme: `https://`
+- when client such as web browser is requested for a web resource, check `URL scheme`
+- If `URL scheme` has `http`, port number `80` and request for `HTTP`
+- If `URL scheme` has `https`, port number `443` and request for `HTTPS`, does SSL handshake
+
+## ✅ How HTTPS works
+
+<img width="536" alt="Screenshot 2024-08-21 at 18 20 38" src="https://github.com/user-attachments/assets/9a6fd500-aaa7-4538-9623-720f1aaafc35">
+
+#### ☑️ HTTP
+
+- client opens `TCP` connection with web server `port 80`
+- send HTTP request
+- reviece HTTP response from server
+- close TCP connection
+
+#### ☑️ HTTPS
+
+- client opens `TCP` connection with web server `port 443`
+- SSL handshake: encrypt algorithm, `pre master secret`
+- when SSL connection is complete, client send HTTP request to SSL layer
+- client HTTP request is encrypted by SSL layer before sending it to TCP layer
+
+## ✅ Digital Certificate
+
+> certificate with host information, issued by CA
+
+- During SSL handshake, client verifies server with server's certificate
+- server's certificate has `digital signature` from the `CA`
+
+- **Certificate carries information** such as
+
+  - web site name
+  - web site host name
+  - web site public key
+  - CA name
+  - CA digital signiture
+
+- **Types of digital certificate** are
+
+  - Wildcard certificate: same root
+  - SAN field: Subject Alternative Name, dont have same root
+  - Single, Double sided:
+    - single: only server has to be validated
+    - double: both server, client has to validate each other
+  - Self signed certificate
+  - Third Party certificate
+
+- Client connects to server via HTTPS
+- server sends certificate to client
+- client verifies this certificate with `digital signature by CA`
+- if CA is trusted, client will have `CA public key`
+- verify the `certificate`(more precisely, `digital signature` on certificate) using `CA's public key`
+
+<img width="1445" alt="Screenshot 2024-08-21 at 19 41 35" src="https://github.com/user-attachments/assets/ffcb4204-10b8-4446-b7e3-d29e17e7b1b7">
