@@ -289,6 +289,8 @@ Server: Apache
 
 ## ✅ Digital Certificate
 
+<img width="1445" alt="Screenshot 2024-08-21 at 19 41 35" src="https://github.com/user-attachments/assets/ffcb4204-10b8-4446-b7e3-d29e17e7b1b7">
+
 > certificate with host information, issued by CA
 
 - During SSL handshake, client verifies server with server's certificate
@@ -317,5 +319,3 @@ Server: Apache
 - client verifies this certificate with `digital signature by CA`
 - if CA is trusted, client will have `CA public key`
 - verify the `certificate`(more precisely, `digital signature` on certificate) using `CA's public key`
-
-<img width="1445" alt="Screenshot 2024-08-21 at 19 41 35" src="https://github.com/user-attachments/assets/ffcb4204-10b8-4446-b7e3-d29e17e7b1b7">
