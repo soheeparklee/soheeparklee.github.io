@@ -6,17 +6,17 @@ tags: [backend] # TAG names should always be lowercase
 
 ## 👿 컴퓨터의 고질적인 문제
 
-1. 저장공간 문제
+(1) **저장공간 문제**
 
 - 언제: RAM, DISK 용량 부족
 - 문제: 성능 저하, 데이터 유실
 
-2. 오버 클락
+(2) **오버 클락**
 
 - 언제: CPU, RAM 과다 사용(여러개의 무거운 프로그램을 한 번에 돌리면)
 - 문제: 수명 단축, 시스템 충돌
 
-3. 오버 히팅
+(3) **오버 히팅**
 
 - 언제: CPU, RAM
 - 문제: CPU에 열을 발생시킴, 쿨링장치 필요
@@ -35,7 +35,7 @@ tags: [backend] # TAG names should always be lowercase
                    💾  HardWare(CPU, RAM, Input, Output)
 ```
 
-### ☑️ Functions of operating system
+## ☑️ Functions of operating system
 
 #### ✔️ 시스템 자원관리
 
@@ -85,8 +85,12 @@ tags: [backend] # TAG names should always be lowercase
 
 #### 💡 dispatch
 
-When the CPU becomes available (either because the current process has finished its execution or due to a time-sharing mechanism), the operating system's scheduler selects a process from the ready queue to be dispatched or assigned to the CPU.  
-Dispatching is a crucial aspect of multitasking operating systems, where multiple processes share the CPU in a time-sliced manner. The goal is to efficiently utilize the CPU and provide the illusion of concurrent execution to users and applications.
+When the CPU becomes available <br>
+(either because the current process has finished its execution or due to a time-sharing mechanism), <br>
+the operating system's scheduler **selects a process** from the ready queue **to be dispatched or assigned to the CPU**. <br>
+Dispatching is a crucial aspect of multitasking operating systems, <br>
+where multiple processes share the CPU in a time-sliced manner. <br>
+The goal is to efficiently utilize the CPU and provide the illusion of concurrent execution to users and applications. <br>
 
 ## ✅ thread
 
@@ -115,13 +119,22 @@ JAVA의 `public static void main`이 바로 main thread
 🤔 요리사가 요리 여러가지 하는 상황을 가정해 보자. <br>
 <br>
 
-- CPU가 일을 못한다는 것: **순차적 프로그램** 여러 프로그램을 한꺼번에 실행하려고 하는데, 첫 번쨰 프로그램이 끝날 때까지 나머지는 기다려야...느리고 한꺼번에 여러개를 하려면 속터짐!! <br>
-- CPU가 일을 효율적으로 한다는 것: **병행 처리** 여러 프로그램의 과정을 돌며 조금씩 처리, 이것 하다가 조금 짬내서 다른 것도 하고~ <br>
+- CPU가 일을 못한다는 것:
+  **순차적 프로그램** <br>
+  여러 프로그램을 한꺼번에 실행하려고 하는데, <br>
+  첫 번쨰 프로그램이 끝날 때까지 나머지는 기다려야...<br>
+  느리고 한꺼번에 여러개를 하려면 속터짐!! <br>
+
+- CPU가 일을 효율적으로 한다는 것:
+  **병행 처리** <br>
+  여러 프로그램의 과정을 돌며 조금씩 처리, <br>
+  이것 하다가 조금 짬내서 다른 것도 하고~ <br>
 
 ### 👍🏻 병행 처리 concurrency
 
 **Context Switching:** 여러 가지 context를 조금 조금씩 수행한다. <br>
-CPU가 여러 가지 일을 조금조금씩 처리 ➡️ 보는 사람 입장에서는 동시에 여러 일을 처리한다고 생각 <br>
+CPU가 여러 가지 일을 조금조금씩 처리 <br>
+➡️ 보는 사람 입장에서는 동시에 여러 일을 처리한다고 생각 <br>
 프로그램들이 "준비" 상태였다가 CPU을 점유해 "실행" 0.1초 동안 한 후 다음 프로그램에게 CPU주고... <br>
 크롬 0.1초 열고, 그 다음 게임 0.5초 실행, 그 다음 음악 앱 0.1초 실행...이런식으로 반복해 비슷한 시간대에 크롬도 열고, 음악앱도 열고 게임도 실행하고. <br>
 
@@ -129,6 +142,8 @@ CPU가 여러 가지 일을 조금조금씩 처리 ➡️ 보는 사람 입장�
 
 돈을 더 써서 요리사를 더 많이 고용 ➡️ CPU 코어가 여러개 ➡️ multicore <br>
 각 코어가 역할을 하나씩 맡아서 담당. <br>
+
+Parallel Programming <https://soheeparklee.github.io/posts/OS-parallel/> <br>
 
 ### 💡 스레드를 이용한 멀티 프로세싱 + 비 순차적 방식
 

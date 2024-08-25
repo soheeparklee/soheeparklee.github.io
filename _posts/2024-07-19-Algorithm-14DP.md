@@ -6,7 +6,7 @@ tags: []
 
 ## ✅ Dynamic Programming
 
-> solve problem by breaking down into simplwe subproblems <br>
+> solve problem by breaking down into simple **subproblems** <br>
 > solve subproblem once, store the result, avoid redundand computation <br>
 > find a subproblem with **repeated caculation** <br>
 
@@ -24,23 +24,33 @@ tags: []
   - Divide and Conquer: divide problem into smaller problem
   - DP: find a **repeated caculation(반복되는 연산)** to solve
 
-## ⭐️ Keyword
+## ✅ Conditions for DP
 
-Memoization
+**1. Overlapping subproblem**
+
+- require repeated caculation
+
+**2. Optimal Substructure 최적 부분구조**
+
+- can retrieve answer for new sub problem from another subproblem
+- 새로운 부분 문제의 정답을 다른 부분 문제의 정답으로부터 구할 수 있다.
+
+## ⭐️ Memoization
 
 > store(memoize) results to avoid recomputation <br>
 > 한 번 계산한 문제는 다시 계산하지 않도록 저장 <br>
 
-## ✅ Code
+## 👍🏻 Pros
+
+- memoization
+- avoid recomputing
+- break down into smaller problems
+
+## ✅ Usage
 
 - Shortest path in graph
 - fibonacci
   <https://soheeparklee.github.io/posts/CT-1-57/>
-
-## 👍🏻 Pros
-
-- avoid recomputing
-- break down into smaller problems
 
 ## 💡 Reference
 

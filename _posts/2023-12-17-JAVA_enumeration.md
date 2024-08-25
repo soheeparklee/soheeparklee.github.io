@@ -6,9 +6,12 @@ tags: [enumeration] # TAG names should always be lowercase
 
 ## ✅ 현실세계 열거타입
 
-열거형 타입: 특정 타입이 몇 가지 한정된 값을 가지는 타입
-선택지가 선택된 타입
-예시:
+**열거형 타입**: 특정 타입이 몇 가지 한정된 값을 가지는 타입 <br>
+선택지가 선택된 타입 <br>
+
+<br>
+<br>
+예시: <br>
 
 - 게절(봄, 여름, 가을 겨울)
 - 3단계 평가(잘 함/ 보통/ 노력 요함)
@@ -16,18 +19,19 @@ tags: [enumeration] # TAG names should always be lowercase
 
 ## ✅ Enum
 
-자바 Enum이 바로 열거형 타입
-Enum의 각각 요소는 독립된 **특수한 틀래스**로 구분되는 **인스턴스**이다.
+자바 Enum이 바로 열거형 타입 <br>
+Enum의 각각 요소는 독립된 **특수한 틀래스**로 구분되는 **인스턴스**이다. <br>
+
 <img width="805" alt="스크린샷 2023-12-25 오후 7 24 32" src="https://github.com/soheeparklee/portfolioWebsite_dreamcoding/assets/97790983/4743d09d-30b6-44dd-8cf5-e9da212b0398">
 
-### 사용 이유
+### 👍🏻 사용 이유
 
-1. 가독성 향상
-2. 허용 가능한 값 제한 ➡️ 유형 안정성 제공
-   불 꺼짐/ 불 켜짐 같은 특정 개수의 변수만 설정 가능하도록 하고 싶음
-   근데 `String light= "ON"` 이런식으로 정의했다가 on 이렇게 대문자 빼먹으면 어떡함 ㅠㅠ
-3. final 필드 추가
-4. switch와 함께 쓰면 매우 강력
+1. 가독성 향상 <br>
+2. 허용 가능한 값 제한 ➡️ 유형 안정성 제공 <br>
+   불 꺼짐/ 불 켜짐 같은 특정 개수의 변수만 설정 가능하도록 하고 싶음 <br>
+   근데 `String light= "ON"` 이런식으로 정의했다가 on 이렇게 대문자 빼먹으면 어떡함 ㅠㅠ <br>
+3. final 필드 추가 <br>
+4. switch와 함께 쓰면 매우 강력 <br>
 
 ### ✔️ 작성 방법
 

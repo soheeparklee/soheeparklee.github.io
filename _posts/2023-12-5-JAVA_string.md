@@ -4,10 +4,22 @@ categories: [JAVA, JAVA_Basics]
 tags: [char, string, ofvalue, parse, literal, instance, format] # TAG names should always be lowercase
 ---
 
+## ✅ Char
+
+- one letter
+- 16-bit Unicode
+- can show letter, number, symbol
+- 단일값
+
 ## ✅ String
 
-데이터 타입에 지정된 메모리 값이 매번 달라서 정할수가 없음. 그래서 특별한 type <br>
-class instance와 같은 reference type <br>
+- several letters
+- several `chars`
+- can be caculated
+- 문자들의 연속적인 값
+
+데이터 타입에 지정된 메모리 값이 매번 달라서 정할수가 없음 ➡️ 그래서 특별한 type <br>
+class instance와 같은 `reference type` <br>
 string의 각 문자도 unicode을 적용받는다. <br>
 
 ## 💡 `.equals` method
@@ -20,9 +32,10 @@ instance가 같은지 비교하려면 `.equals`method를 사용해야 한다. <b
 
 `char`은 문자, `String`은 문자열이다. <br>
 
-#### **차이점 1**
+#### **1. 차이점 1**
 
-`char`은 `int`로의 형 변환이 가능하다. 모든 알파벳에는 UNICODE 번호가 있기 때문이다. <br>
+`char`은 `int`로의 형 변환이 가능하다. <br>
+모든 알파벳에는 UNICODE 번호가 있기 때문이다. <br>
 **encoding:** 문자 ➡️ 유니코드 값(숫자) <br>
 **decoding:** 유니코드 값(숫자) ➡️ 문자 <br>
 
@@ -53,14 +66,15 @@ char은 숫자이기도 하니 서로 비교도 가능.
         boolean whoIsBigger= 'A' > 'a'; // 65> 90 false
 ```
 
-#### **차이점 2**
+#### **2. 차이점 2**
 
-`char`은 empty불가능 `String`은 가능 <br>
+`char`은 empty불가능 <br>
+`String`은 가능 <br>
 
 ## 🆚 literal and instance
 
-**literal**: Constant Pool에 저장
-**instance**: Heap에 저장
+**literal**: Constant Pool에 저장 <br>
+**instance**: Heap에 저장 <br>
 
 literal로 생성 시, String Constant Pool이라는 곳에 저장된다. <br>
 그리고 같은 문자열이 적혀있으면 같은 곳을 가리키고 있다. <br>
@@ -85,7 +99,8 @@ String str2= new String("Cat") //instsance, Heap에 저장
 반면, instance로 생성되면 새로 생성되어 각각 자리를 차지한다.    <br>
 reference type이기 때문이다.     <br>
 그래서 같은 내용이 적혀있다고 하더라도 주소가 다르기 때문에 다르다고 판단된다.    <br>
-만약 `hl3 == hl4`한다면, 같은 주소를 가지게 되는 것이다. 그래서 hl3이 바뀌면 hl4도 바뀌는 등 서로 영향을 주고받는다.    <br>
+만약 `hl3 == hl4`한다면, 같은 주소를 가지게 되는 것이다. <br>
+그래서 hl3이 바뀌면 hl4도 바뀌는 등 서로 영향을 주고받는다.    <br>
 
 ```java
 //instance로 생성
@@ -127,7 +142,7 @@ String stringStick = "Hello" + 123 + 3.14f + true + 'A';
 
 ## ✅ 형 변환
 
-### 💡 other data type ➡️ `String.valueOf()`
+#### 💡 other data type ➡️ `String.valueOf()`
 
 ```java
 String str1 = String.valueOf(true); //true를 String으로
@@ -138,7 +153,7 @@ String str2 = String.valueOf(123); //123을 String으로
 String str6 = true + "";
 ```
 
-### 💡 string ➡️ other data type `parse`
+#### 💡 string ➡️ other data type `parse`
 
 그런데 만약 변환하려는 string값이 그 데이타 타입에 걸맞지 않는다면, 불가능하다. <br>
 
@@ -155,7 +170,7 @@ boolean bool1 = Boolean.parseBoolean("true");
 boolean bool2 = Boolean.parseBoolean("하나둘셋"); //불가능, 하나둘셋은 참도 거짓도 아니니까
 ```
 
-## 💡 formatting
+## ✅ formatting
 
 #### ⭐️ formatted
 
@@ -194,7 +209,7 @@ result= String.format("문자 %s, %S", str1, str1);
 System.out.println(result); //result: 문자 Happy, HAPPY
 ```
 
-##### ⭐️ 다양한 formatting
+#### ⭐️ 다양한 formatting
 
 ```java
 String[] strFormats = {
@@ -227,7 +242,7 @@ result= String.format("숫자 %d", int1);
 System.out.println(result); //result: 숫자 123
 ```
 
-##### ⭐️ %05d: 5자리 숫자로, 부족하면 0넣어서 채워
+#### ⭐️ %05d: 5자리 숫자로, 부족하면 0넣어서 채워
 
 ```java
 int int1= 123;
@@ -274,7 +289,7 @@ float myfloat= 123.456789f;
         System.out.println(result); //result: 실수 123.456787, 123.5, 123.46, 123.457
 ```
 
-##### ⭐️ 다양한 formatting
+#### ⭐️ 다양한 formatting
 
 ```java
 String[] fltFormats = {

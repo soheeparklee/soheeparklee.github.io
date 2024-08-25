@@ -1,7 +1,7 @@
 ---
-title: Interview practice_drugstore
+title: Interview_drugstore
 categories: [Recruit, personal_log]
-tags: []
+tags: [interview]
 ---
 
 ```T
