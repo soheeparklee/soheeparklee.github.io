@@ -4,6 +4,8 @@ categories: [Computer Science, Network]
 tags: [network]
 ---
 
+<img width="1117" alt="Screenshot 2024-08-26 at 15 22 48" src="https://github.com/user-attachments/assets/967734d6-63b9-4203-b6cb-e300704ecfa7">
+
 ### 1. Input URL, press Enter
 
 ### 2. Web browser translates URL

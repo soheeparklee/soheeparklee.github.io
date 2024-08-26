@@ -16,22 +16,30 @@ orgin구분은 **브라우저**가 한다. 서버가 하는 일이 아님 ❌<br
 
 ## ⭐️ Proxy란?
 
-> 클라이언트와 서버 사이의 중계 대리점
-> CORS 에러가 뜰 때, 모든 출처를 허용한 **서버 대리점**을 통해 요청하면 에러가 안 날 것이다.
-> 프록시 서버를 구축하면 CORS 에러를 해결 할 수 있을 것이다.
+> 클라이언트와 서버 사이의 중계 대리점 <br>
+> CORS 에러가 뜰 때, 모든 출처를 허용한 **서버 대리점**을 통해 요청하면 에러가 안 날 것이다.<br>
+> 프록시 서버를 구축하면 CORS 에러를 해결 할 수 있을 것이다. <br>
 
 ## ✅ SOP
 
 > SOP: Same Orgin Policy <br>
 > 웹 브라우저의 동일 출처 정책 <br>
-> "동일한 출처에서만 리소스를 공유할 수 있다."
 > prevent web pages from making **requests** to a different domain than the one that **served** the web page. <br>
+>
+> javascript 엔진 표준 스펙에 존재하는 보안 규칙 <br>
+> 동일한 출처에서만 리소스를 공유할 수 있다. <br>
 
 - 같은 출처 정책 <br>
+- **같은 서버**에서만 리소스를 불러올 수 있다.
 - 사이트 A를 가지고 있으면 사이트 A에서만 가지고 온다. <br>
 - 앞서 언급된 보안 위험 등으로 브라우저는 기본적으로 SOP를 따른다. <br>
-- 만약 이런 제약이 없다면, XXS, CSRF 등의 방법을 이용해 개인 정보를 가로챌 수 있다.
-- 외부에서 얻는 데이터는 항상 같은 Orgin이어야 인식한다. <br>
+- 외부에서 얻는 데이터는 항상 **같은 Orgin**이어야 인식한다. <br>
+
+- SOP는 브라우저가 어떤 사이트에 접속중일 때 스크립트 내 `<script></script>`에서 초기화되는 다른 도메인에 대한 HTTP 요청 제한
+- 예를 들어 네이버에 접속중인데 `<script></script>`코드에 구글로 보내는 HTTP요청이 있다면, SOP에 대의 제한
+
+- 👍🏻 만약 이런 제약이 없다면, XXS, CSRF 등의 방법을 이용해 개인 정보를 가로챌 수 있다.
+- 👍🏻 특정 정보를 다른 도메인으로 탈취하는 것을 막는다.
 
 ## 🛑 XXS
 
@@ -39,9 +47,20 @@ orgin구분은 **브라우저**가 한다. 서버가 하는 일이 아님 ❌<br
 > 사용자가 **웹 페이지에 악성 스크립트를 삽입**하여 의도치 않은 명령을 하거나 해킹에 사용하는 것 <br>
 > 상대방의 쿠키를 가져오기 <br>
 
-삽입한 악성 스크립트로 쿠키를 빼가거나, 내가 원하지 않는 사이트로 접속하도록 만들 수 있음. <br>
+- 삽입한 악성 스크립트로 쿠키를 빼가거나, 내가 원하지 않는 사이트로 접속하도록 만들 수 있음. <br>
 
-### 💡 XXS 해결 방법
+1. Attacker identify input vulnerability in trusted website <br>
+2. Attacker craft URL to perform code injection <br>
+3. Client clicks on link <br>
+4. Trusted site return page with malicious code <br>
+5. Malicious code run on client browser <br>
+   (Browser see this link is from trusted site, so trust) <br>
+
+- Non-persistent XXS: server side XXS
+- Persistent XXS: server side XXS
+- DOM XXS: client side XXS
+
+### 💊 XXS 해결 방법
 
 - input validation
 - 웹 페이지 작성 시 스크립트를 등록할 수 없도록 설정하기 <br>
@@ -51,21 +70,24 @@ orgin구분은 **브라우저**가 한다. 서버가 하는 일이 아님 ❌<br
 ## 🛑 CSRF
 
 > Cross Site Request Forgery <br>
-> 사용자의 **섹션이나 토큰을 이용해 다른 명령**을 실행하도록 한다. <br>
+> 사용자의 **섹션이나 토큰을 이용해 다른 명령(request)**을 실행하도록 한다. <br>
 > 상대방 쿠키는 상대방이 그대로 가지고 있고, 상대방에게 원하지 않은 request요청을 하도록 만들기 <br>
+
+> tries to target victim to unintentionally carry out an action on website
 
 - 예를 들어 피싱 메일 <br>
 - 메일을 받아서 클릭하면(get요청) 비밀번호가 바뀌어버리는 일이 발생할 수 있음. <br>
+- 이미 로그인한 유저 사이트 가서 아이디/비번 바꾸기
 
-### 💡 CSRF 해결 방법
+### 💊 CSRF 해결 방법
 
-- HTTP Referer: Host이름 비교하고 확인하기 <br>
+- **HTTP Refere**r: Host이름 비교하고 확인하기 <br>
   백엔드에서 Referer 검증을 통해 승인된 도메인으로 요청시에만 처리
   해커(메일에서)가 비밀번호 바꾸려고 하는 것인지, 호스트가 비밀번호 바꾸려고 하는 것인지 확인 <br>
-- CAPTCHA로 사람 실행 확인 <br>
+- **CAPTCHA**로 사람 실행 확인 <br>
   ~신호등이 나와 있는 사진 클릭하세요 <br>
   사람인지 확인하기 <br>
-- Security Token
+- **Security Token**
 
 ## 🛑 SQL injection
 
@@ -75,23 +97,43 @@ orgin구분은 **브라우저**가 한다. 서버가 하는 일이 아님 ❌<br
 그러면 로그인하면 테이블이 변경되거나 삭제되어 버릴 수 있음! <br>
 또는 사용자의 권한을 바꿔버린다던가... <br>
 
-### 💡 SQL injection 웹 공격 방지 방법
+### 💊 SQL injection 웹 공격 방지 방법
 
 - 여러 IF문으로 검증 로직 추가 <br>
   아이디는 DB SQL문을 사용할 수 없도록 <br>
 - JPA를 사용하면 위협이 많이 낮아짐 <br>
+- Input Validation
+- Sanitize user data
+- Web Application Firewall
+
+## 🛑 XML injection
+
+> insert malicious XML <br>
+> XML: Extensible Markup Language <br>
+>
+> > - used for data exchange in web applications <br>
+
+- XML bomb(billion laughs attack): consume memory, crash the host
+- XXE(XML Extended Entity): read local resources
+
+### 💊 XML injection 웹 공격 방지 방법
+
+- input validation
+- sanitize user data
 
 ## ✅ CORS
 
 > Cross Orgin Resource Sharing <br>
 > 그래서 원래 Orgin이 다르면 그 Resource는 들고 올 수 없는데, 이 제한을 풀어주는 것 <br>
 
-왜냐하면 프론트 서버와 백엔드 서버는 다를 수밖에 없는데, <br>
-같은 서버에서 온 리소스만 받을 수 있다면 프론트와 백엔드는 소통할 수가 없음! <br>
-프론트와 백엔드를 항상 서로 배포해야함... <br>
-따라서 경우에 따라 SOP를 풀어주는 것도 필요하다. <br>
+- 현재 접속한 도메인 말고 다른 도메인에 접근할 수 있도록 해주기
 
-## 💡 CORS 해결 방법
+- 왜냐하면 프론트 서버와 백엔드 서버는 다를 수밖에 없는데, <br>
+- **같은 서버**에서 온 리소스만 받을 수 있다면 프론트와 백엔드는 소통할 수가 없음! <br>
+- 프론트와 백엔드를 항상 서로 배포해야함... <br>
+- 따라서 경우에 따라 SOP를 풀어주는 것도 필요하다. <br>
+
+## 💊 CORS 해결 방법
 
 #### 1. 브라우저 플러그인<br>
 
@@ -104,7 +146,8 @@ orgin구분은 **브라우저**가 한다. 서버가 하는 일이 아님 ❌<br
 
 #### 3. 백엔드 전역 보안 설정
 
-서버에서 `Access-Control-Allow-Orgin` 헤더에 허용할 출처를 기재해서 클라이언트에 응답하면 된다.
+- 백엔드 단에서 `응답 HTTP 헤더`에 `Access-Control-Allow-Orgin`를 추가
+- 서버에서 `Access-Control-Allow-Orgin` 헤더에 허용할 출처를 기재해서 클라이언트에 응답하면 된다.
 
 ##### ✔️ 강의 code
 
@@ -161,28 +204,6 @@ orgin구분은 **브라우저**가 한다. 서버가 하는 일이 아님 ❌<br
 ##### ✔️ moviereservationbe code
 
 ```java
-package com.github.moviereservationbe.config.security;
-
-import com.github.moviereservationbe.service.exceptions.CustomAccessDeniedHandler;
-import com.github.moviereservationbe.service.exceptions.CustomAuthenticationEntryPoint;
-import com.github.moviereservationbe.web.filters.JwtAuthenticationFilter;
-import lombok.RequiredArgsConstructor;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
-import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import org.springframework.web.cors.CorsConfiguration;
-import org.springframework.web.cors.CorsConfigurationSource;
-import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
-
-import java.util.Arrays;
-import java.util.List;
-
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
@@ -197,7 +218,7 @@ public class SecurityConfig {
                 .formLogin(f->f.disable())
                 .rememberMe(r->r.disable())
                 .sessionManagement(s->s.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                .cors(c-> c.configurationSource(corsConfig()))
+                .cors(c-> c.configurationSource(corsConfig())) // ⭐️ CORS
                 .authorizeRequests(a->
                         a
                                 .requestMatchers("/resources/static/**", "/auth/sign-up", "/auth/login", "/auth/logout").permitAll()
@@ -212,6 +233,7 @@ public class SecurityConfig {
         return http.build();
     }
 
+    // ⭐️ CORS
     private CorsConfigurationSource corsConfig() {
         CorsConfiguration corsConfiguration = new CorsConfiguration();
         corsConfiguration.setAllowCredentials(false);
