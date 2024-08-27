@@ -4,7 +4,7 @@ categories: [Computer Science, Network]
 tags: [interview] # TAG names should always be lowercase
 ---
 
-## 📌 SOP, CORS
+## 📌 SOP, CORS, XXS, CSRF, SQL injection, XML injection
 
 <details>
 <summary>✅ What is origin?</summary>
@@ -39,6 +39,7 @@ tags: [interview] # TAG names should always be lowercase
 <details>
 <summary>✅ What is CSRF? And how can we prevent? </summary>
 - Cross Site Rquest Forgery
+- 
 </details>
 
 <br>
@@ -48,6 +49,20 @@ tags: [interview] # TAG names should always be lowercase
 - insert malicious SQL code
 - Use URL parameter, form fields, cookies, POST data, HTTP headers
 - like delete user, more amount to pay...
+
+💊 input validation
+💊 sanitiza user data
+💊 WAF
+
+</details>
+
+<br>
+
+<details>
+<summary>✅ What XML injection? And how can we prevent? </summary>
+- insert malicious code to trusted site
+- XML bomb
+- XXE
 
 💊 input validation
 💊 sanitiza user data
@@ -81,12 +96,58 @@ tags: [interview] # TAG names should always be lowercase
 
 <br>
 
+## 📌 REST, SOAP
+
 <details>
 <summary>✅ </summary>
 
 </details>
 
 <br>
+
+<details>
+<summary>✅ </summary>
+
+</details>
+
+<br>
+
+<details>
+<summary>✅ </summary>
+
+</details>
+
+<br>
+
+<details>
+<summary>✅ </summary>
+
+</details>
+
+<br>
+
+<details>
+<summary>✅ </summary>
+
+</details>
+
+<br>
+
+<details>
+<summary>✅ </summary>
+
+</details>
+
+<br>
+
+<details>
+<summary>✅ </summary>
+
+</details>
+
+<br>
+
+## 📌 Web Cache
 
 <details>
 <summary>✅ </summary>

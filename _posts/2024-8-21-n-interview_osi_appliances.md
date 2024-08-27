@@ -1,5 +1,5 @@
 ---
-title: Interview 2_Network/Packetization/Protocol/OSI/TCPIP/Network Appliances
+title: Interview_Network/Packetization/Protocol/OSI/TCPIP/Network Appliances
 categories: [Computer Science, Network]
 tags: [interview] # TAG names should always be lowercase
 ---

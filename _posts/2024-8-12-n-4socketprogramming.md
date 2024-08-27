@@ -20,3 +20,8 @@ tags: [] # TAG names should always be lowercase
 - 주소창에 `Domain`을 치면
 - DNS가 `Domain`을 `IP address`로 바꿔준다
 - 그리고 port번호는 HTTP의 경우 80, HTTPS는 443
+
+## ✅ Socket API
+
+> TCP 기반 소켓 <br>
+> UDP 기반 소켓 <br>

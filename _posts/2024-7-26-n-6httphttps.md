@@ -182,7 +182,7 @@ Server: Apache
 <img width="296" alt="Screenshot 2024-08-20 at 14 49 19" src="https://github.com/user-attachments/assets/173b6365-1698-40d0-b3f5-a1127bbd05a6">
 
 - 👍🏻 network latency ⬇️, as do not need to wait for resposne
-- 👎🏻 Head of line blocking: last response will be delayed
+- 👎🏻 **Head of line blocking**: last response will be delayed
 - HTTP pipelining was replaced by **Multiplexing** in HTTP/2
 
 ## ✅ Evolution of HTTP
@@ -197,7 +197,7 @@ Server: Apache
 ### ☑️ HTTP/1.1
 
 - **persistent** connection
-- **pipelining**
+- **pipelining**: 👎🏻 head of line blocking
 
 <img width="585" alt="Screenshot 2024-08-20 at 15 12 15" src="https://github.com/user-attachments/assets/1b219801-03b7-40e0-884f-b32ae8d2be1e">
 

@@ -267,6 +267,7 @@ ASIC: Application Specific Integrated Circuit 미리 칩에 구워서 하드웨�
 ### 스패닝 트리 알고리즘:
 
 루핑 막는 알고리즘 <br>
+MST <https://soheeparklee.github.io/posts/DS-mst/> <br>
 
 ## ☑️ Fault Tolerant, Load Balancing
 

@@ -1,12 +1,12 @@
 ---
-title: Interview Study Week 2_HTTP/HTTPS/Digital Signature/TLS/SSL/DNS/JWT
+title: Interview_HTTP/HTTPS/Digital Signature/TLS/SSL/DNS/JWT
 categories: [Computer Science, Network]
 tags: [interview] # TAG names should always be lowercase
 ---
 
 ## 📌 HTTP
 
-<a href="https://soheeparklee.github.io/posts/n-6httphttps/"> 🔗 HTTP, HTTPS</a>
+HTTP, HTTPS 정리글 <https://soheeparklee.github.io/posts/n-6httphttps/> <br>
 
 <details>
 <summary>✅ What is HTTP?</summary>
@@ -19,7 +19,6 @@ Hypertext Transport Protocol <br>
   <br>
 - HTTP request: method <br>
 - HTTP response: status code <br>
-  <br>
 - message: status line + header + body <br>
   <br>
 - connectionless <br>
@@ -56,9 +55,27 @@ Hypertext Transport Protocol <br>
 <br>
 
 <details>
+<summary>✅ What is inside status line?</summary>
+- HTTP version, HTTP method(request) or status code(response) <br> 
+</details>
+
+<br>
+
+<details>
 <summary>✅ What is the difference between GET and POST?</summary>
-- GET: fetch data from server  <br>
-- POST: send client data to server  <br>
+- GET: fetch data from server, data on HTTP packet header  <br>
+- POST: send client data to server, data on HTTP packet body  <br>
+</details>
+
+<br>
+
+<details>
+<summary>✅ Why is data on header for GET and body for POST?</summary>
+- visibility: data in header(GET) are part of URL parameters <br>
+- security: header visible in URL param ➡️ less secure, shows <br>
+- length limitation: URL has limit <br>
+- GET on header will be cacheable <br>
+- data in POST will be secure in body <br>
 </details>
 
 <br>
@@ -97,7 +114,7 @@ Hypertext Transport Protocol <br>
 <summary>✅ What is HTTP header?</summary>
 - Part of HTTP request, response message with information about the message <br>
 - Request: host, user-agent, keep-alive, accept language, charset, encoding that browser can accept  <br>
-- Response: date, server, last modified, content-type <br>
+- Response: date, server, last modified, content-type, cache-control <br>
 </details>
 
 <br>
@@ -117,7 +134,7 @@ Hypertext Transport Protocol <br>
 
 <details>
 <summary>✅ What is pipelining? Benefits and disadvantages?</summary>
-- From HTTP/1 .1  <br>
+- From HTTP/1.1  <br>
 - persistent connection  <br>
 - do not have to wait for response, can send several request  <br>
 - however, recieve response in order (123 ➡️ 123)  <br>
@@ -279,6 +296,8 @@ Hypertext Transport Protocol <br>
 <summary>✅ What is TLS/SSL?</summary>
 - provide network transport security <br>
 - operate at session layer(layer 5) <br>
+- TLS: improved SSL <br>
+- handshake, use CA, certificate, symmetric, assymetric encryption, digital signature
 </details>
 
 <br>
@@ -345,85 +364,86 @@ https://soheeparklee.github.io/posts/n-6httphttps/
 
 <details>
 <summary>✅ What is domain name?</summary>
-- IP address but in human readable format
+- IP address in human readable format <br>
 </details>
 
 <br>
 
 <details>
 <summary>✅ What is DNS?</summary>
-- Domain Name System: domain name ➡️ IP address
-- distributed database, has hierarchy
-- application layer
-- UDP
-- port 53
+- Domain Name System: domain name ➡️ IP address <br>
+- distributed database, has hierarchy <br>
+- application layer <br>
+- UDP <br>
+- port 53 <br>
 </details>
 
 <br>
 
 <details>
 <summary>✅ What are the benefits of DNS being hierarchical, distributed?</summary>
-- manage requests more efficiently
-- more scalable
+- manage requests more efficiently <br>
+- more scalable <br>
 </details>
 
 <br>
 
 <details>
 <summary>✅ What is the benefit of one domain name being corresponded to several IP addresses?</summary>
-- can distribute the load
+- can distribute the load <br>
 </details>
 
 <br>
 
 <details>
 <summary>✅ Why does DNS operate with UDP?</summary>
-- prioritize speed over reliability
-- DNS has lots of users! lots of request
-- DNS requests are small enough to fit in UDP
+- prioritize speed over reliability <br>
+- DNS has lots of users! lots of request <br>
+- DNS requests are small enough to fit in UDP <br>
 </details>
 
 <br>
 
 <details>
 <summary>✅ How is DNS hierarchy?</summary>
-- Root DNS server
-- Top Level Domain server (.com)
-- Authoritative Domain server (google, apple)
+- Root DNS server <br>
+- Top Level Domain server (.com) <br>
+- Authoritative Domain server (google, apple) <br>
 </details>
 
 <br>
 
 <details>
 <summary>✅ What is DNS recursor? Local DNS server?</summary>
-- recursive recursor
-- server that responds wo DNS query
-- ask another DNS server for IP address
-- local DNS server
+- recursive recursor <br>
+- server that responds wo DNS query <br>
+- ask another DNS server for IP address <br>
+- local DNS server <br>
 </details>
 
 <br>
 
 <details>
 <summary>✅ Types of DNS service? </summary>
-- Recusive DNS resolver
-- Authoritative DNS server
+- Recusive DNS resolver <br>
+- Authoritative DNS server <br>
 </details>
 
 <br>
 
 <details>
 <summary>✅ Types of DNS queries? Disadvantages of recursive query?</summary>
-- Non-recursive query
-- Recursive query: 👎🏻 DNS resolver burden⬆️
-- Iterative query
+- Non-recursive query <br>
+- Recursive query: 👎🏻 DNS resolver burden ⬆️ <br>
+- Iterative query <br>
 </details>
 
 <br>
 
 <details>
 <summary>✅ What is DNS record?</summary>
-- information on database that linkes URL to IP address
+- information on database that linkes URL to IP address <br>
+- A, AAA, CNAME, TXT
 </details>
 
 <br>
@@ -439,15 +459,15 @@ frequently visited site IP address saved on device <br>
 
 <details>
 <summary>✅ How does DNS work?</summary>
-- request domain name
-- check local DNS cache
-- contact DNS resolver
-- recursive server lookup
-- query root name server
-- query TLD name server
-- query authoritative name server
-- get IP address
-- client access website
+- request domain name <br>
+- check local DNS cache <br>
+- contact DNS resolver <br>
+- recursive server lookup <br>
+- query root name server <br>
+- query TLD name server <br>
+- query authoritative name server <br>
+- get IP address <br>
+- client access website <br>
 
 </details>
 
@@ -455,15 +475,111 @@ frequently visited site IP address saved on device <br>
 
 ---
 
+## 📌 URI/URN/URL
+
 <details>
 <summary>✅ What is difference between URI, URL, URN?</summary>
-
+- URI ⊃ URL, URN <br>
+- URL = protocol + URI
 </details>
 
 <br>
 
 <details>
+<summary>✅ What are the disadvantages of URL, and how can we overcome? </summary>
+- when location of resource changes, URL will change  <br>
+- URN will remain fixed   <br>
+</details>
+
+<br>
+
+---
+
+## 📌 What happens when I type URL in web browser?
+
+<details>
 <summary>✅ What happens when I type URL in web browser?</summary>
+- type URL, enter
+- browser translate, encode URL
+- check if HTTPS is needed on HSTS list
+- check local cache for IP address
+- If cache does not have, get IP address of domain name from DNS 
+- get MAC address from IP address with ARP
+- browser initiate TCP connection
+- If HTTPS needed, make SSL/TLS handshake
+- send HTTP request to server
+- server sends response
+- browser rendering, show response to user: DOM tree
+</details>
+
+## <br>
+
+## 📌 VPN/ SSL/TLS encryption
+
+<details>
+<summary>✅ VPN and SSL/TLS both serves encryption. How are they different?</summary>
+- VPN: enables encryption between computer and private network
+(remote access to company network from home)
+- use various types of tunneling protocols
+
+- SSL/TLS: encryption between applications
+- use symmetric, assymetric encryption in SSL handshake
+</details>
+
+<br>
+
+---
+
+## 📌 Session
+
+<details>
+<summary>✅ What is session in OSI 7 Layer? and what is session to remeber the user? </summary>
+- although name session is same, they serve different functions
+
+- session in OSI 7 Layer: controls connection between two computers
+- web application session: as HTTP is statelss, use session to remember the user
+</details>
+
+<br>
+
+---
+
+## 📌 TLS
+
+<details>
+<summary>✅ On what OSI7 layer does TLS function, and why? </summary>
+- Although TLS has name transport layer, 
+- TLS is used on OSI session layer(layer 5)
+- as it's job is to encrypt session between client and server
+
+- OSI transport layer(layer 4): reliable transport of data between client and server(TCP, UDP)
+</details>
+
+<br>
+
+<details>
+<summary>✅ 23/Aug Feedback </summary>
+소희님
+9:44 ~ 9:59
+
+- 보완 질문
+
+* 대칭키 비대칭키 -> 답변을 조금 정리하면 좋을 것 같습니다!
+* 개발자로서의 단점
+
+- 좋은 점
+
+* 톤 앤 매너 100점
+* 긴장하지 않고 편안하게 말하는 점은 본 받고 싶습니다.
+* 질문에 대한 답변만 준비한 것이 아니라 체내화한 지식을 기반으로 답변하는 것 같아 매우 똑똑해보입니다.
+* 개발자가 되려는 이유 답변 구성이 좋았습니다.
+* (사고를 할 수 있는 인재라는 느낌을 받아서 채용하고 싶었습니다)
+
+- 쪼금 보완하면 좋을 점
+
+* 조금만 천천히 말씀하셔도 좋을 것 같습니다!
+* 관련 개념에 대해서 자세하게 설명해주신 점은 강의를 듣는 것처럼 정말 좋았지만
+  면접이라는 상황을 고려하면 답변을 조금 줄여도 괜찮을 것 같습니다!
 
 </details>
 

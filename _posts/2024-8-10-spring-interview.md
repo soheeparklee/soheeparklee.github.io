@@ -1,7 +1,7 @@
 ---
 title: Interview_Spring/Springboot/MVC/AOP
 categories: [JAVA, Spring]
-tags: [] # TAG names should always be lowercase
+tags: [interview] # TAG names should always be lowercase
 ---
 
 ## ✅ What is Spring?
@@ -13,7 +13,7 @@ tags: [] # TAG names should always be lowercase
 
 ## Spring 🆚 Springboot
 
-- Springboot: sub project to set up project in spring
+- Springboot: **sub project** to set up project in spring
 - built on top of the conventional spring framework
 - provides all features of spring + easier to use than spring
 - everything is auto configured!
