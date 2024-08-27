@@ -1,7 +1,7 @@
 ---
 title: Interview_Process/Thread/Deadlock/Paging/Semaphone/Mutex/Segmentation/Virtual Memory
 categories: [Computer Science, Computer Architecture/Operating System]
-tags: [] # TAG names should always be lowercase
+tags: [interview] # TAG names should always be lowercase
 ---
 
 <img width="1112" alt="Screenshot 2024-08-08 at 13 05 37" src="https://github.com/user-attachments/assets/ed32694f-f9be-436a-86bf-f6373978e11a">
@@ -23,8 +23,9 @@ tags: [] # TAG names should always be lowercase
 ## ✅ Why use multi threading instead of multi processing?
 
 > **System call** to create process and allocate resource decrease <br>
-> communication between thread is costless than communication between process(IPC) <br>
-> However, need to take **synchronization** into account for multitasking <br>
+
+- communication between thread is **costless** than communication between process(IPC) <br>
+- However, need to take **synchronization** into account for multi threading <br>
 
 ## ✅ Context Switching?
 
@@ -55,20 +56,17 @@ tags: [] # TAG names should always be lowercase
 > > When process cannot get the resource, and cannot work <br>
 > > occurs when several threads are trying to gain access to shared resource <br> <br>
 
-> Four conditions of deadlock <br>
->
-> > - **Mutual exclusion**: shared resouce requires exclusive control, inshareable <br>
-> > - **Resource holding**: thread is waiting for another resource to be released while holding onto an allocated resource <br>
-> > - **circular wait**: each process waiting for a resource held by the next process in the chain <br>
-> > - **no preemption**: thread cannot get a resource until the resource is finished by another thread <br> <br>
+**Four conditions of deadlock** <br>
+
+- **Mutual exclusion**: shared resouce requires exclusive control, inshareable <br>
+- **Resource holding**: thread is waiting for another resource to be released while holding onto an allocated resource <br>
+- **circular wait**: each process waiting for a resource held by the next process in the chain <br>
+- **no preemption**: thread cannot get a resource until the resource is finished by another thread <br> <br>
 
 > How to avoid deadlock? <br>
 >
-> > prevention: eliminate condition <br>
-> > (for no-preemtion: let go of the holding resource) <br>
-> > avoidance: run algorithm on requests to check for a safe state <br>
-> > detection <br>
-> > recovery <br>
+> > **prevention**: eliminate condition <br>
+> > (for no-preemtion: let go of the holding resource) <br> > > **avoidance**: run algorithm on requests to check for a safe state <br> > > **detection** <br> > > **recovery** <br>
 
 ## ✅ Memory Hierchy
 
@@ -81,16 +79,16 @@ tags: [] # TAG names should always be lowercase
 
 ## ✅ Memory Allocation Algorithm
 
-- First fit:
+- **First fit**:
 
   - search memory from start
   - allocate the first space that has enough storage
 
-- Next fit:
+- **Next fit**:
 
   - begin search from the last allocated place
 
-- Best fit:
+- **Best fit**:
 
   - search all the memory to find the best place to allocate
 
@@ -129,5 +127,3 @@ tags: [] # TAG names should always be lowercase
 - LRU: Least recently used 최근 가장 오랫동안 사용하지 않은 페이지
 - LFU: Least frequently used 사용 빈도 적은 페이지
 - MRU: Most recently used
-
-💡 <br>

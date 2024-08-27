@@ -1,7 +1,7 @@
 ---
 title: Interview_OSI/TCP/IP/handshake/IOCP
 categories: [Computer Science, Network]
-tags: [] # TAG names should always be lowercase
+tags: [interview] # TAG names should always be lowercase
 ---
 
 ## ✅ OSI 7 Layer
