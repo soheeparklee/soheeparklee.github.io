@@ -1,24 +1,38 @@
 ---
-title: List/ Set/ Map
+title: Collection_List/ Set/ Map
 categories: [Computer Science, DataStructure]
 tags: [] # TAG names should always be lowercase
 ---
 
+## ✅ Collection Framework
+
+> framework to save, maange data in JAVA <br>
+
+<img width="715" alt="Screenshot 2024-08-21 at 01 41 45" src="https://github.com/user-attachments/assets/346f74f8-e24c-412c-b9d8-35ce6184452c">
+
 ## ✅ List
 
+- duplicate element possible ⭕️
+- has order in data
+- insertion order ⭕️
+- store null ⭕️
 - has `index`
 - can `get()` element by `index`
 - 👍🏻 search, regularly access the element
-- duplicate element possible ⭕️
-- insertion order ⭕️
-- store null ⭕️
+
+- ArrayList
+- LinkedList
 
 ## ✅ Set
 
-- 👍🏻 build collection of distinct items
 - duplicate items impossible ❌
+- has no order in data
 - insertion order ❌
 - only one null value
+- 👍🏻 build collection of distinct items
+
+- HashSet
+- TreeSet
 
 > **When to use set, instead of list?** <br>
 >
@@ -26,7 +40,7 @@ tags: [] # TAG names should always be lowercase
 
 ## ✅ Map
 
-- key ➕ value are mapped
+- `key ➕ value` are mapped
 - hold pairs of keys and values
 - 👍🏻 store data in `key-value` form
 - duplicate `key` impossible ❌
@@ -34,6 +48,9 @@ tags: [] # TAG names should always be lowercase
 - insertion order ❌
 - allow single null key at most
 - allow null value ⭕️
+
+- HashMap
+- TreeMap
 
 ```java
         // Creating object for a Map.

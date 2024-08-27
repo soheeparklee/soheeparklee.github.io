@@ -71,6 +71,18 @@ substack:
 ⭐️ like queue FIFO, 6 is added to the end
 ```
 
+## ⭐️ Can you share stack resource to another stack?
+
+- cannot directly
+- but can **share** `data structure that can store stack`
+  - such as `array`
+- and thus, share resource
+
+## ⭐️ Homogeneity
+
+- queue and stack are consisted of same data type
+- **linear** data type, keeps **order**
+
 ## 💡 Reference
 
 <https://soheeparklee.github.io/posts/JAVA_stack_queue/> <br>

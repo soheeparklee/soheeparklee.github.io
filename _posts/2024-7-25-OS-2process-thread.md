@@ -9,6 +9,10 @@ tags: [] # TAG names should always be lowercase
 > programs that are dispatched from the ready state and are scheduled in the CPU for execution. <br>
 > 메모리 상에서 실행중인 프로그램 <br>
 
+- **system call**: to create process
+
+💡 System call <https://soheeparklee.github.io/posts/OS-5systemcall/> <br>
+
 - Code: memory(program command)
 - Data: global variables, static variables, arrays
   - reset data: saved in data
@@ -99,6 +103,12 @@ Semaphore, Mutex, Spinlock <https://soheeparklee.github.io/posts/OS-11semapore/>
 ## 📌 Deadlock
 
 Deadlock <https://soheeparklee.github.io/posts/OS-9deadlock/> <br>
+
+## ⭐️ Can the area created by a thread be accessed by other threads?
+
+- YES
+- need synchronization
+- or shared vaiable among thread
 
 ## 💡 Reference
 

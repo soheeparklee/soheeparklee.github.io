@@ -24,7 +24,8 @@ tags: [] # TAG names should always be lowercase
 - Wait(P), Signal(V) <br>
 - machine independent <br>
 - `해도 돼`, `기다려!` 시그널을 준다.
-- can be used for mutual exclusion, or counting semaphore
+- 👍🏻 can be used for mutual exclusion, or counting semaphore
+- 👎🏻 resource might be blocked for a long time
 
 - **Binary semaphore**: 0, 1
   - like mutex
@@ -57,6 +58,7 @@ unlock: annouce this process is done with Critical Section <br>
 - locking system mechanism
 - simply wait in loop until the lock is available
 - thread waits in a loop or spin until the lock is available
-- only mutual exclusion possible
+- 👍🏻 only mutual exclusion possible
+- 👍🏻 blocked only for a short period of time
 
 💡 <https://www.geeksforgeeks.org/mutex-vs-semaphore/> <br>
