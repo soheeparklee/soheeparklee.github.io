@@ -63,8 +63,10 @@ orgin구분은 **브라우저**가 한다. 서버가 하는 일이 아님 ❌<br
 ### 💊 XXS 해결 방법
 
 - input validation
+- Output encoding: encode output when inserting user input
+- CSP: Content Security Policy: restrict execution of scripts
 - 웹 페이지 작성 시 스크립트를 등록할 수 없도록 설정하기 <br>
-- 중요 cookie HTTP ONLY 및 Secure 설정 <br>
+- 중요 **cookie HTTP ONLY** 및 Secure 설정 <br>
   그래서 중요 cookie는 스크립트로도 쿠키를 빼갈 수 없도록 설정 <br>
 
 ## 🛑 CSRF
@@ -73,7 +75,7 @@ orgin구분은 **브라우저**가 한다. 서버가 하는 일이 아님 ❌<br
 > 사용자의 **섹션이나 토큰을 이용해 다른 명령(request)**을 실행하도록 한다. <br>
 > 상대방 쿠키는 상대방이 그대로 가지고 있고, 상대방에게 원하지 않은 request요청을 하도록 만들기 <br>
 
-> tries to target victim to unintentionally carry out an action on website
+> tries to target victim to unintentionally carry out an **unwanted action** on website
 
 - 예를 들어 피싱 메일 <br>
 - 메일을 받아서 클릭하면(get요청) 비밀번호가 바뀌어버리는 일이 발생할 수 있음. <br>
@@ -81,13 +83,15 @@ orgin구분은 **브라우저**가 한다. 서버가 하는 일이 아님 ❌<br
 
 ### 💊 CSRF 해결 방법
 
-- **HTTP Refere**r: Host이름 비교하고 확인하기 <br>
+- **HTTP Referer**: Host이름 비교하고 확인하기 <br>
   백엔드에서 Referer 검증을 통해 승인된 도메인으로 요청시에만 처리
   해커(메일에서)가 비밀번호 바꾸려고 하는 것인지, 호스트가 비밀번호 바꾸려고 하는 것인지 확인 <br>
 - **CAPTCHA**로 사람 실행 확인 <br>
   ~신호등이 나와 있는 사진 클릭하세요 <br>
   사람인지 확인하기 <br>
-- **Security Token**
+- **CSRF Token**: token for state-changing request
+- `Same Site cookies`: use `SameSite` attribute on cookies to prevent cookies being sent in cross origin request
+- `Double submit cookies`
 
 ## 🛑 SQL injection
 

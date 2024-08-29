@@ -177,8 +177,18 @@ Hypertext Transport Protocol <br>
 
 <br>
 
+## 📌 cookie, session, JWT
+
+<details>
+<summary>✅ why do we neeed cookie, session, JWT?</summary>
+- Bc HTTP is stateless <br>
+</details>
+
+<br>
+
 <details>
 <summary>✅ What is a cookie, session?</summary>
+<br>
 
 <strong>Cookie: </strong>
 
@@ -204,7 +214,11 @@ Hypertext Transport Protocol <br>
 <br>
 
 <details>
-<summary>✅ What is JWT?</summary>
+<summary>✅ What is token?</summary>
+- stateless, server does not remember user  <br>
+- server issue token to cient  <br>
+- client will use this token to verify himself  <br>
+<br>
 - issued by server with digital signature(with server's private key)  <br>
 - user shows this JWT everytime requesting to server  <br>
 - server verifies JWT with public key  <br>
@@ -213,10 +227,33 @@ Hypertext Transport Protocol <br>
 <br>
 
 <details>
+<summary>✅ What are the benefits of using token?</summary>
+- server burden ⬇️ <br>
+- server scalability ⬆️ <br>
+- oauth <br>
+</details>
+
+<br>
+
+<details>
+<summary>✅ What is JWT?</summary>
+- token used for authorization <br>
+- JSON, string <br>
+<br>
+
+- server authenticates client<br>
+- when authenticated, issue token with [header+payload] + digital signature<br>
+- client sends JWT every time it makes a request<br>
+- server verify token with public key <br>
+</details>
+
+<br>
+
+<details>
 <summary>✅ How is JWT structure? </summary>
 - Header.Payload.Signature  <br>
 - Header: algorithm, type, key for digital signature  <br>
-- Payload: JWT information(claim) client information, token created date...  <br>
+- Payload: JWT information(claim). client information, token created date...  <br>
 - Signature: encode [Header+Payload] and sign with private key  <br>
 </details>
 

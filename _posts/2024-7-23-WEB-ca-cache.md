@@ -1,5 +1,5 @@
 ---
-title: Cache Memory, Web Caache
+title: Cache Memory, Web Cache
 categories: [Computer Science, Computer Architecture/Operating System]
 tags: [] # TAG names should always be lowercase
 ---
@@ -102,12 +102,18 @@ tags: [] # TAG names should always be lowercase
   - if origin data is different from copy that cache has:
   - HTTP response `HTTP 200 OK`
 
+<br>
+<br>
+
 > **When to check cache validation?**
 >
 > > - HTTP lets origin server to add **expirary limit** to resources
 > > - use header such as `cache-control`, `expires`
 > > - after this expirary limit, cache has to validate itself
 > > - and if not valid, get the new altered resource with new expirary limit
+
+<br>
+<br>
 
 - `cache-control`: max age
 
