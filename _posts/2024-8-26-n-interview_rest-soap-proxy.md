@@ -52,6 +52,7 @@ tags: [interview] # TAG names should always be lowercase
 - transfer funds, change passwords, or perform other actions without the user’s consent. <br>
  <br>
 💊 CSRF token <br>
+
 💊 cookie `SameSite` only header <br>
 💊 CAPTCHA <br>
 
@@ -106,8 +107,6 @@ tags: [interview] # TAG names should always be lowercase
 </details>
 
 <br>
-
-## 📌
 
 <details>
 <summary>✅ What is proxy?</summary>
@@ -197,81 +196,150 @@ tags: [interview] # TAG names should always be lowercase
 
 <br>
 
+## 📌 Web cache
+
 <details>
-<summary>✅ </summary>
-- <br>
+<summary>✅ What is web cache? What are the benefits of using cache? </summary>
+- copied data to remember frequent request<br>
+👍🏻 reduce network bottleneck  <br>
+👍🏻 bandwidth ⬆️ <br>
 </details>
 
 <br>
 
 <details>
-<summary>✅ </summary>
-- <br>
+<summary>✅ What is cache hit, miss? </summary>
+- cache hit: find request in cache <br>
+- cache miss: do not find request in cache, need to go to original server<br>
 </details>
 
 <br>
 
 <details>
-<summary>✅ </summary>
-- <br>
+<summary>✅ What is cache revalidation?</summary>
+- check if cache data is identical to original server data<br>
 </details>
 
 <br>
 
-## 📌 Web Cache
+## 📌 Proxy server
 
 <details>
-<summary>✅ </summary>
-
-</details>
-
-<br>
-
-<details>
-<summary>✅ </summary>
-
+<summary>✅ What is proxy server?</summary>
+- intermediary between server-client <br>
+- connect application using same protocol <br>
 </details>
 
 <br>
 
 <details>
-<summary>✅ </summary>
-
+<summary>✅ Forward proxy server? </summary>
+- exit point from client to server <br>
+- outbound traffic <br>
+- protect client information <br>
 </details>
 
 <br>
 
 <details>
-<summary>✅ </summary>
-
+<summary>✅ Reserse proxy server? </summary>
+- entry point to server <br>
+- inbound traffic
+- protect server <br>
 </details>
 
 <br>
 
 <details>
-<summary>✅ </summary>
-
+<summary>✅ What are some functions of a proxy server?</summary>
+- load balancing <br>
+- security <br>
+- caching <br>
+- SSL termination <br>
+- filtering <br>
+- access control<br>
+- surrogate: reverse proxy<br>
+- contents router <br>
+- transcoder <br>
+- anoymizer <br>
 </details>
 
 <br>
 
 <details>
-<summary>✅ </summary>
-
+<summary> Proxy 🆚 Gateway </summary>
+- proxy: connect application using same protocol <br>
+- gateway: connect application using different protocol  <br>
 </details>
 
 <br>
 
 <details>
-<summary>✅ </summary>
-
+<summary> Proxy 🆚 VPN </summary>
+- proxy: handle network traffic <br>
+- VPN: encrypt transmitted data <br>
 </details>
 
 <br>
 
 <details>
-<summary>✅ </summary>
+<summary>✅ Is WAF a reverse proxy?</summary>
+- YES. intercept traffic before reaching server <br>
+</details>
 
+<br>
+
+## 📌 Load Balancing
+
+<details>
+<summary>✅ What does a level 4 load balancer do?</summary>
+- route traffic based on IPs and TCP, UDP ports <br>
+- packet level load balancing <br>
+- unable to make routing decisions based on contet, media type, localization rules <br>
+- ASIC <br>
+</details>
+
+<br>
+
+<details>
+<summary>✅ What does a level 7 load balancer do?</summary>
+- routing decisions based on IP, TCP, UDP, ports, HTTP<br>
+- makes content based routing decisions <br>
+- acts as a proxy: contain two TCP connections <br>
+   (one with client, another with server)<br>
+</details>
+
+<br>
+
+## 📌 Request timeout
+
+<details>
+<summary>✅ Why do we use timeout? </summary>
+- networks are unreliable <br>
+- set a max wait time on request <br>
+- client: how long client will wait for response <br>
+- server: how long to maintain connection <br>
+</details>
+
+<br>
+
+<details>
+<summary>✅ What is a connection timeout? </summary>
+- how long the client will wait for a connection to establish <br>
+</details>
+
+<br>
+
+<details>
+<summary>✅ What is a write timeout? </summary>
+- how long connection will wait while the client tries to send a data, like POST <br>
+</details>
+
+<br>
+
+<details>
+<summary>✅ What is a read timeout? </summary>
+- time it takes to recieve response back from the server <br>
 </details>
 
 <br>
