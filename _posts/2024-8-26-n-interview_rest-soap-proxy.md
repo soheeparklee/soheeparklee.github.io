@@ -1,5 +1,5 @@
 ---
-title: Interview_
+title: Interview_SOP/ CORS/ REST/ SOAP/ cache/ proxy/load balancing
 categories: [Computer Science, Network]
 tags: [interview] # TAG names should always be lowercase
 ---
