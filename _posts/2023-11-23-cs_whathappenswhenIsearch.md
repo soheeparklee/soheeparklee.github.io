@@ -64,8 +64,11 @@ tags: [network]
 
 ### 8. Browser sends `HTTP request` to the web server
 
-### 9. Server sends response
+- use HTTP protocol
 
+### 9. Server sends `HTTP response`
+
+- server sends HTTP response
 - response in JSON, XML, HTML
 
 ### 10. Rendering by web browser

@@ -13,11 +13,12 @@ network connection ⬆️
 - scale-up: increase capability of hardware
 - scale-out: divide work among several servers ➡️ **Load balancing**
 
-**Load Balancing**
+✔️ **Load Balancing**
 
 - locate load balancer between client and server
 - if one server is full, load the work to another server
 - solve the problem of overlaoding
+  <br>
 
 > How does a load balancer choose a server?
 >

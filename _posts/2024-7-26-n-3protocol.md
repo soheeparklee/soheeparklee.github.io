@@ -20,6 +20,8 @@ tags: [cs, network, supercoding] # TAG names should always be lowercase
 
 ## ✅ TCP/IP 프로토콜
 
+> TCP/IP 프로토콜 통신 과정에 초점을 두고 OSI 7 계층을 단순화 시킨 계층
+
 - define how data is transmitted over network
 - divide data into packets at the sender's end
 - and recombine at the reviever's end
@@ -30,7 +32,9 @@ tags: [cs, network, supercoding] # TAG names should always be lowercase
 
 ### 4️⃣ Application Layer
 
-> 사용자에게 네트워크 애플리케이션 제공 <br> > <br>
+> 사용자에게 네트워크 애플리케이션 제공 <br>
+
+<br>
 
 > shield upper layer from the complexities of data <br>
 > HTTP, HTTPS, NTP(Network Time Protocol, synchrnoize clock on computer) <br>
@@ -93,69 +97,7 @@ tags: [cs, network, supercoding] # TAG names should always be lowercase
 5. Flow control should not make **reciever buffer overloaded** <br>
 6. Reciever promotes **RWND(Recieve WiNDoW)**: how much left on reciever buffer <br>
 
-## ✅ TCP/IP Traffic control
+## 👍🏻 Benefits of TCP/IP layering
 
-> **Transmission Control Protocol** <br>
->
-> > reliable, connection-oriented protocol in network communication <br>
-> > network congestion avoidance algorithm <br>
-
-<br>
-
-> **Problems of reliable network** <br>
->
-> > packet loss <br>
-> > packet order miss <br>
-> > congestion <br>
-> > reviever overloaded <br>
-
-## ☑️ Flow Control in TCP
-
-- ⚠️ sender speed > reciever speed <br>
-- configure data **speed** according to reciever <br>
-- need to ensure reciever doesnt recieve too much packets <br>
-- reciever sends feedback of state to sender <br>
-
-### 💊 Solution
-
-1. **Stop and Wait**
-
-- only send next packet when recieved message
-
-2. **Sliding window**
-   <img width="604" alt="Screenshot 2024-07-27 at 00 59 08" src="https://github.com/user-attachments/assets/e52725fa-128c-4f43-80bb-41601033800b">
-
-- only can packet size according to reciever
-- packet on air = sliding window
-  - sliding window= last sent byte - last checked byte
-
-## ☑️ Congestion Control in TCP
-
-- configure host, router to prevent congestion
-
-### 💊 Solution
-
-1. **AIMD**(Additive Increase/Multiplicative Decrease)
-
-- send `n` packet, if arrives successfully, send `n+1`
-- if fail, packet send speed `/2`
-
-2. **Slow Start**
-
-- send `n` packet, if arrives successfully, send `n+1`
-- if fail, `window size =1`(여기서 말하는 윈도우는 슬라이딩 윈도우)
-
-3. **Fast Retransmit**
-
-- if reciever recieves the wrong packet, send ACK
-- but in this ACK, send the number of packet that reciever missed to recieve
-- sender will acknowledge he didnt sent this packet, and send.
-- if repeated w same number packet more than three times, reduce `window size`
-
-4. **Fast Recovery**
-
-- if congestion, increase `window size`
-
-## 💡 Reference
-
-<https://gyoogle.dev/blog/computer-science/network/%ED%9D%90%EB%A6%84%EC%A0%9C%EC%96%B4%20&%20%ED%98%BC%EC%9E%A1%EC%A0%9C%EC%96%B4.html>
+- 👍🏻 fix only the layer with problem
+- 👍🏻 data encapsulation

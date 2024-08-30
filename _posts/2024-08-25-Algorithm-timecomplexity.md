@@ -55,4 +55,12 @@ O(2^N) < O(N!) <br>
 - [입력 크기 1000개, 실행 시간 1초], [입력 크기 100000개, 실행 시간 2초], [입력 크기 10000000개, 실행 시간 3초]...
 - binary search
 
+## 🆚 Time complexity of sorting algorithms
+
+- Big-O 기준으로
+
+<img width="441" alt="Screenshot 2024-08-30 at 20 58 01" src="https://github.com/user-attachments/assets/fbed33a9-4d90-4bab-84c4-70ff94bff056">
+
+- quick sort is the fastest
+
 ## ✅ Space Complexity
