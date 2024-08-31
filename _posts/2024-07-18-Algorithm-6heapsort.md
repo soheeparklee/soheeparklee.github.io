@@ -9,6 +9,10 @@ tags: []
 > Complete Binary Tree <br>
 > binary tree that adds from left<br>
 
+- 최댓값부터 또는 최솟값부터 정렬
+- 전체 정렬하기 ❌
+- 가장 큰 값 몇 개만 필요할 때
+
 1. Build complete binary tree from array <br>
 2. Convert array into heap data structure using heapify <br>
    - transfrom heap into max heap <br>

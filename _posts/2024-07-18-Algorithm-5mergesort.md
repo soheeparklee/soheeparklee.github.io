@@ -71,8 +71,9 @@ public static void merge(int[] array, int left, int mid, int right) {
 
 ## ✅ Time complexity
 
-each of `log*n*` levels, merging step takes `O(n)` time. <br>
-thus, the total time `T(n) = O(n) * log*n*` <br>
+each of `log(n)` levels, merging step takes `O(n)` time. <br>
+thus, the total time `T(n) = O(n) * log(n)` <br>
+Time complexity: `O(NlogN)` <br>
 
 ### ✔️ Best scenario
 

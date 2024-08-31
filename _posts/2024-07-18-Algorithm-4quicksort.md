@@ -6,7 +6,8 @@ tags: []
 
 ## ✅ Quick Sort
 
-> divide and conquer 분할 정복
+> divide and conquer 분할 정복 <br>
+> ⭐️ pivot <br>
 
 1. Choose a Pivot: <br>
    select pivot element from array <br>
@@ -20,6 +21,8 @@ tags: []
 ![코딩공책-87](https://github.com/user-attachments/assets/2325d0c5-2465-4e93-97e7-c046112371c6)
 
 ## ⭐️ Keyword
+
+- pivot
 
 ## ✅ Code
 
@@ -84,17 +87,17 @@ public int partition(int[] arr, int left, int right){
 if `n=2^k`, **k(k=log₂n)**  
 <br>
 
-`T(n)=2T(n/2)+O(n)`  
-O(n): partitioning process.  
-caculation for each recursion = n  
-thus, `depth of recursion * caculation for each recursion`= `nlog₂n`
+`T(n)=2T(n/2)+O(n)` <br>
+O(n): partitioning process. <br>
+caculation for each recursion = n <br>
+thus, `depth of recursion * caculation for each recursion`= `nlog₂n` <br>
 
 ### ✔️ Worst scenario, **O(n^2)**
 
-Worst scenario: when the array is ascending, descending sorted  
-and the pivot is smallest or largest element repeatedly  
-if `n=2^k`, recursion for `n` times  
-thus, `depth of recursion * caculation for each recursion`= `n^2`
+Worst scenario: when the array is ascending, descending sorted <br>
+and the pivot is smallest or largest element repeatedly <br>
+if `n=2^k`, recursion for `n` times <br>
+thus, `depth of recursion * caculation for each recursion`= `n^2` <br>
 
 ### ✔️ average **O(log₂n)**
 
