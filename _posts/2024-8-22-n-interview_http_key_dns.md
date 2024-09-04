@@ -187,14 +187,16 @@ Hypertext Transport Protocol <br>
 <br>
 
 <details>
-<summary>✅ What is a cookie, session?</summary>
+<summary>✅ What is a cookie, what is session?</summary>
 <br>
 
 <strong>Cookie: </strong>
 
 <ul>
+  <li>purpose: for server to distinguish client</li>  
   <li>track user behavior</li>
-  <li>client holds cookie</li>
+  <li>server issue cookie, give to client</li>
+  <li>client holds cookie, send to request to server with cookie</li>
   <li>👎🏻 Malicious user can alter, forge cookie</li>
 </ul>
 <br>
@@ -228,9 +230,9 @@ Hypertext Transport Protocol <br>
 
 <details>
 <summary>✅ What are the benefits of using token?</summary>
-- server burden ⬇️ <br>
-- server scalability ⬆️ <br>
-- oauth <br>
+- 👍🏻 server burden ⬇️ <br>
+- 👍🏻 server scalability ⬆️ <br>
+- 👍🏻 oauth <br>
 </details>
 
 <br>

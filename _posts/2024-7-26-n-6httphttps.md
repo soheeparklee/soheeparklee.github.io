@@ -120,33 +120,62 @@ tags: [] # TAG names should always be lowercase
 
 - 본문
 
+## 💡 HTTP header
+
+- header: information about body and request/response
+
+**✔️ general header**
+
+- _general inforamtion_ about HTTP connnection
+- request/response date, time
+- both used in request/response header
+- Ex: `Date:Tue, 17 Nov 2015 16:39:15 GMT`
+
+**✔️ request/response header**
+
+- request header: HTTP method, request URL, browser inforamtion(user agent)...
+- Ex: `User-Agent`: Mozilla / 5.0 (Windows NT 10.0; WOW64; rv : 41.0)
+  Gecko / 20100101 Firefox / 41.0
+
+- resposne header: encoding information, server software information...
+- Ex: `Server:nginx`
+
+**✔️ entity header**
+
+- information about `HTTP message body`
+- contents length, contents language, encoding, expiration date...
+- Ex: `Contents-Length:4959`
+
 ## 💡 HTTP keep-alive
 
 > feature of HTTP/1.1 <br>
 > header to set a **timeout**, **maximum of requests** <br>
 
+<br>
+
+- HTTP works on TCP
+- TCP is connectionless
+- 👎🏻 Making new connection for every request is inefficient
+
+<br>
+
 - only used in HTTP1
 - header `connection`, `keep-alive` is prohibited on HTTP2, HTTP3
+- from HTTP 1.1, HTTP2, HTTP3 `keep-alive` by default
+<br>
 
 - **timeout**: time in seconds that the host will **allow idle connection open** before it is closed
   - idle connection: no data sent/recieved by host
   - 주고받는 데이터 없어도 `timeout초` 동안은 connection 열어두기
   - connection이 최소한 얼마나 열려있을 것인가
+    <br>
 - **max**: number of requests that can be sent on this connection before closing
   - used to limit pipelining
 
-```
-HTTP/1.1 200 OK
-Connection: Keep-Alive
-Content-Encoding: gzip
-Content-Type: text/html; charset=utf-8
-Date: Thu, 11 Aug 2016 15:23:13 GMT
-Keep-Alive: timeout=5, max=1000
-Last-Modified: Mon, 25 Jul 2016 04:32:39 GMT
-Server: Apache
+<img width="343" alt="Screenshot 2024-09-03 at 23 36 35" src="https://github.com/user-attachments/assets/c598ae7b-0925-43e7-b4f0-374ea4d79457">
 
-(body)
-```
+
+- keep HTTP connection for minimum 5 seconds, maximu 1000 requests
 
 ## ✅ Connectionless
 

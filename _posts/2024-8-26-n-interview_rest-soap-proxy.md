@@ -45,6 +45,15 @@ tags: [interview] # TAG names should always be lowercase
 <br>
 
 <details>
+<summary>✅ Input validation 어떻게 구현하는지? </summary>
+- 폼 데이터 <br>
+- Script tag 걸러주기 <br>
+- 인풋에 특수문자 삭제하기, 일반 문자로 바꾸기<br>
+</details>
+
+<br>
+
+<details>
 <summary>✅ What is CSRF? And how can we prevent? </summary>
 - Cross Site Rquest Forgery <br>
 - web-based attack 
@@ -52,7 +61,6 @@ tags: [interview] # TAG names should always be lowercase
 - transfer funds, change passwords, or perform other actions without the user’s consent. <br>
  <br>
 💊 CSRF token <br>
-
 💊 cookie `SameSite` only header <br>
 💊 CAPTCHA <br>
 
@@ -67,7 +75,7 @@ tags: [interview] # TAG names should always be lowercase
 - like delete user <br>
  <br>
 💊 input validation <br>
-💊 sanitiza user data <br>
+💊 sanitize user data <br>
 💊 WAF <br>
 
 </details>
@@ -139,6 +147,7 @@ tags: [interview] # TAG names should always be lowercase
 <details>
 <summary>✅ What is REST? </summary>
 - Representational State Transfer <br>
+- 자원을 이름으로 구분(URI), 자원의 상태를 주고받기 <br>
 - architectural structure to create APIs <br>
 - state: HTTP Status code <br>
 - HTTP URI, HTTP Method <br>
@@ -234,6 +243,7 @@ tags: [interview] # TAG names should always be lowercase
 
 <details>
 <summary>✅ Forward proxy server? </summary>
+- 클라이언트 앞에  <br>
 - exit point from client to server <br>
 - outbound traffic <br>
 - protect client information <br>
@@ -243,6 +253,7 @@ tags: [interview] # TAG names should always be lowercase
 
 <details>
 <summary>✅ Reserse proxy server? </summary>
+- 서버 앞에  <br>
 - entry point to server <br>
 - inbound traffic
 - protect server <br>
@@ -326,6 +337,7 @@ tags: [interview] # TAG names should always be lowercase
 <details>
 <summary>✅ What is a connection timeout? </summary>
 - how long the client will wait for a connection to establish <br>
+- TCP 연결 확립이 수행되는데 걸리는 최대 시간  <br>
 </details>
 
 <br>
@@ -340,6 +352,7 @@ tags: [interview] # TAG names should always be lowercase
 <details>
 <summary>✅ What is a read timeout? </summary>
 - time it takes to recieve response back from the server <br>
+- 요청과 응답이 수행되는데 걸리는 최대 시간  <br>
 </details>
 
 <br>
