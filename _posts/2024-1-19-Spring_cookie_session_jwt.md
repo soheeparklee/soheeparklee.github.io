@@ -27,6 +27,11 @@ tags: [cookie, session, jwt] # TAG names should always be lowercase
 
 ## ✅ Session
 
+<img width="461" alt="Screenshot 2024-09-03 at 23 41 56" src="https://github.com/user-attachments/assets/c021ddab-2782-496f-9d20-9cc9a182da28">
+
+- 세션은 쿠키를 기반으로 한다.
+- 일정 기간동안 클라이언트에게서 들어오는 요구 = 하나의 상태
+- 상태를 유지
 - 👎🏻 session is saved on **server's DB or memory**, taking up lot of space
 - 👎🏻 might result in server DB, memory overhead
 - 👎🏻 session makes server scalability difficult
