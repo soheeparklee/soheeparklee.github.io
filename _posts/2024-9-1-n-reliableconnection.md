@@ -1,5 +1,5 @@
 ---
-title: Reliable network connection
+title: Reliable Data Transmission
 categories: [Computer Science, Network]
 tags: [] # TAG names should always be lowercase
 ---
@@ -50,10 +50,14 @@ How to achieve reliable data transmission over unreliable source/service
 - 재전송
 - error-control protocol
 - to automatical retransmission of packets that are corrupted/lost
-  <br>
+
+<br>
+
 - transport layer
 - datalink later
-  <br>
+
+<br>
+
 - sender does not recieve acknowledgement before timeout
 - implied that packet has been corrupt or lost during transmission
 - acccordingly, sender resends the packet
@@ -196,7 +200,7 @@ How to achieve reliable data transmission over unreliable source/service
 
 - **only** retransmit lost/corrupt packet
 - sending process continues even after frame is discovered to be lost/corrput
-- 🆚 GBN: does not retransmit `size of window` packets
+- 🆚 GBN: Different from GBN, SR does not retransmit `size of window` packets
 
 <img width="387" alt="Screenshot 2024-09-01 at 22 05 33" src="https://github.com/user-attachments/assets/4ab10474-8985-4a7f-926c-4758182bf9b0">
 
