@@ -151,6 +151,7 @@ tags: [interview] # TAG names should always be lowercase
 <details>
 <summary>✅ What are the benefits, disadvantages of GBN? </summary>
 - 👍🏻 pipelining <br>
+- 👍🏻 faster than stop-and-wait <br>
 - 👎🏻 send packet multiple times(lost packet + following frames) <br>
 </details>
 
@@ -363,12 +364,24 @@ tags: [interview] # TAG names should always be lowercase
 </details>
 
 <br>
+<details>
+<summary>✅ How does "flow control" control speed?  </summary>
+- take reciever's buffer size into account <br>
+
+<br>
+
+💊 configure sliding window size <br>
+💊 stop and wait <br>
+
+</details>
+
+<br>
 
 <details>
 <summary>✅ What is congestion control? </summary>
 - prevent too many packets on network <br>
 
-💊 AMID(Additive Increase Multiplicative Decrease) <br>
+💊 AIMD(Additive Increase Multiplicative Decrease) <br>
 💊 slow start <br>
 💊 TCP Tahoe <br>
 💊 TCP RENO <br>
