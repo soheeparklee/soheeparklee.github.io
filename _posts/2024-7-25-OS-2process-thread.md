@@ -13,12 +13,19 @@ tags: [] # TAG names should always be lowercase
 
 💡 System call <https://soheeparklee.github.io/posts/OS-5systemcall/> <br>
 
-- Code: memory(program command)
-- Data: global variables, static variables, arrays
+- ⭐️ has own address space(code, heap, stack)
+
+- **Code**: memory(program command)
+- **Data**: global variables, static variables, arrays
   - reset data: saved in data
   - not reset data: saved in bss
-- Heap: dynamic allocation `new()`, `malloc()`
-- Stack: local variable, parameter, return value (temporary)
+- **Heap**: dynamic allocation `new()`, `malloc()`
+- **Stack**: local variable, parameter, return value (temporary)
+
+- 👎🏻 Long time to create
+- as process has own resources and space
+- 👎🏻 difficult to communicate among process
+- 👎🏻 process context switching is inefficient, big overhead
 
 ## ✅ Thread
 
@@ -27,19 +34,75 @@ tags: [] # TAG names should always be lowercase
 > 프로세스 안에서 실행되는 단위 <br>
 
 - gets stack allocated
-- share other areas with process
-- when one process is created, one thread is also created
+- ⭐️ share other areas with process
+- ⭐️ but has own stack
+- when one process is created, minimum one thread is also created
+
+- 👍🏻 created to complement process
+- 👍🏻 creation, erasure fast
+- 👍🏻 overhead ⬇️
+- 👍🏻 communication among thread is easy and fast
+- 👍🏻 smaller work unit than process
+
+<br>
 
 - 👎🏻 when thread is created, use memory, CPU
 - 👎🏻 if there is too much thread, `synchronization`, `resource sharing` problem might happen
 
 ![Screenshot 2024-07-25 at 11 30 17](https://github.com/user-attachments/assets/d8edfbe9-69a3-4be7-adc3-8452410f2561)
 
+## ☑️ Thread address space
+
+- In multithreading, all thread in same process share
+  - code
+  - data
+  - heap area
+- Stack area is not shared
+- Bc of resource sharing, problems such as synchronization can occur
+
+- private space
+- shared space
+- kernel stack
+
+✔️ **private space**
+
+- thread code space
+- local variable for thread
+- _stack_
+
+✔️ **shared space**
+
+- data
+- _heap_
+
+✔️ **kernel stack**
+
+<img width="326" alt="Screenshot 2024-09-08 at 00 59 04" src="https://github.com/user-attachments/assets/b7e3ab72-917c-421b-b48a-c5d2c20309b2">
+
+> **Which space has faster access speed? Stack 🆚 Heap** <br>
+>
+> > Stack has faster allocation, deallocation speed <br>
+
+- Stack uses space that is already allocated
+- Allocation in stack means changing pointer in already allocated space
+  - 👍🏻 Simple CPU Instrucion, faster
+  - 👎🏻 However, stack has very little space
+  - 👎🏻 Cannot use stack for all thread
+
+<br>
+
+- Heap needs space to be allocated
+- Allocation in heap means allocating new space caculating
+  - required chunk,
+  - current memory fragmentation...
+  - 👎🏻 require more CPU Instruction
+
 ## Process 🆚 Thread
 
 - both are `units of work` on a computer
 - process: has own address space, resources, independent
 - thread: shares address space, resources with other threads
+  - only has stack
   - operates within process
 
 ## ☑️ Processing
