@@ -72,11 +72,11 @@ t2: process 1 waits for resource 2 and process 2 waits for resource 1 <br>
 
 3. **Detection**, **Recovery** <br>
 
-- detect deadlock
+- **detect** deadlock
 - 👎🏻 need to continuously check, overhead
   <br>
 
-- recovery
+- **recovery**
 - A. 사용자 처리
 - user forcefully stops one process
 - B. 시스템 처리

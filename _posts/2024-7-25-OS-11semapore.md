@@ -19,6 +19,8 @@ tags: [] # TAG names should always be lowercase
 ## ✅ Semaphore
 
 > singnaling mechanism: thread can be **signaled** by another thread <br>
+> prevent process/thread from accessing critical section <br>
+> use **value**
 
 - **signaling mechanism**
 - Wait(P), Signal(V) <br>
@@ -31,16 +33,37 @@ tags: [] # TAG names should always be lowercase
   - like mutex
 - **Counting semaphore**: count number of available resource
 
+```
+화장실: critical section
+사람들: process/thread
+
+Semaphore에서는
+총 화장실 개수, 화장실 빈 칸 개수 알려줌
+화장실을 가기 위해서는 빈 칸이 1개 이상이면 갈 수 있고,
+갔다 온 뒤에는 빈 칸 개수 +1을 해 줘야 함
+⭐️ counting semaphore
+```
+
 ## ✅ Mutex
 
-> Mutual Exclusion <br>
+> ⭐️ **Mutual Exclusion** <br>
 > thread execution time to be independent <br>
-> use **lock**
+> use **lock(key)**
 
-- **lock, unlock** <br>
+- ⭐️ **lock, unlock** <br>
 - kind of _binary semaphore_
 - shared resource 잠궈버리기, 뮤텍스 잠겨 있으면 현재 스레드는 다른 작업 하다가 뮤텍스 해제되면 접근 가능
 - only mutual exclusion possible
+
+```
+화장실: critical section
+사람들: process/thread
+
+Mutex에서는
+화장실 키가 1개 있음
+키가 있으면 화장실에 갈 수 있고, 없으면 갈 수 없음
+⭐️ key, lock, object to access critical section
+```
 
 ### ⭐️ Lock, unlock
 
