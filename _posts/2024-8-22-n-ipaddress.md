@@ -4,6 +4,8 @@ categories: [Computer Science, Network]
 tags: [] # TAG names should always be lowercase
 ---
 
+<https://soheeparklee.github.io/posts/chapter5_IPadress/>
+
 ## ✅ IP address
 
 > unique address for network interface <br>
