@@ -118,13 +118,26 @@ tags: [] # TAG names should always be lowercase
 
 **Subnet Masking**:
 
-- use subnet mask to distinguish network part and host part of IP address
-- `255.255.255.0` (or /24) means that the first `24 bits` of the IP address represent the `network`, and the r`emaining 8 bits` represent the `host`
+- use subnet mask to distinguish `network part` and `host part` of IP address
+- `255.255.255.0` (or `/24`) means that the first `24 bits` of the IP address represent the `network`, and the r`emaining 8 bits` represent the `host`
 
-> Why do we use subnet masks? <br>
+- Default subnet masks
+  - class C: `255.255.255.0`
+  - class B:`255.255.0.0`
+  - class A: `255.0.0.0`
+
+> **Why do we use subnet masks?** <br>
 >
-> > so make smaller parts of network <br>
-> > communication between subnets are possible through router <br>
+> > 1. to make smaller parts of network <br>
+> >    if we use the IP address as recieved, broadcast domain is too big <br>
+> >    communication between subnets are possible through router <br>
+> > 2. save IP address <br>
+
+<br>
+
+> **How can we communicate among different subnets?** <br>
+>
+> > with router <br>
 
 ## ✅ IP address parts
 
@@ -155,9 +168,13 @@ tags: [] # TAG names should always be lowercase
 - on different subnet: router
   - look at different `network part of IP address`
 
+> **What does it mean to have different network address?** <br>
+>
+> > - to have different broadcast domain <br>
+
 ## ✅ IP address class
 
-> Why do we divde address class? <br>
+> **Why do we divde address class?** <br>
 >
 > > to distribute IP address more efficiently <br>
 
@@ -192,7 +209,9 @@ tags: [] # TAG names should always be lowercase
 
 - 🛠️ normally used for public IP ddress
 
-> Why is class C used for public IP address? <br>
+<br>
+
+> **Why is class C used for public IP address?** <br>
 >
 > > as class A, B can have too many hosts <br>
 
@@ -284,6 +303,7 @@ tags: [] # TAG names should always be lowercase
 - private IP is non-routable on internet(not open to outside)
 - serach, access is impossible from outside
 - private IP is only used within private network
+
 - private IP can begin with
 
   - 192.168.xxx.xxx
@@ -332,6 +352,81 @@ tags: [] # TAG names should always be lowercase
 - translate public IP to private IP `10.0.0.1`
 
 ## 💡 Get network address, broadcast address
+
+> ❓ My computer IP is `165.132.120.10` <br>
+> subnet mask is `255.255.252.0` <br>
+> What is my network address? and broadcast address? <br>
+
+- `255.255.252.0` ➡️ `1111 1111.1111 1111.1111 1100.0` ➡️ 1이 22개
+- 따라서 `165.132.120.10/22`
+- `165.132.120.10` ➡️ 이진수로 나타낸 다음 ➡️ 앞에서 부터 22개
+- 8 + 8 + 6개니까
+- 120 ➡️ `01111000` ➡️ `011110` ➡️ 120
+
+- thus, network address is `165.132.120.0`
+- broadcast address is `165.132.120.255`
+
+> ❓ My computer IP address is `165.132.120.10` <br>
+> subnet mask is default `255.255.0.0` <br>
+> What is my network address? and broadcast address? <br>
+
+- network address: `165.132.0.0`
+- broadcast address: `165.132.255.255`
+
+> ❓ My computer IP address is `165.132.120.10` <br>
+> subnet mask is default `255.255.255.0` <br>
+> What is my network address? and broadcast address? <br>
+
+- network address: `165.132.120.0`
+- broadcast address: `165.132.120.255`
+
+> ❓ My computer IP address is `192.168.51.111/20` <br>
+> Is my IP address private?
+
+- yes
+
+> ❓ My computer IP address is `192.168.51.111/20` <br>
+> What is the network address? and broadcast address? <br>
+
+- 51 ➡️ `00110011` ➡️ 20= 8 + 8 + 4니까 `0011`
+- network address: `192.168.48.0`
+- broadcast address: `192.168.48.255`
+
+> ❓ My computer IP address is `192.168.51.111/20` <br>
+> Is `192.168.60.211` on the same network?
+
+- 60 ➡️ `00111100` ➡️ 앞에 4자리 `0011`
+- yes
+
+> ❓ Can I assign IP address to `192.168.63.255` <br>
+
+- No. Cannot assign IP address to broadcasting address
+
+> ❓ What is the network mask of `192.168.51.111/20`?
+
+- first 20 digits of binary number in 1
+- `1111 1111.1111 1111.1111 0000.0000 0000`
+- thus, `255.255.240.0`
+
+> ❓ Can `192.168.48.1` be the gateway of `192.168.51.111/20` network?
+
+- Yes.
+- all other addresses that are not broadcast or network can be gateway
+
+## 🆚 Gateway
+
+✔️ **router**
+
+- route data packet in **similar** networks
+- OSI layer 3, 4
+- NAT, DHCP
+
+✔️ **gateway**
+
+- connect two network, different protocols as a translator
+- connects two **dissimilar** networks
+- OSI layer 5
+- network access control, protocol conversion
 
 ## 🆚 Mac address
 
