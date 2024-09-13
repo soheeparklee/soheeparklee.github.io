@@ -88,7 +88,7 @@ tags: [] # TAG names should always be lowercase
 
 <img width="386" alt="Screenshot 2024-09-11 at 18 17 26" src="https://github.com/user-attachments/assets/7cd2937c-e7bb-48f0-935d-1439d0f7b36f">
 
-## 📌 Subnet & Subnet Mask
+## 📌 Subnet
 
 > subnet: isolated part of whole network <br>
 > for subnet, detatch each inferface from host or router, and create island of isolated network <br>
@@ -112,13 +112,27 @@ tags: [] # TAG names should always be lowercase
 
 <br>
 
-**Subnetting**:
+⭐️ **Subnetting**:
 
 - divide large network(class A, B, C) into smaller subnets
 - IP range `192.168.1.0/24` can be subnetted into `192.168.1.0/25`, `192.168.1.128/25`
   <br>
 
-**Subnet Masking**:
+## 📌 Subnet Mask
+
+> network bit:1, host bit: 0 <br>
+> 32bit address <br>
+> distinguish network address from host address <br>
+
+- `255`: `broadcast address`
+- `0`: `network address`
+
+- 👍🏻 control number of hosts that can be on network depends on subnet mask
+- 👍🏻 make broadcasting domain smaller, send fewer broadcasts, lower network load
+- 👍🏻 safeguard network from another infiltration
+- 👎🏻 in order to communicate among different network, need router
+
+⭐️ **Subnet Masking**:
 
 - use subnet mask to distinguish `network part` and `host part` of IP address
 - `255.255.255.0` (or `/24`) means that the first `24 bits` of the IP address represent the `network`, and the r`emaining 8 bits` represent the `host`
@@ -290,7 +304,7 @@ tags: [] # TAG names should always be lowercase
 - upon ` DHCP request`, DHCP server sends DHCP ACK to check requested parameters
 - now, host has IP address provided by DHCP server
 
-## 📌 Private IP
+## 📌 Private IP, Public IP
 
 ✔️ **Two types of IP address**
 
@@ -314,6 +328,10 @@ tags: [] # TAG names should always be lowercase
 
 - 👍🏻 more security within particular network
 - 🛠️ used for internet wired/wireless connection
+
+✔️ **Public IP**
+
+- has access to Internet
 
 ## 📌 NAT
 

@@ -26,42 +26,29 @@ tags: [interview]
 
 ## 📌 Respuesta a incidentes
 
-- como analysta en el equipo de respuesta a incidentes,
 - enfoque: approach
 - paso
 - mi enfoque de un incidente seguiría estos pasos
 
+- comprobar que el evento puede considerarse un incidente
 - aislar los sistemas infectados
 - eliminar la amenaza
 - resolverse
 - restaurar datos desde una copia de seguridad
 
-**0. Preparación**
-
-- antes de ocurra un incidente
-- reducir las vulnerabilidades
-- definir procedimientos
-- realizar una evaluacíon de riesgos
-- determinar vulnerabilidades
-- clasificar
-- definir roles, resposibilidades
-
 **1. Detección e identificatión**
 
-- comprobar que el evento puede considerarse un incidente
 - detectar
 - notificar
 - sería
 - analizar los datos disponsibles, como registros, alertas y herramientas SIEM
-- examinar en profundidad
 - identificar
 - comprender el alcance
 - determinar la gravedad del incidente
-- objectivos, origen de la vulneracíon
 
 **2. Contención**
 
-- contener
+- contenter
 - minimizar el alcance: scope ↔️ maximizar
 - prevenir más daños
 - prevenir propagación del ataque
@@ -84,7 +71,7 @@ tags: [interview]
 
 **5. Revisión post-incidente**
 
-- realizar(carry out) un análisis de causa raíz
+- realizar(carry out) un análisis de cause raíz
 - entender cómo occurió el incidente
 - documentar el incidente
 - analizar la respuesta
@@ -120,14 +107,14 @@ tags: [interview]
 
 ✔️ **Ransomware**
 
-- usarios malintencionados usan malware para cifrar datos y sistemas
+- usarios malintencionados usan malware para cifrar datos y systemas
 - amenazar con hacer públicos los datos o destruirlos
 - si la víctimas no paga un rescate
 - malintenar
 
 ✔️ **Denegación de servicio**
 
-- ataque DDoS
+- acaque DDoS
 - sobrecarga el tráfico de una red o sistema
 - hasta ralentiza o se bloquea
 
@@ -150,7 +137,7 @@ tags: [interview]
 
 ✔️ **Accesso no autorizado**
 
-- robar credenciales de cuenta
+- robar credenticales de cuenta
 - obtener contraseñas a través(through)
 - adivinar(guess) una contraseña usada frecuentemente
 - obtener accesso
