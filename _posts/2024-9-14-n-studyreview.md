@@ -1,5 +1,5 @@
 ---
-title: Interview Jscode Study Feedvack
+title: Interview Jscode Study Feedback
 categories: [Computer Science, Network]
 tags: [] # TAG names should always be lowercase
 ---
