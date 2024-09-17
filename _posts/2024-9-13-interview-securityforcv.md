@@ -4,14 +4,6 @@ categories: [Recruit, personal_log]
 tags: [interview]
 ---
 
-```T
-🟠 purpose
-🟡 roles of the technology
-🟢 implementation steps
-🔴 challenges, solutions
-🔵 outcomes, benefits
-```
-
 ## 📌 Web application security
 
 <details>
@@ -163,6 +155,13 @@ control inbound, outbound traffic to EC2
 <summary> ✅ Describe a situation where you had to identify and mitigate a security vulnerability. How did you approach the problem? </summary>
 
 ```
+- trabajé
+- durante una revisión rutinaria de seguridad
+- utilicé OWASP ZAP para escanear los vulnerabilidades
+- identifiqué una vulnerabilidad de inyección SQL
+- manipular las consultas de la base de datos
+- acceder a información sensible
+
 
 ```
 
