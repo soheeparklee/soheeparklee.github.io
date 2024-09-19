@@ -1,6 +1,6 @@
 ---
 title: SQL contraints 데이터 무결성
-categories: [Database, SQL]
+categories: [Database, DB]
 tags: [unique, primary, check, default] # TAG names should always be lowercase
 ---
 

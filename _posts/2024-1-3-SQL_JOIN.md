@@ -1,6 +1,6 @@
 ---
 title: JOIN
-categories: [Database, Database]
+categories: [Database, DB]
 tags: [join, inner, outer] # TAG names should always be lowercase
 ---
 

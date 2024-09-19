@@ -1,6 +1,6 @@
 ---
 title: SQL datatype, commands
-categories: [Database, SQL]
+categories: [Database, DB]
 tags: [sql, insert, select, where, order, having, ddl, dml] # TAG names should always be lowercase
 ---
 

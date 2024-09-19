@@ -1,6 +1,6 @@
 ---
 title: DBMS/ SQL(RDB)/ NoSQL
-categories: [Database, Database]
+categories: [Database, DB]
 tags: [sql, rdb]
 ---
 

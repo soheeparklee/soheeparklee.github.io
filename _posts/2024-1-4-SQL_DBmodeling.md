@@ -1,6 +1,6 @@
 ---
 title: DB modeling
-categories: [Database, SQL]
+categories: [Database, DB]
 tags: [db, modeling, erd] # TAG names should always be lowercase
 ---
 

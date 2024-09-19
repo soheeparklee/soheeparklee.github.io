@@ -144,6 +144,56 @@ need to use **IPC(Inter Process Communication)** to communicate <br>
   - current memory fragmentation...
   - 👎🏻 require more CPU Instruction
 
+## Kernel level thread 🆚 User level thread
+
+✔️ **Kernel level thread**
+
+> inside kernel
+
+- managed by OS kernel
+- OS handles the thread directly
+- each kernel level thread has its own context
+- 🛠️ Java thread, POSIX thread on Linux
+
+- 👍🏻 true parallelism
+- 👍🏻 execution continuity
+- 👍🏻 acess to system resources
+- 👎🏻 more time to create, manage, context swithcing
+- 👎🏻 more overhead on kernel
+
+<img width="169" alt="Screenshot 2024-09-19 at 11 09 31" src="https://github.com/user-attachments/assets/149de8ce-6b6f-4ce3-8b74-b62e965af54c">
+
+✔️ **User level thread**
+
+> outside kernel
+
+- managed by user-level library
+  - created, managed by thread library
+- no intervention from OS kernel ❌
+
+- 👍🏻 faster than kernel level
+- 👍🏻 no overhead of kernel thread
+- 👍🏻 highly portable: can be implemented across various OS
+- 👎🏻 limited use of multiprocessing
+- 👎🏻 no scheduling priority based on overall system(do not know which thread will operate first)
+- 🛠️ fine control over threading
+
+<img width="163" alt="Screenshot 2024-09-19 at 11 11 07" src="https://github.com/user-attachments/assets/896e5fe3-1cde-4195-aad2-63f58072dd06">
+
+## Mode switch 🆚 Process switch
+
+✔️ **Mode switch**
+
+> user level mode ➡️ kernel mode
+
+- use system stack
+
+✔️ **Process switch**
+
+> context swithcing
+
+- change currently running process, change to new process
+
 ## Process 🆚 Thread
 
 - both are `units of work` on a computer
@@ -169,6 +219,35 @@ need to use **IPC(Inter Process Communication)** to communicate <br>
 - occurs when there is frequent page pansion
 - CPU usage ⬆️
 
+## ⭐️ Context Switching
+
+> change process state to another state <br>
+
+- to change to another process
+- 1️⃣ save current process context, state so that it can be restored later <br>
+  - save current process `PCB(Process Control Block)`
+- 2️⃣ then load context or state of another process <br>
+- 👎🏻 since each process has memory allocated, if heavy jobs are run, might have overhead problem.
+
+#### ❓ When does context switching occur?
+
+✔️ **Multitasking**
+
+- processes take tuen according to OS scheduler
+- each process is allocated CPU
+
+✔️ **Interrupt handling**
+
+- when exception occurs, context switching occurs
+- I/O request
+- time slice expired: CPU use time expire
+- for a child: create child process
+- wait for an interrupt
+
+✔️ **User and kernel mode switching**
+
+- change between user and kernel mode
+
 ## ✅ Multi Processing
 
 > one program to be consisted of seveal processes <br>
@@ -189,23 +268,21 @@ need to use **IPC(Inter Process Communication)** to communicate <br>
 > > - need distinction betweeen process memory <br>
 > > - need process to have independent space address <br>
 
-## ⭐️ Context Switching
-
-- save process context, state so that it can be restored later <br>
-- then load context or state of another process <br>
-  👍🏻 since each process has memory allocated, if heavy jobs are run, might have overhead problem. <br>
-
 ## ✅ Multi Threading
 
 > normally, one thread in one process <br>
 > multiple thread in one process <br>
 
-- 👍🏻 multiple thread is made for increading computing speed of the system
-- 👍🏻 shares address space, resources(unlike process) thus can save time, resource <br>
+- 👍🏻 multiple thread is made for increading computing **speed** of the system
+- 👍🏻 **shares** address space, resources(unlike process) thus can **save time, resource** <br>
+- 👍🏻 communication among thread is efficient, use heap
+- 👍🏻 thread context switching is faster than process context switching
+
 - 👎🏻 security <br>
 - 👎🏻 if one thread breaks data space, other threads will be affected(since they share memory) <br>
-- 👎🏻 synchronization
+- 👎🏻 need synchronization
 - 👎🏻 deadlock
+- 👎🏻 testing, debugging more difficult
 - 💊 could be prevented by **Critical Section** method <br>
 
 > 💡 **When should we use multi threading instead of multi processing?** <br>

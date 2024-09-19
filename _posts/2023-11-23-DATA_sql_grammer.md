@@ -1,6 +1,6 @@
 ---
 title: SQL 문법
-categories: [Database, SQL]
+categories: [Database, DB]
 tags: [sql]
 ---
 
