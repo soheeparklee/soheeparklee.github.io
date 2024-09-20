@@ -370,22 +370,30 @@ quién puede ser autenticado y autorizado para los recursos de RDS
 - evitar ataques de intermediarios
 
 <details>
-<summary> ✅ Can you explain the importance of DNS security, and how misconfigurations could lead to vulnerabilities?  </summary>
+<summary> ✅ ¿Puedes explicar la importancia de la seguridad en DNS y cómo las configuraciones incorrectas podrían generar vulnerabilidades? </summary>
+- DNS: traducir nombre de dominio legibles por humanas en dirrecciones IP
 
-```
+- 😈 DNS cache poisoning, spoofing
+- madiante ataques
+- podrían redirigir el tráfico a sitios maliciosos
 
-```
+- 😈 DNS flood
+- interrumpir servicios
+
+- 💊 DNSSEC
+- 💊 registros DNS
 
 </details>
 
 <br>
 
 <details>
-<summary> ✅ What are some best practices you followed when working with AWS S3 for secure file storage and access control?  </summary>
+<summary> ✅ ¿Cuáles son algunas de las mejores prácticas que seguiste al trabajar con AWS S3 para el almacenamiento seguro de archivos y control de acceso?  </summary>
 
-```
-
-```
+- roles IAM: bloquear acceso público, seguir el principio de minimo privilegio
+- cifrar datos en reposo y en tránsito
+- monitorear, registrar con AWS Cloudtrail, S3 logs
+- MFA: una capa extra de protección, asegurar solo personas autorizadas pueden realizar modificaciones
 
 </details>
 
@@ -396,20 +404,44 @@ quién puede ser autenticado y autorizado para los recursos de RDS
 <details>
 <summary> ✅ If your web application was under a Distributed Denial of Service (DDoS) attack, how would you detect it, and what measures would you take to mitigate it?  </summary>
 
-```
+- alto volumen de solicitudes
 
-```
+⭐️ Detectar
+
+- AWS cloudtrail
+- AWS WAF
+- registro de servidor: Nginx
+
+- monitoreao de tráfico inusual
+
+⭐️ Medidas para mitigación
+
+- AWS WAF: bloquear tráfico malicioso, limitar el número de solicitudes permitadas desde una sola IP
+- auto scaling: ajustar automáticamente la capacidad de la infraestructura, añadir más servidores
+- timeout
+- blackhole
+- contener
 
 </details>
 
 <br>
 
 <details>
-<summary> ✅ How would you implement security measures to prevent cross-site scripting (XSS) and SQL injection attacks in your web application? </summary>
+<summary> ✅ ¿Cómo implementarías medidas de seguridad para prevenir ataques de Cross-Site Scripting (XSS) y SQL Injection en tu aplicación web </summary>
 
-```
+⭐️ Prevención
 
-```
+- validacion, saneamiento entradas
+- asegurar las entradas del usario es adacuadamente escapado o codificado
+- codificar caracteres
+- no se interpretar como código HTML o JS
+
+- WAF
+- cooperar con frontend
+
+- ORM, Hibernate: utilizar parámetros seguros
+- para interacciones con la base de datos se realizar mediante consultas preparadas y ORM como Hiberate
+- evitar datos se interpreten como comandos SQL
 
 </details>
 
@@ -418,24 +450,42 @@ quién puede ser autenticado y autorizado para los recursos de RDS
 ## 📌 General cybersecurity knowledge
 
 <details>
-<summary> ✅ As a member of a blue team, how would you collaborate with other teams (e.g., red team, IT, DevOps) to improve the security posture of an organization?  </summary>
+<summary> ✅ Como miembro de un equipo blue team, ¿cómo colaborarías con otros equipos (por ejemplo, red team, IT, DevOps) para mejorar la postura de seguridad de una organización?  </summary>
 
-```
+⭐️ Colaboración con el Red Team
 
-```
+- simulaciones de ataques y pruebas de penetración
+- ejecutar simulaciones
+- identificar puntos débiles
+- priorizar las áreas que necesitan mejoras
+
+- aprender de las pruebas de intrusión
+- entender las técnicas de ataque
+- ajustar las medidas defensivas, como parches
+
+⭐️ Colaboración con el equipo IT
+
+- implementar medidas de seguridad
+- soluciones
+- monirotar continuo
+
+⭐️ Colaboración con DevOps
+
+- automatización de pruebas de seguridad
+
+⭐️ postura
+
+- seguridad compartida
+- en lugar de culpar
+- contribuir a la protección
+- compartir métodos y resultados
 
 </details>
 
 <br>
 
 <details>
-<summary> ✅ What are the most common types of attacks a blue team is responsible for defending against in a cloud-based environment?
-
-  </summary>
-
-```
-
-```
+<summary> ✅ What are the most common types of attacks a blue team is responsible for defending against in a cloud-based environment?</summary>
 
 </details>
 
@@ -444,22 +494,51 @@ quién puede ser autenticado y autorizado para los recursos de RDS
 ## 📌 Industry Specific
 
 <details>
-<summary> ✅ Deloitte emphasizes robust incident response frameworks. How would you contribute to an effective incident response team based on your experience?  </summary>
+<summary> ✅ Deloitte enfatiza la importancia de marcos sólidos de respuesta a incidentes. ¿Cómo contribuirías a un equipo de respuesta a incidentes efectivo basado en tu experiencia?"  </summary>
 
-```
+1️⃣ Experiencia en detección y análisis
 
-```
+- detectar anomalías
+- registros
+- AWS cloudtrail
+
+2️⃣ Experiencia de desarollar aplicaciones
+
+- trabajé con AWS IAM, MFA
+- adquirir habilidades para implementar medidas del principio de minimo privilegio
+- contener, bloquear usarios sospechosos
+
+3️⃣ Coordinación entre equipos
+
+- equipos de desarrollo
+- administradores de IT
+
+4️⃣ Idioma
+
+- lenguaje
 
 </details>
 
 <br>
 
 <details>
-<summary> ✅ Cybersecurity is evolving constantly. How do you keep yourself updated with the latest security trends and vulnerabilities?  </summary>
+<summary> ✅ ¿Cómo te mantienes actualizado con las últimas tendencias de seguridad y vulnerabilidades? </summary>
 
-```
-
-```
+- cursos y certificaciones
+- participar en comunidades: foros como Reddit, Github, Oswap
+- suscripción a reportes de seguridad
+  - kerbs on security
+  - dark reading
+  - sans institute
+  - CVE
+  - MITRE
+  - NIST
+- conferencias
+  - blackhat
+  - def con
+- laboratorios prácticos
+  - TryHackMe
+  - HackTheBox
 
 </details>
 
@@ -468,10 +547,15 @@ quién puede ser autenticado y autorizado para los recursos de RDS
 <details>
 <summary> ✅ Can you walk me through how you would configure a firewall to block malicious IPs based on your experience? </summary>
 
-```
+1️⃣ Identificar IP maliciosas
+2️⃣ Configurar reglas de firewall
 
-```
+- AWS security group
+- añadir a la lista de denegación
 
+3️⃣ Monitorear y mantener(mantenimiento)
+
+- revisión periódica
 </details>
 
 <br>

@@ -102,12 +102,15 @@ tags: [interview]
 
 - ingeniería social
 - atacante utiliza correo electrónico
+- intentar compromiso de cuentas a través de correos electrónicos
 - habituales intenta inducir(enduce) destinatarios
 - enlace
 - a descargar malware
 - instalar
 - proporcionar su contraseña
 - 💊 capacitación de personal
+- 💊 MFA
+- 💊 monitoreo de accesos sospechosos
 
 ✔️ **Malware**
 
@@ -128,10 +131,13 @@ tags: [interview]
 ✔️ **Denegación de servicio**
 
 - ataque DDoS
-- sobrecarga el tráfico de una red o sistema
+- sobrecargar el tráfico de una red o sistema
 - hasta ralentiza o se bloquea
+- afectar la disponibilidad de los servicios
 
 - ralentizar
+
+- 💊 WAF
 
 ✔️ **Intermediario**
 
@@ -156,3 +162,38 @@ tags: [interview]
 - obtener accesso
 - hacer reconocimiento de la red
 - aumentar sus privilegios
+
+✔️ **Ataques de Fuerza Bruta y credenciales robadas**
+
+- adivinar contraseñas a través de múltiples intentos
+- 💊 bloquear cuentas después de varios intentos fallidos
+- 💊 MFA
+- 💊 monitorear en tiempo real
+
+✔️ **Exposición de APIs y Puertos Inseguros**
+
+- 😈 inyección de comandos
+- 😈 enumeración de APIs
+- 💊 cerrar puertos innecesarios
+- 💊 usar tokens de acceso
+
+✔️ **Inyección de Código**
+
+- ejecutar comandos maliciosos
+- extrear datos
+- 💊 WAF
+- 💊 validacion, saneamiento
+- 💊 consultas parametrizadas
+
+✔️ configuraciónes inseguas
+
+- configuración incorrecta
+- exponer datos sensibles
+- 💊 cifrar
+
+✔️ **Escalada de Privilegios**
+
+- explotación de roles
+- 💊 aplicar el principio de menor privilegio
+
+✔️
