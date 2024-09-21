@@ -271,3 +271,9 @@ public BabyFish(String name, int food, boolean poison, String sea) {
     }
 }
 ```
+
+## 📌 Template Method Pattern
+
+- 상속을 이용한 대표적인 디자인 패턴
+
+💡 Design Pattern <https://soheeparklee.github.io/posts/JAVA_designPattern/>

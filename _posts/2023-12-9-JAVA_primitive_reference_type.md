@@ -85,3 +85,18 @@ chAry1의 값을 바꾸면 chAry2의 값도 바뀌어버림! <br>
 ##### after `chAry1[0]= 'Z'`
 
 <img width="443" alt="스크린샷 2023-12-05 오후 8 38 43" src="https://github.com/soheeparklee/portfolioWebsite_dreamcoding/assets/97790983/0ef1d893-df30-4999-af9a-6a9fd4930d2d">
+
+## new String() 🆚 ""
+
+- `new String()`
+- new object
+- new memory
+- GC to manage memory
+
+<br>
+
+- `""`
+- reference already created String
+- not a new object
+- 👍🏻 efficient memory resource
+- 👍🏻 faster

@@ -13,20 +13,20 @@ tags: [design, pattern] # TAG names should always be lowercase
 비즈니스 상황 별 최적의 설계 노하우/전략/공략법 정리<br>
 UML(Unified Modeling Language)로 객체 간 구조도 작성<br>
 
-### ✔️ 생성패턴
+#### ✔️ 생성패턴
 
 기존 코드의 재사용성 증가<br>
 
 - 빌더 패턴<br>
 - 싱글턴 패턴<br>
 
-### ✔️ 구조 패턴
+#### ✔️ 구조 패턴
 
 구조를 유지하면서 더 큰 구조로 조립<br>
 
 - 데코레이터 패턴<br>
 
-### ✔️ 행동패턴
+#### ✔️ 행동패턴
 
 알고리즘 및 객체 책임 할당<br>
 
@@ -605,3 +605,29 @@ public class StrategyTest {
 }
 
 ```
+
+## 🧩 Template Method Pattern
+
+> Capsulize part of the overall service <br>
+> change small details for each stage <br>
+
+- 상속 `extends` 이용한 대표적인 디자인 패턴
+- `parent class`: define overall algorithm
+- `child class`: override algorithm
+
+- 전체적으로는 동일
+- 부분적으로는 다른 구문으로 구성되는 메소드의 코드 중복 최소화
+- `parent class`: 동일한 기능 정의
+- `child class`: 확장/변화 필요한 부분만 서브 클라스에서 구현
+
+- 예시
+- 대량 집 짓기
+- `parent class`: 뼈대 만들기
+- `child class`: 세부 사항 조절
+
+- 👍🏻 reduce code repetition
+- 👍🏻 OOP
+- 👍🏻 child class burden ⬇️
+- 👍🏻 centralized management of critical code
+- 👎🏻 lots of abstract class
+- 👎🏻 relationship among class can become complex
