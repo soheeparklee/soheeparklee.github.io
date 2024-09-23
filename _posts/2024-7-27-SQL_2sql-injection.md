@@ -1,6 +1,6 @@
 ---
 title: SQL Injection
-categories: [Database, SQL]
+categories: [Database, DB]
 tags: [] # TAG names should always be lowercase
 ---
 
