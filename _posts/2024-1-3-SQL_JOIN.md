@@ -4,16 +4,26 @@ categories: [Database, DB]
 tags: [join, inner, outer] # TAG names should always be lowercase
 ---
 
-table을 JOIN할 때, table끼리는 1:N 관계이다. <br>
-FK로 JOIN한다. <br>
-ON: join하는 조건인데, FK로 join <br>
+## ✅ JOIN
+
+> to join tables
+
+- table을 JOIN할 때, table끼리는 1:N 관계이다. <br>
+- FK로 JOIN한다. <br>
+- ON: join하는 조건인데, FK로 join <br>
 
 ## ✅ INNER JOIN
 
 <img width="435" alt="Screenshot 2024-07-27 at 23 14 41" src="https://github.com/user-attachments/assets/c8958340-29c1-4a02-b275-2d74d7ad0ef3">
 
-두 table간 **겹치는 부분을 return**하는 JOIN <br>
-가장 기본적인 JOIN은 INNER JOIN <br>
+- 두 table간 **겹치는 부분을 return**하는 JOIN <br>
+- 공통 컬럼명
+- 가장 기본적인 JOIN은 INNER JOIN <br>
+
+- CROSS JOIN
+- EQUI JOIN
+- NON-EQUI JOIN
+- NATURAL JOIN
 
 ```sql
 SELECT *
@@ -22,7 +32,7 @@ INNER JOIN buy_history
 ON buy_history.mem_id = group_singer.mem_id;  --mem.id로 연결(FK)
 ```
 
-### alias 사용(줄임말)
+### ✔️ alias 사용(줄임말)
 
 ```sql
 SELECT G.mem_name, B.prod_name
@@ -31,7 +41,7 @@ INNER JOIN buy_history B
 ON B.mem_id = G.mem_id;
 ```
 
-### sub query
+### ✔️ sub query
 
 서울/경기 출신 그룹 중, 소모한 비용 SUM이 10000이상 되는 그룹이 몇 개인지 반환 <br>
 
@@ -50,21 +60,28 @@ HAVING total_price > 10000
 
 ## ✅ OUTER JOIN
 
+- 조건문에 만족하지 않는 행도 JOIN
+- 매칭되는 데이터가 없는 경우 `NULL`
+
+- FULL OUTER JOIN
+- LEFT OUTER JOIN
+- RIGHT OUTER JOIN
+
 <img width="436" alt="Screenshot 2024-07-27 at 23 14 57" src="https://github.com/user-attachments/assets/e97edfcc-83e6-4efe-9119-ea0aad2abca2">
 
-- LEFT JOIN <br>
+- **LEFT JOIN** <br>
   왼쪽 table에 있으면 무조건 넣어라. <br>
   합쳐지는 오른쪽 테이블에 값이 없어도 왼쪽 테이블에 있으면 무조건 <br>
   null 값이라도 넣기 <br>
 
-- RIGHT JOIN <br>
+- **RIGHT JOIN** <br>
 
-- FULL OUTER JOIN <br>
+- **FULL OUTER JOIN** <br>
 
 <img width="457" alt="Screenshot 2024-07-27 at 23 15 32" src="https://github.com/user-attachments/assets/8899e69a-5e58-4f57-939f-8c9a17276434">
 
-합집합
-모든 데이터가 합쳐진다.
+- 합집합
+- 모든 데이터가 합쳐진다.
 
 ```sql
 SELECT {칼럼 목록}

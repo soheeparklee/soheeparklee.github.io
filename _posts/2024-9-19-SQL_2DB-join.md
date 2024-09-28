@@ -1,39 +1,29 @@
 ---
-title: SQL Injection
-categories: [Database, SQL]
+title: Partitioning, Sharding
+categories: [Database, DB]
 tags: [] # TAG names should always be lowercase
 ---
 
-## ✅ SQL Injection
+## ✅ Partitioning
 
-> Malicious SQL by a hacker to be transmitted to DB, attacking the data
+> divide big table into small several tables <br>
 
-## 😈 SQL Injection Attack
+- 👍🏻 improve query performace
+- data is physically divided into seperate tables
+- but user can access the data as if it is on the same table
 
-1. Delete data attack
+- 🆚 save all data on one computer
 
-- when user logs in, inputs ID and password
-- hacker would add SQL to
-  when the ID, password is true, delete user
-- results in unintended alternation of DB
+## ✅ Sharding
 
-2. Reveal Data
+> save divided data in small unit <br>
+> on several DB server with same schema <br>
 
-- hacker intentionally makes error
-- when the error appears, get additional message to know database design, use it for hacking
+- **shard**: small unit to divide data into
+- one of parallel partitioning
 
-## 💊 Prevention
+- 👍🏻 query performace
+- 👍🏻 balance overhead
+- 👍🏻 parallel scale-out of DB
 
-1. When recieving input, check for typographical symbols
-
-- add logic to prevent login when typographical symbols`$%()*?` are input
-
-2. If SQL error occurs, hide error message
-
-- prevent hacker from accessing DB
-- prevent hacker from getting hints of DB architecture
-
-3. use preparestatement
-
-- When preparestatement is used, typographical symbols are escaped
-- thus, recieves `????` instead of typographical symbols
+- 🆚 save data on several computers
