@@ -476,15 +476,15 @@ vi nginx.conf
 
 ## ✅ Nginx 설정
 
-1. sites-available 설정(Create and configure a New Site Configuration) <br>
+1️⃣ sites-available 설정(Create and configure a New Site Configuration) <br>
 
 ```bash
 sudo nano /etc/nginx/sites-available/drugstoreproject.shop
 ```
 
-2. 다음과 같이 입력
-   저장 `command + O`
-   나가기 `command + X`
+2️⃣ 다음과 같이 입력
+저장 `command + O`
+나가기 `command + X`
 
 ```bash
 server {
@@ -526,20 +526,21 @@ server {
 <br>
 
 - `proxy_pass`: 프록시 주소, 백엔드 운영 서버 ip <br>
-  🔴 두 번째 server 블록 `proxy_pass`는 ` http://localhost:8080;`이다. <br>
-  `http` ⭕️ `https` ❌ <br>
-  8080포트에서는 spring boot앱이 실행되고 있는 상태 <br>
-- `proxy_set_header Host $http_host;`: HTTP request의 Host 헤더 값, 클라이언트가 요청한 원래 호스트 주소 <br>
-- `X-Real-IP`: 실제 방문자의 원격 IP주소 <br>
-- `X-Forwarded-For`: 클라이언트가 프록시 처리한 모든 서버의 IP주소를 포함하는 목록 <br>
-- `X-Forwarded-Proto`: HTTP구조로 http 또는 https를 의미 <br>
-  <br>
-  (3) 도메인 이름이 다르면 404에러 처리<br>
-  <br>
+  - 🔴 두 번째 server 블록 `proxy_pass`는 `http://localhost:8080;` 이다. <br>
+  - `http` ⭕️ <br>
+  - `https` ❌ <br>
+  - 8080포트에서는 spring boot앱이 실행되고 있는 상태 <br>
+- `proxy_set_header Host $http_host;` : HTTP request의 Host 헤더 값, 클라이언트가 요청한 원래 호스트 주소 <br>
+- `X-Real-IP` : 실제 방문자의 원격 IP주소 <br>
+- `X-Forwarded-For` : 클라이언트가 프록시 처리한 모든 서버의 IP주소를 포함하는 목록 <br>
+- `X-Forwarded-Proto` : HTTP구조로 http 또는 https를 의미 <br>
 
-3. Enable the new site<br>
-   `create a symbolic link`해서 `sites-enabled`로 연결<br>
-   우리가 만든 config파일을 `sites-enabled` 디렉토리에 링크해준다.<br>
+(3) 도메인 이름이 다르면 404에러 처리<br>
+<br>
+
+3️⃣ Enable the new site<br>
+`create a symbolic link`해서 `sites-enabled`로 연결<br>
+우리가 만든 config파일을 `sites-enabled` 디렉토리에 링크해준다.<br>
 
 ```bash
 sudo ln -s /etc/nginx/sites-available/drugstoreproject.shop /etc/nginx/sites-enabled/
@@ -553,20 +554,20 @@ ls -l
 
 ```
 
-4. default site를 삭제한다.<br>
-   그래서 아까 `sites-available/default`는 건너뛰라고 한거다...<br>
+4️⃣ default site를 삭제한다.<br>
+그래서 아까 `sites-available/default`는 건너뛰라고 한거다...<br>
 
 ```bash
 sudo rm /etc/nginx/sites-enabled/default
 ```
 
-5. Config에 syntax error 없는지 확인<br>
+5️⃣ Config에 syntax error 없는지 확인<br>
 
 ```bash
 sudo nginx -t
 ```
 
-6. reload nginx<br>
+6️⃣ reload nginx<br>
 
 ```bash
 sudo systemctl reload nginx
@@ -574,13 +575,15 @@ sudo systemctl reload nginx
 
 ## ✅ Error Log 보기
 
-1. `Error Log`있는 디렉토리로 가기<br>
+1️⃣ `Error Log`있는 디렉토리로 가기<br>
 
 ```bash
 cd /var/log/nginx
 ```
 
-`ls`해보면 `error.log`있을 것이다. 2. View `error.log` content<br>
+`ls`해보면 `error.log`있을 것이다. <br>
+
+2️⃣ View `error.log` content<br>
 
 ```bash
 cat error.log
