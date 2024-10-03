@@ -10,19 +10,27 @@ tags: [generic] # TAG names should always be lowercase
 ❌ object가 최상위클라스니까, object class로 구현해볼까?<br>
 그러나 항상 downcasting해야하는 한계가 있다. 😨<br>
 
-### Generic 프로그래밍:
+- 안전하게 **같은 코드**를 여러 **참조형**에 사용하여 **코드 재사용성** 올리는 프로그램 기법<br>
+- 타입을 일반적으로 지정하지 않은 클래스/인터페이스/메소드를 정의
 
-안전하게 **같은 코드**를 여러 **참조형**에 사용하여 **코드 재사용성** 올리는 프로그램 기법<br>
+✔️ **Convariant**
+
+- 상위타입에서 하위타입으로 형 변환 가능
+- Number class ➡️ Integer, Double class
+
+✔️ **Contravariant**
+
+- 하위 타입에서 상위 타입으로 형 변환 가능
 
 ### Generic type 선언
 
-class<br>
-interface로 선언<br>
-<br>
-제네릭 타입은 **타입을 parameter**로 가지는 클래스와 인터페이스를 말한다.<br>
-class/ interface 이름 뒤에 <> 부호가 붙고 사이에 타입 parameter<br>
-parameter는 꼭 대문자 알파벳 1글자<br>
-<br>
+- class<br>
+- interface로 선언<br>
+
+- 제네릭 타입은 **타입을 parameter**로 가지는 클래스와 인터페이스를 말한다.<br>
+- class/ interface 이름 뒤에 <> 부호가 붙고 사이에 타입 parameter<br>
+- parameter는 꼭 대문자 알파벳 1글자<br>
+  <br>
 
 ```java
 public class GeneralPrint<T> {
@@ -83,13 +91,13 @@ public class PrintSituation {
 
 ## ✅ Generic 심화
 
-### ✔️ static은 Generic불가
+✔️ **static은 Generic불가**
 
 static은 시점: class load 시점 <br>
 generic 시점: 인스턴스 생성 시점 <br>
 따라서 generic생성 시점보다 static 시점이 먼저이기 때문에 static은 Generic불가 <br>
 
-### ✔️ Generic은 두 개 이상 사용 가능
+✔️ **Generic은 두 개 이상 사용 가능**
 
 ## ✅ Generic programming 자료형 제한하기
 

@@ -573,3 +573,13 @@ public class ScoreTest {
 - Join: 서브 결과를 결합해 최종 결과 도출
 
 <img width="709" alt="Screenshot 2024-05-30 at 17 08 16" src="https://github.com/soheeparklee/sc_FrontBackTryout/assets/97790983/55a6940d-4d00-4f8b-af2e-c277b2f9f94d">
+
+## ✅ Stream의 장점, 문제점
+
+- 👍🏻 선언형, 간결하고 가독성이 좋다
+- 👍🏻 조립 가능, 유연성
+- 👍🏻 병렬화, 처리 성능 향상
+- 👎🏻 메모리 부족 문제
+- 👎🏻 느린 처리 속도
+- 👎🏻 어려운 디버깅
+- 상태 변경 불가: 한번 생성 이후에는 상태 변경 불가, 결과를 다시 사용하려면 새로운 스트림 생성 필요
