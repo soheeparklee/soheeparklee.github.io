@@ -19,8 +19,14 @@ tags: [this, object, instance, getter, setter, constructor] # TAG names should a
 
 ### ☑️ instance
 
-클래스에 의해 정의됨.<br>
-<br>
+- 클래스에 의해 정의됨.<br>
+- `new` 연산자 이용해 instance 생성
+- use `@constructor` from class and make `instance`
+- instance can use class's `property` & `method`
+  <br>
+
+- independent to class
+- has own data(자신만의 데이터를 가진다. )
 
 - instance= 올리브영 강남점<br>
 

@@ -27,6 +27,17 @@ tags: [stream] # TAG names should always be lowercase
   - 작업을 병렬처리 가능
   - 스트림
 
+#### 🆚 iterator, iterable
+
+- 공통점: Java Collection Framework
+- iterator:
+  - iterate within collection(list, set)
+  - get value from collection using `hasNext()`, `next()`
+
+<br>
+
+- iterable: interface to get iterator
+
 ### ☑️ 스트림 단계
 
 > 생성 → 매핑 → 필터링 1 → 필터링 2 → 결과 만들기 → 결과물
