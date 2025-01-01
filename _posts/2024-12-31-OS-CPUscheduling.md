@@ -1,0 +1,165 @@
+---
+title: 운영체제와 정보기술의 원리_Scheduling/caching
+categories: [Computer Science, Computer Architecture/Operating System]
+tags: [] # TAG names should always be lowercase
+---
+
+## ✅ CPU Scheduling
+
+> 누가 먼저 CPU를 쓸 것인가?
+
+### 💡 FCFS
+
+> First Come First Served <br>
+> 먼저 온 프로그램이 CPU를 먼저 쓴다. <br>
+
+- 👎🏻 효율적이지 않다. 짧은 CPU시간을 가진 프로세스도 오래 기다려야 함.
+
+### 💡 SJF
+
+> Shortest Job First <br>
+> CPU 사용시간이 가장 짧은 프로세스부터 CPU사용 <br>
+
+- 👍🏻 minimum average waiting time을 보장
+- 👍🏻 기다리는 시간이 제일 짧다
+- 👎🏻 Starvation 기아현상 발생
+  - 👎🏻 형평성
+  - 오래 걸리는 프로그램은 CPU를 절대 못 쓴다.
+
+### 💡 Round Robin
+
+> 각 프로세스는 동일 크기의 CPU를 사용할 수 있는 시간이 할당됨 <br>
+> 시간이 지나면 프로세스는 CPU를 빼앗김 => 인터럽트 <br>
+
+- 할당 시간이 끝나면 인터럽트 발생
+- 프로세스는 CPU를 뺏김
+- CPU 큐의 제일 뒤에 줄을 선다.
+
+- 👍🏻 짧은 프로세스는 할당 시간 내에 일 끝냄
+- 👍🏻 짧은 프로세스는 기다리는 시간도 짧음
+- 👍🏻 오래 걸리는 프로세스도 조금조금씩 언젠가는 끝냄
+- 👍🏻 오래 걸리는 프로세스는 기다리는 시간도 길다
+
+- 👍🏻 n개의 프로세스가 있을 때 어떤 프로세스도 `(n-1)*할당시간` 이상 기다리지 않음
+- 👍🏻 `대기시간`이 프로세스의 `CPU사용시간`에 비례
+
+## ✅ 메모리 작동
+
+- 메모리: 휘발성
+- 메모리는 비어 있음
+- 컴퓨터가 켜지면, 메모리 위에 운영체제가 올라감
+- 프로그램은 디스크에 저장되어 있다가(`디스크의 파일시스템`)
+- CPU가 필요하면
+- 가상 메모리를 만들고(`페이지`)
+- 지금 당장 필요한 부분만 실제 물리적인 메모리 위에 올라가게 됨
+
+- 그러다가 메모리가 꽉 차면
+- 안 쓰는 프로세스 `페이지`는 디스크(`스왑 영역`)으로 쫒겨난다.
+
+#### 디스크 파일시스템 🆚 디스크 스왑 영역
+
+- 파일시스템: 파일들 저장, 컴퓨터 꺼져도 유지
+- 스왑 영역:
+  - 디스크의 연장 느낌
+  - 컴퓨터 꺼져도 남아는 있으나, 메모리가 사라졌기에 의미 없는 정보
+- 메모리: 휘발성
+
+## ✅ 메모리 Scheduling
+
+> 메모리가 꽉 찼는데, 어떤 페이지를 메모리에서 쫒아낼까? <br>
+
+- 미래에 사용될 가능성이 많은 프로세스는 메모리에 두고,
+- 미래에 안 사용될 것 같은 프로세스는 쫒아내야 함
+
+### 💡 LRU
+
+> Least Recently Used <br>
+
+- 가장 오래 전에 사용된 페이지 삭제
+
+### 💡 LFU
+
+> Least Frequently Used <br>
+
+- 제일 적게 사용된 페이지 삭제
+
+## ✅ 디스크 Scheduling
+
+- 디스크는 디스크 헤드가 이동하며 데이터를 읽어오는데,
+- 따라서 이 헤드의 이동 동선을 최소화하는게 중요함(엘레베이터처럼)
+- seek time을 최소화하는게 목표
+
+### ✔️ 디스크 access time
+
+- **탐색 시간 seek time**
+- 디스크 헤드가 해당 트랙(실린더)으로 움직이는데 걸리는 시간
+
+- **회전 지연 rotational latency**
+- 헤드가 원하는 섹터에 회전에 도달하기까지 걸리는 시간
+
+- **전송 시간 transfer time**
+- 실제 데이터의 전송 시간
+
+### 💡 SSTF
+
+> Shortest Seek Time First <br>
+
+- 큐에 들어온 데이터 중 가까운 위치부터 간다.
+- 내가 5번에 있는데 순서대로 `10, 7`번이 들어오면 7번부터 간다.
+- 👎🏻 Starvation: 멀리 있는 데이터는 안 감, 오래 기다림
+
+### 💡 SCAN
+
+> 헤드는 디스크 한쪽 끝에서 다른쪽 끝으로 쭉 이동 <br>
+
+- 가는 길목에 있으면 처리
+- 한 쪽에 도달하면 역방향으로 이동
+- 또 가는 길목에 있는 데이터 처리
+- 엘리베이터처럼, 1층에서 5층까지 가는데 3층에 불 들어오면 데리고 올라감
+
+- 👍🏻 기아현상 발생 ❌
+
+## ✅ 캐싱
+
+> 빠른 CPU와 느린 I/O장치 간 속도 차이를 어떻게 극복할 것인가? <br>
+> caching: copying information into faster storage system <br>
+
+- 여러번 요청되는 데이터는 secondary에서 primary의 캐시에 저장을 해 두고,
+- 매번 secondary에서 찾아올 필요 없이 빨리빨리 가져다 쓰자
+- 하지만 캐시는 작기 때문에 모든걸 다 저장할 수는 없음
+
+<img width="449" alt="Screenshot 2024-12-31 at 16 50 55" src="https://github.com/user-attachments/assets/7c8d675f-ec2b-4e6f-bc2c-5baf38814ddf" />
+
+- register: volatile, primary(CPU executable)
+- cache memory: volatile
+- main memory: volatile
+
+---
+
+- magnetic disk: nonvolatile, secondary(CPU NOT executable)
+- optical disk: nonvolatile
+- magnetic tape: nonvolatile
+
+- primary: CPU에서 직접 실행
+  - 빠르지만 용량이 작고 비싸다
+- secondary: CPU에서 직접 실행 불가, primary에 올려놓고 실행해야 함
+  - I/O 장치라고도 볼 수 있음
+  - 용량이 더 크고 저렴하지만, 느리다
+
+## ✅ Flash Memory
+
+- 반도체장치
+- SSD
+
+- 👍🏻 nonvolatile
+- 👍🏻 low power consumption 전력소모 적음
+- 👍🏻 shock resistance 물리적 충격 잘 견딤
+- 👍🏻 작다
+- 👍🏻 가볍다
+- 👎🏻 쓰기 횟수 제약: 썻다 지웠다 일정 횟수 후에 사용 불가
+- 👎🏻 시간이 많이 지나면 데이터가 사라질 수 있음, 전하가 빠져나가서
+
+- 휴대폰에 임베디드
+- USB
+
+## ✅
