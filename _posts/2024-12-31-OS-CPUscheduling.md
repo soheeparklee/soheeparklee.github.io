@@ -1,5 +1,5 @@
 ---
-title: 운영체제와 정보기술의 원리_Scheduling/caching
+title: KOCW_Scheduling/caching
 categories: [Computer Science, Computer Architecture/Operating System]
 tags: [] # TAG names should always be lowercase
 ---
@@ -126,25 +126,8 @@ tags: [] # TAG names should always be lowercase
 
 - 여러번 요청되는 데이터는 secondary에서 primary의 캐시에 저장을 해 두고,
 - 매번 secondary에서 찾아올 필요 없이 빨리빨리 가져다 쓰자
+- 👍🏻 속도가 다른 저장장치의 완충 역할
 - 하지만 캐시는 작기 때문에 모든걸 다 저장할 수는 없음
-
-<img width="449" alt="Screenshot 2024-12-31 at 16 50 55" src="https://github.com/user-attachments/assets/7c8d675f-ec2b-4e6f-bc2c-5baf38814ddf" />
-
-- register: volatile, primary(CPU executable)
-- cache memory: volatile
-- main memory: volatile
-
----
-
-- magnetic disk: nonvolatile, secondary(CPU NOT executable)
-- optical disk: nonvolatile
-- magnetic tape: nonvolatile
-
-- primary: CPU에서 직접 실행
-  - 빠르지만 용량이 작고 비싸다
-- secondary: CPU에서 직접 실행 불가, primary에 올려놓고 실행해야 함
-  - I/O 장치라고도 볼 수 있음
-  - 용량이 더 크고 저렴하지만, 느리다
 
 ## ✅ Flash Memory
 
