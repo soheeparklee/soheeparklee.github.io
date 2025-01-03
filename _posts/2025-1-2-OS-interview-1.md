@@ -15,17 +15,28 @@ tags: [] # TAG names should always be lowercase
 
 - time sharing
 - CPU는 하나의 작업만 한번에 할 수 있는데
-- 시간을 쪼개서 여러 프로그램을 조금씩 실행하는 것
+- CPU 사용 시간을 쪼개서 여러 프로그램을 조금씩 실행하는 것
+- 👍🏻 여러 프로그램을 한번에 실행할 수 있다. 효율적
+- 오늘날 많은 OS가 이 방식으로 동작
 
 ### ✅ 다중 프로그래밍 시스템(multi-programming system)에 대해서 설명해주세요.
 
-- CPU가 한번에 여러개의 프로그램을 실행하는 것처럼 보임
+- 여러개의 프로그램이 메모리에 올라가있어 CPU사용을 효율적으로
+- 👍🏻 CPU가 연속적으로 쉬지 않고 일할 수 있다
+- 👍🏻 Job scheduling
+- 👎🏻 memory space interference, deadlock, need to synchronoize properly
 
 ### ✅ 대화형 시스템(interactive system)에 대해서 설명해주세요.
+
+- 프로그램 진행 도중에 유저가 실시간으로 프로그램과 상호작용 할수 있는 시스템
+- 프로그램이 진행되는 도중에 사용자로부터 데이터를 입력받아 프로그램 진행에 반영할 수 있는 시스템
+- time sharing
 
 ### ✅ 다중 처리기 시스템(multi-processor system)에 대해서 설명해주세요.
 
 - CPU가 여러개
+- 👍🏻 병렬 작업
+- 👍🏻 하나가 고장나도 다른 CPU가 대신함
 
 ### ✅ 시스템 콜에 대해 설명해주세요.
 
@@ -44,6 +55,7 @@ tags: [] # TAG names should always be lowercase
 
 - 운영체제의 가장 핵심 부분
 - 메모리에 올라가는 운영체제가 바로 이 커널이다.
+- manage CPU scheduling, system call, memory management, I/O
 
 ### ✅ 커널모드에 대해 설명해주세요.
 
@@ -57,18 +69,23 @@ tags: [] # TAG names should always be lowercase
 - `modebit 1`
 - 특권명령을 실행하고 싶으면 인터럽트, 즉 시스템 콜을 걸어 운영체제에게 CPU제어권을 넘겨야 한다.
 
-### ✅ 폴링에 대해 설명해주세요.
+### ✅ 폴링`Polling`에 대해 설명해주세요.
+
+- CPU가 직접 I/O장치에 가서 데이터를 가져오는 방식
+- 👎🏻 CPU가 I/O를 직접 해야하기 떄문에 다른 일을 못함, 비효율적
 
 ### ✅ 인터럽트에 대해 설명해주세요.
 
-- CPU제어권을 운영체제에게 넘기기
+- CPU에게 처리가 필요한 상황이 발생했음을 알리는 것이다.
 - 인터럽트가 발생하면 CPU는 현재 실행하던 프로그램을 멈추고
-- 인터럽트 벡터, 인터럽트 처리 루틴을 실행
+- 인터럽트 벡터, 인터럽트 처리 루틴`Interrupt Service Routine`을 실행
 - 실행 후 아까 실행하던 프로그램으로 복귀
 
 - 1. 하드웨어 인터럽트: 하드웨어 작업이 끝났을 때 CPU에게 끝났음을 알리기 위해 인터럽트
+
   - timer interrupt
   - I/O interrupt
+
 - 2. 소프트웨어 인터럽트 `trap`: 사용자 프로그램이 특권명령 실행이 필요해 시스템 콜, 인터럽트
 
   - exception
@@ -83,14 +100,14 @@ tags: [] # TAG names should always be lowercase
 - I/O가 너무 자주 일어나 인터럽트도 너무 많이 걸리게 되면 CPU활용이 비효율적이다.
 - 원래 메모리에 접근할 수 있는건 CPU뿐이지만, DMA도 메모리에 접근할 수 있게 하여
 - I/O에서 넘어온 데이터를 `byte`단위가 아니라 `block`단위로 모아서 CPU에게 전달,
-- 지나치게 빈번한 인터럽트를 줄인다.
+- 👍🏻 지나치게 빈번한 인터럽트를 줄인다.
 
 ### ✅ 동기식 I/O에 대해 설명해주세요.
 
 - I/O가 끝날 때까지 CPU가 기다림
 - 👎🏻 CPU 낭비
 - 그래서 프로그램A가 I/O를 요청했으면 I/O를 하는 동안 프로그램B를 먼저 실행하고있고
-- 프로그램A는 CPU 큐에 줄 세움
+- 프로그램A는 `CPU 큐`에 줄 세움
 - 👍🏻 CPU 효율적으로 사용
 
 ### ✅ 비동기식 I/O에 대해 설명해주세요.
@@ -98,8 +115,22 @@ tags: [] # TAG names should always be lowercase
 - I/O가 끝날 때까지 CPU가 안 기다림
 - I/O 결과가 필요 없는 일을 하거나, 작업이 `쓰기`였다면 굳이 기다릴 필요가 없음
 
-### ✅
+### ✅ 운영체제한테 CPU가 넘어가는 경우는 어떤 경우가 있나요?
 
-### ✅
+- 모두 인터럽트 라인을 세팅하는 경우
+- 하드웨어에서 인터럽트: I/O기기에서 작업을 완료해 CPU에게 완료했다고 알릴 떄 인터럽트
+- 사용자 프로그램이 인터럽트: CPU에서 권한 밖의 함수를 호출할 때(예를 들어 I/O) 운영체제 커넬 모드
+- 사용 위해 시스템 콜, 또는 exception이 발생했을 때
+- timer에서 인터럽트 할 수도 있음.
+
+### ✅ 사용자 프로그램이 CPU를 빼앗기는 경우
+
+- 사용자 프로그램은 계속 쓰고 싶지만, CPU 독점권을 막으려고 timer에서 타임아웃
+- 사용자 프로그램이 I/O가 필요해 기다려야 하는 경우
 
 CPU
+
+https://soheeparklee.github.io/posts/OS-security/
+https://soheeparklee.github.io/posts/OS-io/
+https://soheeparklee.github.io/posts/OS-program-structure/
+https://soheeparklee.github.io/posts/OS-intro/
