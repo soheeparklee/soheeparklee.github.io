@@ -1,5 +1,5 @@
 ---
-title: KOCW_Memory, Security
+title: KOCW_Memory / Security
 categories: [Computer Science, Computer Architecture/Operating System]
 tags: [] # TAG names should always be lowercase
 ---
@@ -84,9 +84,3 @@ tags: [] # TAG names should always be lowercase
 - `사용자 프로그램`이 실행할 수 없다.
 - 따라서 `사용자 프로그램`은 운영체제에게 `system call`을 통해 I/O를 요청해야 한다.
 - `system call`은 일종의 소프트웨어 `interrupt`
-
-## ✅
-
-## ✅
-
-CPU

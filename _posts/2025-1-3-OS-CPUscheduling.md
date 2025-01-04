@@ -1,5 +1,5 @@
 ---
-title: KOCW_Scheduling/caching
+title: KOCW_Scheduling / Caching
 categories: [Computer Science, Computer Architecture/Operating System]
 tags: [] # TAG names should always be lowercase
 ---

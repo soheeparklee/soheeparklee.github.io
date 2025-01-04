@@ -1,5 +1,5 @@
 ---
-title: KOCW_Process Management
+title: KOCW_Process / Process Management / VM / Context Switching
 categories: [Computer Science, Computer Architecture/Operating System]
 tags: [] # TAG names should always be lowercase
 ---
@@ -100,11 +100,14 @@ tags: [] # TAG names should always be lowercase
 
 > 프로그래머가 직접 작성한 함수
 
+- 자신의 프로그램에서 정의한 함수
+
 #### ☑️ **라이브러리 함수**
 
 > 프로그래머가 직접 작성하지는 않았지만, 누군가 작성해 놓은 함수를 호출만 해서 사용하는 것
 
-- 사용자 정의 함수와 라이브러리 함수는 모두 프로그램의 코드 영역에 기계어 명령 형태로 존대한다.
+- 자신의 프로그램에서 정의하지는 않았지만, 내 프로그램에 정의된 함수
+- `사용자 정의 함수`와 `라이브러리 함수`는 모두 프로그램의 코드 영역에 기계어 명령 형태로 존재한다.
 - 프로그램이 실행될 때마다 `프로세스의 주소 공간`에 포함됨
 - 함수 호출 시에도 자신의 `주소 공간`에 있는 `스택` 사용
 
@@ -113,6 +116,7 @@ tags: [] # TAG names should always be lowercase
 > 운영체제의 커널 코드에 정의된 함수 <br>
 > 커널 함수를 호출하는 것이 바로 `system call`
 
+- CPU제어권을 운영체제에게 넘겨야 한다.
 - 커널함수는 `운영체제 커널의 주소 공간`에 `코드` 정의
 
 - ✔️ 커널함수의 두 종류
@@ -132,16 +136,166 @@ tags: [] # TAG names should always be lowercase
 - 프로세스 A가 CPU에서 실행되고 있음
 - 1️⃣ 일반적인 함수 호출(자신의 주소 공간에 정의된 코드 실행) ➡️ **사용자 모드**
   - 사용자 정의함수, 라이브러리 함수 호출
-  - 모드의 변경 없이 사용자 모드에서 실행 지속
+  - 모드의 변경 없이 `사용자 모드`에서 실행 지속, `modebit 1`
 - 2️⃣ 커널의 시스템 콜 함수 실행 ➡️ **커널 모드**
-  - 커널모드로 진입해 커널의 주소 공간에 정의된 함수 실행
+  - `커널모드`로 진입해 커널의 주소 공간에 정의된 함수 실행 `modebit 0`
+- 따라서 프로세스 실행은 `사용자 모드`와 `커널모드`를 왔다갔다 하면서 실행
 
-## ✅
+## ✅ Process
 
-## ✅
+> Program in execution
 
-## ✅
+#### ☑️ Process context
 
-## ✅
+> process가 현재 어떤 상태에 있는가? <br>
+> 시간에 따라서 변한다
 
-CPU
+- 이 프로세스는 CPU를 얼마나 썼는가?
+- 메모리를 얼마나 가지고 있는가?
+- 함수 어디를 실행하고 있는가?
+- OS는 이 프로세스의 문맥을 아주 중요하게 생각한다.
+
+- ✔️ **CPU수행 상태**를 나타내는 **하드웨어** 문맥
+- `PC program counter`를 살펴보기
+- 각종 register에 어떤 값을 넣고 있는가
+
+- ✔️ **프로세스 주소 공간**
+- 자신의 메모리 공간 `data`에 무엇을 가지고 있는가?
+- `stack`에 몇 개의 함수가 있는가?
+
+- ✔️ **프로세스 관련 커널 자료 구조**
+- `PCB`
+- `kernel stack`
+- OS의 `PCB`, `stack`에 프로세스 문맥에 대한 정보도 저장되어 있을 것임.
+
+## ✅ 프로세스의 상태
+
+- ✔️ **Running**
+- CPU에서 기계어를 *실행*하는 프로세스는 _한 개_
+- 현재 CPU를 잡고 instruction을 수행 중
+
+- ✔️ **Ready**
+- CPU를 쓰려고 _기다리는_ 프로세스
+- 메모리 등 다른 조건은 모두 만족했음
+
+- ✔️ **Blocked(wait, sleep)**
+- CPU를 줘봐야 소용이 없는 프로세스
+- (오래걸리는 I/O작업 하고 있는 프로세스)
+
+- OS는 `data`의 `PCB`를 통해서 각 프로세스의 상태를 관리하고 있다.
+- 각 `queue`에 줄을 세워서 관리
+- 그리고 CPU는 `CPU queue`다음에 있는 프로세스에게 CPU를 준다.
+- 그러다가 I/O가 끝나서 `interrupt`가 들어오면 `interrupt 요청한 프로세스`의 상태를 `ready`로 바꾸고 그 프로세스에게 CPU를 준다.
+
+```
+- new: 프로세스 생성 중
+- ready: 메모리에 올라옴
+- running: 기다리다가 CPU 할달 받음
+
+1. 오래걸리는 작업이 필요함(수행하다가 I/O가 필요함)
+➡️ waiting = blocked
+- 오래걸리는 작업이 끝나면
+➡️ ready
+
+2. timer가 작동함
+➡️ ready
+
+3. 작업이 끝남, 종료
+➡️ terminate
+```
+
+## ✅ PCB에 어떤 내용이 들어있는가
+
+> PCB: Process Control Block <br>
+> in OS kernel data <br>
+> 운영체제가 각 프로세스를 관리하기 위해 프로세스당 유지하는 정보 <br>
+
+#### ☑️ PCB 구성 요소(구조체로 유지)
+
+<img width="198" alt="Screenshot 2025-01-04 at 17 00 20" src="https://github.com/user-attachments/assets/355bc98f-dd4c-443e-bcfe-6d729e10efeb" />
+
+- ✔️ **OS가 관리상 사용하는 정보**
+- process state, Process Id
+- scheduling information, priority
+- process with highest priority will get the CPU in the next turn
+
+- ✔️ **CPU수행 관련 하드웨어 값**
+- 프로세스 문맥 context
+- `PC program counter`: CPU빼앗기기 전 어디까지 실행했었는지, 이어서 실행하기 위해
+- (그래서 `프로세스 A`한테서 CPU 빼앗기 전에 `프로세스 A PCB`안에 저장을 해둔다. )
+- registers
+
+- CPU의 `PC, register` 🆚 OS kernel `data PCB`의 `PC, register`
+- CPU의 `PC, register`: CPU가 어디까지 실행했는지, CPU연산 값 `register`에 저장
+- OS kernel `data PCB`의 `PC, register`: CPU를 빼앗기 전 해당 프로세스를 어디까지 실행했는지 저장
+- 각 프로세스마다 각각의 `data PCB`, 각 `PC, register`가 있다
+
+- ✔️ **메모리 관련**
+- code, date, stack위치 저장
+
+- ✔️ **파일 관련**
+
+## ✅ Context Switching 문맥 교환
+
+> CPU를 한 프로세스에서 다른 프로세스로 넘겨주는 과정 <br>
+> 반드시 한 프로세스`process A`에서 다른 프로세스`process B`로 넘어가야 함 <br>
+
+#### ☑️ CPU가 다른 프로세스에게 넘어갈 때 OS역할
+
+```
+1. CPU를 내어주는 프로세스 상태를 그 프로세스 PCB에 저장
+2. CPU를 새롭게 얻는 프로세스 상태를 PCB에서 읽어옴
+```
+
+#### context switching ⭕️❌
+
+<img width="546" alt="Screenshot 2025-01-04 at 16 55 53" src="https://github.com/user-attachments/assets/26ff5235-6bfb-441f-b18b-ee81a2b15ef6" />
+
+- context switching ❌
+
+```
+CPU Process A running: 🏴 user mode
+🛑 interrupt or system call
+ISR or system call function: 🏳️ kernel mode
+➡️ back to user mode
+CPU Process A running: 🏴 user mode
+
+➡️ This is NOT context switching
+💡 OS does save context to PCB
+- user mode에서 kernelmode 로 바뀌는 건 부담이 비교적 크지 않음
+- 모든 context를 다 save할 필요는 없으니까
+```
+
+- context switching ⭕️
+
+```
+CPU Process A running: 🏴 user mode
+🛑 interrupt or system call or timer
+ISR or system call function: 🏳️ kernel mode
+➡️ Context switching
+CPU Process B running: 🏴 user mode
+
+💡 OS has to save context to PCB
+- Much more burden for OS
+- big overhead
+(cache memory flush)
+```
+
+- 공통점: OS에서 context를 `PCB`에 저장해야 함
+- 🆚 차이점: context switching이 훨씬 부담이 크다, big overhead
+
+## ✅ 프로세스를 scheduling하기 위한 queue
+
+> OS는 프로세스를 모두 `queue`에 넣고 관리한다.
+
+- ✔️ **Job Queue**
+- 현재 시스템 내에 있는 모든 프로세스
+
+- ✔️ **Ready Queue**
+- 현재 메모리 내에 있고
+- CPU를 당장 얻어도 되는, 기다리고 있는 프로세스
+
+- ✔️ **Device Queues**
+- I/O디바이스에서 기다리고 있는 프로세스
+
+<img width="680" alt="Screenshot 2025-01-04 at 17 02 14" src="https://github.com/user-attachments/assets/79a5d32a-8d8e-4f24-b272-8b109e302fb0" />
