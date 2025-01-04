@@ -105,6 +105,7 @@ tags: [] # TAG names should always be lowercase
 ### ✅ 동기식 I/O에 대해 설명해주세요.
 
 - I/O가 끝날 때까지 CPU가 기다림
+- 👍🏻 구현이 간단
 - 👎🏻 CPU 낭비
 - 그래서 프로그램A가 I/O를 요청했으면 I/O를 하는 동안 프로그램B를 먼저 실행하고있고
 - 프로그램A는 `CPU 큐`에 줄 세움
@@ -128,9 +129,11 @@ tags: [] # TAG names should always be lowercase
 - 사용자 프로그램은 계속 쓰고 싶지만, CPU 독점권을 막으려고 timer에서 타임아웃
 - 사용자 프로그램이 I/O가 필요해 기다려야 하는 경우
 
-CPU
+### ✅ 커널의 종류
 
-https://soheeparklee.github.io/posts/OS-security/
-https://soheeparklee.github.io/posts/OS-io/
-https://soheeparklee.github.io/posts/OS-program-structure/
-https://soheeparklee.github.io/posts/OS-intro/
+### ✅ 폴링 🆚 푸싱
+
+- 폴링: 프로그램이 하드웨어 장치의 상태를 주기적으로 확인하는 방식
+- 👎🏻 장치 시간 간격으로 확인해야 하므로 CPU자원 소모
+- 푸싱: 장치가 준비되면 프로그램에게 알림
+- 👍🏻 프로그램이 계속 완료되었는지 확인할 필요가 없음
