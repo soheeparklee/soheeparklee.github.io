@@ -1,5 +1,5 @@
 ---
-title: KOCW_운영체제/인터럽트/시스템콜/커널/동기, 비동기
+title: Interview_운영체제/인터럽트/시스템콜/커널/동기, 비동기
 categories: [Computer Science, Computer Architecture/Operating System]
 tags: [] # TAG names should always be lowercase
 ---
