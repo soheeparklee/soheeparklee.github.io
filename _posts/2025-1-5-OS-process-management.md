@@ -4,6 +4,13 @@ categories: [Computer Science, Computer Architecture/Operating System]
 tags: [] # TAG names should always be lowercase
 ---
 
+## ✅ Multi process
+
+- 하나의 프로그램 안에서 여러개의 프로세스를 실행하는 기술
+- 하나의 `부모 프로세스`가 `자식 프로세스` 생성
+- 프로세스 끼리는 서로 독립적인 메모리를 가진다.
+- 예를 들어 `프로그램: 크롬`을 실행하고 `프로세스: 여러개의 크롬 창`을 띄운다.
+
 ## ✅ Process Creation: fork(), exec()
 
 > 부모 프로세스 `parent process`가 자식 프로세스 `children process`를 생성
@@ -76,7 +83,7 @@ tags: [] # TAG names should always be lowercase
 - 따라서 부모 프로세스는 **return 값이 양수**
 - 반면 자식 프로세스는 `fork의 결과값`를 **0**으로 가지게 된다.
 
-```C
+```HTML
 int main()
 {
     int pid;
@@ -95,7 +102,7 @@ int main()
 - 새로운 프로그램으로 덮어씌우는 함수
 - 새로운 프로그램의 이름을 따옴표 안에 적고, 전달할 argument 나열, 0포인터 보내기
 
-```C
+```bash
 int main(){
     printf("\n hello");
     execlp("/bin/date", "bin/date", (char*) 0);
