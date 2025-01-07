@@ -352,8 +352,13 @@ CPU Process A running: 🏴 user mode
 - ✔️ **Ready Queue**
 - 현재 메모리 내에 있고
 - CPU를 당장 얻어도 되는, 기다리고 있는 프로세스
+- `ready queue`에 줄 세우는 방법은 `CPU scheduling`방법에 따라 달라진다
 
 - ✔️ **Device Queues**
-- I/O디바이스에서 기다리고 있는 프로세스
+- 특정 자원을 기다리는 프로세스 줄 세우기 위해 **장치별로** `장치 큐`가 있다.
+- 예를 들어 디스크 콘트롤러에서 I/O 기다리고 있는 프로세스
+- 그러면 `디스크 콘트롤러`는 `디스크 I/O 큐`에 서 있는 순서대로 I/O 작업 수행
+- I/O가 완료되면 `디스크 콘트롤러`가 CPU에 인터럽트,
+- 프로세스는 이제 `I/O 큐`에서 빠져나와 `CPU큐`에서 기다리게 된다.
 
 <img width="680" alt="Screenshot 2025-01-04 at 17 02 14" src="https://github.com/user-attachments/assets/79a5d32a-8d8e-4f24-b272-8b109e302fb0" />

@@ -29,15 +29,6 @@ tags: [] # TAG names should always be lowercase
 - 즉, 최근 OS는 프로세스가 생성되면 무조건 메모리에 올라오게 된다.
 - 최근 OS는 `장기 스케쥴러`가 없는 대신❌ `중기 스케쥴러 Swapper`를 둔다⭕️
 
-#### ☑️ Short-term scheduler: CPU scheduler
-
-> **CPU**
-
-- 어떤 프로세스를 다음번에 `running`시킬지 결정
-- 프로세스에세 **CPU**를 주는 문제
-- 자주 호출된다.
-- 따라서 충분히 빨라야 한다. (ms 단위)
-
 #### ☑️ Medium-term scheduler: Swapper
 
 > **memory** 뺏기
@@ -57,16 +48,12 @@ tags: [] # TAG names should always be lowercase
   - 운영체제 swapper때문에 메모리에서 쫒겨나서 정지
   - 또는 사용자가 프로세스를 잠시 정지시킴
 
-## ✅
+#### ☑️ Short-term scheduler: CPU scheduler
 
-## ✅
+> **CPU**
 
-## ✅
-
-## ✅
-
-## ✅
-
-## ✅
-
-CPU
+- 어떤 프로세스를 다음번에 `running`시킬지 결정
+- 프로세스에세 **CPU**를 주는 문제
+- 자주 호출된다.
+- 따라서 충분히 빨라야 한다. (ms 단위)
+- `Short-term scheduler`가 프로세스를 선정하면, `dispatcher`이 `CPU`를 해당 프로세스에게 할당한다.

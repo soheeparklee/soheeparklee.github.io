@@ -108,21 +108,35 @@ tags: [] # TAG names should always be lowercase
 
 ## ✅ Implementation of threads 쓰레드 구현 방법
 
-- ✔️ **kernal thread**
-- kernel이 thread의 존재를 알게 구현
-- threads supportes by kernel
-- `thread A`에서 `thread B`로 CPU를 넘겨야지
+- ✔️ **kernal-level thread**
+- `kernel`이 `thread`의 존재를 알게 구현
+- threads supported by kernel
+- `kernel`이 쓰레드와 관련된 모든 작업 수행
+- `kernel`이 `thread A`에서 `thread B`로 CPU를 넘겨야지 정함
+- 👍🏻 `쓰레드 단위`로 스케쥴링 할 수 있다.
+- 👍🏻 따라서 멀티프로세서 환경에서 여러 쓰레드를 동시에 처리 가능
+- 👎🏻 쓰레드 간 `context switching`이 자주 발생, 오버헤드
 
-- ✔️ **user thread**
+- ✔️ **user-level thread**
 - thread supported by library
-- 운영체제는 thread를 모른다.
+- 프로그래머가 `쓰레드 라이브러리`를 사용해서 멀티쓰레딩 프로그램 작성
+- 운영체제 `kernel`은 thread의 존재를 모른다.
 - 운영체제는 그냥 process에게 CPU를 주고, 그 process내에서 thread끼리
   CPU넘기기
+- `쓰레드 라이브러리`는 `쓰레드 생성/제거`, `쓰레드 간 메세지/데이터 전달`, `쓰레드 스케쥴링`, `쓰레드 간 교환`에 대한 코드를 포함한다.
+- 🆚 `쓰레드 간 교환`에서 `kernel`은 `프로세스 단위`로 스케쥴링을 한다
+- `쓰레드 간 context switching`도 `쓰레드 라이브러리`가 제공
+- `kernel`의 개입이 필요 없음
+- 👎🏻 만약 한 프로세스의 특정 쓰레드가 `block`되면, `kernel`은 프로세스를 통째로 `block`
+- 👎🏻 그래서 나머지 쓰레드도 다 `block`
 
 - ✔️ **real time thread**
 
-## ✅
+#### kernal-level thread 🆚 user-level thread
 
-## ✅
-
-CPU
+- kernal-level thread
+  - `kernel` realizes thread
+  - scheduling done by `thread unit`
+- user-level thread
+  - `kernel` does not realize thread
+  - scheduling done by `process unit`

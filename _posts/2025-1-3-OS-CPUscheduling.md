@@ -8,6 +8,7 @@ tags: [] # TAG names should always be lowercase
 
 <img width="265" alt="Screenshot 2025-01-06 at 13 02 18" src="https://github.com/user-attachments/assets/745b99f3-b686-4eda-aba5-0e325cd3e0ea" />
 
+- 사용자 프로그램이 수행되는 과정은 `CPU burst`와`I/O burst`이 **번갈아 반복**되는 것으로 구성된다.
 - `CPU burst`: CPU에서 기계어 실행 (비교적 빠름)
 - `I/O burst`: I/O 작업을 하는 단계 (비교적 느림)
 
@@ -24,6 +25,10 @@ tags: [] # TAG names should always be lowercase
 - _many short CPU bursts_
 - `interactive job`, `사람 유저와 통신을 자주 하는 작업, 키보드로 입력하면 출력하고...`
 
+- ❓ 우리가 사용하는 프로세스는 어떤 프로세스들일까?
+- 우리가 사용하는 프로세스들은 `CPU bound job`과 `I/O bound job`이 균일하지 않게 섞여였다.
+- 따라서 `time sharing`을 통해 해결하는 등 `CPU scheduling`이 반드시 필요하다.
+
 - ❓ 그러면 `CPU bound job`과 `I/O bound job`중 누구에게 CPU를 먼저, 얼마나 줘야 할까?
 - 이런식으로 여러 종류의 `job(process)`가 섞여 있기 때문에 `CPU scheduling`이 필요하다.
 
@@ -31,15 +36,22 @@ tags: [] # TAG names should always be lowercase
 
 > 누가 먼저 CPU를 쓸 것인가? <br>
 
-- `CPU Scheduler`:
+#### 📌 `CPU Scheduler`:
 
-  - OS내부 소프트웨어로, `ready`상태의 프로세스 중 이번에 CPU를 줄 프로세스를 고른다.
-  - 결정하는 역할
+- OS내부 **소프트웨어**로, `ready`상태의 프로세스 중 이번에 CPU를 줄 프로세스를 고른다.
+- 결정하는 역할
 
-- `Dispatcher`:
-  - `CPU Scheduler`가 프로세스를 고르면, CPU제어권을 넘긴다.
-  - 실행하는 역할
-  - `context switching`: `Dispatcher`이 CPU제어권을 넘기는 과정
+#### 📌 `Dispatcher`:
+
+- `CPU Scheduler`가 새롭게 선정한 프로세스가 CPU를 할당받고 작업을 수행할 수 있도록 환경설정을 하는 운영체제 코드
+- `CPU Scheduler`가 프로세스를 고르면, CPU제어권을 넘긴다.
+- 실행하는 역할
+
+- `context switching`: `Dispatcher`이 CPU제어권을 넘기는 과정
+- 새롭게 선정된 프로세스의 `context`를 `PCB`로부터 복원하고, 그 프로세스에게 CPU제어권을 넘긴다
+
+- `dispatch 지연 시간`: 하나의 프로세스를 정지시키고, 다음 프로세스에게 CPU제어권을 넘기는데 걸리는 시간
+- `dispatch 지연 시간`의 대부분은 `context switching overhead`에 해당
 
 #### ☑️ CPU scheduling이 필요한 이유
 
@@ -48,14 +60,16 @@ tags: [] # TAG names should always be lowercase
 - 그렇다고 `CPU bound job`에게만 CPU를 주면, 유저와 자주 interact 하는 `I/O bound job`은 유저를 기다리게, 답답하게 한다.
 - 따라서 두 종류의 작업을 골고루 효율적으로 사용하게 하기 위해 `운영체제`가 `CPU scheduling`를 해야 한다.
 
-#### ☑️ CPU scheduling이 필요한 경우 프로세스 상태 변화
+#### ☑️ CPU scheduling이 필요한 경우
+
+> CPU scheduling이 필요한 경우 프로세스 상태 변화
 
 > 즉 CPU를 다른 프로세스에게 주려고 하는 경우
 
-- 1. `running` ➡️ `blocked` : CPU쓰다가 I/O 같이 오래걸리는 작업 요청하는 `system call`
-- 2. `running` ➡️ `ready` : CPU할당 시간이 만료되어 `timer`
-- 3. `blocked` ➡️ `ready` : I/O 완료 후 인터럽트
-- 4. `terminated` :
+- 1. `running` ➡️ `blocked` : CPU쓰다가 I/O 같이 오래걸리는 작업 요청하는 `system call`, **non-preemptive**
+- 2. `running` ➡️ `ready` : CPU할당 시간이 만료되어 `timer`, **preemptive**
+- 3. `blocked` ➡️ `ready` : I/O 완료 후 인터럽트, **preemptive**
+- 4. `terminated` : **non-preemptive**
 
 - 1, 4번은 `nonpreemptive, 강제로 빼앗지 않고 자진 반납`
 - all other scheduling is `preemptive`
@@ -65,7 +79,7 @@ tags: [] # TAG names should always be lowercase
 - `nonpreemptive`: 프로세스가 CPU를 자발적으로 반납하기 전까지는 빼앗지 않음 ❌
 - `preemptive`: CPU를 강제로 빼앗아서 ⭕️ 다른 프로세스에게 넘김
 
-## ✅ Scheduling criteria
+## ✅ Scheduling criteria, 성능평가
 
 > Scheduling performance index/measure <br>
 > 다양한 Scheduling방법이 있을텐데, 그 방법들을 판단하는 기준 <br>
@@ -80,6 +94,7 @@ tags: [] # TAG names should always be lowercase
 
   - 단위시간 당 처리량
   - 시간 당 프로세스를 몇 개 처리했는가?
+  - 주어진 시간 동안 `ready queue`에서 기다리고 있는 프로세스 중 몇 개를 처리했는가
   - number of processes that complete their execution per time unit
   - 프로세스를 더 많이 처리할수록 좋음
 
@@ -107,7 +122,7 @@ tags: [] # TAG names should always be lowercase
 
 - `non-preemtive`: CPU를 뺐지 않는다.
 
-- 👎🏻 효율적이지 않다. 짧은 CPU시간을 가진 프로세스도 오래 기다려야 함.
+- 👎🏻 효율적이지 않다. 짧은 CPU시간을 가진 프로세스도 오래 기다려야 함. `convoy effect`
 
 ```
 p1: burst time 24초
@@ -123,14 +138,13 @@ waiting time: p1: 5초/ p2: 0초/ p3: 3초
 average waiting time: 3초
 ```
 
-- 👎🏻 `CPU burst time`이 긴 프로세스가 먼저 오면, 짧은 프로세스도 많이 기다려야 함.
-- `convoy effect`:
-
-  - short process behind long process
-  - 👎🏻 long process하나 때문에 뒤에 오는 short process가 다 기다려야 하는 현상
-
 - 👍🏻 `CPU bound job`같이 `CPU burst time`이 긴 프로세스들만 수행할 떄는, 괜히 `context switching`만 자주 일어나게 프로세스를 바꾸는 것보다 그냥 오는 순서대로 길게씩 수행하는게 나을 수도 있음.
 - 그래서 `multi level queue`의 `background queue`에서는 `FCFS`를 쓸 수도 있다
+
+- 👎🏻 `convoy effect`:
+  - `CPU burst time`이 긴 프로세스가 먼저 오면, 짧은 프로세스도 많이 기다려야 함.
+  - short process behind long process
+  - 👎🏻 long process하나 때문에 뒤에 오는 short process가 다 기다려야 하는 현상
 
 ## 💡 SJF, SRTF
 
@@ -141,7 +155,7 @@ average waiting time: 3초
 - 각 프로세스의 다음번 `CPU burst time`을 가지고 스케쥴링
 - `CPU burst time`이 긴 프로세스에게는 손해
 
-#### ☑️ `non-preemtive`
+#### ☑️ `non-preemtive` SJF
 
 - 일단 CPU를 잡으면 이번 `CPU burst`가 완료될 때까지는 CPU를 선점(preemtive) 당하지 않음
 
@@ -157,8 +171,9 @@ SJF non-preemptive : p1 ➡️ p2 ➡️ p3 ➡️ p4
 average waiting time = (0+6+3+7)/4 = 4
 ```
 
-#### ☑️ `preemtive`
+#### ☑️ `preemtive` SRTF
 
+- SJF를 `preemtive`방식으로 구현한 것
 - 현재 수행중인 프로세스의 `남은 burst time`보다 더 짧은 `burst time`을 가진 새로운 프로세스가 오면 CPU를 빼앗김
 - `preemtive SJF`를 `SRTF(Shortest Remaining Time First)`라고 부르기도 한다.
 
@@ -175,21 +190,21 @@ average waiting time = (9+1+0+2)/4 = 3
 ```
 
 - 👍🏻 `minimum average waiting time`을 보장
-- 👍🏻 SJF is optimal: SJF보다 `minimum average waiting time`이 짧을 수는 없다.
-
-  - 특히 SJF 중에서도 `SRTF`방식이 기다리는 시간이 제일 짧다
+- 👍🏻 `SJF` is optimal: SJF보다 `minimum average waiting time`이 짧을 수는 없다.
+- 특히 `SJF` 중에서도 `SRTF`방식이 기다리는 시간이 제일 짧다
 
 - 👎🏻 **Starvation** 기아현상 발생
-
   - low priority process can never be executed
   - 👎🏻 형평성
-  - 오래 걸리는 프로그램은 CPU를 절대 못 쓴다.
+  - 오래 걸리는 `burst time`가 긴 프로그램은 CPU를 절대 못 쓴다.
+
+<br>
 
 - 👎🏻 프로세스의 `CPU burst time`을 모를 수 있다.
   - 모르는데 제일 짧은 프로세스를 어떻게 알고 먼저 CPU를 주냐?
   - 그 프로세스의 과거를 보고 `CPU burst time`을 대략적으로 예측
 
-## ☑️ SJF가 CPU burst time을 예측하는 방법
+#### ☑️ SJF가 CPU burst time을 예측하는 방법
 
 - 만약 `n+1`째의 `CPU burst time`을 예측하고 싶다면 `n`번의 `CPU burst`했을 때 시간을 가지고 구함
 - expotential averaging(예측값)
@@ -206,8 +221,8 @@ average waiting time = (9+1+0+2)/4 = 3
 - highest priority를 가진 프로세스에게 CPU 할당
 - smallest number = highest priority
 
-- ✔️ preemptive: CPU줬는데 더 우선순위 높은 프로세스 오면 CPU뺐음
-- ✔️ non-preemptive: 우선순위 높아서 CPU주고 기다림
+- ✔️ `preemptive`: CPU줬는데 더 우선순위 높은 프로세스 오면 CPU뺐음
+- ✔️ `non-preemptive`: 우선순위 높아서 CPU주고 기다림
 
 - SJF도 일종의 Priority Scheduling
 - SJF의 priority: predicted next CPU burst time
@@ -222,7 +237,7 @@ average waiting time = (9+1+0+2)/4 = 3
 > 각 프로세스는 동일 크기의 CPU를 사용할 수 있는 시간`time quantum`이 할당됨 <br>
 > 시간이 지나면 프로세스는 CPU를 빼앗김 ➡️ 인터럽트, preemptive <br>
 
-- 각 프로세스는 동일한 크기의 할당 시간 `time quantum`을 가짐
+- 각 프로세스는 CPU를 사용할 수 있는 동일한 크기의 할당 시간 `time quantum`을 가짐
 - `time quantum`: 10~100 ms
 - 할당 시간이 끝나면 인터럽트 발생
 - `timer`이 붙어있음!
@@ -266,24 +281,28 @@ n개의 프로세스가 ready 큐에 있고
 ## 💡 Multilevel Queue
 
 > CPU는 한 개인데 Ready Queue는 **여러개로** 분할 <br>
-> 프로세스가 하나의 `queue`에 줄을 서면, `queue`를 바꿀 수 없음 <br>
+> 프로세스가 하나의 `queue`에 줄을 서면, `queue`를 바꿀 수 **없음** <br>
 
-- ✔️ `queue`**의 종류**
-- `foreground`: interactive
-- `background`: batch-no human interaction, CPU를 길게 쓰는 작업
+- 어떤 `queue`에 서 있는 프로세스를 우선적으로 스케쥴링 할 것인가?
+- 여러개의 `queue`가 있으니 `queue`에 대한 `scheduling`이 필요하다.
+- 프로세스가 도착했을 때 어떤 `queue`에 세울 것인가?
+
+#### ☑️ `queue`**의 종류**
+
+- ✔️ `foreground`: interactive
+- ✔️ `background`: batch-no human interaction, CPU를 길게 쓰는 작업
 - 프로세스가 하나의 `queue`에 줄을 서면, `queue`를 바꿀 수 없음
 - 프로세스 A가 `foreground queue`에 서면 A는 평생 `foreground`
 
 - 각 `queue`는 독립적인 `CPU scheduling`알고리즘을 가진다.
 - `foreground`: `RR`
-- `background`: `FCFS`
-
-- `queue`에 대한 `scheduling`이 필요하다.
+- `background`: `FCFS`, `response time`이 크게 중요하지 않기 때문이다
 
 #### ☑️ `queue`에 대한 `scheduling`
 
 - ✔️ **Fixed priority scheduling**
   - serve all from foreground then from background
+  - foreground `queue`가 비어야만 background `queue` 실행
   - 👎🏻 starvation
 
 <br>
@@ -291,10 +310,12 @@ n개의 프로세스가 ready 큐에 있고
 - ✔️ **Time slice**
   - 각 `queue`에 `CPU time`을 적당한 비율로 할당
   - 예를 들어 `CPU time` 중 80%는`foreground`, 나머지 20%는 `background`
+  - 👍🏻 기아현상 방지
 
 ## 💡 Multilevel Feedback Queue
 
-> 마찬가지로 여러 개의 `queue`를 가지지만, 프로세스가 `queue`를 바꿀 수 있음 <br> > **aging**
+> 마찬가지로 여러 개의 `queue`를 가지지만, 프로세스가 `queue`를 바꿀 수 있음 <br>
+> starvation 해결을 위한 **aging**을 이 방식으로 구현 가능
 
 - `aging`을 이와 같은 방식으로 구현 가능
 - 오래 기다린 프로세스는 우선순위가 높은 `queue`로 옮겨갈 수 있도록 한다.
@@ -307,6 +328,7 @@ n개의 프로세스가 ready 큐에 있고
 3. FCFS
 
 - 모든 프로세스는 처음에 [quantum = 8]큐에 줄을 서게 된다.
+- CPU사용 시간이 짧은 대화형 프로세스는 우선순위 높은 큐에서 빠르게 서비스 받고 나감
 - 그런데 실행시간 8초 안에 작업을 못 끝내면
 - [quantum = 16]큐로 강등되어 줄을 서야 함
 - 또 못 끝내면 [FCFS]에 가서 줄을 서야 함
@@ -315,6 +337,8 @@ n개의 프로세스가 ready 큐에 있고
 ```
 
 - 👍🏻 `CPU burst time`이 짧은 프로세스부터 빨리빨리 처리해 나갈 수 있음
+- 👍🏻 `RR`을 더 발전시켜, 짧은 프로세스일수록 더 빠른 서비스가 가능하도록 하고
+- 작업이 긴 프로세스는 `context switching`없이 CPU작업에만 열중할 수 있도록 `FCFS`
 
 #### ☑️ Multilevel Feedback Queue Scheduler를 정의하는 파라미터들
 
@@ -330,12 +354,19 @@ n개의 프로세스가 ready 큐에 있고
 
 - ✔️ **Homogeneous processor**
 
-  - `queue`에 한 줄로 세워서 각 프로세스가 꺼내가게 구현
-  - 반드시 특정 `processor`에서 수행해야 하는 프로세스가 있는 경우 복잡😓
+  - `queue`에 *한 줄*로 세워서 각 프로세스가 꺼내가게 구현
+  - 👎🏻 반드시 특정 `processor`에서 수행해야 하는 프로세스가 있는 경우 복잡😓
 
 - ✔️ **Load Sharing**
+
+  - CPU별로 줄 세우기
+  - 특정 CPU한테 프로세스가 편중되는 것을 막기 위해 _각 CPU별 부하가 적절히 분산되도록_ 하는 `부하균형 메커니즘` 필요
+
 - ✔️ **Symmetric Multiprocessing SMP**
+  - 각 CPU가 알아서 스케쥴링 결정
 - ✔️ **Asymmetric Multiprocessing**
+  - 하나의 CPU가 다른 모든 CPU의 스케쥴링 및 데이터 접근을 책임지고
+  - 나머지 CPU들은 거기에 따른다.
 
 ## ✅ 메모리 작동
 
