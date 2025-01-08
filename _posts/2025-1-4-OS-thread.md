@@ -49,6 +49,8 @@ tags: [] # TAG names should always be lowercase
 > Thread Control Block <br>
 > 쓰레드 제어 블록 <br>
 
+<img width="633" alt="Screenshot 2025-01-08 at 12 57 04" src="https://github.com/user-attachments/assets/a49d24e9-5db8-4168-aeeb-c5d02cc69862" />
+
 - 각 thread는 별도의 `stack`, `TBC`를 가진다.
 - `TBC`에는 `쓰레드 상태 정보`, `register`, `우선순위`등을 포함한다.
 
@@ -100,6 +102,8 @@ tags: [] # TAG names should always be lowercase
 - 따라서 쓰레드 간에는 `공유하는 데이터`가 있기 때문에 `switching`이 일어나도 이전 `cache`에 대한 이점이 있다.
 
 ## ✅ Multithreading
+
+<img width="727" alt="Screenshot 2025-01-08 at 12 55 43" src="https://github.com/user-attachments/assets/00986fa1-7157-4b50-8ed9-4ee8b64760cb" />
 
 - 여러개의 쓰레드가 프로세스의 자원을 공유하며 작동
 - 👎🏻 쓰레드 간 `race condition`발생 가능

@@ -83,7 +83,7 @@ tags: [] # TAG names should always be lowercase
 - 따라서 부모 프로세스는 **return 값이 양수**
 - 반면 자식 프로세스는 `fork의 결과값`를 **0**으로 가지게 된다.
 
-```HTML
+```bash
 int main()
 {
     int pid;
@@ -116,7 +116,7 @@ int main(){
 
 - 부모와 자식 프로세스 생성 후 자식 프로세스는 다른 일 시키기 예시 코드
 
-```C
+```bash
 int main()
 {
     int pid;
