@@ -10,6 +10,7 @@ tags: [] # TAG names should always be lowercase
 > basic unit of CPU utilization <br>
 > 프로세스 내에서 CPU의 수행 단위 <br>
 
+- 프로세스는 하나만 띄워두고 수행단위`thread`를 여러개 두기
 - thread는 프로세스 내에서 실행되는 흐름의 단위
 - thread는 프로세스의 특정한 수행 경로
 - thread는 프로세스가 할당받은 자원을 이용하는 실행의 단위
@@ -33,6 +34,8 @@ tags: [] # TAG names should always be lowercase
 
 ## ✅ Thread의 구성
 
+<img width="633" alt="Screenshot 2025-01-08 at 12 57 04" src="https://github.com/user-attachments/assets/a49d24e9-5db8-4168-aeeb-c5d02cc69862" />
+
 - ✔️ **Thread가 독자적으로 가지는 부분(CPU 관련 부분)**
 - PC program counter
 - register set
@@ -48,8 +51,6 @@ tags: [] # TAG names should always be lowercase
 
 > Thread Control Block <br>
 > 쓰레드 제어 블록 <br>
-
-<img width="633" alt="Screenshot 2025-01-08 at 12 57 04" src="https://github.com/user-attachments/assets/a49d24e9-5db8-4168-aeeb-c5d02cc69862" />
 
 - 각 thread는 별도의 `stack`, `TBC`를 가진다.
 - `TBC`에는 `쓰레드 상태 정보`, `register`, `우선순위`등을 포함한다.
@@ -112,7 +113,7 @@ tags: [] # TAG names should always be lowercase
 
 ## ✅ Implementation of threads 쓰레드 구현 방법
 
-- ✔️ **kernal-level thread**
+- ✔️ **kernel-level thread**
 - `kernel`이 `thread`의 존재를 알게 구현
 - threads supported by kernel
 - `kernel`이 쓰레드와 관련된 모든 작업 수행
@@ -136,7 +137,7 @@ tags: [] # TAG names should always be lowercase
 
 - ✔️ **real time thread**
 
-#### kernal-level thread 🆚 user-level thread
+#### kernel-level thread 🆚 user-level thread
 
 - kernal-level thread
   - `kernel` realizes thread
