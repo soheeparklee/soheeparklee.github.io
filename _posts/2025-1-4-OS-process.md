@@ -160,6 +160,8 @@ tags: [] # TAG names should always be lowercase
 
 ## ✅ 프로세스의 상태
 
+![코딩공책-97](https://github.com/user-attachments/assets/9590dcc7-190b-457a-b09c-27d1e18f6408)
+
 - ✔️ **new**
 - 프로세스 생성 후
 - 프로세스를 위한 각종 자료 구조는 생성되었지만
@@ -304,6 +306,8 @@ tags: [] # TAG names should always be lowercase
 
 #### ☑️ Context Switching 과정
 
+![코딩공책-96](https://github.com/user-attachments/assets/e4f52f72-7407-4193-b9bc-317bc541d940)
+
 ```
 - system call, interrupt occurs
 - OS saves process context(PC and registers) to process PCB
@@ -353,7 +357,7 @@ tags: [] # TAG names should always be lowercase
 
 #### context switching ⭕️❌
 
-<img width="546" alt="Screenshot 2025-01-04 at 16 55 53" src="https://github.com/user-attachments/assets/26ff5235-6bfb-441f-b18b-ee81a2b15ef6" />
+![코딩공책-98](https://github.com/user-attachments/assets/66ebf516-c091-447f-8218-4353db1e1252)
 
 - context switching ⭕️
 

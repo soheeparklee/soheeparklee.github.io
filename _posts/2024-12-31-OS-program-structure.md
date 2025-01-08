@@ -4,6 +4,8 @@ categories: [Computer Science, Computer Architecture/Operating System]
 tags: [] # TAG names should always be lowercase
 ---
 
+![코딩공책-95](https://github.com/user-attachments/assets/b6987b99-519f-4d1b-8c33-7b78cdcaddf9)
+
 ## ✅ 컴퓨터 시스템 구조
 
 - 컴퓨터 부팅
