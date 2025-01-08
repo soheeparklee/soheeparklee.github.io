@@ -1,5 +1,5 @@
 ---
-title: KOCW_Process/ VM / Context Switching
+title: KOCW_Process/ address space / context / Context Switching
 categories: [Computer Science, Computer Architecture/Operating System]
 tags: [] # TAG names should always be lowercase
 ---
@@ -35,8 +35,12 @@ tags: [] # TAG names should always be lowercase
 - 그 `address space`를 바로 `virtual memory`라고 한다.
 - 실제로는 존재하지 않음
 
+<br>
+
 - 각 프로그램마다 별도의 `주소 공간(코드, 데이터, 스택)`을 가지며
 - 프로그램마다 독자적으로 존재하는 주소공간을 `가상 메모리` 또는 `논리적 메모리`라고 부른다.
+
+<br>
 
 - 실행 파일이 메모리에 적재될 때, 일부분만 올라가고
 - 나머지는 디스크의 특정 영역`swap`에 내려가 있다.
@@ -70,6 +74,8 @@ tags: [] # TAG names should always be lowercase
 - 함수 어디를 실행하고 있는가?
 - OS는 이 프로세스의 문맥을 아주 중요하게 생각한다.
 
+<br>
+
 - ❓ 프로세스 문맥은 어디에 쓰일까?
 - time sharing 시스템에서 각 프로세스는 짧은 시간동안 CPU를 사용하고, 다른 프로세스에게 또 CPU를 넘긴다.
 - 따라서 CPU를 넘겨받아 이어서 사용하려고 할 때, 이전에 수행했던 작업을 이어서 수행하기 위해 `프로세스 문맥`이 필요하다.
@@ -81,9 +87,13 @@ tags: [] # TAG names should always be lowercase
 - `PC program counter`를 살펴보기
 - 각종 register에 어떤 값을 넣고 있는가
 
+<br>
+
 - ✔️ **프로세스 주소 공간**
 - 자신의 메모리 공간 `data`에 무엇을 가지고 있는가?
 - `stack`에 몇 개의 함수가 있는가?
+
+<br>
 
 - ✔️ **프로세스 관련 커널 자료 구조**
 - `PCB`
@@ -91,6 +101,8 @@ tags: [] # TAG names should always be lowercase
 - OS의 `PCB`, `stack`에 프로세스 문맥에 대한 정보도 저장되어 있을 것임.
 
 ## ✅ 프로세스 주소 공간
+
+> memory allocated to a process by the OS
 
 - `해당 명령을 담은 프로그램의 주소 영역/공간`은 `코드 code`, `데이터 data`, `스택stack`으로 구분된다.
 
@@ -101,6 +113,8 @@ tags: [] # TAG names should always be lowercase
   - 우리가 작성한 프로그램 함수들의 코드가 CPU에서 실행될 수 있도록 기계명령어로 변환되어 저장됨
   - 프로스램 소스 코드
   - `hex` 또는 `binary`형태
+
+<br>
 
 - ✔️ `data`: **컴파일 타임에 할당**
 
@@ -114,6 +128,8 @@ tags: [] # TAG names should always be lowercase
   - ❓ 목적: 공간을 효율적으로 활용하기 위해
   - 예를 들어 _크기가 큰 배열을 선언만 하고 값은 넣지 않는 경우_, 크기만큼 공간을 할당해주지 않고 `BSS`에 올려 공간 절약
 
+<br>
+
 - ✔️ `stack`: **런타임에 할당**
 
   - `local 변수`, `parameter`위치
@@ -121,6 +137,8 @@ tags: [] # TAG names should always be lowercase
   - 호출된 함수의 수행을 마치고 복귀할 주소 및 데이터 임시로 저장
   - 함수의 호출과 함께 할당`push`되고, 함수 호출이 완료되면 메모리에서 소멸`pop`
   - 메모리의 _높은_ 주소에서 _낮은_ 주소 방향으로 할당
+
+<br>
 
 - ✔️ `heap`: **런타임에 할당**
 
@@ -132,6 +150,13 @@ tags: [] # TAG names should always be lowercase
 
 - 컴파일 타임: 사람이 작성한 `소스코드`가 **컴파일**이라는 과정을 통해 `기계어 코드`로 변환되는데 걸리는 시간
 - 런타임: 컴파일을 마친 기계어가 실행되는 시간, 프로그램이 동작하는 시간
+
+#### 프로세스 `context` 🆚 프로세스 `address space`
+
+- 프로세스 `context`:
+  - state of process
+  - OS가 프로세스를 관리하기 위해 대해 알아야 하는 정보를 저장(`CPU register`, `PCB`, `kernel info`)
+- 프로세스 `address space`: 프로세스에게 할당된 메모리(`code`, `data`, `stack`)
 
 ## ✅ 프로세스의 상태
 
@@ -213,7 +238,10 @@ tags: [] # TAG names should always be lowercase
 - ❓ `프로세스 A`가 `running`하다가 `system call`로 운영체제를 호출하면 `프로세스 A`의 상태는?
 - 프로세스 A 입장에서는 계속 `running`이다.
 - CPU는 없지만 I/O입력이라든가 계속 일을 하고 있으니까
+- 하지만 `wait/blocked`로 상태를 표시
 - 다만 전에는 `user mode`였다면 이제는 `kernel mode, monitor mode`이다.
+
+<br>
 
 - ❓ `프로세스 A`가 `running`하다가 `interrupt`가 들어오면 `프로세스 A`의 상태는?
 - `프로세스 A`가 CPU를 가지고 있었는데 디스크가 `interrupt`
@@ -221,6 +249,17 @@ tags: [] # TAG names should always be lowercase
 - `프로세스 A`의 상태는 본인과 상관없는 이유로 CPU가 넘어갔지만, `running`이다.
 - `interrupt`직전에 돌고 있던 프로세스를 그냥 `running`하고 있다고 간주한다.
 - 다만 마찬가지로, 전에는 `user mode`였다면 이제는 `kernel mode, monitor mode`이다.
+- 하지만 `프로세스 A`상태를 `ready`로 보기도 함
+
+<img width="698" alt="Screenshot 2025-01-08 at 12 54 41" src="https://github.com/user-attachments/assets/127e2909-baa8-4b4a-a2db-65f58f65346e" />
+
+- `Activate`: CPU는 못 쓰지만 I/O는 할 수 있음
+- `Admit`: `new`에서 `ready`
+- `Dispatch`: `ready`에서 `running`으로
+- `Activate`🟰 `swap in`: 외부에서(운영체제 또는 사람)이 `swap in` 메모리에 다시 넣기 해 주어야 한다.
+- `Suspend` 🟰 `swap out`: 메모리에서 쫒겨남
+- `Blocked suspended`: 메모리에 없는 상태
+- `Ready suspended`: 메모리에 없는 상태, 하지만 I/O는 할 수 있음
 
 ## ✅ PCB에 어떤 내용이 들어있는가
 
@@ -232,6 +271,9 @@ tags: [] # TAG names should always be lowercase
 
 <img width="690" alt="Screenshot 2025-01-05 at 13 51 32" src="https://github.com/user-attachments/assets/945ab5b8-0f85-456b-be32-3e5d83826e53" />
 
+> OS가 프로세스에 관한 정보를 저장하기 위해 사용하는 데이터 구조이다. <br>
+> acts as a repository
+
 - ✔️ **OS가 관리상 사용하는 정보**
 - process state, Process Id
 - scheduling information, priority
@@ -242,6 +284,8 @@ tags: [] # TAG names should always be lowercase
 - `PC program counter`: CPU빼앗기기 전 어디까지 실행했었는지, 이어서 실행하기 위해
 - (그래서 `프로세스 A`한테서 CPU 빼앗기 전에 `프로세스 A PCB`안에 저장을 해둔다. )
 - registers
+
+<br>
 
 - CPU의 `PC, register` 🆚 OS kernel `data PCB`의 `PC, register`
 - CPU의 `PC, register`: CPU가 어디까지 실행했는지, CPU연산 값 `register`에 저장
@@ -282,6 +326,8 @@ tags: [] # TAG names should always be lowercase
 - 원래 실행중이던 프로세스의 `process context`를 자신의 `PCB`에 저장하고
 - 새로운 프로세스의 `process context`를 세팅하는 과정
 
+<br>
+
 - 👎🏻 `Context Switching`은 context를 `PCB`에 저장하고 또 context를 불러오는 두 가지 과정이 필요하므로
 - 모드 변경에 비해 훨씬 큰 overhead
 
@@ -295,8 +341,12 @@ tags: [] # TAG names should always be lowercase
 - CPU를 점유하는 프로세스가 다른 프로세스로 바뀌지는 않기 때문
 - 오버헤드가 적다.
 
+<br>
+
 - Context Switch와 Mode switch 공통점:
 - 현재 CPU에서 실행중인 프로세스의 `process context`를 `PCB`에 저장한다.
+
+<br>
 
 - Context Switch와 Mode switch 차이점:
 - Context Switch가 오버헤드가 훨씬 크다
