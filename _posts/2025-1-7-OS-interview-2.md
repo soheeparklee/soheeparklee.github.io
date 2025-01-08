@@ -300,19 +300,3 @@ tags: [] # TAG names should always be lowercase
 - `semaphore`: limited number of thread can access
 
 ### ✅
-
-### ✅
-
-### ✅
-
-### ✅
-
-### ✅
-
-### ✅
-
-### ✅
-
-### ✅
-
-### ✅
