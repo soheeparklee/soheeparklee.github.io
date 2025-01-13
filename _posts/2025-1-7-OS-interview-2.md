@@ -299,4 +299,12 @@ tags: [] # TAG names should always be lowercase
 - `mutex`: only one thread can access critical section at a time
 - `semaphore`: limited number of thread can access
 
-### ✅
+### ✅ What is `thread 풀`?
+
+### ✅ lock 의 방법
+
+### ✅ user-level thread의 동시성 문제 해결 방법
+
+### ✅ Read-write 락과 스핀락의 차이가 무엇일까요?
+
+### Stack 🆚 Heap
