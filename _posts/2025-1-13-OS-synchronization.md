@@ -66,6 +66,15 @@ tags: [] # TAG names should always be lowercase
 - 공유 데이터`shared data`의 동시 접근`concurrent access`은 데이터 불일치 문제`inconsistency`를 발생시킬 수 있음
 - `consistency`유지를 위해 협력 프로세스`cooperating process`간의 실행 순서 `orderly execution`을 정해주는 메커니즘 필요
 
+## ✅ Critical Section Problem
+
+- `n`개의 프로세스가 공유 데이터를 동시에 사용하기 원하는 경우
+- 각 프로세스의 `code segment`에는 공유 데이터에 **접근하는 코드** `critical section`이 존재
+- 💊 하나의 프로세스가 `critical section`에 있을 때 다른 모든 프로세스는 `critical section`에 **들어갈 수 없어야** 한다.
+- 💊 예를 들어 `critical section`에 들어가기 전에 `lock`을 걸고, 나올 때는 `lock`을 풀기
+
+<img width="378" alt="Screenshot 2025-01-14 at 00 55 11" src="https://github.com/user-attachments/assets/f5154ac1-02b4-47e8-bc86-d929fcb61656" />
+
 ## ✅
 
 ## ✅
