@@ -86,6 +86,27 @@ tags: [] # TAG names should always be lowercase
 
 <img width="127" alt="Screenshot 2025-01-14 at 11 43 43" src="https://github.com/user-attachments/assets/9d883220-564c-4fbf-81e3-9164afe92c0c" />
 
+## ✅ 프로그램적 해결법의 충족 조건 3
+
+- ✔️ **Mutual Exclusion**
+- 프로세스가 동시에 `critical section`에 들어가면 안 된다.
+- 하나의 프로세스가 `critical section`를 실행중이면
+- 다른 모든 프로세스들은 `critical section`에 들어가면 안 된다.
+
+- ✔️ **Progress**
+- 아무로 `critical section`에 들어가 있지 않은 상태에서
+- `critical section`에 들어가고자 하는 프로세스가 있으면
+- `critical section`에 들어가게 해 주어야 한다.
+
+- ✔️ **Bounded Waiting**
+- 프로세스가 `critical section`에 들어가려고 기다리는 시간이 *유한*해야 한다.
+- 특정 프로세스만 `critical section`에 영원히 못 들어가는 문제가 생기면 안 된다.
+- 프로세스가 `critical section`에 들어가려고 요청한 순간부터 그 요청이 허용될 떄가지 다른 프로세스들이 `critical section`에 들어가는 횟수가 *제한*되어야 한다.
+
+- ✔️ 가정
+  - 모든 프로세스의 수행 속도는 0보다 크다
+  - 프로세스 간의 상대적인 수행 속도는 가정하지 않는다
+
 ## 💡 Algorithm 1
 
 - 내 차례인지 확인하고 `turn 변수`
@@ -113,25 +134,54 @@ do{
   - 특정 프로세스가 `critical section`에 더 빈번하게 들어가야 한다면?
   - 또는 상대방이 `critical section`에 안들어가면, 영원히 내 차례는 안 온다.
 
-- 👍🏻
-- 👎🏻
+- 💡 따라서 이 알고리즘은 `Progress`를 만족하지 못했음 ❌
 
-## ✅ 프로그램적 해결법의 충족 조건
+- `Mutual exclusion` ⭕️
+- `Progress` ❌
 
-- ✔️ **Mutual Exclusion**
-- 프로세스가 동시에 `critical section`에 들어가면 안 된다.
-- 하나의 프로세스가 `critical section`를 실행중이면
-- 다른 모든 프로세스들은 `critical section`에 들어가면 안 된다.
+## 💡 Algorithm 2
 
-- ✔️ **Progress**
-- 아무로 `critical section`에 들어가 있지 않은 상태에서
-- `critical section`에 들어가고자 하는 프로세스가 있으면
-- `critical section`에 들어가게 해 주어야 한다.
+- 프로세스가 `critical section`에 들어가고 싶으면 깃발 `boolean flag`를 든다.
+- initially `flag[모두] = false;` 아무도 `CS`에 없음
+- 프로세스가 `CS` 들어가고 싶으면 `flag[i]==true`
 
-- ✔️ **Bounded Waiting**
-- 프로세스가 `critical section`에 들어가려고 기다리는 시간이 *유한*해야 한다.
-- 특정 프로세스만 `critical section`에 영원히 못 들어가는 문제가 생기면 안 된다.
-- 프로세스가 `critical section`에 들어가려고 요청한 순간부터 그 요청이 허용될 떄가지 다른 프로세스들이 `critical section`에 들어가는 횟수가 *제한*되어야 한다.
+```C
+boolean flag[2];
+
+do{
+  flag[i]==true; //나 CS들어갈래 깃발 들기, 의사표현
+  while (flag[i]); //너도 들어가고 싶니? 그럼 나 기다릴게
+  critical section
+  flag[i] = false; //나 이제 나왔으니 깃발 내림
+  remainder section
+} while(1);
+```
+
+- `Mutual exclusion` ⭕️
+- `Progress` ❌
+- 👎🏻 두 개 프로세스가 2행까지 수행 후 끊임없이 양보하는 상황 발생
+- 2행에서 프로세스가 `CS`는 들어간게 아니라 의사표현만 한건데, 들어간 것으로 생각하고 눈치만 보다가 아무도 `CS`에 못 들어감
+
+## 💡 Peterson's Algorithm
+
+- 깃발을 사용해 `CS`에 들어가고자 하는 의사표현
+- 상대 프로세스가 `CS`에 들어갔는지 확인
+- 동시에 두 프로세스가 깃발을 들면, 깃발을 든 것에 한해서 `turn`을 확인해 번갈아 들어감
+
+```C
+do{
+  flag[i]==true; //나 CS들어가고 싶다고 깃발 들기
+  turn = j; //상대 프로세스 차례로 바꾼다
+  while (flag[i] && turn == j ); //내 차례 아니면 기다리기
+  critical section
+  flag[i] = false; //나 이제 나왔으니 깃발 내림
+  remainder section
+} while(1);
+```
+
+- `Mutual exclusion` ⭕️
+- `Progress` ⭕️
+- `Bounded waiting` ⭕️
 
 ## ✅
 

@@ -43,7 +43,7 @@ tags: [] # TAG names should always be lowercase
 - OS내부 **소프트웨어**로, `ready`상태의 프로세스 중 이번에 CPU를 줄 프로세스를 **고르는 운영체제 코드**
 - *결정*하는 역할
 
-## ✅ `Dispatcher`:
+## ✅ Dispatcher
 
 - `CPU Scheduler`가 새롭게 선정한 프로세스가 CPU를 할당받고 작업을 수행할 수 있도록 **환경설정을 하는 운영체제 코드**
 - `CPU Scheduler`가 프로세스를 고르면, CPU제어권을 넘긴다.
