@@ -12,6 +12,7 @@ tags: [abstract, override] # TAG names should always be lowercase
 
 > 메서드의 선언부만 작성하고, 실제 수행 내용은 나중에 구현
 
+- 물고기에게는 많은 특징이 있지만 필드, 메소드에서 모든 특징을 정의하지 않음. <br>
 ## ✅ abstract class
 
 - 실재하지는 않지만, 하위의 공통적인 필드, 메소드를 기준으로 묶어놓은 개념<br>
