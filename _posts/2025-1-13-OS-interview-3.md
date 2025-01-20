@@ -91,7 +91,7 @@ tags: [] # TAG names should always be lowercase
 ### ✅ 우선순위 스케줄링에 대해 설명해주세요.
 
 - 프로세스마다 우선순위가 있음
-- SJF, SRTF, RR, MLQ, MFQ
+- SJF, SRTF, MLQ, MFQ
 - 👎🏻 starvation 우선순위가 낮으면 CPU를 영원히 얻지 못함
 - 💊 aging
 
