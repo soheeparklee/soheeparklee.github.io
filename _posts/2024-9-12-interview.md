@@ -196,4 +196,4 @@ tags: [interview]
 - explotación de roles
 - 💊 aplicar el principio de menor privilegio
 
-✔️
+

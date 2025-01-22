@@ -300,6 +300,18 @@ tags: [] # TAG names should always be lowercase
 - `semaphore`: limited number of thread can access
 
 ### ✅ What is `thread 풀`?
+- 일정 개수의 스레드를 정해놓고 관리
+- 스레드를 계속해서 무한정으로 만들면, 운영체제 자원이 빨리 소진된다. 
+- 예를 들어 동시 접속자가 많아지면 스레드 무한대로 생성
+
+- 👍🏻 스레드 생성, 삭제에 대한 오버헤드 줄이기
+- 👍🏻 특정 시점에 동시에 처리할 수 있는 작업 개수 제한
+```
+- 스레드 생성, 대기
+- 작업 발생, 스레드 할당
+- 작업 끝, 스레드 다시 대기
+```
+<https://engineerinsight.tistory.com/197>
 
 ### ✅ lock 의 방법
 

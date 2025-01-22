@@ -73,7 +73,7 @@ tags: [] # TAG names should always be lowercase
 
 #### 1️⃣ **kernel 수행 중 인터럽트 발생 시**
 
-> interrupt 🆚 kernel mode
+> kernel mode 도중 interrupt
 
 - `프로세스 A`가 커널모드 실행중이었는데 **인터럽트**가 발생해 `인터럽트 처리루틴`이 실행됨
 - 그러면 `프로세스 A`, `인터럽트 처리루틴 ISR(Interrupt Service Routine)`도 커널 코드이므로
@@ -223,7 +223,7 @@ tags: [] # TAG names should always be lowercase
 - 내 차례면 `critical section` 실행
 - 나올 때 상대방 차례로 바꿔주기
 
-```C
+```
 int turn;
 turn = 0; //0번 프로세스가 while문 탈출해 CS진입 가능
 

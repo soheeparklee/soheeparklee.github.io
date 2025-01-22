@@ -6,8 +6,8 @@ tags: [interview]
 
 ## 📌 Web application security
 
-<details>
-<summary> ✅ How did you ensure the security of sensitive data in the "Aplicación Web 
+✅ How did you ensure the security of sensitive data in the "Aplicación Web 
+
 ```
 HTTPS
 TLS/SSL
@@ -15,9 +15,7 @@ CA: Let's encrypt
 Nginx
 use symmetric, assymetric key
 ```
-</details>
 
-<br>
 
 ✅ Can you explain how HTTPS and SSL/TLS protect data in transit?
 
@@ -25,17 +23,11 @@ use symmetric, assymetric key
 clave simétrica
 ```
 
-<details>
-<summary> ✅ En el caso de un ataque de recorrido de directorios?  </summary>
-
-- path traversal: access files on web server to which they should not have access
-- MariaDB
-
-⭐️ IAM:
+⭐️ **IAM:**
 controlar de forma segura el acceso a los recursos de AWS
 quién puede ser autenticado y autorizado para los recursos de RDS
 
-⭐️ Jasypt:
+⭐️ **Jasypt:**
 
 - validar la entrada del usuario
 
@@ -48,6 +40,31 @@ quién puede ser autenticado y autorizado para los recursos de RDS
   virtual firewall
   control traffic that is allowed to reach, leave resources
   control inbound, outbound traffic to EC2
+
+
+<details>
+<summary> ✅ En el caso de un ataque de recorrido de directorios?  </summary>
+
+- path traversal: access files on web server to which they should not have access
+- MariaDB
+
+
+⭐️ Detectar
+- monitoreo Log en tiempo real
+- buscar patrones sospechosos
+- AWS cloud trail, WAF, SIEM
+
+- IDS
+- WAF
+
+⭐️ Respuesta
+- contención inmediata: AWS Security group, WAF
+- bloquear la dirreción IP
+
+- Registro y Análisis
+- Parcheo
+- medidas posteriores
+
 
 </details>
 
@@ -145,7 +162,6 @@ quién puede ser autenticado y autorizado para los recursos de RDS
 
 <br>
 
-⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️
 
 <details>
 <summary> ✅ Describe una situación en la que tuviste que identificar y mitigar una vulnerabilidad de seguridad. ¿Cómo abordaste el problema? </summary>
@@ -179,6 +195,7 @@ quién puede ser autenticado y autorizado para los recursos de RDS
 - logs de WAF: identificar, bloquear intentos malintencionado, XXS, reconocimiento<br>
 - logs de redes: syslog <br>
 - origin de la dirreciones de IP: comparar IPs de acceso con listas de amenazas conocidas(blacklist)
+- ubicación
 - sistema de detección de intrusiones <br>
 
 </details>
@@ -209,7 +226,7 @@ quién puede ser autenticado y autorizado para los recursos de RDS
 - cifrar variables ambientales<br>
 - MD5<br>
   - algoritmo hash<br>
-  - no requerir reversibilidad<br>
+  - no tiene reversibilidad<br>
 - DES(Data Encrpytion Standard)<br>
 - cifrado simmétrico<br>
   <br>
@@ -293,10 +310,10 @@ quién puede ser autenticado y autorizado para los recursos de RDS
 <details>
 <summary> ✅ Puedes explicar la importancia de implementar autenticación multifactor (MFA) en tu aplicación? ¿Contra qué vectores de ataque típicos protege? </summary>
 
-- require dos o más formas deverificaión para authenticación
+- require dos o más formas deverificaión para autenticación
 - una cosa que el usario sabe, tiene, hace, es, o el ubicación de usario
-- fortalezar la seguridad de acceder
-- reducir el risego de acceso no autorixado
+- fortalecer la seguridad de acceder
+- reducir el risego de acceso no autorizado
 
 - robo de contraseñas
 - ataques de keyloggers
@@ -561,11 +578,11 @@ quién puede ser autenticado y autorizado para los recursos de RDS
 <br>
 
 <details>
-<summary> ✅ What factors would you consider when creating firewall rules to balance security and usability?  </summary>
+<summary> ✅ ¿Qué factores considerarías al crear reglas de firewall para equilibrar la seguridad y la usabilidad?  </summary>
 
-```
-
-```
+- el principio de menor privilegio: solo permite el tráfico necesario para las operaciones legítimas
+- allow list
+- deny list
 
 </details>
 

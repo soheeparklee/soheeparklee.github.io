@@ -99,16 +99,31 @@ generic 시점: 인스턴스 생성 시점 <br>
 
 ✔️ **Generic은 두 개 이상 사용 가능**
 
-## ✅ Generic programming 자료형 제한하기
+## ✅ Super, Extends
+> Generic programming 자료형 제한하기 <br>
+> 자바 타입 파라미터를 제한하기 위해 사용 <br>
 
-좋아 Generic으로 datatype을 자유롭게 받는 카멜레온 같은 메소드 구현하는 방법 알았어<br>
-근데...Generic은 너무 넓은 범위의 datatype 받는거 아니야?<br>
-내가 원하지 않는 datatype이 Generic에 입력되면 어떡하지? 나는 int만 받고 싶은데 string들어오면? <br>
+- 근데...Generic은 너무 넓은 범위의 datatype 받는거 아니야?<br>
+- 내가 원하지 않는 datatype이 Generic에 입력되면 어떡하지? 나는 int만 받고 싶은데 
+- string들어오면? <br>
 
-### 💡 `extends Number`
+### 💡 Super
+- 특정 **상위** 타입만을 허용
 
-`extends Number`을 사용해 숫자만 Generic에 들어올 수 있도록 한다. <br>
-⭐️ number 뭔지 알제? float, integer, double 모두 속하는게 number <br>
+
+### 💡 Extends
+- 특정 **하위** 타입만을 허용
+- number의 하위 타입인 integer, double만 허용
+- `extends Number`을 사용해 숫자만 Generic에 들어올 수 있도록 한다. <br>
+- ⭐️ number: float, integer, double 모두 속하는게 number <br>
+
+### 💡 ?
+- 와일드카드
+- `<?>` : 전체 타입 가능
+- `<? extends 상위타입 A>` : 상한선, A자식클래스 까지만 가능
+- `<? extends 하위타입 B>` : 하한선, B조상클래스까지만 가능
+
+
 
 ### 좌표의 거리를 구하기: 우선 extends안 쓰고 구현
 

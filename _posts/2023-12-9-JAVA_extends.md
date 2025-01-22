@@ -91,13 +91,21 @@ public class SeaSwim {
 
 부모로부터 메소드를 상속 받았지만, 같은 이름 메소드를 **자식인 저는 제 방식대로 하겠습니다.** <br>
 메소드 오버라이딩은 부모와 자식간에 메소드가 다른 것 <br>
-🆚 오버로딩은 같은 클래스 내에서 parameter을 다르게 해 같은 이름 메소드 사용하는 것 <br>
 
 - 부모와 매개변수가 같아야 한다. (그러나 부모 메소드로부터 parameter은 달라질 수 없음.)
 - 반환 타입이 같아야 한다.
 - access modifier는 부모 클래스보다 좁을 수 없다.
 - 부모보다 더 많은 예외를 선언할 수 없다.
 - static은 오버라이딩 할 수 없음
+
+
+🆚 오버로딩은 같은 클래스 내에서 parameter을 다르게 해 같은 이름 메소드 사용하는 것 <br>
+- 둘 다 같은 이름의 메소드
+- 오버로딩: 같은 클래스 내에서
+- 오버라이딩: 상속하는 자식 클래스가 상위 클래스 메소드를 재정의
+
+<img width="460" alt="Screenshot 2024-10-04 at 00 14 20" src="https://github.com/user-attachments/assets/11ed90f5-ff7a-4016-9ed2-b7a42d484d72">
+
 
 #### 물고기 @Override 예시 코드
 
@@ -277,3 +285,5 @@ public BabyFish(String name, int food, boolean poison, String sea) {
 - 상속을 이용한 대표적인 디자인 패턴
 
 💡 Design Pattern <https://soheeparklee.github.io/posts/JAVA_designPattern/>
+
+981394

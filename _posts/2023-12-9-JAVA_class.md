@@ -26,7 +26,7 @@ tags: [this, object, instance, getter, setter, constructor] # TAG names should a
   <br>
 
 - independent to class
-- has own data(자신만의 데이터를 가진다. )
+- has own data(자신만의 데이터를 가진다. 클래스에 의존 ❌)
 
 - instance= 올리브영 강남점<br>
 

@@ -30,13 +30,13 @@ tags: [stream] # TAG names should always be lowercase
 #### 🆚 iterator, iterable
 
 - 공통점: Java Collection Framework
-- iterator:
+- **iterator**:
   - iterate within collection(list, set)
   - get value from collection using `hasNext()`, `next()`
 
 <br>
 
-- iterable: interface to get iterator
+- **iterable**: interface to get iterator
 
 ### ☑️ 스트림 단계
 
