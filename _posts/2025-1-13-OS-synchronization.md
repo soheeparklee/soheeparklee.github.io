@@ -450,7 +450,7 @@ typedef struct
   - `block`된 프로세스 `P`를 `wakeup`시킴
   - 이 프로세스의 `PCB`를 `ready queue`로 옮김
 
-```C
+```
 P(S): S.value--; //프로세스가 자원 쓰려고 함
       if ( S.value < 0 ) //남은 자원 없음, CS 못 들어감
       {
@@ -505,7 +505,7 @@ V(S): S.value++; //자원 반납
 - 프로세스 **1개만(mutual exclusion)** CS에 들어갈 수 있다
 - 이진 세마포어와 비슷
 
-```C
+```
 Synchronization variable
 semaphore mutex; //initially 1 = 1개가 CS에 들어갈 수 있다.
 
@@ -548,10 +548,10 @@ do{
 
 #### ☑️ Bounded-Buffer Problem(Producer-Consumer Problem)
 
-> producer, consumer프로세스가
-> 공유 buffer를 동시접근 하는 상황에서 어떻게 문제를 해결하는가
-> bounded buffer = 크기가 유한하다
-> synchronization variable(semaphore)이용해 문제 해결
+> producer, consumer프로세스가 <br>
+> 공유 buffer를 동시접근 하는 상황에서 어떻게 문제를 해결하는가 <br>
+> bounded buffer = 크기가 유한하다 <br>
+> synchronization variable(semaphore)이용해 문제 해결 <br>
 
 - 프로세스 종류: `Producer` 프로세스 & `Consumer` 프로세스
 - ✔️ `Producer` **프로세스: 데이터 생성**
