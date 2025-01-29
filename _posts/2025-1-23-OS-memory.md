@@ -74,7 +74,7 @@ tags: [] # TAG names should always be lowercase
 ## ✅ Types of address binding
 
 > 어떤 시점에 주소 바인딩을 할 것인가? <br>
-> logical address`가 `physical address`로 바뀌는 **시점**에 따라 3가지로 구분 <br>
+> logical address가 physical address로 바뀌는 **시점**에 따라 3가지로 구분 <br>
 
 <img width="492" alt="Image" src="https://github.com/user-attachments/assets/af7d8d2d-bc61-4bf3-b3ab-10f8da0e802b" />
 
@@ -161,6 +161,8 @@ tags: [] # TAG names should always be lowercase
 
 ## 📌 Dynamic Relocation
 
+> utilize hardware to convert virtual addresses into physical addresses during runtime
+
 - 프로그램이 실행되면 통째로 메모리에 올라간다고 가정
 - `MMU scheme`에서는 `context switching`으로 CPU에서 실행중인 프로세스가 바뀔 때만다
 - `base register(relocation register)`의 값을 그 프로세스에 해당되는 값으로 **재설정**
@@ -194,6 +196,7 @@ tags: [] # TAG names should always be lowercase
 - 프로세스 전체를 메모리에 한번에 다 올리는 것이 아니라 ❌
 - 해당 루틴이 불려질 때 **그때그때** 메모리에 `load` 적재
 - 프로그램 중 **현재 실행되는 부분만** 메모리에 `load`
+- 💡 `load`: 메모리에 프로그램을 적재하는 것
   <br>
 
 - ❓ **Dynamic Loading은 누가 해주는 걸까?**
@@ -206,10 +209,9 @@ tags: [] # TAG names should always be lowercase
 - 👍🏻 가끔씩 사용되는 많은 양의 코드인 경우 유용(매번 사용되지 않는 코드: `오류 처리 루틴`)
 - 👍🏻 운영체제의 특별한 지원 없이 프로그램 자체에서 구현 가능(OS는 라이브러리 통해 지원 가능)
 - 👍🏻 같은 크기의 `physical memory`에 더 많은 프로그램을 적재할 수 있다
-- 💡 `load`: 메모리에 프로그램을 적재하는 것
 
 - 🆚 Overlays
-- Dynamic Loading은 MultiProgramming환경에서 메모리의 이용률을 향상시키기 이ㅜ해 프로세스의 주소 공간 중 당장 실행에 필요한 부분만을 그떄그때 메모리에 동적으로 적재
+- Dynamic Loading은 MultiProgramming환경에서 메모리의 이용률을 향상시키기 위해 프로세스의 주소 공간 중 당장 실행에 필요한 부분만을 그떄그때 메모리에 동적으로 적재
 
 ## 📌 Overlays
 
@@ -358,7 +360,7 @@ stub통해 해당 라이브러리가 메모리에 이미 존재하는지 확인
 - ❓ **Contiguous allocation 에서는 프로세스 주소 변환을 어떻게 하나요?**
 - 두 개의 register `relocation register`, `limit register` 사용
 
-### 📍 Fixed-partition allocation
+### 📍 Fixed-size partition allocation
 
 > 물리적 메모리를 몇 개의 영구적 분할 `partition`으로 **미리** 나눔 <br>
 > 하나의 분할에는 하나의 프로그램만 적재 가능 <br>
@@ -381,7 +383,7 @@ stub통해 해당 라이브러리가 메모리에 이미 존재하는지 확인
 - 분할3: Internal fragmentation
 ```
 
-### 📍 Variable partition allocation
+### 📍 Variable-size partition allocation
 
 <img width="240" alt="Image" src="https://github.com/user-attachments/assets/3bd65d27-4a09-4840-be47-96b39a53ec91" />
 
@@ -513,7 +515,7 @@ stub통해 해당 라이브러리가 메모리에 이미 존재하는지 확인
 - 모든 가용 `frame`들을 관리
 
 - 👎🏻 Internal fragmentation 발생 가능(메모리를 같은 크기의 `frame`로 쪼개다보면 남는 공간 생길 수도 있으므로)
-- 👍🏻 Variable partition allocation Problem이 발생하지 않음(프로세스 주소 공간, 물리적 모메로 모두 같은 크기의 페이지 단위로 나뉘어지기 때문)
+- 👍🏻 Variable partition allocation Problem이 발생하지 않음(프로세스 주소 공간, 물리적 메모리 모두 같은 크기의 페이지 단위로 나뉘어지기 때문)
 - 👍🏻 External fragmentation 발생하지 않음(프로세스가 `frame`보다 크면 쪼개서 들어가면 되니까)
   <br>
 
@@ -586,7 +588,7 @@ stub통해 해당 라이브러리가 메모리에 이미 존재하는지 확인
 - `Page-table base register(PTBR)` + `Page-table length register(PTLR)`
   <br>
 
-- 페이징 기법에서 모든 메모리 접근 연산에는 **2번**의 `memory access`가 필요하ㅏ
+- 페이징 기법에서 모든 메모리 접근 연산에는 **2번**의 `memory access`가 필요하다
 
   - 1️⃣ `page table` 접근, 주소 변환을 위해 메모리의 `page table` 접근
   - 2️⃣ `data/instruction` 접근, 변환된 주소에서 실제 데이터 접근 위해 메모리 접근
