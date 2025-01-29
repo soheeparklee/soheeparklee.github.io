@@ -6,8 +6,6 @@ tags: [] # TAG names should always be lowercase
 
 ## ✅
 
-## ✅
-
 ## ✅ 절대 주소 지정과 상대주소 지정의 차이점은 뭘까요?
 
 ## ✅ 메모리 분할에 대해 설명해주세요.
@@ -35,6 +33,8 @@ tags: [] # TAG names should always be lowercase
 ## ✅ 가상 주소와 물리 주소(실주소)에 대해 설명해주세요.
 
 ## ✅ 가상 주소를 물리 주소(실주소)로 어떻게 변환할까요?
+
+## Dynamic Loading 🆚 Overlays
 
 ## ✅ Swapping이란 무엇인가요?
 
