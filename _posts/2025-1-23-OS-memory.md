@@ -443,11 +443,24 @@ stub통해 해당 라이브러리가 메모리에 이미 존재하는지 확인
 
 - 💡 `First Fit`과 `Best Fit`이 `Worst Fit`보다 속도과 공간 이용률 측면에서 효과적인 것으로 판면
 
+### 💡 Coalescing
+
+<img width="589" alt="Image" src="https://github.com/user-attachments/assets/501271cb-b4d7-4876-b785-09e8255a85e7" />
+
+- 인접한 조각 또는 빈 영역들을 합치는 방법
+- process of merging two adjacent holes to form a single larger hole
+
 ### 💡 Compaction
 
 - 💊 External fragmentation 문제를 해결하는 방법
-- 사용중인 메모리 영역을 한 군데로 몰고,
+- 사용중인 메모리 영역을 모두 한 군데로 몰고,
 - `hole`들을 다른 한 곳으로 몰아 아주 큰 `block`을 만든다.
+- Coalesce했는데도 메모리 부족할 때
+
+<img width="723" alt="Image" src="https://github.com/user-attachments/assets/71b589fb-885f-43d0-8ccf-fcaf5ab6a3f0" />
+
+- even when holes have coalesced, the hole is not large enough to hold the job
+- combine all the holes into one big huge hole my moving all the processes to one side
 
 - 👎🏻 아주 비용이 많이 든다
   - 거의 모든 프로그램의 메모리 공간을 바꾸니까
@@ -455,14 +468,10 @@ stub통해 해당 라이브러리가 메모리에 이미 존재하는지 확인
 
 - `compaction`을 하기 위해서는 `execution time binding(run-time binding)`일 때만 가능
 
-### 💡 Colaescing
-
-- 인접한 조각 또는 빈 영역들을 합치는 방법
-
 ### 📍 Buddy system
 
 - 👎🏻 `Fixed-partition allocation`은 메모리에 적재할 수 있는 프로세스 수가 고정되어 있고, 내부단편화 발생
-- 👎🏻 ` Variable partition allocation`는 외부 단편화가 발생, 이를 해결하기 위해 `compaction`을 수행해야 함
+- 👎🏻 `Variable partition allocation`은 외부 단편화가 발생, 이를 해결하기 위해 `compaction`을 수행해야 함
 
 - 💊 이에 대한 절충안으로 `Buddy system`등장
 
@@ -476,7 +485,7 @@ stub통해 해당 라이브러리가 메모리에 이미 존재하는지 확인
 - 그 중 하나가 `프로세스A`에게 할당된다.
 
 - 다음 `프로세스B`는 `240K`의 공간을 요청하므로, `256K`인 버디를 할당한다.
-- 할당 과정에서 블록은 필요에 따라 나눠지고, 합쳐진다.
+- **할당 과정에서 블록은 필요에 따라 나눠지고, 합쳐진다.**
 
 - `프로세스E`가 해제되는 부분을 보자
 - `두 개의 128K 버디`는 `256K 한 개`로 합쳐지고
@@ -779,7 +788,7 @@ CPU가 메모리에 요청한 내용을 얻을 수 있다
 - 각 `page`가 자신의 `page table`에 대해 어떤 권한을 가지는지 설정
 
 - ✔️ **valid-invalid bit**
-- `valid`는 해당 주소의 `frame`에 그 프로세스를 구성하는 유효한 내용이 있음을 의미(잡근 허용)
+- `valid`는 해당 주소의 `frame`에 그 프로세스를 구성하는 유효한 내용이 있음을 의미(접근 허용)
 - `invalid`는 해당 주소의 `frame`에 유효한 내용이 없음을 의미
   - 프로그램이 그 주소 부분을 사용하지 않는 경우
   - 해당 페이지가 메모리에 올라와 있지 않고 `swap area`에 있는 경우
@@ -977,7 +986,8 @@ d라는 base에서 얼마나 떨어진 값에 접근하려고 하는지 알아�
   - `first fit`, `best fit`
 - 👎🏻 `segment`는 크기가 동일하지 않다보니 `external fragmentation` 생김
 
-- 🆚 Paging
+#### 🆚 Paging
+
 - `page`가 동일한 크기로 나뉘어져 있음
 - `segment`는 크기가 동일하지 않음, 따라서 `segment` 길이를 알려주는 `limit` 필요
 
@@ -994,7 +1004,7 @@ d라는 base에서 얼마나 떨어진 값에 접근하려고 하는지 알아�
 
 ### 📍 Paged Segmentation
 
-> semgmentation을 기본으로 하되, 이를 다시 동일 크기 페이지로 나누어 메모리에 올리기
+> segmentation을 기본으로 하되, 이를 다시 동일 크기 페이지로 나누어 메모리에 올리기
 
 <img width="384" alt="Image" src="https://github.com/user-attachments/assets/94980ac7-007b-4c8e-a530-0504d5a8004b" />
 
@@ -1013,7 +1023,7 @@ d라는 base에서 얼마나 떨어진 값에 접근하려고 하는지 알아�
 - 👍🏻 `segment` 단위로 프로세스 간 `Protection`, `Sharing`설정 수월
 - 👍🏻 Allocation, `external fragmentation` 문제 발생하지 않음
 
-- `Paged Segmentation`기법에서는 주소 변환을 위해 `외부ㅢ 세그먼트 테이블`과 `내부의 페이지 테이블` 이렇게 두 단계를 둔다
+- `Paged Segmentation`기법에서는 주소 변환을 위해 `외부의 세그먼트 테이블`과 `내부의 페이지 테이블` 이렇게 두 단계를 둔다
 - <`세그먼트 번호 s`, `오프셋 d`>으로 구성된 `logical address`를 물리적 주소로 변환하는 과정
 
 ```

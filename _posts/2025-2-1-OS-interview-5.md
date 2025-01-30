@@ -6,6 +6,8 @@ tags: [] # TAG names should always be lowercase
 
 ## ✅
 
+## Dynamic Relocation 🆚 Dynamic Loading 🆚 Dynamic Linking
+
 ## ✅ 절대 주소 지정과 상대주소 지정의 차이점은 뭘까요?
 
 ## ✅ 메모리 분할에 대해 설명해주세요.
@@ -60,7 +62,10 @@ tags: [] # TAG names should always be lowercase
 
 ## ✅ 페이지 부재 빈도 알고리즘에 대해 설명해주세요.
 
-## ✅
+## ✅ `external fragmentation`이 발생하는 이유
+
+- 크기가 균일하지 않기 때문
+- segmentation
 
 ## ✅
 
