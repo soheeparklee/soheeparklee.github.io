@@ -74,6 +74,7 @@ tags: [] # TAG names should always be lowercase
 ## ✅ 스키마가 뭘까요?
 
 - 데이터베이스에 저장되는 `데이터 구조`와 `제약조건`을 정의한 것
+- 일반적으로 `conceptual schema`를 의미
 
 ```
 user_id: INT
@@ -92,10 +93,79 @@ address: CHAR(20)
 
 ## ✅ 3단계 데이터베이스 구조에 대해 설명해주세요.
 
+- 3단계 데이터베이스 구조: 하나의 데이터베이스를 3단계로 나눠서 쉽게 이해하자
+- 데이터가 어떻게 저장되고 유지되는지 복잡한 내용 숨기고, 필요한 데이터만 단순화해서 일반 사용자에게 제공
+- 각 단계별로 abstraction
+- 외부단계로 갈수록 abstraction level higher ⬆️
+- 👍🏻 복잡한 내용 숨기기
+- 👍🏻 불필요한 데이터 접근 방지
+
+- ✔️ **external level**: individual user view
+- ✔️ **conceptual level**: organizational view
+- ✔️ **internal level**: physical storage view
+
+<img width="712" alt="Image" src="https://github.com/user-attachments/assets/0469df98-98c5-4ed5-bba5-72bf50c431c5" />
+
+#### ☑️ external level
+
+- 고객 관리 담당 직원은 고객 데이터에만 관심이 있고
+- 상품 담당 직원은 상품 데이터에만 관심이 있다
+- *개별 사용자*가 데이터베이스를 어떻게 보는지는 자신의 관심사에 따라 다르다
+- `external schema(sub schema)`: `external level`에서 사용자에게 필요한 데이터베이스를 정의한 것
+- 사용자마다 생각하는 데이터베이스 구조 `external schema`는 다르다
+
+#### ☑️ conceptual level
+
+- 데이터베이스를 사용하는 사용자들의 관점을 통합해
+- *조직 전체의 관점*에서 DB표현
+- `conceptual schema`: 조직 전체 관점에서 표현한 DB의 논리적 구조
+- DBMS 또는 데이터베이스 관리자 관점에서 모든 사용자에게 필요한 데이터를 하나로 합쳐서 표현
+- DB당 하나의 `conceptual schema`만 존재
+- ➕ 데이터 관계, 제약 조건, 데이터 보안 정책, 접근 권한도 포함
+
+- 각 사용자는 `conceptual schema`의 일부분 사용
+- 따라서 `external schema(sub schema)`는 `conceptual schema`를 토대로 사용자의 목적에 맞게 만들어지는 것
+
+#### ☑️ internal level
+
+- `internal schema`: 저장장치에 실제로 DB가 저장되는 방법을 정의
+- DB는 저장장치에 파일형태로 저장
+- `internal schema`에는 파일을 구성하는 레코드 구조, 필드 크기, 인덱스 등 정의
+- DB당 하나의 `internal schema`만 존재
+
+## ✅ schema mapping이란?
+
+- relationship between schemas
+- `external schema` should be mapped to `conceptual schema`, and `conceptual schema` should be mapped to `internal schema`
+- 그래야지 사용자가 물리적 저장 장치에 저장된 데이터 접근 가능
+
+## ✅ 3단계 데이터베이스 구조 & schema mapping의 목적은?
+
+- 데이터 독립성
+
 ## ✅ 데이터 독립성에 대해서 설명해주세요.
 
 - 파일 시스템은 파일 구조가 바뀌면 응용 프로그램도 함께 수정해야 함
-- DBMS가 데이터베이스에 대해 책임을 지기 때문에 구조가 변경되어도 응용 프로그램이 영향을 받지 않는다
+- DBMS가 데이터베이스에 대해 책임을 지기 때문에
+- 데이터의 논리적 구조나 물리적 구조가 변경되더라도 응용 프로그램이 영향을 받지 않는 것
+- 즉, **하위 스키마를 변경하더라도 상위 스키마가 영향을 받지 않는 특성**
+
+<img width="620" alt="Image" src="https://github.com/user-attachments/assets/470fdb9b-7d9a-4892-8b4c-fd6e875fd551" />
+
+## ✅ 논리적 데이터 독립성이란?
+
+- `external schema(sub schema)` will not be influenced even when `conceptual schema`is changed
+- user does not have to know `database logical structure` has been changed
+- **application interface**: relationship betwen `external schema(sub schema)` and `conceptual schema`
+
+```
+conceptual schema에서 데이터 이름이 연락처 ➡️ 전화번호로 바뀜
+external schema의 mapping만 전화번호로 수정해주면
+external schema에서는 데이터 이름 여전히 연락처
+external schema를 변결할 필요가 없다
+```
+
+## ✅ 물리적 데이터 독립성이란?
 
 ## ✅ RDBMS(관계형 데이터베이스 관리시스템)는 뭘까요?
 
