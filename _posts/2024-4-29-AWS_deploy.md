@@ -1,6 +1,6 @@
 ---
 title: Deploy environment EC2, RDS
-categories: [AWS, Deploy]
+categories: [Deploy, AWS]
 tags: [deploy] # TAG names should always be lowercase
 ---
 

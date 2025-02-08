@@ -1,6 +1,6 @@
 ---
 title: Bash script
-categories: [AWS, Deploy]
+categories: [Deploy, CICD]
 tags: [bash, script]
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: EC2, CICD, Github Actions
-categories: [CICD, Github Actions]
+categories: [Deploy, CICD]
 tags: [] # TAG names should always be lowercase
 ---
 
