@@ -120,17 +120,3 @@ student.age = 10;
         data1.value = 100; //cannot point null! NullPointerException
     }
 ```
-
-## ✅
-
-## ✅
-
-## ✅
-
-## ✅
-
-## ✅
-
-## ✅
-
-## ✅

@@ -174,11 +174,3 @@ MemberConstruct member2 = new MemberConstruct("member2", 16); //member2 16 0
         this(name, age, 0); //⭐️first line
     }
 ```
-
-## ✅
-
-## ✅
-
-## ✅
-
-## ✅
