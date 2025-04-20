@@ -1,0 +1,21 @@
+---
+title: Java memory
+categories: [JAVA, 김영한]
+tags: [] # TAG names should always be lowercase
+---
+
+## ✅
+
+## ✅
+
+## ✅
+
+## ✅
+
+## ✅
+
+## ✅
+
+## ✅
+
+## ✅
