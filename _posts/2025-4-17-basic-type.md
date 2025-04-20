@@ -101,14 +101,25 @@ student.age = 10;
         System.out.println(data2); //has address
         System.out.println(data2.value); //0
 
-        data2 = null;
-        System.out.println(data2); //no address, null
+        data2 = null; //free address space
+        System.out.println(data2); //now no address, null
 ```
 
 - `GC` will free unused `address space`
 - after `data2 = null`, the `address space` that `data2` was using will be freed by `garbage collector`
+- ⭐️ `GC` is big advantage of Java, keeps freeing unused address space, making memory use efficient
 
-## ✅
+## ✅ NullPointerException
+
+- cannot point null
+- because `null` means no address space
+
+```java
+    public static void main(String[] args) {
+        Data data1 = null;
+        data1.value = 100; //cannot point null! NullPointerException
+    }
+```
 
 ## ✅
 
