@@ -1,5 +1,5 @@
 ---
-title: Java memory, Static
+title: Java memory, Static, psvm
 categories: [JAVA, 김영한]
 tags: [] # TAG names should always be lowercase
 ---
@@ -89,7 +89,7 @@ public static void main(String[] args) {
 
 - `student class`로 `student 1, 2, 3...`등 만들건데, **인스턴스간에 공유**하는 변수를 지정할 수는 없을까?
 
-- 1️⃣ `static` is to share among instances
+- 1️⃣ `static` is to **share** among instances
 - 2️⃣ `static` variables are saved in `method memory`, only once
   - normally, instance is created in `heap`
   - however, bc `static` is **shared** among instances, it is saved in `method memory`
@@ -200,7 +200,7 @@ public static int count; //class field, class variable, static
 
 ## ✅ Static Method
 
-- `static` method can be used without creating instance
+- 1️⃣ `static` method can be used without creating instance
 
 - 👎🏻 **Before(without static)**
 
@@ -243,7 +243,55 @@ public class DecoMain2 {
 }
 ```
 
-## ✅
+- 2️⃣ `static` method can only use `static field` and `static method`
+- 🆚 `instance` method can use both `static`, `instance`
+
+```java
+public class DecoData {
+    private int instanceValue; //instance variable
+    private static int staticValue; //static
+
+    public static void staticCall(){ //static
+        staticValue++; //static can use static
+        //instanceValue++; //🔴compile error, static can only use static
+        //instanceMethod(); //🔴static can only use static
+    }
+
+    public void instanceMethod(){
+        staticValue++; //🟢instance can use both static and not static
+        instanceValue++;
+        staticCall();
+    }
+}
+```
+
+- 🤨 **Why `static` method can only use `static`?**
+- `static` is created in `method`
+- `static` can be used without creating instance
+- thus, if `static` calls an `instance field or method`, the `instance` might not have been created yet!
+
+```java
+public class DecoDataMain {
+    public static void main(String[] args) {
+        DecoData.staticCall(); //static method is called from class, do not need instance to be created
+
+        DecoData data = new DecoData();
+        data.instanceMethod(); //instance method is called from instance, after creating instance
+    }
+}
+```
+
+## ✅ psvm Main()
+
+- `main method` is also `static`
+
+```java
+public static void main(String[] args) {}
+```
+
+- 1️⃣ can use `main()` method without creating `main instance`
+- `main()` is used to start the programs
+- 2️⃣ methods called in `main()` should also be `static`
 
 ## ✅
 
