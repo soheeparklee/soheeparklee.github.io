@@ -4,6 +4,9 @@ categories: [JAVA, 김영한]
 tags: [] # TAG names should always be lowercase
 ---
 
+- ⭐️ `extends`
+- ⭐️ method overriding
+
 ## ✅ Polymorphism: parent can become child
 
 - `parent class`
@@ -144,6 +147,7 @@ poly.method(); //method: child method, method IS override
 
 - 1️⃣ polymorphism: 부모 type을 자식 instance로 생성할 수 있다(부모는 자식을 품을 수 있음)
 - 2️⃣ 자식 instance로 생성하면 자식, 부모 instance를 모두 생성한다
+  - `Animal animal = new Dog();`하면 `animal`, `dog`인스턴스 모두 생성됨
 - 3️⃣ Downcasting: 부모 ➡️ 자식으로 타입을 바꿈, 내가 명시한 instance일때만 그 type으로 downcast 가능
 - 4️⃣ Upcasting: 자식 ➡️ 부모로 타입을 바꿈, 항상 가능
 - 5️⃣ 내가 무슨 instance인지 확인하기 위해 `instanceOf`를 사용할 수 있다
