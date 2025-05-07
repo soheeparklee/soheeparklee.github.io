@@ -80,7 +80,30 @@ String input = "GOLD";
 Grade gold = Grade.valueOf(input); //set ENUM value
 ```
 
-## ✅
+## ✅ Enum + Value
+
+- want to set different discount value to user
+
+- Basic user: 10% discount
+- Gold user: 20% discount
+- Diamond user: 30% discount
+
+```java
+public enum Grade {
+    BASIC(10), GOLD(20), DIAMOND(30);
+
+    private final int discountPercent; //add value to ENUM
+
+    Grade(int discountPercent) { //private -> need constructor
+        this.discountPercent = discountPercent;
+    }
+
+    public int getDiscountPercent() { //getter
+        return discountPercent;
+    }
+}
+
+```
 
 ## ✅
 

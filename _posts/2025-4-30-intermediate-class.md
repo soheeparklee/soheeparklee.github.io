@@ -77,7 +77,8 @@ Math.sqrt(4); //제곱근
 Math.random(); //0.0 ~ 1.0 사이의 랜덤 숫자
 ```
 
-- random
+- ✔️ **random**
+- if there is seed, random result will always be same
 
 ```java
 Random random = new Random();
