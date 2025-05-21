@@ -16,9 +16,13 @@ tags: [mvc, api] # TAG names should always be lowercase
 - `thymeleaf`: html에 view를 도와주는 library
 - `spring-boot-starter-logging`: 로그를 남기기 위해 사용되는 library, `logback`, `slf4j`
 
-![Image](https://github.com/user-attachments/assets/677e5939-bbea-488b-a317-4af7255ce88a)
+![Image](https://github.com/soheeparklee/java-basic/assets/677e5939-bbea-488b-a317-4af7255ce88a)
 
-<img width="512" alt="Image" src="https://github.com/user-attachments/assets/89f7c2ef-7aec-480b-b88d-37f7808a1e66" />
+![Image](https://github.com/soheeparklee/assets/677e5939-bbea-488b-a317-4af7255ce88a)
+
+<img width="512" alt="Image" src="https://github.com/soheeparklee/java-basic/assets/89f7c2ef-7aec-480b-b88d-37f7808a1e66" />
+
+<img width="512" alt="Image" src="https://github.com/soheeparklee/assets/89f7c2ef-7aec-480b-b88d-37f7808a1e66" />
 
 # ☑️ Test library
 
