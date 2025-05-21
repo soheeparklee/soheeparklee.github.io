@@ -24,6 +24,8 @@ tags: [mvc, api] # TAG names should always be lowercase
 
 <img width="512" alt="Image" src="https://github.com/soheeparklee/assets/89f7c2ef-7aec-480b-b88d-37f7808a1e66" />
 
+<img width="400" alt="Image" src="https://github.com/user-attachments/assets/d49ac693-fa6e-4949-855b-d583a791c154" />
+
 # ☑️ Test library
 
 - `junit`, `mockito`, `assertj`, `spring-test`: test code를 위해 필요한 library
