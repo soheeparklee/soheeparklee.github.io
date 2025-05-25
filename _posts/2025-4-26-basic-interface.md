@@ -114,7 +114,7 @@ public class Child implements InterfaceA, InterfaceB{
 }
 ```
 
-<img width="521" alt="Image" src="https://github.com/user-attachments/assets/4fbc3c3c-f9c9-4246-aaec-3a0d96411cdb" />
+<img width="521" alt="Image" src="https://private-user-images.githubusercontent.com/97790983/437704864-4fbc3c3c-f9c9-4246-aaec-3a0d96411cdb.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDc4NjEyNDgsIm5iZiI6MTc0Nzg2MDk0OCwicGF0aCI6Ii85Nzc5MDk4My80Mzc3MDQ4NjQtNGZiYzNjM2MtZjljOS00MjQ2LWFhZWMtM2EwZDk2NDExY2RiLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTA1MjElMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwNTIxVDIwNTU0OFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTZmNjdhNTA5ZWYzMzMzOGE1MTgxMDQ5M2NjM2I3MWRkMDZmMGY0YzYzZTg3NDU1NjdlMjNiZDVlYzVhOTNhOWQmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.tUbiA92WZjpXhgx-sWaZAtcwUs85YUCr-v8L7uSSIek" />
 
 - override method always has priority
 - when method is called, will always return **override** method

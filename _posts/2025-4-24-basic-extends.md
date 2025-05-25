@@ -101,7 +101,7 @@ public class ElectricCar extends Car { //child
 }
 ```
 
-<img width="492" alt="Image" src="https://github.com/user-attachments/assets/62f80907-2970-4514-b466-d417cde63b0a" />
+<img width="492" alt="Image" src="https://private-user-images.githubusercontent.com/97790983/437099195-62f80907-2970-4514-b466-d417cde63b0a.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDc4NjEzMDMsIm5iZiI6MTc0Nzg2MTAwMywicGF0aCI6Ii85Nzc5MDk4My80MzcwOTkxOTUtNjJmODA5MDctMjk3MC00NTE0LWI0NjYtZDQxN2NkZTYzYjBhLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTA1MjElMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwNTIxVDIwNTY0M1omWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTZkMDZiODc5YjYzZGYyOTkyYWQyZTFlYWQ0N2Q0MjBkMzE3ZmExMDY4MjM0OWI2ZjZkNzk5ZDNmOGJjNWZmMGMmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.sLm8GMsvnn-VbnThA48MWmHEHlkfja7aVgyxGJ5vMqc" />
 
 - ✔️ call method `electricCar.move();`
 - `electricCar` type is `ElectricCar`, find `ElectricCar` first

@@ -16,14 +16,6 @@ tags: [mvc, api] # TAG names should always be lowercase
 - `thymeleaf`: html에 view를 도와주는 library
 - `spring-boot-starter-logging`: 로그를 남기기 위해 사용되는 library, `logback`, `slf4j`
 
-![Image](https://github.com/user-attachments/assets/677e5939-bbea-488b-a317-4af7255ce88a)
-
-<img width="512" alt="Image" src="https://github.com/user-attachments/assets/89f7c2ef-7aec-480b-b88d-37f7808a1e66" />
-
-<img width="400" alt="Image" src="https://github.com/user-attachments/assets/d49ac693-fa6e-4949-855b-d583a791c154" />
-
-<img width="609" alt="Image" src="https://private-user-images.githubusercontent.com/97790983/446224779-0e95a7e2-9864-4e90-b61a-f8219c4605fe.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDc4NTIxMjIsIm5iZiI6MTc0Nzg1MTgyMiwicGF0aCI6Ii85Nzc5MDk4My80NDYyMjQ3NzktMGU5NWE3ZTItOTg2NC00ZTkwLWI2MWEtZjgyMTljNDYwNWZlLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTA1MjElMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwNTIxVDE4MjM0MlomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWYwZmYwOWY1OWY5ZGEwOWFkZTg4NDQ2NjI4N2EwM2UzNDNlMjRiNWQyMTBiNTQ4M2E2ODQ0NjAxMjIxNjFlMGEmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.MR6-HEy2vFoNaXBFRdO_dyA_hvaIt2FaQWtjUlIyYPQ" />
-
 # ☑️ Test library
 
 - `junit`, `mockito`, `assertj`, `spring-test`: test code를 위해 필요한 library

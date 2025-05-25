@@ -6,7 +6,7 @@ tags: [] # TAG names should always be lowercase
 
 ## ✅ Method, Stack, Heap
 
-<img width="500" alt="Image" src="https://github.com/user-attachments/assets/e7385999-de78-4c12-8198-ac5d676642aa" />
+<img width="500" alt="Image" src="https://private-user-images.githubusercontent.com/97790983/436151616-e7385999-de78-4c12-8198-ac5d676642aa.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDc4NjEzNDYsIm5iZiI6MTc0Nzg2MTA0NiwicGF0aCI6Ii85Nzc5MDk4My80MzYxNTE2MTYtZTczODU5OTktZGU3OC00YzEyLTgxOTgtYWM1ZDY3NjY0MmFhLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTA1MjElMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwNTIxVDIwNTcyNlomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTk3ODhlM2FlMzQ5MGE1ZTZmOGFkMjc0MDQzYTZjZWQ4ZTE5OWMwMTJhOWNkNjNkODFjY2U5M2FmZDBhZTA2MmQmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.f7PI1JBnKV5Y0IW4IeOwfWX2HM7TY9cOMkiGtpBfcj0" />
 
 ✔️ **Method**
 
@@ -25,7 +25,7 @@ tags: [] # TAG names should always be lowercase
 
 ## 💡 Method
 
-<img width="492" alt="Image" src="https://github.com/user-attachments/assets/ac5c4512-c9c3-4c62-80bc-767c1495508c" />
+<img width="492" alt="Image" src="https://private-user-images.githubusercontent.com/97790983/436153663-ac5c4512-c9c3-4c62-80bc-767c1495508c.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDc4NjEzMzAsIm5iZiI6MTc0Nzg2MTAzMCwicGF0aCI6Ii85Nzc5MDk4My80MzYxNTM2NjMtYWM1YzQ1MTItYzljMy00YzYyLTgwYmMtNzY3YzE0OTU1MDhjLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTA1MjElMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwNTIxVDIwNTcxMFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWE2MTE3NjNkMmE2NzVlZmNmYWUzN2VmMTI2MjE1ZWU1ZWZiNjk3Njg0NGVjNDc4ZWQ3YmI5YzlmZDdiM2I5ZmImWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0._6EyheLwcvhAose7cl10LpD0aw4hHwkCvyW-WhConyI" />
 
 - **shared** data to run program
 - `class`: field, method, constructor...

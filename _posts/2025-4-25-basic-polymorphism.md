@@ -32,7 +32,7 @@ parentChild.parentMethod(); //parentChild is Parent type, can call parent method
 //parentChild.childMethod(); // parentChild is Parent type, CAN NOT call child method
 ```
 
-<img width="489" alt="Image" src="https://github.com/user-attachments/assets/69330a36-bffc-48cb-b0b3-7f84a45ce753" />
+<img width="489" alt="Image" src="https://private-user-images.githubusercontent.com/97790983/437417095-69330a36-bffc-48cb-b0b3-7f84a45ce753.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDc4NjEyNzEsIm5iZiI6MTc0Nzg2MDk3MSwicGF0aCI6Ii85Nzc5MDk4My80Mzc0MTcwOTUtNjkzMzBhMzYtYmZmYy00OGNiLWIwYjMtN2Y4NGE0NWNlNzUzLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTA1MjElMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwNTIxVDIwNTYxMVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTBkYzI1YzQ0NmZhMTVmNThkMWI5YmQxOTJlYTcwNDUzNzc4ODcyM2NlNGY0NDliM2I5YTBiYTk2OWYxYWEyMzYmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.65hGJY4piiZV0kB8Azj2VL_mcM73YvDGnN3SSlj6TFo" />
 
 - `new Child()`: 자식 클래스를 생성하면 `child class` ➕ `parent class` 둘 다 생성됨
 - 그러나 `Parent parentChild` 이므로 `parentChild`는 `Parent` 타입이다
@@ -129,7 +129,7 @@ public class CastingMain5 {
 
 ## ✅ Polymorphism and overriding
 
-- method: overrided method always has priority
+- method: **overrided** method always has priority
 - field: field is not overrided
 
 ```java
@@ -152,3 +152,4 @@ poly.method(); //method: child method, method IS override
 - 4️⃣ Upcasting: 자식 ➡️ 부모로 타입을 바꿈, 항상 가능
 - 5️⃣ 내가 무슨 instance인지 확인하기 위해 `instanceOf`를 사용할 수 있다
 - 6️⃣ overriding한 method가 항상 우선순위를 가진다(자식 인스턴스)
+- method is override, field is not overrided
