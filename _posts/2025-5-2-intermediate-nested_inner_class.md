@@ -15,7 +15,7 @@ tags: [] # TAG names should always be lowercase
   - 3️⃣ Local class
   - 4️⃣ Anonymous class
 
-<img width="552" alt="Image" src="https://github.com/user-attachments/assets/4f24cf5d-bfae-46d7-a700-29f11b7457e6" />
+<img width="552" alt="Image" src="https://private-user-images.githubusercontent.com/97790983/439870932-4f24cf5d-bfae-46d7-a700-29f11b7457e6.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDc4NjExNDQsIm5iZiI6MTc0Nzg2MDg0NCwicGF0aCI6Ii85Nzc5MDk4My80Mzk4NzA5MzItNGYyNGNmNWQtYmZhZS00NmQ3LWE3MDAtMjlmMTFiNzQ1N2U2LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTA1MjElMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwNTIxVDIwNTQwNFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTY1NjcwZjFjMTA2YzU2NDJkZmU3Yzg2NTNjOWM0YmE3ZDllMTM0YWQ1MDhmMzQ1YTc3NGY3Yjc1ZTkwNTlkYzImWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.DiqRgafWZHFDt_B3yCNJJsmT-Vxc9SwaSPqCONH7-g4" />
 
 - 🆚 `Nested`: 내 안에 있지만 내것이 아닌 것(나무 상자 안에 작은 다른 나무 상자`nested`)
   - `Static nested class`는 `바깥 클래스`와 전혀 **다른** 클래스
@@ -140,7 +140,7 @@ public class InnerOuterMain {
 - 👎🏻 **Before**
 - `Car` class, `Engine` class
 
-<img width="1316" alt="Image" src="https://github.com/user-attachments/assets/5064358b-c108-48c0-a5ee-66798b432d2a" />
+<img width="1316" alt="Image" src="https://private-user-images.githubusercontent.com/97790983/439902886-5064358b-c108-48c0-a5ee-66798b432d2a.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDc4NjExMjYsIm5iZiI6MTc0Nzg2MDgyNiwicGF0aCI6Ii85Nzc5MDk4My80Mzk5MDI4ODYtNTA2NDM1OGItYzEwOC00OGMwLWE1ZWUtNjY3OThiNDMyZDJhLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTA1MjElMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwNTIxVDIwNTM0NlomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWNhNmExZjFkZWQxNTljMjBjMDEwM2I2MTYwNDI4ZDA5ODYzYzZjN2I1MzY3MTBjYmRiYjhlYWMwMWRlYzZlNTEmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.v0GTlQI4zRLz6fFjFD76TSVJpn-HP3jRjEOcnoVmIzU" />
 
 - 👍🏻 **After**
 - `Engine` class **inner class** of `Car` class

@@ -29,7 +29,7 @@ client.disconnect(); //disconnect  정상흐름
 
 ## ✅ Exception and Error
 
-<img width="518" alt="Image" src="https://github.com/user-attachments/assets/2f83c619-9080-47a1-8e24-950cbc73b297" />
+<img width="518" alt="Image" src="https://private-user-images.githubusercontent.com/97790983/440567816-2f83c619-9080-47a1-8e24-950cbc73b297.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDc4NjExMDksIm5iZiI6MTc0Nzg2MDgwOSwicGF0aCI6Ii85Nzc5MDk4My80NDA1Njc4MTYtMmY4M2M2MTktOTA4MC00N2ExLThlMjQtOTUwY2JjNzNiMjk3LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTA1MjElMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwNTIxVDIwNTMyOVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWQ0ZDc5MjM5Nzk0NmRjOTM0NGUzODQ3NzEyNjg4OWM3N2YyMjgyMmE5YjMzZjNjYzBhN2Q5MWZkYTBmNjljNDYmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.S_oLzxmm2jnlvexVUnJbTbaTsusK5FCfdi2NA85IzBM" />
 
 - Error: developer does not catch error
 - Exception:
@@ -68,6 +68,7 @@ public class MyUncheckedException extends RuntimeException {
   - 내 클래스에서 예외 잡아서 해결⭕️
   - use `try-catch`
   - 잡아서 해결한 다음에는 정상흐름으로 이어서 실행
+  - `정상흐름`, `예외흐름` 분리 성공
 
 - 💡 **throw**:
 
@@ -88,20 +89,101 @@ public void callCatch(){ //💡 catch exception, try-catch
     }catch (MyCheckedException e){ //해결⭕️
          e.getMessage() //handle exception
        }
-
     System.out.println("running code"); //after handling exception, 이어서 정상흐름
 }
 
-public void callThrow() throws MyCheckedException { //💡 cannot catch, throw to outside 해결❌
+public void callThrow() throws MyCheckedException { //💡 cannot catch, throw to outside, 해결❌
     client.call();✔️
 }
 ```
 
-## ✅
+## ✅ Try-Catch Finally
 
-## ✅
+- 👍🏻 `try-catch`로 정상흐름, 예외흐름 분리 성공
 
-## ✅
+```java
+try{
+  //정상흐름
+}catch(Excpetion1 e1){
+  e1.getMessage(); //예외흐름
+}catch(Excpetion2 e2){
+  e2.getMessage(); //예외흐름
+}finally{
+  //무조건 실행해야 하는 흐름
+}
+
+```
+
+- ⭐️ `try-catch`에서 어떤 예외가 터지더라도 무조건 반드시 `finally`의 코드는 실행
+
+```java
+public class NetworkServiceV2_4 {
+    public void sendMessage(String data) {
+        String address = "http://example.com";
+        NetworkClientV2 client = new NetworkClientV2(address);
+
+        client.initError(data);
+
+        try {
+            //하나의 try안에 정상흐름을 다 담기
+            client.connect();
+            client.send(data);
+        } catch (NetworkClientExceptionV2 e) {
+            //catch안에 예외흐름
+            //👍🏻 try, catch으로 정상흐름, 예외흐름 분리 성공
+            System.out.println("[error log]" + e.getErrorCode() + " message" + e.getMessage());
+        }finally{ //⭐️ 반드시 실행
+            client.disconnect();
+        }
+    }
+}
+```
+
+## ✅ Exception layers
+
+- Exception에 계층을 두어 계층별로 예외 잡기
+
+- Runtime exception
+  - NetworkClientException `extends Runtime exception`
+    - Connect Exception, SendException `extends NetworkClientException`
+
+```java
+try {
+// 1. RuntimeException 발생
+  } catch (ConnectException e) { // 2. 대상이 다름
+  } catch (SendException e) // 2. 대상이 다름
+  } catch (NetworkClientException e) { // 3.대상이 다름
+  } catch (Exception e) { // 4.Exception은 RuntimeException의 부모이므로 여기서 잡음
+}
+```
+
+## ✅ Try with resources
+
+- 쓰고 반드시 반납해야 하는 resource/class에 `implements AutoCloseable`하고
+- 꼭 실행해야 하는 메소드를 `close()`안에 넣는다
+
+```java
+public class NetworkClientV5 implements AutoCloseable{
+      public void disconnect(){} //반드시 실행해야 하는 코드
+
+      @Override
+      public void close() { //close()안에 꼭 실행해야 하는 코드 넣기
+        disconnect();
+    }
+
+}
+```
+
+- ✔️ Main class
+- `ry(NetworkClientV5 client = new NetworkClientV5(address))`
+
+```java
+try(NetworkClientV5 client = new NetworkClientV5(address)) { //close하는 메소드 있는 클래스를 try에서 인스턴스 생성
+            client.initError(data);
+            client.connect();
+            client.send(data);
+        }
+```
 
 ## ✅
 

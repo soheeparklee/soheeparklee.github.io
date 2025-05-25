@@ -16,7 +16,7 @@ tags: [] # TAG names should always be lowercase
 - `Parent class extends Object`
 - when `child class` is created, both `parent class` and `object class` is created
 
-<img width="495" alt="Image" src="https://github.com/user-attachments/assets/5f0139eb-6e9d-49b1-a27a-9c922a0eeffd" />
+<img width="495" alt="Image" src="https://private-user-images.githubusercontent.com/97790983/438136742-5f0139eb-6e9d-49b1-a27a-9c922a0eeffd.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDc4NjEyMTEsIm5iZiI6MTc0Nzg2MDkxMSwicGF0aCI6Ii85Nzc5MDk4My80MzgxMzY3NDItNWYwMTM5ZWItNmU5ZC00OWIxLWEyN2EtOWM5MjJhMGVlZmZkLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTA1MjElMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwNTIxVDIwNTUxMVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPThlMWY4ODBiZDQ4NGVmOWY2ZmNkZWIyNDczZjM0MGQ0NTNjZjNkNmQxMTgzYWViZTVlYjdlYzk5NDMyZjMwMTImWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.x-L7UY28ymU7K5DtM_MKObnqaYMqeDGBI8O0kveR1Ro" />
 
 - ✔️ **Object class methods**
   - `toString()`

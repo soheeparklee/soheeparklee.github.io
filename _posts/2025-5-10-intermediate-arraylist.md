@@ -25,7 +25,7 @@ tags: [] # TAG names should always be lowercase
   - `int has 4 byte`
 - so `memory 시작 위치 + index * 4byte`
 
-<img width="509" alt="Image" src="https://github.com/user-attachments/assets/cc6c4395-3f7b-46bd-8758-1b644672685a" />
+<img width="509" alt="Image" src="https://private-user-images.githubusercontent.com/97790983/442494889-cc6c4395-3f7b-46bd-8758-1b644672685a.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDc4NjEwNjEsIm5iZiI6MTc0Nzg2MDc2MSwicGF0aCI6Ii85Nzc5MDk4My80NDI0OTQ4ODktY2M2YzQzOTUtM2Y3Yi00NmJkLTg3NTgtMWI2NDQ2NzI2ODVhLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTA1MjElMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwNTIxVDIwNTI0MVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTM3NTQ3NWFjNDhjZmY2ZTgyNTRkZGQ4MGExNDQ0M2MzNTEyOTdjYjI0ODM0OTFhNmQwN2M5MWJiMWQ3MGFhYzMmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.Fzhw3Ik-ZqZtxfeiUXMCIamsMfYcyOU_5EEnuHxGopk" />
 
 - `memory 시작 위치`: x100
 - `int`: 4byte
@@ -35,7 +35,7 @@ tags: [] # TAG names should always be lowercase
 
 > 알고리즘의 **데이터 크기 변화에 따른 성능 변화 경향**을 알려준다
 
-<img width="511" alt="Image" src="https://github.com/user-attachments/assets/37f063e9-f98e-428a-bf59-1171021147df" />
+<img width="511" alt="Image" src="https://private-user-images.githubusercontent.com/97790983/442445467-37f063e9-f98e-428a-bf59-1171021147df.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDc4NjEwNDYsIm5iZiI6MTc0Nzg2MDc0NiwicGF0aCI6Ii85Nzc5MDk4My80NDI0NDU0NjctMzdmMDYzZTktZjk4ZS00MjhhLWJmNTktMTE3MTAyMTE0N2RmLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTA1MjElMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwNTIxVDIwNTIyNVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTRmMDg3NzRiNWFmZDU4NmM5OWVhOTgzYWFlYmQ5NTg5ZDU0MmI5NWRlNzllYmVhMDQ2MTBiOTVhZTJlMGQwMzkmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.ejfehX51qJzazG6BCZEsYq5ads9wxdhchlcOxhjiaVY" />
 
 - O(1): find with one operation, 한번만에 찾음
 - O(n): `n` number of data, `n` operations
@@ -109,7 +109,7 @@ list.add("hello"); //🔴 compile error
 - 👍🏻 필요한 크기만큼만 메모리 확보, no memory waste
 - 👍🏻 add/delete middle/front data efficiently
 
-<img width="510" alt="Image" src="https://github.com/user-attachments/assets/b1f8ce3e-e6d8-4137-a194-82d6db351b23" />
+<img width="510" alt="Image" src="https://private-user-images.githubusercontent.com/97790983/442495820-b1f8ce3e-e6d8-4137-a194-82d6db351b23.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDc4NjEwODAsIm5iZiI6MTc0Nzg2MDc4MCwicGF0aCI6Ii85Nzc5MDk4My80NDI0OTU4MjAtYjFmOGNlM2UtZTZkOC00MTM3LWExOTQtODJkNmRiMzUxYjIzLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTA1MjElMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwNTIxVDIwNTMwMFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTgyZTA0NmUwM2IzM2Q1ZGUwMDZkYWU1MWUyM2Q0NjdkNzVhMzgwNWVmMTA3ZmJkMGIwMjQ3OTY4OWQ4NTk4YTAmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.ui1sYMO7HpIMkjEXt1EXO9T6WfA10liEO3xukEx5IGc" />
 
 ## ✅ Linked List
 

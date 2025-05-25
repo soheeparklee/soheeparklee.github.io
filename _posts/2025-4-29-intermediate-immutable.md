@@ -43,7 +43,7 @@ addressB.setValue("busan");
 - `addressA` and `addressB` are reference type
 - they both reference(point) to the SAME memory
 
-<img width="522" alt="Image" src="https://github.com/user-attachments/assets/0005b2c2-5222-4cc3-aa5e-f29aa6458aaf" />
+<img width="522" alt="Image" src="https://private-user-images.githubusercontent.com/97790983/438722310-0005b2c2-5222-4cc3-aa5e-f29aa6458aaf.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDc4NjExOTQsIm5iZiI6MTc0Nzg2MDg5NCwicGF0aCI6Ii85Nzc5MDk4My80Mzg3MjIzMTAtMDAwNWIyYzItNTIyMi00Y2MzLWFhNWUtZjI5YWE2NDU4YWFmLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTA1MjElMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwNTIxVDIwNTQ1NFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTI2Y2ZiMDE3NjA0MGI0YWU3OTYyN2IwZDEyNWRmNzI2ZmYzYzkwMmQ0ZDVmZTFiZDYzYjVlZjhhOTA2NDIwOTEmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.WHWt0YTKTZfFR4ker7jnoROF_8-mj_yjX6yNeYg0tuk" />
 
 ## ✅ Side effect of reference
 
