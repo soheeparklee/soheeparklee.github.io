@@ -14,7 +14,7 @@ tags: [] # TAG names should always be lowercase
 - 👎🏻 AOP 적용 전: `회원가입`, `상품 조회`, `주문, 구매` 각 메소드에 getTime하는 함수를 붙여 코드를 바꿔야 한다
 - 👎🏻 비즈니스 로직과 `cross-cutting concern`이 섞여서 코드 구성, 유지보수 어려움
 
-<img width="208" alt="Image" src="https://github.com/user-attachments/assets/46eaf4ca-218f-400e-a3ee-7bd2a9fcc909" />
+<img width="208" alt="Image" src="https://private-user-images.githubusercontent.com/97790983/446046534-46eaf4ca-218f-400e-a3ee-7bd2a9fcc909.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDc4NTI0MTYsIm5iZiI6MTc0Nzg1MjExNiwicGF0aCI6Ii85Nzc5MDk4My80NDYwNDY1MzQtNDZlYWY0Y2EtMjE4Zi00MDBlLWEzZWUtN2JkMmE5ZmNjOTA5LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTA1MjElMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwNTIxVDE4MjgzNlomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTQ4ZDIxYzdhMjljOTE3MjhjODc1NjhmNjkxZTQyZjM4YWUyZWRkYjFjMDU2MDYyNzVkZjA4YzA5NzE3Y2Q3NWMmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.iQOh9osDQW0IHDcXCouOgkCgS-OMWcx9oNtTFZkWRgM" />
 
 - 👍🏻 AOP 적용 후:
 - `cross-cutting concern` and `core concern` 분리
@@ -24,7 +24,7 @@ tags: [] # TAG names should always be lowercase
 - 시간을 측정하는 로직을 별도의 공통 로직으로 따로 빼서 만들었다
 - 그리고 `@Around`를 사용해 원하는 적용 대상을 선택해 적용시켰다.
 
-<img width="307" alt="Image" src="https://github.com/user-attachments/assets/f669fe5a-0b31-4c23-aa8d-4087fa86076a" />
+<img width="307" alt="Image" src="https://private-user-images.githubusercontent.com/97790983/446046686-f669fe5a-0b31-4c23-aa8d-4087fa86076a.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDc4NTk1NTQsIm5iZiI6MTc0Nzg1OTI1NCwicGF0aCI6Ii85Nzc5MDk4My80NDYwNDY2ODYtZjY2OWZlNWEtMGIzMS00YzIzLWFhOGQtNDA4N2ZhODYwNzZhLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTA1MjElMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwNTIxVDIwMjczNFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWE3NThjYzVkOWQxMmQxMWZmYmM2YWJlYjE0MGVmNzdmYTc5YTA4YmQ0Y2I4ZDlmMDdlMmU4YTE1OWYwZmUyYTAmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.4Yrm_6SThFGM20Qnx1_Ru4CXLPK8Ismc5IEjkQC25TA" />
 
 ```java
 @Aspect //aspect of programming
