@@ -21,6 +21,7 @@ tags: [] # TAG names should always be lowercase
 ## 💡 Singleton scope
 
 - one single bean
+- bean is created when container starts, only once
 - always return the **same** instance bean
 - bean exists from when spring container is created until the end
 - longest bean scope
@@ -46,10 +47,14 @@ public class MyBean {
 
 ## ✅ ObjectFactory, ObjectProvider, Provider
 
-- 지정한 bean을 container에서 대신 찾아주는 기능 제공
+> 지정한 bean을 container에서 **대신** 찾아주는 기능 제공
+
+- ⭐️ 진짜 객체 조회를 꼭 필요한 시점까지 **지연**한다
+
 - singleton안에서 prototype빈을 만들면 같은 bean을 계속 참조함
-- 우리가 원하는 prototype빈은 매번 새롭게 생성되길 원함
-- ObjectProvider을 사용하면 prototype빈 request할 때마다 새로 만들게 하기
+- 🚨 싱글톤 빈에 프로토타입 빈을 의존성 주입(DI)하면 싱글톤 빈 안에서 항상 _같은_ 프로토타입 인스턴스가 사용되는 문제 발생 가능
+- 우리가 원하는 prototype빈은 매번 새롭게 생성되는 건데...
+- ObjectProvider을 사용하면 `prototype빈`을 request할 때마다 새로 만들게 할 수 있다
 
 ## 💡 Web scope
 
@@ -71,6 +76,8 @@ public class MyLogger {
 - 그러면 스프링 컨테이너는 `CGLIB`라는 라이브러리 사용
 - `MyLogger`을 상속받은 `가짜 proxy 객체`를 생성
 - 아직 request는 없지만, `가짜 proxy 객체`로 DI가 가능해진다.
+- 그리고 나중에 진짜 request가 들어오면 `진짜 MyLogger 객체`를 만들어 DI
+- ⭐️ 진짜 객체 조회를 꼭 필요한 시점까지 **지연**한다
 
 ## ✅
 

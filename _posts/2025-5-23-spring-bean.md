@@ -1,5 +1,5 @@
 ---
-title: Spring Container and Bean with configuration class
+title: Spring Container and Bean with configuration class(1)
 categories: [JAVA, 김영한]
 tags: [] # TAG names should always be lowercase
 ---
@@ -27,6 +27,7 @@ tags: [] # TAG names should always be lowercase
 - 이 게시글에서는 1️⃣번 방법에 대해 설명한다
 
 - 1️⃣ **Create Spring container `@Configuration` class**
+- Spring does not magically know what to add as bean ➡️ add what you want to add as bean in `@Configuration` class
 
 ```java
 @Configuration

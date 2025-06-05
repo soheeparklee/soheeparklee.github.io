@@ -1,5 +1,5 @@
 ---
-title: Repository, Service, Test, springbean, component scan
+title: Repository, Service, Test, springBean, component scan
 categories: [JAVA, 김영한]
 tags: [] # TAG names should always be lowercase
 ---
@@ -225,6 +225,10 @@ class MemberServiceTest {
 - 그리고 반환하는 예외처리 메세지 `assertThat`사용해서 비교하기
 
 ## 💡 Spring Bean and DI with annotation
+
+- `@Bean`등록하는 방법
+- 1️⃣ component scan with `@Autowired`
+- 2️⃣ manual bean configuration with `@Configuration`
 
 ### 1️⃣ `Spring bean` with component scan
 
