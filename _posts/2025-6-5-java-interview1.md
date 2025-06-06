@@ -1,5 +1,5 @@
 ---
-title: Interview
+title: Interview_Java, JVM, OOP
 categories: [JAVA, JAVA_Basics]
 tags: [] # TAG names should always be lowercase
 ---
@@ -64,46 +64,167 @@ tags: [] # TAG names should always be lowercase
 - code that `JVM` can understand
 - compiled through `javac`
 
-## Java interpreter 🆚 JIT compile
+## Java interpreter 🆚 JIT compiler
 
-- Java interpreter: reads java code line by line
-- JIT compile: compile the whole programming code into executable byte code
+- Java interpreter: reads java code **line by line**
+- JIT compile: compile the **whole** programming code into executable byte code
 
 ## ✅ Java versions?
 
+- Java8: lambda, StreamAPI, Optional(solve `NPE`), LocalDateTime
+- Java11: `var`(지역변수 타입 추론), new String methods `isBlank(), strip()`
+- Java17: `Record` class, `Sealed` class
+
 ## ✅ JDK and JRE?
+
+- **JDK**: Java Development Kit ➡️ for developing with Java
+  - tools for **developing** with Java, `Java compiler`, `debugging tools`, `JVM`
+- **JRE**: Java Runtime Environment ➡️ for running Java
+  - environment for running Java
+  - to **run** Java, only need JRE(코드 실행만 할꺼면 JRE만 필요)
 
 ## equals() 🆚 ==
 
+- `equals()`: value to be same
+- `==`: value and memory reference adress to also be same
+
 ## equals() 🆚 hashCode()
+
+- `equals()`: compare value of objects
+- `hashCode()`: get unique hash of value
+- override `equals()` and `hashCode()`: if hashcode is same, consider objects to be same
+- if only override `equals()` but not `hashCode()`: same object might have different hash code, might consider two objects to be `equals = false`
 
 ## ✅ toString() 이란?
 
+- return as `string`
+- if override, 이쁘게 `string`으로 format해서 출력
+- default will be `className@16bitHashCode`
+
 ## ✅ Java의 메인 메소드는 왜 static일까?
 
-## ✅ Constant and Literal
+- if `static`, saved in `method area` instead of `heap area`
+- if `static`, can call method without creating instance
+- thus, program **entry point** without needing an object
+- JVM can call `main method()` without creating an object
+- so that `main method()` can run when class is created
+
+## Constant 🆚 Literal
+
+- `constant`: final, does not change
+- `literal`: actual value written in the code
+
+```java
+final double PI = 3.14;  // constant
+int x = 10;   //literal
+```
 
 ## Primitive type 🆚 Reference type
+
+- `Primitive type`: basic data type, `int`, `char`, `double`
+  - saved in `stack`
+  - holds `actual value`
+  - cannot be null
+- `Reference type`: objects and arrays `String`, `Integer`, `Double`
+  - saved in `heap`
+  - holds memory address
+  - can be null
+  - has methods
 
 ## ✅ Java serialization
 
 - the **conversion** of the state of an object into a byte stream
-- change `object`to `byte stream`
-- to be able to transmit as file, memory, database
+- change `object`to `byte stream Json`
+- to be able to **transmit** as file, memory, database
 - so we can then save to a database or transfer over a network
 - convert object format so it can be transmitted
 
 ## Overloading 🆚 Overriding
 
+- **Overloading**: define another method with same name, but different parameters in single class
+- **Overriding**: child class redefines inherited parent method
+
 ## ✅ What is polymorphism?
+
+- single object can have different types
+- parent class can be converted into child class type
+
+```java
+Animal[] animalArr = new Animal[10];
+
+animalArr[0] = new Tiger();
+animalArr[1] = new Dog();
+animalArr[2] = new Lion();
+animalArr[3] = new Elephant();
+```
+
+- 👍🏻 code reusability, OCP(open to extension)
 
 ## ✅ What is inheritence?
 
-## ✅ What is combination?
+- IS-A
+- child class extends parent class, overrides
+
+```java
+//Dog IS-A Animal
+
+class Animal {
+  void eat() {}
+}
+
+class Dog extends Animal {
+  void bark(){}
+}
+
+Dog dog= new Dog();
+dog.eat(); //inherited from Animal
+dog.bark(); //defined in dog
+```
+
+## ✅ What is composition?
+
+- HAS-A
+- contain references to other classes as fields
+- inheritence보다 느슨한 결합
+
+```java
+//Car HAS-A Engine
+
+class Engine {
+    void start() {}
+}
+
+class Car {
+    Engine engine = new Engine(); // Composition
+
+    void startCar() {
+        engine.start();
+    }
+}
+```
 
 ## Interface 🆚 Abstract class
 
+- **Interface**: pure abstract class
+
+  - like a group of rules that implement classes should follow
+  - like a template that defines **what** a class must do, but **not how**
+  - 공통적인 기능을 정의해 여러 클래스가 동일한 동작을 수행하게 하고 싶을 때
+  - only define name of methods, 즉 abstract method(without body)
+  - implement class should override, define the details of method
+  - can implement multiple interfaces
+
+- **Abstract class**:
+  - common methods of child classes
+  - can have both abstract method(without body) and concrete method(with body)
+  - to create hierchy using inheritence
+  - can only extend one abstract class
+
 ## ✅ final keyword in java
+
+- final field: field that does not change, constant
+- final method: method that cannot be overrided
+- final class: class that cannot be inherited
 
 ## ✅
 
