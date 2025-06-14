@@ -1,5 +1,5 @@
 ---
-title: Interview_
+title: Interview_literal/StringBuilder/Exception
 categories: [JAVA, JAVA_Basics]
 tags: [] # TAG names should always be lowercase
 ---
@@ -31,7 +31,7 @@ tags: [] # TAG names should always be lowercase
 - **Exception**: event that disrupts flow, usually recoverable
   - **checked exception**: exception in compile time, handled with `try-catch` or `throws`, `IO exception`, `SQL exception`
   - **unchecked exception**: exception in runtime, `NPE`, `IAE`
-- **Error**: system level failure, usually not recoverable
+- **Error**: _system level_ failure, usually not recoverable
   - `Out of Memory`, `JVM crash`
 
 ## ✅ Exception 클래스의 예시
@@ -76,15 +76,89 @@ public void myMethod() throws IOException, SQLException {
 
 ## Throwable 🆚 Exception의 차이
 
+- `Throwable`: super class of both `Exception` and `Error`
+- `Exception`: child class of `Throwable`, a problem developer can fix
+
 ## ✅ 제네릭(Generic)이란 무엇이고, 왜 사용할까요?
+
+- create class, interface, methods that operate on `typed parameter`
+- postpone the decision of instance type until we use the type
+- decide type from **outside** class
+- 👍🏻 type safe at compile time
+- 👍🏻 write one class/method that works with many types
+
+```java
+List<String> stringList = new ArrayList<>();
+List<Integer> integerList = new ArrayList<>();
+
+👍🏻 only need to create one List, ArrayList class
+- can create ArrayList with both String and Integer
+```
 
 ## ✅ What is Lambda?
 
-## ✅ What is procedural programming?
+- an anonymous method(method without name) written in one line
+- omit return, method name
+- `(parameters) -> expression`
+
+```java
+User user = userRepository.getByUserId(userId)
+    .orElseThrow(() -> new UserNotFoundException());
+```
+
+## ✅ What is functional programming(함수형)?
+
+## ✅ What is functional interface?
+
+- interface that has exactly one abstract method
+- `functional interface` is designed to be used with lambda expressions
+- 자바가 자주 사용할 것 같은 lambda 함수 형태를 함수형 인터페이스로 만들어 제공해준 것
+
+```java
+@FunctionalInterface //add annotation, limit to one abstract method
+public interface Consumer<T> {
+    void accept(T t); //only one abstract method
+}
+```
+
+```java
+Consumer<String> printer = s -> System.out.println("Hello " + s); //use functional interface
+printer.accept("Java"); // Output: Hello Java
+```
+
+- also can use `functional interface` with `List`, `Map`
+
+```java
+public static void main(String[] args) {
+    List<Integer> list = Arrays.asList(1, 2, 3, 4, 5);
+
+     //replace all: method provided by functional interface
+    // 각 요소에 10을 곱함
+    list.replaceAll( (x) -> x * 10 );
+
+     //forEach: method provided by functional interface
+    list.forEach( (x) -> System.out.println(x) );
+}
+```
 
 ## ✅ What is Stream?
 
+- API to efficiently process data in `Collections`, like `Array` or `List`
+- operate on data, and produce results in pipeline
+
+```java
+List<String> names = userRepository.findByName();
+
+List<String> result = names
+    .stream() //create stream
+    .filter(name -> name.startsWith("A")) //intermediate operations
+    .map(String::toUpperCase) //intermediate operations
+    .collect(Collectors.toList()); //terminal operations
+```
+
 ## ✅ 람다와 스트림은 왜 생겨났을까요?
+
+- to support
 
 ## ✅ 어노테이션이란?
 
