@@ -1,5 +1,5 @@
 ---
-title: Interview_literal/StringBuilder/Exception
+title: Interview_literal/StringBuilder/Exception/Generic/lambda, stream/Functional programming/Functional Interface/Annotation
 categories: [JAVA, JAVA_Basics]
 tags: [] # TAG names should always be lowercase
 ---
@@ -108,6 +108,15 @@ User user = userRepository.getByUserId(userId)
 
 ## ✅ What is functional programming(함수형)?
 
+- focus on function, data flow
+- focus on immutable
+- in Java, `lambda`, `Stream API` (`map()`, `filter()`)
+
+- 🆚 OOP
+- focus more on Object and how they interact
+- focus on mutable
+- inheritence, polymorphism, abstract, encapsulation
+
 ## ✅ What is functional interface?
 
 - interface that has exactly one abstract method
@@ -158,15 +167,42 @@ List<String> result = names
 
 ## ✅ 람다와 스트림은 왜 생겨났을까요?
 
-- to support
+- to support `functional programming` in Java
+- example of `functional programming` in Java is `lambda` and `Stream API`
 
 ## ✅ 어노테이션이란?
 
+- **metadata** to add to class, method, variable, parameters...
+- `@Override`
+- `@Autowired`: inject dependency into class automatically
+- `@Controller`: tell Spring MVC controller to handle web requests
+- `@RestController`: `@Controller` + `@ResponseBody`, so return `JSON` or `XML`
+- `@GetMapping`, `@RequestMapping`, `@PostMapping`: map HTTP methods
+- `@Service`: this class is business logic service class
+- `@Repository`: this class is `DAO(Data Access Object)` and interacts with interface
+- `@Component`
+- `@Value`: inject value from `application.yaml`
+- `@RequestParam`: extract query parameter from request URL
+- `@PathVariable`: extract variable from URL
+
 ## ✅ 어노테이션 사용 이유
+
+- compiler uses `annotation` for checks, like missing `@Override`
+- metadata for tools, `@Autowired` for dependency injection
+- clean code, other developers can know `@Repository`, `@Controller`
 
 ## ✅ 리플렉션이란
 
+- inspect and manipulate classes/members at runtime
+- 구체적인 클래스 타입을 몰라도 그 클래스의 method, variable에 접근할 수 있게 해준다
+- can access private field, methods
+- can create objects dynamically
+- ⚠️ can break encapsulation
+
 ## ✅ System.out.println 클래스는 성능이 좋지 않다고 하는데 이유?
+
+- lock can occur in `blocking I/O` and `multithreading`
+- `println` is `synchronized lock`
 
 ## ✅
 
