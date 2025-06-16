@@ -26,6 +26,18 @@ tags: [] # TAG names should always be lowercase
 
 ## Exception 🆚 Error
 
+- markdown
+
+[Screenshot-2025-06-16-at-22-27-07.png](https://postimg.cc/CRZSQWQB)
+
+- git markdown
+
+[![Screenshot-2025-06-16-at-22-27-07.png](https://i.postimg.cc/Dw608hQg/Screenshot-2025-06-16-at-22-27-07.png)](https://postimg.cc/CRZSQWQB)
+
+- homepage?
+
+<a href='https://postimg.cc/CRZSQWQB' target='_blank'><img src='https://i.postimg.cc/Dw608hQg/Screenshot-2025-06-16-at-22-27-07.png' border='0' alt='Screenshot-2025-06-16-at-22-27-07'/></a>
+
 <img width="946" alt="Image" src="https://github.com/user-attachments/assets/5854c6b0-6b59-43d7-bcdb-9140ac64a349" />
 
 <img width="910" alt="Image" src="https://private-user-images.githubusercontent.com/97790983/454097085-6e4a1cfd-0e1a-43c4-996a-3b2530018bdd.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDk2NzQ3MjEsIm5iZiI6MTc0OTY3NDQyMSwicGF0aCI6Ii85Nzc5MDk4My80NTQwOTcwODUtNmU0YTFjZmQtMGUxYS00M2M0LTk5NmEtM2IyNTMwMDE4YmRkLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTA2MTElMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwNjExVDIwNDAyMVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTQ5MTdjZDIxODY0NjgyNjMyNTE4YzRkMjBhOWYyMmQzZWMwODc3MDllNmMzYTNmZDQxMmNjODZhMjg3NWRmZGUmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.p-RHXabBXE10i11MuxSDWoSnY35cfZPCaGitjNCd9VQ" />
