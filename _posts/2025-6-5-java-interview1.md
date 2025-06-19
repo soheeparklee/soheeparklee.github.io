@@ -28,8 +28,6 @@ tags: [] # TAG names should always be lowercase
 
 ## ✅ How Java is run, JVM
 
-<img width="589" alt="Image" src="https://private-user-images.githubusercontent.com/97790983/451853809-590c6fcc-4401-4137-8417-6454c32d15c4.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDkxMjM0NTgsIm5iZiI6MTc0OTEyMzE1OCwicGF0aCI6Ii85Nzc5MDk4My80NTE4NTM4MDktNTkwYzZmY2MtNDQwMS00MTM3LTg0MTctNjQ1NGMzMmQxNWM0LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTA2MDUlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwNjA1VDExMzIzOFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTlhMGExMmQyMmM4ZDM2NTdjM2YwY2E1NTE4YzEzMmE4ZWFhNDAzNzFkNGIwZjI4NzY0ZTYzMWFlYWYxMzI1YjcmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.al5aHuABVLzhx3WghmP9FPe0XUsJg8SGgx3yXNh5UPQ" />
-
 **1. Java compiler javac**
 
 - developer writes `.java` `source code`
