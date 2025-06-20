@@ -233,7 +233,7 @@ Key 값은 다르지만 해시 함수에 의해 같은 출력 값을 갖는 현�
 
 ## ✅ 스레드 풀이란 무엇이고, 왜 사용할까요?
 
-- limit the number thread
+- **limit** the number thread
 - prevent repreated thread creation/removal
 - provide safe multi threading environment
 
