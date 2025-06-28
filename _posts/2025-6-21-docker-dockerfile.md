@@ -4,12 +4,14 @@ categories: [Deploy, Docker]
 tags: [] # TAG names should always be lowercase
 ---
 
-## ☑️ Docker file
+## ✅ Docker file
 
 - `docker file`: file to create `docker image`
 - `docker image` is created using `docker file`
+- 이미 만들어진 image가 아니라, 내가 원하는 이미지를 만들고 싶을 수 있음
+- 이때 사용하는 것이 `docker file`
 
-## ✅ FROM
+## ☑️ FROM
 
 - create base image
 - `ubuntu`, `JDK`, `Node`
@@ -46,7 +48,7 @@ docker image ls
  docker run -d my-node-server
 ```
 
-## ✅ COPY
+## ☑️ COPY
 
 - copy file in host computer to container
 - `COPY 호스트 상대경로 /container절대경로`
@@ -70,7 +72,7 @@ ENTRYPOINT ["/bin/bash", "-c", "sleep 500"]
 - ❓ if there is a file I do not want to copy?
 - add to `.dockerignore`
 
-## ✅ ENTRYPOINT
+## ☑️ ENTRYPOINT
 
 - command to start when container is run for the first time
 
@@ -78,7 +80,7 @@ ENTRYPOINT ["/bin/bash", "-c", "sleep 500"]
 ENTRYPOINT ["/bin/bash", "-c", "sleep 500"]
 ```
 
-## ☑️ Upload Springboot on Docker
+## ✅ Upload Springboot on Docker
 
 - create docker file
 
@@ -107,7 +109,7 @@ docker run -d -p 8080:8080 java-server
 docker ps
 ```
 
-## ✅ RUN
+## ☑️ RUN
 
 - run command while creating image
 - used for `install`, `set environment`
@@ -129,7 +131,7 @@ ENTRYPOINT ["/bin/bash", "-c", "sleep 500"]
 - install `git` with `RUN command`
 - after container is created, run `ENTRYPOINT`
 
-## ✅ WORKDIR
+## ☑️ WORKDIR
 
 - set work directory to save the files
 - to maintain packages in container in an organized way
@@ -146,7 +148,7 @@ ENTRYPOINT ["/bin/bash", "-c", "sleep 500"]
 
 - now all dockerfiles will be created in `/my-dir` folder
 
-## ✅ EXPOSE
+## ☑️ EXPOSE
 
 - document the `port` that the programming is running
 
@@ -154,7 +156,7 @@ ENTRYPOINT ["/bin/bash", "-c", "sleep 500"]
 EXPOSE 3000
 ```
 
-## ☑️ Upload Nest.js
+## ✅ Upload Nest.js
 
 - install npm, create project
 
@@ -183,7 +185,7 @@ EXPOSE 3000
 ENTRYPOINT ["node", "dist/main.js"]
 ```
 
-## ☑️ Upload Next.js
+## ✅ Upload Next.js
 
 - create project
 
@@ -219,7 +221,13 @@ docker build -t my-server .
 docker run -d -p 80:3000 my-server
 ```
 
-## ☑️ Upload HTML
+## ✅ Upload HTML
+
+- create project
+
+```bash
+mkdir my-server
+```
 
 - create `index.html`, `style.css`
 - create dockerfile
