@@ -222,21 +222,27 @@ external schema를 변결할 필요가 없다
 - relational model: use foreign keys
 - data integrity: use constraints like foreign keys and primary keys
 - transaction support: ACID
+- minimize duplication of data: through normalization ❌
 - access-control
 - SQL query
 
 <img width="711" alt="Image" src="https://github.com/user-attachments/assets/3d3d158c-2d1e-4a79-bacc-f2c86d2e0e1e" />
 
-## ✅ What are Relation Schema and Relation Instance?
+## ✅ What is Relation, Relation Schema and Relation Instance?
+
+- ✔️ `Relation`: table of rows and columns
+- data is saved in `relation`
 
 - ✔️ `Relation Schema`: structure of the table
-- `column names`, `data types`, `constraints`
+- `attribute(column)`, `domain(data types)`, `constraints`
 
 ```SQL
 Student(student_id: INT, name: VARCHAR, major: VARCHAR)
 ```
 
 - ✔️ `Relation Instance`: actual rows of data in table
+- tuple
+- cardinality
 
 ```SQL
 +------------+----------+--------+
@@ -259,7 +265,9 @@ Rows in table = 1000 students → Cardinality = 1000
 
 ## ✅ What is a Key in RDBMS? (슈퍼키, 후보키, 기본키, 대리키, 외래키)
 
-- 💡 **key**: constraint that ensures **uniqueness**, help identify rows(tuples)
+- 💡 **key**: constraint that ensures **uniqueness**
+- help _identify_ rows(tuples)
+- create _relations_
 
 - ✔️ **Super key**: set of attribute that uniquely identifies tuples(rows)
 - ✔️ **Candidate key**: minimal super key(no attribute can be removed)
@@ -270,17 +278,22 @@ Rows in table = 1000 students → Cardinality = 1000
 
 ## ✅ What are Integrity Constraints? 무결성 제약조건에 대해서 설명해주세요. (도메인 무결성, 개체 무결성, 참조 무결성)
 
-- ✔️ **Domain Integrity**: column values are within valud domain
+- ✔️ **Domain Integrity**: column values are within valid domain
 - `CHECK`, `NOT NULL`, `DEFAULT`
 
 ```sql
 age INT CHECK(age >= 0)
+
+-- age can only be INT, cannot be String
+-- age can only be >=0
 ```
 
 - ✔️ **Entity Integrity**: primary key is `not null`, `unique`
+- 🟰 primary key constraint
 - each row must be identifiable
 
 - ✔️ **Referential Integrity**: foreign key references valid primary key
+- 🟰 foreign key constraint
 
 ```sql
 FOREIGN KEY (customer_id) REFERENCES Customer(customer_id)
@@ -291,21 +304,67 @@ FOREIGN KEY (customer_id) REFERENCES Customer(customer_id)
 - ✔️ **MySQL**: structured, relational data
 - user info, shoppingMall project
 - support transactions, index, join
-- InnoDB(ACID compliant)
+- `InnoDB`(ACID compliant)
 
 - ✔️ **MongoDB**: semi-structured, large volume
 - NoSQL, document based(JSON-like documents)
+- good for parallel scalability
+- `key-value` storage
 
-- ✔️ \*\*\*\*:
+- ✔️ **MariaDB**: RDBMS, open source MySQL
+- after MySQL was aquired by Oracle, original developers created MariaDB to ensure free access
+- sometimes faster than MySQL
 
-- ✔️ \*\*\*\*:
+## ✅ How does MySQL engine work?
 
-## ✅
+- `MySQL server` 🟰 `MySQL engine` ➕ `storage engine`
+- `MySQL server` is thread based, consisted of `foreground thread` and `background thread`
 
-## ✅
+- `MySQL engine` refers to `storage engine` for MySQL
+- manage save, search, update, delete data
+- consisted of `connection handler`, `SQL parser`, `optimizer`, `Preprocessor`, `Query Execution Engine`
 
-## ✅
+## ☑️ How does `API handler` work?
 
-## ✅
+- interface to send query request to `storage engine`
+- when query is run in `MySQL engine` , `API handler` sends the query to `storage engine`
 
-## ✅
+## ☑️ What is `SQL query parser`?
+
+- break query into token
+- token: minimum unit that MySQL can understnad)
+- make into tree
+- find syntax error
+
+## ☑️ What is `Preprocessor`?
+
+- check structure errors based on `query parser`
+- check if data exists
+- check permissions
+
+## ☑️ What is `Optimizer`?
+
+- optimize how to run query
+- use index here
+- decide how to `join`, `full table scan`
+
+## ☑️ What is `Query Execution Engine`?
+
+- engine to run the SQL that is optimized by `Optimizer`
+- call `storage engine` like `InnoDB`
+- return result to client
+
+## ✅ How does InnoDB work?
+
+- `InnoDB` is the default `exect engine` for MySQL
+- `InnoDB storage engine` manage **read, write** of disk
+
+```sql
+CREATE TABLE test_table (fd1 INT, fd2 INT) ENGINE=INNODB;
+```
+
+- has own buffer pool, cache system 👍🏻 fast read
+- support record level lock 👍🏻 synchronizatoin
+- support transaction
+- support ACID
+- ensure data integrity
