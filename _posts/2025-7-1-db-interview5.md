@@ -1,5 +1,5 @@
 ---
-title: Interview_
+title: Interview_Transaction, ACID, Isolation, Deadlock
 categories: [Database, DB]
 tags: [] # TAG names should always be lowercase
 ---
@@ -104,22 +104,187 @@ READ UNCOMMITTED < READ COMMITTED < REPEATABLE READ < SERIALIZABLE
 - PostgreSQL: READ COMMITED
 - Oracle: READ COMMITED
 
-## ✅
+## ✅ What is the Lost Update Problem? Can you explain with a real-world example?
 
-## ✅
+- ✔️ **Lost Update**: When two transactions read the same data and update, but one update is **overwritten** by the other
 
-## ✅
+```
+Two ATM withdrawals happen simultaneously on the same account.
 
-## ✅
+T1 reads balance: $1000
+T2 reads balance: $1000
+T1 subtracts $200 → writes $800
+T2 subtracts $500 → writes $500 (overwrites T1)
+Final balance = $500, not correct $300 → T1’s update is lost.
+```
 
-## ✅
+- 💊 fix: use **locking** or **atomic updates**
 
-## ✅
+## ✅ What is a Dirty Read? And how can we solve?
 
-## ✅
+- ✔️ **Dirty Read**: read data that is not commited
+- if rolledback, the read is invalid
 
-## ✅
+```
+T1 updates order status to "Shipped"
+T2 reads the status → shows "Shipped" to user
 
-## ✅
+T1 rolls back → status was never really “Shipped”
+```
 
-## ✅
+- 💊 fix: use **READ COMMITED**
+
+## ✅ What is an Unrepeatable Read?
+
+- ✔️ **Unrepeatable Read**: when read again with same query, different result
+- read same data twice, but see different value
+- due to another commited transaction modifying data in between the queries.
+
+```
+T1 reads product stock: 50
+T2 updates stock to 40 and commits
+
+T1 reads again: now sees 40
+```
+
+- 💊 fix: use **REPEATABLE READ**
+
+## ✅ What is a Phantom Read?
+
+- ✔️ **Phantom Read**: when new rows are added or deleted between two identical queries within same transaction
+- read before `INSERT`, so when read `SELECT` different result
+
+```
+T1: SELECT * FROM employees WHERE dept = 'IT' → returns 3 rows
+T2 inserts a new IT employee and commits
+
+T1 runs same query again → returns 4 rows
+```
+
+- 💊 fix: use **SEREALIZABLE**
+
+## ✅ What is Two-Phase Locking (2PL)?
+
+- ✔️ **Two-Phase Locking (2PL)**: concurrency control method
+- protocol that ensure serializability
+- ensure serializability by divide transaction into two phases
+
+- 1️⃣ **Growing phase**: Transacation can aquire lock, but cannot release any
+  - locking only
+- 2️⃣ **Shrinking phase**: Transacation can release lock, but cannot aquire any
+  - unlocking only
+- 👍🏻 ensure transactions do not interfere with one another
+
+- T2 wants to run, but has to wait until T1 finishes
+- T1 has to hold all locks until it commits(`Growing phase`)
+- when T1 finishes(release lock) has to wait, cannot aquire lock(`Shrinking phase`)
+
+```
+A: 500, B: 800
+T1: Transfer $100 from A ➡️ B
+T2: Transfer $200 from B ➡️ A
+
+T1: Transfer $100 from A ➡️ B
+1. Lock A(X-lock)
+2. Read A=500
+3. Subtract 100, A=400
+4. Lock B(X-lock)
+5. Read B=800
+6. Add 100, B=900
+7. Commit
+8. Release locks on A and B
+T1 holds all locks(cannot release) until commit
+
+T2 must wait if wants to access A or B
+so now T2 can start after T1 commits
+now start T2: Transfer $200 from B ➡️ A
+```
+
+## ✅ What is Serializability?
+
+- ✔️ **Serializability**: result of _concurrent transaction_ should be same to serial(one-by-one) transaction execution
+- 두 transaction이 동시에 실행된 결과와, 하나하나 순서대로 실행된 결과가 같아야 함
+- so, for _concurrent transactions_, serializability is very important!
+- 👍🏻 prevent anomalies like `dirty read`, `lost updates`
+
+- ✔️ Types of serializability
+- 🍀 **Conflict Serializability**: convert concurrent schedule into a serial one
+- by swapping _non-conflicting_ operations
+- **confict**: operations from different transactions conflict if:
+  - they access same data
+  - at least one is write
+  ```
+  T1: Read(A) → Write(A)
+  T2: Read(A) → Write(A)
+  ❌ not conflict serializable, bc T2 would overwrite what T1 did
+  ```
+  ```
+  T1: Read(A) → Write(A)
+  T2: Read(B) → Write(B)
+  ⭕️ conflict serializable, T1 and T2 access different data
+  ```
+- 🍀 **View Serializability**: same data reads/writes and final writes, guarantee same final view of the data
+
+## ✅ What are Locking Protocols?
+
+- ✔️ **2PL**: two-phase locking
+
+- ✔️ **Strict 2PL**: locks held until commit
+
+- ✔️ **Timestamp Ordering**:
+
+- 👍🏻 avoid anolmalies like dirty read
+- 👍🏻 ensure consistency
+
+## ✅ What is Deadlock?
+
+- ✔️ **Deadlock**: where two transactions wait forever for each other to release resource/lock
+
+## ✅ How can you prevent Deadlocks?
+
+- avoid `no preemption`: if process has to wait, preempt resource
+- **Resource ordering**: avoid `circular wait`: resources have order. in order to have 2, need to have 1.
+- avoid `hold and wait`: when need resource, free all resource and ask for it
+- **Wait-die scheme**: Older transactions wait, newer ones abort
+- **No wait**: if lock is unavailable, abort
+
+## ✅ How do you detect Deadlocks?
+
+- use **Wait-For Graph**
+- if there is a cycle in the graph, deadlock exists
+
+## ✅ How do you recover from Deadlock?
+
+- ✔️ Process Termination: kill transaction, usually youngest or least cost
+- ✔️ Resource Preemption: release locks
+- ✔️ rollback and restart
+
+## ✅ What is Cascading Abort?
+
+- If one transaction aborts,
+- all the other transactions that **read its uncommited changes** must also abort
+- 💊 use Strict Schedule
+
+## ✅ What are Strict Schedules?
+
+- ✔️ **Strict Schedules**: transaction can’t read or write a value until the transaction that wrote it commits
+- 👍🏻 prevent cascading abort
+- 👍🏻 prevent dirty read
+
+## ✅ What are Recoverable Schedules?
+
+- ✔️ **Recoverable Schedules**: transaction that reads data only commits **after** the other writing transaction commits
+
+```
+T1: write data
+T2: read data that T1 wrote
+
+T2 will commit
+after T1 writes and commits that data
+T2 will wait and only commit after T1 commits
+
+if T1 aborts, T2 will also abort
+```
+
+- dirty read might happen, but will not be commited
+- 👍🏻 ensure correctness in rollback
