@@ -1,5 +1,5 @@
 ---
-title: 데이터베이스 개론_Schema, Instance, 3-level, RDBMS, Key, Integrity
+title: Interview_Schema, Instance, 3-level, RDBMS, Key, Integrity
 categories: [Database, DB]
 tags: [] # TAG names should always be lowercase
 ---
