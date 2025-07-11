@@ -119,11 +119,13 @@ and end up losing all student info
 | StudentID | StudentName |
 |-----------|-------------|
 | 1001      |    Alice    |
+
 ✔️  course table
 | courseID  |  courseName |
 |-----------|-------------|
 | ab123     |    math     |
 | cd345     |    science  |
+
 ✔️  enrollment table
 | StudentID |  courseID   |
 |-----------|-------------|
@@ -176,6 +178,7 @@ and end up losing all student info
 
 - **normalization**: organizing DB
 - reduce duplication
+- remove anomalies
 - ensure data integrity
 
 - break down large table ➡️ smaller, connected tables
@@ -307,7 +310,6 @@ and end up losing all student info
 - violated when a non-candidate key determines another column
 
 - 👍🏻 example of abiding BCNF
--
 
 ```
 | StudentID | StudentName | RoomNumber |
@@ -333,9 +335,58 @@ and end up losing all student info
 - however, `Instructor` relys only on `Course` ➡️ 💥 violate 2NF
 - `Course ➡️ Instructor`, however `Course` is not a candidate key ➡️ 💥 violate BCNF
 
-## ✅ 4정규화
+## ✅ 4th Normal Form (4NF)
 
-## ✅ 5정규화
+- ✔️ **4th Normal Form**: has no multivalued dependencies
+- no attribute determines multiple independent values
+
+- multivalued dependency: when one column determines multiple values
+- but those columns do not depend on each other
+- `Language` and `Hobby` do not depend on each other
+
+```
+| Student | Language | Hobby  |
+| ------- | -------- | ------ |
+| John    | English  | Guitar |
+| John    | English  | Soccer |
+| John    | Spanish  | Guitar |
+| John    | Spanish  | Soccer |
+
+
+- fix after 4NF
+- Language table
+| Student | Language |
+| ------- | -------- |
+| John    | English  |
+| John    | Spanish  |
+
+
+- Hobby table
+| Student | Hobby  |
+| ------- | ------ |
+| John    | Guitar |
+| John    | Soccer |
+
+```
+
+## ✅ 5th Normal Form (5NF)
+
+- ✔️ **5th Normal Form**: has no join dependency
+- table can be split into smaller tables and re-joined without having redundancy problems
+
+```
+| Employee | Skill  | Trainer |
+| -------- | ------ | ------- |
+| Alice    | Java   | Bob     |
+| Alice    | Python | Bob     |
+| Alice    | Java   | Carol   |
+| Alice    | Python | Carol   |
+
+- can be split into
+- Employee-Skill
+- Skill-Trainer
+- Employee-Trainer
+```
 
 ## ✅ What is denormalization?
 

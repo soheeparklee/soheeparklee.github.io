@@ -8,35 +8,69 @@ tags: [] # TAG names should always be lowercase
 
 - **random I/O**: access data at arbitary locations on storage device
 - no order
+- `WHERE`, find with conditions
+- need to skip several rows
 - 👎🏻 higher seek time
+- 👎🏻 need to move disk head more times
 - 👎🏻 read/write head has to move more
 
 - **sequential I/O**: access data in a continuous, ordered way
+- read all data
+- find sequential data
+- find with index
 - 👍🏻 more efficient
 - 👍🏻 minimize head movement
 
 ## ✅ What is an index in a database?
 
-> data structure to help speed up data retrieval operation
+> data structure to **help speed up** data retrieval operation
 
 - like a look up table
 - like index of dictionary
-- store `key value` ➕ `pointer` to corresponding rows
+
+- `key + value` structure
+- store `data from column` ➕ `pointer` to corresponding rows
+
+  - `value from colum`: actual data(`empID`)
+  - `pointer`: address to the actual row in the table(`row ID`, physical address)
 
 ```
-if use index
-scan entire table ❌
-use index to quickly locate data ⭕️
+- Employee table
+| EmpID | Name    | Department |
+| ----- | ------- | ---------- |
+| 101   | Alice   | HR         |
+| 102   | Bob     | Sales      |
+| 103   | Charlie | HR         |
+
+- create Index on EmpID
+Key   | Value (RowID / Pointer)
+------+------------------------
+101   | → Row 1
+102   | → Row 2
+103   | → Row 3
+
+- SQL
+SELECT * FROM Employees WHERE EmpID = 102;
 ```
+
+- index is always SORTED
+- 👍🏻 `SELECT`, scan entire table ❌, quickly locate data ⭕️
+- 👎🏻 `INSERT`, `UPDATE`, `DELETE`
 
 ## ✅ How does an index work?
 
 - index allow DB to **skip** full table scan
 
-- B-Tree index: maintain balanced tree structure
-- DB navigates through the tree to find target `key`, then access the associated `data`
+- ✔️ **B-Tree index**: maintain balanced binary tree structure
+- tree with sorted keys
+- DB navigates through the tree to find target `key`, get `value`, then access the associated `data`
+- `B+Tree` is used in `MySQL`, `PostgreSQL`
 
-- Hash index: use hash function to map `keys` to specific `buckets`
+- ✔️ **Hash index**: use hash function to map `keys` to specific `buckets`
+- `key-value` hash table
+
+- ✔️ **Bitmap index**: bitmap for each value
+- 👍🏻 efficient for low-cardinality columns
 
 ## ✅ What factors should you consider when creating an index?
 
@@ -50,10 +84,62 @@ use index to quickly locate data ⭕️
 ```
 When is index most efficient?
 - 👍🏻 GROUP BY, ORDER BY
-- 👍🏻 lots of unique values
-- 👍🏻 read, not write
+- 👍🏻 high cardinality, lots of unique values
+- 👍🏻 more read, not write
 - 👍🏻 big table
 ```
+
+## ✅ What factors should we be aware when creating index?
+
+- 1️⃣ aware of Range conditions like `BETWEEN`, `LIKE`, `<`, `>`
+- index is only used up to the column where range starts
+- columns after that in multi-column index are **ignored**
+
+```SQL
+-- composite index in month, city
+
+WHERE month BEWTEEN 202301 AND 202312
+  AND city = Seoul
+
+-- month use index
+-- city might NOT use index
+```
+
+- 2️⃣ Use Equality Conditions
+- use `=` and `IN`
+
+```SQL
+-- replace range with equality
+
+-- not efficient
+AND month BETWEEN 200801 AND 200812
+
+-- more efficient
+AND month IN ('200801','200802','200803','200804','200805','200806','200807','200808','200809','200810','200811','200812')
+```
+
+- 3️⃣ aware of OR
+- `AND`: narrow down rows
+- `OR`: increase number of rows to scan
+- 🚫 avoid using too many `OR`
+
+- 4️⃣ Do not CAST
+- do not modify or cast indexed columns
+
+```SQL
+-- column is String
+WHERE CAST(col AS INT) = 123
+-- 👎🏻 disable index due to data mismatch
+```
+
+- 💊 Match data type
+
+## ✅ What should you be careful about when using indexes?
+
+- ⚠️ overuse of index slow down write operations
+- ⚠️ index maintenance overhead: changing indexed columns often lead to constant re-balancing of index structure
+- ⚠️ using index in low cardinality columns: if use index in `gender` column with only a few distinct values, index will not be effective!
+- ⚠️ correct order in `composite(multi-level) index`: `composite index` query should start with first column. Put high-cardinality columns first
 
 ## ✅ Is it good to create many indexes on a table?
 
@@ -65,17 +151,18 @@ When is index most efficient?
 - 👎🏻 increased storage usage
 - 👎🏻 complexity in index management
 - 👎🏻 risk of suboptimal execution plans due to too many choices
+- 💡 suggested less than 3 indexes per table
 
 ## 💡 What is a `covering index`?
 
-> covering index: index that contains all the columns needed to satisfy a query <br>
+> covering index: index that contains **all the columns** needed to satisfy a query <br>
 > DB can answer the query just using index, WO accessing table
 
 - index holds required data
-- DB does not need to access actual table rows
+- DB DOES NOT NEED to access actual table rows
 - no table lookup
-- 👍🏻 reduce I/O
-- 👍🏻 faster read
+- 👍🏻 reduce I/O, just get data from index, not real table
+- 👍🏻 faster read, do not have to access table
 - 👍🏻 efficient for read
 
 ```sql
@@ -96,12 +183,15 @@ SELECT age FROM users WHERE email = 'john@example.com';
 
 ## 💡 What is a `multi-column index` (or composite index)?
 
-> multi-column index: single index that includes multiple columns from table <br>
+> multi-column index: single index that includes **multiple columns** from table <br>
 > useful when queries filter or sort using more than one column
 
 - when queries involve more than one column
-- ⭐️ order of column matters
+- ⭐️ **order** of column matters
 - index is most effective when query filters based on **leftmost columns first**
+- better to set from broad to narrow categories
+- 대분류 ➡️ 중분류 ➡️ 소분류
+- `food` ➡️ `vegetable` ➡️ `carrot`
 
 ```
 an index on (first_name, last_name) can efficiently support queries filtering on first_name or both, but not just last_name
@@ -124,27 +214,38 @@ SELECT * FROM users WHERE age = 30;
 
 ## 💡 What are nodes in `B-Tree` and `B+Tree` indexes?
 
-- internal node: node that routes search paths
-- leaf node: node that stores actual data(same leaf node, same depth)
+- root node: topmost node, one node per tree, search starts here
+- internal node: node that routes search paths, between root and leaf node
+- leaf node: most bottom node, node that stores actual data(same leaf node, same depth)
 - linked leaf nodes: `B+Tree` only, connected from left ➡️ right for range scanning
+
+```
+        [50]       ← Root
+        /    \
+   [20, 40] [60, 80]   ← Internal nodes
+     |
+[10] [20] [30] [40]   ← Leaf nodes
+```
 
 ## 💡 Can you explain the difference between `B-Tree` and `B+Tree` indexes?
 
 - 공통점: balanced tree structures used in indexing
 - 차이점: how/where they store data
-- InnoDB supports only `B-Tree index`
 
-- **B-Tree**: store **key and actual data** in **both internal and leaf nodes**
+- ✔️ **B-Tree**: store **key and actual data** in **both internal and leaf nodes**
+- tree with sorted keys
+- DB navigates through the tree to find target `key`, get `value`, then access the associated `data`
 
 - 👍🏻 fast point lookup
 - 👎🏻 increase node size and I/O
+- 👎🏻 need more memory, data is saved both in root, branch, leaf node
 
 ```
 internal node: store key ➕ data
 leaf node: store key ➕ data
 leaf connection: not linked
 point lookup: fast
-range query: slow(internal nodes are not linked)
+range query: slow(internal nodes are not linked, has to go through multiple levels)
 use: old DBs
 ```
 
@@ -160,13 +261,14 @@ if DB is [5, 10, 15, 20, 25, 30, 35, 40]
                 [35,40]
 ```
 
-- **B+Tree**: store **only key in internal node**
-
+- ✔️ **B+Tree**: store data in only in **leaf node**
+- store only `key and pointer` in root, internal node
 - actual data resides in leaf nodes
-- internal node and leaf nodes are **linked** together
-- 👍🏻 fast range query
-- 👍🏻 support sequential scans
+- leaf nodes are **linked by `LinkedList`** together
+- 👍🏻 fast range query, support sequential scans `BETWEEN, <, >, LIKE %abc%`
+- 👍🏻 memory efficiency, only has to save data in leaf node
 - used as default in modern databases
+- used in `MySQL`, `PostgreSQL`
 
 ```
 internal node: only keys
@@ -212,9 +314,9 @@ ORDER BY id;
 - `id = 15` ➡️ hash function ➡️ `Hash table bucket number 3`
 
 - 👍🏻 equality search `WHERE id = 13`
-- retrieve search data in constant time
+- retrieve search data in constant time `O(1)`
 - 👎🏻 not suitable for range query `ORDER BY`
-- Why? hash function destroy natural ordering of data
+- Why? hash function **destroy** natural ordering of data
 - 👎🏻 not suitable for prefix match `LIKE 'abc%'`
 
 - used in Memory tables or special DB
@@ -225,7 +327,7 @@ ORDER BY id;
 > determine physical order of data in the table
 
 - rows are stored on disk **in the same order** as index
-- only ONE clustering index per table is possible
+- only **ONE** clustering index per table is possible
 - Why? only one row can be `clustering index`
 - (id순으로 정렬해둘지, 나이순으로 정렬해둘지, 날짜 순으로 정렬해 둘지 하나만 고를 수 있으니까)
 - in InnoDB, `primary key` is `clustering index` by default
@@ -248,6 +350,7 @@ clustering index: created_at
 
 - 👍🏻 `RANGE queries` like `ORDER BY`
 - 👍🏻 ordered scans are fast
+- 👎🏻 if many `INSERT`, `DELETE`, `UPDATE`, lot of re-ordering has to take place
 
 ```sql
 SELECT * FROM posts
@@ -285,8 +388,9 @@ SELECT * FROM users WHERE email = 'bob@example.com';
 
 - specialized index used for searching large text data
 - such as paragraph, documents
-- support advanced text search
+  hash- support advanced text search
 - search `words inside text`
+- 👍🏻 `MATCH AGAINST`
 
 ```sql
 SELECT * FROM posts
@@ -342,7 +446,7 @@ SELECT * FROM employees WHERE job_title = 'Manager';
 - smth like `Teacher + Manager`, `Developer + Manager`...
 - DB will do a **subtree scan** within the index
 
-- better query
+- example of better query
 - use both index columns, no skipping is needed
 
 ```sql
@@ -405,16 +509,9 @@ SHOW INDEX FROM user;
 
 [![Screenshot-2025-06-30-at-00-58-37.png](https://i.postimg.cc/RZz2GFP2/Screenshot-2025-06-30-at-00-58-37.png)](https://postimg.cc/ppq0L2MB)
 
-## ✅ What should you be careful about when using indexes?
-
-- ⚠️ overuse of index slow down write operations
-- ⚠️ index maintenance overhead: changing indexed columns often lead to constant re-balancing of index structure
-- ⚠️ using index in low cardinality columns: if use index in `gender` column with only a few distinct values, index will not be effective!
-- ⚠️ correct order in `composite(multi-level) index`: `composite index` query should start with first column. Put high-cardinality columns first
-
 ## ✅ How does GROUP BY affect index usage in queries?
 
-- index can be used in `GROUP BY` queries **only when the grouping column match the index structure**
+- index can be used in `GROUP BY` queries only when the **grouping column** match the **index structure**
 
 - 1. **leading column** of index must appear in `GROUP BY`
 - 2. column order in `GROUP BY` must match **index order**
@@ -437,6 +534,22 @@ GROUP BY country, gender;
 SELECT gender, country
 FROM users
 GROUP BY gender, country;
+```
+
+```
+예) 인덱스 (a, b, c)가 있을 때
+
+1. 인덱스가 적용되는 경우:
+
+- GROUP BY a : 인덱스 첫 번째 컬럼인 a만 사용하므로, 인덱스 적용
+- GROUP BY a, b : a와 b는 인덱스의 첫 번째와 두 번째 컬럼에 해당하므로, 인덱스 적용
+- GROUP BY a, b, c : 모든 컬럼이 인덱스에 포함되어 있어 인덱스 적용
+
+2. 인덱스가 적용되지 않는 경우:
+
+- GROUP BY b : b는 두 번째 컬럼이지만 첫 번째 컬럼인 a가 포함되지 않아서, 인덱스가 적용되지 않음
+- GROUP BY b, a : b가 첫 번째로 나오고, a는 두 번째로 나오기 때문에, 순서가 맞지 않아 인덱스가 적용되지 않음
+- GROUP BY a, c, b, d : 인덱스에 포함되지 않은 d 컬럼이 있기 때문에, 인덱스가 적용되지 않음
 ```
 
 ## ✅ How would you create an index on a table with name, country, and gender?

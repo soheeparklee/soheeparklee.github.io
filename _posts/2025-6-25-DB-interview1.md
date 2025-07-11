@@ -48,7 +48,6 @@ tags: [] # TAG names should always be lowercase
 - 👍🏻 data concurrency problem solved
 - 👍🏻 user does not need to care about database physical problems, how to alter data
 - 👍🏻 data independency
--
 
 ## ✅ DBMS의 기능
 

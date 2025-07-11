@@ -14,7 +14,7 @@ tags: [] # TAG names should always be lowercase
 
 ## ✅ What is a connection in the context of databases?
 
-- ✔️ **connection**: acutal network link between user and DB
+- ✔️ **connection**: acutal **network link** between user and DB
 - enable data exchange
 
 ## ✅ What is a transaction in databases?
@@ -83,12 +83,17 @@ tags: [] # TAG names should always be lowercase
 ## ✅ What are the common isolation levels?
 
 - 1️⃣ **READ UNCOMMITED**: read data before commit, if roll-back, you get dirty read
+- ⚠️ `Dirty read`, `Non-repeatable read`, `Phantom read` problems can occur
+- 👍🏻 high performance
 
-- 2️⃣ **READ COMMITED**: only read commited data
+- 2️⃣ **READ COMMITED**: only read commited data, for `Oracle`, `PostrgreSQL`
+- ⚠️ `Non-repeatable read`, `Phantom read` problems can occur
 
-- 3️⃣ **REPEATABLE READ**: same query, same result
+- 3️⃣ **REPEATABLE READ**: same query, same result, `MySQL(InnoDB)`
 
 - 4️⃣ **SERIALIZABLE**: full isolation, `one-at-a-time`
+- 👍🏻 data consistency
+- concurrency control is necessary
 
 ```
 Isolation Strength →
@@ -163,6 +168,28 @@ T1 runs same query again → returns 4 rows
 
 - 💊 fix: use **SEREALIZABLE**
 
+## ✅ What is Concurrency Control
+
+- Control to allow multiple transactions to run at the same time
+- transactions do not interfere with each other
+
+- ⚠️ without concurrency control, transations can have `Lost Update`, `Inconsistency`, `Cascading Rollback` problems
+
+- share DB
+- maximize system utilization
+- minimize response time for users
+- maximize throughput(more transaction/per second)
+- maintain consistency in data
+
+- 💊 Transaction isolation levels
+- 💊 Locks
+
+## ✅ What is Cascading Rollback?
+
+- several transactions were running at the same time
+- one transaction has a problem ➡️ rollback
+- all transacctions have to be rolled back
+
 ## ✅ What is Two-Phase Locking (2PL)?
 
 - ✔️ **Two-Phase Locking (2PL)**: concurrency control method
@@ -207,7 +234,7 @@ now start T2: Transfer $200 from B ➡️ A
 - so, for _concurrent transactions_, serializability is very important!
 - 👍🏻 prevent anomalies like `dirty read`, `lost updates`
 
-- ✔️ Types of serializability
+- ✔️ **Types of serializability**
 - 🍀 **Conflict Serializability**: convert concurrent schedule into a serial one
 - by swapping _non-conflicting_ operations
 - **confict**: operations from different transactions conflict if:
@@ -224,6 +251,57 @@ now start T2: Transfer $200 from B ➡️ A
   ⭕️ conflict serializable, T1 and T2 access different data
   ```
 - 🍀 **View Serializability**: same data reads/writes and final writes, guarantee same final view of the data
+
+## ✅ What is Database locking?
+
+- 🔐 **DB Lock**: to control order of transactions
+- like critical section in OS
+
+## ✅ What are Type of Locks?
+
+- ✔️ **Shared Lock**: Read lock
+- multiple transactions want to read
+- multiple transactions can hold shared locks
+- ❗️ while shared locks are held, noone can write!
+
+- ✔️ **Exclusive Lock**: Write lock
+- transaction want to write
+- only ONE transaction can hold exclusive lock on a piece of data
+- ❗️ while exclusive lock is held, no transaction can read NOR write
+
+## Optimistic 🆚 Pessimistic Locking
+
+- ✔️ **Optimistic Lock**: when conflicts are rare
+- no lock is placed at start
+- instead, use `version number`
+- on every update, the `version` is checked and `incremented++`
+- when update, check if version has changed since data was first read
+- if version mismatch ➡️ error `OptimisticLockingFailureException`
+- 👍🏻 used for Read-heavy systems
+
+```
+T1 reads version 3
+T2 updates → version becomes 4
+T1 tries to update → version mismatch → error
+```
+
+```java
+@Version
+private Long version;
+```
+
+- ✔️ **Pessimistic Lock**: conflics happen frequently
+- place lock immediately when reading data
+- block other transactions from accessing
+- nobody can read/write the locked data until transaction is done
+
+```java
+@Lock(LockModeType.PESSIMISTIC_WRITE)
+```
+
+```SQL
+SELECT * FROM table WHERE ... FOR UPDATE;
+```
 
 ## ✅ What are Locking Protocols?
 
