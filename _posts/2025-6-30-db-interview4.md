@@ -101,6 +101,9 @@ and end up losing all student info
 > attirbute depends on only part of a composite key <br>
 > 🔴 problem, creates repetition and data redundancy
 
+- only apply when the primary key is made up of multiple columns,
+- and an attribute depends on only part of that key
+
 ```
 | StudentID |  courseID   | StudentName   | courseName  |
 |-----------|-------------|---------------|-------------|
@@ -279,27 +282,35 @@ and end up losing all student info
 - 👎🏻 before, bad DB
 
 ```
-| StudentID |  courseID   |  courseName  |
-|-----------|-------------|--------------|
-| 1001      |    ab123    |     math     |
-| 1001      |    cd345    |    science   |
+| StudentID | StudentName | DepartmentID | DepartmentName |
+| --------- | ----------- | ------------ | -------------- |
+| 1001      | Alice       | D01          | Computer Sci   |
+| 1002      | Bob         | D02          | Physics        |
+| 1003      | Carol       | D01          | Computer Sci   |
 ```
+
+- `StudentID` ➡️ `StudentName`, `DeparmentID`, `DepartmentName`
+- `DeparmentID` ➡️ `DepartmentName`
+- Transitive anomaly: `StudentID` ➡️ `DeparmentID` ➡️ `DepartmentName`
 
 - 👍🏻 after 3NF
 
 ```
-- enrollment table
-| StudentID | CourseID |
-| --------- | -------- |
-| 1001      | ab123    |
-| 1001      | cd345    |
+- student table
+| StudentID | StudentName | DepartmentID |
+| --------- | ----------- | ------------ |
+| 1001      | Alice       | D01          |
+| 1002      | Bob         | D02          |
+| 1003      | Carol       | D01          |
 
 
-- course table
-| CourseID | CourseName |
-| -------- | ---------- |
-| ab123    | math       |
-| cd345    | science    |
+
+- department table
+| DepartmentID | DepartmentName |
+| ------------ | -------------- |
+| D01          | Computer Sci   |
+| D02          | Physics        |
+
 
 ```
 
@@ -372,7 +383,7 @@ and end up losing all student info
 ## ✅ 5th Normal Form (5NF)
 
 - ✔️ **5th Normal Form**: has no join dependency
-- table can be split into smaller tables and re-joined without having redundancy problems
+- table cannot be further broken down into smaller tables (using lossless joins) without losing data or introducing duplicates
 
 ```
 | Employee | Skill  | Trainer |

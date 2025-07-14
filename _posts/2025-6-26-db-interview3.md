@@ -29,12 +29,12 @@ tags: [] # TAG names should always be lowercase
 - like index of dictionary
 
 - `key + value` structure
-- store `data from column` ➕ `pointer` to corresponding rows
+- store `value of indexed column` ➕ `pointer` to corresponding rows
 
-  - `value from colum`: actual data(`empID`)
+  - `value from colum`: indexed column's value(`empID`)
   - `pointer`: address to the actual row in the table(`row ID`, physical address)
 
-```
+```plaintext
 - Employee table
 | EmpID | Name    | Department |
 | ----- | ------- | ---------- |
@@ -232,7 +232,7 @@ SELECT * FROM users WHERE age = 30;
 - 공통점: balanced tree structures used in indexing
 - 차이점: how/where they store data
 
-- ✔️ **B-Tree**: store **key and actual data** in **both internal and leaf nodes**
+- ✔️ **B-Tree**: store **key and pointer** in **both internal and leaf nodes**
 - tree with sorted keys
 - DB navigates through the tree to find target `key`, get `value`, then access the associated `data`
 
@@ -241,8 +241,8 @@ SELECT * FROM users WHERE age = 30;
 - 👎🏻 need more memory, data is saved both in root, branch, leaf node
 
 ```
-internal node: store key ➕ data
-leaf node: store key ➕ data
+internal node: store key ➕ pointer
+leaf node: store key ➕ pointer
 leaf connection: not linked
 point lookup: fast
 range query: slow(internal nodes are not linked, has to go through multiple levels)
@@ -261,9 +261,9 @@ if DB is [5, 10, 15, 20, 25, 30, 35, 40]
                 [35,40]
 ```
 
-- ✔️ **B+Tree**: store data in only in **leaf node**
-- store only `key and pointer` in root, internal node
-- actual data resides in leaf nodes
+- ✔️ **B+Tree**: store `key and pointer` in only in **leaf node**
+- store only `key` in root, internal node
+- `pointer to actual data` resides in leaf nodes
 - leaf nodes are **linked by `LinkedList`** together
 - 👍🏻 fast range query, support sequential scans `BETWEEN, <, >, LIKE %abc%`
 - 👍🏻 memory efficiency, only has to save data in leaf node
@@ -272,7 +272,7 @@ if DB is [5, 10, 15, 20, 25, 30, 35, 40]
 
 ```
 internal node: only keys
-leaf node: store key ➕ data
+leaf node: store key ➕ pointer
 leaf connection: linked
 point lookup: fast
 range query:fast(leaces are linked)
