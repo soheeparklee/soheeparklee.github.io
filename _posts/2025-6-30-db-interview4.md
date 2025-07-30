@@ -394,9 +394,9 @@ and end up losing all student info
 | Alice    | Python | Carol   |
 
 - can be split into
-- Employee-Skill
-- Skill-Trainer
-- Employee-Trainer
+➡️ Employee-Skill
+➡️ Skill-Trainer
+➡️ Employee-Trainer
 ```
 
 ## ✅ What is denormalization?

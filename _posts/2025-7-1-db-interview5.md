@@ -229,15 +229,18 @@ now start T2: Transfer $200 from B ➡️ A
 
 ## ✅ What is Serializability?
 
+- ensure correctness when transactions are executed concurrently
 - ✔️ **Serializability**: result of _concurrent transaction_ should be same to serial(one-by-one) transaction execution
 - 두 transaction이 동시에 실행된 결과와, 하나하나 순서대로 실행된 결과가 같아야 함
 - so, for _concurrent transactions_, serializability is very important!
 - 👍🏻 prevent anomalies like `dirty read`, `lost updates`
 
 - ✔️ **Types of serializability**
-- 🍀 **Conflict Serializability**: convert concurrent schedule into a serial one
+- 🍀 **Conflict Serializability**: convert concurrent schedule into a _serial_ one
 - by swapping _non-conflicting_ operations
+- operations can be rearranged into a serial schedule
 - **confict**: operations from different transactions conflict if:
+  - two different transactions
   - they access same data
   - at least one is write
   ```
@@ -251,6 +254,16 @@ now start T2: Transfer $200 from B ➡️ A
   ⭕️ conflict serializable, T1 and T2 access different data
   ```
 - 🍀 **View Serializability**: same data reads/writes and final writes, guarantee same final view of the data
+- Same data reads/writes and final values
+- results in the same read and write behavior as some serial schedule
+  - read same data
+  - final write
+
+```
+T1:        Write(A)
+T2:        Read(A)
+T3:                       Write(A)
+```
 
 ## ✅ What is Database locking?
 
