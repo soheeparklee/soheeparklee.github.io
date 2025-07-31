@@ -78,6 +78,44 @@ input, _ := strconv.ParseInt(scanner.Text(), 10, 64) //change text to int
 fmt.Printf("You are %d years old", 2025-input)
 ```
 
+## ✅ Type assertion
+
+- ☑️ **Check type of this variable**
+- only can check type of `interface{}`
+
+```GO
+func getType(i interface{}) { //get interface as parameter
+	switch v := i.(type) { //get type of interface
+	case int:
+		fmt.Println("this is int: ", v)
+	case string:
+		fmt.Println("this is string: ", v)
+	default:
+		fmt.Println("unknown type")
+	}
+}
+
+func main() {
+	getType(42) //this is int:  42
+	getType("hello") //this is string:  hello
+}
+```
+
+- ☑️ **Check if this interface is a specific type**
+- check if interface box is int
+
+```GO
+box := interface{}(12) //create interface
+
+retrievedInt, ok := box.(int) //check if interface box is int
+	if ok {
+		fmt.Println("Retrieved int: ", retrievedInt)
+	} else {
+		fmt.Println("Value is not an integer")
+	}
+//result: Retrieved int: 12
+```
+
 ## ✅ Change type
 
 - ☑️ **TEXT to INT**
@@ -583,62 +621,6 @@ fmt.Println(x, y)
 | y |   [3]int{100, 2, 3}    |
 ```
 
-## ✅ Pointer and Reference
-
-- `*`: dereference operator(get/set value at address)
-- `&`: get pointer(get address) operator
-- `*T`: pointer to a value of type `T`, like `str *string`
-
-- `&before variable`: get the reference, address of the variable
-- `*before variable name`: dereference the pointer, go to the pointer and **get or set** the value of that address
-
-- `pointer`: variable that stores the memory address of another variable
-- `y` is pointer of int
-
-```GO
-x := 7
-fmt.Println(x)  //print value 7
-fmt.Println(&x) //&, get reference, print address 0x14000112020
-
-y := &x //y is pointer
-fmt.Println(y) //0x14000112020
-
-*y = 8 //*, dereference the pointer, change value of x
-fmt.Println(x) //now x is 8
-```
-
-- `*before data type`: pointer(get memory address)of that data type
-
-- ☑️ **Changes the value of myWord**
-- if you want to change the value of an immutable, need to pass the pointer
-
-```GO
-//parameter (str *string)
-//*, pass the pointer for this parameter, not the value
-//passing the memory address of variable as parameter
-//pass memory address of myWord
-func changePointer(str *string) {
-	*str = "changed1" //*str = change the value of that pointer
-}
-```
-
-- ☑️ does **NOT** change value of myWord
-
-```GO
-// does not change value of myWord
-func changeValue(str string) { //pass value of myWord
-str = "changed2"
-}
-```
-
-```GO
-func main(){
-	myWord := "hello"
-	changePointer(myWord) // <- pass address(0x14000112020)of myWord as param
-	changeValue(myWord) // <- pass value "hello" as param
-}
-```
-
 ## ✅ Structs and Custom Types
 
 - ☑️ **Create your own custom type**
@@ -769,62 +751,6 @@ func (s Student) getMaxGrade() int {
 		}
 	}
 	return max
-}
-```
-
-## ✅ Interface
-
-- Interface: set of methods to be implemented on several objects
-- inside interface `shape`, mention function name `area()`
-- if an object `circle` has that function `area()`
-- ➡️ `circle` implements the `shape` interface
-
-- can implement more than one interface
-- object should have **ALL** the functions in interface
-
-```GO
-// create interface
-type Shape interface {
-	//any object that has area() is implementing type Shape
-	area() float64 //return float64
-}
-
-type Circle struct {
-	radius float64
-}
-
-type Rect struct {
-	width  float64
-	height float64
-}
-
-//circle has area() -> implements shape interface
-func (c Circle) area() float64 {
-	return c.radius * c.radius * 3.14
-}
-//rect has area() -> implements shape interface
-func (r Rect) area() float64 {
-	return r.height * r.width
-}
-
-//can make function with shape interface
-func getArea(s Shape) float64 {
-	return s.area()
-}
-```
-
-```GO
-func main() {
-	c1 := Circle{4.5}
-	r1 := Rect{5, 20}
-
-	 //implement interface, can put both circle and rect in Shape
-	shapes := []Shape{c1, r1}
-
-	for _, shape := range shapes {
-		fmt.Println(shape.area()) //use interface function
-		fmt.Println(getArea(shape)) //use function that reference interface
-	}
 }
 ```
 
