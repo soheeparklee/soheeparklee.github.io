@@ -514,9 +514,13 @@ sudo netstat -tuln | grep 6379
 
 ### EC2와 연결된 redis서버 연결
 
+{% raw %}
+
 ```bash
 redis-cli -h {{public IP}} -p 6379 -a {{위에서 설정한 비밀번호}}
 ```
+
+{% endraw %}
 
 ### 💡 참고
 

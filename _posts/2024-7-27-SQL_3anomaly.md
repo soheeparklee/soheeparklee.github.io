@@ -13,7 +13,7 @@ tags: [] # TAG names should always be lowercase
 
 > need to add unnecessary data to instert
 
-- when {{student ID, course ID}} is primary key,
+- when {student ID, course ID} is primary key,
 - if need to save students who did not take a course
 - these students' course ID would be null
 - primary key cannot be null

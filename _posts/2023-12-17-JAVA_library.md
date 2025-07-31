@@ -170,6 +170,8 @@ for문을 돌면서 add method로 넣는다. <br>
 문자열을 여러 차례에 거쳐 차례차례 받아 실행 후 반환 <br>
 String.join은 배열로만 받지만 StringJoiner는 배열도 받고 그냥 문자열도 하나하나 받음. <br>
 
+{% raw %}
+
 ```java
 String[] strAry = { "감자", "당근", "오이", "양파" };
         StringJoiner strJnr1 = new StringJoiner(",", "<", ">");
@@ -184,6 +186,8 @@ String[] strAry = { "감자", "당근", "오이", "양파" };
         String joined1 = strJnr1.toString(); //joined1: "<감자, 당근, 오이, 양파, 고구마, 피망 >"
         String joined2 = strJnr2.toString(); //joined2: "{{ 감자/ 당근/ 오이/ 양파}}
 ```
+
+{% endraw %}
 
 ### 💡 StringBuffer Class
 

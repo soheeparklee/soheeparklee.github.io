@@ -33,6 +33,8 @@ ENTRYPOINT ["/bin/bash", "-c", "sleep 500"]
 - run in terminal
 - inside **package** with docker file
 
+{% raw %}
+
 ```bash
 -- inside package with docker file
 
@@ -47,6 +49,8 @@ docker image ls
 -- run container
  docker run -d my-node-server
 ```
+
+{% endraw %}
 
 ## ☑️ COPY
 
