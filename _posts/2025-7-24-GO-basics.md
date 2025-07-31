@@ -282,11 +282,17 @@ len(arr) //get length of array
 
 - ☑️ **2D array**
 
-```
+Or if you're wrapping the entire code section, just do:
+
+{% raw %}
+
+```go
 arr2D := [2][3]int{{1, 2, 3}, {4, 5, 6}}
 fmt.Println(arr2D) //print all array
 fmt.Println(arr2D[0][1]) //2
 ```
+
+{% endraw %}
 
 ## ✅ Slice
 
