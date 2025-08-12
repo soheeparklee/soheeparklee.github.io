@@ -1,12 +1,12 @@
 ---
-title: Variable/Print/Scanner/Type/Operator/Array/Slice/Function/Mutable
+title: Variable/Print/Scanner/Type/Operator/Array/Slice/Function/Mutable/Method
 categories: [Golang, Basics]
 tags: [] # TAG names should always be lowercase
 ---
 
 ## ✅ main
 
-```GO
+```go
 package main
 
 import "fmt"
@@ -18,7 +18,7 @@ func main() {
 
 ## ✅ Variable
 
-```GO
+```go
 var name string = "Jack"
 var num uint = 123
 
@@ -43,7 +43,7 @@ number = 5 //change number value
 - `%9q`: print with 9 padding
 - `%09d`: print with 9 padding, but filled with
 
-```GO
+```go
 fmt.Printf("%T", 10) //print type, int
 fmt.Printf("%v", 10) //print value, 10
 
@@ -61,7 +61,7 @@ fmt.Printf("String: %09d", 45)  //fill padding with 0, String: 000000045
 
 ## ✅ User Input, Scanner
 
-```GO
+```go
 //import packages
 import (
 	"bufio" //for scanner
@@ -83,7 +83,7 @@ fmt.Printf("You are %d years old", 2025-input)
 - ☑️ **Check type of this variable**
 - only can check type of `interface{}`
 
-```GO
+```go
 func getType(i interface{}) { //get interface as parameter
 	switch v := i.(type) { //get type of interface
 	case int:
@@ -104,7 +104,7 @@ func main() {
 - ☑️ **Check if this interface is a specific type**
 - check if interface box is int
 
-```GO
+```go
 box := interface{}(12) //create interface
 
 retrievedInt, ok := box.(int) //check if interface box is int
@@ -120,7 +120,7 @@ retrievedInt, ok := box.(int) //check if interface box is int
 
 - ☑️ **TEXT to INT**
 
-```GO
+```go
 import (
 	"strconv" //text to int
 )
@@ -134,7 +134,7 @@ input, _ := strconv.ParseInt(text, 10, 64)
 
 - ☑️ **INT to Float**
 
-```GO
+```go
 //change to float64
 float64(num)
 
@@ -146,13 +146,13 @@ int(num)
 
 - only can use arithmetic operators with same type
 
-```GO
+```go
 var num1 float64 = 8
 var num2 int = 4
 answer := num1 + float64(num2) //change int to float
 ```
 
-```GO
+```go
 string1 := "hello"
 string2 := "go"
 fmt.Println(string1 + string2)
@@ -162,7 +162,7 @@ fmt.Println(string1 + string2)
 
 - ☑️ **Compare same type**
 
-```GO
+```go
 x := 5
 y := 6
 val := x > y
@@ -171,7 +171,7 @@ fmt.Printf("%t", val) //false
 
 - ☑️ **Compare String**
 
-```GO
+```go
 str1 := "a"
 str2 := "A"
 answer := str1 == str2
@@ -185,7 +185,7 @@ fmt.Printf("%t", answer) //false
 
 ## ✅ Conditional
 
-```GO
+```go
 age := 20
 
 if age > 18 {
@@ -201,7 +201,7 @@ if age > 18 {
 
 - ☑️ **use for like while**
 
-```GO
+```go
 x := 0
 for x < 5 {
 	fmt.Println(x)
@@ -212,7 +212,7 @@ for x < 5 {
 - ☑️ **For Loop**
 - result will be same as above
 
-```GO
+```go
 for i := 0; i < 5; i++ {
 	fmt.Println(i)
 }
@@ -222,7 +222,7 @@ for i := 0; i < 5; i++ {
 
 - ☑️ **with variable outside**
 
-```GO
+```go
 x := 3
 
 switch x { //put variable here
@@ -239,7 +239,7 @@ default:
 
 - ☑️ **with variable inside**
 
-```GO
+```go
 x := 3
 
 switch { //dont put variable here
@@ -268,14 +268,14 @@ default:
 
 - ☑️ **Define array**
 
-```GO
+```go
 var arr [5]int //make array of size 5
 arr[0] = 100
 fmt.Println(arr) //print all array
 fmt.Println(arr[0]) //100
 ```
 
-```GO
+```go
 arr := [3]int{1, 2, 3} //make array of size 3, with 1, 2, 3
 len(arr) //get length of array
 ```
@@ -305,7 +305,7 @@ fmt.Println(arr2D[0][1]) //2
 
 - ☑️ **Create slice from array**
 
-```GO
+```go
 
 var x [5]int = [5]int{1, 2, 3, 4, 5} //create array
 
@@ -329,7 +329,7 @@ fmt.Println(cap(v)) //4
 
 - ☑️ **Slice the slice**
 
-```GO
+```go
 fmt.Println(v[:cap(v)])
 //get slice of slice
 //v is [2, 3]
@@ -339,13 +339,14 @@ fmt.Println(v[:cap(v)])
 ```
 
 - ☑️ **Create, add to slice**
+- `append()`
 
-```GO
+```go
 s := []int{}
 s := make([]int, 5) //create empty slice with len, cap 5
 ```
 
-```GO
+```go
 var s []int = []int{5, 6, 7, 8, 9} //create a slice with elements
 // or
 s := []int{5, 6, 7, 8, 9}
@@ -355,11 +356,33 @@ s = append(s, 10)
 // [5 6 7 8 9 10]
 ```
 
+- ☑️ **Compare Slice**
+- use `reflect.DeepEqual()`
+- however, `reflect.DeepEqual()` is not type safe
+
+```go
+if !reflect.DeepEqual(slice1, slice2) {
+		t.Errorf("got %v want %v", slice1, slice2)
+	}
+```
+
+## ✅ make()
+
+- initialize `slice`, `maps`, `channels`
+
+```go
+slice1 := make([]int, 5) //create a slice size of 5
+//len: 5, cap: 5, values = [0 0 0 0 0]
+
+slice2 := make([]int, 3, 5)
+//len:3, cap: 5
+```
+
 ## ✅ Range
 
 - ☑️ **i: index, element: element of index**
 
-```GO
+```go
 //index: i element: element at that index
 var a []int = []int{1, 3, 4}
 
@@ -373,7 +396,7 @@ for i, element := range arr {
 
 - ☑️ **if index is not needed, use** `_`
 
-```GO
+```go
 for _, element := range arr {
 	fmt.Println(element)
 }
@@ -381,7 +404,7 @@ for _, element := range arr {
 
 - ☑️ **use Range and For together**
 
-```GO
+```go
 	for i, element1 := range arr {
 		for j := i + 1; j < len(arr); j++ {
 			if element1 == arr[j] { //print only duplicated element in arr
@@ -398,13 +421,13 @@ for _, element := range arr {
 
 - ☑️ **create empty map**
 
-```GO
+```go
 mp := make(map[string]int) //create empty map
 ```
 
 - ☑️ **create map with elements**
 
-```GO
+```go
 var mp map[string]int = map[string]int{ //create map with instances
 		"apple":  5,
 		"orange": 6,
@@ -438,7 +461,7 @@ fmt.Println(val, ok)
 - `defer`: run right before returning
 - used for closing file system, finish I/O
 
-```GO
+```go
 func math(x, y int) (r1, r2 int) {
 	defer fmt.Println("run last") //2️⃣ run before return and finishing function
 	r1 = x + y
@@ -462,7 +485,7 @@ run last
 
 - ☑️ **Admit the function to a variable**
 
-```GO
+```go
 f := addFunc(4, 5) // Get the function
 f()               // Now call it
 ```
@@ -473,7 +496,7 @@ f()               // Now call it
 
 - 1️⃣ create function wo name and reference to variable `test`
 
-```GO
+```go
 func main() {
 	//1️⃣ create function wo name and reference to variable test
 	test := func(x, y int) int {
@@ -487,7 +510,7 @@ func main() {
 - hand over parameters right away to referenced variable
 - same result as running `test()`
 
-```GO
+```go
 func main() {
 	test := func(x, y int) int { //create function, reference variable
 		return x + y
@@ -505,7 +528,7 @@ func main() {
 
 - ☑️ **Hand over function as param**
 
-```GO
+```go
 func outTest(inTest func(int, int) int) {
 	ans := inTest(3, 4)
 	fmt.Println(ans)
@@ -530,7 +553,7 @@ func main() {
 - keep variables like `x` and `sum` alive even after outer function returns
 - sum will keep increasing, `sum++`
 
-```GO
+```go
 func returnFunc(x string) func() { //return a function
 	sum := 1
 	return func() {
@@ -558,6 +581,22 @@ func main() {
 
 ```
 
+- ☑️ **Variadic Function**
+- take a variable number of arguments as parameter
+- number of param is not fixed
+
+```go
+func SumAll(slices ...[]int) []int { //can take several slices as param
+	//code
+}
+
+func main(){
+	SumAll([]int{1, 2}, []int{0, 9})
+	SumAll([]int{3, 4, 5}, []int{0, 9}, []int{1, 2, 3})
+	//all possible
+}
+```
+
 ## ✅ Mutable, Immutable
 
 - ☑️ **Mutable**
@@ -567,7 +606,7 @@ func main() {
 - `y` is pointing to same `Slice`, `Map`
 - modify the existing `Slice`, `Map`
 
-```GO
+```go
 var x []int = []int{1, 2, 3}
 y := x
 y[0] = 100
@@ -606,7 +645,7 @@ fmt.Println(x, y)
 - `x` and `y` point to different array
 - DO NOT modify the existing `Array`, `int`
 
-```GO
+```go
 var x [3]int = [3]int{1, 2, 3}
 y := x
 y[0] = 100
@@ -632,7 +671,7 @@ fmt.Println(x, y)
 - ☑️ **Create your own custom type**
 - create class `Point` with two `int field` and `boolean field`
 
-```GO
+```go
 type Point struct {
 	//field
 	x        int32
@@ -641,7 +680,7 @@ type Point struct {
 }
 ```
 
-```GO
+```go
 var p1 Point = Point{1, 2, true} //1️⃣ create type Point
 p1.x = 7 //can access field
 
@@ -652,7 +691,7 @@ p3 := Point{x: 3, y: 5} //3️⃣ create type Point, unmentioned field will be d
 
 - ☑️ **Stuct and pointer**
 
-```GO
+```go
 func changeX(pt *Point) { //param: addr of pointer
 	pt.x = 100 //change value of pointing variable
 }
@@ -669,7 +708,7 @@ func main() {
 - ☑️ **Stuct inside Struct**
 - 💡 notice `Point struct` inside `Circle` is a **pointer**
 
-```GO
+```go
 
 type Point struct {
 	x int32
@@ -683,7 +722,7 @@ type Circle struct {
 }
 ```
 
-```GO
+```go
 func main() {
 	p1 := &Point{1, 3}
 	c1 := Circle{10.123, p1} //1️⃣ create struct Circle
@@ -704,7 +743,7 @@ func main() {
 
 - ☑️ **Getter**
 
-```GO
+```go
 type Student struct {
 	name   string
 	grades []int
@@ -727,7 +766,7 @@ func main(){
 - 💡 to change a value, need to reference the **pointer** of the object
 - `(s *Student)`
 
-```GO
+```go
 func (s *Student) setAge(newAge int) { //need to pass pointer of Student
 	s.age = newAge
 }
@@ -739,7 +778,7 @@ func (s *Student) setAge(newAge int) { //need to pass pointer of Student
 
 - ☑️ **get grade AVG, get max grade**
 
-```GO
+```go
 
 func (s Student) getAvgGrade() float32 {
 	sum := 0
@@ -760,8 +799,8 @@ func (s Student) getMaxGrade() int {
 }
 ```
 
-## ✅
+## Function 🆚 Method
 
-```GO
+```go
 
 ```

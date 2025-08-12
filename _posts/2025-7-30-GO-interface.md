@@ -1,5 +1,5 @@
 ---
-title: Interface/Error Handling
+title: Interface/Method/Error Handling
 categories: [Golang, Basics]
 tags: [] # TAG names should always be lowercase
 ---
@@ -21,7 +21,7 @@ tags: [] # TAG names should always be lowercase
 
 ## 1️⃣ interface as **most general type**
 
-```GO
+```go
 //create interface
 box := interface{}("hello") //can assign any type to interface
 
@@ -43,7 +43,7 @@ describeValue(box) //string, hello
      Circle   Rect
 ```
 
-```GO
+```go
 // create interface
 type Shape interface {
 	//any object that has area() is implementing type Shape
@@ -74,7 +74,7 @@ func getArea(s Shape) float64 {
 }
 ```
 
-```GO
+```go
 func main() {
 	c1 := Circle{4.5}
 	r1 := Rect{5, 20}
@@ -101,7 +101,7 @@ Shape Interface         Mesurable Interface
                     Rect
 ```
 
-```GO
+```go
 type Geometry interface {
 	Shape
 	Measurable
@@ -138,12 +138,55 @@ func main() {
 }
 ```
 
+## Function 🆚 Method
+
+- **function**: NOT tied to any type
+- **method**: function with **reciever**
+- method is called by invoking them on an instance of a particular type
+
+```go
+type Rectangle struct {
+	width  float64
+	height float64
+}
+
+
+//get area function
+func Area(r Rectangle) float64 {
+	return r.height * r.width
+}
+//call function
+rectangle := Rectangle{10, 5}
+Area(rectangle)
+
+//🆚 get area method
+func (r Rectangle) Area() float64 {
+	return r.height * r.width
+}
+//call method
+rectangle := Rectangle{10, 5}
+rectangle.Area() //reciever is rectangle
+
+```
+
+## ✅ Method
+
+- tied to a specific type(`struct`), often used with stucts and interfaces
+
+```go
+//define method
+func (receiverName ReceiverType) MethodName(args)
+
+//call method
+instance.MethodName()
+```
+
 ## ✅ Error handling with Error Interface
 
 - ☑️ **Go built-in `Error Interface` looks like this**
 - to implement `Error Interface`, need to create `Error()` function
 
-```GO
+```go
 type error interface {
 	Error() string
 }
@@ -151,7 +194,7 @@ type error interface {
 
 - ☑️ error message interface
 
-```GO
+```go
 type CalculationError struct {
 	message string
 }
