@@ -10,8 +10,9 @@ tags: [] # TAG names should always be lowercase
 2. Negetive INT: add sign flag
 3. Decimal
 4. Characters: ASCII, UTF-8
-   8bits = 1byte
-   3bytes: Korean
+   - in ASCII, each char has 8 bits
+   - 8bits = 1byte
+   - 3bytes: Korean
 
 ## ✅ Image
 

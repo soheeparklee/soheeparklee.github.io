@@ -143,6 +143,7 @@ result: 001101011010 + 0100
 
 - 🛠️ used for protecting passwords
 - needs to be more secure than file protection
+- example of hashing: yescrypt
 
 - there is always a mathematical function in Hashing ➡️ `Hash function`
 - apply the `hash function` to the password that you type
