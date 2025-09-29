@@ -53,20 +53,28 @@ tags: [] # TAG names should always be lowercase
 
 - Picture size = `HR * VR * D(color depth)`
 
-- Q: How many bits would a black and white picture have of 100\*50?
-- Picture size = `HR * VR * D(color depth)`
-- 100 _ 50 _ 1 = 5000
+```
+Q: How many bits would a black and white picture have of 100 * 50?
+- Picture size = HR * VR * D(color depth)
+- 100 * 50 * 1 = 5000
+```
 
-- Q: How many bits would a gray picture have of 100\*50?
-- Picture size = `HR * VR * D(color depth)`
-- 100 _ 50 _ 8 = 40000
+```
+Q: How many bits would a gray picture have of 100 50?
+- Picture size = HR * VR * D(color depth)
+- 100 *  50 * 8 = 40000
+```
 
-- Q. If all the sound that my computer can make are 8, how many bits do my computer have?
+```
+Q. If all the sound that my computer can make are 8, how many bits do my computer have?
 - 3
-- because `2^3 = 8`
+- because 2^3 = 8
+```
 
-- Q: How many bits would a full color picture have of 100\*50?
-- 100 _ 50 _ 24 = 120000
+```
+Q: How many bits would a full color picture have of 100 * 50?
+- 100 * 50 * 24 = 120000
+```
 
 #### 2️⃣ Vector
 
@@ -87,7 +95,7 @@ tags: [] # TAG names should always be lowercase
 - 👎🏻 however, as measuring device is more expensive,
 - vector is only used for professional purposes
 
-## ✅ Main Computing Principle
+## 📌 Main Computing Principle
 
 - 0: 0.5v
 - 1: 5v
@@ -149,12 +157,14 @@ tags: [] # TAG names should always be lowercase
 
 #### ✔️ Audio Size
 
-- size: Hertz _ A _ t
+- size: `Hertz * A * t`
 
-- Q: How many bits do you need for an orchestra for a 4 minute song, with 300 amplitude, sampled at 2GHz?
-- size: Hertz _ A _ t
-- `2*10^9 * 9 * (4*60)`
-- `= 2000000000 * 9 * 240` bits
+```
+Q: How many bits do you need for an orchestra for a 4 minute song, with 300 amplitude, sampled at 2GHz?
+- size: Hertz * A * t
+- 2*10^9 * 9 * (4*60)
+ = 2000000000 * 9 * 240` bits
+```
 
 ## ✅ Video
 
@@ -194,12 +204,16 @@ tags: [] # TAG names should always be lowercase
 
 #### ✔️ Video size
 
-- picture size _ fps _ t + Audio \*2(stereo)
-- `HR * VR * D * fps * t` + `Hertz*A*t*2`
+- `picture size * fps * t + Audio * 2(stereo)`
+- `HR * VR * D * fps * t` + `Hertz * A * t * 2`
 - ⭐️ audio is added
-- Q: How many bits a 5 minute video have that has resolution of 1920\*1090 full color at 1000fps with stereo sound of 100 amplitudes sampled at a frequency of 25MHz?
-- (1920\*1090 * 24)*1000*(5*60) + (25*10^6)*7*(5*60)\*2 bits
-- ⭐️ only depth and amplitude has to be converted into bits
+
+```
+Q: How many bits a 5 minute video have that has resolution of 1920\*1090 full color at 1000fps with stereo sound of 100 amplitudes sampled at a frequency of 25MHz?
+- {(1920*1920 * 24) * 1000 * (5*60)} + {( 25 * 10^6)  * 7 * (5*60) * 2 bits}
+```
+
+- ⭐️ only **color depth** and **amplitude** has to be converted into bits
 
 ## ✅ File
 
@@ -211,8 +225,7 @@ tags: [] # TAG names should always be lowercase
 - Timestamp: `created_date`, `last_modified_date`
 
   - `owner of the file`
-  - `size of the file`
-  - `name of the file`
+  - `size of the file`;lkj
   - `extension of the file`
   - `permissions over the file`, read/write/execute permissions, what you can do with the file
   - `access control`, who can access the file

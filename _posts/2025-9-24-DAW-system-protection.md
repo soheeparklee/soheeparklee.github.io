@@ -24,15 +24,15 @@ tags: [] # TAG names should always be lowercase
 
 - 1️⃣ Initial sequence
 - 2️⃣ Create subsets of bits of the initial sequence
-- each ECC technique has its own subset creating method
+  - each ECC technique has its own subset creating method
 - 3️⃣ On each subset, apply an `even parity`
 - 4️⃣ All extra `1s` are added at the end of the sequence
 - 5️⃣ Using the extra `1s` we can use **reverse engineering** to find the original initial sequence
-- We can check if the initial sequence has been changed using the `extra 1 bits`
+- 👉🏻 We can check if the initial sequence has been changed using the `extra 1 bits`
 
-#### ⭐️ Even parity
+## 📌 Even parity
 
-**even parity**: number of `1s` has to be even
+- 👉🏻 **even parity**: number of `1s` has to be even
 
 - if number of `1` is even, add `0`
 - if number of `1` is odd, add an extra `1`
@@ -66,14 +66,16 @@ extra bits: 0100
 result: 001101011010 + 0100
 ```
 
-#### ✔️ What do we need to create a computer with ECC
+[![IMG-7537.jpg](https://i.postimg.cc/9FVJWKwP/IMG-7537.jpg)](https://postimg.cc/Jt6bxTqt)
+
+#### ❓ What do we need to create a computer with ECC?
 
 - 1️⃣ need a **counter** to count the `extra bits`
 - 2️⃣ **comparison chip** to compare if the `count of 1s` are even or not
 - 3️⃣ **flag** to give you an `extra bit` if the count of 1 is odd
 - normally called ECC flag
 
-## ☑️ Logic Gates
+## 📌 Logic Gates
 
 - pre-built chips that perform mathametical operations
 
@@ -120,7 +122,7 @@ result: 001101011010 + 0100
 - other bits will be `0`
 - ⭐️ In CRC, has different changes the numbering of the bit
 - most right bit is `0`
-- result: `10000011`
+- result: `100000111`
 - Thus the size of the sequence will depend on the exponent of the `Polynomial`
 - 2️⃣ Write the `Polynomial sequence` below the original sequence
 - starting by the left
@@ -128,7 +130,7 @@ result: 001101011010 + 0100
 - 3️⃣ `XOR` bit by bit
 - 4️⃣ the rest of the original sequence, just retype again, copy
 - 5️⃣ Now repeat the step 2️⃣~4️⃣, cyclic
-- remember, first `0s` will be discarded
+- ⭐️ remember, first `0s` will be discarded
 - 6️⃣ repeat until the final result is shorter or same length as the original polynomial, stops
 - 7️⃣ Final result `checksum` get we get will be added at the end of the original message
 - Then, will be transmitted
@@ -143,7 +145,7 @@ result: 001101011010 + 0100
 
 - 🛠️ used for protecting passwords
 - needs to be more secure than file protection
-- example of hashing: yescrypt
+- example of hashing: `yescrypt`
 
 - there is always a mathematical function in Hashing ➡️ `Hash function`
 - apply the `hash function` to the password that you type
@@ -160,12 +162,16 @@ result: 001101011010 + 0100
 
 - If the system has hashing, you can use simmilar passwords, as they will be converted into totally different results(GMAIL)
 - However, if the system does not have hashing, you can not use simmilar passwords(HOTMAIL)
-- Q: If the teacher can use `hola` and when it expires uses `hola1`, what kind of technology is the systems using?
-- A: Hashing
+
+```
+Q: If the teacher can use `hola` and when it expires uses `hola1`, what kind of technology is the systems using?
+A: Hashing
+```
 
 ## ✅ Salt
 
-> use hashing, use math
+> use hashing, use math <br>
+> store in hard drive <br>
 
 - add salt to a password
 - salt: random `0s and 1s`, transforming the password before hashing the password
@@ -176,13 +182,14 @@ result: 001101011010 + 0100
 #### ✔️ Where do we use salt? Where is it stored?
 
 - `salt` needs to be recorded/stored in order to log in the system
-- ⭐️thus, `salt` should be stored in the hard-disk of the computer, so it is kept involatile
+- ⭐️ thus, `salt` should be stored in the **hard-disk of the computer**, so it is kept involatile
 - which means you can use only that computer for logging in
 - we use salt for computers that should be protected themselves
 
 ## ✅ Pepper
 
-> use hashing, use math
+> use hashing, use math <br>
+> store in cloud <br>
 
 - store `salt(pepper)` in a **cloud/server**
 - 1️⃣ Now `salt(pepper)` can be accessed from all, several computers
@@ -233,16 +240,16 @@ result: 001101011010 + 0100
 - ✔️ **Clouding**: Taking my company data to the cloud
 
   - Three types of clouding
-  - 1️⃣ IaaS: Infrastructure as a Service
+  - 1️⃣ **IaaS**: Infrastructure as a Service
     - I do not have computers in my company, I use the computer of another company
     - use the computer of another company, I do not have the infrastructure
     - not very commonly used
-  - 2️⃣ Paas: Platform as a Service
+  - 2️⃣ **Paas**: Platform as a Service
     - contract another company's computers and their software
     - you log-in to their applications
     - a lot of loss of control of your company
     - the platform will not be tailored to your needs
-  - 3️⃣ SaaS: Software as a Service
+  - 3️⃣ **SaaS**: Software as a Service
     - Everything belongs to the other company
     - including the products that are created by you
     - very expensive
