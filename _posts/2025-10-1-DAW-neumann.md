@@ -1,5 +1,5 @@
 ---
-title: 1-10. Neumann Architecture
+title: 1.10 Neumann Architecture
 categories: [FP DAW bilingual, Computer System]
 tags: [] # TAG names should always be lowercase
 ---
