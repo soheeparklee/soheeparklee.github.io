@@ -37,12 +37,12 @@ A: each F has 4 bits internally, has 4 * 8 = 32 bits
 - more or less `4 * 1000 * 1000 * 1000 bytes`
 
 ```
-1 time 2^10 = 1000 = Kilo
-2 times 2^10 = 1000 * 1000 = Mega
-3 times 2^10 = 1000 * 1000 * 1000 = Giga
-4 times 2^10 = 1000 * 1000 * 1000 * 1000 = Tera
-5 times 2^10 = 1000 * 1000 * 1000 * 1000 * 1000 = Petta
-6 times 2^10 = 1000 * 1000 * 1000 * 1000 * 1000 * 1000 = Exa
+1 time 2^10 = 1024 = Kilo
+2 times 2^10 = 1024 * 1024 = Mega
+3 times 2^10 = 1024 * 1024 * 1024 = Giga
+4 times 2^10 = 1024 * 1024 * 1024 * 1024 = Tera
+5 times 2^10 = 1024 * 1024 * 1024 * 1024 * 1024 = Petta
+6 times 2^10 = 1024 * 1024 * 1024 * 1024 * 1024 * 1024 = Exa
 ```
 
 - so, `4 * Giga bytes`
