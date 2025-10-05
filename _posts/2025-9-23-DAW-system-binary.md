@@ -1,5 +1,5 @@
 ---
-title: 1.3 Image/Raster/Vector/Audio/Video
+title: 1.3 Binary Coding and Decoding
 categories: [FP DAW bilingual, Computer System]
 tags: [] # TAG names should always be lowercase
 ---
@@ -238,3 +238,9 @@ Q: How many bits a 5 minute video have that has resolution of 1920\*1090 full co
 ## ✅
 
 ## ✅
+
+As an 𝙚𝙭𝙥𝙚𝙧𝙞𝙚𝙣𝙘𝙚𝙙 𝙅𝙖𝙫𝙖 𝘽𝙖𝙘𝙠𝙚𝙣𝙙 𝘿𝙚𝙫𝙚𝙡𝙤𝙥𝙚𝙧, this 𝘽𝙞𝙡𝙞𝙣𝙜𝙪𝙖𝙡 𝙒𝙚𝙗 𝘼𝙥𝙥𝙡𝙞𝙘𝙖𝙩𝙞𝙤𝙣 𝘿𝙚𝙫𝙚𝙡𝙤𝙥𝙢𝙚𝙣𝙩 𝙁𝙋 program strengthened my technical expertise to design, develop, and deploy complete web solutions, expanding my abilities for not only backend but also as a frontend developer. Through this study, I will gain advanced skills in both client-side and server-side web development, including languages such as 𝙅𝙖𝙫𝙖 𝟮𝟭, 𝙋𝙮𝙩𝙝𝙤𝙣, 𝙃𝙏𝙈𝙇, 𝘾𝙎𝙎, 𝙅𝙖𝙫𝙖𝙨𝙘𝙧𝙞𝙥𝙩 and 𝙍𝙚𝙖𝙘𝙩.
+
+I will also enhance my understanding of 𝙍𝘿𝘽𝙎 𝙖𝙣𝙙 𝙎𝙌𝙇, 𝙘𝙤𝙢𝙥𝙪𝙩𝙚𝙧 𝙨𝙮𝙨𝙩𝙚𝙢𝙨, 𝙖𝙣𝙙 𝙥𝙧𝙤𝙛𝙚𝙨𝙨𝙞𝙤𝙣𝙖𝙡 𝙙𝙚𝙫𝙚𝙡𝙤𝙥𝙢𝙚𝙣𝙩 𝙚𝙣𝙫𝙞𝙧𝙤𝙣𝙢𝙚𝙣𝙩𝙨, building a stronger foundation for scalable, secure, and maintainable applications.
+
+Additionally, the program emphasizes professional 𝙀𝙣𝙜𝙡𝙞𝙨𝙝 🇨🇮🇺🇸🇬🇧 𝙖𝙣𝙙 𝙎𝙥𝙖𝙣𝙞𝙨𝙝 🇪🇸 communication, preparing me to collaborate effectively in international and cross-functional development teams.
