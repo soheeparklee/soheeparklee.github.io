@@ -1,6 +1,6 @@
 ---
 title: 1.1 Main definitions
-categories: [FP DAW bilingual, Computer System]
+categories: [DAW bilingual, Computer System]
 tags: [] # TAG names should always be lowercase
 ---
 
@@ -54,7 +54,7 @@ tags: [] # TAG names should always be lowercase
 - ✔️ **GLSI computer**
 - Giga Large Scale of Integration
 - maximum integration
-- ❓ limit is a matter of the temperature ⭕️, not of dimensions ❌
+- ❓❓❓❓❓ limit is a matter of the temperature ⭕️, not of dimensions ❌
 - when we have a GLSI computer, we are talking about the _micro processors_
 
 - ✔️ **Micro processors**
@@ -86,7 +86,7 @@ tags: [] # TAG names should always be lowercase
 - when we transmit `0s` and `1s`, we are transmitting a **code**
 - networking: connecting computers in a network
 - in order to network, we need a `dictionary` that transforms the sequence of `0s` and `1s` into smth human-readable
-- ❓ the code is the `dictionary` that helps humans translate binary into human language, and visa versa.
+- ❓❓❓❓❓ the code is the `dictionary` that helps humans translate binary into human language, and visa versa.
 
 ## ✅ Coding
 

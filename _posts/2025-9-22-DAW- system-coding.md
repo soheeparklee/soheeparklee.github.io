@@ -1,6 +1,6 @@
 ---
 title: 1.2 Coding Techniques
-categories: [FP DAW bilingual, Computer System]
+categories: [DAW bilingual, Computer System]
 tags: [] # TAG names should always be lowercase
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Operador, Conversiones
-categories: [FP DAW bilingual, Programacion]
+categories: [DAW bilingual, Programacion]
 tags: [] # TAG names should always be lowercase
 ---
 

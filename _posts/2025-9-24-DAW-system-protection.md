@@ -1,6 +1,6 @@
 ---
 title: 1.4 Protection of bits, 1.5 Hashing
-categories: [FP DAW bilingual, Computer System]
+categories: [DAW bilingual, Computer System]
 tags: [] # TAG names should always be lowercase
 ---
 

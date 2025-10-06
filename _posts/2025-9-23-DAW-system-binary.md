@@ -1,18 +1,174 @@
 ---
 title: 1.3 Binary Coding and Decoding
-categories: [FP DAW bilingual, Computer System]
+categories: [DAW bilingual, Computer System]
 tags: [] # TAG names should always be lowercase
 ---
 
-## ✅ INT, Decimal, CHAR
+## ✅ Positive Integer
 
-1. Positive INT
-2. Negetive INT: add sign flag
-3. Decimal
-4. Characters: ASCII, UTF-8
-   - in ASCII, each char has 8 bits
-   - 8bits = 1byte
-   - 3bytes: Korean
+- Integer: 8bits
+- there are two ways to encode positive integers into binary
+
+#### 1️⃣ Use dividing by 2
+
+- divide the `Integer` by 2 several times
+- take the final quotient and the remainders
+- from down to up, write the quotient and remainder down
+
+```
+33/2 = quotient: 16, remainder: 1
+16/2 = quotient: 8, remainder: 0
+8/2 = quotient: 4, remainder: 0
+4/2 = quotient: 2, remainder: 0
+2/2 = quotient: 1, remainder: 0
+from down to up, 33 = 1(quotient) and 00001
+👉🏻 33 = 100001
+```
+
+#### 2️⃣ Use the weights rule of the power of 2
+
+- use the `weights rule` of the powers of 2
+- draw positions, and each position is double to the one at the right
+- then add `1` in positions needed and `0` in positions not needed
+
+```
+33 =  __  __  __  __  __  __
+      32  16   8   4   2   1
+  👉🏻  1    0   0   0    0  1
+
+❓ 0 = 00000000
+❓ 255 = 11111111
+```
+
+## ✅ Negative Integer
+
+> 🚩 Sign Flag
+
+- 1️⃣ Change the positive `Integer` into binary
+- 2️⃣ Add a `1` at the very left, this is a special `1`
+- ⭐️ **Sign flag:** special `1` to indicate that this `Integer` is a negative Integer
+- This special `1` is stored in a different place
+- sign flag means this `Integer` is a negative
+  🚩 **Flags** are electric signals stored in specific places for special circumstances
+
+- If the flag is off, you add it as part of the number
+- If the flag in on, you turn it into a negative symbol
+
+```
+❓ code -78 to binary
+78 = 01001110
+➕ add 1 on the left, why make 8 spaces? bc 8bits
+👉🏻 101001110
+
+❓ code -16 to binary
+16 = 00010000
+➕ add 1 on the left
+👉🏻 100010000
+```
+
+## ✅ Decimal Integer
+
+> FLU(Floating Point Unit)
+
+- Decimal numbers are stored in a special place called **FLU(Floating Point Unit)**
+- The convention used for this is `IEEE754` for international technique, `IE3754`. The steps are as following
+
+- 1️⃣ Take the `Integer` part, transform into binary **but** discord all the `0s` at the left
+- no extra `0s`
+- 2️⃣ Take the Decimal part such as `0.xxx`, we** multiply by 2 five times**, but transforming the appearing `1s` into `0s`. You take the `0s` and the `1s` AFTER the `=` from up to down
+
+- add it to the first coded number
+- 3️⃣ The dot needs to be represented, the decimal part is always `5bits`. We are going to shift the decimal symbol(the dot) to the left until you leave it after the FIRST 1. AND you count how many steps you had to take. The number of steps need to be counted somehow.
+- ⭐️ In computing, we want things to always occupy the same number, this is a rule. NO variable length, always fixed length.
+- move the dot to the left until you reach the first number
+
+- add the number of jumps to 127
+
+- add 1 to the left if negative
+- or add 0 to the left if positie
+
+- 4️⃣ The number of steps, add 127 and then you code the result.
+- 5️⃣ We place that at the END of the number, leaving extra space in between, the `IEEE754` want the number to occupy 32bits
+- 6️⃣ In order to have `32bits`, if the number is negative, add a `1` at the left and BESIDES you light the sign flag. If the number is positive, add a `0`, so that it occupies the same number as a negative one.
+- 7️⃣ We complete with `0s` in order for it to sum up to `32bits`
+
+```
+❓ code -17.33 to binary
+1️⃣ Integer part into binary
+17 = 00010001 ➡️ discord all the left 0s ➡️ 10001
+2️⃣ Decimal part, multiply by 2, five times
+0.33 * 2 = 0.66
+0.66 * 2 = 1.32
+0.32 * 2 = 0.64
+0.64 * 2 = 1.28
+0.28 * 2 = 0.56
+👉🏻 01010
+then add to 17
+👉🏻 10001.01010
+
+👉🏻 1.000101010
+count the jumps = 4
+
+4 + 127 = 131
+change 131 to binary 10000011
+add the number 10000011 to the end
+
+
+3️⃣
+4️⃣
+5️⃣
+6️⃣
+7️⃣
+
+1️⃣
+2️⃣
+3️⃣
+4️⃣
+5️⃣
+6️⃣
+7️⃣
+```
+
+- all the numbers that use this protocals are called `floats` since they are stored in the FPU
+- If instead of `32bits`, we made this in `64bits(The standard is totally different procedure)`, we call them `double floats`
+- `Double floats` have more precision, always more than 2 decimals.
+- ⚠️ It is considered a bad programming technique to use double floats with things that could be in a regular float, since it is more accerlerated, more work for the PC.
+
+## ✅ Text
+
+#### ☑️ Standard Text, `Extended ASCII`
+
+- for `Standard Text`, we use `Extended ASCII`
+- `Extended ASCII` is a `FLC-8`, each character is `8bits`
+- each character 🟰 `Integer`
+- so you can code the `Integer` with the weights rule
+- there are no spaces
+- If you need a space, code the `number 32`
+- 👎🏻 However, `Extended ASCII` uses only `256 characters(from 0 to 255)`
+
+[![Screenshot-2025-10-06-at-00-44-22.png](https://i.postimg.cc/wT77qVBm/Screenshot-2025-10-06-at-00-44-22.png)](https://postimg.cc/xcV0gLMf)
+
+```
+❓ Transform I_miss_you with ASCII code.
+73 32 109 105 115 115 32 121 111 117 46
+
+01001001001000000110110101101001………00101100
+```
+
+#### ☑️ Extension of ASCII, `UTF-8`
+
+- `UTF-8` is an extension of the `extended ASCII`
+- also known as **Unicode**
+- bc it is to be used with every language int he world
+- UTF `8` does not mean `8bits` per symbol
+- it means `multiple of 8bits` per symbol
+- Some symbols are `8bits(1byte)` like `ASCII`
+- Some symbols are `16bits(2bytes)` like `Greek, Cyrilic, Hebew, Arab...`
+- Some symbols are `24bits(3bytes)` like `Korean`
+- Some symbols are `32bits(4bytes)` like `Persian, Fenician, old languages and ALSO math`
+
+- Each language, if possible uses its own version of `ASCII`
+- but due to Internet, a code was invented to allow intercommunication and translation between different languages
 
 ## ✅ Image
 
@@ -239,8 +395,5 @@ Q: How many bits a 5 minute video have that has resolution of 1920\*1090 full co
 
 ## ✅
 
-As an 𝙚𝙭𝙥𝙚𝙧𝙞𝙚𝙣𝙘𝙚𝙙 𝙅𝙖𝙫𝙖 𝘽𝙖𝙘𝙠𝙚𝙣𝙙 𝘿𝙚𝙫𝙚𝙡𝙤𝙥𝙚𝙧, this 𝘽𝙞𝙡𝙞𝙣𝙜𝙪𝙖𝙡 𝙒𝙚𝙗 𝘼𝙥𝙥𝙡𝙞𝙘𝙖𝙩𝙞𝙤𝙣 𝘿𝙚𝙫𝙚𝙡𝙤𝙥𝙢𝙚𝙣𝙩 𝙁𝙋 program strengthened my technical expertise to design, develop, and deploy complete web solutions, expanding my abilities for not only backend but also as a frontend developer. Through this study, I will gain advanced skills in both client-side and server-side web development, including languages such as 𝙅𝙖𝙫𝙖 𝟮𝟭, 𝙋𝙮𝙩𝙝𝙤𝙣, 𝙃𝙏𝙈𝙇, 𝘾𝙎𝙎, 𝙅𝙖𝙫𝙖𝙨𝙘𝙧𝙞𝙥𝙩 and 𝙍𝙚𝙖𝙘𝙩.
-
-I will also enhance my understanding of 𝙍𝘿𝘽𝙎 𝙖𝙣𝙙 𝙎𝙌𝙇, 𝙘𝙤𝙢𝙥𝙪𝙩𝙚𝙧 𝙨𝙮𝙨𝙩𝙚𝙢𝙨, 𝙖𝙣𝙙 𝙥𝙧𝙤𝙛𝙚𝙨𝙨𝙞𝙤𝙣𝙖𝙡 𝙙𝙚𝙫𝙚𝙡𝙤𝙥𝙢𝙚𝙣𝙩 𝙚𝙣𝙫𝙞𝙧𝙤𝙣𝙢𝙚𝙣𝙩𝙨, building a stronger foundation for scalable, secure, and maintainable applications.
-
-Additionally, the program emphasizes professional 𝙀𝙣𝙜𝙡𝙞𝙨𝙝 🇨🇮🇺🇸🇬🇧 𝙖𝙣𝙙 𝙎𝙥𝙖𝙣𝙞𝙨𝙝 🇪🇸 communication, preparing me to collaborate effectively in international and cross-functional development teams.
+CC BY Izzie
+[CC] Integers, Text part of the notes were completed thanks to Izzie, by referencing her notes. Thank you Izzie!

@@ -1,6 +1,6 @@
 ---
 title: 1.9 Logic Gates and Computer Math
-categories: [FP DAW bilingual, Computer System]
+categories: [DAW bilingual, Computer System]
 tags: [] # TAG names should always be lowercase
 ---
 

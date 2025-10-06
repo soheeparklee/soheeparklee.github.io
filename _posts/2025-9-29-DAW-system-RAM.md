@@ -1,6 +1,6 @@
 ---
 title: 1.7 Main memory(RAM) Addressing
-categories: [FP DAW bilingual, Computer System]
+categories: [DAW bilingual, Computer System]
 tags: [] # TAG names should always be lowercase
 ---
 
@@ -11,7 +11,7 @@ tags: [] # TAG names should always be lowercase
 - process: open and running file and application
 - RAM is divided into address
 
-- addresses are numbered in **hexadecimal**
+- addresses are numbered in **hexadecimal**, read `📌 hexadecimal`
 - the address at the user area the most top, is `0`
 - the address the the most bottom is `F`
 - and OS is in secondary memory, but also has a part in RAM that cannot be touched by other programs
@@ -60,7 +60,7 @@ and with 32bits, you can only 4GB of RAM
 
 ## 📌 Hexadecimal
 
-> numbering system that groups bits by 4, starting by the right <br>
+> numbering system that groups bits by **4**, starting by the right <br>
 > for example, `1111` = 15 = F
 
 - 1️⃣ divide bits by grouping them into 4, starting by the right
@@ -141,12 +141,17 @@ weight = 14
 - 🟰 `16 * 1000 * 1000 * 1000 * 1000 * 1000 * 1000`
 - 🟰 `16 Exa`
 - So if a RAM of `64bits`, we will have `16 Exa bytes` of capacity
-- This capacity of RAM does not exist yet, bc of limits of 👎🏻 temperature(heat) and 👎🏻 we do not have technology to divide RAM into `16 trillion addresses`
+- This capacity of RAM does not exist yet, bc of limits of
+- 👎🏻 temperature(heat)
+- and 👎🏻 we do not have technology to divide RAM into `16 trillion addresses`
 
 ```
 ⭐️ Exam Question
 Q: If you have 16GB of RAM and it is useable, how many bits will you be using for addressing RAM?
 A: You will have 64bits
+❓❓❓❓❓
+Q: If we have a word width of 1byte per address, how much data can we save on this RAM?
+A: 2^64bytes
 ```
 
 ## 📌 Computing principle
@@ -166,7 +171,8 @@ A: NO, maybe they have 2 Tera and 512 Giga.
 
 ## ✅ Word width
 
-- **Word width**: Capacity of each address in RAM
+> **Word width**: Capacity of each address in RAM
+
 - how much can we save in each address in a RAM
 - each adress capacity = `Word width`
 
@@ -176,7 +182,7 @@ A: NO, maybe they have 2 Tera and 512 Giga.
 
 ## 📌 Octal
 
-> numbering system that groups bits by 3, starting by the right
+> numbering system that groups bits by **3**, starting by the right
 
 - 1️⃣ create group of 3 bits
 - 2️⃣ apply weight `4, 2, 1`
@@ -201,8 +207,8 @@ original binary: 01010101
 - 🛠️ **Use of octal**
 - When we talk about the RAM, we talk about the **address in hexadecimal**
 - However, when we talk about the **data size inside the RAM, we use octal**
-- we are trying to make numbers shorter, from decimal to octal
-- `In address FA3h(address, hexadecimal), we are saving 125o(data size, octal)`
+- 👍🏻 we are trying to make numbers shorter, from decimal to octal
+- example: `In address FA3h(address, hexadecimal), we are saving 125o(data size, octal)`
 
 ```
 ⭐️ Exam question
