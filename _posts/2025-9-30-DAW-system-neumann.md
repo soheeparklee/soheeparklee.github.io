@@ -26,9 +26,11 @@ tags: [] # TAG names should always be lowercase
 - ⭐️ part of the computer that really works/caculates
 - use automatic gates `= logic gates`
 
-- 🏠 both `CU` and `ALU` are inside the **microprocessor, CPU**
+#### 🏠 both `CU` and `ALU` are inside the **microprocessor, CPU**
+
 - **CPU: Central Processing Unit**
 - CPU = `CU` + `ALU`
+- 💡 and the `MU` is inside the RAM
 
 - ✔️ **C - Main Memory Unit: MU**
 - = RAM
@@ -78,7 +80,11 @@ tags: [] # TAG names should always be lowercase
 
 ### ☑️ Internal blocks of CU
 
+[![Screenshot-2025-10-08-at-15-24-03.png](https://i.postimg.cc/WpZqpYLf/Screenshot-2025-10-08-at-15-24-03.png)](https://postimg.cc/6T9pY0Qd)
+
 #### ✔️ **(a) Clock**: block inside CU that creates the **slow** rythm/pace/signal in the computer
+
+[![Screenshot-2025-10-08-at-15-20-59.png](https://i.postimg.cc/j2xcTp3x/Screenshot-2025-10-08-at-15-20-59.png)](https://postimg.cc/7GR0MWyd)
 
 - tiny quartz crystal, looks like a tiny tiny cube
 - so tiny that we do not see with eyes
@@ -198,6 +204,8 @@ If IR is SUM B2 C3 E1
 - contains **real data**⭕️, not the address ❌
 - real data **coming from**, or **going to** the RAM
 
+[![Screenshot-2025-10-08-at-15-25-52.png](https://i.postimg.cc/SsFqgrTf/Screenshot-2025-10-08-at-15-25-52.png)](https://postimg.cc/Z9c1RrhW)
+
 #### ✔️ (a) Input Register A `InRA`
 
 - contains the first number that comes from the RAM
@@ -243,6 +251,8 @@ If IR is SUM B2 C3 E1
   - so sometimes the ventilator is connected to the interrupt flag
 
 ## 📌 (C) Memory Unit
+
+[![Screenshot-2025-10-08-at-15-26-46.png](https://i.postimg.cc/FFG5SN4C/Screenshot-2025-10-08-at-15-26-46.png)](https://postimg.cc/5jHRdcj8)
 
 #### ✔️ (a) Memory Selector
 
@@ -369,6 +379,8 @@ If IR is SUM B2 C3 E1
 41. `Operating Circuit` gets emptied
 42. logic gates will be turned off
 43. `Program Counter` will now point to the next instruction, instruction 2, and every step will be repeated.
+
+## 📌 Speed of the cycle
 
 - This is the only way of making things organized
 - without blocking the computer
