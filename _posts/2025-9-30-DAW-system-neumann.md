@@ -43,27 +43,27 @@ tags: [] # TAG names should always be lowercase
 
 - in a computer, process needs a **fixed rythm/pace**
 
-### ☑️ **What would happen if a computer did not have rythm?**
+### ❓ **What would happen if a computer did not have rythm?**
 
 - without fixed rythm/pace, computer would be in chaos
 - computer with no order would make an empty RAM
-- 1️⃣ Empty RAM
+- 1️⃣ **Empty RAM**
 - every process will take out information from RAM, but they will not have time to put information inside
-- 2️⃣ Unevenly distributed data among process
+- 2️⃣ **Unevenly distributed data among process**
 - The data will not be evenly shared among the processes
 - some process will take huge amounts, others will take very small prieces of data
-- 3️⃣ Chaotic peripherals
+- 3️⃣ **Chaotic peripherals**
 - example: mouse that works both ways(input, output)
 - the mouse is bi-peripheral(entering information and also showing information of where I am)
 - wo a Control Unit, peripherals will not work properly
 - when you don't want to click, it will click, when you want to move, it will not move
 
-### ☑️ **What happens when a computer has a rythm**
+### ❓ **What happens when a computer has a rythm**
 
 - computers need a rythm
-- 1️⃣ processes are organized
-- 2️⃣ peripherals worked the way as intended
-- 3️⃣ jobs get done
+- 1️⃣ **processes are organized**
+- 2️⃣ **peripherals worked the way as intended**
+- 3️⃣ **jobs get done**
 
 ### ☑️ Two rythms of computer
 
@@ -91,6 +91,9 @@ tags: [] # TAG names should always be lowercase
 - In the transition from `0` to `1`, that is one rythm
 - when the clock makes a transition from `0` to `1`, all the computer feels that transition
 
+- 💡 Clock can NEVER STOP
+- even if the computer is off, Clock does not stop
+
 - in which the moment the clock is `1`, is divided into portions
 - are the moments of `1` are split into portions
 - these small portions would be `micro-orders`(fast)
@@ -100,9 +103,7 @@ tags: [] # TAG names should always be lowercase
 #### ✔️ **(b) Sequencer**: chip that divides the clock `1` to `micro-order`
 
 - sequencer would create the `fast micro-order`
-- Clock and Sequencer would create the slow and fast rythms for the computer
-- Clock can NEVER STOP
-- even if the computer is off, Clock does not stop
+- ⭐️ _Clock_ and _Sequencer_ would create the slow and fast rythms for the computer
 
 ```
 Program: when applications are closed and are stored on secondary memory
@@ -122,7 +123,7 @@ Process: when application is open, and are on RAM
 - program counter does not tell me the instructions ❌
 - program counter tells me **where(address)** to go to find the instructions ⭕️
 
-#### 💡 **Indirect Addressing**
+#### ✅ **Indirect Addressing**
 
 This way of getting address is called: Indirect Addressing
 
@@ -147,7 +148,7 @@ in address A2h, I will find the next instructions
 
 #### ✔️ **(d)Instruction Register**
 
-- save the `4 portions` that I found with the help of PC on IR
+- save the `4 portions` that I found with the help of `PC` on `IR`
 - Instruction Register will contain the `4 portions` of instructions that I found on the RAM
 - IR has 4 parts, one per portion
 
@@ -177,7 +178,7 @@ If IR is SUM B2 C3 E1
 - then save the result in E1 in RAM
 ```
 
-#### 💡 32 bits, 64 bits computer
+#### ✅ 32 bits, 64 bits computer
 
 - In a computer of `32bits`, each of the addresses have `32bits`
 - 8 hexadecimal characters, example: `FFFFFFFFh`
@@ -227,7 +228,7 @@ If IR is SUM B2 C3 E1
 - however, if it is a special operation, state register will be on `example: caculation overflow!`
 - _example of special operation:_ `dividing by 0`, `5+5= 10 so we have to keep 0 and carry 1`
 
-#### ⭐️🚩 **We have 6 flags**
+#### 🚩 **We have 6 flags**
 
 - 1️⃣ `Flag S`: if sign flag is 1, result is negative number
 - 2️⃣ `Flag Z`: if zero flag is up, if the result is 0
@@ -264,7 +265,7 @@ If IR is SUM B2 C3 E1
 - `Memory Selector` goes up and down the RAM, and gets the information
 - and gives it to `MDR`
 - `MDR` is the delivery man of the data
-- takes the information **out** of the RAM
+- takes the information **in/out** of the RAM
 
 #### ✔️ (d) Read/Write `R/W`
 
@@ -353,18 +354,21 @@ If IR is SUM B2 C3 E1
 - 32. If there is no special operation, `State R` stays off
 - 33. Fragment 4, address to store the result travels through the `address bus`
 - 34. This address is shown to the `Memory Address Register`, to be validated/if RAM is free
-- 35. If valid, `Memory Selector` moves/reaches to the address
-- 36. In this state, RAM `R/W` changes to _write_
-- 37. The data from `ACCUM` travels through the `data bus`
-- 38. `Memory Data Register` gets the information from `ACCUM`
-  - So, `Memory Data Register` has two roles, giving and recieving data
-  - Until now, `Memory Data Register` has been always extracting information from the RAM
-  - but in step 38, recieves incoming information from the ALU
-- 39. `Memory Selector` reaches the address, then saves the data on the RAM
-- 40. Next step, `Memory Address Register` gets emptied
-- 41. `Operating Circuit` gets emptied
-- 42. logic gates will be turned off
-- 43. `Program Counter` will now point to the next instruction, instruction 2, and every step will be repeated.
+
+35. If valid, `Memory Selector` moves/reaches to the address
+36. In this state, RAM `R/W` changes to _write_
+37. The data from `ACCUM` travels through the `data bus`
+38. `Memory Data Register` gets the information from `ACCUM`
+
+- So, `Memory Data Register` has two roles, giving and recieving data
+- Until now, `Memory Data Register` has been always extracting information from the RAM
+- but in step 38, recieves incoming information from the ALU
+
+39. `Memory Selector` reaches the address, then saves the data on the RAM
+40. Next step, `Memory Address Register` gets emptied
+41. `Operating Circuit` gets emptied
+42. logic gates will be turned off
+43. `Program Counter` will now point to the next instruction, instruction 2, and every step will be repeated.
 
 - This is the only way of making things organized
 - without blocking the computer

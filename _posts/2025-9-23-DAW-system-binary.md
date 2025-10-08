@@ -75,21 +75,15 @@ from down to up, 33 = 1(quotient) and 00001
 
 - 1️⃣ Take the `Integer` part, transform into binary **but** discord all the `0s` at the left
 - no extra `0s`
-- 2️⃣ Take the Decimal part such as `0.xxx`, we** multiply by 2 five times**, but transforming the appearing `1s` into `0s`. You take the `0s` and the `1s` AFTER the `=` from up to down
-
-- add it to the first coded number
-- 3️⃣ The dot needs to be represented, the decimal part is always `5bits`. We are going to shift the decimal symbol(the dot) to the left until you leave it after the FIRST 1. AND you count how many steps you had to take. The number of steps need to be counted somehow.
-- ⭐️ In computing, we want things to always occupy the same number, this is a rule. NO variable length, always fixed length.
-- move the dot to the left until you reach the first number
-
-- add the number of jumps to 127
-
-- add 1 to the left if negative
-- or add 0 to the left if positie
-
-- 4️⃣ The number of steps, add 127 and then you code the result.
-- 5️⃣ We place that at the END of the number, leaving extra space in between, the `IEEE754` want the number to occupy 32bits
+- 2️⃣ Take the Decimal part `0.xxx`, then **multiply by 2 five times**, but discarding the appearing `1s` into `0s`. You take the `0s` and the `1s` AFTER the `=` from **up to down**
+- 👉🏻 now put it together with the coded integer + decimal part
+- 3️⃣ The dot needs to be represented, and the decimal part is always `5bits`. We are going to shift the decimal symbol(the dot) to the left until you leave it after the `FIRST 1`. AND you count how many steps/jumps you had to take. -Move the dot to the left until you reach the first number
+- ⭐️ In computing, we want things to always occupy the same number, this is a rule. NO variable length, always fixed length. So, we want the decimal to occupy `32 bits`.
+- 4️⃣ To the number of steps/jumps, add 127 and then you code the result.
+- 5️⃣ We place that at the END of the number, leaving extra space in between, the `IEEE754` want the number to occupy `32bits`
 - 6️⃣ In order to have `32bits`, if the number is negative, add a `1` at the left and BESIDES you light the sign flag. If the number is positive, add a `0`, so that it occupies the same number as a negative one.
+  - add 1 to the left if negative
+  - or add 0 to the left if positie
 - 7️⃣ We complete with `0s` in order for it to sum up to `32bits`
 
 ```
@@ -97,36 +91,55 @@ from down to up, 33 = 1(quotient) and 00001
 1️⃣ Integer part into binary
 17 = 00010001 ➡️ discord all the left 0s ➡️ 10001
 2️⃣ Decimal part, multiply by 2, five times
-0.33 * 2 = 0.66
-0.66 * 2 = 1.32
-0.32 * 2 = 0.64
-0.64 * 2 = 1.28
-0.28 * 2 = 0.56
+0.33 * 2 = 0.66 ➡️ 0
+0.66 * 2 = 1.32 ➡️ 1
+0.32 * 2 = 0.64 ➡️ 0
+0.64 * 2 = 1.28 ➡️ 1
+0.28 * 2 = 0.56 ➡️ 0
 👉🏻 01010
 then add to 17
 👉🏻 10001.01010
-
+3️⃣ move the . to after the first number, count the jumps
 👉🏻 1.000101010
 count the jumps = 4
-
+4️⃣ Add 127 to the number of jumps
 4 + 127 = 131
-change 131 to binary 10000011
-add the number 10000011 to the end
+👉🏻 change 131 to binary  =  10000011
+5️⃣ add the number 10000011 to the end with a space in between
+👉🏻 1.000101010 ---space--- 10000011
+6️⃣ If number is negative, add 1, if positive, add 0
+👉🏻 11000101010 ---space--- 10000011 (19 digits)
+7️⃣ Fill the space w 0s, so it occupys 32 bits
+11000101010 0000000000000 10000011
+----------- ------------- --------
+1(neg) + 17      13 0s     4jumps + 127
 
+👉🏻11000101010000000000000010000011
+```
 
-3️⃣
-4️⃣
-5️⃣
-6️⃣
-7️⃣
-
-1️⃣
-2️⃣
-3️⃣
-4️⃣
-5️⃣
-6️⃣
-7️⃣
+```
+❓ code -28.46 to binary
+1️⃣ integer: 28 = 11100
+2️⃣ decimal: multiply by 2 five times
+0.46 * 2 = 0.92
+0.92 * 2 = 1.84
+0.84 * 2 = 1.68
+0.68 * 2 = 1.36
+0.36 * 2 = 0.72
+👉🏻 01110
+👉🏻 11100.01110
+3️⃣ move the .
+👉🏻 1.110001110
+steps: 4 times
+4️⃣ add 127 to steps
+4 + 127 = 131 = 10000011
+5️⃣ add the number to the end with space
+👉🏻 1.110001110 ---space--- 10000011
+6️⃣ neg: add 1, pos: add 0
+👉🏻 11110001110 ---space--- 10000011(19digits)
+7️⃣ Fill the space w 0s
+11110001110 0000000000000 10000011
+              (13 0s)
 ```
 
 - all the numbers that use this protocals are called `floats` since they are stored in the FPU
