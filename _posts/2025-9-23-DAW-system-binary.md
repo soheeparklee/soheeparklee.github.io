@@ -45,11 +45,12 @@ from down to up, 33 = 1(quotient) and 00001
 > 🚩 Sign Flag
 
 - 1️⃣ Change the positive `Integer` into binary
-- 2️⃣ Add a `1` at the very left, this is a special `1`
+- 2️⃣ Make the number into 8bits
+- 3️⃣ Add a `1` at the very left, this is a special `1`
 - ⭐️ **Sign flag:** special `1` to indicate that this `Integer` is a negative Integer
 - This special `1` is stored in a different place
 - sign flag means this `Integer` is a negative
-  🚩 **Flags** are electric signals stored in specific places for special circumstances
+- 🚩 **Flags** are electric signals stored in specific places for special circumstances
 
 - If the flag is off, you add it as part of the number
 - If the flag in on, you turn it into a negative symbol
@@ -394,7 +395,7 @@ Q: How many bits a 5 minute video have that has resolution of 1920\*1090 full co
 - Timestamp: `created_date`, `last_modified_date`
 
   - `owner of the file`
-  - `size of the file`;lkj
+  - `size of the file`
   - `extension of the file`
   - `permissions over the file`, read/write/execute permissions, what you can do with the file
   - `access control`, who can access the file

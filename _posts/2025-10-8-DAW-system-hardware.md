@@ -139,6 +139,8 @@ tags: [] # TAG names should always be lowercase
 - most of the sockets these days have a levering structure
 - and the levering structure helps the insertion of the micro-processor to the motherboard
 
+[![IMG-7572.jpg](https://i.postimg.cc/qR6LGv8d/IMG-7572.jpg)](https://postimg.cc/WFjgNjW9)
+
 - So we have `ZIF PGA` and `ZIF LGA`
 
 ❓ **How do we position the micro processor on the motherboard?**

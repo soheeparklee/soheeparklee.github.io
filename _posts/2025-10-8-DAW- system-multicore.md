@@ -1,5 +1,5 @@
 ---
-title: 1.11 Microprocessor: Multicoring and Multithreading
+title: 1.11 Microprocessor- Multicore and Multithreading
 categories: [DAW bilingual, Computer System]
 tags: [] # TAG names should always be lowercase
 ---
