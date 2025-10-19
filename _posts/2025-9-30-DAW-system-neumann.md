@@ -329,50 +329,48 @@ If IR is SUM B2 C3 E1
 
 > how does a computer work?
 
-- 1. `Clock` enters the `Sequencer`
-- 2. `Sequencer` creates the micro-orders
-- 3. `Clock` and micro-orders travels through the `control bus`
-- 4. A user would open a program
-- 5. Program is converted into a process
-- 6. The process is fragmented into fragments, and stored on the RAM, by `OS`
-  - (does not go through MAR/MS/MDR/R/W)
-- 7. In this state, RAM `R/W` would be in _write_
-- 8. `Program Counter` is loaded with the address of the first instruction
-- 9. This address travels through the `address bus`
-- 10. This address is shown to the `Memory Address Register`, to be validated/if RAM is free
-- 11. If valid, `Memory Selector` moves to the address
-- 12. In this state, RAM `R/W` would change to _read_
-- 13. The 4 portions of the instruction is given to `Memory Data Register`
-- 14. The 4 portions of data travel through the `data bus`
-- 15. They arrive and are stored to the `Instruction Register`
-- 16. Fragment 1 travels through `data bus` and is given to `Operating Circuit` that contains the logic gates, open gates are turned on
-- 17. Fragment 2, the address of the first number, travels through the `address bus`
-- 18. This address is shown to the `Memory Address Register`, to be validated/if RAM is free
-- 19. If valid, `Memory Selector` moves/reaches to the address
-- 20. Read the data in the address, `Memory Data Register` gets the data
-- 21. The data travels through the `data bus`
-- 22. The data is given to `Input Register A`
-- 23. Fragment 3, the address of the second number, travels through the `address bus`
-- 24. This address is shown to the `Memory Address Register`, to be validated/if RAM is free
-- 25. If valid, `Memory Selector` moves/reaches to the address
-- 26. Read the data in the address, give the second number to `Memory Data Register`
-- 27. `Memory Data Register` sends the data travels through the `data bus`
-- 28. The data is given to `Input Register B`
-- 29. `Input Register A` and `Input Register B` give the data to `Operating Circuit`
-- 30. `Operating Circuit` does the caculation
-- 31. `Operating Circuit` gives the result to the `ACCUM`
-- 32. If there is no special operation, `State R` stays off
-- 33. Fragment 4, address to store the result travels through the `address bus`
-- 34. This address is shown to the `Memory Address Register`, to be validated/if RAM is free
-
+1. `Clock` enters the `Sequencer`
+2. `Sequencer` creates the micro-orders
+3. `Clock` and micro-orders travels through the `control bus`
+4. A user would open a program
+5. Program is converted into a process
+6. The process is fragmented into fragments, and stored on the RAM, by `OS`, This does not go through MAR/MS/MDR/R/W
+7. In this state, RAM `R/W` would be in _write_
+8. `Program Counter` is loaded with the address of the first instruction
+9. This address travels through the `address bus`
+10. This address is shown to the `Memory Address Register`, to be validated/if RAM is free
+11. If valid, `Memory Selector` moves to the address
+12. In this state, RAM `R/W` would change to _read_
+13. The 4 portions of the instruction is given to `Memory Data Register`
+14. The 4 portions of data travel through the `data bus`
+15. They arrive and are stored to the `Instruction Register`
+16. Fragment 1 travels through `data bus` and is given to `Operating Circuit` that contains the logic gates, open gates are turned on
+17. Fragment 2, the address of the first number, travels through the `address bus`
+18. This address is shown to the `Memory Address Register`, to be validated/if RAM is free
+19. If valid, `Memory Selector` moves/reaches to the address
+20. Read the data in the address, `Memory Data Register` gets the data
+21. The data travels through the `data bus`
+22. The data is given to `Input Register A`
+23. Fragment 3, the address of the second number, travels through the `address bus`
+24. This address is shown to the `Memory Address Register`, to be validated/if RAM is free
+25. If valid, `Memory Selector` moves/reaches to the address
+26. Read the data in the address, give the second number to `Memory Data Register`
+27. `Memory Data Register` sends the data travels through the `data bus`
+28. The data is given to `Input Register B`
+29. `Input Register A` and `Input Register B` give the data to `Operating Circuit`
+30. `Operating Circuit` does the caculation
+31. `Operating Circuit` gives the result to the `ACCUM`
+32. If there is no special operation, `State R` stays off
+33. Fragment 4, address to store the result travels through the `address bus`
+34. This address is shown to the `Memory Address Register`, to be validated/if RAM is free
 35. If valid, `Memory Selector` moves/reaches to the address
 36. In this state, RAM `R/W` changes to _write_
 37. The data from `ACCUM` travels through the `data bus`
 38. `Memory Data Register` gets the information from `ACCUM`
 
-- So, `Memory Data Register` has two roles, giving and recieving data
-- Until now, `Memory Data Register` has been always extracting information from the RAM
-- but in step 38, recieves incoming information from the ALU
+    - So, `Memory Data Register` has two roles, giving and recieving data
+    - Until now, `Memory Data Register` has been always extracting information from the RAM
+    - but in step 38, recieves incoming information from the ALU
 
 39. `Memory Selector` reaches the address, then saves the data on the RAM
 40. Next step, `Memory Address Register` gets emptied

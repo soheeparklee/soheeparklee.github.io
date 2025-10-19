@@ -31,6 +31,7 @@ tags: [] # TAG names should always be lowercase
 - When there is too much electricity, the whole electricity goes off
 - does not like too much `1s`
 - 🛠️ Used in CRC code
+- 🛠️ Used in salt
 
 ## ✅ NOT
 

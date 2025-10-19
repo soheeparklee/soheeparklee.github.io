@@ -111,6 +111,8 @@ result: 001101011010 + 0100
 
 #### ✔️ How does CRC work
 
+[![Screenshot-2025-10-19-at-13-58-11.png](https://i.postimg.cc/nhckS8wM/Screenshot-2025-10-19-at-13-58-11.png)](https://postimg.cc/QHw1VzDr)
+
 [![Screenshot-2025-09-24-at-16-03-51.png](https://i.postimg.cc/tCqB6Tz6/Screenshot-2025-09-24-at-16-03-51.png)](https://postimg.cc/mhn3fTJZ)
 
 - CRC = Initial sequence + `Polynomial`
