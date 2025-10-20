@@ -1,5 +1,5 @@
 ---
-title: 1.12 Hardware specifications
+title: 1.12 Hardware specifications_1
 categories: [DAW bilingual, Computer System]
 tags: [] # TAG names should always be lowercase
 ---
@@ -38,14 +38,14 @@ tags: [] # TAG names should always be lowercase
 - 🛠️ `BTX` is still used in servers
 - so server rooms are very cold
 - but `ATX` is more preferred for personal computer
-- ↔️ the distribution of
+- ↔️ the distribution of heat
 
 ✔️ There were more form factors, like `DTX`, but failed to become commercial
 
 #### 3️⃣ **IXT**
 
-- Model based on ATX, without so many extension slots
-- No extension slot ❌
+- Model based on ATX, without so many expansion slots
+- No expansion slot ❌
 - example: we cannot add `ecography card` to the phone
 
 ```
@@ -157,8 +157,8 @@ tags: [] # TAG names should always be lowercase
 ## 📌 B. RAM Memory(Main Memory)
 
 - ✔️ Two ways of distinguishing RAM
-- depending on physical structure
-- depending on internal technology
+  - depending on physical structure
+  - depending on internal technology
 
 ### ☑️ Three types of RAM depending on the physical structure
 
