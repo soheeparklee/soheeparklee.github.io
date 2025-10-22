@@ -4,6 +4,12 @@ categories: [DAW bilingual, Computer System]
 tags: [] # TAG names should always be lowercase
 ---
 
+- ⭐️ concept of multicore, multi thread
+- ⭐️ FSB, BSB
+- ⭐️ memory controller
+- ⭐️ transport bus
+- ⭐️ GPU
+
 ## ✅ Multicore
 
 [![image.png](https://i.postimg.cc/YCgKPFJJ/image.png)](https://postimg.cc/189jn8RH)

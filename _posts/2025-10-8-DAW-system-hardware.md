@@ -4,6 +4,9 @@ categories: [DAW bilingual, Computer System]
 tags: [] # TAG names should always be lowercase
 ---
 
+- ⭐️ how do you call the mother board that the RAM is perpendicular...
+- ⭐️ how do you call the name of RAM that is....
+
 ## 📌 A. Motherboard, Printed Circuit Board
 
 > main board of the computer <br>

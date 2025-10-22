@@ -4,6 +4,11 @@ categories: [DAW bilingual, Computer System]
 tags: [] # TAG names should always be lowercase
 ---
 
+- ⭐️ Definition of computer system
+- ⭐️ Main chip to save data on computer
+- ⭐️ 0.5v = 0
+- ⭐️ 5v = 1
+
 ## ✅ System
 
 > **set of connected elements**, with the purpose of **managing information automatically**

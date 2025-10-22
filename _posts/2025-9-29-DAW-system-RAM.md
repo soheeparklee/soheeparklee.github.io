@@ -4,6 +4,12 @@ categories: [DAW bilingual, Computer System]
 tags: [] # TAG names should always be lowercase
 ---
 
+- ⭐️ a RAM that ends in 8Fs or 16Fs, there will be one of two models
+- ⭐️ how many bits are we using?
+- ⭐️ what is the maximum capacity?
+- ⭐️ give one address of RAM in binary, we have data xxx.
+- ⭐️ address/positions should be transformed into hexadecimal, data into octal
+
 ## ✅ RAM
 
 > storage of **open** files and applications = processes

@@ -4,6 +4,19 @@ categories: [DAW bilingual, Computer System]
 tags: [] # TAG names should always be lowercase
 ---
 
+- ⭐️ one exercise of ECC on paper
+- ⭐️ one exercise on CRC, how to use polynomial, and how to get checksum
+- ⭐️ how CRC works
+- ⭐️ what is hashing
+- ⭐️ what is salt, pepper
+- ⭐️ what is firewall
+- ⭐️ what is DMZ
+- ⭐️ what is mirroring
+- ⭐️ three types of clouding, what is the idea of contracting a compnay for...
+- ⭐️ 5' 9s availability: How do you give to company that has...
+- ⭐️ UPS: what is the name of energy not stopped...
+- ⭐️ DPC: how do you call these centers that...
+
 ## ☑️ ECC and CRC
 
 - 🛠️ protection for transport/download

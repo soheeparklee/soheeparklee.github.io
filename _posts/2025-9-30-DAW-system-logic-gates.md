@@ -4,6 +4,8 @@ categories: [DAW bilingual, Computer System]
 tags: [] # TAG names should always be lowercase
 ---
 
+- ⭐️ not in exam
+
 ## 📌 Table
 
 - `2 inputs` and `1 outcome`

@@ -4,6 +4,12 @@ categories: [DAW bilingual, Computer System]
 tags: [] # TAG names should always be lowercase
 ---
 
+- ⭐️ change decimal number into binary
+- ⭐️ look at ASCII table and change short text message into binary
+- ⭐️ difference between raster and vector
+- ⭐️ video question : need to write the formula and write the values
+- ⭐️ what kind of pictures in video P/I(pictures that need to be recorded)/B(make up pics to make video more realistic)
+
 ## ✅ Positive Integer
 
 - Integer: 8bits

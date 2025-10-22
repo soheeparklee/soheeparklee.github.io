@@ -1,5 +1,5 @@
 ---
-title: Structure of Operating System
+title: 2.4 Structure of Operating System
 categories: [DAW bilingual, Computer System]
 tags: [] # TAG names should always be lowercase
 ---
@@ -80,6 +80,9 @@ tags: [] # TAG names should always be lowercase
   - as kernel is working, you can run it wo so many user service
 
 - 👀 Linux is hybrid structure
+
+- Best structure of OS
+- So all the OS since year 2011 more or less, are evolving towards hybrid
 
 ## ⭐️ Exam Questions
 

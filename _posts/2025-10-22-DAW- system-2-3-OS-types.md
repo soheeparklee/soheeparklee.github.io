@@ -1,5 +1,5 @@
 ---
-title: Types of Operating Systems
+title: 2.3 Types of Operating Systems
 categories: [DAW bilingual, Computer System]
 tags: [] # TAG names should always be lowercase
 ---

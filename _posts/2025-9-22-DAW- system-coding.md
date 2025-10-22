@@ -4,6 +4,12 @@ categories: [DAW bilingual, Computer System]
 tags: [] # TAG names should always be lowercase
 ---
 
+- ⭐️ concept of coding and decoding
+- ⭐️ combination of both: codec
+- ⭐️ coding: make into binary
+- ⭐️ VLC, FLC difference
+- ⭐️ short questions
+
 ```
 ⭐️ What kind of coding techniques are there?
 ```
