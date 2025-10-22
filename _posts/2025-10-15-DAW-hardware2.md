@@ -197,8 +197,6 @@ If the component is outside the mother board ➡️ external
 - 2️⃣ Slow 🐢
 - plates have to rotate, move header to get data
 
-<!-- img -->
-
 - the 0, 1s in HDDs are **physical**
 - surface of HDD would have hills and valleys
 - valley trap the lazer
@@ -206,7 +204,7 @@ If the component is outside the mother board ➡️ external
 - trap: 0
 - reflection: yes light, 1
 
-<!-- img -->
+[![IMG-7632.jpg](https://i.postimg.cc/Vv4Qh2qX/IMG-7632.jpg)](https://postimg.cc/hQJ5zy3G)
 
 ```
 ❓ What would happen if you scratch a HDD?

@@ -15,23 +15,44 @@ tags: [] # TAG names should always be lowercase
 
 ### ☑️ OS has four functions
 
+[![image.png](https://i.postimg.cc/TPy9tXzP/image.png)](https://postimg.cc/zLrKf4Xm)
+
 #### 1️⃣ File management, gestion de archivos
 
 - managed closed files only, saved in secondary memory
 - as OS and closed files are both in secondary memory, this is an easy job for the OS
 
+- ↔️ You can have a computer without HD, so File management is little important job of OS
+
 #### 2️⃣ RAM management 🟰 Memory management
 
 - when file is opened, and uploaded on the RAM
 - upload on RAM and called process
+- ↔️ You cannot have a computer w/o RAM, super duper important job of OS
 
 #### 3️⃣ Process Management
 
 - how to distribute timing among the different processes
+- ↔️ super duper important job of OS
 
 #### 4️⃣ Interruptions management
 
 - when processes run, and temperature becomes too hot, OS would interfere
+- As I/O Manager
+
+- ↔️ You can have a computer w/o peripherals, so Interruptions management is little important job of OS
+
+#### 👉🏻 So in hybrid stucture of the OS...
+
+- See 2.4 structure of OS
+
+- That is the reason why in hybrid stucture of the OS,
+- the **kernel** does two most important functions
+  - RAM management
+  - Process Management
+- and the **user server** does the extra
+  - File management
+  - Interruptions management
 
 ## ✅ Levels of software
 
@@ -63,60 +84,6 @@ tags: [] # TAG names should always be lowercase
 ❓ How do you call the SW that acts as an interface?
 - System/Base SW
 ```
-
-## ✅ Timeline of Operating Systems
-
-- ✔️ **EXEC**
-- appeared in '60s
-- improved into `Microsoft` and `UNIX`
-
-- ✔️ **MS-DOS**
-- Microsoft Disk OS
-- first OS created by Microsoft
-- used commands
-- not visual
-- very technical, not for standard users
-
-- ✔️ **Windows**
-- Microsoft created OS that can reach standard users
-- has easy-to-understand windows to run commands
-- visual
-
-- ✔️ **Windows 3.11**
-- first digital barrier
-- 💡 _digital barrier_: digital development that breaks society in two groups
-- divided ppl into ppl with windows 3.11 and ppl without
-- if you had windows 3.11, you were considered high-tech
-- ppl without windows 3.11 were considered low level tech professional
-
-- ✔️ **More Window OS**
-- Windows 95, 98, 2000, Millenium
-- Effect 2000
-- With `2000 and Windows Millenium`, ppl started feeling that they are spending too much money on Microsoft
-- bc ppl had to buy two OS in one year, as Microsoft was releasing two per year
-- Windows vista: very visual, but very slow
-- Windows XP: very good OS
-- Windows 7: very bad version
-- Windows 8: very bad version
-- Windows 10: perfct
-- Windows 11:
-
-- Microsoft was releasing every year a new OS
-- and collapsing the market with too many produts in a very short time
-- they were trying to sell so much
-
-- ↔️ In the meanwhile, UNIX appereared
-- Unix improved into Linux
-- Linux was free, more stable(no new version every year), not changing for a long time
-- So technician changed to Linux, while standard public stayed w Windows
-
-## 💡 Tech rules
-
-💡 **Rule number one.**
-
-- Technicians should NOT create digital barriers
-- should not break society into classes
-- when technology should be global
 
 ## ✅
 
