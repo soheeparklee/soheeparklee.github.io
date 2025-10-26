@@ -5,7 +5,7 @@ tags: [] # TAG names should always be lowercase
 ---
 
 - ⭐️ Definition of computer system
-- ⭐️ Main chip to save data on computer
+- ⭐️ Main chip to save data on computer: condensator
 - ⭐️ 0.5v = 0
 - ⭐️ 5v = 1
 
@@ -18,7 +18,7 @@ tags: [] # TAG names should always be lowercase
 
 ## ✅ Electricity
 
-> a **current** that gives energy tot he computer <br>
+> a **current** that gives energy to the computer <br>
 
 - for a regular computer, it is an alternate current
 - `220v` is the necessary voltage
@@ -26,7 +26,7 @@ tags: [] # TAG names should always be lowercase
 
 ## ✅ Power supply
 
-> the device to lower the electricity level
+> the device to **lower** the electricity level
 
 - transform the wave into ➡️ square wave
 - top value: `1`
@@ -39,31 +39,37 @@ tags: [] # TAG names should always be lowercase
 - and there is no intermediate value.
 - 👉🏻 Thus, computer works in binary
 
-## ✅ Microcomputing system
+## ✅ Micro-computing system
 
-> computing system that works in binary with a power supply of values between `0.5v` and `5v`
+> computing system that works in **binary** with a power supply of values between `0.5v` and `5v`
 
 - ✔️ **Condensators**
-- Internally, information is stored in chips called condensators
+
+[![Screenshot-2025-10-26-at-12-15-00.png](https://i.postimg.cc/WbLpd6jG/Screenshot-2025-10-26-at-12-15-00.png)](https://postimg.cc/MX5J4BnH)
+
+- Internally, information is stored in **chips** called condensators
 - condensators store the voltage
 
 - ✔️ **Transistors**
+
+[![Screenshot-2025-10-26-at-12-15-37.png](https://i.postimg.cc/RCf4x6fX/Screenshot-2025-10-26-at-12-15-37.png)](https://postimg.cc/HjpfQL6y)
+
 - 3 pins
-- distribute the voltage stored in condensators to other elements
+- **distribute** the voltage stored in condensators to other elements
 - or block the voltage from other elements
 
 - ✔️ **Integrated circuit**
-- place the transitors next to each other
+- if you place many transitors next to each other, it becomes an `integrated circuit`
 - make the computer smaller
 
 - ✔️ **GLSI computer**
-- Giga Large Scale of Integration
-- maximum integration
-- ❓❓❓❓❓ limit is a matter of the temperature ⭕️, not of dimensions ❌
+- `Giga Large Scale of Integration`
+- maximum integration of transistors
+- the limit of creating a GLSI is a matter of the temperature ⭕️, not of dimensions ❌
 - when we have a GLSI computer, we are talking about the _micro processors_
 
 - ✔️ **Micro processors**
-- the brain of the computer made by transistors at the maximum scale of integration called a GLSI
+- the brain of the computer made by transistors at the maximum scale of integration called a `GLSI`
 
 ## 💡 How to solve the problem of temperature
 
@@ -73,7 +79,7 @@ tags: [] # TAG names should always be lowercase
 - take the heat out of the componenets
 - 2️⃣ use a fan
 - 3️⃣ use a heatsink
-- like a corridor
+  - like a corridor
 - 4️⃣ liquid refrigeration
 - use liquid to refresh the PC
 - 5️⃣ nitrogen refrigeration
@@ -89,18 +95,18 @@ tags: [] # TAG names should always be lowercase
 > dictionary to understand `0s` and `1s`
 
 - when we transmit `0s` and `1s`, we are transmitting a **code**
-- networking: connecting computers in a network
+- **networking**: connecting computers in a network
 - in order to network, we need a `dictionary` that transforms the sequence of `0s` and `1s` into smth human-readable
 - ❓❓❓❓❓ the code is the `dictionary` that helps humans translate binary into human language, and visa versa.
 
 ## ✅ Coding
 
-> coding: transform reality ➡️ binary <br>
-> decoding: transform binary ➡️ reality <br>
+> coding: transform `reality ➡️ binary` <br>
+> decoding: transform `binary ➡️ reality` <br>
 
 ## ✅ Codec
 
-- formed by the coder and the decoder
+- formed by the **coder** and the **decoder**
 
 - ✔️ **audio codec**: binary ➡️ sound
 - located in the sound card
@@ -114,7 +120,7 @@ tags: [] # TAG names should always be lowercase
 
 ## ✅ Driver
 
-> program that installs new codecs and other elements, <br>
+> program that **installs new codecs** and other elements, <br>
 > either brand new or better ones into the computer <br>
 
 - Installing a driver improves the capability of a computer

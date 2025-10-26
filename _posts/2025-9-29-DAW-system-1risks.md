@@ -4,6 +4,9 @@ categories: [DAW bilingual, Computer System]
 tags: [] # TAG names should always be lowercase
 ---
 
+- ⭐️ know difference between virus/trojan/worms..
+- ⭐️ how do you call that malware that spys your computer...
+
 ## ✅ Hardware, Software, Firmware, Malware, Ransomware, Openware
 
 - ✔️ **Hardware**: physical components of a system

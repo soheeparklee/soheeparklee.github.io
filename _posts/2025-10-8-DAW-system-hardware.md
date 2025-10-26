@@ -168,15 +168,17 @@ tags: [] # TAG names should always be lowercase
 - `RAM` comes in cards
 - 🛍️ When we buy a RAM, we have to look at the **slots** of the mother board
 
-  - if same two sets ➡️ SIMM
-  - different size of sets, more than two sets ➡️ DIMM
-  - need to be encapsulated ➡️ RIMM
+[![image.png](https://i.postimg.cc/q77mYbvf/image.png)](https://postimg.cc/YvJfLxF8)
+
+- if same two sets ➡️ SIMM
+- different size of sets, more than two sets ➡️ DIMM
+- need to be encapsulated ➡️ RIMM
 
 #### 1️⃣ **SIMM**
 
 > Single Inlay Memory Module
 
-[![image.png](https://i.postimg.cc/q77mYbvf/image.png)](https://postimg.cc/YvJfLxF8)
+[![Screenshot-2025-10-26-at-12-10-01.png](https://i.postimg.cc/Z5Xdnvff/Screenshot-2025-10-26-at-12-10-01.png)](https://postimg.cc/fVjLgyQX)
 
 - always 2 sets of pins
 - two sets of pins of the same size
@@ -288,6 +290,8 @@ high bandwidth ⬆️
 
 > Double Data Rate RAM
 
+[![Screenshot-2025-10-26-at-12-11-28.png](https://i.postimg.cc/RVNhtVnx/Screenshot-2025-10-26-at-12-11-28.png)](https://postimg.cc/dLcJPFB5)
+
 - `Double`: you can have **two reads or writes** at the same time
 - the speed would be same `133MHz`, but you can read/write 2 times
 - 🐇 more faster than SDRAM
@@ -325,6 +329,8 @@ A: speed would be 133MHz * 32
 - 👍🏻 Encapsulated, fast, good ventilation
 
 #### 💡 SO-DIMMS
+
+[![Screenshot-2025-10-26-at-12-11-58.png](https://i.postimg.cc/NMsfjgwd/Screenshot-2025-10-26-at-12-11-58.png)](https://postimg.cc/94kjxH09)
 
 - DIMM for laptops
 - smaller DIMM for laptops
@@ -429,7 +435,9 @@ A: speed would be 133MHz * 32
 
 #### ✔️ Platform controller HUB(PCH)
 
-> South bridge works more, needs ventilation, change name to PCH
+> South bridge works more, needs ventilation, change name to **PCH**
+
+[![Screenshot-2025-10-26-at-12-08-56.png](https://i.postimg.cc/QxXkZ7PJ/Screenshot-2025-10-26-at-12-08-56.png)](https://postimg.cc/DmMbqS7S)
 
 - and the south bridge gets all the job of the traditional north bridge
 - and does all the work

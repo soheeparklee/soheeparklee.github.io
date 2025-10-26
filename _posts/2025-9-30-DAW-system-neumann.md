@@ -4,6 +4,12 @@ categories: [DAW bilingual, Computer System]
 tags: [] # TAG names should always be lowercase
 ---
 
+- ⭐️ fill in the gaps of the image
+- ⭐️ all the names, and fill in the blanks
+- ⭐️ fill in blanks of description and fill the blanks
+- ⭐️ IR: what is inside each 4 portions, how it works
+- first: operation, second: first num, third...
+
 ## ✅ Neumann Architecture
 
 > explains how the computer works inside <br>

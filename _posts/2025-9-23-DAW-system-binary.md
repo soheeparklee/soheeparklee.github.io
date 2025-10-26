@@ -9,6 +9,11 @@ tags: [] # TAG names should always be lowercase
 - ⭐️ difference between raster and vector
 - ⭐️ video question : need to write the formula and write the values
 - ⭐️ what kind of pictures in video P/I(pictures that need to be recorded)/B(make up pics to make video more realistic)
+- ⭐️ audio types .mp3
+- ⭐️ video type .mp4
+- ⭐️ forking: when system gets split into several branches
+- ⭐️ UTF-8: it means multi lingual and it is VLC
+- ⭐️ CJK: chinese, japanese, korean, UTF-8 covers CJK
 
 ## ✅ Positive Integer
 
@@ -177,6 +182,8 @@ steps: 4 times
 
 #### ☑️ Extension of ASCII, `UTF-8`
 
+[![Screenshot-2025-10-26-at-12-19-41.png](https://i.postimg.cc/kGZbSVJg/Screenshot-2025-10-26-at-12-19-41.png)](https://postimg.cc/4H6ykxHD)
+
 - `UTF-8` is an extension of the `extended ASCII`
 - also known as **Unicode**
 - bc it is to be used with every language int he world
@@ -184,7 +191,7 @@ steps: 4 times
 - it means `multiple of 8bits` per symbol
 - Some symbols are `8bits(1byte)` like `ASCII`
 - Some symbols are `16bits(2bytes)` like `Greek, Cyrilic, Hebew, Arab...`
-- Some symbols are `24bits(3bytes)` like `Korean`
+- Some symbols are `24bits(3bytes)` like **CJK**, `Korean`
 - Some symbols are `32bits(4bytes)` like `Persian, Fenician, old languages and ALSO math`
 
 - Each language, if possible uses its own version of `ASCII`
@@ -193,6 +200,8 @@ steps: 4 times
 ## ✅ Image
 
 ### ☑️ Two types of pictures
+
+[![Screenshot-2025-10-26-at-12-17-07.png](https://i.postimg.cc/tC2cKprV/Screenshot-2025-10-26-at-12-17-07.png)](https://postimg.cc/HV835D1p)
 
 #### 1️⃣ Raster
 
@@ -356,6 +365,8 @@ Q: How many bits do you need for an orchestra for a 4 minute song, with 300 ampl
 - fps ⬆️ better quality of video ⬆️
 
 #### ☑️ Prediction in video
+
+[![Screenshot-2025-10-26-at-12-18-18.png](https://i.postimg.cc/G3zz2zvN/Screenshot-2025-10-26-at-12-18-18.png)](https://postimg.cc/HjcbvwZ4)
 
 - in video use prediction
 - as some pictures are important,

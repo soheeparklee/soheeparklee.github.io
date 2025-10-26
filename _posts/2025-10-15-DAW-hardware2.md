@@ -190,6 +190,8 @@ If the component is outside the mother board ➡️ external
 
 > Hard Disk Drive
 
+[![Screenshot-2025-10-26-at-12-02-32.png](https://i.postimg.cc/0yzkztFC/Screenshot-2025-10-26-at-12-02-32.png)](https://postimg.cc/CRVTt4FZ)
+
 - 1️⃣ has plates
 - have a roation system
 - when it turns, makes noise/sound
@@ -293,6 +295,8 @@ PATA
 
 [![Screenshot-2025-10-20-at-16-14-49.png](https://i.postimg.cc/MGTD4PV0/Screenshot-2025-10-20-at-16-14-49.png)](https://postimg.cc/872Mfbys)
 
+[![image.png](https://i.postimg.cc/Pxx2HwPn/image.png)](https://postimg.cc/t1Kht73B)
+
 - IDE is not actively in use anymore, disappearing trend
 
 - 👎🏻 IDE `40 pin connector` for data(gray color) is too big, too thick
@@ -359,6 +363,8 @@ SATA means speed/bandwidth in 2.5 SATA SSD
 💡 But as the 2.5 SATA SSD connector has the same speed as SATA connector for HDD, they call it SATA wires
 ```
 
+[![Screenshot-2025-10-26-at-12-06-32.png](https://i.postimg.cc/Z5HQhZVH/Screenshot-2025-10-26-at-12-06-32.png)](https://postimg.cc/jDWcHVVn)
+
 - very compatible w any computer
 - 2.5 means size of the disk
 - SATA means speed, bandwidth
@@ -375,6 +381,8 @@ SATA means speed/bandwidth in 2.5 SATA SSD
 
 #### 2️⃣ M2 SATA SSD
 
+[![Screenshot-2025-10-26-at-12-06-59.png](https://i.postimg.cc/L5jyQMJg/Screenshot-2025-10-26-at-12-06-59.png)](https://postimg.cc/645LTgLB)
+
 - speed: again SATA speed, like `2.5 SATA SSD`
 - size is diffeent than `2.5 SATA SSD`
 - in `M2`, `2` means `22mm`, so narrower and longer
@@ -388,6 +396,8 @@ SATA means speed/bandwidth in 2.5 SATA SSD
 
 > Non-volatile Memory **Express** SSD
 
+[![Screenshot-2025-10-26-at-12-07-24.png](https://i.postimg.cc/9QLLnbQy/Screenshot-2025-10-26-at-12-07-24.png)](https://postimg.cc/XryKZwFv)
+
 - express: fast
 - not SATA speed anymore, faster than SATA speed
 - size is also small
@@ -399,6 +409,8 @@ SATA means speed/bandwidth in 2.5 SATA SSD
 - you cannot just connect SSD, need special connector, special help
 
 #### 4️⃣ PCI-Express SSD
+
+[![Screenshot-2025-10-26-at-12-07-52.png](https://i.postimg.cc/tRF2jpgn/Screenshot-2025-10-26-at-12-07-52.png)](https://postimg.cc/0r2pGgD9)
 
 - one solid disk that you can insert in a `PCI expansion slot`
 - do not need connector
