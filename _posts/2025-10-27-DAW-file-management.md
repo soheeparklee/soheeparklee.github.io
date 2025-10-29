@@ -401,25 +401,3 @@ NTFS would only boot windows
 
 - For using transactional file, you need a special text editor, specific applications
 
-## ✅
-
-#### 1️⃣
-
-#### 2️⃣
-
-#### 3️⃣
-
-#### 4️⃣
-
-- 1️⃣
-- 2️⃣
-- 3️⃣
-- 4️⃣
-  👍🏻
-  👎🏻
-
-```
-⭐️⭐️⭐️ EXAM ⭐️⭐️⭐️
-❓
-👉🏻
-```
