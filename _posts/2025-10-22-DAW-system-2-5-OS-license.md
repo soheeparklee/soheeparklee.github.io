@@ -82,14 +82,18 @@ tags: [] # TAG names should always be lowercase
 
 - ✔️ **CC-BY: Attribution**
 - you need to mention/name the creator every time you use the SW
-- BY attribution
+- `BY attribution`
 - it is a good practice to always credit the creator
-- 🤑 you can make money with `CC-BY` product
+- can modify ⭕️
+- 🤑 you can make money with `CC-BY` product, but you have to credit the author
 - you can just thank the creator, and sell the product
 
 - ✔️ **CC-NC: Non-Commercial**
+- `Non-Commercial`
 - you can use the SW, but you cannot sell, cannot make money
 - you cannot copy your product
+- can modify ⭕️
+- but cannot make money with `CC-NC` ❌
 - having `CC-NC` is a nice method for testing if your product will be successful it before making it copyright
 
 ```
@@ -99,13 +103,45 @@ if you want to see if it is successful wo anyone copying
 you can make it CC-NC
 ```
 
-- ✔️ **CC-ND: No Derivatice Works**
+- ✔️ **CC-ND: No Derivative Works**
 - you can use SW, but do not change!
+- cannot modify ❌
 - 👀 medical articles/researches
+- 🤑 you can make money with `CC-ND` product, but cannot change anything
 - you can share medical article, but cannot modify information from a doctor
 
 - ✔️ **CC-SA: Share As/Alike**
+- You can modify ⭕️
+- 🤑 you can make money
+- but all the documments comming from that should also be `Share-As`
+- not very typical
 
-## ✅
+## ⭐️EXAM⭐️ Combo of cc
 
-## ✅
+✔️ Exam of combo of CC
+
+```
+Example: CC-BY--NC-ND
+
+1. need to credit the author
+2. cannot change the original document
+3. cannot make money
+👀 medical articles, official documents that you want to share
+and you want to be credited
+```
+
+✔️ Exam of combo of CC
+
+```
+Example: CC-BY-SA
+
+1. need to credit the author
+2. can modify the document, can make money
+3. and also MUST add CC-BY-SA to your document
+```
+
+- ⭐️ In the next exam, need to ask `Jose Ramon, thank you. CC-BY-SA`
+
+## ✅ Where do you get licenses?
+
+[![Screenshot-2025-10-27-at-17-44-07.png](https://i.postimg.cc/Vv3Cftqz/Screenshot-2025-10-27-at-17-44-07.png)](https://postimg.cc/sG4XKvHL)
