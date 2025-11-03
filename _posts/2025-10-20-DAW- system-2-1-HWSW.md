@@ -15,7 +15,7 @@ tags: [] # TAG names should always be lowercase
 
 ### ☑️ OS has four functions
 
-[![image.png](https://i.postimg.cc/TPy9tXzP/image.png)](https://postimg.cc/zLrKf4Xm)
+[![image.png](https://i.postimg.cc/FRmS6s7W/image.png)](https://postimg.cc/5H7jYJ5L)
 
 #### 1️⃣ File management, gestion de archivos
 
@@ -62,20 +62,28 @@ tags: [] # TAG names should always be lowercase
 
 #### 1️⃣ Low Level SW
 
+[![Screenshot-2025-11-01-at-12-07-19.png](https://i.postimg.cc/ZR7qLT39/Screenshot-2025-11-01-at-12-07-19.png)](https://postimg.cc/YGFkrBdk)
+
 - machine code
 - 0 and 1s
 
 #### 2️⃣ System/Base SW
+
+[![Screenshot-2025-11-01-at-12-07-38.png](https://i.postimg.cc/59XzkG02/Screenshot-2025-11-01-at-12-07-38.png)](https://postimg.cc/14Z48vwk)
 
 - software that acts as an **interface** with a machine
 - example: OS, Drivers
 
 #### 3️⃣ Programming SW
 
+[![Screenshot-2025-11-01-at-12-07-56.png](https://i.postimg.cc/htshGbjT/Screenshot-2025-11-01-at-12-07-56.png)](https://postimg.cc/RW3vstwZ)
+
 - applications for programming
 - example: IDE with GUIs, visual studio
 
 #### 4️⃣ Application SW
+
+[![Screenshot-2025-11-01-at-12-08-10.png](https://i.postimg.cc/Gp93hW60/Screenshot-2025-11-01-at-12-08-10.png)](https://postimg.cc/t1QGBMXD)
 
 - software of the users
 - example: google maps
@@ -84,9 +92,3 @@ tags: [] # TAG names should always be lowercase
 ❓ How do you call the SW that acts as an interface?
 - System/Base SW
 ```
-
-## ✅
-
-## ✅
-
-## ✅

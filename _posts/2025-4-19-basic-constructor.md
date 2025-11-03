@@ -1,5 +1,5 @@
 ---
-title: this
+title: Constructor, this
 categories: [JAVA, 김영한]
 tags: [] # TAG names should always be lowercase
 ---
@@ -160,6 +160,8 @@ MemberConstruct member1 = new MemberConstruct("member1", 15, 90); //member1 15 9
 MemberConstruct member2 = new MemberConstruct("member2", 16); //member2 16 0
 ```
 
+## ✅ This and Constructor
+
 - also can call constuctor in constuctor
 - ⭐️ `this()` always has to come first line
 
@@ -173,4 +175,93 @@ MemberConstruct member2 = new MemberConstruct("member2", 16); //member2 16 0
     MemberConstruct(String name, int age){ //call constructor in constructor
         this(name, age, 0); //⭐️first line
     }
+```
+
+- `this` always has to come first in a constructor
+- You can only call one other constructor
+
+```java
+    public Student(int age) {
+        this.age = age;
+    }
+
+    public Student(int age, int grade) {
+        this(0); // call the other constructor with a default age
+        this.grade = grade;
+    }
+```
+
+## ✅ Copy Constructor
+
+- constructor that creates a **new object** by copying data from another object of the same class
+
+```java
+public class Student {
+    int age;
+
+    public Student(int age) {
+        this.age = age;
+    }
+
+    public Student(Student student){ //create deep copy
+        this.age = student.age;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Student studentA = new Student(10);
+        Student studentB = studentA; //just point to same reference
+        Student studentC = new Student(studentA); //using copy constructor
+
+        studentA.setAge(20); //change original
+        System.out.println(studentA.getAge()); //20
+        System.out.println(studentB.getAge()); //20
+        System.out.println(studentC.getAge()); //10, does not change
+
+    }
+}
+```
+
+- `studentA` and `studentC` are **different** object
+- initially `studentC` fields were copied from `studentA`
+
+- ❓ **Why Use a Copy Constructor?**
+- To create `deep copies` of objects safely (avoiding unwanted shared references).
+- To duplicate complex objects easily.
+
+## Shallow copy 🆚 Deep copy
+
+- Shallow copy: Copies field values **as-is**, including **references** to other objects.
+- Deep copy: Creates **new objects** for any referenced fields too.
+
+- ✔️ **Example of shallow copy**
+
+```java
+class Department {
+    String name;
+}
+
+class Employee {
+    String name;
+    Department dept;
+
+    // Copy constructor (shallow copy)
+    Employee(Employee e) {
+        this.name = e.name;
+        this.dept = e.dept; // same reference!
+    }
+}
+```
+
+- Both Employee objects share the **same Department instance**.
+
+- ✔️ **Example of deep copy**
+
+```java
+Employee(Employee e) {
+    this.name = e.name;
+    this.dept = new Department(); //new Deparment!
+    this.dept.name = e.dept.name;
+}
 ```

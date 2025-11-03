@@ -79,8 +79,8 @@ tags: [] # TAG names should always be lowercase
 - ✔️ **Window 11**
 - did not occupy the market bc it has HW needs
 - to use `Window 11`, we need a chip that is called `TPN` build on the motherboard
-- so in order to update to `window 11`, you totally need to throw away and ahange your computer as well
-- ppl do not want to throw away their computer for updating for` window 11`
+- so in order to update to `window 11`, you totally need to throw away and change your computer hardware as well
+- ppl do not want to throw away their computer for updating for `window 11`
 - Developers should listen to customer needs, if ppl will not throw away computer for your OS, you cannot develop this OS with special chip.
 
 - 👉🏻 **So to summarize...**
@@ -103,10 +103,10 @@ tags: [] # TAG names should always be lowercase
 - should not break society into classes
 - when technology should be global
 
-💡 **Rule numnber two.**
+💡 **Rule number two.**
 
 - tech should be compatible
 
-💡 **Rule numnber three.**
+💡 **Rule number three.**
 
 - tech should be secure

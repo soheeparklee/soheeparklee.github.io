@@ -90,7 +90,7 @@ tags: [] # TAG names should always be lowercase
 
 - can do several tasks at the same time
 - If an OS is `mono core` and `multi threading` ➡️ multi tasking
-- If an OS is `multi core` and `multi threading ➡️ multi tasking
+- If an OS is `multi core` and `multi threading` ➡️ multi tasking
 
 ```
 ❓ What happens if OS is multi user and multi tasking
