@@ -1,5 +1,5 @@
 ---
-title: Object class
+title: Object class, equals()
 categories: [JAVA, 김영한]
 tags: [] # TAG names should always be lowercase
 ---
@@ -131,6 +131,107 @@ public boolean equals(Object o) {
 }
 
 userA.equals(userB) //true
+```
+
+## 💡 `==` and `equals()` 심화
+
+#### ✔️ primitive int
+
+```java
+int a = 5;
+int b = 5;
+
+a == b;      //true
+a.equals(b)  //do not exist
+```
+
+- primitive type에서 `==`는 **compare values**
+- primitive type에서 `equals()`는 존재하지 않는다
+
+#### ✔️ -128 ~ 127 Reference type Integer, Wrapper
+
+```java
+Integer a = 5;
+Integer b = 5;
+
+a == b;        // true (cached values between -128 and 127)
+a.equals(b);   // true
+```
+
+- Normally, in reference type `==` checks if they refer to the same object in memory
+- so it seems `a == b` should be false...
+- ⚠️ HOWEVER, Java has optimization called **Integer cache**
+- JVM reuses Integer objects for all values in the range of `-128` to `127`
+- so, both `a` and `b` **point to the same cached Integer object**, `5`
+
+- ⚠️ JVM only caches numeric weapper types,
+  - Byte
+  - Short
+  - Integer
+  - Long
+  - Character (for small characters)
+- and their cache ranges are typically -128 to 127
+
+#### ✔️ Reference type Integer, Wrapper outside cache range
+
+```java
+Integer a = 128;
+Integer b = 128;
+
+a == b;        // false (different objects)
+a.equals(b);   // true  (same value)
+```
+
+#### ✔️ Wrapper class that is not cached
+
+```java
+Double a = 10.0;
+Double b = 10.0;
+
+a == b;        // false
+a.equals(b);   // true
+```
+
+#### ✔️ Compare primitive and wrapper
+
+```java
+double a = 10.0;
+Double b = 10.0;
+
+x == y; //true
+```
+
+- true bc Java `unboxes` the `Double` into `primitive double` for comparison
+
+#### ✔️ String
+
+```java
+String a = "hello";
+String b = "hello";
+
+a == b;        // true
+a.equals(b);   // true
+```
+
+✔️ `==`
+
+- normally, in reference, `==` compares reference, whether they refer to the same object in memory
+- ⚠️ HOWEVER, `string literals` in Java are saved in **string pool**
+- 그래서 `String`이 똑같으면 string pool에 한번만 저장함
+- 따라서 `a == b` is `true`
+
+✔️ `equals()`
+
+- String class overrides .equals() to compare the content (characters) of the string
+
+#### ✔️ String Instance
+
+```java
+String a = new String("hello");
+String b = new String("hello");
+
+a == b;        // false (different objects)
+a.equals(b);   // true  (same content)
 ```
 
 ## ✅
