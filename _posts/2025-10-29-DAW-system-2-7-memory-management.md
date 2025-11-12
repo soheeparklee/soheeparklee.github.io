@@ -117,6 +117,8 @@ are opened automatically in the begining of the session?
 
 #### ✔️ Internal Fragmentation
 
+> when the **frame** is bigger than the **page**
+
 [![Screenshot-2025-11-05-at-16-26-40.png](https://i.postimg.cc/tCKMtPKY/Screenshot-2025-11-05-at-16-26-40.png)](https://postimg.cc/nC12nscJ)
 
 - Problem of Paging
@@ -197,6 +199,8 @@ but you can go on the RAM if there is sapce
 
 #### ✔️ Pages Table
 
+> inside the `OS in RAM`
+
 - I need a schema that has the order of the processes
 - This **Pages Table** is located in the `forbidden area of the RAM`, the **OS in RAM**
 
@@ -252,7 +256,69 @@ P1, 1, 2, 3, BRP1, 1, LRP1, 3
 , P8, 24, 25, BRP8, 24, LRP8, 2
 , P13, 26, BRP13, 26, LRP13, 1
 , P10, 27, 28, BRP10, 27, LRP10, 2
+, FBR, 4, 9, 16, 19
+, FLR, 2, 2, 1, 4
 ```
+
+- All the free areas of the RAM `Base Registers` go together
+  - `FBR, 4, 9, 16, 19`
+- and all the free areas of `Limit Registers` also go together
+
+  - `FLR, 2, 2, 1, 4`
+
+- ❓ **Who uses the `Pages Table`?**
+- Program Counter will use the `Pages Table` to jump around the RAM
+- to find the next instructions
+- Program COunter is in the CPU
+
+- The Paging Unit of the CPU will use the `Pages Table` for memory management
+- to check where to put the next process on the RAM
+
+```
+⭐️⭐️⭐️ EXAM ⭐️⭐️⭐️
+❓ Which block of the computer uses the `Pages Table`?
+- The CPU
+```
+
+```
+⭐️⭐️⭐️ EXAM ⭐️⭐️⭐️
+❓ Should we protect the paging table?
+👉🏻 YES
+```
+
+## ❓ What happens if the macro virus is trying to enter the OS in RAM?
+- Paging Unit never sends a process to a OS is RAM
+- the macro virus will look like a normal process `P20`
+- Paging Unit will send the process to a normal address in RAM, not OS in RAM
+- the virus will try to move internally in the RAM
+- However, in RAM, onced placed, you cannot move up and down internally
+
+- ❓ **So what does the virus do?**
+- If the virus tries to move,
+- it creates corruption in the RAM
+- it makes MS corrupt
+- and the virus convinces the MS to go up and down the RAM
+- and use MS to go up to the forbiden area, the OS in RAM
+- and corrupts the `Pages Table` by changing the commas, and changing the numbers
+- so I make a huge mess of the `Pages Table`
+- and we cannot run processes in order
+
+- ❓ **How do I convince the MS to be corrupt?**
+- If the destination address for `MS` was `1111`,
+- the macro virus changes the number, to `0000`
+- so that MS goes to the OS in RAM
+
+- ❓ **What should we do if the process has been intercepted by a virus?**
+- So if process is intercepted by the macro virus
+- the macro virus should be swapped out
+- However, the virus process could have created a child process
+- the virus process could also have had a parent process
+- 👉🏻 Thus, you need to swap out `3 generations`(the process, parent and children process)
+- swap out **ALL** the related processes
+- 👉🏻 Maybe swapping out 3 generations is too tough, but its for more security
+- as parent/child process of a virus process was not corrupted.
+- 👉🏻 But we will still swap out three generations, related processes for security
+- This is called **3 Level Security**
 
 ## 📌 Segmented Paging
 

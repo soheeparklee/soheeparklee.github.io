@@ -24,11 +24,15 @@ tags: [] # TAG names should always be lowercase
 
 - ↔️ You can have a computer without HD, so File management is little important job of OS
 
+- ➡️ FAT32, NTFS...
+
 #### 2️⃣ RAM management 🟰 Memory management
 
 - when file is opened, and uploaded on the RAM
 - upload on RAM and called process
 - ↔️ You cannot have a computer w/o RAM, super duper important job of OS
+
+- ➡️ Segmentation, Paging
 
 #### 3️⃣ Process Management
 
