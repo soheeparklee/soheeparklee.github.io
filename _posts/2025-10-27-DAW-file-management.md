@@ -4,6 +4,9 @@ categories: [DAW bilingual, Computer System]
 tags: [] # TAG names should always be lowercase
 ---
 
+- ⭐️ Practical questions: SoHee wants to play music automatically. What file management system should we use?
+- ⭐️ Transactional Files will be test questions
+
 ## ✅ File Management
 
 > ✔️ File: Set of bytes ➕ Metadata <br>
@@ -400,4 +403,3 @@ NTFS would only boot windows
 - transactional files are also important, so we want to save in longlasting memory
 
 - For using transactional file, you need a special text editor, specific applications
-

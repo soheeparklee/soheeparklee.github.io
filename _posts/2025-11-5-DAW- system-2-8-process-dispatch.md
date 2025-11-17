@@ -4,6 +4,9 @@ categories: [DAW bilingual, Computer System]
 tags: [] # TAG names should always be lowercase
 ---
 
+- ⭐️ Practical exercise of six algorithms
+- ⭐️ One theory exam about states of the process
+
 ## 📌 Process Management
 
 > 🟰 Process Dispatch <br>
@@ -327,6 +330,8 @@ Yes, but still, if doubtful, kill
    - Even P1 is long, we cannot waste time waiting for P4!
 2. After P1, then from short to long
 
+✔️ **Goals**
+
 - 👍🏻 lowers the temperature of the computer
 - 👍🏻 you can swap the process out of your RAM
 
@@ -366,15 +371,247 @@ Yes, but still, if doubtful, kill
 - 🖥️ The computer pre-calculates the 6 algorithms and uses the one that is the most efficient
 - The process dispatcher changes continuously from one algorithm to another.
 
-## ✅ RR
+## 💡 Preemptive
+
+- If a CPU is executing a process
+- but a **better** process arrives
+- **change** the focus(`context`)
+
+- stop the process that is being executed
+- the stopped process is still kept in the RAM, NOT `swapped out` ❌
+- the state of the process will be `Waiting`
+- in the background
 
 ## ✅ SRTF
 
+> Short Remaining Time First <br>
+> preemptive <br>
+
+✔️ **Rules**
+
+1. P1 always runs first
+2. But do not let it end if there is an arrival of another process
+3. 💡 Arrivals mean **interruptions**
+4. When there is an `interruption`, we are going to do a case study. This happens bc `SRTF` is `preemptive`
+5. Case study of remaining times of the process we are currently running, and the process that arrived. Who has shorter reamining time? The current one? Or the new process?
+6. We give focus to the process that has less remaining time
+
+[![Screenshot-2025-11-17-at-15-36-27.png](https://i.postimg.cc/760JvzN1/Screenshot-2025-11-17-at-15-36-27.png)](https://postimg.cc/BLZnHXkt)
+
+✔️ **Goal**
+
+- to finish as much as processes as possible
+- so computer does not get so hot
+
+✔️ **Draw a GRANTT Table**
+
+1. P1 starts
+2. When P2 interrupts, draw a `x`
+3. We do a case study of `p1` and `p2`
+
+- `p1` needs 5 seconds, `p2` needs 4 seconds
+
+4. Draw a circle on the winner process `p3`
+5. `p3` arrives, makes and interruption
+6. Case study of `p2` and `p3`
+
+- `p2` needs 3 seconds, `p3` needs 3 seconds
+
+7. In case of draw, do not change, and keep the running process
+8. `p4` arrives, makes and interruption
+
+- `p2` needs 1 second, `p4` needs 2 seconds
+
+9. When a process ends, mark the second that ended , `6`, and `tick` the finished process
+10. Do a case study of all the left processes
+11. the process with shortest reamaing time runs
+
+- 💡 Remember to mark the remaining time
+  - 세로선 긋고 `x 축`에 `초 second` 쓰기
+- 💡 끝난 process에는 표시하기 `✔️`
+- 💡 `SRTF` gives the idea of interactions to all the processes, does not leave any process untouched until the end compared to `SJF`
+
+```
+❓ Which is the processes being penalized? And why?
+👉🏻 P1 and bc of its long running time, long remaning time
+```
+
+✔️ **Result of SRTF**
+
+- Process that has a long running time will be left until the end, even if they arrive early
+- Even if it seems more complicated as it keeps changing the process(chaning the context), than `SJF`, it is considered more efficient
+- RAM always has space problems, but not temperature problems
+
+- `Avg TW`: 4sec, `Avg TR`: 7.75 sec
+- more considered efficient than `SJF`
+
 ## ✅ PPE
 
-## ✅
+> Priority Preemtipive <br>
+> preemptive <br>
 
-## ✅
+✔️ **Rules**
+
+1. P1 starts
+2. Arrivals are considered **interruptions**
+3. Case study the **priority**
+4. If the priority of the new process that arrived is `less than` the process that is currently executing
+
+- `if P(new) < P(focused, running)` change context
+- lower priority number means **better** process
+
+5. We change context to the new process
+
+[![Screenshot-2025-11-17-at-16-06-56.png](https://i.postimg.cc/9Fdn1N51/Screenshot-2025-11-17-at-16-06-56.png)](https://postimg.cc/4m3PxP3h)
+
+✔️ **Draw a GRANTT Table**
+
+1. P1 starts
+2. P2 interrupts
+3. Case study of priority of `p1` and `p2`
+
+- `p1` has priority of 4
+- `p2` has priority of 2
+
+4. P2 is the winner
+5. P3 interrupts
+6. Case study of priority of `p2` and `p3`
+
+- `p2` has priority of 2
+- `p3` has priority of 2
+
+7. P3 is the winner
+8. P3 has priority 1, it is going to win all the other processes. Once we give the CPU to the highest priority, no more interruptions, just let it run
+9. When one process ends, case study of all processes
+10. P2 wins
+
+- 💡 Priority does not change, its not like remaining time that changes
+
+```
+❓ How many processes suffer from context changing?
+
+👉🏻 two, P1 and P2
+
+❓ Which is the processes being penalized? And why?
+👉🏻 P1 and bc of priority
+```
+
+✔️ **Result of SRTF**
+
+- worse than `SRTF`
+- 🖥️ if `PPE` is worse than another algorithm, computer will not take priority into account
+- 🖥️ Dispatcher does not consider one of individual processees, but focuses more on the collective perspective
+
+## ✅ RR
+
+> Round Robin <br>
+> preemptive <br>
+> most used algorithm for process dispatch these days <br>
+
+✔️ **Rules**
+
+1. P1 starts
+2. But, only for a **fixed time, called Quantum ** of `2 seconds of Quantum`, `Q=2`. This fixed time depends on the `Operating System`
+
+- **Quantum**: fixed time of each shift(turno)
+
+3. If during my `quantum(my turn)` if there is an arrival, the arrived process goes to a **waiting queue**. I will not be interrupted
+4. When I finish my `quantum`, and if I need more time to run, I also go to the `waiting queue`
+5. In case of draw(`new process arrives and I also finished my quantum`), new process arrived goes to the waiting queue first, then myself. This algorithm values `equality` for all the processes
+
+[![Screenshot-2025-11-17-at-16-26-45.png](https://i.postimg.cc/vmx8N67b/Screenshot-2025-11-17-at-16-26-45.png)](https://postimg.cc/8FDVFcn0)
+
+- 👍🏻 Every process gets attention
+- 👍🏻 When you want the user to feel that everything runs smoothly, user is running several processes at the same time, and feel like everything works at the same time
+- 👎🏻 No process finishes
+- 👎🏻 Many many changes of context
+- 👎🏻 RAM is suffering
+
+✔️ **Draw a GRANTT Table**
+
+1. Give 2 seconds of quantum to P1
+2. At `second 2`, `termination of p1 quantum` and `arrival of p2` happens at the same time
+3. In the Queue, add `p2` and `p1`. `p2` is more valued, as all processes should be equal
+
+- Queue: `p2` `p1`
+
+4. Look at the queue, Run `p2`, erase `p2` from the `queue`
+
+- Queue: `p1`
+
+5. When `p2` was running, `p3` arrived
+6. Add `p3` to the queue
+
+- Queue: `p1`, `p3`
+
+7. When `p2` finishes, add `p2` to the queue
+
+- Queue: `p1`, `p3`, `p2`
+
+8. When `p1` was running, `p4` arrived
+
+- Queue: `p3`, `p2`, `p4`
+
+9. When `p1` finishes, I need more time, so add to queue
+
+- Queue: `p3`, `p2`, `p4`, `p1`
+
+10. Run `p3`, then as I need more time, go to the end of the queue
+
+- Queue: `p2`, `p4`, `p1`, `p3`
+
+11. Run `p2`, and finish! Do not add to the end of the queue❌, tick `p2` ✔️
+
+- Queue: `p4`, `p1`, `p3`
+
+12. Run `p4` and finish. Do not add to the end of the queue❌, tick `p4` ✔️
+
+- Queue: `p1`, `p3`
+
+13. Run `p1` and need more time, so go to the back of the queue
+
+- Queue: `p3`, `p1`
+
+14. Run `p3` and `p3` only needs `1 more second` so give it only `1 second`. Finish `p3`
+
+- 💡 At the end of the processes, they need shorter quantums. Give them shorter quantums
+
+15. Finish `p1` with `1 second`
+
+✔️ **Result of SRTF**
+
+- 👍🏻 All processes are run little by little
+- 👍🏻 Algorithm most used by the dispatcher these days
+- 👎🏻 Very high `average TW, TR` times
+
+## 💡 Tips for drawing the Gantt diagram
+
+- 💡 No overlapping
+- 💡 No empty seconds where nothing is running
+
+## ✅ Different states of process
+
+- 👀 P1 of `RR`
+- In gantt diagram, there is no `locked/blocked`, only `waiting`
+
+```
+second: state of process
+0 : new
+0-2, 4-6, 12-14, 15-16 : execution, foreground
+2-4, 6-12, 14-15: waiting, background
+16: FOK
+```
+
+```
+❓ How long is process 1 inside the RAM?
+👉🏻 16 seconds
+```
+
+```
+❓ Two examples of process that is locked/blocked
+- waiting for user interaction
+- waiting for peripherals
+```
 
 ## ✅
 
