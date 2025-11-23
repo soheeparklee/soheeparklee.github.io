@@ -43,6 +43,9 @@ tags: [] # TAG names should always be lowercase
 
 ## ✅ Copyleft
 
+> GNU <br>
+> GPL <br>
+
 - If you want to get a copy left,
 - go to webpage `GNU official website`
 - register, no payment needed, free-of-charge
@@ -52,7 +55,7 @@ tags: [] # TAG names should always be lowercase
 
 - but you will have to accept **some terms** to use copy left
 - 💡 **GPL** `General Public License`: some terms we have to accept to use the free SW
-- when we commit to GPL, we are promising that we will use this SW, but we will never make benefits of this
+- when we commit to GPL, we are promising that we will use this SW, but we will **never make benefits** of this
 - so if we make smth based on Linux, we cannot sell this product ❌
 
 - 👍🏻 copyleft products are created for sharing, for becoming global
@@ -64,7 +67,7 @@ tags: [] # TAG names should always be lowercase
 
 - If you want to sell it, you need to get your copy right, then it becomes yours
 
-- But not a good idea to make my project `copy left` then `copy right`
+- ⚠️ But not a good idea to make my project `copy left` then `copy right`
 - as others can copy my code while my project was `copy left`
 
 - Some copy lefts have donations at the end
@@ -75,8 +78,8 @@ tags: [] # TAG names should always be lowercase
 
 ## ✅ Creative Commons
 
-- This SW is for improving society, it is for sharing
-- always has a hiphen
+> This SW is for improving society, it is for sharing <br>
+> always has a hiphen `CC-`
 
 [![Screenshot-2025-10-22-at-17-37-33.png](https://i.postimg.cc/CLCnhcqr/Screenshot-2025-10-22-at-17-37-33.png)](https://postimg.cc/LnX8vBvj)
 

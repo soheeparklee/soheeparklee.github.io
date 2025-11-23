@@ -17,6 +17,8 @@ tags: [] # TAG names should always be lowercase
 
 ## ✅ Windows
 
+> cascade
+
 [![image.png](https://i.postimg.cc/DzjDCfQG/image.png)](https://postimg.cc/bGn3rhBY)
 
 - 🗂️ in windows, structure of folders is called `cascade`
@@ -25,6 +27,8 @@ tags: [] # TAG names should always be lowercase
 - Going down, means going to my `sub/childern folders`
 
 ## ✅ Linux
+
+> tree
 
 [![Screenshot-2025-10-27-at-17-54-06.png](https://i.postimg.cc/C5YjkkZN/Screenshot-2025-10-27-at-17-54-06.png)](https://postimg.cc/1nCnZgrn)
 
@@ -375,6 +379,7 @@ NTFS would only boot windows
   - making a backup after small changes every certain times
   - if there is an error
   - you go to the previous picture, not the original
+
   - 👀 All the dual booting systems(linux + windows in the same computer) are done using snapshots
   - After installing windows, take snapshots, then after installing linux, take another snapshot
 

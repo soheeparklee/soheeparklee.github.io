@@ -23,9 +23,10 @@ tags: [] # TAG names should always be lowercase
 
 - 1️⃣ segmentation unit
 - 2️⃣ paging unit
-- these units are inside the Microprocessor
+- ❓ Where is the segmentation unit and paging unit located?
+- these units are **inside the Microprocessor**
 
-✔️ T**wo units, two techniques to manage the RAM**
+✔️ **Two units, two techniques to manage the RAM**
 
 - As there are two units, there are two techniques to maange the RAM
 - 1️⃣ segmentation
@@ -33,11 +34,22 @@ tags: [] # TAG names should always be lowercase
 - each of the units proposes a way of placing processes in the RAM
 - from the two techniques that places more processes⬆️ in the RAM using small amount⬇️ of RAM
 
+```
+❓ Tick the elements involved in placing processes inside the RAM?
+
+👉🏻
+Hard Disk (Has the OS so it’s involved)
+RAM is also involved,
+CPU is also involved (More specifically, segmentation unit and paging unit).
+```
+
 [![image.png](https://i.postimg.cc/T12sqP7z/image.png)](https://postimg.cc/2bJTCCfG)
 
 ## 0️⃣ Swapping
 
 [![Screenshot-2025-11-15-at-09-01-33.png](https://i.postimg.cc/sxQBSrPD/Screenshot-2025-11-15-at-09-01-33.png)](https://postimg.cc/N2tfqZPW)
+
+- 🚌 Processes travel through the front side bus
 
 ## 1️⃣ Segmentation
 
@@ -45,7 +57,7 @@ tags: [] # TAG names should always be lowercase
 > ALL or NONE <br>
 > IN or OUT of the memory <br>
 > Order: big to small recommended <br>
-> external fragmentation <br>
+> 👎🏻 external fragmentation <br>
 
 - No possibility of breaking the memory
 - One process goes completely goes inside the RAM, or cannot go on the RAM at all
@@ -76,6 +88,7 @@ If I want to run P5, which is 300MB, which process should I swap out?
 
 - The free empty portions in the middle of the RAM are known as `FREE SPACE`
 - However, when free spaces are seperate they remain seperate
+- you cannot join them into one big free space
 
 ```
 ❓ Imagine future processes P6, 7, 8,,,,,are all greater than 200MB, and you cannot swap out.
@@ -88,15 +101,17 @@ Can they swap in?
 
 [![Screenshot-2025-11-05-at-15-58-36.png](https://i.postimg.cc/jScWT6QW/Screenshot-2025-11-05-at-15-58-36.png)](https://postimg.cc/VJSsBCh1)
 
-- So the wasted areas that are not occupied anymore are called **External fragmentation**
+- So the wasted areas that are not occupied anymore is wasted forever
+- they are called **External fragmentation**
 - empty portions in the middle of the RAM
+- ⚠️ (only the middle ones, the empty portion in the end is still called `Free space`)
 - they are normally colored in 🔴 RED, to show that they are wasted
 - `External fragmentation` = `100MB`
 
 #### ☑️ Order of putting program on the RAM
 
 - If you use segemtation,
-- open the `big programs`
+- it is mandatoey to open the `big programs` first,
 - then the `small programs`
 - If you open the small programs first, later with `external fragmentation`, you will not be able to open in big problems.
 
@@ -112,7 +127,7 @@ are opened automatically in the begining of the session?
 > RAM fragmented into `frames`, process into `pages` <br>
 > ALL or NONE <br>
 > Order of the processes going on the RAM does not matter <br>
-> internal fragmentation <br>
+> 👎🏻 internal fragmentation <br>
 > page table <br>
 
 [![Screenshot-2025-11-15-at-09-25-28.png](https://i.postimg.cc/yYbNcdv0/Screenshot-2025-11-15-at-09-25-28.png)](https://postimg.cc/GHvr1c0p)
@@ -122,7 +137,7 @@ are opened automatically in the begining of the session?
 3. the `size of the frames` need to be greater than the size of `pages`
    `size of the frames` >= `pages`
 4. One page per frame
-5. The process **SWAPS IN** if **ALL** its pages can go in
+5. The process **SWAPS IN** if **ALL** its pages can go in. `ALL or NONE`
 6. Pages do not need to be in order when it goes into the frames
 
 [![Screenshot-2025-11-05-at-16-15-22.png](https://i.postimg.cc/FHGHJ961/Screenshot-2025-11-05-at-16-15-22.png)](https://postimg.cc/BjL0rG4G)
@@ -163,13 +178,15 @@ are opened automatically in the begining of the session?
 - Free space at the end is not Internal Fragmentation
 ```
 
-- Can you get rid of internal fragmentation?
+- ❓ Can you get rid of internal fragmentation?
 - Yes, make the `size of the page` to the `size of the frame`
 - `size of the page` = `size of the frame`
 
 - However, the `size of the frame` is a factory setting that comes with a RAM
 - so when you buy a RAM, pay attention to `size of the frame`
 - and adopt/modify OS `size of the page` to the `size of the frame`
+- you cannot change the `size of the frame` ❌
+- but you can adopt the `size of the page` ⭕️
 
 ```
 ⭐️⭐️⭐️ EXAM ⭐️⭐️⭐️
@@ -308,6 +325,7 @@ FLR, 2, 2, 1, 4
 ```
 ⭐️⭐️⭐️ EXAM ⭐️⭐️⭐️
 ❓ Which block of the computer uses the `Pages Table`?
+- Read by the Program Counter to jump in the RAM
 - The CPU
 ```
 
@@ -358,7 +376,7 @@ FLR, 2, 2, 1, 4
 
 - Paging is more complicated for the CPU
 - If things work with segmentation, they use **segmentation**
-- Computer tries segmentation
+- Computer **first** tries **segmentation**
 - However, if the process cannot SWAP IN
 - if things do not work with segmentation,
 - then the computer uses **paging**
