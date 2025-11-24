@@ -4,6 +4,9 @@ categories: [DAW bilingual, Computer System]
 tags: [] # TAG names should always be lowercase
 ---
 
+> 3 test questions <br>
+> orders that go directly to the kernel? IPC <br>
+
 ## ✅ Three types of structure of OS
 
 - There are three types

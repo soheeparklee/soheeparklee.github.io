@@ -4,6 +4,8 @@ categories: [DAW bilingual, Computer System]
 tags: [] # TAG names should always be lowercase
 ---
 
+> types of software
+
 ## 📌 Operating System
 
 - software to help standard users manage/use the computer without interfering/thinking of hardware

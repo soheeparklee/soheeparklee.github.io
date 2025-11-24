@@ -4,7 +4,8 @@ categories: [DAW bilingual, Computer System]
 tags: [] # TAG names should always be lowercase
 ---
 
-- ⭐️ Practical exercise of segmentation, paging
+> ⭐️ Practical exercise of segmentation, paging <br>
+> practice in aula virtual <br>
 
 ## ✅ Memory Management
 
@@ -315,18 +316,19 @@ FLR, 2, 2, 1, 4
   - `FLR, 2, 2, 1, 4`
 
 - ❓ **Who uses the `Pages Table`?**
-- Program Counter will use the `Pages Table` to jump around the RAM
+- 1️⃣ Program Counter will use the `Pages Table` to jump around the RAM
 - to find the next instructions
 - Program COunter is in the CPU
 
-- The Paging Unit of the CPU will use the `Pages Table` for memory management
+- 2️⃣ The Paging Unit of the CPU will use the `Pages Table` for memory management
 - to check where to put the next process on the RAM
 
 ```
 ⭐️⭐️⭐️ EXAM ⭐️⭐️⭐️
 ❓ Which block of the computer uses the `Pages Table`?
-- Read by the Program Counter to jump in the RAM
-- The CPU
+- Read by the Program Counter in CPU to jump in the RAM
+- The Paging Unit in CPU to know if the process fits
+- so the CPU
 ```
 
 ```

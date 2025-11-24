@@ -4,7 +4,8 @@ categories: [DAW bilingual, Computer System]
 tags: [] # TAG names should always be lowercase
 ---
 
-- ⭐️ service routine, vector table, program counter
+> tipo test questions <br>
+> ⭐️ service routine, vector table, program counter <br>
 
 > 💡 Peripherals interrupt when they have problems <br>
 > and more situations that interrupt...

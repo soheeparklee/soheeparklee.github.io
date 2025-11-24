@@ -4,8 +4,11 @@ categories: [DAW bilingual, Computer System]
 tags: [] # TAG names should always be lowercase
 ---
 
-- ⭐️ Practical questions: SoHee wants to play music automatically. What file management system should we use?
-- ⭐️ Transactional Files will be test questions
+> cascade/ tree <br>
+> journaling, transparent encryption, iNOde table <br>
+> transactional files, what is the transacional file format of windows? linux? <br>
+> ⭐️ Practical questions: SoHee wants to play music automatically. What file management system should we use? <br>
+> ⭐️ Transactional Files will be test questions <br>
 
 ## ✅ File Management
 

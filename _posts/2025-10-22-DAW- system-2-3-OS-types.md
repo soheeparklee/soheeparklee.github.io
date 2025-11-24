@@ -4,6 +4,9 @@ categories: [DAW bilingual, Computer System]
 tags: [] # TAG names should always be lowercase
 ---
 
+> 12 test questions <br>
+> How do you call the OS that does not interact? batch <br>
+
 ## 📌 Types of Operating Systems based on technical specifications
 
 - There are several types of OS depending on the asepct

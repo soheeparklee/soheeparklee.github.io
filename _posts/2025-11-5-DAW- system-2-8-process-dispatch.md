@@ -418,7 +418,7 @@ Yes, but still, if doubtful, kill
 - `p2` needs 3 seconds, `p3` needs 3 seconds
 
 7. In case of draw, do not change, and keep the running process
-8. `p4` arrives, makes and interruption
+8. `p4` arrives, makes an interruption
 
 - `p2` needs 1 second, `p4` needs 2 seconds
 
@@ -429,7 +429,7 @@ Yes, but still, if doubtful, kill
 - 💡 Remember to mark the remaining time
   - 세로선 긋고 `x 축`에 `초 second` 쓰기
 - 💡 끝난 process에는 표시하기 `✔️`
-- 💡 `SRTF` gives the idea of interactions to all the processes, does not leave any process untouched until the end compared to `SJF`
+- 💡 `SRTF` gives the idea of **interactions to all the processes**, does not leave any process untouched until the end compared to `SJF`
 
 ```
 ❓ Which is the processes being penalized? And why?
@@ -611,27 +611,4 @@ second: state of process
 ❓ Two examples of process that is locked/blocked
 - waiting for user interaction
 - waiting for peripherals
-```
-
-## ✅
-
-#### 1️⃣
-
-#### 2️⃣
-
-#### 3️⃣
-
-#### 4️⃣
-
-- 1️⃣
-- 2️⃣
-- 3️⃣
-- 4️⃣
-  👍🏻
-  👎🏻
-
-```
-⭐️⭐️⭐️ EXAM ⭐️⭐️⭐️
-❓
-👉🏻
 ```

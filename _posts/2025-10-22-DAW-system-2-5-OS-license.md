@@ -4,6 +4,9 @@ categories: [DAW bilingual, Computer System]
 tags: [] # TAG names should always be lowercase
 ---
 
+> meaning of cc-by/sa/ <br>
+> licence your exam for me, if you want me to note the author, cannot change, no profit...combo of creative commons <br>
+
 ## 📌 SW Licenses
 
 - software must be licesed

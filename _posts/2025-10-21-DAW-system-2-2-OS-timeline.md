@@ -4,6 +4,10 @@ categories: [DAW bilingual, Computer System]
 tags: [] # TAG names should always be lowercase
 ---
 
+> First OS <br>
+> first windows <br>
+> free OS propritary OS <br>
+
 ## ✅ Timeline of Operating Systems
 
 - ✔️ **EXEC**

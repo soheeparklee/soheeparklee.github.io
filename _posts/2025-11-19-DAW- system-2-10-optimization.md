@@ -4,6 +4,18 @@ categories: [DAW bilingual, Computer System]
 tags: [] # TAG names should always be lowercase
 ---
 
+> Which are the CPU cache that you use for instructions that are very frequently used? <br>
+> L1, L2 is replicated, L3 is not. If I have 4 cores, how many cache do I have? 4+4+4+1=13 <br>
+> How do you call when two processes share loaded on the RAM? sharing <br>
+> virtual memory is a mixture of? RAM and secondary memory <br>
+> calculate size of VM and SWAP <br>
+> 1/2 RAM <= SWAP area <= 2 RAM <br>
+> 3/2 RAM <= VM <= 3 RAM <br>
+
+> sysdm cpl <br>
+> how do you call the flag that turns to 1 when the process is creating problems? <br>
+> location of types of memory <br>
+
 ## ✅ Optimize the computer
 
 - File Management: FAT32
@@ -66,7 +78,7 @@ tags: [] # TAG names should always be lowercase
   - 👀 mathametical operations that are not so frequent: `log`, `cos function...`
 - 🐇 size: bigger than level 1, need to save both instructions and data
 - 🗺️ location: located further away from the neuman machine, compared to level 1
-- ☝🏻 one L1I per core
+- ☝🏻 one L2 per core
 
 - **shared L3**: Level 3 Cache
 - Both instructions and data we use sometimes
@@ -101,11 +113,11 @@ tags: [] # TAG names should always be lowercase
 ❓ If I reset my computer to factory settings, pure nueman machine, am I deleting the CPU cache memory?
 👉🏻 yes, we are deleting
 
-w❓ hich element of the CPU cache helps the following?
-- IPC to the kernel
-- ISA
-- IRQ
-- DRQ
+❓CPU cache helps which of the following?
+1. IPC to the kernel
+2. ISA
+3. IRQ
+4. DRQ
 👉🏻 ISA
 ```
 
@@ -205,6 +217,7 @@ w❓ hich element of the CPU cache helps the following?
 
 [![Screenshot-2025-11-19-at-17-34-44.png](https://i.postimg.cc/Xvm2hcJp/Screenshot-2025-11-19-at-17-34-44.png)](https://postimg.cc/sBP9GW5r)
 
+- ⭐️ When you have a VM error, the error starts by `0x000000`
 - cannot read instruction on `0x000000`
 - if you see this error, you have a virtual memory problem
 
@@ -231,13 +244,97 @@ w❓ hich element of the CPU cache helps the following?
 👉🏻 as long as I guarantee that my computer makes VM from 12 to 24GB, I will never get the 0x error.
 ```
 
-## 3️⃣ Lets help the HardDisk
+> 1/2 RAM <= SWAP area <= 2 RAM <br>
+> 3/2 RAM <= VM <= 3 RAM <br>
+
+- these formulas guarantee that we will not have the `0x000000` error
+- if I keep this formula, I will protect my computer from having the `0x000000` error
+
+✔️ **Command to solve the VM error**
+
+```
+sysdm cpl
+```
+
+- system setting commands start with `sys`
+- all the commands that start with `sys` are for setting the system
+
+- all the commands that contain/end with `dm` is for device management
+- all the commands that end with `cpl` are commands that are reachable through the control panel
+
+✔️ **How to run the commmand**
+
+- ⚠️ This process very very hidden,
+- need to open three windows!
+- bc of security purposes
+
+[![image.png](https://i.postimg.cc/pTqBKN42/image.png)](https://postimg.cc/nj97tWn5)
+
+1. in order to run this command, press `windows key` and `R`
+
+- then type the command `sysdm cpl`
+- a new window appears
+
+2. go to advanced options
+3. Performance area
+4. Configuration button
+5. new window appears
+6. Advanced options
+7. Change button
+8. new window appears
+9. virtual memory
+10. Untick the automatic administration
+11. Choose custom size
+12. custom size needs to include the limits for the `virtual memory`
+13. So adopt the `virtual memory formula`
+14. If we use this formaula, we protect the system from VM errros
+15. initial size will be `1.5 * RAM, but in MB`
+16. maximum size will be `3* RAM, but in MB`
+17. we only manually choose the size **when we get the `0x000000` error**
+
+- We should do this when we really have a problem, at the moment we have a problem
+- So do not manually change the size when you do not have an error
+- If we do it even if we do not have an error, we are stealing capacity of the HD when we do not need it, so why do it?
+
+18. After writing the size manually, click on `accept ➡️ accept ➡️ accept three times`, and close all three windows
+19. Restart the computer
+20. Now you will not see the 0x000000` error!
+
+✔️ **How do you find the size of the RAM?**
+
+1. Open task manager(administrador de tareas)
+
+- shortcut: `Ctrl` + `Alt` + `Supr`
+- or `Ctrl` + `Shift` + `Esc`
+
+2. Task Manager
+3. Performance
+4. Memory
+5. You can find the size of the RAM in the top right corner
+
+```
+If my RAM is 8GB,
+
+inicial size will be 8 * 1.5 = 12 GB
+change to MB: 12 * 1024 = 12288 MB
+
+maximum size will be 8 * 3 = 24GB
+change to MB: 24 * 1024 = 24576 MB
+```
+
+## 3️⃣ Lets help the Secondary Memory
 
 #### 💊 Harddisk Buffer
 
-- buffer: temporal storage for making profit of a data transaction
+[![image.png](https://i.postimg.cc/dVqKVJqL/image.png)](https://postimg.cc/kBhHj3Rm)
 
-💡 **proximity principle**
+- harddisk buffer is in the `Harddisk`
+- buffer: **temporal storage** for making profit of a **data transaction**
+
+- the portion that you need now ➡️ goes to the RAM
+- the portion that you do not need now, but you took following the proximity principle ➡️ goes to the buffer
+
+💡 **Proximity principle**
 
 - when you open a program, most probably you will need more than that
 - 👉🏻 open more, also the ones next to the pointed program
@@ -252,41 +349,145 @@ w❓ hich element of the CPU cache helps the following?
 - web cache is a folder in the harddisk
 - when we empty the cache, we are emptying the web cache
 
-## 4️⃣ Lets help the
+✔️ **Two things you save in the web cache?**
 
-## ✅
+- web cache saves the 1️⃣ history of web pages
+- and components you have 2️⃣ downloaded from the web pages
 
-## ✅
+✔️ **Where is broswer cache?**
 
-## ✅
+- Harddisk
 
-## ✅
+✔️ **How many web cache?**
 
-#### 1️⃣
-
-#### 2️⃣
-
-#### 3️⃣
-
-#### 4️⃣
-
-- 1️⃣
-- 2️⃣
-- 3️⃣
-- 4️⃣
-  👍🏻
-  👎🏻
+- one folder per user
+- one folder per browswer
+- also the same for cookies, one folder per browser, one folder per user
+- 🆚 cookies: my preferences/ web cache: my history, downloads
 
 ```
-⭐️⭐️⭐️ EXAM ⭐️⭐️⭐️
-❓
-👉🏻
-
-------
-❓
-👉🏻
-❓
-👉🏻
-❓
-👉🏻
+❓ If I have two users, and three web browsers, how many web cache do I have?
+👉🏻 6 web caches
 ```
+
+```
+❓ When you delete the history in your browser, what are you deleting?
+👉🏻 you are just deleting the list of visited web pages,
+but not downloads, components history
+
+👉🏻 so you are not fully deleting, you can still see downloads history
+```
+
+## 4️⃣ Lets help the Peripherals
+
+🤒 **Problem that RAM suffers**
+
+- 🐢 normally peripherals are slower than the other computer compoenents
+- so we need to help peripheral speed
+
+#### 💊 Peripherals buffer
+
+[![image.png](https://i.postimg.cc/vmj0KwX7/image.png)](https://postimg.cc/v1r71jJD)
+
+- specific folder
+- in which the peripherals stores the pending documents
+- and takes them at its own speed
+- 👀 like the printer queue
+
+- If the peripheral uses the `peripheral buffer`
+- we say it is using `Buffering`
+
+#### 💊 Spooling
+
+[![Screenshot-2025-11-24-at-16-18-22.png](https://i.postimg.cc/zvNFmzh0/Screenshot-2025-11-24-at-16-18-22.png)](https://postimg.cc/qhm3ydj3)
+
+- If the buffer is shared by several computers on the network
+- one printer is shared by several computers
+- we call it spooling
+- same as buffer, but with several computers connected to one peripheral
+
+## ✅ How can I protect my system?
+
+- Due to optimization techniques, all the computer components are interconnected
+- so one problem in one component can affect the whole computer
+- 👀 If I have a problem in SWAP, will affect HD and also the RAM
+
+✔️ **Stamp a process**
+
+- when a process creates a problem in one component
+- the process is **stamped**
+- **Stamp a process: set a flag `NX: Non Execute` to 1**
+- `NX` means `please, do not execute the proecss!`
+- so when the process reaches another component,
+- if `NX = 1`, the entrance will be blocked! forbidden
+
+- Then the process that is stamped `NX` will be swapped out
+- and if it is a malware
+  - (the anti virus will tell you)
+- 3 layer protection(me, my parent, my children)
+- antivirus will expel the process and its 3 generations from the RAM
+
+✔️ **Where is the `NX` flag?**
+
+- the flag is stored inside the process table, in the OSRAM
+- 👉🏻 way a protecting the system
+
+## ✅ Type of memories
+
+[![Screenshot-2025-11-24-at-16-26-30.png](https://i.postimg.cc/nzBNYLZC/Screenshot-2025-11-24-at-16-26-30.png)](https://postimg.cc/dkQWJwhY)
+
+✔️ **ROM**: memory you can only read, you cannot modify
+
+- these days, the only element that is `ROM` is `BIOS`
+- find the battery, and the `BIOS`/`ROM` will be next to the battery
+
+✔️ **SM/EM**: HDD, SSD
+
+- files when they are closed, stored
+
+✔️ **RAM, MM**
+
+- opened processes
+- Random: bc processes will be placed randomly, incontinguously, not ordered
+
+✔️ **VM**:
+
+- combination of memory both in HD(SWAP) and RAM
+- Can you point to the VM physically? 👉🏻 NO, VM is a concept
+
+✔️ **CPU Cache:**
+
+- inside the CPU
+
+✔️ **Web Cache:**
+
+- in the harddisk, it is a folder
+
+✔️ **Disk Buffer:**
+
+- in the harddisk
+
+✔️ **Buffering and Spooling:**
+
+- in the peripherals
+
+✔️ **Disk Cache:**
+
+- A portion of the RAM helping the HD
+- for frequently opened/closed applcations
+
+- Sometimes, you have free space in the RAM
+- 🐇RAM is always faster than the 🐢HD
+
+- If we have an application that we `open(RAM)` and `close(HD)` several times,
+- if there is free space in the RAM,
+- it makes sence to just keep it in the RAM
+- even when you close it
+- beacuase `1. as RAM is fast` and `2. we have free space on the RAM`
+- 👉🏻 So the RAM is helping the HD
+- We call that **disk cache**
+
+🆚 **Disk cache and Virtual Memory**
+
+- Disk cache: RAM helping HD
+- Virtual Memory: HD helping RAM
