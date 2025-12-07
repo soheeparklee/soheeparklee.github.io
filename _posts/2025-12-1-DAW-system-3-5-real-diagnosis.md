@@ -1,5 +1,5 @@
 ---
-title: 3.6 Complete diagnosis of a system with CPU-Z
+title: 3.5 Complete diagnosis of a system with CPU-Z
 categories: [DAW bilingual, Computer System]
 tags: [] # TAG names should always be lowercase
 ---
@@ -7,12 +7,13 @@ tags: [] # TAG names should always be lowercase
 ## ✅ Transparancy levels
 
 - CPU-Z always shows a warning that it might have **transparancy levels**
-- transparancy levels: i will show you everything except the things limited by the manufacturer
+- transparancy levels: i will show you everything except the things **limited** by the manufacturer
+- how much it can show/or not
 - If you have a high transparancy level, you cannot see many things from the manufacturer
 - The manufacturer can hide some things they do not want you to see
 
 - 👀 HP has a high transparancy levels
-  - application HP Sure Sense lets you deactivate the transparancy level settings, and you can see
+  - application HP Sure Sense lets you **deactivate** the transparancy level settings, and you can see
 
 ## ✅ CPU-Z
 
@@ -45,7 +46,7 @@ tags: [] # TAG names should always be lowercase
 👉🏻 better, it resists more, dissipates more
 ```
 
-- ✔️ `Core Voltage`: maximum level of bolts considered 0, resistance to peaks
+- ✔️ `Core Voltage`: maximum level of volts considered 0, resistance to peaks
 - 0 is `0.5v` and 1 is `5.0v`
 - up to which level(bolts) it is stilla a 0
 - so in the picture, until 0.970v, the computer would consider it a 0
@@ -96,7 +97,6 @@ tags: [] # TAG names should always be lowercase
 
 - ✔️ `Threads`: how many logical cores, how many thread in total I have
 
-
 ```
 ❓ Cores = 2, in total I have threads = 8, how many threads per core do I have?
 
@@ -129,8 +129,9 @@ tags: [] # TAG names should always be lowercase
 - if 798.7MHz, means you can access the RAM 798 million times per second
 
 - Important to have a combo of type and DRAM frequency
+
 ```
-In the photo per second, 
+In the photo per second,
 you can access the RAM 798 million times and can do 8 read/write
 ```
 
@@ -145,38 +146,4 @@ Latency = 11.o clocks
 I can access my RAM 800 milllion times in a second
 in every access, I can get 16 informations
 But I have to wait 11 clocks until the results come out
-```
-
-- ✔️ ``:
-- ✔️ ``:
-
-#### 3️⃣
-
-#### 4️⃣
-
-## ✅
-
-## ✅
-
-## ✅
-
-#### 1️⃣
-
-#### 2️⃣
-
-#### 3️⃣
-
-#### 4️⃣
-
-- 1️⃣
-- 2️⃣
-- 3️⃣
-- 4️⃣
-  👍🏻
-  👎🏻
-
-```
-⭐️⭐️⭐️ EXAM ⭐️⭐️⭐️
-❓
-👉🏻
 ```
