@@ -139,52 +139,139 @@ use tasklist
 What is the smallest PID, and what is its RAM usage?
 ```
 
-## 📌 Interruptions and input, output management
+## 📌 Interruptions and input, output management/Peripheral,Device management
+
+> DMA, PIO, drivers...
 
 - use **Device manager**(administrador de dispositivos)
 
 ✔️ how to access device manager
 
-- search/buscar > Administrador de dispositivos
+- `search/buscar > Administrador de dispositivos`
 
-- when you open Administrador de dispositivos, you always get a error message
+- when you open `Administrador de dispositivos`, you always get a error message
 - bc os hides info from peripherals
 
-✔️ what we can see in device manager
+✔️ **what we can see in device manager**
 
 - for every peripheral, show what driver that the peripheral is using
-- if there is no exclamation sign it is perfectly working
+
+✔️ **How to check if device is having problem**
+
+- if there is no **exclamation sign** it is perfectly working
 - however, if there is an excalamation sign, the driver is corrupted
 - 💊 you should update the driver
 
 - you can also see the properties of the driver
 - brand, model, date of driver, driver of the peripheral...
 
-## ✅
+✔️ **How to update**
 
-???
-Also Win+R>devmgmt.msc
-Also Win+R>cmd>driverquery (list of active windows drivers)
+- to update, right click on the peripheral
+- If you see an exclamation mark, but there is no update option, it means you cannot update it.
+- that is most probably because, that component exisited,
+- but it does not exist anymore!
 
-## ✅
+## ✅ Open device manager by terminal 1
 
-#### 1️⃣
-
-#### 2️⃣
-
-#### 3️⃣
-
-#### 4️⃣
-
-- 1️⃣
-- 2️⃣
-- 3️⃣
-- 4️⃣
-  👍🏻
-  👎🏻
+- How to open the device manager
+- `Win+R > devmgmt.msc`
 
 ```
-⭐️⭐️⭐️ EXAM ⭐️⭐️⭐️
-❓
-👉🏻
+all the command that starts with dev: related to devices
+mgmt: shortcut for management, all commands for administration, management
+.msc: microsoft corporation
 ```
+
+```
+❓ Sohee's computer cannot connect to WIFI.
+Please check if she has any driver problems.
+How can she check if she has any driver problem, and how can she fix it?
+
+- open device manager
+- find smth that has to do with wireless,
+- and if it has a !, update
+```
+
+## ✅ Open device manager by terminal 2
+
+- Also `Win+R > cmd > driverquery` (list of active windows drivers)
+- some commands need an intermediary step, `cmd`, to keep the window open
+
+✔️ **What can we see in the driverquery**
+
+- 1️⃣ Type of driver
+- There are two types of driver
+- if the type of driver is `kernel`, it is from the core, from windows, by default
+- if the type is `file system`, optional
+- it means an updateable, modificable driver(not official, so you can change)
+
+- 2️⃣ linking/link date(fecha de vinculo)
+- date in which the component was fixed/installed in the system
+- manufacture date of the component
+- even if the installation is later
+- 👀 If the link date is 2015, it does not mean this driver was installed in 2015
+- it means it was build in 2015.
+
+## 📌 Disk Management
+
+- Disks
+- Paritions
+- disk system(NTFS, FAT32...)
+- accessible or not...
+
+## ✅ Use disk manager
+
+- use **administrador de discos**
+
+- using search to open diskmanager is not a good idea
+- as search depends on the windows version, it is not fixed
+- so command is better, it will always work
+
+- `Windows + R > diskmgmt.msc`
+- however, it will not work as you need administrator permission
+
+✔️ **What can you see in disk manager**
+
+- disk 0: internal disk you have in your computer
+- disk 1, 2, 3...: external disks, your USBs
+- disk 1, 2, 3...could be internal, but normally external
+
+- fragments: three blue bloxes
+- so in disk0, it is fragmented into three parts
+- in disk 1, it has a long blue box, so it is not partitioned
+
+- size and type of partitions
+- first box: 549MB, NTFS, so it has windows partitions!
+
+- On the top, last two columns
+- you can see the free space
+- how much free space you have on your disk, and the percentage
+
+[![Screenshot-2025-12-10-at-15-56-41.png](https://i.postimg.cc/dVbRzmjq/Screenshot-2025-12-10-at-15-56-41.png)](https://postimg.cc/zykRhhQM)
+
+```
+❓ Can you tell me if you can use VM of 30GB on my USB?
+
+- YES, your USB uses exFAT
+- also, the available space is 196GB
+
+```
+
+✔️ **Before installing anythings check two things**
+
+1. your disk format(exFAT)
+2. available free space(196GB)
+
+```
+❓ Can I break partition C and intall two windows?
+Each windows is 50GB
+
+- yes, format is NTFS
+- and the capacity is 222GB
+```
+
+## 💡 In mobile...
+
+- In mobile technologies in `x86`, as **RISC**(Reduced)
+- In mobile technologies in `x86-64`, as **ARM**(Advanced)
