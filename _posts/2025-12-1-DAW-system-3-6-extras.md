@@ -36,7 +36,7 @@ Ctr+Alt+Supr>Administrador tareas > performance(rendimiento label) > memory
 - `reservada para hardware`: size of the OS in RAM
 - `cache`: size of the disk cache, free portion of the RAM used for frequent applications, helps the harddisk
 
-#### 2️⃣ another way of checking memory manager_resmon
+#### 2️⃣ Another way of checking memory manager: resmon
 
 - use test resmon
 - `windows` + `R` + `resmon`
