@@ -15,9 +15,9 @@ tags: [] # TAG names should always be lowercase
 - OS of 64 bits is a big lamp
 
 - ❓ Can I add a small lamp on a small house?
-- I can add 32 bits OS on x86
+- I can add `32 bits` OS on **x86**
 - ❓ Can I add a small or big lamp on a big house?
-- I can add 32 bits OS or 64 bits on x64
+- I can add 32 `bits OS or 64 bits` on **x64**
 
 ✔️ **Backwards compatibility**
 

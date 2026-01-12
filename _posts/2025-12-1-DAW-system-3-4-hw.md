@@ -8,6 +8,12 @@ tags: [] # TAG names should always be lowercase
 
 [![Screenshot-2025-12-01-at-16-20-08.png](https://i.postimg.cc/5NjbwT56/Screenshot-2025-12-01-at-16-20-08.png)](https://postimg.cc/KRX6b9H2)
 
+⭐️ Important thing to check before installing OS
+
+- type of BIOS
+  - BIOS legacy
+  - UEFI
+
 #### 1️⃣ Architecture system
 
 #### 2️⃣ Harddisk free capacity
@@ -64,6 +70,10 @@ tags: [] # TAG names should always be lowercase
 - some OS needs specific ways of installation
 - 👀 some OS cannot be installed with USB, some need to be installed through a network
 - If a OS is installed through network, it is called `unattended installation`
+
+#### ⭐️ BIOS
+
+- important to check the BIOS
 
 ## ✅ Hardware specs/limits for OS
 

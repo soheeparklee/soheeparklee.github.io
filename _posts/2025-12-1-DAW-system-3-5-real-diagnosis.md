@@ -17,6 +17,7 @@ tags: [] # TAG names should always be lowercase
 
 ## ✅ CPU-Z
 
+- CPU-Z: to check specific things for your computer
 - there are 6 labels
 
 #### 1️⃣ Label CPU
@@ -33,9 +34,12 @@ tags: [] # TAG names should always be lowercase
 - nano meter: (nm, 9 decimals, `14nm = 0.000000014nm, in total 9 digits`)
 - if technology is small it means transistors are very close to each other ➡️ high temperature, faster communications, high speed
 - so if technology is a small number, need better refrigeration, but faster
+- technology ⬇️ faster ⬆️
 
 - ✔️ `Max TDP`: Thermal Design Power
 - number of watts that your computer can dissipate/resists
+- maximum capability of resisting the heat
+
 - if Max TDP is 15.0w, it means your computer can get as warm as a bulb that has 15w
 - if Max TDP is small, it means the computer does not dissipate/resists very well, your computer gets very hot
 - if Max TDP is big, it means you are dissipating very well, your computer will not get hot
@@ -44,6 +48,9 @@ tags: [] # TAG names should always be lowercase
 ❓ If Max TDP was 20, instead of 15, how would your computer be?
 
 👉🏻 better, it resists more, dissipates more
+
+❓ If you want to bring your computer to the beach?
+👉🏻 bring the one with bigger TDP
 ```
 
 - ✔️ `Core Voltage`: maximum level of volts considered 0, resistance to peaks
@@ -137,6 +144,7 @@ you can access the RAM 798 million times and can do 8 read/write
 
 - ✔️ `Latency`: waiting time since you accessed the RAM, until you get the information
 - waiting time from access to getting the info
+- latency ⬇️ less delay
 
 ```
 ❓ Frequency = 800MHz

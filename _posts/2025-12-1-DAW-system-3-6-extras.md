@@ -14,7 +14,7 @@ tags: [] # TAG names should always be lowercase
 
 [![Screenshot-2025-12-01-at-17-41-01.png](https://i.postimg.cc/MGJxRYmC/Screenshot-2025-12-01-at-17-41-01.png)](https://postimg.cc/LJDrFL7D)
 
-#### 1️⃣ How to check memory manager 1\_ task manager
+#### 1️⃣ How to check memory manager 1: task manager
 
 - Use task manager
 

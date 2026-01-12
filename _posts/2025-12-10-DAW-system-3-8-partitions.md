@@ -33,11 +33,21 @@ tags: [] # TAG names should always be lowercase
 - the triangles goes from 12 o' clock : sector 0
 - it turns like the clock direction
 
+✔️ **Unit**
+
+- intersection of track and sector
+- all unites save the same bytes, although in the picture, size looks different
+- no matter distance to the center
+
+- The external units and internal units save the same bytes
+- The internal units have more information compressed
+- this means the information stored in internal units are more safe
+
 ✔️ **Unit 0**
 
 - intersection of sector 0 and circle 0
 - ⭐️ unit 0 stores the **booting system** of my disk
-- if we damage unit 0, the disk is useless, as we cannot run the booting system
+- 😭 if we damage unit 0, the disk is useless, as we cannot run the booting system
 - also the **key of transparent encryption** in linux is stored in Unit 0
 
 - But modern disks have a copy of unit 0 in the **interior** unit of the **last** disk
@@ -55,7 +65,8 @@ tags: [] # TAG names should always be lowercase
 - old
 - the headers are magnetic
 - and the tracks had magnetic material
-- ⭐️ if you use magnetic tech, in each of the unit, you can store **512Bytes**, if the units are old
+- ⭐️ if you use **magnetic** tech, in each of the unit, you can store **512Bytes**, if the units are old
+- magnetic ➡️ 512Bytes per unit
 
 - **Optical technology disk**
 - new
@@ -63,6 +74,7 @@ tags: [] # TAG names should always be lowercase
 - tracks are valleys`(lazer is kept, 0)` and hills`(lazer is reflected, 1)`
 - ⭐️ **2048Bytes** if new (🆚 4times more than magnetic disk)
 - optical disks keep much more data than magnetic disk
+- optical ➡️ 2048Bytes per unit
 
 - the size of bytes you can store per unit does not change on the size of the disk
 - as disk is a circle shape, external units are bigger, but the amount of bytes we can save is the same
@@ -81,45 +93,57 @@ tags: [] # TAG names should always be lowercase
 
 ## ✅ **Cluster**
 
-- if you take several consecutive units, you have a cluster
-- it means _minimum size of a file_
+- if you take several **consecutive** units, you have a cluster
+- it means **minimum size of a file**
 - even if the file is smaller than the size of the cluter, you need to fill it
-- 👀 My picture is `3kb` but the cluster size is `4kb`. This picture file will still occupy `4kb` in the harddisk.
+- 👀 My picture is `3kb` but the cluster size is `4kb`.
+- If I save this picture in the harddisk, this picture file will still occupy `4kb` in the harddisk.
+- not 3kb ❌
 - and the extra `1kb` added to fill the cluster size is called **redundance**
 
 ✔️ **Redundance**
 
-- used for **parity**
+- used for **parity**, secutiry, protection
 - used for protection of the file
 - 👀 If the picture is `13kb` and cluster size is `4kb`, the picture file will occupy `16kb`.
 - File size will be cluster size, or be the multiple of cluster size
 - the **redundance** will be `3kb`
 - more redundance ⬆️ more secure the file ⬆️
 
-✔️ When you predesign a harddisk, what should I choose? small cluster or big?
+```
+❓ My video is 21kb, and my cluster is 4kb
+
+- it will occupy 24kb, as it has to be a multiple of 4kb
+- and 3kb will be redundance
+```
+
+❓ When you predesign a harddisk, what should I choose? small cluster or big?
 
 - small cluster size:
 - files can be small, will not occupy a lot
 - 👍🏻 you can store many files
-- 👎🏻 but the files will be not very protected
-- 👉🏻 for normal standard ppl who wants many files in one disk
+- 👎🏻 but the files will be not very protected, not very safe
+- 🛠️ for normal standard ppl who wants many files in one disk
 
 - big cluster size:
 - file sizes will be big
 - 👎🏻 will not be able to save so many files
 - 👍🏻 files will be very protected, lots of redundance
-- 👉🏻 for servers, for companies who need protection
+- 🛠️ for servers, for companies who need protection
 
 - ❓ I do not know for what I will use this harddisk
-- use standard, default for harddisk
+- use standard
+- use default for harddisk
+- when I do not know the use of my disk
 
 ✔️ **How to change cluster size**
 
+- you can choose the cluster size when you **format** the disk
 - need to format the disk
 - make sure to backup the disk
 - right click(contextual)
-- format the disk
-- choose `unidades asignacion = cluster size`
+- click on: format the disk
+- choose dropdown `tamaño de unidades asignacion = cluster size`
 - you can also choose harddisk format(NTFS, exFAT...)here
 
 ✔️ **DEFRAG tool**
@@ -136,6 +160,9 @@ tags: [] # TAG names should always be lowercase
 
 ✔️ **Patition**
 
+- set of many many clusters
+- even if you continue on the next plate
+
 - If we go on with the cluster
 - we change sides, and to another plate, we create a partition
 
@@ -146,12 +173,12 @@ tags: [] # TAG names should always be lowercase
 
 [![IMG-7860.jpg](https://i.postimg.cc/NMhV15q2/IMG-7860.jpg)](https://postimg.cc/XZ8QWNvn)
 
-> /dev/sc`alphabet`/`number`
+> /dev/sd`alphabet`/`number`
 
 - disk: devices, called `/dev/sd/`
 - connected by SATA
   - `dev`: device
-  - `sd`: SATA drice
+  - `sd`: SATA Drive, harddisks are connected to the motherboard using SATA wire
   - letter: order of the disk(first/second/third...)
     - `A`: internal
     - `B, C, D`: external
@@ -160,8 +187,10 @@ tags: [] # TAG names should always be lowercase
 - `/dev/sbc`: third disk in my computer
 
 - then a number indicating partition of the disk
-- `/dev/sdb/1`: first partition of the second disk
+- `/dev/sdb/1`: **first partition** of the second disk
 - `/dev/sba/3`: third partition of the first disk
+
+- The booting unit does not count as a partition
 
 - if there is an error in `/dev/sdd3`: it means in my computer I have at least three disks, and the third portion is failing.
 - This does not mean my computer will fail, it just means my fourth fisk, an external disk is failing, but my internal disk is safe
@@ -220,7 +249,7 @@ tags: [] # TAG names should always be lowercase
 - If you cannot restore the index, the HD will just be a huge 0s and 1s,
 - we do not know where things start and end
 
-## ✅ Partition types
+## ✅ Type of partition
 
 - there are four
 - and three more optional, more specific types
@@ -229,6 +258,8 @@ tags: [] # TAG names should always be lowercase
 
 - store the OS
 - OS that I want to boot/ use
+- If there is an OS that you want to use, you need to store it in the primary partition
+- 🆚 If there is an OS that you want to test, save it in the logical patition
 
 #### 2️⃣ Active Partition
 
@@ -243,16 +274,16 @@ tags: [] # TAG names should always be lowercase
 
 #### 3️⃣ Logic Partition
 
-- used for (1) storing data
-- and (2) OS for demo(for testing) mode
+- used for **(1) storing data**
+- and **(2) OS for demo(for testing) mode**
 
 #### 4️⃣ Extended Partition
 
-- set/group/conjunto of logical partitions
+- **set/group/conjunto** of logical partitions
 - several logical partitions gathered together
-- used for organizing purposes
+- used for organizing logical partitions purpose
 
-- also called umbrella
+- also called **umbrella**
 - like an umbrella that embraces the logic partitions
 
 - in a disk, there can be only **one** extended partition, with several many logical partitions
@@ -293,8 +324,8 @@ Which type of partition should I give to Ubuntu data?
 
 #### 5️⃣ Reserved Partition
 
-- partition used for factory settings
-- when you want to make the computer to factory settings, used this partition
+- partition used for **factory settings**
+- when you want to make the computer to factory settings, use this partition
 
 - not obligatory ❌
 - optional ⭕️
@@ -312,7 +343,7 @@ Which type of partition should I give to Ubuntu data?
 #### 7️⃣ Booting Partition
 
 - NOT Unit 0 ❌
-- partition for storing the menu that helps you to choose
+- partition for **storing the menu** that helps you to choose
 - which partition who want to activate
 
 - **Bootstrap loader**: the technical name of the menu
@@ -321,11 +352,17 @@ Which type of partition should I give to Ubuntu data?
 - not obligatory ❌
 - optional ⭕️
 
-## ✅ Partition formats
+#### 💡 Unallocated space
 
-> which use you are going to give to the partition
+- Final partition that you leave at the end, you leave it for future use
+- If there is a partition that I do not use the use for
+- recommended to have it
 
-- format is the same as file system
+## ✅ Format of the partition
+
+> which **use** you are going to give to the partition
+
+- format is the same as **file system**
 
 1️⃣ **NTFS**
 
@@ -337,21 +374,22 @@ Which type of partition should I give to Ubuntu data?
 
 3️⃣ FAT 32
 
-- for files less than 4GB
+- for files less than or equal to 4GB
 
 4️⃣ **exFAT**
 
 - files bigger than 4GB
 
-5️⃣ HFS, Hierarchical FS
+5️⃣ **HFS, Hierarchical FS**
 
 - Mac, IOS
 
 6️⃣ **F2FS**
 
+- Flash Friendly
 - Android
 
-👉🏻 When we design a disk, we need to decide type and format of partition
+👉🏻 When we design a disk, we need to decide **type** and **format** of partition
 
 ```
 In my computer I want...
@@ -447,15 +485,17 @@ Which format should I give to Ubuntu data?
 
 ✔️ **Volume**
 
-- volume: set of partitions with the same format
+- volume: **set of partitions with the same format**
+- several partitions with the same format
 - example: in the example above, there are several NTFS
 - they all together `1, 4` create a `volume NTFS`
 - several ext `2, 5` create `volume ext`
 
-- ❓ If I format a volume, is it the same as formatting a partition?
+- ❓ **If I format a volume, is it the same as formatting a partition?**
 - No, if we format partition 3, we are just losing the data
 - If we format the volume NTFS, we are also losing the OS and the data
 - also destroy data and kernel
+- ⚠️ If you format the volumne, you will format all the partitions of the same format
 
 - ❓ If windows OS is formatted, but the logical partition with data is still there,
 - you can access the data if you pass it through the communication tunnel
@@ -470,8 +510,11 @@ Which format should I give to Ubuntu data?
 - Which is the typical situation for systems if we let `iso` in `Next Mode`?
 - If the technician does not control the disk, just let `iso` do what it wants
 
+## ✅ How to check my partition in my computer
+
 #### ✔️ In windows
 
+- to check how is my partition in my computer
 - you can see this with command `Win+R>diskmgmt.msc`
 - it creates three partitions
 
