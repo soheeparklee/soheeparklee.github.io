@@ -4,17 +4,17 @@ categories: [DAW bilingual, Computer System]
 tags: [] # TAG names should always be lowercase
 ---
 
-# ✅ Partitions schemes = drawing = design = outline
+## ✅ Partitions schemes = drawing = design = outline
 
 - There are two types of partition systems
 - MBR partition system
 - GPT
 
-# 1️⃣ MBR partition system
+## 1️⃣ MBR partition system
 
 > Master Boot Record
 
-- ✔️ MBR design is valid only until 2TB
+- ✔️ MBR design is valid only until 2TB(⭐️ exam question)
   - So if you have more than 2TB, you cannot use MBR
 - ✔️ MBR can mean two designs
 
@@ -130,7 +130,7 @@ MBR table (Unit0)
 - MBR table
 ```
 
-# 2️⃣ GPT partition system
+## 2️⃣ GPT partition system
 
 > GUID Partition Table <br>
 > GUID: Global Unique Identifier <br>
@@ -153,7 +153,7 @@ MBR table (Unit0)
 - everything is in primary
 
 - ✔️ Maximum capacity of GPT
-- Maximum of 9.4 ZetaBytes(18 zeros)
+- ⭐️ Maximum of 9.4 ZetaBytes(18 zeros)
 - `9.4 * 10^18 Bytes`
 - this is the future of the disks
 
@@ -216,7 +216,7 @@ Partition Table, huge index
 Copy of the partition table
 ```
 
-# MBR 🆚 GPT
+## MBR 🆚 GPT
 
 **✔️ MBR:**
 
@@ -242,7 +242,7 @@ Copy of the partition table
 
 [![Screenshot-2026-01-12-at-17-37-06.png](https://i.postimg.cc/HLFby8hS/Screenshot-2026-01-12-at-17-37-06.png)](https://postimg.cc/sB9BFxyS)
 
-# ✅ BIOS
+## ✅ BIOS
 
 - All HD are booted by the BIOS
 - MBR is easier to boot
@@ -255,7 +255,7 @@ Copy of the partition table
 - So, GPT disks have a **mini index** with only the 4 first partitions
 - called **MBR Protective**, it is a way of **protecting** the BIOS
 
-# ✅ GUID
+## ✅ GUID
 
 - In GPT disks, each partition has an identifier
 - haxadecimal identifier
@@ -265,7 +265,9 @@ Copy of the partition table
 - In the dark web, ppl are starting to create records of identifiers of partition and their location
 - huge security problems, very risky to save information
 
-# ✅ Command for checking disk design
+## ✅ Command for checking disk design
+
+- How to check if my disk is MDR or GPT
 
 > Win + R > diskpart > list disk
 
@@ -286,7 +288,7 @@ Copy of the partition table
 - No, Disk 1 is a GPT.
 
 ❓ Can I boot the last 5 versions of windows in my internal disk?
-- No, as Disk 0 is MBR, I can only boot up to 4 OS. 
+- No, as Disk 0 is MBR, I can only boot up to 4 OS.
 
 ❓ Which of the two disks have more physical protetion by default?
 - Disk 1, GPT, as there is a copy of an index.
