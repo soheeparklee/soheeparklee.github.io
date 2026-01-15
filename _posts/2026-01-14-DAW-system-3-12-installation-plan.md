@@ -1,5 +1,5 @@
 ---
-title: 3.12 Conclusion: Perfect installation plan
+title: 3.12 Conclusion_Perfect installation plan
 categories: [DAW bilingual, Computer System]
 tags: [] # TAG names should always be lowercase
 ---
