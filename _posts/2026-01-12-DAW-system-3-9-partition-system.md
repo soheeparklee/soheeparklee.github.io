@@ -16,18 +16,18 @@ tags: [] # TAG names should always be lowercase
 
 - ✔️ MBR design is valid only until 2TB(⭐️ exam question)
   - So if you have more than 2TB, you cannot use MBR
-- ✔️ MBR can mean two designs
+- ✔️ **MBR can mean two designs**
 
   - (1) max of 4 primary
   - (2) 3 primary and umbrella of several logical partitions
 
-- design of partitions (1) with a maximum of 4 Primary partitions
+- design of partitions **(1) with a maximum of 4 Primary partitions**
 - we say that a disk is MBR if there is a max of 4 primary partitions
 - you can have 1 primary, 2, 3, 4, but not 5
 - ⚠️ MBR system can only boot up to 4 OS if you use design type (1)
 
-- It is also MBR when (2) you have 3 primary and one umbrealla(extended, with many logical partitions inside)
-- 3p + X(xL)
+- It is also MBR when **(2) you have 3 primary and one umbrealla(extended, with many logical partitions inside)**
+- 3p + E(xL)
 - when you want to create more than 4 partitions
 - 👎🏻 but in logical partitions, the OS is only for testing, cannot install OS for booting
 - ⚠️ MBR system can only boot up to 3 OS if you use design type (2)
@@ -82,9 +82,9 @@ Why is this problem happening?
 
 1. Extend/Expand the umbrella
 2. Move the unallocated space inside the extended umbrella
-   ⚠️ If you do not expand the umbrella, the other logical partitions will be more 꽉 껴서, will suffer
-   💊 G Part Ed can help you expand the umbrella
-   💊 Mini tool partition wizard can also help umbrella extend, and move the partitions
+   - ⚠️ If you do not expand the umbrella, the other logical partitions will be more 꽉 껴서, will suffer
+   - 💊 G Part Ed can help you expand the umbrella
+   - 💊 Mini tool partition wizard can also help umbrella extend, and move the partitions
 
 ## ☑️ **MBR Table**
 
@@ -139,7 +139,7 @@ MBR table (Unit0)
 - `128 P`: you can have up to 128 bootable OS
 - `127 P + U`: you can have up to 128 bootable OS and Unallocated partition
 
-- In GPT, there is no umbrealla ❌
+- In GPT, there is no umbrella ❌
 - there is no extended partition ❌
 - there is no logical partition ❌
 - as you do not need more partitions. You already have 128 partitions!

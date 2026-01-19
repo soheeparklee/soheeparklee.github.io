@@ -108,56 +108,106 @@ so clients cannot go into other OS
 - in all the possible situations
 - in order to have a perfect disk
 
-[![Screenshot-2026-01-14-at-17-41-53.png](https://i.postimg.cc/t4BPG98m/Screenshot-2026-01-14-at-17-41-53.png)](https://postimg.cc/0zJrp1kp)
+[![Screenshot-2026-01-19-at-15-23-32.png](https://i.postimg.cc/y8F5VxhV/Screenshot-2026-01-19-at-15-23-32.png)](https://postimg.cc/SnxVdyt5)
 
-✔️ **legacy ❤️ windows**
+- 🔴 mandatory partitions
+- 🔵 recommended partitions
+
+#### **legacy ❤️ windows**
 
 - all partitions are NTFS
-- **two mandatory partitions:**
+- **✔️ two mandatory partitions:**
 
-  - `MSR`: for booting windows if Linux is uninstalled, windows will boot independantly, NTFS, Primary, contain booting files, needs to be 300MB
-  - `C:`: kernel of the system, NTFS
+  - 1️⃣ `MSR`:
+    - for booting windows if Linux is uninstalled, windows will boot independantly, NTFS, Primary, contain booting files, needs to be 300MB
+    - in windows 32, `MSR` is not necassary
+      -2️⃣ `C:`: kernel of the system, NTFS
 
-- **recommended partition:**
+- **✔️ recommended partition:**
+
   - for data: for version-hopping, NTFS
 
-✔️ **UEFI ❤️ windows**
+- Note 1: in window 32 bits, MSR partition is not necassary
+- Note 2: this is the case of legacy ❤️ GPT
 
-- **three mandatory partitions:**
+#### **UEFI ❤️ windows**
 
-  - `MSR`: for booting windows independently, needs to be 16MB
-  - `C:`: kernel, NTFS
-  - `ESP`: (EFI System Partition), **must be FAT32**, only partition in the Windows universe that is NOT NTFS
+- **✔️ three mandatory partitions:**
+
+  - 1️⃣ `MSR`: for booting windows independently, needs to be 16MB
+  - 2️⃣ `C:`: kernel, NTFS
+  - 3️⃣ `ESP`: (EFI System Partition), **must be FAT32**, only partition in the Windows universe that is NOT NTFS
   - bc if it was NTFS, windows would set a letter
   - then the user can think he can use it, save files inside
   - so the system makes it FAT32
   - so that it does not have a letter, so that users do not access
   - to avoid letters, to avoid users from touching
 
-- **recommended partition:**
+- Note 1: in automatic mode, there will be a recovery partition
+- windows create recovery partition only in `UEFI`
+
+- **✔️ recommended partition:**
   - for data: for version-hopping, NTFS
 
-## ✅
+#### **legacy ❤️ Linux**
 
-## ✅
+- **✔️ only one mandatory partition:**
+- it is called `/`, which is the `root` of Linux
+- because Linux can boot from its root
+- linux does not need a boot partition, it can boot from the root
 
-#### 1️⃣
+- **✔️ three recommended partitions:**
+- 1️⃣ partition `/boot`: if the disk is very big
+- it can help booting when the disk is big
+- what is a big disk? A disk bigger than 150GB
+- so when we have a big disk, recommended to create a `/boot` partition
+- the `/boot` disk should be `200~500MB`, in the format of `ext4`
+- and when you create it, the menu(`GRUB`) will be saved inside the `/boot`
 
-#### 2️⃣
+- 2️⃣ `partition SWAP` is also recommended
+- SWAP: part of HD to help the RAM
+- the size of SWAP should be...
 
-#### 3️⃣
+  - if the RAM is smaller than `4GB`, `SWAP` size should be double the size of RAM
+  - if the RAM is `4GB`, the `SWAP` size should also be `4GB`
+  - if the RAM is bigger than `4GB`, `SWAP` size should be half of the RAM size.
 
-#### 4️⃣
+- 3️⃣ partition `/home` for the data
+- this enables distro hopping
 
-- 1️⃣
-- 2️⃣
-- 3️⃣
-- 4️⃣
-  👍🏻
-  👎🏻
+- Note 1: In automatic mode(next mode), linux will only create the mandatory partition, the root partition
+- Note 2: same if you are using Legacy with GPT
+
+#### **UEFI ❤️ Linux GPT**
+
+- **✔️ mandatory partition:**
+- 1️⃣ root `/`
+- 2️⃣ `EFI Patition`
+
+  - 300MB
+  - format: EFI system, something we have never seen!(NOT FAT32, NOT ext2)
+  - this partition contains the GRUB
+
+- **✔️ optional partitons:**
+- can create `/boot`: you can enable other booting options
+- also `SWAP`
+- also `/home`
 
 ```
-⭐️⭐️⭐️ EXAM ⭐️⭐️⭐️
-❓
-👉🏻
+If So Hee has a legacy BIOS, and she wants a lin-win,
+how many partitions must she have at least?
+
+- 2 mandatory from Windows(booting windows, windows kernel)
+- 1 mandatory from Linux(linux kernel)
+- in total: she needs 3 partitions
+
+If So Hee has a legacy BIOS, and she wants a lin-win,
+how many partitions are recommended?
+- 2 mandatory, 1 recommended from Windows
+- 1 mandatory, 3 recommended from Linux
+- in total: 7 partitions
+
+If So Hee has a legacy BIOS, and she wants a lin-win,
+what should she add when she wants to communicate between linux and windows?
+- tunneling
 ```
