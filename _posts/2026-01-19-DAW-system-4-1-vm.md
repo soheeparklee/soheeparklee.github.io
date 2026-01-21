@@ -144,6 +144,8 @@ SoHee cannot use her USB 3.0 in her VM. Why?
 - and click on the green check
 - extension pack always has a green check
 
+[![extension-pack.png](https://i.postimg.cc/d3ZTT4Yz/extension-pack.png)](https://postimg.cc/2Lm5sd3w)
+
 ## 😱 VirtualBox installation errors
 
 #### 1️⃣ c++ Redistinbutable Package Missing
