@@ -192,6 +192,10 @@ SoHee cannot use her USB 3.0 in her VM. Why?
 - Note: All applications can have trace problems
 - 💊 look for traces inside the `C\Users\<user>\.<nameOfApplications>`
 
+- Note: after deleting traces
+- good practice to uninstall Virtual Box then install again
+
+
 #### 3️⃣
 
 #### 4️⃣

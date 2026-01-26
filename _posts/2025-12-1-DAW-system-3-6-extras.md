@@ -38,6 +38,8 @@ Ctr+Alt+Supr>Administrador tareas > performance(rendimiento label) > memory
 
 #### 2️⃣ Another way of checking memory manager: resmon
 
+[![memory-manager-2-resmon.png](https://i.postimg.cc/j5ndnCGw/memory-manager-2-resmon.png)](https://postimg.cc/tZyHLRRp)
+
 - use test resmon
 - `windows` + `R` + `resmon`
 - resmon: resources monitor
@@ -71,6 +73,8 @@ Dispatcher
 
 #### ☑️ process label
 
+[![process-manager-taskmanager-process.png](https://i.postimg.cc/zDnqmmN9/process-manager-taskmanager-process.png)](https://postimg.cc/nMcy7PCk)
+
 - we can see the list of all the processes
 - we can see both `user processs` + `internal processes`(`deamons/services`)
 
@@ -100,6 +104,8 @@ Dispatcher
 
 #### ☑️ Details
 
+[![process-manager-taskmanager-services.png](https://i.postimg.cc/XY58LgdP/process-manager-taskmanager-services.png)](https://postimg.cc/DS2LyLCQ)
+
 - name of process
 - PID
 - state of process
@@ -115,6 +121,8 @@ tell me the state and if it is using the VM or not
 
 #### ☑️ services label
 
+[![process-manager-taskmanager-process.png](https://i.postimg.cc/zDnqmmN9/process-manager-taskmanager-process.png)](https://postimg.cc/nMcy7PCk)
+
 - we only see deamons
 - we do not see user services
 
@@ -125,6 +133,8 @@ tell me the state and if it is using the VM or not
 - group of the deamon
 
 ## ✅ to check processes command
+
+[![process-manager-command-tasklist.png](https://i.postimg.cc/WzQZqQW1/process-manager-command-tasklist.png)](https://postimg.cc/ctBCV5Gp)
 
 - `Windows` + `R` > cmd > tasklist
 
@@ -144,6 +154,8 @@ What is the smallest PID, and what is its RAM usage?
 > DMA, PIO, drivers...
 
 - use **Device manager**(administrador de dispositivos)
+
+[![device-manager-properties.png](https://i.postimg.cc/ZKSpZhNS/device-manager-properties.png)](https://postimg.cc/YjdhfZ8n)
 
 ✔️ how to access device manager
 
@@ -165,6 +177,8 @@ What is the smallest PID, and what is its RAM usage?
 - you can also see the properties of the driver
 - brand, model, date of driver, driver of the peripheral...
 
+[![device-manager.png](https://i.postimg.cc/65bWcrtc/device-manager.png)](https://postimg.cc/9rTHFq4w)
+
 ✔️ **How to update**
 
 - to update, right click on the peripheral
@@ -173,6 +187,8 @@ What is the smallest PID, and what is its RAM usage?
 - but it does not exist anymore!
 
 ## ✅ Open device manager by terminal 1
+
+[![device-manager(administrador-de-dispositivos).png](<https://i.postimg.cc/T1G18f44/device-manager(administrador-de-dispositivos).png>)](https://postimg.cc/Pp3TYshW)
 
 - How to open the device manager
 - `Win+R > devmgmt.msc`
@@ -194,6 +210,8 @@ How can she check if she has any driver problem, and how can she fix it?
 ```
 
 ## ✅ Open device manager by terminal 2
+
+[![device-manager-driverquery.png](https://i.postimg.cc/C1wpS5w1/device-manager-driverquery.png)](https://postimg.cc/KKpH5ZkS)
 
 - Also `Win+R > cmd > driverquery` (list of active windows drivers)
 - some commands need an intermediary step, `cmd`, to keep the window open
