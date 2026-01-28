@@ -11,7 +11,7 @@ tags: [] # TAG names should always be lowercase
 - 👉🏻 half
 - the RAM of the VM must be `maximum of the half of the real machine`
 - if you give more than half, the real RAM will suffer
-- VM RAM = max 1/2 of the RM RAM
+- VM RAM = `max 1/2 of the RM RAM`
 
 - ⭐️ Sometimes VM can run better if you give **less** RAM
 - as I give more RAM to the real host machine
@@ -20,8 +20,7 @@ tags: [] # TAG names should always be lowercase
 - 2️⃣ **Cores**
 - ❓ As a host, if I have several cores in my CPU, how many cores should I give to the VM?
 - 👉🏻 half
-- VM cores = max 1/2 of the RM cores
-
+- VM cores = max `1/2 of the RM cores`
 - sometimes VM need increased/decreased number of cores
 - so it depends
 
@@ -35,42 +34,57 @@ tags: [] # TAG names should always be lowercase
 - so click on the `EFI` checkbox
 
 - 4️⃣ **Harddisk**
-- 👉🏻 minimum necessary
+- 👉🏻 `minimum necessary`
 - VM HD = miminum
 
 - The portion of the HD that VM uses
-- is isolated from the rest
+- is **isolated** from the rest
 - bc that part of the portion is not a partition
 - but it will be lots of files, in a separate part
 - and the files will be encrypted
 - all the other files will be protected
 - so files of VM and the files that are not are **separated**
+- protect infections from virus
+- that file is called `.vdi`
+
+- ✔️ **.vdi**
 - that **file that you create for the VM** are called `.vdi`
 - portion of the HD for the VM
-- will be represented with a red check
+- will be represented with a red cube
 - so you can make a worm in the VM, and the other
 
 - ✔️ **Scaffold**
 - the `.vbox` is also known as scaffold, settings
 - settings for the VM(like the RAM capacity, EFI, Cores)
 
+- ✔️ **.vbox**
+
+```
+scaffolding for VM
+the settings for the VM
+this depends on each computer
+```
+
+- settings of the hardware that I dedicate to VM are stored in settings filw with extension `.vbox`
 - the settings of the host that I dedicate to the VM are stored in the file with a extension `.vbox`
-- with a blue queue
+- with a blue cube
 
 - each host computer has its own scaffold
 - each host has different access to the VM
 - the accesses to the machine
 
 - In Virtual Box
-- in the left side, you have the scaffolds, accesses to the machine
-- If you right click on one scaffold
+- in the `left` side, you have the scaffolds, accesses to the machine
+- If you `right click` on one scaffold
 - and click on option `show in explorer`
 - you will reach the `.vbox` and the `.vdi` file
 
 - the machine only with `.vdi` can be repaired
 - you just create a new scaffold
-- but a machine only with `.vbox` is lost forver
+- ⚠️ but a machine only with `.vbox` is lost forver
 - bc `.vbox` only contains the settings
+
+- 💡 The app, the extension pack and the link between them should be installed in the host machines
 
 ## ✅ Where are you going to create the VM?
 
@@ -95,7 +109,7 @@ tags: [] # TAG names should always be lowercase
 - the `.vdi` `.vbox` are in the external disk
 
 - as the external disks do not have the strcuture
-- we should create manually `VirtualBox VMs` folder from the root
+- we should create manually `VirtualBox VMs` folder hanging from the root
 - inside the folder, there will one subfolder per VM machine
 
 - the `.vbox` file, although it is inside the external fisk
@@ -108,7 +122,7 @@ tags: [] # TAG names should always be lowercase
 - If you create a VM on the external disk
 - you can bring the external disk home
 - but then you should install/guarantee the following
-- the `application`, `the extension pack` and the `perfect the link` has to be done in all computers
+- 💡 the `application`, `the extension pack` and the `perfect the link` has to be done in all computers
 
 [![Screenshot-2026-01-21-at-17-23-59.png](https://i.postimg.cc/HsXf1RhD/Screenshot-2026-01-21-at-17-23-59.png)](https://postimg.cc/6y6HdjKY)
 
@@ -116,39 +130,40 @@ tags: [] # TAG names should always be lowercase
 
 ## 📌 Cheatsheet
 
-`C:\Windows\System32\drivers ` <br>
+✔️ `C:\Windows\System32\drivers ` <br>
 
 - traces, only delete if necessary
 - delete `VBox*.sys`
 - then reinstall VirtualBox
 
-`C:\Usuarios\<usuario>\.VirtualBox`
+✔️ `C:\Usuarios\<usuario>\.VirtualBox` <br>
 
 - traces, only delete if necessary
 - then reinstall VirtualBox
 
-`C:\Usuarios\<usuario>\VirtualBox VMs`
+✔️ `C:\Usuarios\<usuario>\VirtualBox VMs` <br>
 
 - my VM, my `.vbox` and `.vdi` files
 
-`VirtualBox.exe`
+✔️ `VirtualBox.exe` <br>
 
 - installation program for Virtual Box
 - when you download, it will be in the downloads the folder
 - do not double click
 - run as admin
 
-`vbox-extpack`
+✔️ `vbox-extpack` <br>
 
 - extension pack
 - when you download, it will be in the downloads the folder
 - do not double click
-- `File > tools > extension` and link it
+- find it in the `File > tools > extension` and link it
 
-`<filename>.iso`
+✔️ `<filename>.iso` <br>
 
 - the installer of the application or OS
 - that you want to have on your VM
+- do not double click
 - when you have a `.iso`, you have two options
 - (1) be in front of your computer when you install the OS
 - (2) unattended install
@@ -196,14 +211,18 @@ tags: [] # TAG names should always be lowercase
 
 ## 📢 Exercise 1
 
-- Soso is a customer with a old computer, with a legacy
+```
+- SoHee is a customer with a old computer, with a legacy
 - She has 100GB space in her HD
 - and she wants to try both linux + windows
 - a lin-win, strong in windows, and the least in linux
 - and she does not know how much VM she will use, maybe 100GB
 - we want internal disk
+```
 
-**✔️ First Window**
+#### 1️⃣ First Window
+
+- 💡 Important rule: the name of the VM must include all the information of the OS
 
 - the **name** should be `DW1E_DualBootingLinWinLimited_SoHeePark`
 - the **folder selection** is where we decide if we want internal or external
@@ -234,7 +253,7 @@ tags: [] # TAG names should always be lowercase
 - we do not want **unattened install**
 - omit it
 
-**✔️ Second Window**
+#### 2️⃣ Second Window
 
 - **RAM**: half
 - **Core**: half
@@ -242,7 +261,7 @@ tags: [] # TAG names should always be lowercase
 - now we have `GPartEd`
 - so do not click EFI
 
-**✔️ Third Window**
+#### 3️⃣ Third Window
 
 - **disk size**
 - choose the size of the `vdi`
