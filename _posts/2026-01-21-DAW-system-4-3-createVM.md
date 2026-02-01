@@ -4,6 +4,17 @@ categories: [DAW bilingual, Computer System]
 tags: [] # TAG names should always be lowercase
 ---
 
+## ✅ Create a new VM
+
+> Maquina > New
+
+- We have to decide if the machine will be created in `internal` or `external` disk
+- the `HW` is given by the host
+
+- VM
+- changing BIOS -> checkbox named `EFI`
+- file `.vdi`
+
 ## ✅ HW for the VM is given by the host
 
 - 1️⃣ **RAM(RAM without SWAP)**
@@ -42,15 +53,15 @@ tags: [] # TAG names should always be lowercase
 - bc that part of the portion is not a partition
 - but it will be lots of files, in a separate part
 - and the files will be encrypted
-- all the other files will be protected
+- 👍🏻 so all the other files in the host will be protected
 - so files of VM and the files that are not are **separated**
-- protect infections from virus
+- 👍🏻 protect host from infections from virus
 - that file is called `.vdi`
 
-- ✔️ **.vdi**
+- ✔️ **.`vdi`**
 - that **file that you create for the VM** are called `.vdi`
 - portion of the HD for the VM
-- will be represented with a red cube
+- will be represented with a red cube 🟥
 - so you can make a worm in the VM, and the other
 
 - ✔️ **Scaffold**
@@ -65,9 +76,10 @@ the settings for the VM
 this depends on each computer
 ```
 
-- settings of the hardware that I dedicate to VM are stored in settings filw with extension `.vbox`
+- settings of the hardware that I dedicate to the guest has the extension `.vbox`
+- settings of the hardware that I dedicate to VM are stored in settings file with extension `.vbox`
 - the settings of the host that I dedicate to the VM are stored in the file with a extension `.vbox`
-- with a blue cube
+- with a blue cube 🟦
 
 - each host computer has its own scaffold
 - each host has different access to the VM
@@ -84,16 +96,16 @@ this depends on each computer
 - ⚠️ but a machine only with `.vbox` is lost forver
 - bc `.vbox` only contains the settings
 
-- 💡 The app, the extension pack and the link between them should be installed in the host machines
+- 💡 The **application**, the **extension pack** and the **link between them **should be installed in every host machines
 
 ## ✅ Where are you going to create the VM?
 
 1️⃣ **Internal disk**
 
 - if you created a VM in the internal disk of your computer,
-- `.vdi` `.vbox` are inside the internal disk of your computer
-- both are inside `C\Users\<user>\VirtualBox VMs` folder
-- inside this folder, you will have a sub folder for each machine
+- `.vdi` `.vbox` are **both inside the internal disk** of your computer
+- ❓ Where? both are inside `C\Users\<user>\VirtualBox VMs` folder
+- inside this folder, you will have one sub folder for each machine
 
 - if you move your folder from there
 - the access to VM will be unaccessible
@@ -106,10 +118,10 @@ this depends on each computer
 - 👍🏻 portable
 
 - if you created a VM in the external disk of your computer,
-- the `.vdi` `.vbox` are in the external disk
+- the `.vdi` `.vbox` are in the **external disk**
 
 - as the external disks do not have the strcuture
-- we should create manually `VirtualBox VMs` folder hanging from the root
+- we should create **manually** `VirtualBox VMs` folder hanging from the root
 - inside the folder, there will one subfolder per VM machine
 
 - the `.vbox` file, although it is inside the external fisk
@@ -157,7 +169,7 @@ this depends on each computer
 - extension pack
 - when you download, it will be in the downloads the folder
 - do not double click
-- find it in the `File > tools > extension` and link it
+- find it in the `C:\File > tools > extension` and link it
 
 ✔️ `<filename>.iso` <br>
 
@@ -220,11 +232,18 @@ this depends on each computer
 - we want internal disk
 ```
 
-#### 1️⃣ First Window
+### 1️⃣ First Window: Name and OS
+
+[![creation.png](https://i.postimg.cc/s2Tnf2qj/creation.png)](https://postimg.cc/B815MJJk)
+
+#### ✔️ Name
 
 - 💡 Important rule: the name of the VM must include all the information of the OS
 
 - the **name** should be `DW1E_DualBootingLinWinLimited_SoHeePark`
+
+#### ✔️ Folder selection
+
 - the **folder selection** is where we decide if we want internal or external
 - for internal, it should be `C:\Users\Vespertino\VirtualBox VMs`
 - for internal, just do not touch it
@@ -236,11 +255,15 @@ this depends on each computer
 - so it does not have been thouroughly tested
 - no company behind to certify everything
 
+#### ✔️ iso
+
 - **.iso image** file is the file you want to use for building your new system
 - choose `GPartEd.iso`
 - first .iso should be GPartEd iso
 - then install Windows with windows.iso
 - then linux.iso...
+
+#### ✔️ Edition, type, subtype
 
 - **edition**, **type**, **subtype** should be completed by default, do not change
 - if not completed by default, you have to complete it manually
@@ -253,7 +276,9 @@ this depends on each computer
 - we do not want **unattened install**
 - omit it
 
-#### 2️⃣ Second Window
+#### 2️⃣ Second Window: Hardware
+
+[![hardware.png](https://i.postimg.cc/8kJyDNHz/hardware.png)](https://postimg.cc/K4b7DXw6)
 
 - **RAM**: half
 - **Core**: half
@@ -261,7 +286,9 @@ this depends on each computer
 - now we have `GPartEd`
 - so do not click EFI
 
-#### 3️⃣ Third Window
+#### 3️⃣ Third Window: Disk size
+
+[![disksize.png](https://i.postimg.cc/CxN7J1FY/disksize.png)](https://postimg.cc/3kk2x34b)
 
 - **disk size**
 - choose the size of the `vdi`
@@ -269,26 +296,3 @@ this depends on each computer
 - If it does not let me choose full size, it is bc `dynamic size` is chosen by defualt
 - choosing `dynamic size` is a good decision, as Soso does not know how much she wants to use
 - do not choose full size
-
-## ✅
-
-#### 1️⃣
-
-#### 2️⃣
-
-#### 3️⃣
-
-#### 4️⃣
-
-- 1️⃣
-- 2️⃣
-- 3️⃣
-- 4️⃣
-  👍🏻
-  👎🏻
-
-```
-⭐️⭐️⭐️ EXAM ⭐️⭐️⭐️
-❓
-👉🏻
-```

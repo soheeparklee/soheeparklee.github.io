@@ -8,7 +8,7 @@ tags: [] # TAG names should always be lowercase
 
 - there can be three main errors
 
-#### 1️⃣ c++ Redistinbutable Package Missing
+### 1️⃣ c++ Redistinbutable Package Missing
 
 - means an API is missing
 - 💊 Go to microsoft webpage
@@ -16,7 +16,7 @@ tags: [] # TAG names should always be lowercase
 - then execture, double click
 - and install the API
 
-#### 2️⃣ Traces of previous verions found
+### 2️⃣ Traces of previous verions found
 
 - problems bc of traes/remains leftovers of the old version
 
@@ -25,7 +25,7 @@ tags: [] # TAG names should always be lowercase
 - traes/remains of the previous version of Virtual Box
 
 - ✔️ **Traces could be in two places**
-- (1) in `C\Users\<user>\.VirtualBox`
+- 1️⃣ in `C\Users\<user>\.VirtualBox`
 - enter that folder
 - empty the folder, delete all the content
 - we only empty the folder when the error appears
@@ -37,7 +37,10 @@ tags: [] # TAG names should always be lowercase
 
 - If the `.VirtualBox` does not exist, it means previous versions of VM does not exist
 
-- (2) in `C\Windows\system32\drivers`
+- 2️⃣ in `C\Windows\system32\drivers`
+
+[![drivers-tracers.png](https://i.postimg.cc/L8CfnZ9w/drivers-tracers.png)](https://postimg.cc/dhCDf3Tj)
+
 - and serach files
 - starting by `VBox` with extension `.sys`
 - `VBox*.sys`
