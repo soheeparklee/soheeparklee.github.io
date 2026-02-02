@@ -67,13 +67,16 @@ the system will filled this by default with the host arch settings.
 
 #### ✔️ **Shared functionally**
 
+[![Screenshot-2026-02-02-at-18-06-57.png](https://i.postimg.cc/qv0Vd3sT/Screenshot-2026-02-02-at-18-06-57.png)](https://postimg.cc/zVdPC32t)
+
 - for copy and paste data from host to guest
 - importatnt for sharing information trough machines
-- recommended to set it in bidireccional (copy & paste)
+- recommended to set it in **bidireccional** (copy & paste)
 
 #### ✔️ **Drag ‘n drop**
 
-- Is not copying, is moving and pasting, must set to bidireccional
+- Arrastrar y soltar
+- Is not copying, is moving and pasting, must set to **bidireccional**
 - This two functionallities are not activated until you add an extra package
   for security reasons
 - GUEST ADDITIONS
@@ -151,13 +154,16 @@ the VM should be ecrypted to avoid infections into the real machines
 - change the size of RAM given to the VM
 
 ```
-👀 If we have a windows 10 32b
- .iso and the RAM is 4098MB (4096MB = 4GB),
-this system will not boot wahsh it down to 4000 not to the limit.
+👀 If we have a windows 10 32bits
+ .iso and the RAM is should be 4096MB (4096MB = 4GB),
+⚠️ if bigger than 4GB, this system will not boot
+so set it down to 4000 not to the limit.
 sometimes more is less
 ```
 
 #### ✔️ **Boot order**
+
+[![Screenshot-2026-02-02-at-18-09-06.png](https://i.postimg.cc/NF489Szy/Screenshot-2026-02-02-at-18-09-06.png)](https://postimg.cc/jnDnBgKK)
 
 - same as boot sequence (which device will boot: HD or USB bootable)
 - remember this is not the same as bootstrap loader(which OS boots= GRUB)
@@ -165,7 +171,7 @@ sometimes more is less
 - there are four options(although first two are mainly used)
 - 1️⃣ Optical CD: `iso` this is first, this means: boot with `.iso` and forget what is in the harddisk
 - 2️⃣ Hard disk: `.vdi` this is first, this means: boot with harddisk and forget what it is in the `iso`
-- 3️⃣ untick diskett is not used
+- 3️⃣ untick diskett, it is not used
 - correct order and options ticked
 
 - when the `.vdi` is created, it is empty
@@ -196,6 +202,8 @@ and what iso should I exclude?
 - These days, the northbridge goes inside the CPU and lost functionalities
 - the SB now called `PCH` does more things getting hotter
 - Here we have to decide if we want traditional system or modern PCH, remember it is not what I have, it is what I want.
+- If I want standard chipset, select `PIIX3`
+- If I want powerful chipset, select `ICH9`
 
 [![Screenshot-2026-02-01-at-00-58-56.png](https://i.postimg.cc/bNnJbCxw/Screenshot-2026-02-01-at-00-58-56.png)](https://postimg.cc/bszpfRV7)
 
