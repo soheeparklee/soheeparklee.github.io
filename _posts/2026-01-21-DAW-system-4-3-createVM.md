@@ -65,6 +65,9 @@ tags: [] # TAG names should always be lowercase
 - so you can make a worm in the VM, and the other
 
 - ✔️ **Scaffold**
+
+[![scaffold.png](https://i.postimg.cc/xjvzLZjT/scaffold.png)](https://postimg.cc/qg7qTjC9)
+
 - the `.vbox` is also known as scaffold, settings
 - settings for the VM(like the RAM capacity, EFI, Cores)
 

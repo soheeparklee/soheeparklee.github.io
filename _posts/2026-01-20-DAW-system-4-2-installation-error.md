@@ -26,6 +26,9 @@ tags: [] # TAG names should always be lowercase
 
 - ✔️ **Traces could be in two places**
 - 1️⃣ in `C\Users\<user>\.VirtualBox`
+
+[![traces.png](https://i.postimg.cc/dV1ZPt24/traces.png)](https://postimg.cc/nCyhqxwD)
+
 - enter that folder
 - empty the folder, delete all the content
 - we only empty the folder when the error appears
