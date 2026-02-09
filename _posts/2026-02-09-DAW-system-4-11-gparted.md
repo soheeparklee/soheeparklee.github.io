@@ -8,6 +8,8 @@ tags: [] # TAG names should always be lowercase
 
 ## ✅ Menu of GPartEd
 
+[![1menu-Of-Gparted.png](https://i.postimg.cc/k5F7zJM7/1menu-Of-Gparted.png)](https://postimg.cc/jW2VJrJ1)
+
 - just let it go, no need to choose, it will automatically choose the first option
 - ➡️ first option is LIVE
 - ⭐️ Live: use smth without installing
@@ -18,6 +20,8 @@ tags: [] # TAG names should always be lowercase
 - without installing it
 
 ## ✅ Keymap
+
+[![2keymapfinal.png](https://i.postimg.cc/3J4Y7Crj/2keymapfinal.png)](https://postimg.cc/tYjLN6x7)
 
 - keymap: keyboard distribution
 - 👀 keyboard with ñ is a spanish keyboard
@@ -31,10 +35,14 @@ tags: [] # TAG names should always be lowercase
 
 ## ✅ Language
 
+[![3language.png](https://i.postimg.cc/q7LdQ1Qv/3language.png)](https://postimg.cc/v1cjZLpJ)
+
 - language of the application
 - ➡️ `33`, means US English
 
 ## ✅ Mode
+
+[![4mode.png](https://i.postimg.cc/kGV3JqCr/4mode.png)](https://postimg.cc/PvkFKGNK)
 
 - mode of the application
 
@@ -60,6 +68,9 @@ tags: [] # TAG names should always be lowercase
 - after the three enters, the standard `GPartEd` screen will show up
 
 - check the top right corner
+
+[![5GPart-Ed-size.png](https://i.postimg.cc/mrTvcQ4v/5GPart-Ed-size.png)](https://postimg.cc/Jsd6vHGx)
+
 - 1️⃣ check that the size of the disk is correct!
 - it should be `100GB`
 - 2️⃣ check the direction of your disk
@@ -67,16 +78,21 @@ tags: [] # TAG names should always be lowercase
 - your `vdi` would be in direction `/dev/sda`
 - this is your internal disk
 - ⚠️ if it is `/dev/sdb` or `/dev/sdc`: then you are partitioning external disk
+
+[![6GPart-Ed-free-disk.png](https://i.postimg.cc/t70f96Dr/6GPart-Ed-free-disk.png)](https://postimg.cc/BPgNgXrD)
+
 - 3️⃣ check the exclamation mark ⚠️
 - exclamation mark: means you have to create the index
 - in partitions, you create the index first, then the partitions
 
-## ✅ Three windows
+## ✅ Three embedded windows
+
+[![7embedded-Windows.png](https://i.postimg.cc/xjWTXF4w/7embedded-Windows.png)](https://postimg.cc/Lh3M7vRD)
 
 - When we run any appliaction in a VM,
 - we will see three windows
 
-- embedded windows
+- 👉🏻 **embedded windows**
 
 - internally: language of the application 👉🏻 English
 - VM window: language of Virtual Box 👉🏻 Spanish
@@ -85,6 +101,10 @@ tags: [] # TAG names should always be lowercase
 ## ✅ Create the index
 
 #### ✔️ How to create the index
+
+[![8menu-Of-Gparted.png](https://i.postimg.cc/W4b2RRdj/8menu-Of-Gparted.png)](https://postimg.cc/21MpvKdX)
+
+[![9create-Index.png](https://i.postimg.cc/bwwMpqRq/9create-Index.png)](https://postimg.cc/KRCQ5SVW)
 
 - menu `device` of GPartEd
 - `device` > `Create Partition Table`
@@ -96,9 +116,17 @@ tags: [] # TAG names should always be lowercase
 - GPT
 - ➡️ `msdos`
 
+[![10create-MBR.png](https://i.postimg.cc/0QDXcj9D/10create-MBR.png)](https://postimg.cc/0M5CN8My)
+
+[![11create-MSDOS-final.png](https://i.postimg.cc/8P1XmT9C/11create-MSDOS-final.png)](https://postimg.cc/DmMc232V)
+
 - after choosing your disk partition, the exclamation mark will be gone ⚠️
 
+[![12No-More-Exclamation-Mark.png](https://i.postimg.cc/cCdhhc9S/12No-More-Exclamation-Mark.png)](https://postimg.cc/njwqcqfR)
+
 ## ✅ Create partition
+
+[![13p1.png](https://i.postimg.cc/nzJGVktY/13p1.png)](https://postimg.cc/yJLZv0xk)
 
 - when you want to create a partition
 - always unallocated should be selected
@@ -169,13 +197,33 @@ tags: [] # TAG names should always be lowercase
 
 ## ✅ Primary partitions
 
+#### 1️⃣ Win10/32bits/MSR
+
+- for booting windows
+
+[![13p1.png](https://i.postimg.cc/nzJGVktY/13p1.png)](https://postimg.cc/yJLZv0xk)
+
+#### 2️⃣ Win10/32bits/kernel
+
+- for windows kernel
+
+[![14p2.png](https://i.postimg.cc/nzSrSF2R/14p2.png)](https://postimg.cc/hzxKfqHT)
+
+#### 3️⃣ Linux18.04/32bits/kernel
+
+- for lubuntu kernel
+
+[![15p3.png](https://i.postimg.cc/PrwJKkDG/15p3.png)](https://postimg.cc/mtTT2JVV)
+
 ## ✅ Extended
+
+[![16extended.png](https://i.postimg.cc/T3xbDP4Z/16extended.png)](https://postimg.cc/crD6qdZm)
 
 - Extended partitions should be created before the logical partitions
 
 ❓ **What should be the size of the external partition?**
 
-- 100GB - 300MB - 30GB - 15GB
+- `100GB - 300MB - 30GB - 15GB`
 - just select `Create as` as `exteded`, then the remaingin size will be automatically calculated
 
 - ⚠️ space following the extended disk should be 0
@@ -204,25 +252,50 @@ And we have legacy BIOS
 - now, bring the disk back to the original computer
 ```
 
-❓ **What should be the file system of the external partition?**
-
+```
+❓ What should be the file system of the external partition?
 - extended
+```
 
 - Now, unallocated is inside the extended!
+
+[![17unallocated-Inside-Extended.png](https://i.postimg.cc/nLR9gGc0/17unallocated-Inside-Extended.png)](https://postimg.cc/McBGjRBQ)
 
 ## ✅ Logicals
 
 - Note: when you select inside the VM, do it slowly
 
-#### ✔️
+#### ✔️ Lubuntu18.04/32bits/boot
 
-#### ✔️
+- for lubuntu to boot
 
-#### ✔️
+[![18L1.png](https://i.postimg.cc/SQzY180B/18L1.png)](https://postimg.cc/NLB05KjD)
 
-#### ✔️
+#### ✔️ Windows10/32bits/data
 
-#### ✔️
+- version hopping
+
+[![19L2-Win1032bits-Data.png](https://i.postimg.cc/50QyGcrF/19L2-Win1032bits-Data.png)](https://postimg.cc/62wB2Pt9)
+
+#### ✔️ Lubuntu18.04/32bits/home
+
+- for linux data
+
+[![20L3-Lub180432bits-Home.png](https://i.postimg.cc/2876g70P/20L3-Lub180432bits-Home.png)](https://postimg.cc/sv1sh7dc)
+
+#### ✔️ Lubuntu18.04/32bits/SWAP
+
+- ❗️ attention: `file-system` is `linux-swap`
+
+[![21L4SWAP.png](https://i.postimg.cc/T1Xd4Kmk/21L4SWAP.png)](https://postimg.cc/k6fPVXT8)
+
+#### ✔️ Tunneling
+
+[![22Tunneling.png](https://i.postimg.cc/zDnXRkZc/22Tunneling.png)](https://postimg.cc/xq1SwMdv)
+
+#### ➡️ Final predesign
+
+[![23predesign.png](https://i.postimg.cc/y8WHnmtV/23predesign.png)](https://postimg.cc/HrGRkyTK)
 
 ## ✅ Save the partitions
 
@@ -253,6 +326,10 @@ And we have legacy BIOS
 - If there was no errors
 - the message `All operations successfully completed` must appear
 
+[![24success.png](https://i.postimg.cc/nrTyGr1X/24success.png)](https://postimg.cc/SY21yy34)
+
+## ✅ Enter details
+
 - Then, enter ▶️ details
 - mandatory to enter one of the NTFS partitions
 - (ideally the kernel)
@@ -275,6 +352,8 @@ And we have legacy BIOS
 
 #### ✔️ enter the `mk` command
 
+[![25cluster-Size.png](https://i.postimg.cc/SxnBcyYD/25cluster-Size.png)](https://postimg.cc/9DjghHp7)
+
 - you will see
 - ➡️ **cluster size**
 - if I have a cluster size of `4096 Bytes` = `4KB`
@@ -292,6 +371,8 @@ And we have legacy BIOS
 
 ## ✅ When 0 operations pending
 
+[![26-0operations-Pending.png](https://i.postimg.cc/tCMfqLvH/26-0operations-Pending.png)](https://postimg.cc/hfVMM3qC)
+
 - it means the partitions are saved in the `vdi`
 - now, `iso` is not needed anymore
 
@@ -305,7 +386,11 @@ And we have legacy BIOS
 - 4️⃣ go to VirtualBox > settings > storage
 - and check there is no `iso`
 
+[![27no-ISO.png](https://i.postimg.cc/QMpnqV8k/27no-ISO.png)](https://postimg.cc/R3ZRSSnN)
+
 ## ✅ Create a snapshot
 
 - things that you just finished are called `fresh`
 - name the snapshot `fresh partitioning`
+
+[![28snapshot.png](https://i.postimg.cc/26GcPJBS/28snapshot.png)](https://postimg.cc/R63LtgRk)
