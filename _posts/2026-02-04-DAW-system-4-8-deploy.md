@@ -53,6 +53,8 @@ tags: [] # TAG names should always be lowercase
 - 3️⃣ select the machine you want to create the `ova` file
 - 4️⃣ decide if you want to contain the `iso` inside the `ova` file
 
+[![ova2.png](https://i.postimg.cc/CMBBz8mJ/ova2.png)](https://postimg.cc/ThxYsK8W)
+
 [![Screenshot-2026-02-04-at-15-36-31.png](https://i.postimg.cc/QCmsLy8j/Screenshot-2026-02-04-at-15-36-31.png)](https://postimg.cc/kR2LKwRH)
 
 - ❓ when to contain the `iso` inside the `ova`
@@ -89,6 +91,8 @@ tags: [] # TAG names should always be lowercase
 
 [![Screenshot-2026-02-04-at-17-02-55.png](https://i.postimg.cc/Y9HYbbdt/Screenshot-2026-02-04-at-17-02-55.png)](https://postimg.cc/d75h0mMf)
 
+[![ova9.png](https://i.postimg.cc/t4X4tnN9/ova9.png)](https://postimg.cc/ykbK7dGG)
+
 #### ⭐️ Important note
 
 - when you use `ova` method
@@ -111,12 +115,23 @@ tags: [] # TAG names should always be lowercase
 - If you want to use OCI instead of `export > archivo` for creating a normal `ova`
 - do `machine > exportar a OCI`
 
+[![ova10oci.png](https://i.postimg.cc/fbVZBc3c/ova10oci.png)](https://postimg.cc/cKGVJ8BC)
+
 ## 2️⃣ Send/Move host1 complete folder to the host2
 
 #### 💡 How to send the folder
 
+[![send1.png](https://i.postimg.cc/TYT6ZMLr/send1.png)](https://postimg.cc/qgDS3FGR)
+
 - 1️⃣ do `right click > mostar en explorador`
+
+[![send2.png](https://i.postimg.cc/7LJ8gqdy/send2.png)](https://postimg.cc/Jy828CRT)
+
 - 2️⃣ go one folder up, then you can take the whole folder
+- 폴더 통째로 선택할 수 있도록 폴더 구조 위로 올라가기
+
+[![send3wholefile.png](https://i.postimg.cc/3R9BNv17/send3wholefile.png)](https://postimg.cc/1nn6Y4bY)
+
 - 3️⃣ now send the whole folder to the host2
 - 4️⃣ In host 2, you have two options
 - (1) Fast deployment
@@ -131,10 +146,17 @@ tags: [] # TAG names should always be lowercase
 
 #### ⭐️ Slow deployment
 
-- in host 2 VirtualBox, `maquina > anadir`
+[![send4slowdeployment.png](https://i.postimg.cc/wMGQcYSp/send4slowdeployment.png)](https://postimg.cc/ctf302x9)
+
+- in host 2 VirtualBox, `maquina > añadir`
+
+[![send5.png](https://i.postimg.cc/d0jRNyzB/send5.png)](https://postimg.cc/8FsrjjkJ)
+
 - then you can navigate to the concete `vbox`
 - the scaffold will appear
 - then you can modify the settings, modify the `vbox`
+
+[![send6choose-Vbox.png](https://i.postimg.cc/QNyQzsny/send6choose-Vbox.png)](https://postimg.cc/Thn5L8xV)
 
 #### 👎🏻 Back and forth and Rewriting
 
@@ -163,7 +185,12 @@ tags: [] # TAG names should always be lowercase
 
 #### 💡 How to create a new access to my machine in USB
 
+[![syn1.png](https://i.postimg.cc/pdWqDvTx/syn1.png)](https://postimg.cc/MnL7ShVr)
+
 - 1️⃣ `maquina > new`
+
+[![syn2.png](https://i.postimg.cc/05MZGc8K/syn2.png)](https://postimg.cc/Z0mr4PvJ)
+
 - 2️⃣ Name: should be the same as the original machine
 - 3️⃣ Folder: always `C:`
 - remember, you are just creating an access, not a new machine.
@@ -173,8 +200,14 @@ tags: [] # TAG names should always be lowercase
 - but we are not going to use the iso, so just add any iso
 - purpose: to continue with Virtual Box, to omit unattended iso
 - Virtual Box does not let you omit unattended installation unless u add an iso
+
+[![syn3.png](https://i.postimg.cc/6Qpf8hHD/syn3.png)](https://postimg.cc/cvPnjfGm)
+
 - 5️⃣ Hardware: allocate how much resource of host2 you will give to the VM
 - allocate half of RAM, cores
+
+[![syn4harddisk.png](https://i.postimg.cc/tJWhKvT2/syn4harddisk.png)](https://postimg.cc/Lg4YfTj1)
+
 - 6️⃣ Harddisk: do not create a new `vdi`
 - remember, you are just creating an access, not a new machine.
 - you navigate, and use the existing `vdi`

@@ -1,5 +1,5 @@
 ---
-title: 4.10 Save State, 4.11 Grouping, 4.12 Optimization, 4.13 Clone, 4.14 Delete
+title: 4.10-14 Save State/Grouping/Optimization/Clone/Delete
 categories: [DAW bilingual, Computer System]
 tags: [] # TAG names should always be lowercase
 ---
@@ -16,13 +16,20 @@ tags: [] # TAG names should always be lowercase
 
 #### 💡 How to group VMs
 
+[![group.png](https://i.postimg.cc/FsvcfZzM/group.png)](https://postimg.cc/14W42DpB)
+
 - 1️⃣ `Right click on scaffold > move to group`
 - 2️⃣ click on `new`, create a new group
 - 3️⃣ Group looks like a label
+
+[![group2.png](https://i.postimg.cc/zvFywsv4/group2.png)](https://postimg.cc/XBXN4Dwg)
+
 - 4️⃣ `right click on the label > change name`
 - 5️⃣ If you want to join more machines into that group, right click and select the group you want to add to
 
 ## ✅ 4.12 Optimization: Guest Additions
+
+[![ga1.png](https://i.postimg.cc/sgXMS0rb/ga1.png)](https://postimg.cc/SJBQbdjG)
 
 - Guest Additions is an extension to optimize the VM
 - GA is an optimizer
@@ -73,7 +80,13 @@ tags: [] # TAG names should always be lowercase
 #### 💡 How to clone a VM
 
 - 1️⃣ Machine off
+
+[![clone1.png](https://i.postimg.cc/PJyqv1F5/clone1.png)](https://postimg.cc/xNkQWN2w)
+
 - 2️⃣ `maquina > clonar`
+
+[![clone2.png](https://i.postimg.cc/RZyZtSGV/clone2.png)](https://postimg.cc/0zGvRqLL)
+
 - 3️⃣ choose **complete clone** or **linked clone**
 - 4️⃣ choose if you want same or different **MAC address** for clone
 
@@ -108,10 +121,15 @@ tags: [] # TAG names should always be lowercase
 ## ✅ 4.14 How to delete a VM
 
 - 1️⃣ Machine off
+
+[![delete.png](https://i.postimg.cc/SNKSt2vj/delete.png)](https://postimg.cc/dDzch1vK)
+
 - 2️⃣ `rightclick > eliminar`
 - 3️⃣ Now you have two options
 - (1) solo borrar
 - (2) eliminar todos los archivos
+
+[![delete2.png](https://i.postimg.cc/nhjHn8ZV/delete2.png)](https://postimg.cc/CR0y4Qz9)
 
 #### ⭐️ solo borrar
 
