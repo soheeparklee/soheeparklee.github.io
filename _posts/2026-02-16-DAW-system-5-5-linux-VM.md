@@ -66,7 +66,8 @@ you machine is not connected to internet
 
 ## 📌 Create VM for Linux
 
-- ✔️ RAM
+#### ✔️ RAM
+
 - When while creating the VM
 - When we install OS that require SWAP
 - give miminum RAM
@@ -76,7 +77,8 @@ you machine is not connected to internet
 
 [![image.png](https://i.postimg.cc/tJx3dT2g/image.png)](https://postimg.cc/p5P5R2NN)
 
-- ✔️ **EFI**
+#### ✔️ **EFI**
+
 - for Linux EFI is not mandatory
 - but if we decide to tick EFI
 - linux will create its own `/boot/efi` partition
@@ -85,7 +87,8 @@ you machine is not connected to internet
 
 [![image.png](https://i.postimg.cc/DzpLtsNL/image.png)](https://postimg.cc/KKL1TKx8)
 
-- ✔️ **Harddisk**
+#### ✔️ **Harddisk**
+
 - if you give `dynamic`, the `dvi` will be only `2MB`
 - so when installing OS, tick on `Reservar complementamente`
 - always give full size of harddisk
@@ -96,24 +99,36 @@ you machine is not connected to internet
 - 2️⃣ if the format of my harddisk is FAT32, as maximum is `4GB`
 - 💊 harddisk should be formatted to exFAT, with backup
 
-- ✔️ **Boot order**
+#### ✔️ **Boot order**
+
 - If you tick EFI
 - boot order cannot be modified in VirtualBox
 - you can modify in the EFI
 
-- ✔️ I/O APIC
+- 💊 If you want to change this
+- uncheck `EFI` one second
+- then change boot order
+- then again tick `EFI`
+
+[![image.png](https://i.postimg.cc/zv9GWwfJ/image.png)](https://postimg.cc/q6xrH3nY)
+
+#### ✔️ I/O APIC
+
 - we should tick bc
 - we have two cores
 - and we are 64 bits
 
-- ✔️ Secure boot
+#### ✔️ Secure boot
+
 - never use Secure boot for linux
 - it will not boot linux
 
-- ✔️ Memoria de video
-- give half, if you cannot give 216GB
+#### ✔️ Memoria de video
 
-- ✔️ VideoRAM
+- give half, if you cannot give 256GB
+
+#### ✔️ VideoRAM
+
 - In systems that need 3D acceleration as requirement like Ubuntu,
 - when you enable 3D acceleration
 - the system adds more video RAM
@@ -122,52 +137,31 @@ you machine is not connected to internet
 - thanks to the SWAP ➡️ creates `video SWAP`
 - we can give more to the VM
 
+- 👉🏻 3D on
+- 👉🏻 when videoRAM increases double with video SWAP from `128MB` to `256MB`
+- 👉🏻 allocate half of videoRAM
+
+[![Screenshot-2026-02-16-at-20-03-24.png](https://i.postimg.cc/GpYJszhB/Screenshot-2026-02-16-at-20-03-24.png)](https://postimg.cc/bGy27xn8)
+
+[![Screenshot-2026-02-16-at-20-03-40.png](https://i.postimg.cc/MHZyNS0j/Screenshot-2026-02-16-at-20-03-40.png)](https://postimg.cc/47M7HjSJ)
+
 - always play along with graphics
 - to avoid invalid settings
 - try to satisfy as many requirements as possible
 
-- 👉🏻 3D on
-- 👉🏻 when videoRAM increases double with video SWAP
-- 👉🏻 allocate half of videoRAM
+[![Screenshot-2026-02-16-at-20-04-04.png](https://i.postimg.cc/hPjL0KPY/Screenshot-2026-02-16-at-20-04-04.png)](https://postimg.cc/Yj5LrKFN)
 
-- ✔️ Shared folders
+#### ✔️ Shared folders
+
 - linux has a good system for shared folders
 - activate shared folders with USB
 - so for linux, create shared folders
 
-- ✔️ Attach a details screen
+#### ✔️ Attach a details screen
+
 - After setting a virtual machine
 - always ITIL to attach a details screen
 
-- ✔️
+## ✅ Final summary of the VM
 
-## ✅
-
-## ✅
-
-## ✅
-
-## ✅
-
-## ✅
-
-#### 1️⃣
-
-#### 2️⃣
-
-#### 3️⃣
-
-#### 4️⃣
-
-- 1️⃣
-- 2️⃣
-- 3️⃣
-- 4️⃣
-  👍🏻
-  👎🏻
-
-```
-⭐️⭐️⭐️ EXAM ⭐️⭐️⭐️
-❓
-👉🏻
-```
+[![Screenshot-2026-02-16-at-20-13-33.png](https://i.postimg.cc/gj4fbmCk/Screenshot-2026-02-16-at-20-13-33.png)](https://postimg.cc/K3k9nScd)
