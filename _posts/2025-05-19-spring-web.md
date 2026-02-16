@@ -10,10 +10,13 @@ tags: [mvc, api] # TAG names should always be lowercase
 
 # ☑️ Spring-boot-starter-web
 
-- `gradle`: build 자동화, 의존성 관리
+- `gradle`: build 자동화, 의존성 관리, pull libraries
+  - if I want to pull `tomcat`
+  - `tomcat` also has libraries that it is dependent
+  - so automatically `gradle` takes care of the dependent libraries
 - `tomcat`: localhost 8080에 올리게 도와주는 `웹서버`
 - `spring-webmvc`
-- `thymeleaf`: html에 view를 도와주는 library
+- `thymeleaf`: html에 view를 도와주는 template engine library
 - `spring-boot-starter-logging`: 로그를 남기기 위해 사용되는 library, `logback`, `slf4j`
 
 # ☑️ Test library
@@ -31,12 +34,12 @@ tags: [mvc, api] # TAG names should always be lowercase
 
 > **MVC** = model, view, controller
 
-- model: data structure, `user cart data`
+- **model**: data structure, `user cart data`
 - view: UI, `user clicks add to cart button`
 - controller: 백엔드 뒷단 코드 `update user cart ++`
 - 👍🏻 역할(관심사)을 분리하여 코드의 유지보수성을 높인다
 
-- view: 화면을 보여주기
+- **view**: 화면을 보여주기
 - view를 찾아 template engine을 사용해 **화면을 렌더링**해서 html을 웹 브라우져에 넘겨주기
 - viewResolver가 존재한다
 - HTML + template engine(`THYMELEAF`)

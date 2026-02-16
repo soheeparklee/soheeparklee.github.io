@@ -9,7 +9,9 @@ tags: [] # TAG names should always be lowercase
 - ❓ Where can I see `.vbox` and `.vdi` folders?
 - `scaffold` > `right click` > `show in explorer`
 
-- `.vdi 2 megas` is always the min size of a dynamic vdi
+[![Screenshot-2026-02-13-at-16-23-58.png](https://i.postimg.cc/SstNXLYg/Screenshot-2026-02-13-at-16-23-58.png)](https://postimg.cc/wyLdZmVN)
+
+- `.vdi` of `2 megas` is always the min size of a dynamic vdi
 - when we create a VM, the vbox only contains RAM, cores, BIOS
 - The `.iso` file is an installer, it could be an OS, app to run
 
@@ -57,11 +59,11 @@ the system will filled this by default with the host arch settings.
 #### ✔️ **Spapshot folder, carpeta de instaneas**
 
 - folder where the recovery points are saved
-- recovery point: when we want to go back
+- **recovery point**: when we want to go back
 - ⚠️ If we change this manually the snapshots could get unlinked, don’t do it.
 - This is a subfolder in the VM folder
 
-#### ✔️ **Clipboard, corta papeles**
+#### ✔️ **Clipboard, Portapapeles**
 
 - portion of the RAM for copying and pasting data
 
@@ -79,10 +81,10 @@ the system will filled this by default with the host arch settings.
 - Is not copying, is moving and pasting, must set to **bidireccional**
 - This two functionallities are not activated until you add an extra package
   for security reasons
-- GUEST ADDITIONS
+- **GUEST ADDITIONS**
 
 ```
-⭐️ Guest Additions
+⭐️ Guest Additions ⭐️
 GUEST ADDITIONS complementos del invitado
 - installed manually,
 - needed for bidireccionality

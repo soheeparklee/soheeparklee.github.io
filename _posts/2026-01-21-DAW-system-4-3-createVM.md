@@ -101,6 +101,8 @@ this depends on each computer
 
 - 💡 The **application**, the **extension pack** and the **link between them **should be installed in every host machines
 
+[![Screenshot-2026-02-13-at-16-16-31.png](https://i.postimg.cc/prg74r4Q/Screenshot-2026-02-13-at-16-16-31.png)](https://postimg.cc/0K0cJk8r)
+
 ## ✅ Where are you going to create the VM?
 
 1️⃣ **Internal disk**
@@ -109,6 +111,8 @@ this depends on each computer
 - `.vdi` `.vbox` are **both inside the internal disk** of your computer
 - ❓ Where? both are inside `C\Users\<user>\VirtualBox VMs` folder
 - inside this folder, you will have one sub folder for each machine
+
+[![Screenshot-2026-02-13-at-16-17-44.png](https://i.postimg.cc/3xBh4jzs/Screenshot-2026-02-13-at-16-17-44.png)](https://postimg.cc/hXf6NmDs)
 
 - if you move your folder from there
 - the access to VM will be unaccessible

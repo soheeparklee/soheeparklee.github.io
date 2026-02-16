@@ -1,5 +1,5 @@
 ---
-title: 6. Windows
+title: 6.1-3 Windows
 categories: [DAW bilingual, Computer System]
 tags: [] # TAG names should always be lowercase
 ---
