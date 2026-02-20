@@ -164,4 +164,4 @@ you machine is not connected to internet
 
 ## ✅ Final summary of the VM
 
-[![Screenshot-2026-02-16-at-20-13-33.png](https://i.postimg.cc/gj4fbmCk/Screenshot-2026-02-16-at-20-13-33.png)](https://postimg.cc/K3k9nScd)
+[![1-detailedscreen.png](https://i.postimg.cc/rwVSfthF/1-detailedscreen.png)](https://postimg.cc/4m07dnkr)
