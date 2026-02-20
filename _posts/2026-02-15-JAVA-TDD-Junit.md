@@ -11,7 +11,7 @@ tags: [] # TAG names should always be lowercase
 
 ## ✅ AssertJ
 
-- APIs to help testing
+- library with APIs to help testing
 - `assertThat().isEqualTo()`
 - `assertThat().hasSize()`
 - `assertThat().isEmpty()`
@@ -199,6 +199,8 @@ void getTotalPrice() {
 ```
 
 ## 💥 If method throws exception
+
+- Happy case 🆚 Exception case
 
 - ✔️ production code
 - if `count <= 0` cannot add to beverages list
