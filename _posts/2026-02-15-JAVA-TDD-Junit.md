@@ -1,5 +1,5 @@
 ---
-title: Junit and AssertJ
+title: Junit, AssertJ and Unit Test
 categories: [JAVA, TDD]
 tags: [] # TAG names should always be lowercase
 ---
@@ -60,7 +60,7 @@ tags: [] # TAG names should always be lowercase
     }
 ```
 
-## ✅ Examples of simple test code
+## ✅ Examples of simple unit test code
 
 #### ☑️ Add one beverage
 
