@@ -1,0 +1,200 @@
+---
+title: Behavior_Chain Of Responsibility
+categories: [JAVA, GoF]
+tags: [] # TAG names should always be lowercase
+---
+
+## ✅
+
+- use the handler chain to handle request
+
+- client will only make request to the `Interface Handler`
+- inside the `chain of concrete handlers`, it will handle the request
+- 👍🏻 client will not know the logic behind request
+- even if logic changes, client does not have to be modified
+
+- 👍🏻 `client(the class that makes the request)` and the `request handler` is decoupled
+
+- the handler will
+- 1️⃣ handle the request
+- 2️⃣ pass it to the next handler in the chain
+
+- 👎🏻 difficult to debug, we do not know in which handler the error is occuring
+
+## 👀 Chain of Responsibility
+
+[![Screenshot-2026-02-26-at-00-21-44.png](https://i.postimg.cc/Rh3nwG5s/Screenshot-2026-02-26-at-00-21-44.png)](https://postimg.cc/H8gxgwLX)
+
+- abstract class `Request Handler`
+- class `PrintRequestHandler`, `LoggingRequestHandler`, `AuthRequestHandler` extends `Request Handler`
+- 🙋🏻‍♀️ Client: I want my request to be 1️⃣ check authentication, if ok 2️⃣ then log 3️⃣ then print
+
+```java
+//step 1. Abstract class Request Handler
+public abstract class RequestHandler {
+    private RequestHandler nextHandler; //create chain of handlers
+
+    public RequestHandler(RequestHandler nextHandler) {
+        this.nextHandler = nextHandler;
+    }
+
+    public void handle(Request request){
+        if(nextHandler != null){ //if next handler exsits
+            nextHandler.handle(request); //call next handler
+        }
+    }
+}
+
+//step 2. create all the concrete handlers
+public class AuthRequestHandler extends RequestHandler{
+    public AuthRequestHandler(RequestHandler nextHandler) {
+        super(nextHandler);
+    }
+
+    @Override
+    public void handle(Request request) {
+        System.out.println("Check authentication");
+        super.handle(request);
+    }
+}
+
+public class LoggingRequestHandler extends RequestHandler{
+    //handle logic
+}
+
+public class PrintRequestHandler extends RequestHandler{
+  //handle logic
+}
+```
+
+- client code
+
+```java
+public class Client {
+    private RequestHandler requestHandler;
+
+    public Client(RequestHandler requestHandler) {
+        this.requestHandler = requestHandler;
+    }
+
+    public void doWork(){
+        Request request = new Request("Hello request");
+        requestHandler.handle(request); //client does not know what the handler will do
+    }
+
+    public static void main(String[] args) {
+        //create chain of handlers
+        RequestHandler chain = new AuthRequestHandler(new LoggingRequestHandler(new PrintRequestHandler(null)));
+        Client client = new Client(chain);
+        client.doWork();
+    }
+}
+
+```
+
+- result
+
+```
+Check authentication
+Logging
+Hello request
+
+AuthRequestHandler 👉🏻 LoggingRequestHandler 👉🏻 PrintRequestHandler
+```
+
+## 👀 Simple example
+
+- logger class
+
+```java
+//step 1. Logger class(handler)
+abstract class Logger {
+    protected int level;
+    protected Logger nextLogger;
+
+    public void setNextLogger(Logger nextLogger){
+        this.nextLogger = nextLogger;
+    }
+
+    public void logMessage(int level, String message){
+    }
+
+    protected abstract void write(String message);
+}
+
+//step 2. concrete handlers
+class ConsoleLogger extends Logger {
+}
+class ErrorLogger extends Logger {
+}
+```
+
+```java
+//step 3. create the chain
+public class Main {
+    public static void main(String[] args) {
+
+        Logger errorLogger = new ErrorLogger(Logger.ERROR);
+        Logger consoleLogger = new ConsoleLogger(Logger.INFO);
+
+        errorLogger.setNextLogger(consoleLogger);
+
+        errorLogger.logMessage(Logger.INFO, "This is an info message.");
+        errorLogger.logMessage(Logger.ERROR, "This is an error message.");
+    }
+}
+```
+
+- client sends reqeust to `errorLogger`
+- `errorLogger` calls `consoleLogger`
+
+## 🛠️
+
+- 👀 **servlet filter**
+- `@WebFilter`를 추가하여 `/hello` controller에 들어오기 전에 미리 servelet component scan filter를 거치세요
+
+```java
+// "/hello" 전에 이 WebFilter를 거쳐라
+@WebFilter(urlPatterns = "/hello")
+public class MyFilter implements Filter{
+  @Override
+  public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException{
+    chain.doFilter(request, response);
+  }
+}
+//controller code
+@RestController
+public class HelloController{
+  @GetMapping("/hello")
+  public String hello(){
+    return "hello";
+  }
+}
+```
+
+- 👀 **Security config**
+- create filter chain
+- to `http.autorizeRequest().anyRequest().permitAll().addFilter()...`
+
+## ✅
+
+#### 1️⃣
+
+#### 2️⃣
+
+#### 3️⃣
+
+#### 4️⃣
+
+- 1️⃣
+- 2️⃣
+- 3️⃣
+- 4️⃣
+  👍🏻
+  👎🏻
+
+```
+⭐️⭐️⭐️ EXAM ⭐️⭐️⭐️
+❓
+👉🏻
+```
