@@ -1,5 +1,5 @@
 ---
-title: Behavior_Chain Of Responsibility
+title: Behavioral_Chain Of Responsibility
 categories: [JAVA, GoF]
 tags: [] # TAG names should always be lowercase
 ---
