@@ -1,5 +1,5 @@
 ---
-title: 5.7 Incidents in installation
+title: 5.7 Installation of Ubuntu
 categories: [DAW bilingual, Computer System]
 tags: [] # TAG names should always be lowercase
 ---
@@ -363,9 +363,27 @@ What is mounting in Linux?
 - when you fill in your password,
 - then press enter
 
+## 💡 Graphical issues solution summany
+
+[![Screenshot-2026-03-02-at-15-23-26.png](https://i.postimg.cc/Dw08Sr9W/Screenshot-2026-03-02-at-15-23-26.png)](https://postimg.cc/TK8RSDYG)
+
+- for initial setting use `VMSVGA` and `3D`
+- if there is a problem with VM installation, and your windows do not appear use `VBoxVGA` and eliminate `3D`
+- if the mouse disappears, use `VBoxSVGA` or `VMSVGA` and `3D`
+- 👉🏻 you can `toggle` the settings, when they do not have a fixed solution
+- toggle: setting that is not stable, has to be modified depending on the situation
+
+```
+❓ Explain how the graphic toggle works in Ubuntu
+- when you first install, use VMSVGA and 3D
+- if there is a problem with VM installation, modify the settings to VBoxVGA and disable 3D
+- if the mouse disappears, you should use VBoxSVGA or change back to VMSVGA and 3D
+```
+
 ## ✅ Important steps after the first login
 
 **(1) Welcome page**
+
 **(2) Ubuntu Pro: Ubuntu with lots of extra in** `/opt`
 
 - do not upgrade now, skip
@@ -389,7 +407,8 @@ What is mounting in Linux?
 - is search the command terminal
 - and add to favorites
 
-✔️ **Pin the terminal**
+#### ✔️ **Pin the terminal**
+
 [![27-terminal.png](https://i.postimg.cc/BQ0S9597/27-terminal.png)](https://postimg.cc/dD5PGy0G)
 
 - click on apps
@@ -423,14 +442,15 @@ What is mounting in Linux?
 - which means you are limiting the use to only technitians
 - and limiting standard users
 
-✔️ **BASH**
+#### ✔️ **BASH**
 
 > Bowne Again SHELL
 
 - Bowne: best friend of Linux
 - in every linux, the command shell is normally named after a person
 
-✔️ **Prompt**
+#### ✔️ **Prompt**
+
 [![28-prompt.png](https://i.postimg.cc/DwCnXtJq/28-prompt.png)](https://postimg.cc/xXbwrpPC)
 
 - the commands line is called `prompt`
@@ -441,7 +461,7 @@ What is mounting in Linux?
 
 - `shpl`: technical name
 - `VirtualBox`: computer name
-- `~`: my personal folder
+- `~`: my personal folder, my portion in `/home`
 - `$`: if I am not superuser
 - `#`: if I am useruser
 
@@ -457,4 +477,274 @@ What is mounting in Linux?
 - I am connected machined called MERCURY
 - I am in `/root`, which is my personal folder as super user
 
-- ⚠️If you see `#`, logout
+- ⚠️ If you see `#`, logout
+
+## 📌 Guest Addtions installation
+
+- once the VM OS is istalled
+- we should install GA
+- two ways of installing GA `(1) graphic mode` and `(2) command mode`
+- command mode is recommended
+  - as graphic mode requires a lots of graphic
+  - so only follow graphic mode when you do not have graphic issues
+  - and you can give lots of graphic resources
+  - VRAM 256MB
+
+```
+❓ Why did you install GA in command mode?
+- bc we have to give VRAM of 256MB and we cannot
+```
+
+#### ☑️ Install GA in command mode
+
+**(1) Devices > insert guest additions**
+
+- when you click it, a CD should appear
+
+[![2ga1.png](https://i.postimg.cc/q7S45Dxm/2ga1.png)](https://postimg.cc/LqtcqT7f)
+
+**(2) Write down GA version**
+
+- the version of the guest addition we are installing might change
+- bc the GA depends on the `iso`
+- so you should keep recrod of the guest addtition
+- ⚠️ this is case sensitive ⚠️
+- 👀 `VBox_GAs_7.1.10`
+
+[![2ga2.png](https://i.postimg.cc/BQ4skKHg/2ga2.png)](https://postimg.cc/YjnJmjXG)
+
+**(3) Where is my GA?**
+
+- In which folder the information of CDs are stored?
+- CDs and USBs are linked in `/media`
+- inside the `/media`, there is a `folder for my user`
+- 👀 and inside the `user folder`, the CD will be located
+- `/media/shpl/VBox_GAs_7.1.10`
+
+**(4) Execute in terminal, run application**
+
+[![Screenshot-2026-03-02-at-15-43-54.png](https://i.postimg.cc/5y7dFCzQ/Screenshot-2026-03-02-at-15-43-54.png)](https://postimg.cc/1VqYk4Jy)
+
+- then execute from that CD you have inserted
+- inside the folder `/media/shpl/VBox_GAs_7.1.10`
+- the application named `VBoxLinuxAdditions.run`
+- you need administration permissions
+- 👉🏻 use `sudo` and ‼️ add one spacebar ‼️
+- run `sudo /media/shpl/VBox_GAs_7.1.10/VBoxLinuxAdditions.run`
+
+[![2ga4final.png](https://i.postimg.cc/TYwNK26W/2ga4final.png)](https://postimg.cc/s1k48r1V)
+
+- and everytime you run `sudo`,
+- it will ask your password
+- type for password
+
+**(5) 🔴 Will see error packages not included**
+
+[![2ga5.png](https://i.postimg.cc/W38S4CYW/2ga5.png)](https://postimg.cc/627CjjXn)
+
+- there are two packages that you need
+- but that are not included in the GA
+- the two packages are
+
+  - `bzip2`
+  - `tar`
+  - these two packages are necessary to decompress the GA
+  - for unzipping the GA
+
+- 💊 to install two packages
+- run `sudo apt install bzip2 tar`
+- `apt` is a package of installers
+- ‼️ internet connecetion is neccessary
+
+```
+❓ Why cannot I install the packages?
+- bc you do not have internet
+```
+
+- ❓ What happens if there is no internet connection?
+
+  [![Screenshot-2026-03-02-at-15-54-39.png](https://i.postimg.cc/rw6cG5bv/Screenshot-2026-03-02-at-15-54-39.png)](https://postimg.cc/PPMBTvd4)
+
+- If there is not enough IPs
+- 💊 change to NAT, do not use bridge
+
+- `apt -get` is also possible for installing things
+- but old fashioned
+
+**(6) 🔴 But even after installing the packages, you might get an extra error**
+
+[![2ga6.png](https://i.postimg.cc/tCYDXr3N/2ga6.png)](https://postimg.cc/Whc08wfd)
+
+- 🔴 the extra error: `gcc make perl packages missing`
+- means the kernel modules are missing
+
+- the `perl, make, gcc` is for creating link
+- between my kernel and the users servers of the hybrid OS
+- hybrid OS has `kernel + user services(extra commands for extra things)`
+- in order to make users servers work
+- we need three packages
+- `gcc`
+- `make`
+- `perl`
+- 👉🏻 These three packages are called `Kernel modules`
+
+- 💊 install `sudo apt install gcc make perl`
+
+[![Screenshot-2026-03-02-at-16-00-29.png](https://i.postimg.cc/htwCQ05v/Screenshot-2026-03-02-at-16-00-29.png)](https://postimg.cc/7531pSDr)
+
+- even if you had it installed
+- you can install again
+- no problem
+
+**(7) if you have Error with `E`(optional)**
+
+- 🔴 If you get an error starting with an `E`
+
+- it means you have a weak internet connection
+- 💊 use stronger internet
+- 💊 or download it in another place
+- 💊 change to NAT
+
+- or the need of updating your system
+- 💊 update using commands from step 8
+
+**(8) After installing smth, update**
+
+[![2ga7.png](https://i.postimg.cc/XJYdsJxg/2ga7.png)](https://postimg.cc/gw1xJGCw)
+
+[![2ga8.png](https://i.postimg.cc/Rh3fzDkJ/2ga8.png)](https://postimg.cc/gLWrVNkG)
+
+- `sudo apt update`
+- `sudo apt upgrade`
+- link perfectly all the commands you have just ran
+
+## 💡 Summary of installing missing packages
+
+- `sudo apt install bzip2 tar`
+- `sudo apt install gcc make perl`
+
+- `bzip tar` is for decompressing GA
+- `gcc make perl` is for linking to the kernel
+- when we download the GA
+- we download basic version in kernel
+- then we download optional repositories
+
+- then after installing
+- run `update` and `upgrade`
+- `update` and `upgrade` create link/dependencies between commands
+
+## 📌 continue Guest Addtions installation...
+
+**(8) restart/reboot the system**
+
+- sometimes you get a reminder to restart
+- but after installing everything, just restart
+- `sudo reboot`
+
+**(9) Now, retry the installation of the GA**
+
+- sometimes you have to install two times
+- bc of missing dependencies/links
+
+[![2ga9.png](https://i.postimg.cc/g0YZ0JC8/2ga9.png)](https://postimg.cc/HrhxZpsk)
+
+**(10) test 1: Test GA**
+
+```
+GA can do three things
+- Host + F
+- shared folders for USB between VM and RM
+- Bidirectional
+```
+
+- with `Host+F`, maximize the window
+- and make screenshot with `Host+E`
+
+- full screen with `Host+F`
+
+[![Virtual-Box-DW1E-Ubuntu24-04-4LTS-Noble-Numbat-So-Hee-Park-02-03-2026-practica.png](https://i.postimg.cc/jqXdscxb/Virtual-Box-DW1E-Ubuntu24-04-4LTS-Noble-Numbat-So-Hee-Park-02-03-2026-practica.png)](https://postimg.cc/YjvwR1Ln)
+
+- 🔴 if when taking screenshot, the screen blinks, and gives you problems
+- 💊 then give more Video RAM
+- if not possible, you already gave maximum Video RAM
+- change the graphical controller
+- most probably, downgrade the graphic controller, without `S`
+
+**(11) test 2-1: Test shared folders**
+
+[![2ga11.png](https://i.postimg.cc/KzTkqMBh/2ga11.png)](https://postimg.cc/LYH8hhxx)
+
+- you need to have USB that is considered a shared folder
+
+- In linux to use shared folders
+- you need to add your user to the group of users who can share folders
+- 👀 If you want to play video games, you need to add your user to the group of users who can play videogames
+- 👉🏻 In linux, permissions are always **indirect**
+- to get a permission in linux,
+- you need to get **added** to the group of ppl who already have the permission
+- need to ask `sudo` to help you get added
+
+- `sudo adduser shpl vboxsf`
+- `vboxsf`: group of users who can already use shared folders
+- if adding your user to `vboxsf` does not work,
+- it is bc you failed to install `GA`
+
+**(12) restart/reboot the system**
+
+- `sudo reboot`
+
+**(13) test 2-2: check if shared folders work**
+
+[![2ga12.png](https://i.postimg.cc/DwzWVD1y/2ga12.png)](https://postimg.cc/bsKYkm6K)
+
+- if I was in 1️⃣ graphics mode, and graphics worked
+- I can check it by clicking on the `files icon` in the left bar
+- shared folder starts with `sf`
+
+- if you are in 2️⃣ commands mode,
+- enter `cd /media`
+- and check if your shared folder is there
+
+- then list the content of the directory `ls`
+- check if your shared folder is there
+- and enter it `cd sh_G_DRIVE`
+- and list the content using `ls`
+
+[![Screenshot-2026-03-02-at-16-42-56.png](https://i.postimg.cc/d3sXHqdj/Screenshot-2026-03-02-at-16-42-56.png)](https://postimg.cc/5YrnjWsX)
+
+(16) Once everything works, turn off the machine
+
+- we want to take a shapshot
+- switch the machine off
+- for switching off, now that you have the OS,
+- use the switch off button!
+
+[![2ga10.png](https://i.postimg.cc/d3MdwBw4/2ga10.png)](https://postimg.cc/ygPWT0JZ)
+
+[![2ga13.png](https://i.postimg.cc/NG7LKY4G/2ga13.png)](https://postimg.cc/Yj0tP5ZT)
+
+(15) Once everything works, take a shapshot
+
+[![2ga14.png](https://i.postimg.cc/NMvf0P2c/2ga14.png)](https://postimg.cc/wtFdf2kf)
+
+- make sure the machine is off
+- change the name of shapshot
+- `Ubuntu Fresh install with GA`
+
+//2ga 14
+
+(16) Deploy the VM to another host
+
+- deploy the VM
+- do not use `.ova`
+- sohee: copy the VM folder to a USB to `E:/`
+- sohee: create an access to that USB
+- cesar: an create the access to the USB in `C:/`
+- cesar: `Macina > nueva > `
+  - name: same as sohee
+  - folder: and create `VBox folder` inside `C:/`
+  - hardware: corresponding to new host, cesar's computer
+  - vdi: do not create, use the existing one
+  - and navigate to sohee's USB, `E:/`
+
+[![Screenshot-2026-03-02-at-17-03-45.png](https://i.postimg.cc/kgyBtss4/Screenshot-2026-03-02-at-17-03-45.png)](https://postimg.cc/fVJwGx6n)
