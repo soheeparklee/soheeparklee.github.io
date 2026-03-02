@@ -11,7 +11,7 @@ tags: [] # TAG names should always be lowercase
 - to organize code by responsitbility
 
 - Presentation Layer `Controller`: handles HTTP request & response
-- Business Layer `Service` : business logic
+- Business Layer `Service` : business logic, `transaction` and `rollback`
 - Persistence Layer `Repository, Data access`: access DB
 
 - Controller 👉🏻 Service 👉🏻 Repository 👉🏻 Database

@@ -1,5 +1,5 @@
 ---
-title: Persistence layer test
+title: Persistence layer test code
 categories: [JAVA, TDD]
 tags: [] # TAG names should always be lowercase
 ---
@@ -19,6 +19,9 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 ```
 
 ## ✅ Test code
+
+- more like **unit testing**
+- only has to test `persistence layer`
 
 - can choose between `@SpringBootTest` and `@DataJpaTest`
 - `@DataJpaTest` is faster, as it only loads JPA libraries

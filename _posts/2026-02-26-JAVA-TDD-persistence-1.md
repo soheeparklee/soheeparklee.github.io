@@ -1,5 +1,5 @@
 ---
-title: Persistence layer client code
+title: Persistence layer production code
 categories: [JAVA, TDD]
 tags: [] # TAG names should always be lowercase
 ---
@@ -203,8 +203,18 @@ spring:
       mode: never # do not want to use data.sql for testing
 ```
 
-## ✅
+## ✅ To check
 
-```java
+#### ✔️ h2-console
 
-```
+- use `h2-console`
+- connect to `http://localhost:8080/h2-console/`
+- we can check if the mock data is well recieved
+
+[![Screenshot-2026-02-28-at-11-52-34.png](https://i.postimg.cc/YCT2Vh2W/Screenshot-2026-02-28-at-11-52-34.png)](https://postimg.cc/tstHnRxq)
+
+#### ✔️ with the api
+
+- path `/api/v1/products/selling`
+
+[![Screenshot-2026-02-28-at-11-55-06.png](https://i.postimg.cc/3wH5mpJ1/Screenshot-2026-02-28-at-11-55-06.png)](https://postimg.cc/0zZBqzSK)
