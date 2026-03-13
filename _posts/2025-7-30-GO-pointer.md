@@ -9,6 +9,8 @@ tags: [] # TAG names should always be lowercase
 - `*`: dereference operator(get/set value at address)
 - `&`: get pointer(get address) operator
 - `*T`: pointer to a value of type `T`, like `str *string`
+- `pointer` can be `nil`
+- `nil` is useful when you want to describe a value that can be missing
 
 - `&before variable`: get the reference, address of the variable
 - `*before variable name`: dereference the pointer, go to the pointer and **get or set** the value of that address
@@ -16,7 +18,7 @@ tags: [] # TAG names should always be lowercase
 - `pointer`: variable that stores the memory address of another variable
 - `y` is pointer of int
 
-```GO
+```go
 x := 7
 fmt.Println(x)  //print value 7
 fmt.Println(&x) //&, get reference, print address 0x14000112020
@@ -33,7 +35,7 @@ fmt.Println(x) //now x is 8
 - ☑️ **Changes the value of myWord**
 - if you want to change the value of an immutable, need to pass the pointer
 
-```GO
+```go
 //parameter (str *string)
 //*, pass the pointer for this parameter, not the value
 //passing the memory address of variable as parameter
@@ -45,14 +47,14 @@ func changePointer(str *string) {
 
 - ☑️ does **NOT** change value of myWord
 
-```GO
+```go
 // does not change value of myWord
 func changeValue(str string) { //pass value of myWord
 str = "changed2"
 }
 ```
 
-```GO
+```go
 func main(){
 	myWord := "hello"
 	changePointer(myWord) // <- pass address(0x14000112020)of myWord as param

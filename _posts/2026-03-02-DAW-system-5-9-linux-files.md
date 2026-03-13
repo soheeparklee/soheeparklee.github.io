@@ -80,7 +80,8 @@ tags: [] # TAG names should always be lowercase
 
 [![Screenshot-2026-03-02-at-17-28-47.png](https://i.postimg.cc/rsB2mB35/Screenshot-2026-03-02-at-17-28-47.png)](https://postimg.cc/YLzsDspS)
 
-- 1️⃣ **absolute path**
+#### 1️⃣ **absolute path**
+
 - getting to that directory starting by the root of the tree
 - so it always starts with `/`
 - bc you start with the root
@@ -90,7 +91,8 @@ tags: [] # TAG names should always be lowercase
 
 - 🛠️ if you want to reach directories close to root, use absolute
 
-- 2️⃣ **relative path**
+#### 2️⃣ **relative path**
+
 - getting to that directory starting from where I am
 - recommended to start relative path with `./`
 - `./` means where I am now
@@ -112,6 +114,13 @@ tags: [] # TAG names should always be lowercase
   - 👀 If I am in `x11`, and I want to go to `usr`, do `../../..` or `./../../..`
 - `~`: `/home/personal`
 - `/`: root
+
+## ✅ Hardlink
+
+- not a copy of the file, not a backup ❌
+- one file with two names
+- so even if we delete one name, we can still access the file with the other name
+- if all names are deleted, the access to the file will be lost
 
 ✔️ **We can create a hard link**
 
@@ -170,7 +179,6 @@ create a hard link to cesar ➡️ borja
 
 - one file can have several hardlinks
 - one file can have one inode number
-  ❓❓❓❓❓❓❓❓❓❓❓❓❓❓❓
 
 ```
 ❓ How to recover files in Linux?
@@ -214,8 +222,74 @@ create a hard link to cesar ➡️ borja
 - directory is a file with a type `directory`
 - directory means container of other things
 
-## ✅
+## ✅ Soft link
 
-## ✅
+- quick access to a data, 바로가기
+- also called `symbolic link` in linux
+- 👉🏻 a direct access to a hard link
+- like an `direct access 바로가기` in windows
 
-## ✅
+- sometimes, the soft links are moved to other branches of the tree
+- to make the files accessible
+- create a soft link and place it close to you
+
+[![Screenshot-2026-03-04-at-15-27-27.png](https://i.postimg.cc/MHYgBSxM/Screenshot-2026-03-04-at-15-27-27.png)](https://postimg.cc/Cnzvy9RS)
+
+- goal of soft link is making a **easy access** for you, create `바로가기`, purpose is **speed**
+- 🆚 goal of hard link is **protecting** the file, hiding one name so you can always access the file even if another person deletes it
+
+- if I delete one hardlink, no problem, you have another name to access the file
+- if I delete one softlink, you are just deleting one of many accesses the file
+
+- ❓ If I delete the hardlink that the soft link is pointing to?
+- the real access to the file is hardlink
+- and there is only one hardlink
+- the file is deleted forever
+- the softlink will be pointing to nothing
+- then we have a broken link
+
+#### ✔️ **Broken link**
+
+[![image.png](https://i.postimg.cc/Qtd7DgCN/image.png)](https://postimg.cc/KKCjrMtC)
+
+- broken link: direct access(`soft link`) that is not useful anymore, bc they point to null
+
+## ✅ Commands structure in linux
+
+- `command name` ➕ `  ` ➕ `[options]`(optional) ➕ `  ` + `[arguments]`(optional)
+- inside `[]` is optional
+
+- 👀 `history`
+- command with no options, no arguments
+
+- 👀 `cal -m april`
+- command: cal
+- option: -m
+- argument: april
+- show me only the month(modifier) of april(argument)
+
+#### ☑️ **options**
+
+- modifier of the command
+
+✔️ **Two ways of writing options**
+
+- 1️⃣ `start with -` : original options that come from unix
+- we are more used to original options from the 1980s
+- tend to be shorteer
+- 👀 `cal -m april`
+
+- 2️⃣ `start with --`: modern linux options
+- less ppl use the new options
+- also called `pure linux`
+- tend to be longer
+- 👀 `cal --month april`
+
+#### ☑️ **argument**
+
+- purpose, destination of the command
+- goal of the command
+- to which thing you want to apply the command to
+
+## ✅ Standard commands
+- international command

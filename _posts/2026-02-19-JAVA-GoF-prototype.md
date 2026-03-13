@@ -1,6 +1,6 @@
 ---
 title: Creational_Prototype Pattern
-categories: [JAVA, TDD]
+categories: [JAVA, GoF]
 tags: [] # TAG names should always be lowercase
 ---
 

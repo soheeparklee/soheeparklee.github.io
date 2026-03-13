@@ -16,6 +16,7 @@ sudo yum update -y
 # install
 sudo yum install -y docker
 
+
 # start Docker
 sudo service docker start
 
@@ -27,6 +28,28 @@ sudo usermod -a -G docker ec2-user
 # now try running docker commands
 docker ps
 ```
+
+- install docker compose
+
+```bash
+mkdir -p ~/.docker/cli-plugins
+
+curl -SL https://github.com/docker/compose/releases/download/v2.25.0/docker-compose-linux-x86_64 -o ~/.docker/cli-plugins/docker-compose
+
+# execute
+chmod +x ~/.docker/cli-plugins/docker-compose
+
+# verify
+docker compose version
+```
+
+- check if docker is running
+
+```
+sudo systemctl status docker
+```
+
+[![Screenshot-2025-07-04-at-18-46-53.png](https://i.postimg.cc/5yYD1zGj/Screenshot-2025-07-04-at-18-46-53.png)](https://postimg.cc/64KMf8BN)
 
 ## ✅ AWS ECR
 
@@ -45,6 +68,9 @@ docker ps
 ## ✅ AWS IAM 설정하기
 
 - IAM에 `AmazonEC2ContainerRegistryFullAccess`추가하기
+- `AWSCodeDeployFullAccess` 추가
+
+[![Screenshot-2025-07-04-at-19-03-11.png](https://i.postimg.cc/s20vNdRy/Screenshot-2025-07-04-at-19-03-11.png)](https://postimg.cc/NymsKnMP)
 
 [![Screenshot-2025-07-01-at-12-11-56.png](https://i.postimg.cc/MG2MBMVL/Screenshot-2025-07-01-at-12-11-56.png)](https://postimg.cc/VJgkQN79)
 
@@ -87,7 +113,38 @@ aws configure
 
 - create image
 
-## ✅
+## ✅ EC2가 ECR에 접근할 수 있도록 권한 주기
+
+- use AWS credential helper
+- <https://github.com/awslabs/amazon-ecr-credential-helper?tab=readme-ov-file#amazon-linux-2023-al2023>
+
+```bash
+sudo dnf install -y amazon-ecr-credential-helper
+```
+
+- configure `config.json`
+
+```bash
+# create .docker folder
+mkdir .docker
+
+cd .docker
+
+# config file
+vi config.json
+```
+
+- put this in `config.json`
+
+```bash
+{
+  "credsStore": "ecr-login"
+}
+
+~
+```
+
+[![Screenshot-2025-07-04-at-19-17-02.png](https://i.postimg.cc/0NZp5BRH/Screenshot-2025-07-04-at-19-17-02.png)](https://postimg.cc/XZGZQxvw)
 
 ## ✅
 

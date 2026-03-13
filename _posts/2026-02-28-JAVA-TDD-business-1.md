@@ -1,8 +1,16 @@
 ---
-title: Business layer production code
+title: Business layer-create orders/transaction/tearDown()
 categories: [JAVA, TDD]
 tags: [] # TAG names should always be lowercase
 ---
+
+## ⭐️
+
+- `@SpringBootTest` 🆚 `@JpaDataTest`
+- `@SpringBootTest` 🆚 `@WebMvcTest`
+- `@Transactional(readOnly=true)`
+- optimistic lock 🆚 pessimistic lock
+- CQRS: separate Command(CUD) and Query(Read)
 
 ## ✅ Business Layer
 
@@ -122,6 +130,46 @@ public class OrderCreateRequest {
     @Builder
     public OrderCreateRequest(List<String> productNumbers) {
         this.productNumbers = productNumbers;
+    }
+}
+```
+
+## ✅ Add Transactional
+
+- If add `@Transacional` to test code, should also add to production code
+
+```java
+@ActiveProfiles("test")
+@SpringBootTest
+@Transactional
+class OrderServiceTest {
+}
+
+@Transactional
+@Service
+@RequiredArgsConstructor
+public class OrderService {
+}
+```
+
+- If we are NOT going to add `@Transactional` to test code
+- should add method `tearDown()`
+
+```java
+@ActiveProfiles("test")
+@SpringBootTest
+//@Transactional
+class OrderServiceTest {
+
+    //After each test, clean data
+    //so that one test does not affect another
+   @AfterEach
+    void tearDown() {
+        orderProductRepository.deleteAllInBatch();
+        productRepository.deleteAll();
+        productRepository.deleteAllInBatch();
+        orderRepository.deleteAllInBatch();
+       stockRepository.deleteAllInBatch();
     }
 }
 ```

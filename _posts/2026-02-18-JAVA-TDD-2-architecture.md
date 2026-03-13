@@ -4,6 +4,15 @@ categories: [JAVA, TDD]
 tags: [] # TAG names should always be lowercase
 ---
 
+## ⭐️
+
+- Layered Architecture
+- Hexagonal Architecture
+- Unit test 🆚 Integration test
+- IoC, DI, AOP
+- ORM, paradigm, Hibernate
+- JPA
+
 ## ✅ Layered Architecutre in Spring
 
 - ❓ why use layered architecture?
@@ -223,7 +232,7 @@ public class OrderService {
 
 - ORM allows you to **map** `Java objects ↔ Database tables`
 
-- Object oriended(`objects`, `fields`, `methods`) and Relational DB(`tables`, `rows`, `columns`) are different paradigms
+- Object oriended(`objects`, `fields`, `methods`) and Relational DB(`tables`, `rows`, `columns`) are **different** paradigms
 - 👎🏻 **Before**:
 - after developing, the devloper had to map all OOP data into DB
 - code using pure JDBC
@@ -255,9 +264,9 @@ public class User {
 }
 ```
 
-## ✅ Java Persistence API
+## ✅ JPA: Java Persistence API
 
-- specification (rules/interface/standard) for ORM in Java
+- **specification** (rules/interface/standard) for ORM in Java
 - **JPA defines**:
 
   - How Java objects should be mapped to database tables
@@ -298,3 +307,12 @@ userRepository.findById(1L);
 @ManyToOne, @OneToMany
 @OneToOne, @ManyToMany
 ```
+
+## 🆚 Hexagonal Architecture
+
+- **Domain** is in the inner side
+- surrounded by **port**
+- ports are connected to **adapter**
+- **client**, **external system** communicate through adapter
+- 👍🏻 domain will not know what client is accessing
+- Dependency Injection

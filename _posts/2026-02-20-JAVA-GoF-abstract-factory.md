@@ -24,14 +24,113 @@ tags: [] # TAG names should always be lowercase
 ## Factory 🆚 AbstractFactory
 
 - 공통점: make creation of instance abstract with instance
-- Factory: hide the creation of instance in concrete factory
+- **Factory**: hide the creation of instance in concrete factory
 - focus more on how to implement factory, interitance
 - move instance creation process to concrte factory class
 - 👉🏻 defines an interface for creating an object, but lets subclasses (or a factory class) decide which class to instantiate
-- AbstractFactory: client does not have to see the concrete factory
-- foducs more on how to use factory, composition
+- 🆚 create one product
+
+- **AbstractFactory**: client does not have to see the concrete factory
+- focus more on how to use factory, composition
 - create related instances without relying on a concrete class
 - 👉🏻 interface for creating **families of related objects** without specifying their concrete classes.
+- 🆚 multiple related products
+
+```
+🆚 Factory
+CarFactory → Mercedes or Kia
+
+🆚 Abstract Factory
+GUIFactory
+   ├─ createButton()
+   └─ createCheckbox()
+
+WindowsFactory → WindowsButton + WindowsCheckbox
+MacFactory → MacButton + MacCheckbox
+```
+
+## 👀
+
+[![Screenshot-2026-03-08-at-10-04-04.png](https://i.postimg.cc/vZYtwqpZ/Screenshot-2026-03-08-at-10-04-04.png)](https://postimg.cc/3dqvgB8s)
+
+#### ✔️ Abstract product Interface
+
+```java
+interface Button {
+    //method that button can perform
+    press();
+}
+
+interface Checkbox {
+    tick();
+}
+```
+
+#### ✔️ Concete products
+
+```java
+class WindowsButton implements Button {
+    //override method
+    press();
+}
+
+class MacButton implements Button {
+    //override method
+    press();
+}
+
+class WindowsCheckbox implements Checkbox {
+    //override method
+    tick();
+}
+
+class MacCheckbox implements Checkbox {
+    //override method
+    tick();
+}
+```
+
+#### ✔️ Abstract Factory interface
+
+```java
+interface GUIFactory {
+    Button createButton();
+    Checkbox createCheckbox();
+}
+```
+
+#### ✔️ Concete Factory
+
+```java
+class WindowsFactory implements GUIFactory {
+
+    public Button createButton() {
+        return new WindowsButton();
+    }
+
+    public Checkbox createCheckbox() {
+        return new WindowsCheckbox();
+    }
+}
+
+class MacFactory implements GUIFactory {
+
+    public Button createButton() {
+        return new MacButton();
+    }
+
+    public Checkbox createCheckbox() {
+        return new MacCheckbox();
+    }
+}
+```
+
+#### ✔️ Client
+
+```java
+Button windowButton = new WindowsFactory().createButton();
+Checkbox windowCheckbox = new WindowsFactory().createCheckbox();
+```
 
 ## 🛠️
 

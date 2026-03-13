@@ -82,7 +82,7 @@ func main() {
 - can lock field in struct `order.mu.Lock()`
 - can lock variable `updateMutex.Lock()`
 
-```GO
+```go
 type Order struct {
 	ID     int
 	Status string

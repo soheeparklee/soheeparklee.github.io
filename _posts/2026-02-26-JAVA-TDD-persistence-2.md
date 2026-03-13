@@ -4,6 +4,10 @@ categories: [JAVA, TDD]
 tags: [] # TAG names should always be lowercase
 ---
 
+## ⭐️
+
+- QueryDSL
+
 ## ✅ Production code
 
 ```java
@@ -81,9 +85,4 @@ class ProductRepositoryTest {
 - when testing a list
 - 1️⃣ check size
 - 2️⃣ use `extracting()` and `contains()` to see if it has the value you expect
-
-## ✅
-
-## ✅
-
-## ✅
+- if many, use `.containsExactlyInAnyOrder()`

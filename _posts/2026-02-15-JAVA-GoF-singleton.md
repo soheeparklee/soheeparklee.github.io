@@ -1,5 +1,5 @@
 ---
-title: Singleton
+title: Creational_Singleton
 categories: [JAVA, GoF]
 tags: [] # TAG names should always be lowercase
 ---

@@ -1,5 +1,5 @@
 ---
-title: 5. Linux Branched
+title: 5.8 Linux Branches
 categories: [DAW bilingual, Computer System]
 tags: [] # TAG names should always be lowercase
 ---
@@ -28,9 +28,9 @@ tags: [] # TAG names should always be lowercase
 
 - 👀 `/bin`, `/home`, `/boot`, `/user`...
 
-#### ☑️ Types of Level 1 branches
+### ☑️ Types of Level 1 branches
 
-- ✔️ `/bin`
+#### ✔️ `/bin`
 - binary files, executable files
 - we have the commands that the users can execute
 
@@ -40,11 +40,11 @@ tags: [] # TAG names should always be lowercase
 - and move it to another place, and put a . on it
 ```
 
-- ✔️ `/sbin`
+#### ✔️ `/sbin`
 - executable files for the super user
 - commands that only the super user can execute
 
-- ✔️ `/boot`
+#### ✔️ `/boot`
 - partition with booting options
 - we keep the `GRUB` if we have the legacy BIOS
 - from `/boot`, if we chose UEFI, we will have `/boot/efi`
@@ -66,7 +66,7 @@ tags: [] # TAG names should always be lowercase
 - after this command, you can clean the `/boot`
 - and go back to minimum `300MB`
 
-- ✔️ `/dev`
+#### ✔️ `/dev`
 - branch in which all the disks and partitions of disks are represented/stored
 
   - the mountpoint for all the disks and partitions of disks
@@ -74,7 +74,7 @@ tags: [] # TAG names should always be lowercase
   - `/dev/sda1` my partitions are hardware 🆚 `/dev` is software
   - so it is like a nickname
 
-- ✔️ `/etc`
+#### ✔️ `/etc`
 - for extras
 - the most important first level branch!
 - gives all the settings to the system
@@ -83,7 +83,7 @@ tags: [] # TAG names should always be lowercase
 - but after kernel 4, they started using it for the most important things
 - 👀 users, passwords, setting files for my system...
 
-- ✔️ `/home`
+#### ✔️ `/home`
 - personal folder
 - dedicated to personal information
 - in `/home`, there is a second level branch, per user
@@ -111,11 +111,11 @@ tags: [] # TAG names should always be lowercase
 - then add a `.` in front
 - 👀 `Downloads` ➡️ `.Downloads`
 
-- ✔️ `/lib`
+#### ✔️ `/lib`
 - specific files for making other files work
 - in `lib` we have all the resources to run the commands for `/bin`
 
-- ✔️ `/slib`
+#### ✔️ `/slib`
 - library for the commands of the super user, that are in `sbin`
 
 ```
@@ -128,20 +128,20 @@ or corrupt library
 2. the command disappeared from /bin
 ```
 
-- ✔️ `/lib64`
+#### ✔️ `/lib64`
 - libraries for 64 bits
 - nowadays everything is 64 bits
 - so sometimes, this folder does not exist
 - and everything is inside `/lib`
 
-- ✔️ `/root`
+#### ✔️ `/root`
 - same as `/home` of the super user, which is `/home/su`
 - `/root`: personal folder for super user
 - when we become the super user, (⚠️ not recommended)
 - our downloads, our pictures are no longer in `~`
 - they will be inside `/root`
 
-- ✔️ `/usr`
+#### ✔️ `/usr`
 - folder shared by users
 - folders for users in general
 - when you want to share smth with the other user, put it in the `/usr` directory
@@ -149,16 +149,16 @@ or corrupt library
 - this branch is always surveyed by super user
 - so if you want to do smth in `/usr` you need to get the permission of super user
 
-- ✔️ `/sis`
+#### ✔️ `/sis`
 - all the events of the kernel
 - everything that happens in the kernel
 - events of failure in the kernel
 - 👀 IPC warning messages
 
-- ✔️ `/proc`
+#### ✔️ `/proc`
 - all the events of failure
 
-- ✔️ `/srv`
+#### ✔️ `/srv`
 - server
 - everything connected to internet settings
 - 👀 `/srv/www`: everything that happens when we navigate on the internet
@@ -184,7 +184,7 @@ When things are not with an error while navigating in the web?
 ➡️ /sis
 ```
 
-- ✔️ `/opt`
+#### ✔️ `/opt`
 - store all the optional things that do not come with the standard download with the linux
 - 🟰 things that do not come in the standard repositories
 - 🟰 things that do not come with default in linux
@@ -195,16 +195,16 @@ When things are not with an error while navigating in the web?
   - so it would be inside `/opt`
 
 
-- ✔️ `/tmp`
+#### ✔️ `/tmp`
 - temporal files
 - forbidden to delete it manually ❌
 - if you delete it, some commands will fail
 
-- ✔️ `/var`
+#### ✔️ `/var`
 - branch for saving important system information
 - 👀 systems variables
 
-- ✔️ `/media`
+#### ✔️ `/media`
 - related to extra devices that do not come by default in `/dev`
 - 👀 my partitions are in `/dev`
 - but if I install a CD reader, USB reader, camera(not standard)

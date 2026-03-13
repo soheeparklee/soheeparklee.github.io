@@ -1,0 +1,66 @@
+name: CD
+
+on:
+push:
+branches: - develop
+
+jobs:
+deploy:
+runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@af1da67850ed9a4cedd57bfd976089dd991e2582
+
+      - name: Add SSH host key
+        run: |
+          mkdir -p ~/.ssh
+          ssh-keyscan -H ${{ secrets.HOST }} >> ~/.ssh/known_hosts
+          chmod 644 ~/.ssh/known_hosts
+
+      - name: Set up SSH private key
+        run: |
+          echo "${{ secrets.EC2_PRIVATE_KEY }}" > ~/.ssh/private_key.pem
+          chmod 600 ~/.ssh/private_key.pem
+
+      - name: Build with Gradle
+        run: ./gradlew clean build -x test
+
+      - name: Check JAR File
+        run: ls -l build/libs/
+
+      - name: Upload JAR to Remote Server
+        run: |
+          echo "${{ secrets.EC2_PRIVATE_KEY }}" > ~/.ssh/private_key.pem
+          chmod 600 ~/.ssh/private_key.pem
+          ssh -i ~/.ssh/private_key.pem ${{ secrets.USERNAME }}@${{ secrets.HOST }} "mkdir -p ${{ secrets.APP_DIR }}"
+          scp -i ~/.ssh/private_key.pem build/libs/moim-0.0.1-SNAPSHOT.jar ${{ secrets.USERNAME }}@${{ secrets.HOST }}:${{ secrets.APP_DIR }}
+        env:
+          EC2_PRIVATE_KEY: ${{ secrets.EC2_PRIVATE_KEY }}
+
+      - name: Deploy to Remote Server
+        run: |
+          ssh -i ~/.ssh/private_key.pem ${{ secrets.USERNAME }}@${{ secrets.HOST }} '
+            export APP_DIR="${{ secrets.APP_DIR }}";
+            export DB="${{ secrets.DB }}";
+            export DB_PASSWORD="${{ secrets.DB_PASSWORD }}";
+            export DB_USERNAME="${{ secrets.DB_USERNAME }}";
+            export HOST="${{ secrets.HOST }}";
+            bash -s
+          ' < ./deploy.sh
+        env:
+          EC2_PRIVATE_KEY: ${{ secrets.EC2_PRIVATE_KEY }}
+          APP_DIR: ${{ secrets.APP_DIR }}
+          DB: ${{ secrets.DB }}
+          DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+          DB_USERNAME: ${{ secrets.DB_USERNAME }}
+          HOST: ${{ secrets.HOST }}

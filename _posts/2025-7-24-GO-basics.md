@@ -1,5 +1,5 @@
 ---
-title: Variable/Print/Scanner/Type/Operator/Array/Slice/Function/Mutable/Method
+title: Variable/Print/Scanner/Type/Operator/Array/Slice/Map/Function/Mutable
 categories: [Golang, Basics]
 tags: [] # TAG names should always be lowercase
 ---
@@ -419,10 +419,28 @@ for _, element := range arr {
 - `key` + `value`
 - no order
 
+- can modify an existing map without passing on address
+- `map value is a pointer to runtime.hmap structure`
+- when we pass map to `function/method`, we **COPY** it, but just the **pointer part**
+- NOT the data strcuture that contains the data
+
 - ☑️ **create empty map**
+- ⚠️ `nil` maps can cause runtime panic when trying to run, so use `make()`
 
 ```go
+var mp = map[string]string{}
 mp := make(map[string]int) //create empty map
+```
+
+- ☑️ **create map type**
+
+```go
+type Dictionary map[string]string
+
+//search method
+func (d Dictionary) Search(key string) string {
+	return d[key]
+}
 ```
 
 - ☑️ **create map with elements**
@@ -797,10 +815,4 @@ func (s Student) getMaxGrade() int {
 	}
 	return max
 }
-```
-
-## Function 🆚 Method
-
-```go
-
 ```

@@ -4,8 +4,6 @@ categories: [JAVA, TDD]
 tags: [] # TAG names should always be lowercase
 ---
 
-## ✅ Diagram
-
 ## ✅ Product Entity
 
 ```java

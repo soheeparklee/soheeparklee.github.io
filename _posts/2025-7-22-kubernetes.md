@@ -22,3 +22,11 @@ tags: [] # TAG names should always be lowercase
 - in Kubernetes, like docker, run Pod based on image
 
 [![Screenshot-2025-07-22-at-13-19-25.png](https://i.postimg.cc/GpVwBjNL/Screenshot-2025-07-22-at-13-19-25.png)](https://postimg.cc/XZfDm94m)
+
+## ✅ run nginx on Pod, with yaml file
+
+```yaml
+
+```
+
+## ✅

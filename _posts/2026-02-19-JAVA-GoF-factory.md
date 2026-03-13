@@ -1,5 +1,5 @@
 ---
-title: Factory
+title: Creational_Factory
 categories: [JAVA, GoF]
 tags: [] # TAG names should always be lowercase
 ---
@@ -186,4 +186,96 @@ public interface ShipFactory {
     }
 
 
+```
+
+## 👀
+
+[![Screenshot-2026-03-08-at-10-04-25.png](https://i.postimg.cc/0NrGb6kh/Screenshot-2026-03-08-at-10-04-25.png)](https://postimg.cc/d7PZfVT9)
+
+#### ✔️ Product interface
+
+```java
+public interface Car {
+    //method that car can perform
+    drive();
+}
+```
+
+#### ✔️ Abstract product
+
+```java
+public abstract class AbstractCar implements Car {
+    protected String color;
+    protected double price;
+
+    //constructor to use in concrete products
+    public AbstractCar(String color, double price) {
+        this.color = color;
+        this.price = price;
+    }
+}
+```
+
+#### ✔️ Concete products
+
+```java
+public class Mercedes extends AbstractCar {
+
+    public Mercedes(String color) {
+        super(color, 55000);
+    }
+
+    @Override
+    public void drive() {
+    }
+}
+
+public class Kia extends AbstractCar {
+
+    public Kia(String color) {
+        super(color, 30000);
+    }
+
+    @Override
+    public void drive() {
+    }
+}
+```
+
+#### ✔️ Factory Interface
+
+```java
+public interface CarFactory {
+
+    Car createCar(String color);
+
+}
+```
+
+#### ✔️ Conrete Factory
+
+```java
+public class MercedesFactory implements CarFactory {
+
+    @Override
+    public Car createCar(String color) {
+        return new Mercedes(color);
+    }
+}
+
+public class KiaFactory implements CarFactory {
+
+    @Override
+    public Car createCar(String color) {
+        return new Kia(color);
+    }
+}
+```
+
+#### ✔️ Client
+
+```java
+Car blackMercedes = new MercedesFactory.createCar("black");
+
+Car whiteKia = new KiaFactory.createCar("white");
 ```

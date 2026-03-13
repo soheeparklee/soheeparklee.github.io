@@ -1,5 +1,5 @@
 ---
-title: Adapter
+title: Structural_Adapter
 categories: [JAVA, GoF]
 tags: [] # TAG names should always be lowercase
 ---
